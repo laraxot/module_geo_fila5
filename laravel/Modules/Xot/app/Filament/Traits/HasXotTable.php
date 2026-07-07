@@ -307,6 +307,7 @@ trait HasXotTable
         // @phpstan-ignore-next-line function.alreadyNarrowedType (needed for contexts where method doesn't exist)
         if ($this->shouldShowDetachAction() && method_exists($this, 'getRelationship')) {
             $relationship = $this->getRelationship();
+            Assert::object($relationship);
 
             // Both Builder and Relation are objects with these methods in RelationManager context
             if (method_exists($relationship, 'getTable')

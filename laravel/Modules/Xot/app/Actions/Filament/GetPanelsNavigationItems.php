@@ -26,11 +26,15 @@ class GetPanelsNavigationItems
         $navs = [];
 
         foreach (Filament::getPanels() as $panel) {
+            /** @var \Filament\Panel $panel */
             $navs[] = NavigationItem::make($panel->getId())
                 ->url('/'.$panel->getPath())
+                /** @phpstan-ignore-next-line method.notFound (mixin methods added at runtime) */
                 ->icon($panel->getNavigationIcon())
                 ->group('Modules')
+                /** @phpstan-ignore-next-line method.notFound (mixin methods added at runtime) */
                 ->label($panel->getNavigationLabel())
+                /** @phpstan-ignore-next-line method.notFound (mixin methods added at runtime) */
                 ->sort($panel->getNavigationSort())
                 ->visible(static function () use ($panel): bool {
                     /** @var FilamentUser|null $user */

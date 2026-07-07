@@ -1,0 +1,24 @@
+<?php
+
+namespace Filament;
+
+use Nwidart\Modules\Module as NwidartModule;
+
+class Panel
+{
+    public function getName(): string {}
+
+    public function getModule(): NwidartModule {}
+
+    /** @return array<string, mixed> */
+    public function getConfig(): array {}
+
+    /** @return array<string, mixed> */
+    public function getModuleConfig(): array {}
+
+    public function getNavigationLabel(): string {}
+
+    public function getNavigationIcon(): string {}
+
+    public function getNavigationSort(): int {}
+}
