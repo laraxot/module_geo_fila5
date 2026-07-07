@@ -68,7 +68,10 @@ class Assenza extends BaseModel
         // return $this->hasManyThrough(Scheda::class, Asz00f::class);
     }
 
-    public function asz00fs(): HasMany
+    p/**
+     * @return HasMany<\Modules\Sigma\Models\Asz00f, $this>
+     */
+    ublic function asz00fs(): HasMany
     {
         // ModelService::make()->setModel(app(Asz00f::class))->indexIfNotExists(['asztip', 'aszcod', 'aszann', 'asz2kd', 'asz2ka']);
         // TODO: Replace with proper index creation logic when ModelService is available

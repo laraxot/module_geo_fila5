@@ -83,7 +83,8 @@ class ImportCedDiffAction extends Action
     //    return $this->ask(__('progressioni::messages.confirm_create_table'), 'yes');
     // }
 
-    private function createTableFromXLS(array $columns): void
+    /** @param array<mixed> $columns */
+        private function createTableFromXLS(array $columns): void
     {
         $ced_diff = app(CedDiff::class);
         $tbl = $ced_diff->getTable();

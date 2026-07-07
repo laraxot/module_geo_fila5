@@ -409,6 +409,7 @@ use Override;
  *
  * @mixin \Eloquent
  */
+/** @extends BaseIndividualeModel<self> */
 class Organizzativa extends BaseIndividualeModel
 {
     public string $from_field = 'dal';

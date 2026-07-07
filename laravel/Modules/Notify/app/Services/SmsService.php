@@ -12,7 +12,7 @@ use RuntimeException;
 /**
  * Classe per l'invio di SMS.
  *
- * (PHPMD.ShortVariable) Trade-off: la proprieta pubblica `` e parte dell API SMS esistente.
+ * @SuppressWarnings("PHPMD.ShortVariable") Trade-off: la proprieta pubblica `$to` e parte dell API SMS esistente.
  */
 class SmsService
 {
@@ -96,7 +96,7 @@ class SmsService
     /**
      * Invia l'SMS utilizzando il driver configurato.
      *
-     * (PHPMD.CyclomaticComplexity) Trade-off: mantiene il flusso legacy senza refactor comportamentale.
+     * @SuppressWarnings("PHPMD.CyclomaticComplexity") Trade-off: mantiene il flusso legacy senza refactor comportamentale.
      */
     public function send(): self
     {

@@ -410,6 +410,7 @@ use Parental\HasChildren;
  *
  * @mixin \Eloquent
  */
+/** @extends BaseIndividualeModel<self> */
 class Individuale extends BaseIndividualeModel
 {
     use HasChildren;

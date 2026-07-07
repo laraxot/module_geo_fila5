@@ -57,6 +57,9 @@ trait ConvertedTrait
         return null;
     }
 
+    /**
+     * @return HasMany<\Modules\Progressioni\Models\Scheda, $this>
+     */
     public function avversari(): HasMany
     {
         return $this->hasMany(Scheda::class, 'valutatore_id', 'valutatore_id')
@@ -64,6 +67,9 @@ trait ConvertedTrait
             ->where('ha_diritto', 1);
     }
 
+    /**
+     * @return HasMany<\Modules\Progressioni\Models\Scheda, $this>
+     */
     public function avversariCategoriaEco(): HasMany
     {
         return $this->hasMany(Scheda::class, 'valutatore_id', 'valutatore_id')

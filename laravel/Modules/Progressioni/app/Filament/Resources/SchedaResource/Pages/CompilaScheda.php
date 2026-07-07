@@ -50,7 +50,8 @@ class CompilaScheda extends XotBasePage
     ];
     */
 
-    public function rules(): array
+    /** @return array<string, mixed> */
+        public function rules(): array
     {
         return [
             // 'form_data.punt_progressione' => 'required|numeric|min:0|max:4',
@@ -149,7 +150,11 @@ class CompilaScheda extends XotBasePage
         return [];
     }
 
-    private function mutateFormDataBeforeFill(array $data): array
+    /**
+ * @param array<string, mixed> $data
+ * @return array<string, mixed>
+ */
+        private function mutateFormDataBeforeFill(array $data): array
     {
         return $data;
     }

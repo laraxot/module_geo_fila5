@@ -58,6 +58,10 @@ class TrovaEsclusiAction
         return '<h3>+Fatto</h3>';
     }
 
+    /**
+ * @param array<string, mixed> $params
+ * @return array<mixed>
+ */
     public function checkScheda(array $params, int $year): array
     {
         if (! isset($params['criteri_esclusione'])) {
@@ -150,6 +154,10 @@ class TrovaEsclusiAction
         return (string) $this->$func($parz, $scheda);
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMinGgRuolo(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -164,6 +172,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMinPerfIndCountLast3Years(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -178,6 +190,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMinGgPosiz1InSede(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -192,6 +208,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMinGgCatecoPosfunNoAsz(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -206,6 +226,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMinGgCatecoPosfunInSedeNoAsz(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -227,6 +251,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMinGgCatecoPosfunLavoratiInSede(array $parz, Scheda $_scheda): string
     {
         extract($parz);
@@ -234,6 +262,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkPresentiIlGiorno(array $parz, Scheda $_scheda): string
     {
         extract($parz);
@@ -243,6 +275,10 @@ class TrovaEsclusiAction
 
     // ---
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkListaPropro(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -258,6 +294,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkListaPosiz(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -273,6 +313,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkListaProproPosfun(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -288,6 +332,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkDisci(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -302,6 +350,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkListaAszTipCodEsclusoSubito(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -348,6 +400,10 @@ class TrovaEsclusiAction
 
     // ---
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMinGgPropro(array $parz, Scheda $_scheda): string
     {
         extract($parz);
@@ -355,6 +411,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMinGgProproPosfun(array $parz, Scheda $_scheda): string
     {
         extract($parz);
@@ -362,6 +422,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMinGgAnno(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -379,6 +443,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMinGgTempoDeterminato(array $parz, Scheda $_scheda): string
     {
         extract($parz);
@@ -387,6 +455,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMinGgEffettuati(array $parz, Scheda $_scheda): string
     {
         extract($parz);
@@ -394,6 +466,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkNoposizList(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -409,6 +485,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkNoproproList(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -424,6 +504,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkNoposfunList(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -439,6 +523,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkNodisci1List(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -454,6 +542,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkMaxGgAssenzeAnno(array $parz, Scheda $scheda): string
     {
         extract($parz);
@@ -468,6 +560,10 @@ class TrovaEsclusiAction
         return '';
     }
 
+    /**
+ * @param array<string, mixed> $parz
+ * @return string
+ */
     public function checkDateMinAssunz(array $parz, Scheda $scheda): string
     {
         extract($parz);

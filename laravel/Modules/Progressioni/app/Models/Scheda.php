@@ -501,10 +501,10 @@ class Scheda extends BaseScheda
 
     protected $table = 'schede';
 
-    public array $valutaz_fields = ['esperienza_acquisita', 'risultati_ottenuti',
+    /** @var array<int, string> */ public array $valutaz_fields = ['esperienza_acquisita', 'risultati_ottenuti',
         'arricchimento_professionale', 'impegno', 'qualita_prestazione', ];
 
-    public array $xls_fields = ['ente', 'matr', 'cognome', 'nome', 'propro', 'posfun', 'categoria_ecoval', 'posfunval', 'stabi', 'repar', 'anno',
+    /** @var array<int, string> */ public array $xls_fields = ['ente', 'matr', 'cognome', 'nome', 'propro', 'posfun', 'categoria_ecoval', 'posfunval', 'stabi', 'repar', 'anno',
         'email', 'esperienza_acquisita', 'risultati_ottenuti',
         'arricchimento_professionale', 'impegno', 'qualita_prestazione', 'totale', 'totale_pond', 'ha_diritto', 'motivo', 'excellences_count_last_3_years', ];
 
@@ -563,7 +563,10 @@ class Scheda extends BaseScheda
      *
      * @param  array  $data
      */
-    public function validate(array $data): Validator
+    /**
+     * @param array<string, mixed> $data
+     */
+        public function public function validate(array $data): Validator
     {
         $rules = [
             'cognome' => 'required|string|max:50',
@@ -680,7 +683,10 @@ class Scheda extends BaseScheda
      * @param  array  $params
      * @return Collection<int, self>
      */
-    public function stabi_dirigente_parz(array $params): Collection
+    /**
+     * @param array<string, mixed> $params
+     */
+        public function public function stabi_dirigente_parz(array $params): Collection
     {
         $stabi = $params['stabi'] ?? null;
         $repar = $params['repar'] ?? null;
@@ -769,7 +775,10 @@ class Scheda extends BaseScheda
      *
      * @param  array  $params
      */
-    public function resolveCoeffPesoFromParams(array $params): int
+    /**
+     * @param array<string, mixed> $params
+     */
+        public function public function resolveCoeffPesoFromParams(array $params): int
     {
         extract($params);
 
@@ -1120,7 +1129,10 @@ class Scheda extends BaseScheda
     // end content_PDF
 
     // ------------------------------------------------------------------------------------
-    public function ggInSedeTotByArray(array $params): ?int
+    /**
+     * @param array<string, mixed> $params
+     */
+        public function public function ggInSedeTotByArray(array $params): ?int
     {
         $criteri = $this->criteriEsclusione;
         if (! $criteri) {
@@ -1141,7 +1153,7 @@ class Scheda extends BaseScheda
         $anno = $this->anno;
         $tbl = app(CategoriaPropro::class)->getTable();
 
-        /** @var Builder $qua00f */
+        /** @var Builder<\Modules\Progressioni\Models\Scheda> $qua00f */
         $qua00f = $this->qua00f()->join('progressione.'.$tbl, static function (JoinClause $join) use ($anno, $tbl): void {
             $join->where($tbl.'.anno', $anno);
             $join->whereRaw('find_in_set(propro,lista_propro)');

@@ -4,10 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\Progressioni\Models\Traits;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations
+     * @return HasMany<\Modules\Progressioni\Models\CriteriOption, $this>\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+us
+     * @return HasOne<\Modules\Progressioni\Models\StipendioTabellare, $this>e Illu
+     * @ret
+     * @return HasMany<\Modules\Progressioni\Models\CriteriEsclusione, $this>urn HasMany
+     * @return HasMany<\Modules\Progressioni\Models\Assenza, $this><\Modules\Progressioni\Models\Scheda, $this>minate\Database\Eloquent\Relations
+     * @return HasMany<\Modules\Performance\Models\Individuale, $this>\MorphMany;
 use Illuminate\Support\Collection;
 use Modules\Performance\Models\Individuale as PerformanceIndividuale;
 use Modules\Progressioni\Models\Assenza;
@@ -71,7 +77,10 @@ trait ProgressioniRelationshipTrait
     {
         return $this->hasMany(CriteriOption::class, 'anno', 'anno');
     }
-
+/**
+     * @return HasMany<\Modules\Progressioni\Models\Message, $this>
+    */
+    
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class, 'anno', 'anno');
@@ -92,7 +101,10 @@ trait ProgressioniRelationshipTrait
         return $this->hasOne(Anag::class,'matr','matr')->where('ente',$this->ente);
     }
     */
-    public function schedaCriteri(): HasMany
+/**
+     * @return HasMany<\Modules\Progressioni\Models\SchedaCriteri, $this>
+    */
+        public function schedaCriteri(): HasMany
     {
         return $this->hasMany(SchedaCriteri::class, 'anno', 'anno');
     }
@@ -111,7 +123,10 @@ trait ProgressioniRelationshipTrait
     {
         return $this->hasMany(Coeff::class, 'anno', 'anno');
     }
-
+/**
+     * @return HasMany<\Modules\Sigma\Models\Asz00f, $this>
+    */
+    
     public function asz00fs(): HasMany
     {
         return $this->hasMany(Asz00f::class, 'matr', 'matr')
@@ -144,7 +159,10 @@ trait ProgressioniRelationshipTrait
             ->where('anno', $this->anno)
             ->orderBy('ptime', 'desc'); // per avere il dato senza arrotondamenti se possibile
     }
-
+/**
+     * @return HasOne<\Modules\Progressioni\Models\StipendioTabellare, $this>
+    */
+    
     public function stipendioTabellareUp(): HasOne
     {
         return $this->hasOne(StipendioTabellare::class, 'propro', 'propro')
@@ -159,7 +177,10 @@ trait ProgressioniRelationshipTrait
             ->where('tbl', $this->getTable());
     }
     */
-
+/**
+     * @return MorphMany<\Modules\Progressioni\Models\MyLog, $this>
+    */
+    
     public function myLogs(): MorphMany
     {
         return $this->morphMany(MyLog::class, 'model');
@@ -178,7 +199,10 @@ trait ProgressioniRelationshipTrait
             ->where('posfun', $this->posfunval);
     }
 
-    public function allStabiRepars(): Collection
+    p/**
+     * @return Collection<int, string>
+     */
+    ublic function allStabiRepars(): Collection
     {
         return $this->hasMany(StabiDirigente::class, 'anno', 'anno')
             ->pluck('nome_diri', 'id');
@@ -202,7 +226,10 @@ trait ProgressioniRelationshipTrait
        return $row;
     }
 */
-    public function pesi(): HasOne
+/**
+     * @return HasOne<\Modules\Progressioni\Models\Pesi, $this>
+    */
+        public function pesi(): HasOne
     {
         return $this->hasOne(Pesi::class, 'anno', 'anno')
             ->whereRaw('find_in_set(?, lista_propro)', [(string) $this->propro]);
@@ -228,7 +255,10 @@ trait ProgressioniRelationshipTrait
             // return $this->hasOne(StabiDirigente::class, 'id', 'valutatore_id');
         }
     */
-    public function valutatoreDefault(): HasOne
+/**
+     * @return HasOne<\Modules\Progressioni\Models\StabiDirigente, $this>
+    */
+        public function valutatoreDefault(): HasOne
     {
         return $this->hasOne(StabiDirigente::class, 'stabi', 'stabi')
             ->where('repar', 0)

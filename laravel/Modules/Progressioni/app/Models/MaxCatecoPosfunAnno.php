@@ -59,14 +59,17 @@ class MaxCatecoPosfunAnno extends BaseModel
 {
     protected $table = 'cateco_posfun_max_tot_pond';
 
-    public array $xls_fields = [
+    /** @var array<int, string> */ public array $xls_fields = [
         'id', 'cateco', 'posfun', 'anno', 'max_gg_tot_pond',
     ];
 
     protected $fillable = ['cateco', 'posfun', 'anno', 'max_gg_tot_pond', 'aventi_diritto', 'aventi_diritto_perc', 'aventi_diritto_eff'];
 
     // ------- relationship -------
-    public function schede(): HasMany
+    p/**
+     * @return HasMany<\Modules\Progressioni\Models\Scheda, $this>
+     */
+    ublic function schede(): HasMany
     {
         $schedaClass = Str::of(static::class)
             ->beforeLast('\\')

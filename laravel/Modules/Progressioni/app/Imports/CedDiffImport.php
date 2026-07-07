@@ -12,7 +12,10 @@ class CedDiffImport implements ToCollection
 {
     protected array $columns = [];
 
-    public function collection(Collection $rows): void
+    /**
+ * @param \Illuminate\Support\Collection<int, array> $rows
+ */
+        public function collection(Collection $rows): void
     {
         $firstRow = $rows->first();
         if ($firstRow instanceof Collection || is_array($firstRow)) {
@@ -22,7 +25,8 @@ class CedDiffImport implements ToCollection
         }
     }
 
-    public function getColumns(): array
+    /** @return array<mixed> */
+        public function getColumns(): array
     {
         $res = array_map(function ($column) {
             /** @var string $column */

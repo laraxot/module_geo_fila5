@@ -3,118 +3,48 @@
 declare(strict_types=1);
 
 use Modules\IndennitaCondizioniLavoro\Actions\ReplicateIndennita;
+use PHPUnit\Framework\Assert;
 
-test('replicate action extracts anno from nested tableFilters', function () {
-    // Arrange: test della logica di parsing dei filtri
-    $filters = [
+/**
+ * @param array{anno/valutatore?: array{anno?: int, quadrimestre?: int}, anno?: int, quadrimestre?: int} $data
+ * @return array{anno?: int, quadrimestre?: int}
+ */
+function replicateFilterInputForTest(array $data): array
+{
+    return $data['anno/valutatore'] ?? $data;
+}
+
+test('replicate action extracts filters from nested table filters', function (): void {
+    $input = replicateFilterInputForTest([
         'anno/valutatore' => [
             'anno' => 2026,
             'quadrimestre' => 2,
         ],
-    ];
-
-    // Act: estrai i filtri come fa execute()
-    $input = $filters['anno/valutatore'] ?? $filters;
-
-    // Assert
-    expect($input)->toBe([
-        'anno' => 2026,
-        'quadrimestre' => 2,
     ]);
 
-    $anno = isset($input['anno']) ? (int) $input['anno'] : null;
-    $quadrimestre = isset($input['quadrimestre']) ? (int) $input['quadrimestre'] : null;
-
-    expect($anno)->toBe(2026);
-    expect($quadrimestre)->toBe(2);
+    Assert::assertSame(['anno' => 2026, 'quadrimestre' => 2], $input);
+    Assert::assertSame(2026, $input['anno']);
+    Assert::assertSame(2, $input['quadrimestre']);
 });
 
-test('replicate action extracts quadrimestre from nested tableFilters', function () {
-    // Arrange
-    $filters = [
-        'anno/valutatore' => [
-            'anno' => 2025,
-            'quadrimestre' => 3,
-        ],
-    ];
+test('replicate action accepts flattened data array as fallback', function (): void {
+    $input = replicateFilterInputForTest([
+        'anno' => 2026,
+        'quadrimestre' => 1,
+    ]);
 
-    // Act
-    $input = $filters['anno/valutatore'] ?? $filters;
-    $anno = isset($input['anno']) ? (int) $input['anno'] : null;
-    $quadrimestre = isset($input['quadrimestre']) ? (int) $input['quadrimestre'] : null;
-
-    // Assert
-    expect($anno)->toBe(2025);
-    expect($quadrimestre)->toBe(3);
+    Assert::assertSame(['anno' => 2026, 'quadrimestre' => 1], $input);
 });
 
-test('replicate action throws exception when tableFilters missing anno', function () {
-    // Arrange
-    $invalidFilters = [
-        'anno/valutatore' => [
-            'quadrimestre' => 2,
-        ],
-    ];
-
-    // Act
-    $input = $invalidFilters['anno/valutatore'] ?? $invalidFilters;
-    $anno = isset($input['anno']) ? (int) $input['anno'] : null;
-    $quadrimestre = isset($input['quadrimestre']) ? (int) $input['quadrimestre'] : null;
-
-    // Assert
-    expect($anno)->toBeNull();
-
-    // Simula la check dell'action
-    expect(fn () => new ReplicateIndennita())
-        ->not->toThrow(InvalidArgumentException::class);
-
-    // Ma se passiamo a execute(), dovrebbe lanciare eccezione
-    $action = new ReplicateIndennita();
-    expect(fn () => $action->execute($invalidFilters))
-        ->toThrow(InvalidArgumentException::class);
-});
-
-test('replicate action throws exception when tableFilters missing quadrimestre', function () {
-    // Arrange
-    $invalidFilters = [
-        'anno/valutatore' => [
-            'anno' => 2026,
-        ],
-    ];
-
+test('replicate action throws exception when table filters are incomplete', function (): void {
     $action = new ReplicateIndennita();
 
-    // Act & Assert
-    expect(fn () => $action->execute($invalidFilters))
-        ->toThrow(InvalidArgumentException::class);
-});
+    expect(fn () => $action->execute(['anno/valutatore' => ['quadrimestre' => 2]]))
+        ->toThrow(\InvalidArgumentException::class);
 
-test('replicate action throws exception when tableFilters are null', function () {
-    $action = new ReplicateIndennita();
+    expect(fn () => $action->execute(['anno/valutatore' => ['anno' => 2026]]))
+        ->toThrow(\InvalidArgumentException::class);
 
     expect(fn () => $action->execute(null))
-        ->toThrow(InvalidArgumentException::class);
-});
-
-test('replicate action accepts flattened data array as fallback', function () {
-    // Arrange: test del fallback path
-    $flatData = [
-        'anno' => 2026,
-        'quadrimestre' => 1,
-    ];
-
-    // Act: simula parsing con fallback
-    $input = $flatData['anno/valutatore'] ?? $flatData;
-
-    // Assert: deve usare flatData quando 'anno/valutatore' non esiste
-    expect($input)->toBe([
-        'anno' => 2026,
-        'quadrimestre' => 1,
-    ]);
-
-    $anno = isset($input['anno']) ? (int) $input['anno'] : null;
-    $quadrimestre = isset($input['quadrimestre']) ? (int) $input['quadrimestre'] : null;
-
-    expect($anno)->toBe(2026);
-    expect($quadrimestre)->toBe(1);
+        ->toThrow(\InvalidArgumentException::class);
 });

@@ -6,71 +6,61 @@ use Modules\IndennitaCondizioniLavoro\Models\Policies\CondizioniLavoroAdmPolicy;
 use Modules\IndennitaCondizioniLavoro\Models\Policies\CondizioniLavoroPolicy;
 use Modules\IndennitaCondizioniLavoro\Models\Policies\IndennitaTipoPolicy;
 use Modules\IndennitaCondizioniLavoro\Models\Policies\StabiDirigentePolicy;
-use Modules\Xot\Contracts\UserContract;
-
-/*
-|--------------------------------------------------------------------------
-| Policies unit tests (no DB access)
-|--------------------------------------------------------------------------
-|
-| Le Policy di questo modulo non toccano il DB (ritornano booleani statici),
-| quindi i test qui usano un mock di UserContract per evitare qualunque
-| dipendenza da una connessione DB reale (User::factory() richiederebbe
-| l'app container completo per Hash/Faker, non disponibile in questo TestCase).
-*/
+use Modules\User\Models\User;
+use PHPUnit\Framework\Assert;
 
 test('CondizioniLavoroPolicy returns expected static authorization decisions', function (): void {
     $policy = new CondizioniLavoroPolicy();
-    $user = Mockery::mock(UserContract::class);
+    $user = new User();
 
-    expect($policy->compila())->toBeTrue();
-    expect($policy->viewAny($user))->toBeTrue();
-    expect($policy->view())->toBeFalse();
-    expect($policy->create())->toBeFalse();
-    expect($policy->update())->toBeFalse();
-    expect($policy->delete())->toBeFalse();
-    expect($policy->restore())->toBeFalse();
-    expect($policy->forceDelete())->toBeFalse();
+    Assert::assertTrue($policy->compila());
+    Assert::assertTrue($policy->viewAny($user));
+    Assert::assertFalse($policy->view());
+    Assert::assertFalse($policy->create());
+    Assert::assertFalse($policy->update());
+    Assert::assertFalse($policy->delete());
+    Assert::assertFalse($policy->restore());
+    Assert::assertFalse($policy->forceDelete());
 });
 
 test('CondizioniLavoroAdmPolicy returns expected static authorization decisions', function (): void {
     $policy = new CondizioniLavoroAdmPolicy();
-    $user = Mockery::mock(UserContract::class);
+    $user = new User();
 
-    expect($policy->compila())->toBeTrue();
-    expect($policy->viewAny($user))->toBeFalse();
-    expect($policy->view())->toBeFalse();
-    expect($policy->create())->toBeFalse();
-    expect($policy->update())->toBeFalse();
-    expect($policy->delete())->toBeFalse();
-    expect($policy->restore())->toBeFalse();
-    expect($policy->forceDelete())->toBeFalse();
+    Assert::assertTrue($policy->compila());
+    Assert::assertFalse($policy->viewAny($user));
+    Assert::assertFalse($policy->view());
+    Assert::assertFalse($policy->create());
+    Assert::assertFalse($policy->update());
+    Assert::assertFalse($policy->delete());
+    Assert::assertFalse($policy->restore());
+    Assert::assertFalse($policy->forceDelete());
 });
 
 test('IndennitaTipoPolicy returns expected static authorization decisions', function (): void {
     $policy = new IndennitaTipoPolicy();
-    $user = Mockery::mock(UserContract::class);
+    $user = new User();
 
-    expect($policy->compila())->toBeTrue();
-    expect($policy->viewAny($user))->toBeFalse();
-    expect($policy->view())->toBeFalse();
-    expect($policy->create())->toBeFalse();
-    expect($policy->update())->toBeTrue();
-    expect($policy->delete())->toBeFalse();
-    expect($policy->restore())->toBeFalse();
-    expect($policy->forceDelete())->toBeFalse();
+    Assert::assertTrue($policy->compila());
+    Assert::assertFalse($policy->viewAny($user));
+    Assert::assertFalse($policy->view());
+    Assert::assertFalse($policy->create());
+    Assert::assertTrue($policy->update());
+    Assert::assertFalse($policy->delete());
+    Assert::assertFalse($policy->restore());
+    Assert::assertFalse($policy->forceDelete());
 });
 
 test('StabiDirigentePolicy returns expected static authorization decisions', function (): void {
     $policy = new StabiDirigentePolicy();
-    $user = Mockery::mock(UserContract::class);
+    $user = new User();
 
-    expect($policy->compila())->toBeTrue();
-    expect($policy->viewAny($user))->toBeFalse();
-    expect($policy->view())->toBeFalse();
-    expect($policy->create())->toBeFalse();
-    expect($policy->update())->toBeTrue();
-    expect($policy->delete())->toBeFalse();
-    expect($policy->restore())->toBeFalse();
-    expect($policy->forceDelete())->toBeFalse();
+    Assert::assertTrue($policy->compila());
+    Assert::assertFalse($policy->viewAny($user));
+    Assert::assertFalse($policy->view());
+    Assert::assertFalse($policy->create());
+    Assert::assertTrue($policy->update());
+    Assert::assertFalse($policy->delete());
+    Assert::assertFalse($policy->restore());
+    Assert::assertFalse($policy->forceDelete());
 });

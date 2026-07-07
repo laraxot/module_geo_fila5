@@ -398,6 +398,7 @@ use Modules\Xot\Traits\Updater;
  * @property-read \Modules\Performance\Models\CategoriaPropro|null $categoriaPropro
  * @mixin \Eloquent
  */
+/** @extends BaseIndividualeModel<self> */
 class IndividualeAdm extends BaseIndividualeModel
 {
     public string $from_field = 'dal';

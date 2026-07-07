@@ -93,7 +93,10 @@ class StabiDirigente extends PtvStabiDirigenteModel
         return (float) $res;
     }
 
-    public function schede(): HasMany
+    p/**
+     * @return HasMany<\Modules\Progressioni\Models\Scheda, $this>
+     */
+    ublic function schede(): HasMany
     {
         $schedaClass = Str::of(static::class)
             ->beforeLast('\\')
@@ -107,7 +110,10 @@ class StabiDirigente extends PtvStabiDirigenteModel
         return $this->hasMany($modelClass, 'valutatore_id', 'id');
     }
 
-    public function benificiariProgressione(): HasMany
+    p/**
+     * @return HasMany<\Modules\Progressioni\Models\Scheda, $this>
+     */
+    ublic function benificiariProgressione(): HasMany
     {
         return $this->schede()
             ->where('benificiario_progressione', 1);

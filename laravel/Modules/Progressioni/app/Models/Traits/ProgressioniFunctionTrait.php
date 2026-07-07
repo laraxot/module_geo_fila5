@@ -121,6 +121,10 @@ trait ProgressioniFunctionTrait
         return $result;
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<mixed>
+     */
     public function checkListaPropro(array $params): array
     {
         $ha_diritto = 1;
@@ -180,6 +184,10 @@ trait ProgressioniFunctionTrait
             ->all();
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<mixed>
+     */
     public function checkListaPosiz(array $params): array
     {
         $ha_diritto = 1;
@@ -199,6 +207,10 @@ trait ProgressioniFunctionTrait
         return [$ha_diritto, $motivo_arr];
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<mixed>
+     */
     public function checkMinGgPosiz1InSede(array $params): array
     {
         $ha_diritto = 1;
@@ -218,6 +230,10 @@ trait ProgressioniFunctionTrait
         return [$ha_diritto, $motivo_arr];
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<mixed>
+     */
     public function checkMinGgCatecoPosfunNoAsz(array $params): array
     {
         $ha_diritto = 1;
@@ -237,6 +253,10 @@ trait ProgressioniFunctionTrait
         return [$ha_diritto, $motivo_arr];
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<mixed>
+     */
     public function checkMinGgPropro(array $params): array
     {
         $ha_diritto = 1;
@@ -256,6 +276,10 @@ trait ProgressioniFunctionTrait
         return [$ha_diritto, $motivo_arr];
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<mixed>
+     */
     public function checkMinGgProproPosfun(array $params): array
     {
         $ha_diritto = 1;
@@ -280,6 +304,10 @@ trait ProgressioniFunctionTrait
         return [$ha_diritto, $motivo_arr];
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<mixed>
+     */
     public function checkMinGgAnno(array $params): array
     {
         $ha_diritto = 1;
@@ -301,6 +329,10 @@ trait ProgressioniFunctionTrait
         return [$ha_diritto, $motivo_arr];
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<mixed>
+     */
     public function checkMinGgCatecoPosfunLavoratiInSede(array $params): array
     {
         $ha_diritto = 1;
@@ -311,6 +343,10 @@ trait ProgressioniFunctionTrait
         return [$ha_diritto, $motivo_arr];
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<mixed>
+     */
     public function checkListaProproPosfun(array $params): array
     {
         $ha_diritto = 1;
@@ -330,6 +366,10 @@ trait ProgressioniFunctionTrait
         return [$ha_diritto, $motivo_arr];
     }
 
+    /**
+     * @param array<string, mixed> $params
+     * @return array<mixed>
+     */
     public function checkDisci(array $params): array
     {
         $ha_diritto = 1;
@@ -354,6 +394,10 @@ trait ProgressioniFunctionTrait
      *
      * @param  array  $params  Parameters including date ranges
      * @return array<int, mixed> [ha_diritto, motivo_arr]
+     */
+    /**
+     * @param array<string, mixed> $params
+     * @return array<mixed>
      */
     public function checkListaAszTipCodEsclusoSubito(array $params): array
     {
