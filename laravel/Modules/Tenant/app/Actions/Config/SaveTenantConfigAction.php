@@ -14,7 +14,7 @@ class SaveTenantConfigAction
     use QueueableAction;
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param  array  $data
      */
     public function execute(string $name, array $data): void
     {
@@ -44,12 +44,12 @@ class SaveTenantConfigAction
     }
 
     /**
-     * @param  array<string, mixed>  $array1
-     * @param  array<string, mixed>  $array2
+     * @param  array  $array1
+     * @param  array  $array2
      *
      * @return array<string, mixed>
      */
-    private function arrayMergeRecursiveDistinct(array<string, mixed> $array1, array $array2): array
+    private function arrayMergeRecursiveDistinct(array $array1, array $array2): array
     {
         $merged = $array1;
 

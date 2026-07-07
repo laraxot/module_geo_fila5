@@ -7,7 +7,7 @@ namespace Modules\Tenant\Services\Config;
 final class ConfigStringKeyFilter
 {
     /**
-     * @param  array<mixed, mixed>  $config
+     * @param  array  $config
      * @return array<string, mixed>
      */
     public static function onlyStringKeys(array $config): array

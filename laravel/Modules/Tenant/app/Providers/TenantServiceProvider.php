@@ -131,11 +131,11 @@ class TenantServiceProvider extends XotBaseServiceProvider
     }
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param  array  $data
      *
      * @return array<string, mixed>
      */
-    private function mergeModuleConnections(array<string, mixed> $data, string $defaultConnection): array
+    private function mergeModuleConnections(array $data, string $defaultConnection): array
     {
         /** @var array<string, mixed> $connectionsRaw */
         $connectionsRaw = Arr::get($data, 'connections', []);
@@ -171,11 +171,11 @@ class TenantServiceProvider extends XotBaseServiceProvider
     }
 
     /**
-     * @param  array<mixed, mixed>  $map
+     * @param  array  $map
      *
      * @return array<string, class-string<Model>>
      */
-    private function buildMorphMap(array<string, mixed> $map): array
+    private function buildMorphMap(array $map): array
     {
         /** @var array<string, class-string<Model>> $typedMap */
         $typedMap = [];

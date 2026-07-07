@@ -21,7 +21,7 @@ class DatabaseConfigResolver implements ConfigResolverInterface
     }
 
     /**
-     * @param  array<string, mixed>  $extraConf
+     * @param  array  $extraConf
      *
      * @return array<string, mixed>
      */
@@ -46,10 +46,10 @@ class DatabaseConfigResolver implements ConfigResolverInterface
     }
 
     /**
-     * @param  array<string, mixed>  $extraConf
-     * @param  array<string, mixed>  $originalConf
+     * @param  array  $extraConf
+     * @param  array  $originalConf
      */
-    private function resolveDefaultConnection(array<string, mixed> $extraConf, array $originalConf): ?string
+    private function resolveDefaultConnection(array $extraConf, array $originalConf): ?string
     {
         $default = Arr::get($extraConf, 'default') ?? Arr::get($originalConf, 'default') ?? config('database.default');
 
@@ -57,11 +57,11 @@ class DatabaseConfigResolver implements ConfigResolverInterface
     }
 
     /**
-     * @param  array<string, mixed>  $extraConf
+     * @param  array  $extraConf
      *
      * @return array<string, mixed>
      */
-    private function addModuleConnections(array<string, mixed> $extraConf, ?string $default): array
+    private function addModuleConnections(array $extraConf, ?string $default): array
     {
         if ($default === null) {
             return $extraConf;

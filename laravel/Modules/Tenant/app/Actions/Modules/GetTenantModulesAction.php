@@ -34,11 +34,11 @@ class GetTenantModulesAction
     }
 
     /**
-     * @param  array<mixed, mixed>  $json
+     * @param  array  $json
      *
      * @return array<int, string>
      */
-    private function collectEnabledModules(array<string, mixed> $json): array
+    private function collectEnabledModules(array $json): array
     {
         $modules = [];
 

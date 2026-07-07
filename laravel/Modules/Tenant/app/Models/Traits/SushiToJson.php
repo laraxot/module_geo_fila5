@@ -90,7 +90,7 @@ trait SushiToJson
 
         $normalizedData = $this->normalizeJsonItems($typedData);
         $schema = $this->getSchema();
-        /** @var array<string, mixed> $schemaArray */
+        /** @var array $schemaArray */
         $schemaArray = $schema;
         $form = $this->normalizeSchemaFields($schemaArray);
 
@@ -142,7 +142,7 @@ trait SushiToJson
      * @param  array<int, array<string, mixed>>  $data  Array di record da salvare
      * @return bool True se il salvataggio è riuscito, false in caso di errore
      */
-    public function saveToJson(array<string, mixed> $data): bool
+    public function saveToJson(array $data): bool
     {
         try {
             $file = $this->getJsonFile();
@@ -214,7 +214,7 @@ trait SushiToJson
      * @param  array<int, array<string, mixed>>  $rows
      * @return int|null Indice se trovato, altrimenti null
      */
-    protected function findRowIndexById(array<string, mixed> $rows, int $id): ?int
+    protected function findRowIndexById(array $rows, int $id): ?int
     {
         foreach ($rows as $index => $row) {
             if (is_array($row) && ((int) ($row['id'] ?? 0)) === $id) {
@@ -257,7 +257,7 @@ trait SushiToJson
      * @param  array<int, array<string, mixed>>  $data
      * @return array<int, array<string, mixed>>
      */
-    private function normalizeJsonRecords(array<string, mixed> $data): array
+    private function normalizeJsonRecords(array $data): array
     {
         $validatedData = [];
 
@@ -359,7 +359,7 @@ trait SushiToJson
             return;
         }
 
-        /** @var array<string, mixed> $modelArray */
+        /** @var array $modelArray */
         $modelArray = $model->toArray();
         $existingData[$index] = $modelArray;
         $model->saveToJson($existingData);
@@ -394,7 +394,7 @@ trait SushiToJson
      * @param  array<int, array<string, mixed>>  $data
      * @return array<int, array<string, mixed>>
      */
-    protected function normalizeJsonItems(array<string, mixed> $data): array
+    protected function normalizeJsonItems(array $data): array
     {
         /** @var array<int, array<string, mixed>> $normalizedData */
         $normalizedData = [];
@@ -404,7 +404,7 @@ trait SushiToJson
                 continue;
             }
 
-            /** @var array<string, mixed> $normalizedItem */
+            /** @var array $normalizedItem */
             $normalizedItem = [];
             foreach ($item as $key => $value) {
                 $stringKey = is_string($key) ? $key : (string) $key;
@@ -421,20 +421,20 @@ trait SushiToJson
     }
 
     /**
-     * @param  array<mixed, mixed>  $schema
+     * @param  array $schema
      * @return array<string, mixed>
      */
-    protected function normalizeSchemaFields(array<string, mixed> $schema): array
+    protected function normalizeSchemaFields(array $schema): array
     {
         return ConfigStringKeyFilter::onlyStringKeys($schema);
     }
 
     /**
      * @param  array<int, array<string, mixed>>  $normalizedData
-     * @param  array<string, mixed>  $form
+     * @param  array $form
      * @return array<int, array<string, mixed>>
      */
-    protected function completeSchemaFields(array<string, mixed> $normalizedData, array $form): array
+    protected function completeSchemaFields(array $normalizedData, array $form): array
     {
         /** @var array<int, array<string, mixed>> $completedData */
         $completedData = [];

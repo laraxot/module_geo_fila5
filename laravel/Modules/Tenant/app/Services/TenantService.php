@@ -97,7 +97,7 @@ class TenantService
      * Salva un array di configurazione tenant-specific su file.
      *
      * @param  string  $name  Nome del file di configurazione (senza estensione)
-     * @param  array<string, mixed>  $data  Dati di configurazione da salvare
+     * @param  array  $data  Dati di configurazione da salvare
      */
     public static function saveConfig(string $name, array $data): void
     {

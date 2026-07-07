@@ -185,7 +185,7 @@ trait SushiToCsv
     }
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param  array  $data
      * @param  list<string>  $header
      *
      * @return array<string, float|int|string|null>
