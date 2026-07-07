@@ -16,7 +16,7 @@ class RestoreActivityAction
     /**
      * Esegue il ripristino di un record basandosi sui dati di un'attività.
      *
-     * @param  array<string, mixed>  $oldProperties
+     * @param  array  $oldProperties
      */
     public function execute(Model $record, array $oldProperties): void
     {
