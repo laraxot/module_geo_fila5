@@ -81,7 +81,6 @@ describe('XotBaseTransition', function (): void {
     });
 
     it('processes recipients correctly in sendNotifications', function (): void {
-        /** @var TestCase $this */
         $record = UserFactory::new()->createOne();
 
         $transition = new class($record) extends XotBaseTransition {

@@ -2,27 +2,28 @@
 
 declare(strict_types=1);
 
+uses(Modules\Xot\Tests\TestCase::class);
 use Illuminate\Support\Facades\Config;
-use Modules\Xot\Services\ThemeService;
-use Modules\Xot\Tests\TestCase;
+use Modules\Xot\Actions\Theme\GetThemeAction;
+use Modules\Xot\Actions\Theme\GetThemePathAction;
+use Modules\Xot\Actions\Theme\IsThemeAction;
+use Modules\Xot\Actions\Theme\SetThemeAction;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
-
 it('sets and gets theme', function (): void {
-    ThemeService::setTheme('test-theme');
+    app(SetThemeAction::class)->execute('test-theme');
     Assert::assertSame('test-theme', Config::get('theme.active'));
-    Assert::assertSame('test-theme', ThemeService::getTheme());
+    Assert::assertSame('test-theme', app(GetThemeAction::class)->execute());
 });
 
 it('checks if theme is active', function (): void {
-    ThemeService::setTheme('active-theme');
-    Assert::assertTrue(ThemeService::isTheme('active-theme'));
-    Assert::assertFalse(ThemeService::isTheme('other-theme'));
+    app(SetThemeAction::class)->execute('active-theme');
+    Assert::assertTrue(app(IsThemeAction::class)->execute('active-theme'));
+    Assert::assertFalse(app(IsThemeAction::class)->execute('other-theme'));
 });
 
 it('gets theme path', function (): void {
-    ThemeService::setTheme('my-path-theme');
-    $path = ThemeService::getThemePath();
+    app(SetThemeAction::class)->execute('my-path-theme');
+    $path = app(GetThemePathAction::class)->execute();
     Assert::assertSame(resource_path('themes/my-path-theme'), $path);
 });

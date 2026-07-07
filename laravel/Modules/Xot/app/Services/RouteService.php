@@ -7,6 +7,7 @@ namespace Modules\Xot\Services;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Class RouteService.
@@ -16,6 +17,8 @@ use Illuminate\Support\Str;
  */
 class RouteService
 {
+    use QueueableAction;
+
     /**
      * Verifica se l'utente è in modalità amministrazione.
      *
@@ -349,5 +352,9 @@ class RouteService
                 return $params[$item] ?? $item;
             })
             ->implode('.');
+    }
+
+    public function execute(): void
+    {
     }
 }

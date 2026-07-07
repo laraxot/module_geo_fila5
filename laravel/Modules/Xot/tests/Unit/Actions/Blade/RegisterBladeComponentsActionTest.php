@@ -28,8 +28,7 @@ describe('Register Blade Components Action', function (): void {
         $mockComps = ComponentFileData::collection([$comp1]);
 
         $mock = $this->createUnitMock(GetComponentsAction::class);
-        /* @phpstan-ignore-next-line */
-        $mock->expects($this->atLeastOnce())
+        $mock->expects($this->expectsAtLeastOnce())
             ->method('execute')
             ->with($path, $namespace.'\\View\\Components', $prefix)
             ->willReturn($mockComps);
@@ -52,8 +51,7 @@ describe('Register Blade Components Action', function (): void {
         $mockComps = ComponentFileData::collection([]);
 
         $mock = $this->createUnitMock(GetComponentsAction::class);
-        /* @phpstan-ignore-next-line */
-        $mock->expects($this->atLeastOnce())
+        $mock->expects($this->expectsAtLeastOnce())
             ->method('execute')
             ->willReturn($mockComps);
 

@@ -7,14 +7,12 @@ namespace Modules\Xot\Actions\Filament;
 use Filament\Facades\Filament;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Navigation\NavigationItem;
-use Filament\Panel;
 use Illuminate\Support\Facades\Auth;
-use Modules\Xot\Contracts\PanelContract;
+use Modules\Xot\Support\PanelModuleSupport;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Elementi di navigazione cross-panel per i moduli Filament.
- * Utilizza PanelMixin per risolvere le proprietà del panel.
  */
 class GetPanelsNavigationItems
 {
@@ -26,14 +24,14 @@ class GetPanelsNavigationItems
     public function execute(): array
     {
         $navs = [];
+
         foreach (Filament::getPanels() as $panel) {
-            /** @var Panel&PanelContract $panel */
             $navs[] = NavigationItem::make($panel->getId())
                 ->url('/'.$panel->getPath())
-                ->icon($panel->getNavigationIcon())
+                ->icon(PanelModuleSupport::navigationIcon($panel))
                 ->group('Modules')
-                ->label($panel->getNavigationLabel())
-                ->sort($panel->getNavigationSort())
+                ->label(PanelModuleSupport::navigationLabel($panel))
+                ->sort(PanelModuleSupport::navigationSort($panel))
                 ->visible(static function () use ($panel): bool {
                     /** @var FilamentUser|null $user */
                     $user = Auth::user();

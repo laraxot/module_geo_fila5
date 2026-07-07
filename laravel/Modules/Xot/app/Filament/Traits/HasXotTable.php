@@ -16,10 +16,12 @@ use Filament\Actions\DetachAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ReplicateAction;
 use Filament\Actions\ViewAction;
-use Exception;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables;
+use Filament\Tables\Columns\Column;
+use Filament\Tables\Columns\ColumnGroup;
+use Filament\Tables\Columns\Layout\Component as LayoutComponent;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
@@ -30,7 +32,6 @@ use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Modules\UI\Enums\TableLayoutEnum;
@@ -78,7 +79,7 @@ trait HasXotTable
      * Filament\Tables\Concerns\InteractsWithTable richiede visibilità PUBLIC.
      * Vedi: Modules/Xot/docs/filament/widget-method-visibility-rules.md
      *
-     * @return array<string, Action|ActionGroup>
+     * @return array<int|string, Action|ActionGroup>
      */
     public function getTableHeaderActions(): array
     {
@@ -93,24 +94,24 @@ trait HasXotTable
 
         // dddx(method_exists($resource, 'canAttach'));
 
-        $actions = [];
-
-        $actions['create'] = CreateAction::make();
+        $actions = [
+            CreateAction::make(),
+        ];
 
         if ($this->shouldShowAssociateAction()) {
-            $actions['associate'] = AssociateAction::make()
+            $actions[] = AssociateAction::make()
                 ->label('')
                 ->icon('heroicon-o-paper-clip');
         }
 
         if (is_object($resource) && method_exists($resource, 'canAttach')) {
-            $actions['attach'] = AttachAction::make()
+            $actions[] = AttachAction::make()
                 ->icon('heroicon-o-link')
                 ->iconButton()
                 ->visible(static fn (): bool => (bool) $resource->canAttach());
         }
 
-        $actions['layout'] = TableLayoutToggleTableAction::make('layout');
+        $actions[] = TableLayoutToggleTableAction::make('layout');
 
         return $actions;
     }
@@ -120,7 +121,7 @@ trait HasXotTable
      *
      * In content-grid ogni riga mostra label e valore sulla stessa linea (es. «Ente: 123»).
      *
-     * @return array<int, Tables\Columns\Column|Stack>
+     * @return array<int, Column|ColumnGroup|LayoutComponent>
      */
     public function getGridTableColumns(): array
     {
@@ -210,11 +211,11 @@ trait HasXotTable
             ->filtersLayout(FiltersLayout::AboveContent)
             ->filtersFormColumns($this->getTableFiltersFormColumns())
             ->persistFiltersInSession()
-            ->headerActions($this->getTableHeaderActions())
-            ->recordActions($this->getTableActions())
-            ->toolbarActions($this->getTableBulkActions())
+            ->headerActions(array_values($this->getTableHeaderActions()))
+            ->recordActions(array_values($this->getTableActions()))
+            ->bulkActions(array_values($this->getTableBulkActions()))
             ->recordActionsPosition(RecordActionsPosition::BeforeColumns)
-            ->emptyStateActions($this->getTableEmptyStateActions())
+            ->emptyStateActions(array_values($this->getTableEmptyStateActions()))
             ->striped()
             ->paginated($this->getTablePaginated());
 
@@ -253,12 +254,12 @@ trait HasXotTable
      * CRITICO: Deve essere public perché viene chiamato da Filament/Livewire dall'esterno.
      * Vedi: Modules/Xot/docs/filament/widget-method-visibility-rules.md
      *
-     * @return array<string, Action|ActionGroup>
+     * @return array<int|string, Action|ActionGroup>
      */
     /**
      * @deprecated override the `table()` method to configure the table
      *
-     * @return array<string, Action|ActionGroup>
+     * @return array<int|string, Action|ActionGroup>
      */
     public function getTableActions(): array
     {
@@ -309,9 +310,13 @@ trait HasXotTable
         // @phpstan-ignore-next-line function.alreadyNarrowedType (needed for contexts where method doesn't exist)
         if ($this->shouldShowDetachAction() && method_exists($this, 'getRelationship')) {
             $relationship = $this->getRelationship();
-            Assert::object($relationship);
 
-            if ($relationship instanceof BelongsToMany) {
+            // @phpstan-ignore-next-line function.alreadyNarrowedType
+            // (in RelationManager, always object; in ListRecords, may not be)
+            if (is_object($relationship)
+                && method_exists($relationship, 'getTable')
+                && method_exists($relationship, 'getPivotClass')
+            ) {
                 $pivotClass = $relationship->getPivotClass();
 
                 // Type guard: ensure pivotClass is object/string with getKeyName method
@@ -335,7 +340,7 @@ trait HasXotTable
      * Filament\Tables\Concerns\InteractsWithTable richiede visibilità PUBLIC.
      * Vedi: Modules/Xot/docs/filament/widget-method-visibility-rules.md
      *
-     * @return array<string, BulkAction>
+     * @return array<int|string, BulkAction>
      */
     public function getTableBulkActions(): array
     {
@@ -367,7 +372,7 @@ trait HasXotTable
             return $model;
         }
 
-        throw new Exception('No model found in '.class_basename(self::class).'::'.__FUNCTION__);
+        throw new \Exception('No model found in '.class_basename(self::class).'::'.__FUNCTION__);
     }
 
     /**
@@ -385,7 +390,7 @@ trait HasXotTable
     /**
      * Get list table columns.
      *
-     * @return array<string, Tables\Columns\Column>
+     * @return array<string, Column>
      */
     abstract protected function getTableColumns(): array;
 
@@ -421,7 +426,7 @@ trait HasXotTable
     /**
      * Get table empty state actions.
      *
-     * @return array<string, Action>
+     * @return array<int|string, Action>
      */
     protected function getTableEmptyStateActions(): array
     {
@@ -476,7 +481,7 @@ trait HasXotTable
      * Get table pagination options.
      * Can return bool (true/false) or array of page sizes [10, 25, 50, 100].
      *
-     * @return bool|array<int>
+     * @return bool|array<int, int|string>
      */
     protected function getTablePaginated(): bool|array
     {

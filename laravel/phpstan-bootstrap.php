@@ -64,3 +64,9 @@ if (! function_exists('pest')) {
         };
     }
 }
+
+// Stub per XotData - previene errori durante il bootstrap delle route e delle panel
+// Commentato perché causa redeclaration conflicts; XotBasePanelProvider usa try-catch invece
+// if (file_exists(__DIR__.'/phpstan-stubs/XotDataPhpstanStub.php')) {
+//     require_once __DIR__.'/phpstan-stubs/XotDataPhpstanStub.php';
+// }

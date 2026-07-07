@@ -4,7 +4,7 @@ module: "ptvx-project"
 type: log
 tags: [wiki, second-brain, log, qmd]
 created: 2026-05-26
-updated: 2026-07-01
+updated: 2026-07-07
 qmd: "ptvx project wiki activity log second brain phpstan modules"
 issues:
   - "https://github.com/provtv/base_ptv_fila5_mono/issues/136"
@@ -17,6 +17,8 @@ discussions:
 > **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
 
 ## Log Entries
+
+[2026-07-07 10:05:00 UTC] [RULE] Cartelle figlie dirette di `Modules/*` e `Themes/*`: vietate maiuscole in root. Rimossa `laravel/Modules/Xot/Helpers/`; gia assenti `UI/Config`, `Xot/Datas`, `Xot/Filament`, `Xot/Providers`, `Xot/Services`, `Xot/View`. Verifica `find laravel/Modules laravel/Themes -mindepth 2 -maxdepth 2 -type d -regextype posix-extended -regex ".*/[^/]*[A-Z][^/]*"` -> output vuoto. Aggiornati `namespace-structure-rules`, `module-structure`, trigger map.
 
 [2026-07-01 15:50:00 UTC] [GIT] Sweep marcatori merge: 3 file residui in `module_xot_fila5` (`architecture-rules.md`, `conflict-resolution-progress.md`, `conflict-resolution-report.md`). Path docs → `../../Xot/docs/` (PascalCase modulo). Verifica globale `rg '^<<<<<<< ' laravel/Modules docs` → **0**. Progress log Xot aggiornato; how-to [`git-merge-marker-sweep`](how-to/git-merge-marker-sweep.md) esteso con sweep submodule.
 

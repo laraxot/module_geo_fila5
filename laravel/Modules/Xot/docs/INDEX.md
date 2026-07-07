@@ -109,16 +109,6 @@ Common traits for:
 - Event handling
 - Validation
 
-### Extension Patterns
-
-**[Panel Mixin Extension Pattern](./panel-mixin-extension-pattern.md)**
-- Extends Filament's `Panel` class with module-aware metadata
-- Provides navigation label, icon, and sort order via mixin methods
-- Eliminates need for static resolver utilities
-- Best practice for extending framework classes
-
-**Refactoring History**: [refactor-panelmixin.md](./refactor-panelmixin.md) — Details of resolver elimination and mixin adoption
-
 ---
 
 ## Testing

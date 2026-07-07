@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Sigma\Models\Traits;
 
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
@@ -200,7 +201,7 @@ trait SchedaTrait
         }
 
         if (! \is_string($post_type)) {
-            throw new \Exception('['.__LINE__.']['.__FILE__.']');
+            throw new Exception('['.__LINE__.']['.__FILE__.']');
         }
 
         // Persist con update chirurgico (salva SOLO questo campo, previene loop)
@@ -767,7 +768,7 @@ trait SchedaTrait
      *
      * @param  GgFilterData|array<string, mixed>  $data
      */
-    public function ggInSedeTot($data): ?int
+    public function ggInSedeTot(GgFilterData|array $data): ?int
     {
         if ($data instanceof GgFilterData) {
             /** @var int|null $result */
@@ -804,7 +805,7 @@ trait SchedaTrait
      *
      * @param  GgFilterData|array<string, mixed>  $data
      */
-    public function ggAssenzaInSedeTot($data): int
+    public function ggAssenzaInSedeTot(GgFilterData|array $data): int
     {
         if ($data instanceof GgFilterData) {
             /** @var int|null $result */

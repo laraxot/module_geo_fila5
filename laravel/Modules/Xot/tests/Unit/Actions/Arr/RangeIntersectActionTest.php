@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
+uses(Modules\Xot\Tests\TestCase::class);
 use Modules\Xot\Actions\Arr\RangeIntersectAction;
 use PHPUnit\Framework\Assert;
-
-uses(Modules\Xot\Tests\TestCase::class);
 
 it('calculates range intersection correctly', function (): void {
     $action = app(RangeIntersectAction::class);

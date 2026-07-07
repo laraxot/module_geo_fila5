@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\Xot\Tests\Unit;
+
 use Modules\Tenant\Database\Factories\TenantFactory;
 use Modules\Tenant\Models\Tenant;
 use Modules\User\Database\Factories\UserFactory;
@@ -36,7 +38,6 @@ it('can create a test tenant', function () {
 });
 
 it('can resolve a sushi module row', function () {
-    /** @var TestCase $this */
     $module = Module::query()->first();
 
     if (null === $module) {

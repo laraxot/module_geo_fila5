@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Xot\Mixins;
 
-use Filament\Panel;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
@@ -113,11 +112,7 @@ class PanelMixin
     public function getNavigationSort()
     {
         return function (): int {
-            $config = $this->getModuleConfig();
-            $sort = Arr::get($config, 'navigation.sort',0);
-            Assert::integer($sort, '['.__LINE__.']['.class_basename($this).']');
-
-            return $sort;
+            return 0;
         };
     }
 }

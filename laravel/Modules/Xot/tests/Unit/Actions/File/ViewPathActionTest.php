@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Modules\Xot\Tests\Unit\Actions\File;
+
 use Modules\Xot\Actions\File\FixPathAction;
 use Modules\Xot\Actions\File\GetViewNameSpacePathAction;
 use Modules\Xot\Actions\File\ViewPathAction;
@@ -11,7 +13,6 @@ use PHPUnit\Framework\Assert;
 uses(TestCase::class);
 
 it('calculates view path correctly', function (): void {
-    /** @var TestCase $this */
     $nsMock = $this->createUnitMock(GetViewNameSpacePathAction::class);
     $nsMock->method('execute')
         ->with('test_ns')

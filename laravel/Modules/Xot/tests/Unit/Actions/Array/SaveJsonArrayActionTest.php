@@ -17,27 +17,33 @@ use function Safe\unlink;
 
 uses(TestCase::class);
 
-beforeEach(function (): void {
-    $this->action = app(SaveJsonArrayAction::class);
-    $this->tempDir = sys_get_temp_dir().'/xot_array_'.uniqid();
-    mkdir($this->tempDir, 0755, true);
+/** @var string|null $arrayTestTempDir */
+$arrayTestTempDir = null;
+
+beforeEach(function () use (&$arrayTestTempDir): void {
+    $arrayTestTempDir = sys_get_temp_dir().'/xot_array_'.uniqid();
+    mkdir($arrayTestTempDir, 0755, true);
 });
 
-afterEach(function (): void {
-    $tempDir = $this->tempDir;
-    if (isset($tempDir) && is_string($tempDir) && is_dir($tempDir)) {
-        foreach (glob($tempDir.'/*') ?: [] as $file) {
-            if (is_string($file)) {
-                unlink($file);
-            }
-        }
-        rmdir($tempDir);
+afterEach(function () use (&$arrayTestTempDir): void {
+    if (! is_string($arrayTestTempDir) || ! is_dir($arrayTestTempDir)) {
+        return;
     }
+
+    foreach (glob($arrayTestTempDir.'/*') ?: [] as $file) {
+        if (is_string($file)) {
+            unlink($file);
+        }
+    }
+
+    rmdir($arrayTestTempDir);
+    $arrayTestTempDir = null;
 });
 
-describe('Save Json Array Action', function (): void {
-    test('saves array to json', function (): void {
-        $path = $this->tempDir.'/d.json';
+describe('Save Json Array Action', function () use (&$arrayTestTempDir): void {
+    test('saves array to json', function () use (&$arrayTestTempDir): void {
+        Assert::assertIsString($arrayTestTempDir);
+        $path = $arrayTestTempDir.'/d.json';
         $result = app(SaveJsonArrayAction::class)->execute(['k' => 'v'], $path);
         Assert::assertTrue($result);
         Assert::assertSame(['k' => 'v'], json_decode(file_get_contents($path), true));

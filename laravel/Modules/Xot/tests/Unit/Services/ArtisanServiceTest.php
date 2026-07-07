@@ -6,15 +6,12 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 use Modules\Xot\Services\ArtisanService;
-use Modules\Xot\Tests\TestCase;
-use PHPUnit\Framework\Assert;
 
 use function Safe\ob_end_clean;
 use function Safe\ob_start;
 
-uses(TestCase::class);
-
 beforeEach(function (): void {
+    // Configure mysql connection for tests (required by ArtisanService)
     Config::set('database.connections.mysql', [
         'driver' => 'sqlite',
         'database' => ':memory:',
@@ -26,17 +23,24 @@ test('artisan service act method returns empty string for unknown commands', fun
     Request::replace(['module' => '']);
 
     $result = ArtisanService::act('unknown-command');
-    Assert::assertSame('', $result);
+
+    // @phpstan-ignore-next-line - Pest expectation method
+    expect($result)->toBe('');
 });
 
 test('artisan service act method handles migrate command', function (): void {
     Request::replace(['module' => '']);
 
+    // Mock Artisan facade - DB::purge() and DB::reconnect() work with configured connection
     Artisan::shouldReceive('call')->once()->andReturn(0);
     Artisan::shouldReceive('output')->once()->andReturn('Migration completed');
 
     $result = ArtisanService::act('migrate');
-    Assert::assertSame('string', gettype($result));
+
+    // @phpstan-ignore-next-line - Pest expectation method
+    expect($result)->toBeString();
+    // @phpstan-ignore-next-line - Pest expectation method
+    expect(str_contains($result, 'Migration completed'))->toBeTrue();
 });
 
 test('artisan service act method handles module parameter', function (): void {
@@ -48,7 +52,11 @@ test('artisan service act method handles module parameter', function (): void {
     ob_start();
     $result = ArtisanService::act('migrate');
     ob_end_clean();
-    Assert::assertSame('string', gettype($result));
+
+    // @phpstan-ignore-next-line - Pest expectation method
+    expect($result)->toBeString();
+    // @phpstan-ignore-next-line - Pest expectation method
+    expect(str_contains($result, 'Module migration'))->toBeTrue();
 });
 
 test('artisan service handles non-string module parameter', function (): void {
@@ -58,5 +66,9 @@ test('artisan service handles non-string module parameter', function (): void {
     Artisan::shouldReceive('output')->once()->andReturn('Migration');
 
     $result = ArtisanService::act('migrate');
-    Assert::assertSame('string', gettype($result));
+
+    // @phpstan-ignore-next-line - Pest expectation method
+    expect($result)->toBeString();
+    // @phpstan-ignore-next-line - Pest expectation method
+    expect(str_contains($result, 'Migration'))->toBeTrue();
 });

@@ -1,40 +1,5 @@
 # Changelog - Modulo Xot
 
-## [2025-06-04] - Sessione Fix Critica
-
-### Fixed
-- **HasXotTable.php**: Risolti if duplicati (3x) e array malformati da merge conflict
-  - Dettagli: [bugfix-hasxottable-duplicate-if.md](./bugfix-hasxottable-duplicate-if.md)
-
-- **XotBaseChartWidget.php**: Rimossi metodi duplicati e chiusure classe multiple
-  - Causa: Conflitto Git risolto automaticamente con residui
-
-- **Script git conflicts v6.sh**: Corretti 3 bug critici (P0+P1)
-  - Cleanup file temporanei (P0)
-  - Ottimizzazione stat command (P1)
-  - Cattura exit code robusta (P1)
-  - Versione: 6.0 → 6.1
-
-### Added
-- Documentazione [syntax-errors-mass-fix.md](./syntax-errors-mass-fix.md)
-- Pattern identificato: "Triplice Mostro del Merge"
-- Analisi critica script bash con dialettica interna
-
-### Documentation
-- Aggiornato [git-conflict-resolution-guide.md](../../../bashscripts/docs/git-conflict-resolution-guide.md) v1.0 → v2.0
-  - +1400 righe analisi filosofica e tecnica
-  - Storia evolutiva script (4 generazioni)
-  - 7 bug identificati con priorità
-  - Processo decisionale consapevole
-
----
-
-## Convenzioni Changelog
-
-- Date in formato `[YYYY-MM-DD]`
-- Categorie: Added, Changed, Deprecated, Removed, Fixed, Security
-- Link relativi ai documenti di dettaglio
-- Focus su COSA è cambiato e PERCHÉ
 Tutte le modifiche significative al modulo Xot sono documentate in questo file.
 
 Il formato è basato su [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
@@ -74,13 +39,13 @@ All notable changes to `:package_name` will be documented in this file.
 #### Added
 - **File Locking Pattern** - Nuova regola fondamentale per modifiche sicure
 - **Documentazione:**
-  - `merge-conflict-resolution.md` - Report tecnico
+  - `merge-conflict-resolution-2025-11-04.md` - Report tecnico
   - `lessons-learned-2025-11-04-merge-conflicts.md` - Processo filosofico
   - `file-locking-pattern.md` - Pattern documentation
   - `documentation-consolidation-strategy.md` - Piano riduzione docs
   - `index.md` - Indice navigazione 2,560 docs
   - `essential-reading.md` - Top 10 docs da leggere
-  - `project-best-practices.md` - Best practices aggiornate
+  - `project-best-practices-2025.md` - Best practices aggiornate
 
 #### Removed
 - Centinaia di linee duplicate da merge conflicts
@@ -160,10 +125,10 @@ All notable changes to `:package_name` will be documented in this file.
 ## 🔗 Collegamenti
 
 ### Documenti Correlati
-- [README.md](./docs/readme.md) - Entry point
+- [README.md](./docs/README.md) - Entry point
 - [File Locking Pattern](./docs/file-locking-pattern.md) - Nuova regola
 - [Architecture Rules](./docs/laraxot-architecture-rules.md) - Regole base
-- [Merge Conflict Resolution](./docs/merge-conflict-resolution.md) - Latest fix
+- [Merge Conflict Resolution](./docs/merge-conflict-resolution-2025-11-04.md) - Latest fix
 
 ### Repository
 - **Branch:** develop

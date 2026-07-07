@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Modules\Xot\Relations;
 
 use Closure;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -70,7 +71,7 @@ class CustomRelation extends Relation
     {
         // Parameter #1 $function of function call_user_func expects callable(): mixed, Closure|null given.
         if (! \is_callable($this->eagerConstraints)) {
-            throw new \Exception('eagerConstraints is not callable');
+            throw new Exception('eagerConstraints is not callable');
         }
 
         \call_user_func($this->eagerConstraints, $this, $models);
@@ -84,7 +85,7 @@ class CustomRelation extends Relation
      *
      * @return array<int, Model>
      */
-    public function initRelation(array $models, $relation): array
+    public function initRelation(array $models, string $relation): array
     {
         foreach ($models as $model) {
             $model->setRelation($relation, $this->related->newCollection());
@@ -104,11 +105,11 @@ class CustomRelation extends Relation
      *
      * @return array<int, Model>
      */
-    public function match(array $models, Collection $collection, $relation): array
+    public function match(array $models, Collection $collection, string $relation): array
     {
         // Trying to invoke Closure|null but it might not be a callable.
         if (! \is_callable($this->eagerMatcher)) {
-            throw new \Exception('eagerMatcher is not callable');
+            throw new Exception('eagerMatcher is not callable');
         }
 
         $res = ($this->eagerMatcher)($models, $collection, $relation, $this);
