@@ -93,12 +93,7 @@ class ThemeComposer
     {
         $currentLocale = app()->getLocale();
 
-        return $this->languages()->filter(function (mixed $item) use ($currentLocale): bool {
-            // Ensure the item is an instance of LangData
-            if (! $item instanceof LangData) {
-                throw new \Exception(sprintf('Expected instance of LangData, got %s', is_object($item) ? $item::class : gettype($item)));
-            }
-
+        return $this->languages()->filter(function (LangData $item) use ($currentLocale): bool {
             return $item->id !== $currentLocale;
         });
     }
