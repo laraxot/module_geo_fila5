@@ -19,7 +19,10 @@ uses()->group('ptv')->in('Feature', 'Unit');
 expect()->extend('toBeProfile', fn () => $this->toBeInstanceOf(Profile::class));
 
 expect()->extend('toHaveProperty', function (string $property): void {
-    Assert::assertObjectHasProperty($property, $this->value);
+    /** @var object|null $value */
+    $value = $this->value;
+    Assert::assertNotNull($value);
+    Assert::assertObjectHasProperty($property, $value);
 });
 
 /**

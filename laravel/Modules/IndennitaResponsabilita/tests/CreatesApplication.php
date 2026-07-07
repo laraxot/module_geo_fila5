@@ -13,6 +13,7 @@ use UnexpectedValueException;
 
 use function Safe\realpath;
 
+// @phpstan-ignore-next-line trait.unused (used by Pest test case)
 trait CreatesApplication
 {
     public function createApplication(): Application

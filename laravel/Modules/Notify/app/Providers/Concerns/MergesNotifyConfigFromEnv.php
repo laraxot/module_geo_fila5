@@ -15,7 +15,7 @@ trait MergesNotifyConfigFromEnv
 {
     protected function mergeNotifyModuleConfigFromEnv(): void
     {
-        /** @var array $envConfig */
+        /** @var array<string, mixed> $envConfig */
         $envConfig = config('notify-env', []);
 
         $this->mergeNotifyCompanyConfig($envConfig);
@@ -26,7 +26,7 @@ trait MergesNotifyConfigFromEnv
     }
 
     /**
-     * @param  array  $envConfig
+     * @param array<string, mixed> $envConfig
      */
     protected function mergeNotifyCompanyConfig(array $envConfig): void
     {
@@ -42,7 +42,7 @@ trait MergesNotifyConfigFromEnv
     }
 
     /**
-     * @param  array  $envConfig
+     * @param array<string, mixed> $envConfig
      */
     protected function mergeNotifyMailLayoutConfig(array $envConfig): void
     {
@@ -65,7 +65,7 @@ trait MergesNotifyConfigFromEnv
     }
 
     /**
-     * @param  array  $envConfig
+     * @param array<string, mixed> $envConfig
      */
     protected function mergeChannelConfig(string $channel, array $envConfig): void
     {

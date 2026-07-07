@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Ptv\Database\Factories;
 
+/** @extends \\Illuminate\\Database\\Eloquent\\Factories\Factory<Modules\\Ptv\\Models\\Profile> */
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Ptv\Models\Profile;
 

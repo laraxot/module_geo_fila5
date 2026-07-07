@@ -52,7 +52,7 @@ use Modules\Sigma\Models\Traits\SigmaModelTrait;
  * @method static Builder|SchedaCriteri whereUpdatedBy($value)
  * @method static Builder|SchedaCriteri withDays(int $date_min, int $date_max)
  *
- * @mixin Builder
+ * @mixin Builder<self>
  *
  * @property-read Profile|null $creator
  * @property-read Profile|null $deleter

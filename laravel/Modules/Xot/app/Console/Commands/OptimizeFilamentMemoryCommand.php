@@ -102,7 +102,7 @@ class OptimizeFilamentMemoryCommand extends Command
     /**
      * Analizza i problemi di memoria.
      *
-     * @return array<string, mixed>
+     * @return array<string, array<int, string>>
      */
     private function analyzeMemoryIssues(bool $verbose = false): array
     {
@@ -256,7 +256,7 @@ class OptimizeFilamentMemoryCommand extends Command
     /**
      * Mostra i risultati dell'analisi.
      *
-     * @param array $issues
+     * @param array<string, array<int, string>> 
      */
     private function displayAnalysisResults(array $issues): void
     {
@@ -298,7 +298,7 @@ class OptimizeFilamentMemoryCommand extends Command
     /**
      * Mostra dettagli sui problemi trovati.
      *
-     * @param array $issues
+     * @param array<string, array<int, string>> 
      */
     private function displayDetailedIssues(array $issues): void
     {
@@ -317,7 +317,7 @@ class OptimizeFilamentMemoryCommand extends Command
     /**
      * Applica le ottimizzazioni.
      *
-     * @param array $issues
+     * @param array<string, array<int, string>> 
      */
     private function applyOptimizations(array $issues, bool $verbose = false): void
     {

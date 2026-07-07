@@ -329,7 +329,7 @@ class XotData extends Data implements Wireable
     /**
      * Update the XotData instance.
      *
-     * @param array $data
+     * @param array<string, scalar|array<int|string, scalar|null>|null> 
      */
     public function update(array $data): self
     {

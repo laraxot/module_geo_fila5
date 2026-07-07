@@ -111,7 +111,6 @@ class CriteriEsclusione extends BaseModel implements CriteriEsclusioneContract
                         $value = intval($value);
                         break;
                     case 'date':
-                        /** @phpstan-ignore-next-line */
                         $value = $item->value;
                         if ($value != null) {
                             $value = Carbon::parse($value);

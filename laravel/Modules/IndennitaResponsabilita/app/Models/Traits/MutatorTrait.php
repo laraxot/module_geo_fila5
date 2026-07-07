@@ -7,6 +7,7 @@ namespace Modules\IndennitaResponsabilita\Models\Traits;
 use Carbon\Carbon;
 use Request;
 
+// @phpstan-ignore-next-line trait.unused (used dynamically via FunctionTrait)
 trait MutatorTrait
 {
     public function getFromFieldAttribute(?string $_value): string

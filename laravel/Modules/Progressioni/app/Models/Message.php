@@ -34,7 +34,7 @@ use Modules\Ptv\Models\Profile;
  * @method static Builder|Message whereUpdatedAt($value)
  * @method static Builder|Message whereUpdatedBy($value)
  *
- * @mixin Builder
+ * @mixin Builder<self>
  *
  * @property-read Profile|null $creator
  * @property-read Profile|null $deleter

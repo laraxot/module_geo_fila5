@@ -20,7 +20,6 @@ class MakePdfByRecord
     {
         $view = app(GetViewByModelClassAction::class)->execute($record::class, '.show.pdf');
 
-        // @phpstan-ignore-next-line
         $valutatore = method_exists($record, 'valutatore') ? $record->valutatore : null;
         $nomeDiri = null;
 

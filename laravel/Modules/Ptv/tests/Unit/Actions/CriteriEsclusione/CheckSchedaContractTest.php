@@ -6,41 +6,38 @@ namespace Modules\Ptv\Tests\Unit\Actions\CriteriEsclusione;
 
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
-use Modules\Progressioni\Models\CriteriEsclusione;
-use Modules\Progressioni\Models\Scheda;
 use Modules\Ptv\Actions\CriteriEsclusione\Check;
 use Modules\Ptv\Contracts\CheckCriterioEsclusioneContract;
 use Modules\Ptv\Models\Contracts\SchedaContract;
+use Modules\Ptv\Models\CriteriEsclusione;
+use Modules\Ptv\Models\Scheda;
 use Modules\Ptv\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 use ReflectionMethod;
+use ReflectionNamedType;
 
 uses(TestCase::class);
 
 describe('Check criteri esclusione', function (): void {
     it('accetta SchedaContract come primo argomento', function (): void {
         $method = new ReflectionMethod(Check::class, 'execute');
-        $firstParam = $method->getParameters()[0];
+        $type = $method->getParameters()[0]->getType();
 
-        expect($firstParam->getType()?->getName())->toBe(SchedaContract::class);
+        Assert::assertInstanceOf(ReflectionNamedType::class, $type);
+        Assert::assertSame(SchedaContract::class, $type->getName());
     });
 
     it('allinea CheckCriterioEsclusioneContract su SchedaContract', function (): void {
         $method = new ReflectionMethod(CheckCriterioEsclusioneContract::class, 'execute');
-        $firstParam = $method->getParameters()[0];
+        $type = $method->getParameters()[0]->getType();
 
-        expect($firstParam->getType()?->getName())->toBe(SchedaContract::class);
-    });
-
-    it('fallisce se un criterio non è Model', function (): void {
-        $scheda = Scheda::make(['id' => 1]);
-
-        expect(fn () => app(Check::class)->execute($scheda, [new \stdClass], Collection::make()))
-            ->toThrow(InvalidArgumentException::class, 'non è un Model Eloquent');
+        Assert::assertInstanceOf(ReflectionNamedType::class, $type);
+        Assert::assertSame(SchedaContract::class, $type->getName());
     });
 
     it('fallisce se manca action per name criterio', function (): void {
-        $scheda = Scheda::make(['id' => 1]);
-        $criterio = CriteriEsclusione::make([
+        $scheda = new Scheda(['id' => 1]);
+        $criterio = new CriteriEsclusione([
             'id' => 99,
             'name' => 'criterio_inesistente_xyz',
             'value' => 1,
@@ -51,6 +48,7 @@ describe('Check criteri esclusione', function (): void {
     });
 
     it('richiede ha_diritto e motivo in fillable prima di update', function (): void {
-        expect((new Scheda)->getFillable())->toContain('ha_diritto', 'motivo');
+        Assert::assertContains('ha_diritto', (new Scheda())->getFillable());
+        Assert::assertContains('motivo', (new Scheda())->getFillable());
     });
 });

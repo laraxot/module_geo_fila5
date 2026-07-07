@@ -49,7 +49,7 @@ class EnvData extends Data implements Wireable
     }
 
     /**
-     * @param array $data
+     * @param array<string, scalar|array<int|string, scalar|null>|null> 
      */
     public function update(array $data): void
     {

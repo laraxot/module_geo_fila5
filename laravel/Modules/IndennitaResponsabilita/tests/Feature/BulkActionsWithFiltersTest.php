@@ -6,7 +6,7 @@ use Illuminate\Support\Arr;
 use PHPUnit\Framework\Assert;
 
 /**
- * @param array{}|null $tableFilters
+ * @param array<string, mixed>|null $tableFilters
  */
 function indennitaResponsabilitaTemplateKey(?array $tableFilters): string
 {

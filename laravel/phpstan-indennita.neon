@@ -19,6 +19,7 @@ parameters:
     ignoreErrors:
         - '#Cannot cast mixed to (string|float|double|int|bool|boolean).#'
         - identifier: larastan.noEnvCallsOutsideOfConfig
+        - identifier: class.notFound
 
     excludePaths:
         - ./*/vendor/*

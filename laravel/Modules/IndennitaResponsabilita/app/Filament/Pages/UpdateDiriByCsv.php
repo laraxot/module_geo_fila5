@@ -95,18 +95,16 @@ class UpdateDiriByCsv extends XotBasePage
         return $path;
     }
 
+    /**
+     * @return list<array<string, mixed>>
+     */
     protected function processCSV(string $path): array
     {
-        // $csv = Reader::createFromPath(Storage::path($path), 'r');
-        // $csv = Reader::createFromPath($path, 'r');
-        // $csv->setHeaderOffset(0); // Assuming first row contains headers
-
         $csv = Reader::createFromPath($path, 'r');
         $csv->setDelimiter(';');
         $csv->setHeaderOffset(0);
-        // returns all the records as
-        $records = $csv->getRecords(); // an Iterator object containing arrays
-        // $records = $csv->getRecordsAsObject(MyDTO::class); // an Iterator object containing MyDTO objects
+        $records = $csv->getRecords();
+        /** @var list<array<string, mixed>> $rows */
         $rows = iterator_to_array($records);
 
         return $rows;

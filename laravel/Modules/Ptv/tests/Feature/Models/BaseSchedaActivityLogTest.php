@@ -8,8 +8,10 @@ use Modules\Ptv\Models\Scheda;
 use PHPUnit\Framework\Assert;
 
 test('ptv scheda extends base scheda and implements the scheda contract', function (): void {
-    Assert::assertTrue(is_subclass_of(Scheda::class, BaseScheda::class));
-    Assert::assertTrue(is_subclass_of(Scheda::class, SchedaContract::class));
+    $scheda = new Scheda();
+
+    Assert::assertInstanceOf(BaseScheda::class, $scheda);
+    Assert::assertInstanceOf(SchedaContract::class, $scheda);
 });
 
 test('ptv scheda exposes canonical range fields', function (): void {

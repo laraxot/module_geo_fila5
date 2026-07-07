@@ -18,6 +18,7 @@ test('can instantiate page', function (): void {
 test('has working back method', function (): void {
     $page = new CompilaIndennitaResponsabilita();
 
+    // @phpstan-ignore staticMethod.alreadyNarrowedType
     Assert::assertIsCallable([$page, 'back']);
 });
 

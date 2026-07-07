@@ -91,9 +91,7 @@ class ListStabiDirigentes extends XotBaseListRecords
      */
     public function getTableActions(): array
     {
-        // @phpstan-ignore-next-line return.type
         return [
-            // @phpstan-ignore-next-line class.notFound
             EditAction::make()
                 ->label('')
                 ->tooltip('Modifica'),
@@ -106,9 +104,7 @@ class ListStabiDirigentes extends XotBaseListRecords
      */
     public function getTableBulkActions(): array
     {
-        // @phpstan-ignore-next-line return.type
         return [
-            // @phpstan-ignore-next-line class.notFound
             DeleteBulkAction::make(),
         ];
     }

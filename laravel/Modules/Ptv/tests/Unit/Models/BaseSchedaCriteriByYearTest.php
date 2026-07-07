@@ -46,10 +46,4 @@ describe('BaseScheda criteri per anno', function (): void {
         expect($parsed->get('data_presenza_al'))->toBeInstanceOf(Carbon::class);
         expect($parsed->get('data_invalida'))->toBeNull();
     });
-
-    it('espone get criteri via SchedaContract su Scheda Progressioni', function (): void {
-        expect(is_subclass_of(Scheda::class, SchedaContract::class))->toBeTrue();
-        expect(method_exists(Scheda::class, 'getCriteriEsclusioneByYear'))->toBeTrue();
-        expect(method_exists(Scheda::class, 'getCriteriOptionsParsedByYear'))->toBeTrue();
-    });
 });

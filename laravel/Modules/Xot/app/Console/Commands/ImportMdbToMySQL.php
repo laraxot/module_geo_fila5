@@ -89,7 +89,7 @@ class ImportMdbToMySQL extends Command
     /**
      * Importa le tabelle in MySQL.
      *
-     * @param array $tables
+     * @param array<int, string> 
      */
     private function importTablesIntoMySQL(array $tables, string $mysqlDb): void
     {

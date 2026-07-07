@@ -38,7 +38,6 @@ abstract class BaseListCriteriEsclusiones extends XotBaseListRecords
      */
     public function getTableBulkActions(): array
     {
-        // @phpstan-ignore-next-line return.type
         return [
             ...parent::getTableBulkActions(),
             CheckCriterioEsclusioneBulkAction::make(),

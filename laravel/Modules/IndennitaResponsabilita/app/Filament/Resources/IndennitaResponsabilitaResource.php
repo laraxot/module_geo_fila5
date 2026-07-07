@@ -51,7 +51,7 @@ class IndennitaResponsabilitaResource extends XotBaseResource
     }
 
     /**
-     * @return array<string, \Filament\Actions\Action>
+     * @return array<int, \Filament\Actions\Action>
      */
     public static function getActions(): array
     {
@@ -59,6 +59,7 @@ class IndennitaResponsabilitaResource extends XotBaseResource
             Action::make('downloadXls')
                 ->label(__('Download XLS'))
                 ->icon('heroicon-o-arrow-down-tray')
+                // @phpstan-ignore argument.type (Filament passes form data as array)
                 ->action(fn (array $data) => static::downloadXlsAction($data))
                 ->visible(fn (): bool => static::canDownloadXls()),
         ];

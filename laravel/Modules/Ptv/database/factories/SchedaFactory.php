@@ -2,6 +2,7 @@
 
 namespace Modules\Ptv\Database\Factories;
 
+/** @extends \\Illuminate\\Database\\Eloquent\\Factories\Factory<Modules\\Ptv\\Models\\Scheda> */
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Ptv\Models\Scheda;
 

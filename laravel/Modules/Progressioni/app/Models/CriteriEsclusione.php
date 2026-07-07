@@ -48,7 +48,7 @@ use Webmozart\Assert\Assert;
  * @method static Builder|CriteriEsclusione whereUpdatedBy($value)
  * @method static Builder|CriteriEsclusione whereValue($value)
  *
- * @mixin Builder
+ * @mixin Builder<self>
  *
  * @property-read Profile|null $creator
  * @property-read Collection<int, CriteriOption> $criteriOptions
@@ -68,6 +68,8 @@ class CriteriEsclusione extends PtvCriteriEsclusione implements CriteriEsclusion
 
     /**
      * Get the related scheda.
+     *
+     * @return HasMany<Scheda, $this>
      */
     public function schede(): HasMany
     {
@@ -85,6 +87,8 @@ class CriteriEsclusione extends PtvCriteriEsclusione implements CriteriEsclusion
 
     /**
      * Get the scheda collection.
+     *
+     * @return Collection<int, Scheda>
      */
     public function getSchedaCollection(): Collection
     {

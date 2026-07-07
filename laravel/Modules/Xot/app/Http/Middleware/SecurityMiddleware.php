@@ -407,7 +407,7 @@ class SecurityMiddleware
     /**
      * Valida input array.
      *
-     * @param array $value
+     * @param array<int|string, scalar|array<int|string, scalar|null>|null> 
      */
     private function validateArrayInput(string $key, array $value): void
     {
@@ -433,7 +433,7 @@ class SecurityMiddleware
     /**
      * Ottieni profondità array.
      *
-     * @param array $array
+     * @param array<int|string, scalar|array<int|string, scalar|null>|null> 
      */
     private function getArrayDepth(array $array): int
     {

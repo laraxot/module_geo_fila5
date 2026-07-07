@@ -20,7 +20,7 @@ use Modules\Rating\Models\Rating;
  *
  * @see Modules/Rating/docs/schemaless-attributes.md
  */
-/** @phpstan-ignore trait.unused */
+/** @phpstan-ignore trait.unused (Trade-off: usato da moduli esterni; PHPStan sul solo modulo Rating non vede i consumer.) */
 trait HasRatingsTrait
 {
     /**
@@ -42,7 +42,7 @@ trait HasRatingsTrait
     /**
      * Get ratings for this model.
      *
-     * @return MorphToMany<Rating, $this>
+     * @return MorphToMany<Rating, static>
      */
     public function ratings(): MorphToMany
     {
@@ -52,7 +52,7 @@ trait HasRatingsTrait
     /**
      * Get rating objectives with aggregated data.
      *
-     * @return HasMany<BaseRating, $this>
+     * @return HasMany<BaseRating, static>
      */
     public function ratingObjectives(): HasMany
     {
@@ -93,7 +93,7 @@ trait HasRatingsTrait
     /**
      * Get my ratings for this model.
      *
-     * @return MorphToMany<Rating, $this>
+     * @return MorphToMany<Rating, static>
      */
     public function myRatings(): MorphToMany
     {
@@ -218,6 +218,9 @@ trait HasRatingsTrait
         return $msg.$btn.$btn_iframe;
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getRatingsRules(string $prefix, string $postfix): array
     {
         $rows = $this->ratings;
@@ -244,6 +247,9 @@ trait HasRatingsTrait
         return $res;
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getRatingsValidationAttributes(string $prefix, string $postfix): array
     {
         $rows = $this->ratings;

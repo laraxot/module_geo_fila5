@@ -25,7 +25,7 @@ use Webmozart\Assert\Assert;
  *
  * @method Builder<Model> when(mixed $value = null, ?callable $callback = null, ?callable $default = null)
  * @method Builder<Model> whereBetween(string $column, iterable<int, mixed> $values, string $boolean = 'and', bool $not = false)
- * @method Builder<Model> selectRaw(string $expression, array $bindings = [])
+ * @method Builder<Model> selectRaw(string $expression, array<int|string, mixed> $bindings = [])
  * @method Builder<Model> where(string|\Closure|\Illuminate\Contracts\Database\Query\Expression $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  */
 class CustomRelation extends Relation
@@ -65,7 +65,7 @@ class CustomRelation extends Relation
      * Set the constraints for an eager load of the relation.
      */
     /**
-     * @param array $models
+     * @param array<int, Model> $models
      */
     public function addEagerConstraints(array $models): void
     {
@@ -81,12 +81,16 @@ class CustomRelation extends Relation
      * Initialize the relation on a set of models.
      */
     /**
-     * @param array $models
+     * @param array<int, Model> $models
      *
      * @return array<int, Model>
      */
     public function initRelation(array $models, mixed $relation): array
     {
+        if (! \is_string($relation)) {
+            throw new Exception('relation is not a string');
+        }
+
         foreach ($models as $model) {
             $model->setRelation($relation, $this->related->newCollection());
         }
@@ -100,7 +104,7 @@ class CustomRelation extends Relation
      * @return array<int, Model>
      */
     /**
-     * @param array $models
+     * @param array<int, Model> $models
      * @param Collection<int, Model> $collection
      *
      * @return array<int, Model>
@@ -116,7 +120,7 @@ class CustomRelation extends Relation
         Assert::isArray($res);
         Assert::allIsInstanceOf($res, Model::class);
 
-        /** @var array $models */
+        /** @var array<int, Model> $models */
         $models = array_values($res);
 
         return $models;
@@ -162,7 +166,7 @@ class CustomRelation extends Relation
         Assert::isArray($models);
         Assert::allIsInstanceOf($models, Model::class);
 
-        /* @var array $models */
+        /** @var array<int, Model> $models */
         return $this->related->newCollection($models);
     }
 

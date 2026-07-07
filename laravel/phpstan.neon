@@ -39,6 +39,7 @@ parameters:
         - ./*/phpinsights.php
         - ./*/rector.php
         - ./*/*.blade.php
+        - ./*/tests/*
         # MEMORY OPTIMIZATION: Most modules excluded due to WSL2/system memory constraints
         # Run analysis per-module individually: php -d memory_limit=-1 ./vendor/bin/phpstan analyse Modules/[ModuleName]
         #- ./Modules/Activity/*

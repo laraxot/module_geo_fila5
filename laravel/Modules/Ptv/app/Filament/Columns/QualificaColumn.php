@@ -8,7 +8,6 @@ use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
 use Modules\UI\Filament\Tables\Columns\GroupColumn;
 
-/** @phpstan-ignore-next-line - GroupColumn is final but needs to be extended for this use case */
 class QualificaColumn extends GroupColumn
 {
     protected array $extraColumns = [];
