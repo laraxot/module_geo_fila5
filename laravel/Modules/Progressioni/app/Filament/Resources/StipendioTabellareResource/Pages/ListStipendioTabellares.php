@@ -14,6 +14,9 @@ class ListStipendioTabellares extends PtvBaseYearListRecords
     protected static string $resource = StipendioTabellareResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

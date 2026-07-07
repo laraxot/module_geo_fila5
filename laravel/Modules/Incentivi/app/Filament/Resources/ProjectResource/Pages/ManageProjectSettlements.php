@@ -34,6 +34,9 @@ class ManageProjectSettlements extends XotBaseManageRelatedRecords
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getFormSchema(): array
     {
         return [
@@ -57,6 +60,9 @@ class ManageProjectSettlements extends XotBaseManageRelatedRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -71,6 +77,9 @@ class ManageProjectSettlements extends XotBaseManageRelatedRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableActions(): array
     {
         return [
@@ -92,6 +101,9 @@ class ManageProjectSettlements extends XotBaseManageRelatedRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableBulkActions(): array
     {
         return [

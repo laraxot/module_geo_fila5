@@ -14,6 +14,9 @@ class Asz00fFactory extends Factory
     /**
      * Define the model's default state.
      */
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [];

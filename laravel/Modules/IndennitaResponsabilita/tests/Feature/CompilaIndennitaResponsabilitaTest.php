@@ -2,47 +2,47 @@
 
 declare(strict_types=1);
 
-use Modules\IndennitaResponsabilita\Tests\TestCase;
-use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
 use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Pages\CompilaIndennitaResponsabilita;
+use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use Modules\IndennitaResponsabilita\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
-test('can instantiate page', function () {
+test('can instantiate page', function (): void {
     $page = new CompilaIndennitaResponsabilita();
-    
-    expect($page)->toBeInstanceOf(CompilaIndennitaResponsabilita::class);
+
+    Assert::instanceOf(CompilaIndennitaResponsabilita::class, $page);
 });
 
-test('has working back method', function () {
+test('has working back method', function (): void {
     $page = new CompilaIndennitaResponsabilita();
-    
-    expect(method_exists($page, 'back'))->toBeTrue();
+
+    Assert::isCallable([$page, 'back']);
 });
 
-test('model has anno attribute', function () {
+test('model has anno attribute', function (): void {
     $record = new IndennitaResponsabilita();
     $record->anno = 2024;
     $record->cognome = 'Test';
     $record->nome = 'User';
     $record->matr = 12345;
-    
-    expect($record->anno)->toBe(2024);
-    expect($record->cognome)->toBe('Test');
-    expect($record->nome)->toBe('User');
-    expect($record->matr)->toBe(12345);
+
+    Assert::same(2024, $record->anno);
+    Assert::same('Test', $record->cognome);
+    Assert::same('User', $record->nome);
+    Assert::same(12345, $record->matr);
 });
 
-test('attributes to array includes regular fields', function () {
+test('attributes to array includes regular fields', function (): void {
     $record = new IndennitaResponsabilita();
     $record->anno = 2024;
     $record->cognome = 'Test';
     $record->nome = 'User';
-    
+
     $attributes = $record->attributesToArray();
-    
-    expect($attributes)->toBeArray();
-    expect($attributes['anno'])->toBe(2024);
-    expect($attributes['cognome'])->toBe('Test');
-    expect($attributes['nome'])->toBe('User');
+
+    Assert::same(2024, $attributes['anno']);
+    Assert::same('Test', $attributes['cognome']);
+    Assert::same('User', $attributes['nome']);
 });

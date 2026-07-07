@@ -14,6 +14,9 @@ class ListStabiDirigentes extends PtvBaseYearListRecords
     protected static string $resource = StabiDirigenteResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

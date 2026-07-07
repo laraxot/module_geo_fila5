@@ -45,6 +45,9 @@ class FirmaStabiReparWidget extends XotBaseWidget
         $this->data = [];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getFormSchema(): array
     {
         return [

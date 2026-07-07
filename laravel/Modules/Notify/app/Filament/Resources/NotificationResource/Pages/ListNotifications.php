@@ -17,6 +17,9 @@ class ListNotifications extends XotBaseListRecords
     protected static string $resource = NotificationResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -31,6 +34,9 @@ class ListNotifications extends XotBaseListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

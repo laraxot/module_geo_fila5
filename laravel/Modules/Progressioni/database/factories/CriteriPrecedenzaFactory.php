@@ -14,6 +14,9 @@ class CriteriPrecedenzaFactory extends Factory
 {
     protected $model = CriteriPrecedenza::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         $criteriNames = [

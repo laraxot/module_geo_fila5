@@ -247,11 +247,7 @@ abstract class XotBasePage extends Page implements HasForms
     {
         $user = $this->getUser();
 
-        if (! method_exists($user, 'hasPermissionTo')) {
-            throw new \RuntimeException('Il modello utente deve implementare il metodo hasPermissionTo');
-        }
-
-        // Use method_exists to safely call hasPermissionTo
+        // ponytail: $user is Authenticatable&Model, hasPermissionTo is always available via Spatie traits
         return $user->hasPermissionTo($permission);
     }
 

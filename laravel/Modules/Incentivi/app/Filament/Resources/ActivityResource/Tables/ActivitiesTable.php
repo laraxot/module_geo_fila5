@@ -9,6 +9,9 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class ActivitiesTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4

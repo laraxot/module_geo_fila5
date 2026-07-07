@@ -18,6 +18,9 @@ abstract class BaseListMessages extends XotBaseListRecords
     protected static string $resource = MessageResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -30,6 +33,9 @@ abstract class BaseListMessages extends XotBaseListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

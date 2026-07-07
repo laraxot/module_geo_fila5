@@ -17,6 +17,9 @@ class ListContacts extends XotBaseListRecords
     protected static string $resource = ContactResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -32,6 +35,9 @@ class ListContacts extends XotBaseListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

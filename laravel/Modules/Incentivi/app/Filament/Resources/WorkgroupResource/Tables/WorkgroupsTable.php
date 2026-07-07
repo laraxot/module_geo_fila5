@@ -20,6 +20,9 @@ class WorkgroupsTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
@@ -41,6 +44,9 @@ class WorkgroupsTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableActions(): array
     {
         $parentActions = parent::getTableActions();

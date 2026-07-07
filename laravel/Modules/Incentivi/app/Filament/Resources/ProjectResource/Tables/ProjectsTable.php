@@ -13,6 +13,9 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class ProjectsTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
@@ -72,6 +75,9 @@ class ProjectsTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableActions(): array
     {
         return [
@@ -80,6 +86,9 @@ class ProjectsTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableBulkActions(): array
     {
         /** @var UserContract|null $user */

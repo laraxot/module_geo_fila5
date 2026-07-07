@@ -13,6 +13,9 @@ class ListNotificationTemplates extends XotBaseListRecords
     protected static string $resource = NotificationTemplateResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [];

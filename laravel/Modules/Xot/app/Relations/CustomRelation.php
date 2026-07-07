@@ -85,7 +85,7 @@ class CustomRelation extends Relation
      *
      * @return array<int, Model>
      */
-    public function initRelation(array $models, string $relation): array
+    public function initRelation(array $models, mixed $relation): array
     {
         foreach ($models as $model) {
             $model->setRelation($relation, $this->related->newCollection());
@@ -105,7 +105,7 @@ class CustomRelation extends Relation
      *
      * @return array<int, Model>
      */
-    public function match(array $models, Collection $collection, string $relation): array
+    public function match(array $models, Collection $collection, mixed $relation): array
     {
         // Trying to invoke Closure|null but it might not be a callable.
         if (! \is_callable($this->eagerMatcher)) {

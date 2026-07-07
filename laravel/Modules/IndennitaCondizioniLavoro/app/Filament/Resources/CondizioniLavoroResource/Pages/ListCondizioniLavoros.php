@@ -32,6 +32,9 @@ class ListCondizioniLavoros extends XotBaseListRecords
     protected static string $resource = CondizioniLavoroResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
@@ -119,6 +122,9 @@ class ListCondizioniLavoros extends XotBaseListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableActions(): array
     {
         // Types are inferred by Filament v4
@@ -132,6 +138,9 @@ class ListCondizioniLavoros extends XotBaseListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

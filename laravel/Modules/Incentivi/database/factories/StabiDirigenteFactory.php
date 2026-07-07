@@ -11,6 +11,9 @@ class StabiDirigenteFactory extends Factory
 {
     protected $model = StabiDirigente::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

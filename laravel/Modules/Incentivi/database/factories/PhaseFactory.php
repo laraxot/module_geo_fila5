@@ -12,6 +12,9 @@ class PhaseFactory extends Factory
 {
     protected $model = Phase::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

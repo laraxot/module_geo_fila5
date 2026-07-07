@@ -12,6 +12,9 @@ class ActivityFactory extends Factory
 {
     protected $model = Activity::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

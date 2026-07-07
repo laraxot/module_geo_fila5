@@ -11,6 +11,9 @@ class CapitalPercentageFactory extends Factory
 {
     protected $model = CapitalPercentage::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

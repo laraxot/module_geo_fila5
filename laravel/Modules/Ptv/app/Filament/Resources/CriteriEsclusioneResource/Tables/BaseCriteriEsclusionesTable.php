@@ -24,6 +24,9 @@ abstract class BaseCriteriEsclusionesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
@@ -55,6 +58,9 @@ abstract class BaseCriteriEsclusionesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [
@@ -71,6 +77,9 @@ abstract class BaseCriteriEsclusionesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableBulkActions(): array
     {
         // @phpstan-ignore-next-line return.type

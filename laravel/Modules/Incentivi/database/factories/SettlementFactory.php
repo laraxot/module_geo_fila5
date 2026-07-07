@@ -12,6 +12,9 @@ class SettlementFactory extends Factory
 {
     protected $model = Settlement::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

@@ -14,6 +14,9 @@ class ListCategoriaPropros extends PtvBaseYearListRecords
     protected static string $resource = CategoriaProproResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

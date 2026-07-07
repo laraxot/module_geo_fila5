@@ -110,6 +110,9 @@ class Wmen00f extends BaseModel
 
     public $timestamps = false;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function casts(): array
     {
         return [

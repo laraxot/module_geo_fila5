@@ -17,7 +17,6 @@ return new class extends XotBaseMigration
             function (Blueprint $table): void {
                 if (! $this->hasColumn('extra_attributes')) {
                     // @see https://github.com/spatie/laravel-schemaless-attributes
-                    // @phpstan-ignore-next-line method.notFound
                     $table->schemalessAttributes('extra_attributes');
                 }
                 $this->updateTimestamps(table: $table, hasSoftDeletes: false);

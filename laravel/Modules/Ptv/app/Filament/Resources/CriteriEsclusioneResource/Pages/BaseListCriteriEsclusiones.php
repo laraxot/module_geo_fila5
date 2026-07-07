@@ -33,6 +33,9 @@ abstract class BaseListCriteriEsclusiones extends XotBaseListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableBulkActions(): array
     {
         // @phpstan-ignore-next-line return.type
@@ -44,6 +47,9 @@ abstract class BaseListCriteriEsclusiones extends XotBaseListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
@@ -76,6 +82,9 @@ abstract class BaseListCriteriEsclusiones extends XotBaseListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

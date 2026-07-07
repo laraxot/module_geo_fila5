@@ -4,14 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\IndennitaResponsabilita\Tests;
 
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Modules\Xot\Tests\XotBaseTestCase;
 
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends XotBaseTestCase
 {
-    use CreatesApplication;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
 }

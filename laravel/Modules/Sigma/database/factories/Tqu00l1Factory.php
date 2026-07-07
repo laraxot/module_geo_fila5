@@ -15,6 +15,9 @@ class Tqu00l1Factory extends Factory
     /**
      * Define the model's default state.
      */
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [];

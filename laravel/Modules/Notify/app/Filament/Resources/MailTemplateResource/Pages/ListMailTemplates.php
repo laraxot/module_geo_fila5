@@ -14,6 +14,9 @@ class ListMailTemplates extends LangBaseListRecords
     protected static string $resource = MailTemplateResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

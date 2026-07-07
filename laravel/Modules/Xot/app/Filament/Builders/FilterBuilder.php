@@ -24,6 +24,9 @@ use function Safe\strtotime;
  *
  * Usage:
  * ```php
+    /**
+     * @return array<string, mixed>
+     */
  * public function getTableFilters(): array
  * {
  *     return [

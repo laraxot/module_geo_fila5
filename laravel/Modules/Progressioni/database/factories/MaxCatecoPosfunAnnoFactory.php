@@ -14,6 +14,9 @@ class MaxCatecoPosfunAnnoFactory extends Factory
 {
     protected $model = MaxCatecoPosfunAnno::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         // Business logic: rappresenta i limiti massimi per categoria economica e posizione funzionale

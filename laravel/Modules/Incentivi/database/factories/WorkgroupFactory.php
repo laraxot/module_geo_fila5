@@ -11,6 +11,9 @@ class WorkgroupFactory extends Factory
 {
     protected $model = Workgroup::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

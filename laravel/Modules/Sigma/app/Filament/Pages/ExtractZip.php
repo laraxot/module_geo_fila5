@@ -25,6 +25,9 @@ class ExtractZip extends XotBasePage
         $this->form->fill();
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getFormSchema(): array
     {
         return [

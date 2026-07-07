@@ -29,6 +29,9 @@ class ManageActivityEmployees extends XotBaseManageRelatedRecords
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getFormSchema(): array
     {
         return [
@@ -63,6 +66,9 @@ class ManageActivityEmployees extends XotBaseManageRelatedRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

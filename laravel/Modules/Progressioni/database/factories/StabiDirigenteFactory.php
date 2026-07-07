@@ -14,6 +14,9 @@ class StabiDirigenteFactory extends Factory
 {
     protected $model = StabiDirigente::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         // Business logic: rappresenta i dirigenti responsabili delle valutazioni di progressione

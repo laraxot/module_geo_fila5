@@ -20,6 +20,9 @@ abstract class BaseListOptions extends PtvBaseYearListRecords
     public string $yearFieldName = 'year';
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -83,6 +86,9 @@ abstract class BaseListOptions extends PtvBaseYearListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

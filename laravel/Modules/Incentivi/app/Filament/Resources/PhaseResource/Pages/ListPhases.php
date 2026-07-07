@@ -15,6 +15,9 @@ class ListPhases extends XotBaseListRecords
     protected static string $resource = PhaseResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4

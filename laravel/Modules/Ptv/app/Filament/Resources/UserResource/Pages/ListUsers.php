@@ -14,6 +14,9 @@ class ListUsers extends XotBaseListRecords
     protected static string $resource = UserResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

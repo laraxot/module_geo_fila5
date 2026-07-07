@@ -14,6 +14,9 @@ class ListCriteriOptions extends PtvBaseYearListRecords
     protected static string $resource = CriteriOptionResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

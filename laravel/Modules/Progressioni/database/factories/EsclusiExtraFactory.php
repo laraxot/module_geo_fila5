@@ -14,6 +14,9 @@ class EsclusiExtraFactory extends Factory
 {
     protected $model = EsclusiExtra::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         $motivi = [

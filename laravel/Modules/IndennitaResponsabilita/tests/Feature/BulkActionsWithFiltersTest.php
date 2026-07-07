@@ -2,18 +2,27 @@
 
 declare(strict_types=1);
 
-use Filament\Resources\Resource;
-use Filament\Tables\Table;
 use Illuminate\Support\Arr;
-use Modules\IndennitaResponsabilita\Filament\Resources\IndennitaResponsabilitaResource\Tables\IndennitaResponsabilitasTable;
-use Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita;
+use PHPUnit\Framework\Assert;
 
-beforeEach(function () {
-    // Setup test environment
-});
+/**
+ * @param array{}|null $tableFilters
+ */
+function indennitaResponsabilitaTemplateKey(?array $tableFilters): string
+{
+    $filters = $tableFilters ?? [];
+    $annoValutatoreFilter = Arr::get($filters, 'anno/valutatore', []);
 
-test('table bulk actions extracts anno from tableFilters using Arr::get', function () {
-    // Arrange: simula i tableFilters come arriverebbero dalla Table
+    if (! is_array($annoValutatoreFilter)) {
+        return 'indennitaresponsabilita-';
+    }
+
+    $anno = Arr::get($annoValutatoreFilter, 'anno');
+
+    return 'indennitaresponsabilita-'.(string) ($anno ?? '');
+}
+
+test('table bulk actions extracts anno from tableFilters using Arr::get', function (): void {
     $tableFilters = [
         'anno/valutatore' => [
             'anno' => 2026,
@@ -22,44 +31,23 @@ test('table bulk actions extracts anno from tableFilters using Arr::get', functi
         ],
     ];
 
-    // Act: estrae il valore usando Arr::get esattamente come fa getTableBulkActions()
     $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-    $anno = Arr::get($annoValutatoreFilter, 'anno');
+    Assert::isArray($annoValutatoreFilter);
 
-    // Assert
-    expect($anno)->toBe(2026);
+    Assert::same(2026, Arr::get($annoValutatoreFilter, 'anno'));
 });
 
-test('table bulk actions returns empty array when tableFilters is empty', function () {
-    // Arrange
-    $tableFilters = [];
-
-    // Act
-    $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-    $anno = Arr::get($annoValutatoreFilter, 'anno');
-
-    // Assert: Arr::get ritorna il default (null o valore mancante)
-    expect($anno)->toBeNull();
+test('table bulk actions returns null when tableFilters is empty', function (): void {
+    Assert::null(Arr::get([], 'anno/valutatore.anno'));
 });
 
-test('table bulk actions returns empty array when anno/valutatore key is missing', function () {
-    // Arrange
-    $tableFilters = [
-        'other_filter' => [
-            'value' => 'test',
-        ],
-    ];
+test('table bulk actions returns null when anno/valutatore key is missing', function (): void {
+    $tableFilters = ['other_filter' => ['value' => 'test']];
 
-    // Act
-    $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-    $anno = Arr::get($annoValutatoreFilter, 'anno');
-
-    // Assert
-    expect($anno)->toBeNull();
+    Assert::null(Arr::get($tableFilters, 'anno/valutatore.anno'));
 });
 
-test('table bulk actions handles nested tableFilters correctly', function () {
-    // Arrange: simula struttura completa di tableFilters da Filament
+test('table bulk actions handles nested tableFilters correctly', function (): void {
     $tableFilters = [
         'anno/valutatore' => [
             'anno' => 2025,
@@ -69,54 +57,22 @@ test('table bulk actions handles nested tableFilters correctly', function () {
         'is_compiled' => true,
     ];
 
-    // Act: estrae anno e builds template key
-    $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-    $anno = Arr::get($annoValutatoreFilter, 'anno');
-    $tpl = 'indennitaresponsabilita-'.(string) ($anno ?? '');
-
-    // Assert
-    expect($anno)->toBe(2025);
-    expect($tpl)->toBe('indennitaresponsabilita-2025');
+    Assert::same('indennitaresponsabilita-2025', indennitaResponsabilitaTemplateKey($tableFilters));
 });
 
-test('table bulk actions generates correct template key when anno is present', function () {
-    // Arrange
-    $tableFilters = [
-        'anno/valutatore' => [
-            'anno' => 2026,
-        ],
-    ];
-
-    // Act: simula la logica di getTableBulkActions()
-    $tableFilters = is_array($tableFilters) ? $tableFilters : [];
-    $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-    $anno = Arr::get($annoValutatoreFilter, 'anno');
-    $tpl = 'indennitaresponsabilita-'.(string) ($anno ?? '');
-
-    // Assert
-    expect($tpl)->toBe('indennitaresponsabilita-2026');
+test('table bulk actions generates correct template key when anno is present', function (): void {
+    Assert::same('indennitaresponsabilita-2026', indennitaResponsabilitaTemplateKey([
+        'anno/valutatore' => ['anno' => 2026],
+    ]));
 });
 
-test('table bulk actions generates template key with empty string when anno is null', function () {
-    // Arrange
-    $tableFilters = [
-        'anno/valutatore' => [
-            'quadrimestre' => 1,
-        ],
-    ];
-
-    // Act
-    $tableFilters = is_array($tableFilters) ? $tableFilters : [];
-    $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-    $anno = Arr::get($annoValutatoreFilter, 'anno');
-    $tpl = 'indennitaresponsabilita-'.(string) ($anno ?? '');
-
-    // Assert
-    expect($tpl)->toBe('indennitaresponsabilita-');
+test('table bulk actions generates template key with empty string when anno is null', function (): void {
+    Assert::same('indennitaresponsabilita-', indennitaResponsabilitaTemplateKey([
+        'anno/valutatore' => ['quadrimestre' => 1],
+    ]));
 });
 
-test('table bulk actions preserves all filter keys from tableFilters', function () {
-    // Arrange
+test('table bulk actions preserves all filter keys from tableFilters', function (): void {
     $tableFilters = [
         'anno/valutatore' => [
             'anno' => 2026,
@@ -126,47 +82,23 @@ test('table bulk actions preserves all filter keys from tableFilters', function 
         'is_compiled' => false,
     ];
 
-    // Act: verifica che tutti i filtri sono accessibili
     $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-    $quadrimestre = Arr::get($annoValutatoreFilter, 'quadrimestre');
-    $valutatoreId = Arr::get($annoValutatoreFilter, 'valutatore_id');
-    $isCompiled = Arr::get($tableFilters, 'is_compiled');
+    Assert::isArray($annoValutatoreFilter);
 
-    // Assert
-    expect($quadrimestre)->toBe(1);
-    expect($valutatoreId)->toBe(15);
-    expect($isCompiled)->toBe(false);
+    Assert::same(1, Arr::get($annoValutatoreFilter, 'quadrimestre'));
+    Assert::same(15, Arr::get($annoValutatoreFilter, 'valutatore_id'));
+    Assert::false(Arr::get($tableFilters, 'is_compiled'));
 });
 
-test('table bulk actions casts anno to string for template key correctly', function () {
-    // Arrange
-    $tableFilters = [
-        'anno/valutatore' => [
-            'anno' => 2026, // integer
-        ],
-    ];
+test('table bulk actions casts anno to string for template key correctly', function (): void {
+    $tpl = indennitaResponsabilitaTemplateKey([
+        'anno/valutatore' => ['anno' => 2026],
+    ]);
 
-    // Act
-    $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-    $anno = Arr::get($annoValutatoreFilter, 'anno');
-    $tpl = 'indennitaresponsabilita-'.(string) ($anno ?? '');
-
-    // Assert: verifica conversione a string
-    expect($anno)->toBe(2026);
-    expect($tpl)->toBe('indennitaresponsabilita-2026');
-    expect(is_string(substr($tpl, -4)))->toBeTrue();
+    Assert::same('indennitaresponsabilita-2026', $tpl);
+    Assert::same('2026', substr($tpl, -4));
 });
 
-test('table bulk actions handles non-array tableFilters gracefully', function () {
-    // Arrange: simula un caso edge dove tableFilters potrebbe non essere un array
-    $tableFilters = null;
-
-    // Act: come fa getTableBulkActions()
-    $tableFilters = is_array($tableFilters) ? $tableFilters : [];
-    $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-    $anno = Arr::get($annoValutatoreFilter, 'anno');
-
-    // Assert
-    expect($tableFilters)->toBe([]);
-    expect($anno)->toBeNull();
+test('table bulk actions handles non-array tableFilters gracefully', function (): void {
+    Assert::same('indennitaresponsabilita-', indennitaResponsabilitaTemplateKey(null));
 });

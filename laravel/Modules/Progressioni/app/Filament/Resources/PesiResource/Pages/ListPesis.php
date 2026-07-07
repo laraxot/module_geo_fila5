@@ -17,6 +17,9 @@ class ListPesis extends PtvBaseYearListRecords
     protected static string $resource = PesiResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

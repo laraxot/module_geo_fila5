@@ -14,6 +14,9 @@ class ListValutatores extends PtvBaseYearListRecords
     protected static string $resource = ValutatoreResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

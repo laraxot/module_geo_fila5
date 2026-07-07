@@ -14,6 +14,9 @@ class ListMessages extends PtvBaseYearListRecords
     protected static string $resource = MessageResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

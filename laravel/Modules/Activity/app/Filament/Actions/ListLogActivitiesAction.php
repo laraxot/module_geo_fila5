@@ -21,6 +21,9 @@ use Modules\Xot\Filament\Actions\XotBaseAction;
  * @example
  * ```php
  * // In getTableActions() di una Resource Page
+    /**
+     * @return array<string, mixed>
+     */
  * public function getTableActions(): array
  * {
  *     return [

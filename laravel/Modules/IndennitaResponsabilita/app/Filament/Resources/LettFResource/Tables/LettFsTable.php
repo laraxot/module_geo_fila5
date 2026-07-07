@@ -14,6 +14,9 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class LettFsTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -61,6 +64,9 @@ class LettFsTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

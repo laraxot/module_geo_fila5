@@ -228,6 +228,9 @@ class Wstr02f extends BaseModel
         return 'enteap';
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function casts(): array
     {
         return [

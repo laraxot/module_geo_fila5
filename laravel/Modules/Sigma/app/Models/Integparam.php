@@ -85,6 +85,9 @@ class Integparam extends BaseModel
     ];
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function casts(): array
     {
         return [

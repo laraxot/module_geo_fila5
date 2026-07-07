@@ -29,6 +29,9 @@ class ManageProjectEmployees extends XotBaseManageRelatedRecords
 
     protected static string $recordTitleAttribute = 'nome';
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableActions(): array
     {
         return [
@@ -71,6 +74,9 @@ class ManageProjectEmployees extends XotBaseManageRelatedRecords
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableBulkActions(): array
     {
         return [
@@ -154,6 +160,9 @@ class ManageProjectEmployees extends XotBaseManageRelatedRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Multiple @var tags removed - types inferred by Filament v4

@@ -14,6 +14,9 @@ class ListSchedaCriteris extends PtvBaseYearListRecords
     protected static string $resource = SchedaCriteriResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

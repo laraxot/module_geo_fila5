@@ -29,6 +29,9 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
     protected static string $resource = CondizioniLavoroAdmResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         /** @var array{lavoratore: Column, valutatore: Column, indennitaTipoDettaglio: Column, quadrimestre: Column, anno: Column} */
@@ -80,6 +83,9 @@ class ListCondizioniLavoroAdms extends XotBaseListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

@@ -26,6 +26,9 @@ class ManagePhaseSettlements extends XotBaseManageRelatedRecords
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getFormSchema(): array
     {
         return [
@@ -36,6 +39,9 @@ class ManagePhaseSettlements extends XotBaseManageRelatedRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
@@ -44,6 +50,9 @@ class ManagePhaseSettlements extends XotBaseManageRelatedRecords
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     // public function getTableActions(): array
     // {
     //     return [

@@ -10,6 +10,9 @@ class CondizioniLavoroOverview extends XotBaseWidget
 {
     protected string $view = 'indennitacondizionilavoro::filament.resources.user-resource.widgets.user-overview';
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getFormSchema(): array
     {
         return [];

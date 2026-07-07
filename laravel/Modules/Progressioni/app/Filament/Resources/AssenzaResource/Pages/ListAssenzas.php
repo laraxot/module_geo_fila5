@@ -14,6 +14,9 @@ class ListAssenzas extends PtvBaseYearListRecords
     protected static string $resource = AssenzaResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

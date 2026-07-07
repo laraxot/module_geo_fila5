@@ -11,6 +11,9 @@ class DefaultActivityFactory extends Factory
 {
     protected $model = DefaultActivity::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
         return [

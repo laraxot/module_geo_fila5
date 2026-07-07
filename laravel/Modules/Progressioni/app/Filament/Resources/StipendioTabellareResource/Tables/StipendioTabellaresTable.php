@@ -9,6 +9,9 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class StipendioTabellaresTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

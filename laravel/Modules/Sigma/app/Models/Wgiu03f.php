@@ -105,6 +105,9 @@ class Wgiu03f extends BaseModel
 
     public $timestamps = false;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function casts(): array
     {
         return [

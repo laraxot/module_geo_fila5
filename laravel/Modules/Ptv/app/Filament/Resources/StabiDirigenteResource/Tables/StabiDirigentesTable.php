@@ -13,6 +13,9 @@ use function Safe\date;
 
 class StabiDirigentesTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -54,6 +57,9 @@ class StabiDirigentesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

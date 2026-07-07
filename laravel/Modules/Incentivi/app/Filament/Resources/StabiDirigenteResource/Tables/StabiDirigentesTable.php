@@ -37,6 +37,9 @@ class StabiDirigentesTable extends XotBaseResourceTable
         return $actions;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
@@ -55,6 +58,9 @@ class StabiDirigentesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

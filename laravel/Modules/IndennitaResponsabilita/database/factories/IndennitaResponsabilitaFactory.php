@@ -17,7 +17,7 @@ class IndennitaResponsabilitaFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array{}
      */
     public function definition(): array
     {

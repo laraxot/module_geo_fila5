@@ -21,6 +21,9 @@ class ListProjects extends XotBaseListRecords
     protected static string $resource = ProjectResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
@@ -81,6 +84,9 @@ class ListProjects extends XotBaseListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableActions(): array
     {
         return [
@@ -90,6 +96,9 @@ class ListProjects extends XotBaseListRecords
     }
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableBulkActions(): array
     {
         /** @var UserContract|null $user */
