@@ -83,6 +83,7 @@ use Staudenmeir\LaravelAdjacencyList\Eloquent\Collection;
  * @method static Builder<static>|Message wherePostId($value)
  * @method static Builder<static>|Message wherePostType($value)
  * @method static Builder<static>|Message whereUserId($value)
+ * @method static Builder<static>|Message withGlobalScopes(array<int, string> $scopes)
  * @property-read \Modules\Ptv\Models\Profile|null $creator
  * @property-read \Modules\Ptv\Models\Profile|null $deleter
  * @property-read \Modules\Ptv\Models\Profile|null $updater

@@ -59,6 +59,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
  * @property string|null $slug
  * @property-read Profile|null $deleter
  * @method static Builder<static>|Rating whereSlug($value)
+ * @method static Builder<static>|Rating withExtraAttributes(array<string, mixed> $attributes)
  * @mixin \Eloquent
  */
 class Rating extends BaseRating

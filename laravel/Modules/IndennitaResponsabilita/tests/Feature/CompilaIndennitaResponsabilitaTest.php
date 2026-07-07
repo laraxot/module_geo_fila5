@@ -12,13 +12,13 @@ uses(TestCase::class);
 test('can instantiate page', function (): void {
     $page = new CompilaIndennitaResponsabilita();
 
-    Assert::instanceOf(CompilaIndennitaResponsabilita::class, $page);
+    Assert::assertInstanceOf(CompilaIndennitaResponsabilita::class, $page);
 });
 
 test('has working back method', function (): void {
     $page = new CompilaIndennitaResponsabilita();
 
-    Assert::isCallable([$page, 'back']);
+    Assert::assertIsCallable([$page, 'back']);
 });
 
 test('model has anno attribute', function (): void {
@@ -28,10 +28,10 @@ test('model has anno attribute', function (): void {
     $record->nome = 'User';
     $record->matr = 12345;
 
-    Assert::same(2024, $record->anno);
-    Assert::same('Test', $record->cognome);
-    Assert::same('User', $record->nome);
-    Assert::same(12345, $record->matr);
+    Assert::assertSame(2024, $record->anno);
+    Assert::assertSame('Test', $record->cognome);
+    Assert::assertSame('User', $record->nome);
+    Assert::assertSame(12345, $record->matr);
 });
 
 test('attributes to array includes regular fields', function (): void {
@@ -42,7 +42,7 @@ test('attributes to array includes regular fields', function (): void {
 
     $attributes = $record->attributesToArray();
 
-    Assert::same(2024, $attributes['anno']);
-    Assert::same('Test', $attributes['cognome']);
-    Assert::same('User', $attributes['nome']);
+    Assert::assertSame(2024, $attributes['anno']);
+    Assert::assertSame('Test', $attributes['cognome']);
+    Assert::assertSame('User', $attributes['nome']);
 });

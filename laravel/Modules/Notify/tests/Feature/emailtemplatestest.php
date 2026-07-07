@@ -12,7 +12,7 @@ test('html template contains optional function', function (): void {
     $filePath = base_path('Modules/Notify/resources/views/emails/html.blade.php');
 
     // Verifico che il file esiste
-    /** @phpstan-ignore method.internalClass */
+    /** @phpstan-ignore method.internalClass -- Trade-off: Pest expect() is internal API but required for test assertions */
     expect(File::exists($filePath))->toBeTrue('Il file html.blade.php non esiste');
 
     // Leggo il contenuto del file

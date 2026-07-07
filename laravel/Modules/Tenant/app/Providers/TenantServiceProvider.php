@@ -54,7 +54,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
             $map = [];
         }
 
-        Relation::morphMap($this->buildMorphMap($map));
+        Relation::morphMap($this->buildMorphMap(ConfigStringKeyFilter::onlyStringKeys($map)));
     }
 
     public function registerDB(): void
@@ -64,7 +64,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
         $preMergeDefaultConn = $this->resolveDefaultConnectionName();
         $this->purgeConnectionWhenMigrating($preMergeDefaultConn);
 
-        /**  array<string, mixed> $data */
+        /** @var array<string, mixed> $data */
         $data = $this->loadTenantDatabaseConfig($preMergeDefaultConn);
         $data = Arr::set($data, 'connections', $this->mergeModuleConnections($data, $preMergeDefaultConn));
 
@@ -116,7 +116,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
     private function loadTenantDatabaseConfig(string $preMergeDefaultConn): array
     {
         $raw = TenantService::config('database');
-        /**  array<string, mixed> $data */
+        /** @var array<string, mixed> $data */
         $data = is_array($raw) ? $raw : [];
 
         $defaultRaw = Arr::get($data, 'default', $preMergeDefaultConn);
@@ -131,7 +131,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
     }
 
     /**
-     *   array<string, mixed>  $map$data$data
+     * @param  array<string, mixed>  $data
      *
      * @return array<string, mixed>
      */
@@ -171,7 +171,7 @@ class TenantServiceProvider extends XotBaseServiceProvider
     }
 
     /**
-     *   array<string, mixed>  $map$data$map
+     * @param  array<string, mixed>  $map
      *
      * @return array<string, class-string<Model>>
      */

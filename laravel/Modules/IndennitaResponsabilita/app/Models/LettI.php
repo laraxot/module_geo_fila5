@@ -257,7 +257,7 @@ use RuntimeException;
  * @property-read string|null $last_data_assunz
  * @property-read string|null $lista_propro
  * @property-read string|null $lista_propro_sup
- * @property-read Collection $my_rating
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\IndennitaResponsabilita\Models\Rating> $my_rating
  * @property-read int|float $perc_p_time_daterange
  * @property-read int|float $perc_p_time_year
  * @property-read float|null $perc_parttime_anno

@@ -5,44 +5,35 @@ declare(strict_types=1);
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Ptv\Models\Profile;
+use PHPUnit\Framework\Assert;
 use Tests\TestCase;
 
 uses(
     TestCase::class,
-    DatabaseTransactions::class, // ✅ CORRETTO - Rollback automatico
+    DatabaseTransactions::class,
     WithFaker::class,
 )->in('Feature', 'Unit');
 
 uses()->group('ptv')->in('Feature', 'Unit');
 
-/*
-|--------------------------------------------------------------------------
-| Custom Expectations
-|--------------------------------------------------------------------------
-|
-| Here you may define your custom expectations to be used in your tests.
-|
-*/
-
 expect()->extend('toBeProfile', fn () => $this->toBeInstanceOf(Profile::class));
 
-expect()->extend('toHaveProperty', fn (string $property) => expect(isset($this->value->$property))->toBeTrue());
+expect()->extend('toHaveProperty', function (string $property): void {
+    Assert::assertObjectHasProperty($property, $this->value);
+});
 
-/*
-|--------------------------------------------------------------------------
-| Helper Functions
-|--------------------------------------------------------------------------
-|
-| Here you may define your custom helper functions to be used in your tests.
-|
-*/
-
+/**
+ * @param array{first_name?: string|null, last_name?: string|null, ente?: int|null, matr?: int|null, user_id?: int|string|null} $attributes
+ */
 function createProfile(array $attributes = []): Profile
 {
-    return Profile::factory()->create($attributes);
+    return new Profile($attributes);
 }
 
+/**
+ * @param array{first_name?: string|null, last_name?: string|null, ente?: int|null, matr?: int|null, user_id?: int|string|null} $attributes
+ */
 function makeProfile(array $attributes = []): Profile
 {
-    return Profile::factory()->make($attributes);
+    return new Profile($attributes);
 }

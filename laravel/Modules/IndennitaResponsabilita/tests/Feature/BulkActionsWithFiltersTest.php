@@ -32,19 +32,19 @@ test('table bulk actions extracts anno from tableFilters using Arr::get', functi
     ];
 
     $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-    Assert::isArray($annoValutatoreFilter);
+    Assert::assertIsArray($annoValutatoreFilter);
 
-    Assert::same(2026, Arr::get($annoValutatoreFilter, 'anno'));
+    Assert::assertSame(2026, Arr::get($annoValutatoreFilter, 'anno'));
 });
 
 test('table bulk actions returns null when tableFilters is empty', function (): void {
-    Assert::null(Arr::get([], 'anno/valutatore.anno'));
+    Assert::assertNull(Arr::get([], 'anno/valutatore.anno'));
 });
 
 test('table bulk actions returns null when anno/valutatore key is missing', function (): void {
     $tableFilters = ['other_filter' => ['value' => 'test']];
 
-    Assert::null(Arr::get($tableFilters, 'anno/valutatore.anno'));
+    Assert::assertNull(Arr::get($tableFilters, 'anno/valutatore.anno'));
 });
 
 test('table bulk actions handles nested tableFilters correctly', function (): void {
@@ -57,17 +57,17 @@ test('table bulk actions handles nested tableFilters correctly', function (): vo
         'is_compiled' => true,
     ];
 
-    Assert::same('indennitaresponsabilita-2025', indennitaResponsabilitaTemplateKey($tableFilters));
+    Assert::assertSame('indennitaresponsabilita-2025', indennitaResponsabilitaTemplateKey($tableFilters));
 });
 
 test('table bulk actions generates correct template key when anno is present', function (): void {
-    Assert::same('indennitaresponsabilita-2026', indennitaResponsabilitaTemplateKey([
+    Assert::assertSame('indennitaresponsabilita-2026', indennitaResponsabilitaTemplateKey([
         'anno/valutatore' => ['anno' => 2026],
     ]));
 });
 
 test('table bulk actions generates template key with empty string when anno is null', function (): void {
-    Assert::same('indennitaresponsabilita-', indennitaResponsabilitaTemplateKey([
+    Assert::assertSame('indennitaresponsabilita-', indennitaResponsabilitaTemplateKey([
         'anno/valutatore' => ['quadrimestre' => 1],
     ]));
 });
@@ -83,11 +83,11 @@ test('table bulk actions preserves all filter keys from tableFilters', function 
     ];
 
     $annoValutatoreFilter = Arr::get($tableFilters, 'anno/valutatore', []);
-    Assert::isArray($annoValutatoreFilter);
+    Assert::assertIsArray($annoValutatoreFilter);
 
-    Assert::same(1, Arr::get($annoValutatoreFilter, 'quadrimestre'));
-    Assert::same(15, Arr::get($annoValutatoreFilter, 'valutatore_id'));
-    Assert::false(Arr::get($tableFilters, 'is_compiled'));
+    Assert::assertSame(1, Arr::get($annoValutatoreFilter, 'quadrimestre'));
+    Assert::assertSame(15, Arr::get($annoValutatoreFilter, 'valutatore_id'));
+    Assert::assertFalse(Arr::get($tableFilters, 'is_compiled'));
 });
 
 test('table bulk actions casts anno to string for template key correctly', function (): void {
@@ -95,10 +95,10 @@ test('table bulk actions casts anno to string for template key correctly', funct
         'anno/valutatore' => ['anno' => 2026],
     ]);
 
-    Assert::same('indennitaresponsabilita-2026', $tpl);
-    Assert::same('2026', substr($tpl, -4));
+    Assert::assertSame('indennitaresponsabilita-2026', $tpl);
+    Assert::assertSame('2026', substr($tpl, -4));
 });
 
 test('table bulk actions handles non-array tableFilters gracefully', function (): void {
-    Assert::same('indennitaresponsabilita-', indennitaResponsabilitaTemplateKey(null));
+    Assert::assertSame('indennitaresponsabilita-', indennitaResponsabilitaTemplateKey(null));
 });

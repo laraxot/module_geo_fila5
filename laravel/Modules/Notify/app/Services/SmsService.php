@@ -58,13 +58,22 @@ class SmsService
     /**
      * Sets local variables and merges them with the vars array.
      *
-     * @param  array  $vars
+     * @param  array<string, mixed>  $vars
      */
-    public function setLocalVars(array $vars): self
+    public function setLocalVars(array<string, mixed> $vars): self
     {
-        foreach ($vars as $k => $v) {
-            $this->{$k} = $v;
+        // Set SMS properties if they exist in the input
+        if (isset($vars['to'])) {
+            $this->to = $vars['to'];
         }
+        if (isset($vars['from'])) {
+            $this->from = $vars['from'];
+        }
+        if (isset($vars['body'])) {
+            $this->body = $vars['body'];
+        }
+
+        // Merge all vars into the template vars array
         $this->vars = array_merge($this->vars, $vars);
 
         return $this;
@@ -73,9 +82,9 @@ class SmsService
     /**
      * Unisce le variabili con quelle esistenti.
      *
-     * @param  array  $vars
+     * @param  array<string, mixed>  $vars
      */
-    public function mergeVars(array $vars): self
+    public function mergeVars(array<string, mixed> $vars): self
     {
         $this->vars = array_merge($this->vars, $vars);
 
