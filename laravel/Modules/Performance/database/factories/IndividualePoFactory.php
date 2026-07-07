@@ -4,6 +4,9 @@ namespace Modules\Performance\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends Factory<\Modules\Performance\Models\IndividualePo>
+ */
 class IndividualePoFactory extends Factory
 {
     /**
@@ -13,6 +16,9 @@ class IndividualePoFactory extends Factory
 
     /**
      * Define the model's default state.
+     */
+    /**
+     * @return array<string, mixed>
      */
     public function definition(): array
     {

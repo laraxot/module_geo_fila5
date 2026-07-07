@@ -27,6 +27,9 @@ class ListCriteriMaggioraziones extends PtvBaseYearListRecords
     protected static string $resource = CriteriMaggiorazioneResource::class;
 
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4

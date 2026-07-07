@@ -12,6 +12,9 @@ use function Safe\date;
 
 class OrganizzativaTotStabisTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
@@ -69,6 +72,9 @@ class OrganizzativaTotStabisTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

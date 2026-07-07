@@ -321,8 +321,6 @@ abstract class BaseIndividualeModel extends BaseScheda
         if (isset($input['anno'])) {
             $query->where('anno', $input['anno']);
         }
-
-        // @phpstan-ignore-next-line
         return $query;
     }
 

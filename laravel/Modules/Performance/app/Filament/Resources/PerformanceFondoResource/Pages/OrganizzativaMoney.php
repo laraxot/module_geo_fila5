@@ -16,6 +16,9 @@ class OrganizzativaMoney extends XotBaseViewRecord
 
     protected static string $resource = PerformanceFondoResource::class;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getInfolistSchema(): array
     {
         return [];
@@ -38,7 +41,7 @@ class OrganizzativaMoney extends XotBaseViewRecord
     }
 
     /**
-     * ---.
+     * @return array<string, mixed>
      */
     public function getViewData(): array
     {

@@ -4,6 +4,9 @@ namespace Modules\Performance\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends Factory<\Modules\Performance\Models\IndividualeRegionale>
+ */
 class IndividualeRegionaleFactory extends Factory
 {
     /**
@@ -13,6 +16,9 @@ class IndividualeRegionaleFactory extends Factory
 
     /**
      * Define the model's default state.
+     */
+    /**
+     * @return array<string, mixed>
      */
     public function definition(): array
     {

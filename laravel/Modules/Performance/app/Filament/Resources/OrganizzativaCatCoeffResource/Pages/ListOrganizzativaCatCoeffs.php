@@ -26,6 +26,12 @@ class ListOrganizzativaCatCoeffs extends PtvBaseYearListRecords
      * Vedi docs/automatic-translations.md e docs/filament-resources.md per regole, motivazione e checklist.
      */
     #[Override]
+    /**
+     * @return array<string, mixed>
+     */
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [

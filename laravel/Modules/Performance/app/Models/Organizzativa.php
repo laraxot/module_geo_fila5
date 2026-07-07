@@ -506,8 +506,6 @@ class Organizzativa extends BaseIndividualeModel
      */
     public function assenze(): HasMany
     {
-        // @phpstan-ignore-next-line
-        // @phpstan-ignore-next-line
         return $this->hasMany(IndividualeAssenze::class, 'anno', 'anno');
     }
 
@@ -557,8 +555,6 @@ class Organizzativa extends BaseIndividualeModel
      */
     public function cards(): HasMany
     {
-        // @phpstan-ignore-next-line
-        // @phpstan-ignore-next-line
         return $this->hasMany(Individuale::class, 'matr', 'matr')
             ->where('ente', $this->ente)
             ->where('anno', $this->anno);

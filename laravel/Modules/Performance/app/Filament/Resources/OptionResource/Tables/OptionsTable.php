@@ -14,6 +14,9 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class OptionsTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         // Column types are inferred by Filament v4
@@ -96,6 +99,9 @@ class OptionsTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

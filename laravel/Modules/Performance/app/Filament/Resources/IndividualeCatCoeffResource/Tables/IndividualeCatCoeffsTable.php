@@ -10,6 +10,9 @@ use Modules\Xot\Filament\Resources\Tables\XotBaseResourceTable;
 
 class IndividualeCatCoeffsTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -47,6 +50,9 @@ class IndividualeCatCoeffsTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [

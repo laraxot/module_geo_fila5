@@ -14,6 +14,9 @@ use function Safe\date;
 
 class PerformanceFondosTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -57,6 +60,9 @@ class PerformanceFondosTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [
@@ -65,6 +71,9 @@ class PerformanceFondosTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableActions(): array
     {
         return [

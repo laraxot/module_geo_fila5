@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Performance\Actions;
 
 use Modules\Performance\Models\Individuale;
-use Modules\Performance\Models\Performance;
 use Modules\Progressioni\Models\Progressioni;
 use Spatie\QueueableAction\QueueableAction;
 

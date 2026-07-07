@@ -12,6 +12,9 @@ use function Safe\date;
 
 class OrganizzativaCatCoeffsTable extends XotBaseResourceTable
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -28,6 +31,9 @@ class OrganizzativaCatCoeffsTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getTableFilters(): array
     {
         return [
