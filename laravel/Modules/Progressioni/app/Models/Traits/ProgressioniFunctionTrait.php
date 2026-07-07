@@ -121,7 +121,7 @@ trait ProgressioniFunctionTrait
         return $result;
     }
 
-    public function checkListaPropro(array<string, mixed> $params): array
+    public function checkListaPropro(array $params): array
     {
         $ha_diritto = 1;
         $motivo_arr = [];

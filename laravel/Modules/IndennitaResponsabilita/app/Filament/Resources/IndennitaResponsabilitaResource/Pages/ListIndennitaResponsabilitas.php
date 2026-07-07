@@ -133,7 +133,7 @@ class ListIndennitaResponsabilitas extends XotBaseListRecords
     }
 
     /**
-     * @return array<string, Action|ActionGroup>
+     * @return array<int|string, Action|ActionGroup>
      */
     #[Override]
     public function getTableActions(): array

@@ -27,7 +27,7 @@ class MessagesTable extends XotBaseResourceTable
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<int, \Filament\Tables\Filters\SelectFilter>
      */
     public function getTableFilters(): array
     {

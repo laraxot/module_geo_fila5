@@ -25,7 +25,7 @@ class StabiDirigentesTable extends XotBaseResourceTable
      * HasXotTable::table() in ->headerActions(). `parent::getHeaderActions()`
      * convertito in `parent::getTableHeaderActions()` (default HasXotTable).
      *
-     * @return array<string, Action|ActionGroup>
+     * @return array<int|string, Action|ActionGroup>
      */
     public function getTableHeaderActions(): array
     {
