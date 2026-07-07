@@ -89,7 +89,7 @@ abstract class XotBaseState implements StateContract
      *
      * @return array<string, mixed>
      */
-    public function modalFillForm(array<string, mixed> $arguments, array $data): array
+    public function modalFillForm(array $arguments, array $data): array
     {
         return $data;
     }
@@ -110,7 +110,7 @@ abstract class XotBaseState implements StateContract
      * @param array $arguments
      * @param array $data
      */
-    public function modalAction(array<string, mixed> $arguments, array $data): void
+    public function modalAction(array $arguments, array $data): void
     {
         $this->processStateAction($arguments, $data);
     }
@@ -121,7 +121,7 @@ abstract class XotBaseState implements StateContract
      * @param array $arguments
      * @param array $data
      */
-    public function processStateAction(array<string, mixed> $arguments, array $data): void
+    public function processStateAction(array $arguments, array $data): void
     {
         $message = Arr::get($data, 'message');
         $stateClass = static::class;

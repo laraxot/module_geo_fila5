@@ -41,7 +41,7 @@ class MakePdf
     }
 
     /**
-     * @param  array  $data
+     * @param  array{anno/valutatore?: array{anno?: int|string|null, valutatore_id?: int|string|null}}  $data
      * @return array{0: int|null, 1: int|null}
      */
     private function resolveFilters(array $data): array

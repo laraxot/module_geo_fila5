@@ -27,7 +27,7 @@ abstract class XotBaseTableWidget extends FilamentTableWidget
      * @param array $filters
      */
     #[On('filterUpdate')]
-    public function updateFilters(array<string, mixed> $filters): void
+    public function updateFilters(array $filters): void
     {
         // Forza refresh della tabella quando i filtri cambiano
         $this->resetTable();

@@ -186,7 +186,7 @@ interface HasRecursiveRelationshipsContract
      *
      * @return Collection<int, Model>
      */
-    public function newCollection(array<string, mixed> $models = []);
+    public function newCollection(array $models = []);
 
     /**
      * added by XOT, viene utilizzato nelle options delle select.

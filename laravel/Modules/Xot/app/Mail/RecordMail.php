@@ -28,7 +28,7 @@ class RecordMail extends Mailable
      *
      * @param array $data I dati del record
      */
-    public function __construct(array<string, mixed> $data)
+    public function __construct(array $data)
     {
         $this->recordData = $data;
     }
