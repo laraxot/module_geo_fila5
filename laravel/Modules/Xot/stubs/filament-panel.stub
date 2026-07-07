@@ -2,7 +2,7 @@
 
 namespace Filament;
 
-use Nwidart\Modules\Module as NwidartModule;
+use Nwidart\Modules\Laravel\Module as NwidartModule;
 
 /**
  * Stub per PHPStan per i metodi aggiunti da PanelMixin.

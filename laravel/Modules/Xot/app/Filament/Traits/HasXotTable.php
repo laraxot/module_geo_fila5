@@ -16,6 +16,7 @@ use Filament\Actions\DetachAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ReplicateAction;
 use Filament\Actions\ViewAction;
+use Exception;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables;
@@ -366,7 +367,7 @@ trait HasXotTable
             return $model;
         }
 
-        throw new \Exception('No model found in '.class_basename(self::class).'::'.__FUNCTION__);
+        throw new Exception('No model found in '.class_basename(self::class).'::'.__FUNCTION__);
     }
 
     /**
