@@ -15,7 +15,7 @@ class SavePhpArrayAction
     /**
      * @param array $data
      */
-    public function execute(array $data, string $filename): bool
+    public function execute(array<string, mixed> $data, string $filename): bool
     {
         $content = "<?php\n\nreturn ".var_export($data, true).";\n";
 

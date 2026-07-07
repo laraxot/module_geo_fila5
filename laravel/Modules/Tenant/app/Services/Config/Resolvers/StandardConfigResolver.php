@@ -53,7 +53,7 @@ class StandardConfigResolver implements ConfigResolverInterface
      * @param  array  $extraConf
      * @return array<string, mixed>
      */
-    private function resolveDatabaseExtraConfig(array $extraConf): array
+    private function resolveDatabaseExtraConfig(array<string, mixed> $extraConf): array
     {
         $databaseResolver = new DatabaseConfigResolver;
         $resolved = $databaseResolver->resolve('database', $extraConf);

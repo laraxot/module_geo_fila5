@@ -13,7 +13,7 @@ class CreateProfile extends XotBaseCreateRecord
 {
     protected static string $resource = BaseProfileResource::class;
 
-    public function mutateFormDataBeforeCreate(array $data): array
+    public function mutateFormDataBeforeCreate(array<string, mixed> $data): array
     {
         $userData = Arr::except($data, ['user']);
         $extra = $data['user'] ?? [];

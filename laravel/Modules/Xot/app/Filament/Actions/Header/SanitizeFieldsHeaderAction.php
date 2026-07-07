@@ -66,7 +66,7 @@ class SanitizeFieldsHeaderAction extends Action
     /**
      * @param list<string> $fields
      */
-    public function setFields(array $fields): self
+    public function setFields(array<string, mixed> $fields): self
     {
         $this->fields = $fields;
 

@@ -100,7 +100,7 @@ class ImportCsvAction
      *
      * @return array<string>
      */
-    private function prepareFields(array $columns): array
+    private function prepareFields(array<string, mixed> $columns): array
     {
         return array_map(
             fn (ColumnData $column) => 'decimal' === $column->type ? '@'.$column->name : $column->name,
@@ -151,7 +151,7 @@ class ImportCsvAction
      *
      * @phpstan-ignore method.unused
      */
-    private function transformColumnsToColumnData(array $columns): array
+    private function transformColumnsToColumnData(array<string, mixed> $columns): array
     {
         return array_map(
             function (string $column): ColumnData {

@@ -17,7 +17,7 @@ class DiffAssocRecursiveAction
      * @param  array  $array2
      * @return array<string, mixed>
      */
-    public function execute(array $array1, array $array2): array
+    public function execute(array<string, mixed> $array1, array $array2): array
     {
         return $this->arrayDiffAssocRecursive($array1, $array2);
     }
@@ -29,7 +29,7 @@ class DiffAssocRecursiveAction
      * @param  array  $array2
      * @return array<string, mixed>
      */
-    private function arrayDiffAssocRecursive(array $array1, array $array2): array
+    private function arrayDiffAssocRecursive(array<string, mixed> $array1, array $array2): array
     {
         $difference = [];
 

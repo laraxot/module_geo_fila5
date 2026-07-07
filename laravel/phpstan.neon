@@ -30,6 +30,8 @@ parameters:
 
     excludePaths:
 
+        - ./*/bashscripts/*
+        - ./*/scripts/*
         - ./*/vendor/*
         - ./*/build/*
         - ./*/docs/*

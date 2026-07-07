@@ -41,12 +41,12 @@ interface SushiToJsonContract
      *
      * @param  array<int, array<string, mixed>>  $data
      */
-    public function saveToJson(array $data): bool;
+    public function saveToJson(array<string, mixed> $data): bool;
 
     /**
      * Trova l'indice del record nell'array dato un id.
      *
      * @param  array<int, array<string, mixed>>  $rows
      */
-    public function findRowIndexById(array $rows, int $id): ?int;
+    public function findRowIndexById(array<string, mixed> $rows, int $id): ?int;
 }

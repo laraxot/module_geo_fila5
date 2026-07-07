@@ -638,7 +638,7 @@ trait SchedaExtraFieldTrait
      *
      * @param  array  $params
      */
-    public function ggAssenzaFuoriSedeTot(array $params): int
+    public function ggAssenzaFuoriSedeTot(array<string, mixed> $params): int
     {
         return $this->anag?->ggAssenzaFuoriSedeTot($params) ?? 0;
     }
@@ -649,7 +649,7 @@ trait SchedaExtraFieldTrait
      *
      * @param  array  $params
      */
-    public function hhAssenzaFuoriSedeTot(array $params): int
+    public function hhAssenzaFuoriSedeTot(array<string, mixed> $params): int
     {
         return $this->anag?->hhAssenzaFuoriSedeTot($params) ?? 0;
     }
@@ -677,7 +677,7 @@ trait SchedaExtraFieldTrait
      *
      * @param  array  $params
      */
-    public function ggFuoriSedeTot(array $params): ?int
+    public function ggFuoriSedeTot(array<string, mixed> $params): ?int
     {
         return $this->anag?->ggFuoriSedeTot($params);
     }
@@ -705,7 +705,7 @@ trait SchedaExtraFieldTrait
      *
      * @param  array  $params
      */
-    public function hhAssenzaInSedeTot(array $params): int
+    public function hhAssenzaInSedeTot(array<string, mixed> $params): int
     {
         return $this->anag?->hhAssenzaInSedeTot($params) ?? 0;
     }

@@ -42,7 +42,7 @@ class HasManyAction
      *
      * @param array $data
      */
-    private function isDirectUpdate(array $data): bool
+    private function isDirectUpdate(array<string, mixed> $data): bool
     {
         return isset($data['to']) || isset($data['from']);
     }

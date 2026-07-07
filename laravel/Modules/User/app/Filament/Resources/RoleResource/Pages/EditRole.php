@@ -48,7 +48,7 @@ class EditRole extends XotBaseEditRecord
         ];
     }
 
-    protected function mutateFormDataBeforeSave(array $data): array
+    protected function mutateFormDataBeforeSave(array<string, mixed> $data): array
     {
         $this->permissions = collect($data)
             ->filter(

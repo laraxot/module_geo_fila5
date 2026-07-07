@@ -150,7 +150,7 @@ class FilamentMemoryMonitorMiddleware
      *
      * @param array $metrics
      */
-    private function determineLogLevel(array $metrics): string
+    private function determineLogLevel(array<string, mixed> $metrics): string
     {
         $memoryMB = $metrics['memory_used_mb'];
         $timeMsec = $metrics['execution_time_ms'];

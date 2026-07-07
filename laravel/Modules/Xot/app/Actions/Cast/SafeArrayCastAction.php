@@ -95,7 +95,7 @@ class SafeArrayCastAction
      *
      * @return array<string, mixed>
      */
-    private function normalizeArray(array $array): array
+    private function normalizeArray(array<string, mixed> $array): array
     {
         $result = [];
 

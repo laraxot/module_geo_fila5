@@ -31,7 +31,7 @@ class RegisterTeam extends RegisterTenant
     /**
      * @param array<string, mixed> $data
      */
-    protected function handleRegistration(array $data): Model
+    protected function handleRegistration(array<string, mixed> $data): Model
     {
         $teamClass = XotData::make()->getTeamClass();
         /** @var Model&TeamContract */

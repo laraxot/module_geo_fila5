@@ -313,8 +313,8 @@ trait HasXotTable
         if ($this->shouldShowDetachAction() && method_exists($this, 'getRelationship')) {
             $relationship = $this->getRelationship();
 
-            if ( instanceof BelongsToMany) {
-                 = DetachAction::make()
+            if ($relationship instanceof BelongsToMany) {
+                $actions['detach'] = DetachAction::make()
                     ->iconButton()
                     ->tooltip((string) __('user::actions.detach'));
             }

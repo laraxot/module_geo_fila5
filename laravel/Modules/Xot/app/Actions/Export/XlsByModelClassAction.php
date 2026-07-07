@@ -100,7 +100,7 @@ class XlsByModelClassAction
      *
      * @return array<int, string>
      */
-    private function getWithByIncludes(array $includes): array
+    private function getWithByIncludes(array<string, mixed> $includes): array
     {
         $with = [];
         foreach ($includes as $include) {

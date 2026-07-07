@@ -63,7 +63,7 @@ final class PrepareCompilaDataAction extends XotBaseAction
      * @param  array<int|string, array{title?: string, pivot: array{value: mixed}}>  $ratings
      * @return array<string, float|int>
      */
-    protected function calculateTotals(array<string, mixed> $ratings, float $perc): array
+    protected function calculateTotals(array $ratings, float $perc): array
     {
         $readonlyTitles = ['tot', 'importo mensile calcolato', 'importo mensile attribuito', 'importo annuale attribuito'];
 

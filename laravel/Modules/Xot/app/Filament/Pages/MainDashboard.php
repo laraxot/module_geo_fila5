@@ -29,9 +29,9 @@ class MainDashboard extends XotBaseDashboard
      * Use the canonical slug so Filament resolves the home link to this page
      * at route name `filament.{panel}.pages.dashboard`.
      */
-    public static function getSlug(?Panel  = null): string
+    public static function getSlug(?Panel $panel = null): string
     {
-        unset();
+        unset($panel);
 
         return 'dashboard';
     }
@@ -66,14 +66,11 @@ class MainDashboard extends XotBaseDashboard
     /**
      * Ottiene i widget da visualizzare nella dashboard.
      *
-     * @return array<int, string>
+     * @return array<string, mixed>
      */
     public function getWidgets(): array
     {
-        return [
-            // Widget per mostrare i moduli disponibili
-            // Modules\Xot\Filament\Widgets\ModulesOverviewWidget::class,
-        ];
+        return [];
     }
 
     /**

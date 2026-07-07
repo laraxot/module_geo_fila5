@@ -389,7 +389,7 @@ class CompilaIndennitaResponsabilita extends XotBasePage
      *
      * @throws ValidationException
      */
-    protected function ensureMinimumPositiveRatings(array<string, mixed> $state): void
+    protected function ensureMinimumPositiveRatings(array $state): void
     {
         /** @var Collection<int, Rating> $editableRatings */
         $editableRatings = $this->getRatingsForYear()->where('is_readonly', false);

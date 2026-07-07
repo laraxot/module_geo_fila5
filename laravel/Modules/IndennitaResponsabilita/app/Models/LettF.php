@@ -300,7 +300,7 @@ class LettF extends BaseScheda
     /**
      * @param  array<string, mixed>  $data
      */
-    public function validate(array<string, mixed> $data): void
+    public function validate(array $data): void
     {
         $validator = Validator::make($data, $this->rules, $this->messages);
         $validator->validate();

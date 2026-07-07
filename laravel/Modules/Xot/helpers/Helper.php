@@ -57,7 +57,7 @@ if (! function_exists('dddx')) {
 
 if (! function_exists('in_admin')) {
     /** @param array<string, mixed> $params */
-    function in_admin(array $params = []): bool
+    function in_admin(array<string, mixed> $params = []): bool
     {
         return inAdmin($params);
     }
@@ -65,7 +65,7 @@ if (! function_exists('in_admin')) {
 
 if (! function_exists('inAdmin')) {
     /** @param array<string, mixed> $params */
-    function inAdmin(array $params = []): bool
+    function inAdmin(array<string, mixed> $params = []): bool
     {
         if (isset($params['in_admin'])) {
             return (bool) $params['in_admin'];

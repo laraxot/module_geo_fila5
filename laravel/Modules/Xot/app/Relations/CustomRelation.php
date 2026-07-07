@@ -67,7 +67,7 @@ class CustomRelation extends Relation
     /**
      * @param array $models
      */
-    public function addEagerConstraints(array $models): void
+    public function addEagerConstraints(array<string, mixed> $models): void
     {
         // Parameter #1 $function of function call_user_func expects callable(): mixed, Closure|null given.
         if (! \is_callable($this->eagerConstraints)) {
@@ -85,7 +85,7 @@ class CustomRelation extends Relation
      *
      * @return array<int, Model>
      */
-    public function initRelation(array $models, mixed $relation): array
+    public function initRelation(array<string, mixed> $models, mixed $relation): array
     {
         foreach ($models as $model) {
             $model->setRelation($relation, $this->related->newCollection());
@@ -105,7 +105,7 @@ class CustomRelation extends Relation
      *
      * @return array<int, Model>
      */
-    public function match(array $models, Collection $collection, mixed $relation): array
+    public function match(array<string, mixed> $models, Collection $collection, mixed $relation): array
     {
         // Trying to invoke Closure|null but it might not be a callable.
         if (! \is_callable($this->eagerMatcher)) {
