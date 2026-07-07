@@ -147,7 +147,7 @@ class CompilaCondizioniLavoro extends XotBaseResourcePage
         return [];
     }
 
-    private function mutateFormDataBeforeFill(array $data): array
+    private function mutateFormDataBeforeFill(array<string, mixed> $data): array
     {
         return $data;
     }

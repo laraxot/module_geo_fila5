@@ -11,7 +11,7 @@ class CreateUpload extends CreateRecord
 {
     protected static string $resource = UploadResource::class;
 
-    protected function mutateFormDataBeforeCreate(array $data): array
+    protected function mutateFormDataBeforeCreate(array<string, mixed> $data): array
     {
         $data['user_id'] = auth()->id();
 

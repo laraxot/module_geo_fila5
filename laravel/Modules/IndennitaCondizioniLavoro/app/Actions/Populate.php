@@ -20,7 +20,7 @@ class Populate
      *
      * @param  array{anno:int|string, quadrimestre:int|string}  $data
      */
-    public function execute(array $data): void
+    public function execute(array<string, mixed> $data): void
     {
         if (! isset($data['anno'], $data['quadrimestre'])) {
             throw new InvalidArgumentException('Parametri anno/quadrimestre mancanti.');
