@@ -9,6 +9,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use Illuminate\Support\Facades\Auth;
+use Modules\Xot\Contracts\PanelContract;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -25,9 +26,8 @@ class GetPanelsNavigationItems
     public function execute(): array
     {
         $navs = [];
-
         foreach (Filament::getPanels() as $panel) {
-            /** @var Panel&object{getNavigationIcon(): string, getNavigationLabel(): string, getNavigationSort(): int} $panel */
+            /** @var Panel&PanelContract $panel */
             $navs[] = NavigationItem::make($panel->getId())
                 ->url('/'.$panel->getPath())
                 ->icon($panel->getNavigationIcon())

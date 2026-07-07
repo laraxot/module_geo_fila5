@@ -20,30 +20,20 @@ parameters:
 
     ignoreErrors:
         # - '#Static call to instance method Nwidart#'
-        - '#is used zero times and is not analysed#'
+        # - '#is used zero times and is not analysed#'
         # - "#^Unsafe usage of new static#"
         - '#Cannot cast mixed to (string|float|double|int|bool|boolean).#' # Ignora errori di cast da mixed a tipi specifici
-        - identifier: missingType.generics
-        - identifier: missingType.iterableValue
+        # - identifier: missingType.generics
+        # - identifier: missingType.iterableValue
         - identifier: larastan.noEnvCallsOutsideOfConfig 
         # - identifier: method.unused
 
     excludePaths:
-        - ./*/lang/*
-        - ./*/database/*
-        - ./*/resources/*
-        - ./*/bashscripts/*
-        - ./*/scripts/*
-        - ./*/routes/*
-        - ./*/tools/*
-        - ./*/workbench/*
-        - ./*/extras/*
 
         - ./*/vendor/*
-        - ./*/tests/*
         - ./*/build/*
         - ./*/docs/*
-        - ./*/Main_files/*
+
         - ./*/phpinsights.php
         - ./*/rector.php
         - ./*/*.blade.php
@@ -95,7 +85,7 @@ parameters:
         - ./Modules/Xot/helpers/Helper.php
 
     stubFiles:
-        - ./Modules/Xot/stubs/filament-panel.stub
+        # - ./Modules/Xot/stubs/filament-panel.stub
 
     mixinExcludeClasses:
         - ./Modules/Badge/Models
@@ -110,5 +100,5 @@ parameters:
     checkUnusedViews: false
     checkModelProperties: false
     treatPhpDocTypesAsCertain: false
-    reportUnmatchedIgnoredErrors: false
+    # reportUnmatchedIgnoredErrors: false
     checkOctaneCompatibility: false

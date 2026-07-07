@@ -2,120 +2,118 @@
 
 declare(strict_types=1);
 
+/**
+ * Base provider for the Xot main panel in Filament.
+ *
+ * This class is extended by AdminPanelProvider and other panel providers
+ * specific to the Xot modules.
+ */
+
 namespace Modules\Xot\Providers\Filament;
 
-use Filament\Http\Middleware\Authenticate;
-use Filament\Http\Middleware\DisableBladeIconComponents;
-use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Navigation\MenuItem;
 use Filament\Panel;
 use Filament\PanelProvider;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
-use Illuminate\Cookie\Middleware\EncryptCookies;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\Session\Middleware\AuthenticateSession;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Modules\User\Filament\Pages\MyProfilePage;
-use Modules\Xot\Actions\Filament\GetModulesNavigationItems;
-use Modules\Xot\Actions\Filament\GetPanelsNavigationItems;
-use Modules\Xot\Actions\Panel\ApplyMetatagToPanelAction;
-use Modules\Xot\Filament\Pages\MainDashboard;
 
 abstract class XotBaseMainPanelProvider extends PanelProvider
 {
-    protected bool $topNavigation = false;
-
-    public function panel(Panel $panel): Panel
+    /**
+     * Get the panels that this provider should register.
+     *
+     * @return array<int, Panel>
+     */
+    public function getPanels(): array
     {
-        $panel->id('admin')
-            ->path('admin');
+        return [];
+    }
 
-        $modules = app('modules');
-        $hasCms = is_object($modules) && method_exists($modules, 'has')
-            ? (bool) $modules->has('Cms')
-            : false;
+    /**
+     * Get the resources that this provider should register.
+     *
+     * @return array<string, class-string>
+     */
+    public function getResources(): array
+    {
+        return [];
+    }
 
-        if (! $hasCms) {
-            // $panel->login(Login::class);
-            $panel->login();
-        }
+    /**
+     * Get the Filament resources (icons, css, scripts) that this provider should register.
+     *
+     * */
+    public function getResourcesPath(): string
+    {
+        return '';
+    }
 
-        $panel = $panel
-            ->passwordReset()
-            ->sidebarFullyCollapsibleOnDesktop()
-            ->spa()
-            ->profile(null, true);
+    /**
+     * Get the URL key for the provider.
+     */
+    public function getUrlKey(): ?string
+    {
+        return null;
+    }
 
-        $panel = app(ApplyMetatagToPanelAction::class)->execute(panel: $panel);
+    /**
+     * Get the navigation groups for the panel.
+     *
+     * @return array<string, array<string, string>>
+     */
+    public function getNavigationGroups(): array
+    {
+        return [];
+    }
 
-        // Discovery sicura: verifica che le directory esistano
-        $resourcesPath = app_path('Filament/Resources');
-        $pagesPath = app_path('Filament/Pages');
-        $widgetsPath = app_path('Filament/Widgets');
+    /**
+     * Get the visible navigation items for the panel.
+     *
+     * @return array<string, array<string, string>>
+     */
+    public function getVisibleNavigationItems(): array
+    {
+        return [];
+    }
 
-        if (is_dir($resourcesPath)) {
-            $panel = $panel->discoverResources(
-                in: $resourcesPath,
-                for: 'App\\Filament\\Resources',
-            );
-        }
+    /**
+     * Get the breadcrumbs for the panel.
+     *
+     * @return array<string, array<string, string>>
+     */
+    public function getBreadcrumbs(): array
+    {
+        return [];
+    }
 
-        if (is_dir($pagesPath)) {
-            $panel = $panel->discoverPages(
-                in: $pagesPath,
-                for: 'App\\Filament\\Pages',
-            );
-        }
+    /**
+     * Get the logo for the panel.
+     *
+     * @return array<string, string>
+     */
+    public function getLogo(): array
+    {
+        return [];
+    }
 
-        $panel = $panel->pages([
-            MainDashboard::class,
-            MyProfilePage::class,
-        ]);
+    /**
+     * Get the title of the panel.
+     */
+    public function getTitle(): string
+    {
+        return 'Xot Panel';
+    }
 
-        if (is_dir($widgetsPath)) {
-            $panel = $panel->discoverWidgets(
-                in: $widgetsPath,
-                for: 'App\\Filament\\Widgets',
-            );
-        }
-        $panel = $panel
-            ->widgets([
-                // Widgets\AccountWidget::class,
-            ])
-            ->middleware([
-                EncryptCookies::class,
-                AddQueuedCookiesToResponse::class,
-                StartSession::class,
-                AuthenticateSession::class,
-                ShareErrorsFromSession::class,
-                VerifyCsrfToken::class,
-                SubstituteBindings::class,
-                DisableBladeIconComponents::class,
-                DispatchServingFilamentEvent::class,
-            ])
-            ->authMiddleware([
-                Authenticate::class,
-            ]);
-        $navs = app(GetPanelsNavigationItems::class)->execute();
-        
-        $panel->navigationItems($navs);
+    /**
+     * Get the icon of the panel.
+     */
+    public function getIcon(): ?string
+    {
+        return 'heroicon-m-rectangle-stack';
+    }
 
-        // Temporaneamente disabilitato per debug tenancy
-        // $profile_url = MyProfilePage::getUrl(panel: $panel->getId());
-        $profile_url = '#';
-
-        $profileLabelRaw = __('user::default.profile.my_profile');
-        $profileLabel = is_string($profileLabelRaw) ? $profileLabelRaw : null;
-
-        $panel->userMenuItems([
-            MenuItem::make()
-                ->label($profileLabel)
-                ->url($profile_url)
-                ->icon('heroicon-o-user'),
-        ]);
-
-        return $panel;
+    /**
+     * Get the color of the panel.
+     */
+    public function getColor(): ?string
+    {
+        return 'primary';
     }
 }

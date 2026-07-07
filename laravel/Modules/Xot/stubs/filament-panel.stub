@@ -2,8 +2,6 @@
 
 namespace Filament;
 
-use Nwidart\Modules\Laravel\Module as NwidartModule;
-
 /**
  * Stub per PHPStan per i metodi aggiunti da PanelMixin.
  * Questi metodi vengono iniettati a runtime e non sono visibili nell'analisi statica.
@@ -11,66 +9,13 @@ use Nwidart\Modules\Laravel\Module as NwidartModule;
  */
 class Panel
 {
-    /**
-     * Estrae il nome del modulo dal panel ID.
-     *
-     * @return string Nome del modulo
-     */
-    public function getName(): string {}
+    public function getNavigationLabel(): string { return '; }
 
-    /**
-     * Restituisce l'istanza del modulo Nwidart sottostante.
-     *
-     * @return NwidartModule Istanza del modulo
-     */
-    public function getModule(): NwidartModule {}
+    public function getNavigationIcon(): string { return '; }
 
-    /**
-     * Restituisce l'array di configurazione Laravel per il modulo.
-     *
-     * @return array<string, mixed>
-     */
-    public function getConfig(): array {}
+    public function getNavigationSort(): int { return 0; }
 
-    /**
-     * Restituisce l'array di configurazione dal file config del modulo.
-     *
-     * @return array<string, mixed>
-     */
-    public function getModuleConfig(): array {}
+    public function getId(): string { return '; }
 
-    /**
-     * Restituisce l'etichetta di navigazione del panel dal config.
-     *
-     * @return string Etichetta da mostrare nella navigazione
-     */
-    public function getNavigationLabel(): string {}
-
-    /**
-     * Restituisce l'icona di navigazione del panel dal config.
-     *
-     * @return string Nome dell'icona Heroicon
-     */
-    public function getNavigationIcon(): string {}
-
-    /**
-     * Restituisce l'ordine di visualizzazione del panel nella navigazione.
-     *
-     * @return int Valore di ordinamento (sort)
-     */
-    public function getNavigationSort(): int {}
-
-    /**
-     * Restituisce l'ID univoco del panel.
-     *
-     * @return string ID del panel
-     */
-    public function getId(): string {}
-
-    /**
-     * Restituisce il percorso URL del panel.
-     *
-     * @return string Percorso URL
-     */
-    public function getPath(): string {}
+    public function getPath(): string { return '; }
 }
