@@ -263,7 +263,7 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\IndennitaCondizioniLavoro\Models\ServizioEsterno, $this>
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Illuminate\Database\Eloquent\Model, $this>
      */
     public function trasferte(): HasMany
     {
@@ -272,6 +272,7 @@ class ServizioEsterno extends BaseModel implements DateRangeFieldsContract, Ente
             return $this->hasMany(self::class, 'id', 'id')->whereRaw('1=0');
         }
 
+        /** @var class-string<\Illuminate\Database\Eloquent\Model> $relatedClass */
         return $this->hasMany($relatedClass, 'matr', 'matr')
             ->where('ente', $this->ente);
     }
