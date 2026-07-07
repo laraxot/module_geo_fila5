@@ -42,7 +42,7 @@ trait HasRatingsTrait
     /**
      * Get ratings for this model.
      *
-     * @return MorphToMany<Rating, $this>
+     * @return MorphToMany<Rating, static>
      */
     public function ratings(): MorphToMany
     {
