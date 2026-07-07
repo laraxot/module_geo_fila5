@@ -22,6 +22,9 @@ use function Safe\date;
  */
 trait RelationshipTrait
 {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita, $this>
+     */
     public function mails(): HasMany
     {
         $stabi = request()->input('stabi', '');
@@ -45,19 +48,27 @@ trait RelationshipTrait
         // ->where('ha_diritto',1)
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\IndennitaResponsabilita\Models\Message, $this>
+     */
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class, 'anno', 'anno');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\IndennitaResponsabilita\Models\MyLog, $this>
+     */
     public function mailInviate(): HasMany
     {
         return $this->hasMany(MyLog::class, 'id_tbl', 'id')
             ->where('tbl', $this->getTable())
             ->where('note', 'sendMail');
     }
-    
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\IndennitaResponsabilita\Models\ImportiCategoria, $this>
+     */
     public function importi(): HasOne
     {
         $anno = $this->anno ?? date('Y');
@@ -68,6 +79,9 @@ trait RelationshipTrait
             ->whereRaw('find_in_set(?, lista_propro)', [(string) $propro]);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\Progressioni\Models\CategoriaPropro, $this>
+     */
     public function categoriaPropro(): HasOne
     {
         $anno = $this->anno ?? date('Y');

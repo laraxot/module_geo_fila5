@@ -18,6 +18,7 @@ use Modules\Xot\Actions\GetViewAction;
 
 class Edit extends Component
 {
+    /** @var array<string, mixed> */
     public array $form_data;
 
     public string $date_format = 'd/m/Y';
@@ -146,13 +147,11 @@ class Edit extends Component
             return 0;
         }
 
-        // @phpstan-ignore-next-line
         $dalRaw = Carbon::createFromFormat($this->date_format, $dalfStr);
         if (! ($dalRaw instanceof Carbon)) {
             return 0;
         }
         $dal = $dalRaw;
-        // @phpstan-ignore-next-line
         $alRaw = Carbon::createFromFormat($this->date_format, $alfStr);
         if (! ($alRaw instanceof Carbon)) {
             return 0;

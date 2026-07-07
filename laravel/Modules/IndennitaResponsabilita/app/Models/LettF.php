@@ -316,6 +316,9 @@ class LettF extends BaseScheda
     }
     */
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\IndennitaResponsabilita\Models\StabiDirigente, $this>
+     */
     public function stabiDirigente(): HasOne
     {
         /** @var int|string|null $repar */
@@ -333,6 +336,9 @@ class LettF extends BaseScheda
         return $query;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\IndennitaResponsabilita\Models\MyLog, $this>
+     */
     public function mailInviate(): HasMany
     {
         return $this->hasMany(MyLog::class, 'id_tbl', 'id')
@@ -340,6 +346,9 @@ class LettF extends BaseScheda
             ->where('note', 'sendMailLettF');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\Sigma\Models\Rep00f, $this>
+     */
     public function rep00fByAnno(): HasMany
     {
         /** @var int|null $anno */
@@ -409,7 +418,6 @@ class LettF extends BaseScheda
     public function setDalfAttribute($value): void
     {
         if (\is_string($value)) {
-            // @phpstan-ignore-next-line
             $value = Carbon::createFromFormat('d/m/Y', $value);
             if (! ($value instanceof Carbon)) {
                 return;
@@ -424,7 +432,6 @@ class LettF extends BaseScheda
     public function setAlfAttribute($value): void
     {
         if (\is_string($value)) {
-            // @phpstan-ignore-next-line
             $value = Carbon::createFromFormat('d/m/Y', $value);
             if (! ($value instanceof Carbon)) {
                 return;

@@ -355,6 +355,7 @@ class LettI extends BaseScheda
 
     protected $appends = ['dali__ali'];
 
+    /** @var list<string> */
     public array $xls_fields = ['ente', 'matr', 'cognome', 'nome', 'email', 'propro', 'posfun',
         'categoria_eco', 'dal', 'al', 'archivista_informatico', 'relazioni_pubblico',
         'protezione_civile', 'formatore_professionale', ];
@@ -391,6 +392,9 @@ class LettI extends BaseScheda
         return $this->hasOne(Anag::class, 'matr', 'matr')->where('ente', $this->ente);
     }
     */
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<\Modules\IndennitaResponsabilita\Models\StabiDirigente, $this>
+     */
     public function stabiDirigente(): HasOne
     {
         return $this->hasOne(StabiDirigente::class, 'stabi', 'stabi')
@@ -399,6 +403,9 @@ class LettI extends BaseScheda
     }
 
     // -------------------------------------------------------------------------------------
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\Modules\IndennitaResponsabilita\Models\MyLog, $this>
+     */
     public function mailInviate(): HasMany
     {
         return $this->hasMany(MyLog::class, 'id_tbl', 'id')->where('tbl', $this->getTable())->where('note', 'sendMailLettI');
@@ -478,7 +485,6 @@ class LettI extends BaseScheda
     public function setDaliAttribute($value): void
     {
         if (\is_string($value)) {
-            // @phpstan-ignore-next-line
             $value = Carbon::createFromFormat('d/m/Y', $value);
             if (! ($value instanceof Carbon)) {
                 return;
@@ -527,7 +533,6 @@ class LettI extends BaseScheda
     public function setAliAttribute($value): void
     {
         if (\is_string($value)) {
-            // @phpstan-ignore-next-line
             $value = Carbon::createFromFormat('d/m/Y', $value);
             if (! ($value instanceof Carbon)) {
                 return;
@@ -566,11 +571,11 @@ class LettI extends BaseScheda
     // ---------------------------------------
     // --------- functions ---------
     /**
-     * @param  array  $params
+     * @param  array<string, mixed>  $params
      */
     public static function updateFields(array $params = []): void
     {
-        $routeParams = getRouteParameters();
+        $routeParams = self::getRouteParameters();
         $params = array_merge($routeParams, $params);
         /** @var int|string|null $annoRaw */
         $annoRaw = $params['anno'] ?? date('Y');
