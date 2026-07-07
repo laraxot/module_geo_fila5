@@ -76,7 +76,7 @@ class C030Service implements AnprServiceInterface
      * Cerca per dati anagrafici completi
      */
     #[Override]
-    public function cercaPerDatiAnagrafici(array<string, mixed> $datiPersona): array
+    public function cercaPerDatiAnagrafici(array $datiPersona): array
     {
         $criteriRicerca = TipoCriteriRicercaE002::fromArray($datiPersona);
         $richiesta = new RichiestaE002(
@@ -191,10 +191,10 @@ class C030Service implements AnprServiceInterface
     /**
      * Processa la risposta E002 secondo la specifica OpenAPI
      *
-     * @param  array<string, mixed>  $response
+     * @param  array  $response
      * @return array<string, mixed>
      */
-    private function processE002Response(array<string, mixed> $response, RichiestaE002 $richiesta): array
+    private function processE002Response(array $response, RichiestaE002 $richiesta): array
     {
         // dddx($response);
         if ($response['body'] === null) {
@@ -217,7 +217,7 @@ class C030Service implements AnprServiceInterface
      *
      * @return array<string, mixed>
      */
-    private function processSuccessResponse(array<string, mixed> $response, RichiestaE002 $richiesta): array
+    private function processSuccessResponse(array $response, RichiestaE002 $richiesta): array
     {
         $rispostaOK = RispostaE002OK::fromArray($response);
 
@@ -238,7 +238,7 @@ class C030Service implements AnprServiceInterface
      *
      * @return array<string, mixed>
      */
-    private function processErrorResponse(array<string, mixed> $response, RichiestaE002 $richiesta): array
+    private function processErrorResponse(array $response, RichiestaE002 $richiesta): array
     {
         $rispostaKO = RispostaKO::fromArray($response);
 
@@ -256,7 +256,7 @@ class C030Service implements AnprServiceInterface
     /**
      * Determina se la risposta è di successo
      */
-    private function isSuccessResponse(array<string, mixed> $response): bool
+    private function isSuccessResponse(array $response): bool
     {
         // Presenza di listaSoggetti indica successo
         if (isset($response['listaSoggetti'])) {
@@ -298,7 +298,7 @@ class C030Service implements AnprServiceInterface
     /**
      * Estrae i dati delle anomalie
      */
-    private function extractAnomalieData(array<string, mixed> $listaAnomalie): array
+    private function extractAnomalieData(array $listaAnomalie): array
     {
         return array_map(static fn ($anomalia) => TipoErroriAnomalia::fromArray((array) $anomalia)->toArray(), $listaAnomalie);
     }
@@ -306,7 +306,7 @@ class C030Service implements AnprServiceInterface
     /**
      * Estrae i dati degli errori
      */
-    private function extractErroriData(array<string, mixed> $listaErrori): array
+    private function extractErroriData(array $listaErrori): array
     {
         return array_map(static function ($errore) {
             if ($errore instanceof TipoErroriAnomalia) {

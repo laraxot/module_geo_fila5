@@ -12,7 +12,7 @@ class RispostaE002OK
     use HasArrayConversion;
 
     /**
-     * @param  array<int, TipoErroriAnomalia>|null  $listaAnomalie
+     * @param  array|null  $listaAnomalie
      */
     public function __construct(
         public readonly ?string $idOperazioneANPR = null,

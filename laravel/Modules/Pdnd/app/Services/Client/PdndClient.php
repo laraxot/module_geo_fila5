@@ -143,9 +143,9 @@ class PdndClient
     }
 
     /**
-     * @param  array<string, mixed>  $filters
+     * @param  array  $filters
      */
-    public function setFilters(array<string, mixed> $filters): void
+    public function setFilters(array $filters): void
     {
         $this->filters = $filters;
     }
@@ -532,7 +532,7 @@ class PdndClient
     }
 
     /**
-     * @param  array<string, mixed>  $bodyArray
+     * @param  array  $bodyArray
      * @return array<string, mixed>
      */
     public function postApi(string $token, array $bodyArray): array

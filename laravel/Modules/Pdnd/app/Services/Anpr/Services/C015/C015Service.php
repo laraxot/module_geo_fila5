@@ -84,7 +84,7 @@ class C015Service
     /**
      * Metodo di convenienza - Accertamento con dati anagrafici
      */
-    public function accertamentoPerDatiAnagrafici(array<string, mixed> $datiPersona, ?string $motivoRichiesta = null): array
+    public function accertamentoPerDatiAnagrafici(array $datiPersona, ?string $motivoRichiesta = null): array
     {
         $criteri = TipoCriteriRicercaE002::fromArray($datiPersona);
 
@@ -123,7 +123,7 @@ class C015Service
 
     // ==================== PROCESSAMENTO RISPOSTA ====================
 
-    private function processE002Response(array<string, mixed> $response, RichiestaE002 $richiesta): array
+    private function processE002Response(array $response, RichiestaE002 $richiesta): array
     {
         $bodyRaw = $response['body'] ?? '{}';
         if (! is_string($bodyRaw)) {
@@ -140,12 +140,12 @@ class C015Service
         return $this->processErrorResponse($responseArray, $richiesta);
     }
 
-    private function isSuccessResponse(array<string, mixed> $response): bool
+    private function isSuccessResponse(array $response): bool
     {
         return isset($response['listaSoggetti']);
     }
 
-    private function processSuccessResponse(array<string, mixed> $response, RichiestaE002 $richiesta): array
+    private function processSuccessResponse(array $response, RichiestaE002 $richiesta): array
     {
         $rispostaOK = RispostaE002OK::fromArray($response);
 
@@ -161,7 +161,7 @@ class C015Service
         ];
     }
 
-    private function processErrorResponse(array<string, mixed> $response, RichiestaE002 $richiesta): array
+    private function processErrorResponse(array $response, RichiestaE002 $richiesta): array
     {
         $rispostaKO = RispostaKO::fromArray($response);
 
@@ -199,10 +199,10 @@ class C015Service
     }
 
     /**
-     * @param  array<int, TipoInfoSoggettoEnte>  $items
+     * @param  array  $items
      * @return array<int, array<string, string|null>>
      */
-    private function extractInfoSoggettoEnte(array<string, mixed> $items): array
+    private function extractInfoSoggettoEnte(array $items): array
     {
         return array_map(static fn (TipoInfoSoggettoEnte $item): array => [
             'chiave' => $item->chiave,
@@ -212,7 +212,7 @@ class C015Service
         ], $items);
     }
 
-    private function extractAnomalieData(array<string, mixed> $lista): array
+    private function extractAnomalieData(array $lista): array
     {
         return array_map(
             static fn($a) => $a instanceof TipoErroriAnomalia 
@@ -222,7 +222,7 @@ class C015Service
         );
     }
 
-    private function extractErroriData(array<string, mixed> $lista): array
+    private function extractErroriData(array $lista): array
     {
         return $this->extractAnomalieData($lista);
     }

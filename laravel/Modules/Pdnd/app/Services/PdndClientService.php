@@ -110,7 +110,7 @@ class PdndClientService
      *
      * @return array<string, mixed>
      */
-    public function callApi(array<string, mixed> $bodyArray = [], string $endpoint = ''): array
+    public function callApi(array $bodyArray = [], string $endpoint = ''): array
     {
         try {
             // ottenimento nuovo ACCESS TOKEN
@@ -155,7 +155,7 @@ class PdndClientService
      *
      * @return array<string, mixed>
      */
-    public function callApiService(array<string, mixed> $bodyArray = []): array
+    public function callApiService(array $bodyArray = []): array
     {
         try {
             // ottenimento nuovo ACCESS TOKEN

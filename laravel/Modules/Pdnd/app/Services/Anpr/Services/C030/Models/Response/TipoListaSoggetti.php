@@ -11,7 +11,7 @@ class TipoListaSoggetti
     use HasArrayConversion;
 
     /**
-     * @param  array<int, TipoDatiSoggettiEnte>|null  $datiSoggetto
+     * @param  array|null  $datiSoggetto
      */
     public function __construct(
         /** @var array<int, TipoDatiSoggettiEnte>|null */

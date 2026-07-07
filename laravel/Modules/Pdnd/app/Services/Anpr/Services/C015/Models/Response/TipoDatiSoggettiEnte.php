@@ -9,7 +9,7 @@ use Modules\Pdnd\Services\Anpr\Services\C015\Models\Common\TipoGeneralita;
 class TipoDatiSoggettiEnte
 {
     /**
-     * @param  array<int, TipoInfoSoggettoEnte>|null  $infoSoggettoEnte
+     * @param  array|null  $infoSoggettoEnte
      */
     public function __construct(
         public readonly ?TipoGeneralita $generalita = null,

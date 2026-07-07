@@ -10,7 +10,7 @@ use Modules\Pdnd\Services\Anpr\Shared\Models\Common\TipoErroriAnomalia;
 class RispostaE002OK
 {
     /**
-     * @param  array<int, TipoErroriAnomalia>|null  $listaAnomalie
+     * @param  array|null  $listaAnomalie
      */
     public function __construct(
         public readonly ?string $idOperazioneANPR = null,

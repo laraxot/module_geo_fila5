@@ -7,7 +7,7 @@ namespace Modules\Pdnd\Services\Anpr\Services\C003\Models\Response;
 class TipoDatiSoggettiEnte
 {
     /**
-     * @param  array<int, TipoInfoSoggettoEnte>|null  $infoSoggettoEnte
+     * @param  array|null  $infoSoggettoEnte
      */
     public function __construct(
         /** @var array<int, TipoInfoSoggettoEnte>|null */
