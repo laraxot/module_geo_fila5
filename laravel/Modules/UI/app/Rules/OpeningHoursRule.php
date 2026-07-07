@@ -64,7 +64,7 @@ class OpeningHoursRule implements ValidationRule
     /**
      * @param array<string, mixed> $dayHours
      */
-    private function validateDayLogic(array<string, mixed> $dayHours, string $dayLabel, \Closure $fail): void
+    private function validateDayLogic(array $dayHours, string $dayLabel, \Closure $fail): void
     {
         $morningTo = $this->cleanTimeValue($dayHours['morning_to'] ?? null);
         $afternoonFrom = $this->cleanTimeValue($dayHours['afternoon_from'] ?? null);
@@ -83,7 +83,7 @@ class OpeningHoursRule implements ValidationRule
     /**
      * @param array<string, mixed> $dayHours
      */
-    private function validateSession(array<string, mixed> $dayHours, string $session, string $dayLabel, \Closure $fail): void
+    private function validateSession(array $dayHours, string $session, string $dayLabel, \Closure $fail): void
     {
         $fromKey = "{$session}_from";
         $toKey = "{$session}_to";

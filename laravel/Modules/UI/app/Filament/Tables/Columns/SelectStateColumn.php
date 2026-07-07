@@ -103,7 +103,7 @@ class SelectStateColumn extends SelectColumn
      *
      * @return array<int|string, string>
      */
-    private function combineStateOptions(array<string, mixed> $states): array
+    private function combineStateOptions(array $states): array
     {
         $statesKeys = array_map(
             static fn ($key) => SafeStringCastAction::cast($key),

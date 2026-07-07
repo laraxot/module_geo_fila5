@@ -93,7 +93,7 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
      *
      * @return array<Column|ColumnGroup|Component>
      */
-    public function getTableColumns(array<string, mixed> $listColumns, array $gridColumns): array
+    public function getTableColumns(array $listColumns, array $gridColumns): array
     {
         return $this->isGridLayout() ? $gridColumns : $listColumns;
     }

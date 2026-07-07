@@ -14,7 +14,7 @@ final class ResolveLocalizedBlockDataAction
      *
      * @return array<string, mixed>
      */
-    public function execute(array<string, mixed> $viewParams): array
+    public function execute(array $viewParams): array
     {
         $cmsAction = 'Modules\Cms\Actions\ResolveLocalizedBlockDataAction';
 
