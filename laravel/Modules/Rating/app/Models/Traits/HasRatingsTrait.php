@@ -80,9 +80,9 @@ trait HasRatingsTrait
     /**
      * Scope a query to only include popular users.
      *
-     * @param Builder<$this> $query
+     * @param Builder<static> $query
      *
-     * @return Builder<$this>
+     * @return Builder<static>
      */
     public function scopeWithRating(Builder $query): Builder
     {
@@ -97,7 +97,7 @@ trait HasRatingsTrait
     /**
      * Get my ratings for this model.
      *
-     * @return MorphToMany<Rating, $this>
+     * @return MorphToMany<Rating, static>
      */
     public function myRatings(): MorphToMany
     {
