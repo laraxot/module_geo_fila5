@@ -46,10 +46,10 @@ use Laravel\Passport\Token as PassportToken;
  * @method static Builder<static>|OauthAccessToken                               whereDeletedAt($value)
  * @method static Builder<static>|OauthAccessToken                               whereDeletedBy($value)
  * @method static Builder<static>|OauthAccessToken                               whereUpdatedBy($value)
- * @method static static                                                         create(array<string, mixed> $attributes = [])
- * @method static static                                                         firstOrCreate(array<string, mixed> $attributes, array<string, mixed> $values = [])
- * @method static static                                                         updateOrCreate(array<string, mixed> $attributes, array<string, mixed> $values = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|OauthAccessToken existsIn(array<int, mixed> $haystack)
+ * @method static static                                                         create(array $attributes = [])
+ * @method static static                                                         firstOrCreate(array $attributes, array $values = [])
+ * @method static static                                                         updateOrCreate(array $attributes, array $values = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|OauthAccessToken existsIn(array $haystack)
  *
  * @mixin \Eloquent
  */

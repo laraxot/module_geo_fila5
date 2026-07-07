@@ -23,7 +23,7 @@ class EditUser extends XotBaseEditRecord
 {
     protected static string $resource = UserResource::class;
 
-    protected function mutateFormDataBeforeSave(array<string, mixed> $data): array
+    protected function mutateFormDataBeforeSave(array $data): array
     {
         // PHPStan Level 10: $data is already typed as array, no need for assertion
         if (! array_key_exists('new_password', $data) || ! filled($data['new_password'])) {

@@ -65,7 +65,7 @@ class ModelHasRole extends BaseMorphPivot
      *
      * @return void
      */
-    public function __construct(array<string, mixed> $attributes = [])
+    public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
         $table = config('permission.table_names.model_has_roles', 'model_has_role');

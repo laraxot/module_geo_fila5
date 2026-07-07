@@ -57,7 +57,7 @@ class MockUserWithTeams extends Model
     }
 
     /**
-     * @param string|int|array<int, string>|Role|\BackedEnum $roles
+     * @param string|int|array|Role|\BackedEnum $roles
      */
     public function hasRole($roles, ?string $guard = null): bool
     {

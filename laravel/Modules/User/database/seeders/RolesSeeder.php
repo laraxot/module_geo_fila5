@@ -49,7 +49,7 @@ final class RolesSeeder extends Seeder
      *
      * @param array<int, Role> $roles
      */
-    private function displayResults(array<string, mixed> $roles): void
+    private function displayResults(array $roles): void
     {
         $command = $this->getConsoleCommand();
         $command->info('Roles seeded successfully:');
