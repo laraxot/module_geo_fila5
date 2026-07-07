@@ -9,17 +9,17 @@ use Illuminate\Database\Eloquent\Builder;
 interface StabiDirigenteContract
 {
     /**
-     * @param  array<string, mixed>  $attributes
+     * @param  array  $attributes
      */
     public static function firstOrCreate(array $attributes): self;
 
     /**
-     * @param  array<string, mixed>  $attributes
+     * @param  array  $attributes
      */
-    public function update(array<string, mixed> $attributes): bool;
+    public function update(array $attributes): bool;
 
     /**
-     * @param  array<string, mixed>  $conditions
+     * @param  array  $conditions
      */
-    public function where(array<string, mixed> $conditions): Builder;
+    public function where(array $conditions): Builder;
 }

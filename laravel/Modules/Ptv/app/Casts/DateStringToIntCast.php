@@ -25,7 +25,7 @@ class DateStringToIntCast implements Cast
      * Converte il valore in un intero nel formato YYYYMMDD.
      *
      * @param  mixed  $value  Valore da convertire (stringa data, intero, o null)
-     * @param  array<string, mixed>  $properties
+     * @param  array  $properties
      * @return int|null|Uncastable Intero nel formato YYYYMMDD, null, o Uncastable se non può essere convertito
      */
     public function cast(DataProperty $property, mixed $value, array $properties, CreationContext $context): mixed

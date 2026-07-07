@@ -72,7 +72,7 @@ class RepartoColumn extends GroupColumn
     /**
      * Append additional columns to the department schema.
      */
-    public function appendColumns(array<string, mixed> $columns): static
+    public function appendColumns(array $columns): static
     {
         $this->extraColumns = array_merge($this->extraColumns, $columns);
 

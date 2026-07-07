@@ -122,7 +122,7 @@ class FirmaStabiReparWidget extends XotBaseWidget
     }
 
     /**
-     * @param  array<string, mixed>|null  $filters
+     * @param  array|null  $filters
      */
     #[On('filters-updated')]
     public function filtersUpdated(?array $filters = []): void

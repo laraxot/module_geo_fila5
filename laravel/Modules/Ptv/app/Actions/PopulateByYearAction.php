@@ -135,10 +135,10 @@ class PopulateByYearAction
     }
 
     /**
-     * @param  array<string, mixed>  $left
-     * @param  array<string, mixed>  $right
+     * @param  array  $left
+     * @param  array  $right
      */
-    private function hasArrayDiff(array<string, mixed> $left, array $right): bool
+    private function hasArrayDiff(array $left, array $right): bool
     {
         foreach ($left as $key => $value) {
             if (! array_key_exists($key, $right)) {
