@@ -561,12 +561,9 @@ class Scheda extends BaseScheda
     /**
      * Validate the model data.
      *
-     * @param  array  $data
-     */
-    /**
      * @param array<string, mixed> $data
      */
-        public function public function validate(array $data): Validator
+    public function validate(array $data): Validator
     {
         $rules = [
             'cognome' => 'required|string|max:50',
@@ -680,13 +677,10 @@ class Scheda extends BaseScheda
     /**
      * Get stabi_dirigente_parz data.
      *
-     * @param  array  $params
+     * @param array<string, mixed> $params
      * @return Collection<int, self>
      */
-    /**
-     * @param array<string, mixed> $params
-     */
-        public function public function stabi_dirigente_parz(array $params): Collection
+    public function stabi_dirigente_parz(array $params): Collection
     {
         $stabi = $params['stabi'] ?? null;
         $repar = $params['repar'] ?? null;
@@ -773,12 +767,9 @@ class Scheda extends BaseScheda
      *
      * Non usare il nome `peso()`: riservato alla relazione HasOne verso `Pesi` (SchedaTrait, CompilaScheda).
      *
-     * @param  array  $params
-     */
-    /**
      * @param array<string, mixed> $params
      */
-        public function public function resolveCoeffPesoFromParams(array $params): int
+    public function resolveCoeffPesoFromParams(array $params): int
     {
         extract($params);
 
@@ -1132,7 +1123,7 @@ class Scheda extends BaseScheda
     /**
      * @param array<string, mixed> $params
      */
-        public function public function ggInSedeTotByArray(array $params): ?int
+    public function ggInSedeTotByArray(array $params): ?int
     {
         $criteri = $this->criteriEsclusione;
         if (! $criteri) {
