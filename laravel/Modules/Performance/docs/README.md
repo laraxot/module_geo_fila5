@@ -17,6 +17,128 @@ related:
 
 Performance evaluation and HR assessment module for the Laraxot ecosystem: employee reviews, KPI tracking, and competency evaluation.
 
+## Quick Start - Usage
+
+### Calculate Performance Score
+
+```php
+use Modules\Performance\Models\PerformanceIndividuale;
+
+// Get individual performance and calculate score
+$perf = PerformanceIndividuale::find($id);
+$score = $perf->getVotoMerito(); // returns normalized score (0-100)
+$category = $perf->getCategoryByScore(); // returns A/B/C/D
+```
+
+### Bulk Update Actions
+
+```php
+use Modules\Performance\Actions\Individuale\UpdateBudgetAction;
+
+// Update budget for all individuals in a year
+$action = app(UpdateBudgetAction::class);
+$action->execute($year, ['allocation' => 100000]);
+```
+
+## Architecture Overview
+
+Performance module evaluates employees and allocates merit bonuses:
+
+**Data Model**:
+```
+PerformanceIndividuale (1 per employee per year)
+    |
+    +---> PerformanceOrganizzativa (1 per dept per year)
+    |
+    +---> FondoPerformance (budget allocation & rules)
+    |
+    +---> Valutatore (evaluator assignment)
+    |
+    v
+Filament Resources (UI for evaluation forms)
+```
+
+**Key Features**:
+- **Individuale**: Single employee rating (0-100)
+- **Organizzativa**: Department pool rating  
+- **STI (STI Pattern)**: Parental relationship filtering (see parental-sti-pattern.md)
+- **Budget Allocation**: Merit-based distribution across organization
+
+**Dependencies**:
+- **Sigma** (reads employee data)
+- **Progressioni** (reads career stage)
+- **User** (evaluator management)
+
+## Key Models & Actions
+
+### Primary Models
+
+| Model | Purpose |
+|-------|---------|
+| `PerformanceIndividuale` | Individual employee performance rating |
+| `PerformanceOrganizzativa` | Department/organization pool rating |
+| `FondoPerformance` | Budget allocation fund & rules |
+| `Valutatore` | Evaluator assignment |
+
+### Key Actions
+
+| Action | Purpose |
+|--------|---------|
+| `Individuale\CheckSumAction` | Calculate checksum for integrity |
+| `Individuale\UpdateAssenze` | Update absence impact on score |
+| `Individuale\UpdateBudgetAction` | Allocate merit budget |
+| `Individuale\UpdateTotValutatore` | Sum evaluator scores |
+| `Organizzativa\CopyValutatoreId` | Copy evaluator to org pool |
+| `HasExcellenceByYearAction` | Check if employee has excellence rating |
+| `MakePdfByRecord` | Generate performance PDF report |
+
+## Common Patterns
+
+### 1. Parental STI Pattern
+
+Filter related records using STI (Single Table Inheritance):
+```php
+// Get performance records for individual's organization
+$perf = PerformanceIndividuale::query()
+    ->whereHas('valutatore', fn($q) => 
+        $q->parentalSti($this->organizzazione)
+    )
+    ->get();
+```
+See: [parental-sti-pattern.md](./parental-sti-pattern.md)
+
+### 2. Checksum Validation
+
+Ensure data integrity across updates:
+```php
+$action = app(CheckSumAction::class);
+$isValid = $action->handle($performance);
+```
+
+### 3. Bulk Update with Queuing
+
+Performance updates run as queued jobs:
+```php
+UpdateBudgetAction::dispatch($year, $payload);
+```
+
+## FAQ
+
+**Q: What's the difference between Individuale and Organizzativa?**
+A: Individuale = individual employee rating. Organizzativa = department-level pool that feeds individual allocations.
+
+**Q: How are evaluators assigned?**
+A: Via Valutatore model with organizational hierarchy. See parental-sti-best-practices.md.
+
+**Q: Can evaluations be modified after submission?**
+A: Yes, through Filament admin UI or actions. Checksum validates integrity.
+
+**Q: What's the FondoPerformance model used for?**
+A: Defines total budget available and allocation rules (percentage per grade, merit factor, etc.)
+
+**Q: How does Performance integrate with Sigma data?**
+A: Reads employee master data (Anagrafica) from Sigma for calculations but never modifies it.
+
 ## Dove iniziare
 
 - [Wiki locale](./wiki/index.md)

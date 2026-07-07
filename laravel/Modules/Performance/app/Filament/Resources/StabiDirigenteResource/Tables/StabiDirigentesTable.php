@@ -7,7 +7,9 @@ namespace Modules\Performance\Filament\Resources\StabiDirigenteResource\Tables;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\BaseFilter;
 use Modules\Performance\Models\Individuale;
 use Modules\Performance\Models\StabiDirigente;
 use Modules\Ptv\Filament\Actions\Header\ImportValutatoriAction;
@@ -34,6 +36,9 @@ class StabiDirigentesTable extends XotBaseResourceTable
         return $actions;
     }
 
+    /**
+     *  array<string, Column>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -75,6 +80,9 @@ class StabiDirigentesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     *  array<string, BaseFilter>
+     */
     public function getTableFilters(): array
     {
         return [

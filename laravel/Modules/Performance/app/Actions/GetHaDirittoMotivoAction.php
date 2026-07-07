@@ -21,8 +21,8 @@ class GetHaDirittoMotivoAction
     public int $year;
 
     /**
-     * @param  array<string, mixed>  $criteriEsclusione
-     * @param  array<string, mixed>  $criteriOption
+     * @param  array  $criteriEsclusione
+     * @param  array  $criteriOption
      * @return array{0:int,1:string}
      */
     public function execute(BaseIndividualeModel $model, array $criteriEsclusione, array $criteriOption): array
@@ -60,10 +60,10 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array<string,mixed>  $params
+     * @param  array  $params
      * @param  object{gg_ruolo:int|null}  $scheda
      */
-    public function checkMinGgRuolo(array<string, mixed> $params, object $scheda): string
+    public function checkMinGgRuolo(array $params, object $scheda): string
     {
         if (! isset($params['min_gg_ruolo'])) {
             throw new Exception('min_gg_ruolo is not defined ['.__LINE__.']['.class_basename(self::class).']');
@@ -76,10 +76,10 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      * @param  object{gg_presenza_anno:int|null, gg_assenza_anno:int|null}  $scheda
      */
-    public function checkMinGgAnno(array<string, mixed> $params, object $scheda): string
+    public function checkMinGgAnno(array $params, object $scheda): string
     {
         if (! isset($params['min_gg_anno'])) {
             throw new Exception('min_gg_anno is not defined ['.__LINE__.']['.class_basename(self::class).']');
@@ -94,10 +94,10 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array<string,mixed>  $params
+     * @param  array  $params
      * @param  object{posiz:string|null}  $scheda
      */
-    public function checkNoposizList(array<string, mixed> $params, object $scheda): string
+    public function checkNoposizList(array $params, object $scheda): string
     {
         if (! isset($params['noposiz_list'])) {
             throw new Exception('noposiz_list is not defined ['.__LINE__.']['.class_basename(self::class).']');
@@ -110,10 +110,10 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array<string,mixed>  $params
+     * @param  array  $params
      * @param  object{propro:string|null}  $scheda
      */
-    public function checkNoproproList(array<string, mixed> $params, object $scheda): string
+    public function checkNoproproList(array $params, object $scheda): string
     {
         if (! isset($params['nopropro_list'])) {
             throw new Exception('nopropro_list is not defined ['.__LINE__.']['.class_basename(self::class).']');
@@ -126,10 +126,10 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array<string,mixed>  $params
+     * @param  array  $params
      * @param  object{posfun:string|null}  $scheda
      */
-    public function checkNoposfunList(array<string, mixed> $params, object $scheda): string
+    public function checkNoposfunList(array $params, object $scheda): string
     {
         if (! isset($params['noposfun_list'])) {
             throw new Exception('noposfun_list is not defined ['.__LINE__.']['.class_basename(self::class).']');
@@ -142,10 +142,10 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array<string,mixed>  $params
+     * @param  array  $params
      * @param  object{disci1:int|string|null}  $scheda
      */
-    public function checkNodisci1List(array<string, mixed> $params, object $scheda): string
+    public function checkNodisci1List(array $params, object $scheda): string
     {
         if (! isset($params['nodisci1_list'])) {
             throw new Exception('nodisci1_list is not defined ['.__LINE__.']['.class_basename(self::class).']');
@@ -158,10 +158,10 @@ class GetHaDirittoMotivoAction
     }
 
     /**
-     * @param  array<string,mixed>  $params
+     * @param  array  $params
      * @param  object{gg_assenza_anno:int|null}  $scheda
      */
-    public function checkMaxGgAssenzeAnno(array<string, mixed> $params, object $scheda): string
+    public function checkMaxGgAssenzeAnno(array $params, object $scheda): string
     {
         if (! isset($params['max_gg_assenze_anno'])) {
             throw new Exception('max_gg_assenze_anno is not defined ['.__LINE__.']['.class_basename(self::class).']');
@@ -176,19 +176,19 @@ class GetHaDirittoMotivoAction
     /**
      * Alias storico.
      *
-     * @param  array<string,mixed>  $params
+     * @param  array  $params
      * @param  object{gg_assenza_anno:int|null}  $scheda
      */
-    public function checkMaxGgAssenzaAnno(array<string, mixed> $params, object $scheda): string
+    public function checkMaxGgAssenzaAnno(array $params, object $scheda): string
     {
         return $this->checkMaxGgAssenzeAnno($params, $scheda);
     }
 
     /**
-     * @param  array<string,mixed>  $params
+     * @param  array  $params
      * @param  object{last_data_assunz:mixed}  $scheda
      */
-    public function checkDateMinAssunz(array<string, mixed> $params, object $scheda): string
+    public function checkDateMinAssunz(array $params, object $scheda): string
     {
         if (! isset($params['date_min_assunz'])) {
             throw new Exception('date_min_assunz is not defined ['.__LINE__.']['.class_basename(self::class).']');

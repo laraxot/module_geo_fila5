@@ -111,6 +111,10 @@ class IndividualeResource extends BaseSchedaResource
         ];
     }
 
+    /**
+     *  array{stabi_repar_anno?: array{anno?: int|string}} $data
+     *  array<int, string>
+     */
     public static function getXlsFields(array $data): array
     {
         $anno = Arr::get($data, 'stabi_repar_anno.anno', intval(date('Y')) - 1);

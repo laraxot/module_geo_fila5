@@ -256,6 +256,9 @@ abstract class BaseIndividualeModel extends BaseScheda
         return $this->hasMany(CriteriEsclusione::class, 'anno', 'anno');
     }
 
+    /**
+     *  BelongsTo<StabiDirigente, static>
+     */
     public function valutatore(): BelongsTo
     {
         return $this->belongsTo(StabiDirigente::class, 'valutatore_id', 'id');
@@ -303,10 +306,10 @@ abstract class BaseIndividualeModel extends BaseScheda
     }
 
     /**
-     * @param  array<string, mixed>  $input
+     * @param  array  $input
      * @return Builder<static>
      */
-    public function filter(array<string, mixed> $input = []): Builder
+    public function filter(array $input = []): Builder
     {
         $query = static::query();
 

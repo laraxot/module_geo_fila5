@@ -6,9 +6,12 @@ namespace Modules\Performance\Filament\Resources\IndividualeResource\Tables;
 
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
+use Filament\Actions\BulkAction;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\BaseFilter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Modules\Performance\Actions\ShowMailSendedAt;
@@ -43,6 +46,9 @@ class IndividualesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     *  array<string, Column>
+     */
     public function getTableColumns(): array
     {
         return [
@@ -98,6 +104,9 @@ class IndividualesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     *  array<string, BaseFilter>
+     */
     public function getTableFilters(): array
     {
         return [
@@ -110,6 +119,9 @@ class IndividualesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     *  array<string, Action|ActionGroup>
+     */
     public function getTableActions(): array
     {
         return [
@@ -127,6 +139,9 @@ class IndividualesTable extends XotBaseResourceTable
         ];
     }
 
+    /**
+     *  array<string, BulkAction>
+     */
     public function getTableBulkActions(): array
     {
         return [

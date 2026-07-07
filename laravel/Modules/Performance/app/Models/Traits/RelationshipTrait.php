@@ -39,26 +39,41 @@ use Modules\Performance\Models\StabiDirigente;
  */
 trait RelationshipTrait
 {
+    /**
+     *  HasMany<CriteriOption, $this>
+     */
     public function criteriOptions(): HasMany
     {
         return $this->hasMany(CriteriOption::class, 'anno', 'anno');
     }
 
+    /**
+     *  HasMany<IndividualeAssenze, $this>
+     */
     public function codiciAssenze(): HasMany
     {
         return $this->hasMany(IndividualeAssenze::class, 'anno', 'anno');
     }
 
+    /**
+     *  HasOne<CriteriMaggiorazione, $this>
+     */
     public function criteriMaggiorazione(): HasOne
     {
         return $this->hasOne(CriteriMaggiorazione::class, 'anno', 'anno');
     }
 
+    /**
+     *  HasMany<CriteriEsclusione, $this>
+     */
     public function criteriEsclusione(): HasMany
     {
         return $this->hasMany(CriteriEsclusione::class, 'anno', 'anno');
     }
 
+    /**
+     *  HasMany<CriteriValutazione, $this>
+     */
     public function criteriValutazioneOld(): HasMany
     {
         return $this->hasMany(CriteriValutazione::class, 'anno', 'anno')
@@ -75,12 +90,19 @@ trait RelationshipTrait
         */
     }
 
+    /**
+     *  HasMany<Individuale, $this>
+     */
     public function cards(): HasMany // traduzione di scheda
-    {return $this->hasMany(Individuale::class, 'anno', 'anno')
+    {
+        return $this->hasMany(Individuale::class, 'anno', 'anno')
             ->where('ente', $this->ente)
             ->where('matr', $this->matr);
     }
 
+    /**
+     *  HasOne<IndividualePesi, $this>
+     */
     public function peso(): HasOne
     {
         return $this->hasOne(IndividualePesi::class, 'anno', 'anno')
@@ -88,6 +110,9 @@ trait RelationshipTrait
             ->where('type', $this->type);
     }
 
+    /**
+     *  HasOne<IndividualePesi, $this>
+     */
     public function pesoPo(): HasOne
     {
         return $this->hasOne(IndividualePesi::class, 'anno', 'anno')->where('type', 'po');
@@ -105,6 +130,9 @@ trait RelationshipTrait
             ->whereRaw('(ha_diritto>0 or posfun>=100)');
     }
 
+    /**
+     *  HasOne<StabiDirigente, $this>
+     */
     public function stabiDirigente(): HasOne
     {
         $row = $this->hasOne(StabiDirigente::class, 'stabi', 'stabi')
@@ -129,6 +157,9 @@ trait RelationshipTrait
         // dddx('preso');
     }
 
+    /**
+     *  HasMany<Option, $this>
+     */
     public function options(): HasMany
     {
         return $this->hasMany(Option::class, 'year', 'anno')
@@ -144,6 +175,9 @@ trait RelationshipTrait
         */
     }
 
+    /**
+     *  HasMany<MyLog, $this>
+     */
     public function mailInviate(): HasMany
     {
         return $this->hasMany(MyLog::class, 'id_tbl', 'id')
@@ -151,6 +185,9 @@ trait RelationshipTrait
             ->where('note', 'sendMail');
     }
 
+    /**
+     *  HasOne<IndividualeTotStabi, $this>
+     */
     public function totStabi(): HasOne
     {
         // dddx(class_basename($this));// IndividualeDip per collegare sia organizzativa che individuale con le loro
