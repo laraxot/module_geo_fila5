@@ -65,7 +65,7 @@ class Locality extends BaseModel
             ->get()
             ->map(static fn ($row) => $row);
 
-        /** @var array<int, array<string, mixed>> */
+        /* @var array<int, array<string, mixed>> */
         return $rows->toArray();
     }
 
@@ -123,7 +123,7 @@ class Locality extends BaseModel
 
             $result = array_combine($postalCodes, $postalCodes);
 
-            /** @var array<string, string> $result */
+            /* @var array<string, string> $result */
             return $result;
         });
 

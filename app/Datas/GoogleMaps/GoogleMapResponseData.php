@@ -14,7 +14,7 @@ class GoogleMapResponseData extends Data
 {
     /**
      * @param DataCollection<int, GoogleMapResultData> $results Risultati della geocodifica
-     * @param string                                    $status  Stato della risposta
+     * @param string                                   $status  Stato della risposta
      */
     public function __construct(
         public readonly DataCollection $results,
