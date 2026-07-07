@@ -15,7 +15,7 @@ class GetAttachmentsSchemaAction
      * @param  array<string>  $attachments
      * @return array<FileUpload>
      */
-    public function execute(array $attachments, string $disk = 'attachments'): array
+    public function execute(array<string, mixed> $attachments, string $disk = 'attachments'): array
     {
         $form = [];
 
