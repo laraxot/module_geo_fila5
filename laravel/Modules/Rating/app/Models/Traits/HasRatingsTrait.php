@@ -155,7 +155,7 @@ trait HasRatingsTrait
      *
      * @return Collection<int, Rating>
      */
-    public function getRatingsWhere(array $filters): Collection
+    public function getRatingsWhere(array<string, mixed> $filters): Collection
     {
         $query = $this->ratings();
 
@@ -172,7 +172,7 @@ trait HasRatingsTrait
     /**
      * @param array<string, mixed> $where
      */
-    public function syncRatingsWhere(array $where): Collection
+    public function syncRatingsWhere(array<string, mixed> $where): Collection
     {
         $ratingClass = $this->getRatingClass();
         $ratings = $ratingClass::query()

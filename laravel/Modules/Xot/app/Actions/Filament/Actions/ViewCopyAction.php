@@ -41,7 +41,7 @@ class ViewCopyAction extends XotBaseAction
      * @param array<string, mixed> $arguments
      * @param array<string, mixed> $data
      */
-    public function execute(array $arguments, array $data): void
+    public function execute(array<string, mixed> $arguments, array $data): void
     {
         // TODO: Implement view copying logic
         // This should copy the view file and any related assets

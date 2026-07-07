@@ -16,10 +16,10 @@ interface StabiDirigenteContract
     /**
      * @param  array<string, mixed>  $attributes
      */
-    public function update(array $attributes): bool;
+    public function update(array<string, mixed> $attributes): bool;
 
     /**
      * @param  array<string, mixed>  $conditions
      */
-    public function where(array $conditions): Builder;
+    public function where(array<string, mixed> $conditions): Builder;
 }

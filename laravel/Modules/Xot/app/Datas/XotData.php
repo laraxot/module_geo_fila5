@@ -331,7 +331,7 @@ class XotData extends Data implements Wireable
      *
      * @param array<string, mixed> $data
      */
-    public function update(array $data): self
+    public function update(array<string, mixed> $data): self
     {
         foreach ($data as $k => $v) {
             $this->{$k} = $v;

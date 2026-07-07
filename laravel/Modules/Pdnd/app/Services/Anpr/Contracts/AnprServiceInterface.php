@@ -14,5 +14,5 @@ interface AnprServiceInterface
     /**
      * Cerca per dati anagrafici
      */
-    public function cercaPerDatiAnagrafici(array $datiPersona): array;
+    public function cercaPerDatiAnagrafici(array<string, mixed> $datiPersona): array;
 }

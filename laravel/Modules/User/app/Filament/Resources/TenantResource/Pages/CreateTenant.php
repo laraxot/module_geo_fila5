@@ -19,7 +19,7 @@ class CreateTenant extends XotBaseCreateRecord
     /**
      * @throws \Throwable
      */
-    protected function handleRecordCreation(array $data): Model
+    protected function handleRecordCreation(array<string, mixed> $data): Model
     {
         /** @var array<string, mixed> $filteredData */
         $filteredData = collect($data)->except('domain')->toArray();

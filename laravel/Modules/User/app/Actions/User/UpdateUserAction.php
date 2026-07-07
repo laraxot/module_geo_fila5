@@ -83,7 +83,7 @@ class UpdateUserAction
      *
      * @return array<string, mixed>
      */
-    protected function prepareUpdateData(array $data, Hasher $hasher, SafeStringCastAction $safeStringCast): array
+    protected function prepareUpdateData(array<string, mixed> $data, Hasher $hasher, SafeStringCastAction $safeStringCast): array
     {
         // Rimuovi campi che non dovrebbero essere aggiornati direttamente
         $excludeFields = [

@@ -16,5 +16,5 @@ interface MorphToOneRelationContract
     /**
      * @param array<string, mixed> $attributes
      */
-    public function create(array $attributes): Model;
+    public function create(array<string, mixed> $attributes): Model;
 }

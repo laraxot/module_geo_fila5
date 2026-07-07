@@ -12,7 +12,7 @@ class CreateTeam extends XotBaseCreateRecord
     // //
     protected static string $resource = TeamResource::class;
 
-    protected function mutateFormDataBeforeCreate(array $data): array
+    protected function mutateFormDataBeforeCreate(array<string, mixed> $data): array
     {
         $data['team_id'] = auth()->id();
 

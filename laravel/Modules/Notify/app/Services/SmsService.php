@@ -60,7 +60,7 @@ class SmsService
      *
      * @param  array<string, mixed>  $vars
      */
-    public function setLocalVars(array $vars): self
+    public function setLocalVars(array<string, mixed> $vars): self
     {
         foreach ($vars as $k => $v) {
             $this->{$k} = $v;
@@ -75,7 +75,7 @@ class SmsService
      *
      * @param  array<string, mixed>  $vars
      */
-    public function mergeVars(array $vars): self
+    public function mergeVars(array<string, mixed> $vars): self
     {
         $this->vars = array_merge($this->vars, $vars);
 

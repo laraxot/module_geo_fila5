@@ -17,5 +17,5 @@ interface CreatesNewUsers
      *
      * @param array<string, mixed> $input
      */
-    public function create(array $input): UserContract;
+    public function create(array<string, mixed> $input): UserContract;
 }

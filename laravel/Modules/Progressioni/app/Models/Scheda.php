@@ -563,7 +563,7 @@ class Scheda extends BaseScheda
      *
      * @param  array<string, mixed>  $data
      */
-    public function validate(array $data): Validator
+    public function validate(array<string, mixed> $data): Validator
     {
         $rules = [
             'cognome' => 'required|string|max:50',
@@ -680,7 +680,7 @@ class Scheda extends BaseScheda
      * @param  array<string, mixed>  $params
      * @return Collection<int, self>
      */
-    public function stabi_dirigente_parz(array $params): Collection
+    public function stabi_dirigente_parz(array<string, mixed> $params): Collection
     {
         $stabi = $params['stabi'] ?? null;
         $repar = $params['repar'] ?? null;
@@ -769,7 +769,7 @@ class Scheda extends BaseScheda
      *
      * @param  array<string, mixed>  $params
      */
-    public function resolveCoeffPesoFromParams(array $params): int
+    public function resolveCoeffPesoFromParams(array<string, mixed> $params): int
     {
         extract($params);
 
@@ -1120,7 +1120,7 @@ class Scheda extends BaseScheda
     // end content_PDF
 
     // ------------------------------------------------------------------------------------
-    public function ggInSedeTotByArray(array $params): ?int
+    public function ggInSedeTotByArray(array<string, mixed> $params): ?int
     {
         $criteri = $this->criteriEsclusione;
         if (! $criteri) {

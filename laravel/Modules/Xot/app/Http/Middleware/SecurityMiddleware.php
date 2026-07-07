@@ -435,7 +435,7 @@ class SecurityMiddleware
      *
      * @param array<int|string, mixed> $array
      */
-    private function getArrayDepth(array $array): int
+    private function getArrayDepth(array<string, mixed> $array): int
     {
         $maxDepth = 1;
 

@@ -85,7 +85,7 @@ class ResolveTenantModelClassAction
      * @param  array<mixed, mixed>  $moduleModels
      * @return array<string, class-string>
      */
-    private function filterValidModelClasses(array $moduleModels): array
+    private function filterValidModelClasses(array<string, mixed> $moduleModels): array
     {
         /** @var array<string, class-string> $models */
         $models = [];

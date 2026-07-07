@@ -61,7 +61,7 @@ class CopyFromLastYearAction extends XotBaseAction
      * @param array<string, mixed> $arguments
      * @param array<string, mixed> $data
      */
-    public function execute(array $arguments, array $data): void
+    public function execute(array<string, mixed> $arguments, array $data): void
     {
         $modelClass = $arguments['model_class'] ?? null;
         $fieldName = $arguments['field_name'] ?? null;

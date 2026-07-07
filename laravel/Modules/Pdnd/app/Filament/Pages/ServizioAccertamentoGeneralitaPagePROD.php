@@ -145,7 +145,7 @@ private function recuperaIdAnprDaC030(string $codiceFiscale): ?string
     return $this->extractIdAnprFromC030Risultato($risultato);
 }
 
-private function extractIdAnprFromC030Risultato(array $risultato): ?string
+private function extractIdAnprFromC030Risultato(array<string, mixed> $risultato): ?string
 {
     $listaSoggetti = $risultato['lista_soggetti'] ?? null;
     if (! is_array($listaSoggetti) || ! isset($listaSoggetti[0]) || ! is_array($listaSoggetti[0])) {
@@ -177,12 +177,12 @@ private function extractIdAnprFromC030Risultato(array $risultato): ?string
     }
 
     // ====================== METODI DI SUPPORTO ======================
-    private function isAccertamentoSuccessful(array $risultato): bool
+    private function isAccertamentoSuccessful(array<string, mixed> $risultato): bool
     {
         return isset($risultato['successo']) && $risultato['successo'] === true;
     }
 
-    private function handleAccertamentoSuccessful(array $risultato): void
+    private function handleAccertamentoSuccessful(array<string, mixed> $risultato): void
     {
         $listaSoggetti = $risultato['lista_soggetti'] ?? [];
 
@@ -211,7 +211,7 @@ private function extractIdAnprFromC030Risultato(array $risultato): ?string
     }
 
 
-    private function handleAccertamentoFailed(array $risultato): void
+    private function handleAccertamentoFailed(array<string, mixed> $risultato): void
 {
     $messaggio = $this->formatErrorBody($risultato);
 
@@ -249,7 +249,7 @@ private function extractIdAnprFromC030Risultato(array $risultato): ?string
         $this->messaggioInfo = '';
     }
 
-    private function validateCodiceFiscale(array $state): string
+    private function validateCodiceFiscale(array<string, mixed> $state): string
     {
         $cf = $state['codiceFiscale'] ?? '';
         if (!is_string($cf) || empty($cf)) {
@@ -258,7 +258,7 @@ private function extractIdAnprFromC030Risultato(array $risultato): ?string
         return strtoupper(trim($cf));
     }
 
-    protected function formatErrorBody(array $risultato): string
+    protected function formatErrorBody(array<string, mixed> $risultato): string
     {
         $errori = $risultato['errori'] ?? [];
         if (! is_array($errori) || $errori === []) {

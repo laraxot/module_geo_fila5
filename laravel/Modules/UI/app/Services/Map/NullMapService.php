@@ -16,7 +16,7 @@ final class NullMapService implements MapServiceContract
      *
      * @return list<array<string, mixed>>
      */
-    public function getMarkers(array $filters): array
+    public function getMarkers(array<string, mixed> $filters): array
     {
         return [];
     }
@@ -26,7 +26,7 @@ final class NullMapService implements MapServiceContract
      *
      * @return array<string, mixed>
      */
-    public function getMapStats(array $filters): array
+    public function getMapStats(array<string, mixed> $filters): array
     {
         return [];
     }
@@ -34,7 +34,7 @@ final class NullMapService implements MapServiceContract
     /**
      * @param array<string, mixed> $filters
      */
-    public function exportData(array $filters, string $format): string
+    public function exportData(array<string, mixed> $filters, string $format): string
     {
         return match ($format) {
             'csv' => '',

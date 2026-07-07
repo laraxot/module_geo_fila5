@@ -145,7 +145,7 @@ class PdndClient
     /**
      * @param  array<string, mixed>  $filters
      */
-    public function setFilters(array $filters): void
+    public function setFilters(array<string, mixed> $filters): void
     {
         $this->filters = $filters;
     }

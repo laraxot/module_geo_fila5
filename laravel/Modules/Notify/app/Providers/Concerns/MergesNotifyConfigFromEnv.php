@@ -15,7 +15,7 @@ trait MergesNotifyConfigFromEnv
 {
     protected function mergeNotifyModuleConfigFromEnv(): void
     {
-        /** @var array<string, mixed> $envConfig */
+        /** @var array $envConfig */
         $envConfig = config('notify-env', []);
 
         $this->mergeNotifyCompanyConfig($envConfig);

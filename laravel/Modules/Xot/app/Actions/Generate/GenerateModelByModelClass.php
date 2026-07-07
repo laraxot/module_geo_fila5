@@ -102,7 +102,7 @@ class GenerateModelByModelClass
     /**
      * @param array<string, string> $replaces
      */
-    public function setCustomReplaces(array $replaces): self
+    public function setCustomReplaces(array<string, mixed> $replaces): self
     {
         $this->replaces = array_merge($this->replaces, $replaces);
 

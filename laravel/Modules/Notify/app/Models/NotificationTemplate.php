@@ -174,7 +174,7 @@ class NotificationTemplate extends BaseModel implements HasMedia
      * @param  array<string, mixed>  $data  The data to compile the template with
      * @return array{subject: string, body_html: string|null, body_text: string|null}
      */
-    public function compile(array $data = []): array
+    public function compile(array<string, mixed> $data = []): array
     {
         $subject = $this->compileString($this->subject, $data);
         $bodyHtml = $this->compileString($this->body_html, $data);
@@ -192,7 +192,7 @@ class NotificationTemplate extends BaseModel implements HasMedia
      *
      * @param  array<string, mixed>  $data  The data to check conditions against
      */
-    public function shouldSend(array $data = []): bool
+    public function shouldSend(array<string, mixed> $data = []): bool
     {
         if (! $this->conditions) {
             return true;
@@ -214,7 +214,7 @@ class NotificationTemplate extends BaseModel implements HasMedia
      * @param  array<string, mixed>  $data  Additional data to merge with preview data
      * @return array{subject: string, body_html: string|null, body_text: string|null}
      */
-    public function preview(array $data = []): array
+    public function preview(array<string, mixed> $data = []): array
     {
         /** @var array<string, mixed> $previewData */
         $previewData = $this->preview_data ?? [];
@@ -299,7 +299,7 @@ class NotificationTemplate extends BaseModel implements HasMedia
      *
      * @param  array<string, mixed>  $data
      */
-    public function setGrapesJSData(array $data): self
+    public function setGrapesJSData(array<string, mixed> $data): self
     {
         $this->grapesjs_data = $data;
 

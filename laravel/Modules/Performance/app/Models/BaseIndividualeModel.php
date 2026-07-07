@@ -306,7 +306,7 @@ abstract class BaseIndividualeModel extends BaseScheda
      * @param  array<string, mixed>  $input
      * @return Builder<static>
      */
-    public function filter(array $input = []): Builder
+    public function filter(array<string, mixed> $input = []): Builder
     {
         $query = static::query();
 
