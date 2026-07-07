@@ -19,7 +19,7 @@ class PesiResource extends XotBaseResource
 
     #[Override]
     /**
-     * @return array<string, Component>
+     * @return array
      */
     public static function getFormSchema(): array
     {

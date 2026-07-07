@@ -59,9 +59,9 @@ class TrovaEsclusiAction
     }
 
     /**
- * @param array<string, mixed> $params
- * @return array<mixed>
- */
+     * @param  array<string, mixed>  $params
+     * @return array{ha_diritto: int, motivo: string}
+     */
     public function checkScheda(array $params, int $year): array
     {
         if (! isset($params['criteri_esclusione'])) {
