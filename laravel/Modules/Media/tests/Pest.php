@@ -16,7 +16,7 @@ use function Safe\file_get_contents;
  */
 
 /**
- * @param  array<string, mixed>  $where
+ * @param  array  $where
  */
 function assertMediaTableHas(string $table, array $where, string $connection = 'media'): void
 {
@@ -30,7 +30,7 @@ function assertMediaTableHas(string $table, array $where, string $connection = '
 }
 
 /**
- * @param  array<string, mixed>  $where
+ * @param  array  $where
  */
 function assertMediaTableMissing(string $table, array $where, string $connection = 'media'): void
 {
@@ -75,7 +75,7 @@ function assertMediaListContains(string $needle, array $haystack): void
 }
 
 /**
- * @param  array<string, mixed>  $attributes
+ * @param  array  $attributes
  */
 function createMedia(array $attributes = []): Media
 {
@@ -83,7 +83,7 @@ function createMedia(array $attributes = []): Media
 }
 
 /**
- * @param  array<string, mixed>  $attributes
+ * @param  array  $attributes
  */
 function makeMedia(array $attributes = []): Media
 {
@@ -106,8 +106,8 @@ function mediaTableColumns(): array
 }
 
 /**
- * @param  array<string, mixed>  $payload
- * @param  array<int, string>  $columns
+ * @param  array  $payload
+ * @param  array  $columns
  * @return array<string, mixed>
  */
 function mediaPayloadSet(array $payload, array $columns, string $column, mixed $value): array

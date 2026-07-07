@@ -15,9 +15,9 @@ class FileExtensionRule implements Rule
     protected array $validExtensions = [];
 
     /**
-     * @param  array<int, string>  $validExtensions
+     * @param  array  $validExtensions
      */
-    public function __construct(array<string, mixed> $validExtensions = [])
+    public function __construct(array $validExtensions = [])
     {
         $this->validExtensions = array_values(array_map(
             /**
