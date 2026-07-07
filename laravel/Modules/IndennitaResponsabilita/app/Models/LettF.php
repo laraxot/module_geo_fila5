@@ -247,6 +247,7 @@ class LettF extends BaseScheda
         'dal', 'al', 'dalf', 'alf', 'dali', 'ali',
     ];
 
+    /** @var array<string, string> */
     public array $rules = [
         'posizione_lavoro' => 'required',
         'email' => 'required',
@@ -255,6 +256,7 @@ class LettF extends BaseScheda
         'responsabilita' => 'required|numeric|min:0|max:30',
     ];
 
+    /** @var list<string> */
     public array $xls_fields = [
         'ente', 'matr',
         'cognome', 'nome',
@@ -273,6 +275,7 @@ class LettF extends BaseScheda
         'valore_economico_attribuito',
     ];
 
+    /** @var array<string, string> */
     public array $messages = [
         'posizione_lavoro.required' => 'campo obbligatorio, non lasciare vuoto',
         'complessita.numeric.max' => 'deve essere compreso fra 0 e 40',

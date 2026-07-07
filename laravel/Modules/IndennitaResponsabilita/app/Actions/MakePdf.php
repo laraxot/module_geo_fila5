@@ -18,7 +18,7 @@ class MakePdf
     /**
      * Execute PDF generation for Indennita Responsabilita.
      *
-     * @param  array{anno/valutatore?: array{anno?: int|string|null, valutatore_id?: int|string|null}}  $data
+     * @param  array{'anno/valutatore'?: array{anno?: int|string|null, valutatore_id?: int|string|null}}  $data
      */
     public function execute(array $data): string|BinaryFileResponse
     {
@@ -41,17 +41,13 @@ class MakePdf
     }
 
     /**
-     * @param  array{anno/valutatore?: array{anno?: int|string|null, valutatore_id?: int|string|null}}  $data
+     * @param  array{'anno/valutatore'?: array{anno?: int|string|null, valutatore_id?: int|string|null}}  $data
+     *
      * @return array{0: int|null, 1: int|null}
      */
     private function resolveFilters(array $data): array
     {
-        $filters = [];
-        if (isset($data['anno/valutatore']) && is_array($data['anno/valutatore'])) {
-            /** @var array<string, mixed> $nested */
-            $nested = $data['anno/valutatore'];
-            $filters = $nested;
-        }
+        $filters = $data['anno/valutatore'] ?? [];
 
         $anno = isset($filters['anno']) && is_numeric($filters['anno']) ? (int) $filters['anno'] : null;
         $valutatoreId = isset($filters['valutatore_id']) && is_numeric($filters['valutatore_id']) ? (int) $filters['valutatore_id'] : null;
