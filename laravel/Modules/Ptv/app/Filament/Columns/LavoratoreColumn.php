@@ -71,6 +71,7 @@ class LavoratoreColumn extends GroupColumn
 
     /**
      * Append additional columns to the worker schema.
+     * @param  array<string, mixed>  $columns
      */
     public function appendColumns(array $columns): static
     {
