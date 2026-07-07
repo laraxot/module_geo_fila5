@@ -7,6 +7,9 @@ namespace Modules\IndennitaResponsabilita\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\IndennitaResponsabilita\Models\StabiDirigente;
 
+/**
+ * @extends Factory<\Modules\IndennitaResponsabilita\Models\StabiDirigente>
+ */
 class StabiDirigenteFactory extends Factory
 {
     /**
@@ -16,6 +19,8 @@ class StabiDirigenteFactory extends Factory
 
     /**
      * Define the model's default state.
+     *
+     * @return array<string, mixed>
      */
     public function definition(): array
     {

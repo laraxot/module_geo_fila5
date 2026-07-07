@@ -5,7 +5,7 @@ namespace Modules\IndennitaResponsabilita\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- *  Factory<\Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita>
+ * @extends Factory<\Modules\IndennitaResponsabilita\Models\IndennitaResponsabilita>
  */
 class IndennitaResponsabilitaFactory extends Factory
 {
@@ -17,7 +17,7 @@ class IndennitaResponsabilitaFactory extends Factory
     /**
      * Define the model's default state.
      *
-     *  array<string, mixed>
+     * @return array<string, mixed>
      */
     public function definition(): array
     {

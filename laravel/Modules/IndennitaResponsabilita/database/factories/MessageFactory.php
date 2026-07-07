@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\IndennitaResponsabilita\Models\Message;
 
 /**
- *  Factory<\Modules\IndennitaResponsabilita\Models\Message>
+ * @extends Factory<\Modules\IndennitaResponsabilita\Models\Message>
  */
 class MessageFactory extends Factory
 {
@@ -20,7 +20,7 @@ class MessageFactory extends Factory
     /**
      * Define the model's default state.
      *
-     *  array<string, mixed>
+     * @return array<string, mixed>
      */
     public function definition(): array
     {
