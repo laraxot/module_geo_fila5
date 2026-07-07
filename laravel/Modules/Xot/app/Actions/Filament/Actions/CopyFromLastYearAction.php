@@ -37,13 +37,13 @@ class CopyFromLastYearAction extends XotBaseAction
     }
 
     /**
-     * @param array<string|int, mixed> $input
+     * @param array $input
      *
      * @return array<string, mixed>
      */
     private static function normalizeStringKeyArray(array $input): array
     {
-        /** @var array<string, mixed> $normalized */
+        /** @var array $normalized */
         $normalized = [];
 
         foreach ($input as $key => $value) {
@@ -58,10 +58,10 @@ class CopyFromLastYearAction extends XotBaseAction
     }
 
     /**
-     * @param array<string, mixed> $arguments
-     * @param array<string, mixed> $data
+     * @param array $arguments
+     * @param array $data
      */
-    public function execute(array<string, mixed> $arguments, array $data): void
+    public function execute(array $arguments, array $data): void
     {
         $modelClass = $arguments['model_class'] ?? null;
         $fieldName = $arguments['field_name'] ?? null;

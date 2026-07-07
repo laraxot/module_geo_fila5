@@ -89,9 +89,9 @@ class ImportMdbToMySQL extends Command
     /**
      * Importa le tabelle in MySQL.
      *
-     * @param array<int, string> $tables
+     * @param array $tables
      */
-    private function importTablesIntoMySQL(array<string, mixed> $tables, string $mysqlDb): void
+    private function importTablesIntoMySQL(array $tables, string $mysqlDb): void
     {
         foreach ($tables as $table) {
             $sqlFile = storage_path("app/{$table}.sql");

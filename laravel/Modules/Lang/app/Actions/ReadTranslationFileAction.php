@@ -56,7 +56,7 @@ class ReadTranslationFileAction
      *
      * @return string Codice PHP del file di traduzione
      */
-    public function toPhp(array $translations): string
+    public function toPhp(array<string, mixed> $translations): string
     {
         $content = "<?php\n\nreturn [\n";
         $content .= $this->arrayToPhp($translations, 1);
@@ -73,7 +73,7 @@ class ReadTranslationFileAction
      *
      * @return string Codice PHP dell'array
      */
-    private function arrayToPhp(array $array, int $indent = 0): string
+    private function arrayToPhp(array<string, mixed> $array, int $indent = 0): string
     {
         $content = '';
         $indentStr = str_repeat('    ', $indent);

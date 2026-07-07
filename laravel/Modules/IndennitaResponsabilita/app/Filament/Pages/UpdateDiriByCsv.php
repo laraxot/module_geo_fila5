@@ -112,7 +112,10 @@ class UpdateDiriByCsv extends XotBasePage
         return $rows;
     }
 
-    public function updateDiri(array<string, mixed> $data): void
+    /**
+     *   array<int, array{DIRI?: int|string|null}>  $data
+     */
+    public function updateDiri(array $data): void
     {
         $anno = 2024;
         $ente = 90;

@@ -17,7 +17,7 @@ class FileExtensionRule implements Rule
     /**
      * @param  array  $validExtensions
      */
-    public function __construct(array $validExtensions = [])
+    public function __construct(array<string, mixed> $validExtensions = [])
     {
         $this->validExtensions = array_values(array_map(
             /**

@@ -14,7 +14,7 @@ class DiffAssocRecursiveAction
     use QueueableAction;
 
     /**
-     * @param array<int|string, mixed> $data
+     * @param array $data
      *
      * @return array<int|string, mixed>
      */
@@ -38,12 +38,12 @@ class DiffAssocRecursiveAction
     }
 
     /**
-     * @param array<int|string, mixed> $arr_1
-     * @param array<int|string, mixed> $arr_2
+     * @param array $arr_1
+     * @param array $arr_2
      *
      * @return array<int|string, mixed>
      */
-    public function execute(array<string, mixed> $arr_1, array $arr_2): array
+    public function execute(array $arr_1, array $arr_2): array
     {
         $coll_1 = collect(self::fixType($arr_1));
         $arr_2 = self::fixType($arr_2);

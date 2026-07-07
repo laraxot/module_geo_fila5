@@ -40,7 +40,7 @@ use Modules\Performance\Models\StabiDirigente;
 trait RelationshipTrait
 {
     /**
-     *  HasMany<CriteriOption, $this>
+     * @return HasMany<CriteriOption, $this>
      */
     public function criteriOptions(): HasMany
     {
@@ -48,7 +48,7 @@ trait RelationshipTrait
     }
 
     /**
-     *  HasMany<IndividualeAssenze, $this>
+     * @return HasMany<IndividualeAssenze, $this>
      */
     public function codiciAssenze(): HasMany
     {
@@ -56,7 +56,7 @@ trait RelationshipTrait
     }
 
     /**
-     *  HasOne<CriteriMaggiorazione, $this>
+     * @return HasOne<CriteriMaggiorazione, $this>
      */
     public function criteriMaggiorazione(): HasOne
     {
@@ -64,7 +64,7 @@ trait RelationshipTrait
     }
 
     /**
-     *  HasMany<CriteriEsclusione, $this>
+     * @return HasMany<CriteriEsclusione, $this>
      */
     public function criteriEsclusione(): HasMany
     {
@@ -72,7 +72,7 @@ trait RelationshipTrait
     }
 
     /**
-     *  HasMany<CriteriValutazione, $this>
+     * @return HasMany<CriteriValutazione, $this>
      */
     public function criteriValutazioneOld(): HasMany
     {
@@ -91,7 +91,7 @@ trait RelationshipTrait
     }
 
     /**
-     *  HasMany<Individuale, $this>
+     * @return HasMany<Individuale, $this>
      */
     public function cards(): HasMany // traduzione di scheda
     {
@@ -101,7 +101,7 @@ trait RelationshipTrait
     }
 
     /**
-     *  HasOne<IndividualePesi, $this>
+     * @return HasOne<IndividualePesi, $this>
      */
     public function peso(): HasOne
     {
@@ -111,7 +111,7 @@ trait RelationshipTrait
     }
 
     /**
-     *  HasOne<IndividualePesi, $this>
+     * @return HasOne<IndividualePesi, $this>
      */
     public function pesoPo(): HasOne
     {
@@ -131,7 +131,7 @@ trait RelationshipTrait
     }
 
     /**
-     *  HasOne<StabiDirigente, $this>
+     * @return HasOne<StabiDirigente, $this>
      */
     public function stabiDirigente(): HasOne
     {
@@ -158,7 +158,7 @@ trait RelationshipTrait
     }
 
     /**
-     *  HasMany<Option, $this>
+     * @return HasMany<Option, $this>
      */
     public function options(): HasMany
     {
@@ -176,7 +176,7 @@ trait RelationshipTrait
     }
 
     /**
-     *  HasMany<MyLog, $this>
+     * @return HasMany<MyLog, $this>
      */
     public function mailInviate(): HasMany
     {
@@ -186,7 +186,7 @@ trait RelationshipTrait
     }
 
     /**
-     *  HasOne<IndividualeTotStabi, $this>
+     * @return HasOne<IndividualeTotStabi, $this>
      */
     public function totStabi(): HasOne
     {

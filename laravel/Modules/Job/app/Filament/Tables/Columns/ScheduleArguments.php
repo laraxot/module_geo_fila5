@@ -56,7 +56,7 @@ class ScheduleArguments extends TextColumn
      * @param  array<int|string, mixed>  $tags
      * @return array<int, string>
      */
-    protected function formatArrayTags(array $tags): array
+    protected function formatArrayTags(array<string, mixed> $tags): array
     {
         $result = [];
 
@@ -91,7 +91,7 @@ class ScheduleArguments extends TextColumn
      * @param  array  $tags
      * @return array<int, string>
      */
-    protected function filterEmptyTags(array $tags): array
+    protected function filterEmptyTags(array<string, mixed> $tags): array
     {
         if (count($tags) === 1 && blank($tags[0])) {
             return [];

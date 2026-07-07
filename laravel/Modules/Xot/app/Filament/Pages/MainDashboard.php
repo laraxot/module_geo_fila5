@@ -29,8 +29,10 @@ class MainDashboard extends XotBaseDashboard
      * Use the canonical slug so Filament resolves the home link to this page
      * at route name `filament.{panel}.pages.dashboard`.
      */
-    public static function getSlug(?Panel $panel = null): string
+    public static function getSlug(?Panel  = null): string
     {
+        unset();
+
         return 'dashboard';
     }
 

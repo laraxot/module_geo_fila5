@@ -24,10 +24,10 @@ abstract class XotBaseTableWidget extends FilamentTableWidget
     /**
      * Ascolta evento di aggiornamento filtri.
      *
-     * @param array<string, mixed> $filters
+     * @param array $filters
      */
     #[On('filterUpdate')]
-    public function updateFilters(array<string, mixed> $filters): void
+    public function updateFilters(array $filters): void
     {
         // Forza refresh della tabella quando i filtri cambiano
         $this->resetTable();

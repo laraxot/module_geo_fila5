@@ -24,9 +24,9 @@ class XlsByModelClassAction
      * Esporta i dati di un modello in Excel.
      *
      * @param string               $modelClass Classe del modello da esportare
-     * @param array<string, mixed> $where      Condizioni where per la query
-     * @param array<int, string>   $includes   Relazioni o campi da includere
-     * @param array<int, string>   $excludes   Campi da escludere
+     * @param array $where      Condizioni where per la query
+     * @param array $includes   Relazioni o campi da includere
+     * @param array $excludes   Campi da escludere
      * @param callable|null        $callback   Callback per manipolare i dati
      */
     public function execute(
@@ -96,11 +96,11 @@ class XlsByModelClassAction
     /**
      * Ottiene le relazioni da caricare in base ai campi inclusi.
      *
-     * @param array<int, string> $includes Campi da includere
+     * @param array $includes Campi da includere
      *
      * @return array<int, string>
      */
-    private function getWithByIncludes(array<string, mixed> $includes): array
+    private function getWithByIncludes(array $includes): array
     {
         $with = [];
         foreach ($includes as $include) {

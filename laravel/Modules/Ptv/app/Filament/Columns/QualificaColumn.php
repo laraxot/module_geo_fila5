@@ -27,7 +27,7 @@ class QualificaColumn extends GroupColumn
             ->searchable($searchable);
     }
 
-    public function appendColumns(array $columns): static
+    public function appendColumns(array<string, mixed> $columns): static
     {
         $this->extraColumns = array_merge($this->extraColumns, $columns);
 

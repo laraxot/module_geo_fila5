@@ -85,7 +85,7 @@ trait HasExtraTrait
     }
 
     /**
-     * @param int|float|string|array<string, mixed>|bool|null $value
+     * @param int|float|string|array|bool|null $value
      */
     public function setExtra(string $name, int|float|string|array|bool|null $value): void
     {

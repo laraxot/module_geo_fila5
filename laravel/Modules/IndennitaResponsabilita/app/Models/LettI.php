@@ -566,7 +566,7 @@ class LettI extends BaseScheda
     // ---------------------------------------
     // --------- functions ---------
     /**
-     * @param  array<string, mixed>  $params
+     * @param  array  $params
      */
     public static function updateFields(array $params = []): void
     {

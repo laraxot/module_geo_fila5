@@ -25,9 +25,9 @@ class ArrayToRawJsAction
     /**
      * Converte l'array in una stringa JavaScript (oggetto letterale) e restituisce RawJs.
      *
-     * @param array<string|mixed, mixed> $array Array associativo (anche annidato); valori RawJs restano raw
+     * @param array $array Array associativo (anche annidato); valori RawJs restano raw
      */
-    public function execute(array<string, mixed> $array): RawJs
+    public function execute(array $array): RawJs
     {
         $parts = [];
         foreach ($array as $key => $value) {

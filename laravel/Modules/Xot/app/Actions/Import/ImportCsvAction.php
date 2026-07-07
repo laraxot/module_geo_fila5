@@ -96,11 +96,11 @@ class ImportCsvAction
     /**
      * Prepare fields for the SQL query.
      *
-     * @param array<ColumnData> $columns
+     * @param array $columns
      *
      * @return array<string>
      */
-    private function prepareFields(array<string, mixed> $columns): array
+    private function prepareFields(array $columns): array
     {
         return array_map(
             fn (ColumnData $column) => 'decimal' === $column->type ? '@'.$column->name : $column->name,
@@ -111,7 +111,7 @@ class ImportCsvAction
     /**
      * Build the SQL query for importing data.
      *
-     * @param array<ColumnData> $columns
+     * @param array $columns
      */
     private function buildSql(string $path, string $db, string $tbl, string $fieldsUpList, array $columns): string
     {
@@ -143,7 +143,7 @@ class ImportCsvAction
     /**
      * Transform columns into ColumnData objects.
      *
-     * @param array<string> $columns
+     * @param array $columns
      *
      * @return array<ColumnData>
      *
@@ -151,7 +151,7 @@ class ImportCsvAction
      *
      * @phpstan-ignore method.unused
      */
-    private function transformColumnsToColumnData(array<string, mixed> $columns): array
+    private function transformColumnsToColumnData(array $columns): array
     {
         return array_map(
             function (string $column): ColumnData {

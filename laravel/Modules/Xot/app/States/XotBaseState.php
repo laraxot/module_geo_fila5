@@ -84,12 +84,12 @@ abstract class XotBaseState implements StateContract
     /**
      * Fill form data for modal.
      *
-     * @param array<string, mixed> $arguments
-     * @param array<string, mixed> $data
+     * @param array $arguments
+     * @param array $data
      *
      * @return array<string, mixed>
      */
-    public function modalFillForm(array<string, mixed> $arguments, array $data): array
+    public function modalFillForm(array $arguments, array $data): array
     {
         return $data;
     }
@@ -107,10 +107,10 @@ abstract class XotBaseState implements StateContract
     /**
      * Execute modal action.
      *
-     * @param array<string, mixed> $arguments
-     * @param array<string, mixed> $data
+     * @param array $arguments
+     * @param array $data
      */
-    public function modalAction(array<string, mixed> $arguments, array $data): void
+    public function modalAction(array $arguments, array $data): void
     {
         $this->processStateAction($arguments, $data);
     }
@@ -118,10 +118,10 @@ abstract class XotBaseState implements StateContract
     /**
      * Process state action.
      *
-     * @param array<string, mixed> $arguments
-     * @param array<string, mixed> $data
+     * @param array $arguments
+     * @param array $data
      */
-    public function processStateAction(array<string, mixed> $arguments, array $data): void
+    public function processStateAction(array $arguments, array $data): void
     {
         $message = Arr::get($data, 'message');
         $stateClass = static::class;
@@ -139,7 +139,7 @@ abstract class XotBaseState implements StateContract
     /**
      * Execute modal action by record.
      *
-     * @param array<string, mixed> $data
+     * @param array $data
      */
     public function modalActionByRecord(Model $record, array $data): void
     {
@@ -149,7 +149,7 @@ abstract class XotBaseState implements StateContract
     /**
      * Process state action by record.
      *
-     * @param array<string, mixed> $data
+     * @param array $data
      */
     public function processStateActionByRecord(Model $record, array $data): void
     {
@@ -185,7 +185,7 @@ abstract class XotBaseState implements StateContract
         if (! \is_object($mapping) || ! method_exists($mapping, 'toArray')) {
             return [];
         }
-        /** @var array<string, mixed> $states */
+        /** @var array $states */
         $states = $mapping->toArray();
 
         $labels = Arr::map($states, fn ($_stateClass, $state) => static::transClass(
@@ -193,7 +193,7 @@ abstract class XotBaseState implements StateContract
             'states.'.SafeStringCastAction::cast($state).'.label',
         ));
 
-        /** @var array<string, mixed> $result */
+        /** @var array $result */
         $result = $labels;
 
         return $result;

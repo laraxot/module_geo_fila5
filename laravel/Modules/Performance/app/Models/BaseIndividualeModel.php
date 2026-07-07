@@ -257,7 +257,7 @@ abstract class BaseIndividualeModel extends BaseScheda
     }
 
     /**
-     *  BelongsTo<StabiDirigente, static>
+     * @return BelongsTo<StabiDirigente, static>
      */
     public function valutatore(): BelongsTo
     {
@@ -306,7 +306,7 @@ abstract class BaseIndividualeModel extends BaseScheda
     }
 
     /**
-     * @param  array  $input
+     * @param  array<string, mixed> $input
      * @return Builder<static>
      */
     public function filter(array $input = []): Builder

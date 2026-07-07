@@ -256,9 +256,9 @@ class OptimizeFilamentMemoryCommand extends Command
     /**
      * Mostra i risultati dell'analisi.
      *
-     * @param array<string, mixed> $issues
+     * @param array $issues
      */
-    private function displayAnalysisResults(array<string, mixed> $issues): void
+    private function displayAnalysisResults(array $issues): void
     {
         $this->info('📊 Risultati analisi:');
         $this->newLine();
@@ -298,9 +298,9 @@ class OptimizeFilamentMemoryCommand extends Command
     /**
      * Mostra dettagli sui problemi trovati.
      *
-     * @param array<string, mixed> $issues
+     * @param array $issues
      */
-    private function displayDetailedIssues(array<string, mixed> $issues): void
+    private function displayDetailedIssues(array $issues): void
     {
         foreach ($issues as $type => $items) {
             if (is_array($items) && count($items) > 0) {
@@ -317,9 +317,9 @@ class OptimizeFilamentMemoryCommand extends Command
     /**
      * Applica le ottimizzazioni.
      *
-     * @param array<string, mixed> $issues
+     * @param array $issues
      */
-    private function applyOptimizations(array<string, mixed> $issues, bool $verbose = false): void
+    private function applyOptimizations(array $issues, bool $verbose = false): void
     {
         $this->info('🔧 Applicazione ottimizzazioni...');
 

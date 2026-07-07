@@ -26,9 +26,9 @@ class RecordMail extends Mailable
     /**
      * Crea una nuova istanza del mailable.
      *
-     * @param array<string, mixed> $data I dati del record
+     * @param array $data I dati del record
      */
-    public function __construct(array<string, mixed> $data)
+    public function __construct(array $data)
     {
         $this->recordData = $data;
     }

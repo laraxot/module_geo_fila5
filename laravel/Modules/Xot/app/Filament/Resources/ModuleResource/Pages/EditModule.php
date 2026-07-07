@@ -25,7 +25,7 @@ class EditModule extends XotBaseEditRecord
         ];
     }
 
-    protected function mutateFormDataBeforeSave(array<string, mixed> $data): array
+    protected function mutateFormDataBeforeSave(array $data): array
     {
         return $data;
     }
@@ -74,11 +74,11 @@ class EditModule extends XotBaseEditRecord
     }
 
     /**
-     * @param array<mixed, mixed> $config
+     * @param array $config
      *
      * @return array<string, mixed>
      */
-    private function normalizeConfigArray(array<string, mixed> $config): array
+    private function normalizeConfigArray(array $config): array
     {
         $normalized = [];
 

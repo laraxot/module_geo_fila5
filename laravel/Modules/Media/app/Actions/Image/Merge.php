@@ -48,7 +48,7 @@ class Merge
      * @param  string  $outputFilename  Nome file output relativo (es: 'chart/123.png')
      * @return bool Successo operazione
      */
-    public function execute(array $filenames, string $outputFilename): bool
+    public function execute(array<string, mixed> $filenames, string $outputFilename): bool
     {
         if ($filenames === []) {
             return false;

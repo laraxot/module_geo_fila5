@@ -114,7 +114,7 @@ class FilamentMemoryMonitorMiddleware
     /**
      * Logga l'uso della memoria.
      *
-     * @param array<string, mixed> $metrics
+     * @param array $metrics
      */
     private function logMemoryUsage(Request $request, array $metrics): void
     {
@@ -148,9 +148,9 @@ class FilamentMemoryMonitorMiddleware
     /**
      * Determina il livello di log basato sulle metriche.
      *
-     * @param array<string, mixed> $metrics
+     * @param array $metrics
      */
-    private function determineLogLevel(array<string, mixed> $metrics): string
+    private function determineLogLevel(array $metrics): string
     {
         $memoryMB = $metrics['memory_used_mb'];
         $timeMsec = $metrics['execution_time_ms'];

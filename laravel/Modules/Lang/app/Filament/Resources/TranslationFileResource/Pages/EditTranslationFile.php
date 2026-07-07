@@ -47,7 +47,7 @@ class EditTranslationFile extends XotBaseEditRecord
      *
      * @return array<int, Section|TextInput>
      */
-    public function makeFromArray(array $array, string $prefix = ''): array
+    public function makeFromArray(array<string, mixed> $array, string $prefix = ''): array
     {
         $fields = [];
 
@@ -83,7 +83,7 @@ class EditTranslationFile extends XotBaseEditRecord
         );
     }
 
-    protected function mutateFormDataBeforeSave(array $data): array
+    protected function mutateFormDataBeforeSave(array<string, mixed> $data): array
     {
         /*
          * // Salva le traduzioni nel file

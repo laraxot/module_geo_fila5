@@ -88,7 +88,7 @@ class AnalyzeTranslationFiles extends Command
      * @param  array  $array
      * @return array<string, mixed>
      */
-    private function flattenArray(array $array, string $prefix = ''): array
+    private function flattenArray(array<string, mixed> $array, string $prefix = ''): array
     {
         $result = [];
 
@@ -110,7 +110,7 @@ class AnalyzeTranslationFiles extends Command
     /**
      * @param  array<string, array<string, mixed>>  $allFiles
      */
-    private function analyzeStructurePatterns(array $allFiles): void
+    private function analyzeStructurePatterns(array<string, mixed> $allFiles): void
     {
         $this->info('Analyzing structure patterns...');
 
@@ -150,7 +150,7 @@ class AnalyzeTranslationFiles extends Command
      * @param  array<string, array<string, mixed>>  $allFiles
      * @param  list<string>  $allKeys
      */
-    private function generateConsistencyReport(array $allFiles, array $allKeys): void
+    private function generateConsistencyReport(array<string, mixed> $allFiles, array $allKeys): void
     {
         $this->info('Generating consistency report...');
 
@@ -182,7 +182,7 @@ class AnalyzeTranslationFiles extends Command
     /**
      * @param  array<string, array<string, mixed>>  $allFiles
      */
-    private function generateRecommendations(array $allFiles): void
+    private function generateRecommendations(array<string, mixed> $allFiles): void
     {
         $this->info('Generating recommendations...');
 
@@ -223,7 +223,7 @@ class AnalyzeTranslationFiles extends Command
     /**
      * @param  array<string, array<string, mixed>>  $allFiles
      */
-    private function analyzeNavigationStructure(array $allFiles): void
+    private function analyzeNavigationStructure(array<string, mixed> $allFiles): void
     {
         $this->info('Analyzing navigation structure...');
 

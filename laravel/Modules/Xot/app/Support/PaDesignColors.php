@@ -22,7 +22,7 @@ final class PaDesignColors
     /**
      * Colori Filament per tutti i panel che usano MetatagData / ApplyMetatagToPanelAction.
      *
-     * @return array<string, array<int, string>|string>
+     * @return array<string, array|string>
      */
     public static function filamentPalette(): array
     {

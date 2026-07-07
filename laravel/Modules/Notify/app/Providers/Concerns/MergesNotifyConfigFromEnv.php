@@ -28,7 +28,7 @@ trait MergesNotifyConfigFromEnv
     /**
      * @param  array  $envConfig
      */
-    protected function mergeNotifyCompanyConfig(array $envConfig): void
+    protected function mergeNotifyCompanyConfig(array<string, mixed> $envConfig): void
     {
         $prefix = 'notify.notify';
 
@@ -44,7 +44,7 @@ trait MergesNotifyConfigFromEnv
     /**
      * @param  array  $envConfig
      */
-    protected function mergeNotifyMailLayoutConfig(array $envConfig): void
+    protected function mergeNotifyMailLayoutConfig(array<string, mixed> $envConfig): void
     {
         $prefix = 'notify.config';
         /** @var array<string, mixed> $layout */

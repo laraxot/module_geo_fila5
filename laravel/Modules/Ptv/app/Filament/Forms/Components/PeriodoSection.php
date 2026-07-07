@@ -26,7 +26,7 @@ class PeriodoSection extends Section
     /**
      * @param  array<string, TextInput|TextEntry>  $array
      */
-    public function add(array $array): self
+    public function add(array<string, mixed> $array): self
     {
         $this->add = array_merge($this->add, $array);
 

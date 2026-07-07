@@ -129,12 +129,12 @@ class ServizioAccertamentoGeneralitaPage extends XotBasePage
     }
 
     // ====================== METODI DI SUPPORTO (stile C007) ======================
-    private function isAccertamentoSuccessful(array $risultato): bool
+    private function isAccertamentoSuccessful(array<string, mixed> $risultato): bool
     {
         return isset($risultato['successo']) && $risultato['successo'] === true;
     }
 
-    private function handleAccertamentoSuccessful(array $risultato): void
+    private function handleAccertamentoSuccessful(array<string, mixed> $risultato): void
     {
         $listaSoggetti = $risultato['lista_soggetti'] ?? [];
 
@@ -162,7 +162,7 @@ class ServizioAccertamentoGeneralitaPage extends XotBasePage
         $this->notifySuccess();
     }
 
-    private function handleAccertamentoFailed(array $risultato): void
+    private function handleAccertamentoFailed(array<string, mixed> $risultato): void
     {
         $this->notifyError('Accertamento Fallito', $this->formatErrorBody($risultato));
     }
@@ -193,7 +193,7 @@ class ServizioAccertamentoGeneralitaPage extends XotBasePage
         $this->esitoPositivo = false;
     }
 
-    private function validateCodiceFiscale(array $state): string
+    private function validateCodiceFiscale(array<string, mixed> $state): string
     {
         $cf = $state['codiceFiscale'] ?? '';
         if (!is_string($cf) || empty($cf)) {
@@ -202,7 +202,7 @@ class ServizioAccertamentoGeneralitaPage extends XotBasePage
         return strtoupper(trim($cf));
     }
 
-    protected function formatErrorBody(array $risultato): string
+    protected function formatErrorBody(array<string, mixed> $risultato): string
     {
         $errori = $risultato['errori'] ?? [];
         if (! is_array($errori) || $errori === []) {

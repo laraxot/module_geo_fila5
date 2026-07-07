@@ -25,7 +25,7 @@ use Webmozart\Assert\Assert;
  *
  * @method Builder<Model> when(mixed $value = null, ?callable $callback = null, ?callable $default = null)
  * @method Builder<Model> whereBetween(string $column, iterable<int, mixed> $values, string $boolean = 'and', bool $not = false)
- * @method Builder<Model> selectRaw(string $expression, array<int, mixed> $bindings = [])
+ * @method Builder<Model> selectRaw(string $expression, array $bindings = [])
  * @method Builder<Model> where(string|\Closure|\Illuminate\Contracts\Database\Query\Expression $column, mixed $operator = null, mixed $value = null, string $boolean = 'and')
  */
 class CustomRelation extends Relation
@@ -65,9 +65,9 @@ class CustomRelation extends Relation
      * Set the constraints for an eager load of the relation.
      */
     /**
-     * @param array<int, Model> $models
+     * @param array $models
      */
-    public function addEagerConstraints(array<string, mixed> $models): void
+    public function addEagerConstraints(array $models): void
     {
         // Parameter #1 $function of function call_user_func expects callable(): mixed, Closure|null given.
         if (! \is_callable($this->eagerConstraints)) {
@@ -81,11 +81,11 @@ class CustomRelation extends Relation
      * Initialize the relation on a set of models.
      */
     /**
-     * @param array<int, Model> $models
+     * @param array $models
      *
      * @return array<int, Model>
      */
-    public function initRelation(array<string, mixed> $models, mixed $relation): array
+    public function initRelation(array $models, mixed $relation): array
     {
         foreach ($models as $model) {
             $model->setRelation($relation, $this->related->newCollection());
@@ -100,12 +100,12 @@ class CustomRelation extends Relation
      * @return array<int, Model>
      */
     /**
-     * @param array<int, Model>      $models
+     * @param array $models
      * @param Collection<int, Model> $collection
      *
      * @return array<int, Model>
      */
-    public function match(array<string, mixed> $models, Collection $collection, mixed $relation): array
+    public function match(array $models, Collection $collection, mixed $relation): array
     {
         // Trying to invoke Closure|null but it might not be a callable.
         if (! \is_callable($this->eagerMatcher)) {
@@ -116,7 +116,7 @@ class CustomRelation extends Relation
         Assert::isArray($res);
         Assert::allIsInstanceOf($res, Model::class);
 
-        /** @var array<int, Model> $models */
+        /** @var array $models */
         $models = array_values($res);
 
         return $models;
@@ -162,7 +162,7 @@ class CustomRelation extends Relation
         Assert::isArray($models);
         Assert::allIsInstanceOf($models, Model::class);
 
-        /* @var array<int, Model> $models */
+        /* @var array $models */
         return $this->related->newCollection($models);
     }
 

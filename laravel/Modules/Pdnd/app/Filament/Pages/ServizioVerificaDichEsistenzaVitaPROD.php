@@ -153,7 +153,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage
     /**
      * Verifica se la risposta del servizio C007 indica un successo.
      */
-    private function isVerificaSuccessful(array $risultato): bool
+    private function isVerificaSuccessful(array<string, mixed> $risultato): bool
     {
         // dd($risultato);
         return isset($risultato['successo']) && $risultato['successo'] === true;
@@ -162,7 +162,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage
     /**
      * Gestisce il caso di verifica completata con successo.
      */
-    private function handleVerificaSuccessful(array $risultatoC007Service): void
+    private function handleVerificaSuccessful(array<string, mixed> $risultatoC007Service): void
     {
         $risultatoVerificaValue = 'N/A';
         $listaSoggetti = $risultatoC007Service['lista_soggetti'] ?? [];
@@ -198,7 +198,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage
     /**
      * Gestisce il caso di verifica fallita.
      */
-    private function handleVerificaFailed(array $risultatoC007Service): void
+    private function handleVerificaFailed(array<string, mixed> $risultatoC007Service): void
     {
         $errorMessage = $this->formatErrorBody($risultatoC007Service);
 
@@ -241,7 +241,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage
     /**
      * Estrae e valida il codice fiscale dallo state del form.
      */
-    private function validateCodiceFiscale(array $state): string
+    private function validateCodiceFiscale(array<string, mixed> $state): string
     {
         $codiceFiscale = $state['codiceFiscale'] ?? '';
 
@@ -256,7 +256,7 @@ class ServizioVerificaDichEsistenzaVitaPROD extends XotBasePage
         return strtoupper(trim($codiceFiscale));
     }
 
-    protected function formatErrorBody(array $risultatoC007Service): string
+    protected function formatErrorBody(array<string, mixed> $risultatoC007Service): string
     {
         $errori = $risultatoC007Service['errori'] ?? [];
         if (! is_array($errori)) {
