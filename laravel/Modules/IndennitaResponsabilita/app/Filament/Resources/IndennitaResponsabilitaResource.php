@@ -41,12 +41,18 @@ class IndennitaResponsabilitaResource extends XotBaseResource
         ];
     }
 
+    /**
+     * @return array<int, mixed>
+     */
     public static function getTableSchema(): array
     {
         return [
         ];
     }
 
+    /**
+     * @return array<string, \Filament\Actions\Action>
+     */
     public static function getActions(): array
     {
         return [
@@ -63,12 +69,19 @@ class IndennitaResponsabilitaResource extends XotBaseResource
         return Gate::allows('downloadXls', Auth::user());
     }
 
+    /**
+     * @param  array<string, mixed>  $data
+     */
     public static function downloadXlsAction(array $data): \Symfony\Component\HttpFoundation\BinaryFileResponse
     {
         // TODO: Implement Excel file generation logic
         throw new \RuntimeException('downloadXlsAction not yet implemented');
     }
 
+    /**
+     * @param  array<string, mixed>  $data
+     * @return array<int, string>
+     */
     public static function getXlsFields(array $data): array
     {
         $anno = Arr::get($data, 'anno/valutatore.anno', null);

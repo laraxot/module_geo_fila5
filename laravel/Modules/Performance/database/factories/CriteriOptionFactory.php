@@ -7,6 +7,7 @@ namespace Modules\Performance\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Performance\Models\CriteriOption;
 
+/** @extends Factory<\Modules\Performance\Models\CriteriOption> */
 class CriteriOptionFactory extends Factory
 {
     /**

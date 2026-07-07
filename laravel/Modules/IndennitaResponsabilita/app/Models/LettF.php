@@ -354,7 +354,7 @@ class LettF extends BaseScheda
         /** @var int|null $anno */
         $anno = $this->anno ?? null;
         if ($anno === null) {
-            /** @var HasMany<Rep00f, LettF> $relation */
+            /** @var HasMany<Rep00f, $this> $relation */
             $relation = $this->hasMany(Rep00f::class, 'matr', 'matr')
                 ->where('ente', $this->ente)
                 ->whereRaw('repann=""')
@@ -363,7 +363,7 @@ class LettF extends BaseScheda
             return $relation;
         }
 
-        /** @var HasMany<Rep00f, LettF> $relation */
+        /** @var HasMany<Rep00f, $this> $relation */
         $relation = $this->hasMany(Rep00f::class, 'matr', 'matr')
             ->where('ente', $this->ente)
             ->whereRaw('repann=""')
