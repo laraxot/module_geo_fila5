@@ -90,7 +90,7 @@ trait SushiToJson
 
         $normalizedData = $this->normalizeJsonItems($typedData);
         $schema = $this->getSchema();
-        $form = $this->normalizeSchemaFields($schema ?? []);
+        $form = $this->normalizeSchemaFields(is_array($schema) ? $schema : []);
 
         return $this->completeSchemaFields($normalizedData, $form);
     }

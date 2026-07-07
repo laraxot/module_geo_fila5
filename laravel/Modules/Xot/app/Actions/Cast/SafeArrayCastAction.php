@@ -143,7 +143,7 @@ class SafeArrayCastAction
         $array = $this->execute($value, $default);
 
         // Filtra solo le chiavi permesse
-        $flippedKeys = array_flip(array_filter($allowedKeys, fn ($key) => is_string($key) || is_int($key)));
+        $flippedKeys = array_flip($allowedKeys);
 
         return array_intersect_key($array, $flippedKeys);
     }

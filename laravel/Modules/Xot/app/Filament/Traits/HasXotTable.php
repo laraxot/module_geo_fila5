@@ -308,10 +308,8 @@ trait HasXotTable
         if ($this->shouldShowDetachAction() && method_exists($this, 'getRelationship')) {
             $relationship = $this->getRelationship();
 
-            // @phpstan-ignore-next-line function.alreadyNarrowedType
-            // (in RelationManager, always object; in ListRecords, may not be)
-            if (is_object($relationship)
-                && method_exists($relationship, 'getTable')
+            // Both Builder and Relation are objects with these methods in RelationManager context
+            if (method_exists($relationship, 'getTable')
                 && method_exists($relationship, 'getPivotClass')
             ) {
                 $pivotClass = $relationship->getPivotClass();
