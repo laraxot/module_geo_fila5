@@ -18,7 +18,7 @@ abstract class BaseModel extends XotBaseModel
     /** @var string|null */
     protected $prefix;
 
-    public function __construct(array<string, mixed> $attributes = [])
+    public function __construct(array $attributes = [])
     {
         if (isset($this->prefix)) {
             $this->table = $this->prefix.$this->table;

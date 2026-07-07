@@ -11,7 +11,7 @@ trait FrontendSortable
     /**
      * @param  Builder<static>  $query
      * @param  array<string>  $sortableColumns
-     * @param  array<string, string>  $defaultSort
+     * @param  array  $defaultSort
      * @return Builder<static>
      */
     public function scopeSortableBy(
