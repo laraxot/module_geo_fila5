@@ -514,7 +514,7 @@ trait FunctionExtra
     /**
      * @param  array<string, mixed>  $params
      */
-    public function ggFuoriSedeTot(array<string, mixed> $params): ?int
+    public function ggFuoriSedeTot(array $params): ?int
     {
         // These helper calculations are only valid on Anag instances,
         // which provide the required qua03f() relationship.
@@ -566,7 +566,7 @@ trait FunctionExtra
     }
 
     // -------------------------------------------------------------------------------
-    public function hhAssenzaInSedeTot(array<string, mixed> $params): int
+    public function hhAssenzaInSedeTot(array $params): int
     {
         // These helper calculations are only valid on Anag instances,
         // which provide the required asz00k1() relationship.
@@ -653,7 +653,7 @@ trait FunctionExtra
      *
      * @param  array<string, mixed>  $params
      */
-    public function ggAssenzaFuoriSedeTot(array<string, mixed> $params): int
+    public function ggAssenzaFuoriSedeTot(array $params): int
     {
         return 0; // da fare
     }
@@ -664,7 +664,7 @@ trait FunctionExtra
      *
      * @param  array<string, mixed>  $_params
      */
-    public function hhAssenzaFuoriSedeTot(array<string, mixed> $_params): int
+    public function hhAssenzaFuoriSedeTot(array $_params): int
     {
         return 0; // da fare
     }
@@ -1113,7 +1113,7 @@ trait FunctionExtra
     }
 
     // -------------------------------------------------------------------------------------------------------
-    public function addTableField(array<string, mixed> $params): void
+    public function addTableField(array $params): void
     {
         $table = $this->getTable();
         $conn = $this->getConnection();
