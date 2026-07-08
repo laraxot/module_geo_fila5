@@ -6,15 +6,25 @@ namespace Modules\Geo\Tests\Unit\Actions\Mapbox;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+<<<<<<< Updated upstream
+=======
+use Modules\Geo\Tests\LightTestCase;
+
+uses(LightTestCase::class);
+>>>>>>> Stashed changes
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\Mapbox\GetAddressFromMapboxAction;
 use Modules\Geo\Datas\AddressData;
+<<<<<<< Updated upstream
 use Modules\Geo\Tests\LightTestCase;
 
 uses(LightTestCase::class);
+=======
+
+>>>>>>> Stashed changes
 
 beforeEach(function () {
     $this->mockHandler = new MockHandler();
