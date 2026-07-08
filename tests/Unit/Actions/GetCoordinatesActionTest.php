@@ -12,7 +12,7 @@ use Modules\Geo\Tests\LightTestCase;
 
 uses(LightTestCase::class);
 
-beforeEach(function () {)
+beforeEach(function () {
     $action = new GetCoordinatesAction();
 });
 

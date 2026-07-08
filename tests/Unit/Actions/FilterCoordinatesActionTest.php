@@ -6,7 +6,7 @@ namespace Modules\Geo\Tests\Unit\Actions;
 
 use Modules\Geo\Actions\FilterCoordinatesAction;
 
-beforeEach(function () {)
+beforeEach(function () {
     $action = new FilterCoordinatesAction();
 });
 
