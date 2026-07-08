@@ -4,7 +4,7 @@ type: concept
 module: Xot
 tags: [phpstan, trait, probe, xot, second-brain]
 created: 2026-06-30
-updated: 2026-06-30
+updated: 2026-07-08
 qmd: "phpstan trait probe unused trait xotPhpstanTraitProbeClasses Helper scanFiles"
 related:
   - ./phpstan-fixes-log.md

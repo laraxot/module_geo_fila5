@@ -145,3 +145,7 @@ Alcune risorse non hanno tutte le pages standard:
 **Ultimo aggiornamento**: 2025-01-22
 **Versione**: 1.0.0
 **Status**: ✅ Completato e verificato
+
+## 2026-07-08 PHPStan
+
+`OauthPersonalAccessClientResource::getTableColumns()` resta statico perché viene usato da `table()`. Non chiamare metodi istanza con `self::`.
