@@ -1,1 +1,4 @@
 # Geo Module Documentation\n\nHandles geographic data and maps.\n\n## Contents\n- [Static Map Implementation](static-map-clickable-implementation.md)\n- [Italian Address Structure](models/address-italian-structure.md)
+
+## AI Workflows
+- [AI Methodologies](./ai-methodologies.md)
