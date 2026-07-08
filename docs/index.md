@@ -100,6 +100,22 @@
 - [**UI**](../Modules/UI/docs/README.md) - Documentazione modulo componenti UI
 - [**Xot**](../Modules/Xot/docs/README.md) - Documentazione modulo base
 
+## 🗺️ Geo Filament Components
+
+### Filosofia e Regole
+- [**Filament Geo Pickers Philosophy**](filament-geo-pickers-philosophy.md) - Filosofia, visione e regole per i componenti Geo picker
+- [**Map Picker Prompt**](/prompts/map-picker.txt) - Prompt per implementazione MapPicker
+
+### Pickers Components
+- CoordinatePicker - Il maestro Zen
+- MapPicker / LocationPicker - Alias backward-compatible
+- LatitudeLongitudeInput - Le viscere grezze
+- PlacePicker - La guida al specifico
+- MapPositioner - Il righello di prospettiva
+- MapLocationInput - Input nascosto sincronizzato
+- LeafletMarkerMapInput - L'amarker con memoria
+- GeopointPicker - Il punto geografico puro
+
 ## 📋 Convenzioni e Standard
 
 ### Naming e Struttura
