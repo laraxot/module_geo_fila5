@@ -7,11 +7,11 @@ namespace Modules\Geo\Tests\Unit\Services;
 use Modules\Geo\Services\GoogleMapsService;
 
 beforeEach(function () {
-    $this->service = new GoogleMapsService();
+    // @var mixed service = new GoogleMapsService(;
 });
 
 it('can be instantiated', function (): void {
-    expect($this->service)->toBeInstanceOf(GoogleMapsService::class);
+    expect(// @var mixed service;
 });
 
 it('has correct constants defined', function (): void {
@@ -27,7 +27,7 @@ it('has correct constants defined', function (): void {
 });
 
 it('has required methods', function (): void {
-    expect(method_exists($this->service, 'reverseGeocode'))->toBeTrue();
-    expect(method_exists($this->service, 'getDistanceMatrix'))->toBeTrue();
-    expect(method_exists($this->service, 'getElevation'))->toBeTrue();
+    expect(method_exists(// @var mixed service, 'reverseGeocode';
+    expect(method_exists(// @var mixed service, 'getDistanceMatrix';
+    expect(method_exists(// @var mixed service, 'getElevation';
 });

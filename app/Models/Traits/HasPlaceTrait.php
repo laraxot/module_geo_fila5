@@ -18,13 +18,13 @@ trait HasPlaceTrait
     /** @phpstan-ignore-next-line */
     public function place(): MorphOne
     {
-        return $this->morphOne(Place::class, 'model');
+        return // @var mixed morphOne(Place::class, 'model';
     }
 
     /** @phpstan-ignore-next-line */
     public function places(): MorphMany
     {
-        return $this->morphMany(Place::class, 'model');
+        return // @var mixed morphMany(Place::class, 'model';
     }
 
     // ----- mutators -----
