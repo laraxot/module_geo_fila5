@@ -27,7 +27,7 @@ class LookupPlaceAction
     /**
      * Cerca un luogo usando il suo OSM ID.
      *
-     * @param string $osmId ID OpenStreetMap del luogo
+     * @param  string  $osmId  ID OpenStreetMap del luogo
      *
      * @throws GuzzleException
      * @throws \RuntimeException

@@ -27,8 +27,8 @@ class ReverseGeocodeAction
     /**
      * Ottiene l'indirizzo da coordinate geografiche.
      *
-     * @param float $latitude  Latitudine
-     * @param float $longitude Longitudine
+     * @param  float  $latitude  Latitudine
+     * @param  float  $longitude  Longitudine
      *
      * @throws GuzzleException
      * @throws \RuntimeException
