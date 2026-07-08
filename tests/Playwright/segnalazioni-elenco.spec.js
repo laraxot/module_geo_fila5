@@ -6,17 +6,31 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
       waitUntil: 'domcontentloaded',
       timeout: 30000,
     });
-    await page.waitForSelector('geo-map-lit', { timeout: 10000 });
+    await page.waitForSelector('map-lit', { timeout: 10000 });
     await page.waitForSelector('.leaflet-container', { timeout: 25000 });
   });
 
-  test('geo-map-lit component renders with correct dimensions', async ({ page }) => {
-    const mapComponent = page.locator('geo-map-lit');
+  test('map-lit component renders with correct dimensions', async ({ page }) => {
+    const mapComponent = page.locator('map-lit');
     await expect(mapComponent).toBeVisible();
     const box = await mapComponent.boundingBox();
     expect(box).not.toBeNull();
     expect(box.height).toBeGreaterThan(300);
     expect(box.width).toBeGreaterThan(300);
+  });
+
+  test('map-lit custom element is registered with public filtering API', async ({ page }) => {
+    const status = await page.locator('map-lit').evaluate(el => ({
+      defined: Boolean(customElements.get('map-lit')),
+      tagName: el.tagName.toLowerCase(),
+      hasFilter: typeof el.filterByType === 'function',
+      hasMap: Boolean(el._map),
+    }));
+
+    expect(status.defined).toBe(true);
+    expect(status.tagName).toBe('map-lit');
+    expect(status.hasFilter).toBe(true);
+    expect(status.hasMap).toBe(true);
   });
 
   test('Leaflet map initializes and tiles load', async ({ page }) => {
@@ -25,8 +39,8 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
   });
 
   test('search box is visible and accepts input', async ({ page }) => {
-    const toggleBtn = page.getByRole('tabpanel').getByRole('button', { name: 'Cerca' }).first();
-    const searchInputDirect = page.locator('geo-map-lit .map-picker-search-input');
+    const toggleBtn = page.locator('map-lit').getByRole('button', { name: 'Cerca' }).first();
+    const searchInputDirect = page.locator('map-lit .map-picker-search-input');
 
     await expect(toggleBtn).toBeVisible({ timeout: 5000 });
     await toggleBtn.click();
@@ -36,10 +50,10 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
   });
 
   test('search centra la mappa su un indirizzo', async ({ page }) => {
-    const toggleBtn = page.getByRole('tabpanel').getByRole('button', { name: 'Cerca' }).first();
+    const toggleBtn = page.locator('map-lit').getByRole('button', { name: 'Cerca' }).first();
     await expect(toggleBtn).toBeVisible({ timeout: 5000 });
     await toggleBtn.click();
-    const searchInput = page.locator('geo-map-lit .map-picker-search-input');
+    const searchInput = page.locator('map-lit .map-picker-search-input');
     await expect(searchInput).toBeVisible({ timeout: 5000 });
 
     const initialCenter = await page.locator('.leaflet-container').evaluate(el => {
@@ -56,7 +70,7 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
   });
 
   test('map controls are all visible (fullscreen, location, layer, zoom+, zoom-)', async ({ page }) => {
-    const buttons = page.locator('geo-map-lit .ctrl-btn');
+    const buttons = page.locator('map-lit .ctrl-btn');
     const count = await buttons.count();
     expect(count).toBeGreaterThanOrEqual(5);
 
@@ -72,7 +86,7 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
     await fullscreenBtn.click();
     await page.waitForTimeout(300);
 
-    const mapContainer = page.locator('geo-map-lit .map-container');
+    const mapContainer = page.locator('map-lit .map-container');
     await expect(mapContainer).toHaveClass(/is-fullscreen/);
 
     // In ambiente headless il fullscreen nativo non è sempre attivo:
@@ -87,13 +101,13 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
     const zoomInBtn = page.getByRole('button', { name: 'Aumenta zoom' }).first();
     await expect(zoomInBtn).toBeVisible();
 
-    const zoomBefore = await page.locator('geo-map-lit').evaluate(el => {
+    const zoomBefore = await page.locator('map-lit').evaluate(el => {
       return el._map ? el._map.getZoom() : null;
     });
 
     await zoomInBtn.click();
     const zoomAfterClick = await expect.poll(async () => {
-      return page.locator('geo-map-lit').evaluate(el => (el._map ? el._map.getZoom() : null));
+      return page.locator('map-lit').evaluate(el => (el._map ? el._map.getZoom() : null));
     }, {
       timeout: 1500,
       intervals: [150, 250, 350],
@@ -101,7 +115,7 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
 
     if ((zoomAfterClick ?? 0) <= (zoomBefore ?? 0)) {
       // Fallback anti-flaky: forza il path interno del componente.
-      await page.locator('geo-map-lit').evaluate((el) => {
+      await page.locator('map-lit').evaluate((el) => {
         if (typeof el._zoomIn === 'function') {
           el._zoomIn();
         } else if (el._map && typeof el._map.zoomIn === 'function') {
@@ -111,7 +125,7 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
     }
 
     await expect.poll(async () => {
-      return page.locator('geo-map-lit').evaluate(el => (el._map ? el._map.getZoom() : null));
+      return page.locator('map-lit').evaluate(el => (el._map ? el._map.getZoom() : null));
     }, {
       timeout: 2500,
       intervals: [150, 250, 400, 500],
@@ -121,7 +135,7 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
   test('markers are rendered on the map', async ({ page }) => {
     // Alcuni ambienti di test non espongono marker se il dataset non contiene coordinate valide.
     // La regressione critica qui è che il componente carichi il GeoJSON senza errori runtime.
-    const status = await page.locator('geo-map-lit').evaluate((el) => ({
+    const status = await page.locator('map-lit').evaluate((el) => ({
       featuresLoaded: Array.isArray(el._allFeatures),
       markersLoaded: Array.isArray(el._allMarkers),
       featuresCount: Array.isArray(el._allFeatures) ? el._allFeatures.length : -1,
@@ -135,7 +149,7 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
   });
 
   test('cluster icons have inline circle style (farmshops.eu pattern)', async ({ page }) => {
-    const markersCount = await page.locator('geo-map-lit').evaluate((el) =>
+    const markersCount = await page.locator('map-lit').evaluate((el) =>
       Array.isArray(el._allMarkers) ? el._allMarkers.length : 0
     );
 
