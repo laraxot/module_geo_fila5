@@ -76,7 +76,7 @@ it('returns error for invalid response status', function (): void {
 it('returns error when no route found', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([
+    $mockHandler->append(new Response(200, [], json_encode([)))
         'status' => 'OK',
         'rows' => [[
             'elements' => [[
@@ -98,7 +98,7 @@ it('returns error when no route found', function (): void {
 it('returns travel time data for valid route', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([
+    $mockHandler->append(new Response(200, [], json_encode([)))
         'status' => 'OK',
         'rows' => [[
             'elements' => [[
@@ -127,7 +127,7 @@ it('returns travel time data for valid route', function (): void {
 it('uses duration as fallback for duration in traffic', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([
+    $mockHandler->append(new Response(200, [], json_encode([)))
         'status' => 'OK',
         'rows' => [[
             'elements' => [[

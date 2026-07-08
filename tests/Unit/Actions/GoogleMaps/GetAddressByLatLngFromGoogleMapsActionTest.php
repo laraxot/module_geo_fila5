@@ -68,7 +68,7 @@ it('throws exception for guzzle exception', function (): void {
 it('throws exception when no results found', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([
+    $mockHandler->append(new Response(200, [], json_encode([)))
         'status' => 'OK',
         'results' => [],
     ])));
@@ -80,7 +80,7 @@ it('throws exception when no results found', function (): void {
 it('throws exception for invalid response status', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([
+    $mockHandler->append(new Response(200, [], json_encode([)))
         'status' => 'ZERO_RESULTS',
         'results' => [],
     ])));
@@ -92,7 +92,7 @@ it('throws exception for invalid response status', function (): void {
 it('returns location data for valid coordinates', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([
+    $mockHandler->append(new Response(200, [], json_encode([)))
         'status' => 'OK',
         'results' => [[
             'formatted_address' => 'Via Roma, Milano, MI, Italia',
@@ -117,7 +117,7 @@ it('returns location data for valid coordinates', function (): void {
 it('handles boundary latitude values', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([
+    $mockHandler->append(new Response(200, [], json_encode([)))
         'status' => 'OK',
         'results' => [[
             'formatted_address' => 'North Pole',
@@ -140,7 +140,7 @@ it('handles boundary latitude values', function (): void {
 it('handles boundary longitude values', function (): void {
     config(['services.google.maps_api_key' => 'test_key']);
 
-    $mockHandler->append(new Response(200, [], json_encode([
+    $mockHandler->append(new Response(200, [], json_encode([)))
         'status' => 'OK',
         'results' => [[
             'formatted_address' => 'International Date Line',
