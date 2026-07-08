@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Traits;
 
-use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Geo\Models\Traits\HasAddress;
 
@@ -30,7 +29,7 @@ class TestModel extends Model
 
         static::creating(static function (): void {
             if (! app()->environment('testing')) {
-                throw new Exception('TestModel should only be used in tests.');
+                throw new \Exception('TestModel should only be used in tests.');
             }
         });
     }
