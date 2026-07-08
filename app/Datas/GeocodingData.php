@@ -23,7 +23,8 @@ class GeocodingData extends Data
         public readonly ?string $postal_code,
         public readonly ?string $error = null,
         public readonly ?string $status = null,
-    ) {}
+    ) {
+    }
 
     /**
      * Crea un'istanza di errore.
@@ -88,7 +89,7 @@ class GeocodingData extends Data
 
     public function isError(): bool
     {
-        return $this->error !== null || ($this->status !== null && $this->status !== 'OK');
+        return null !== $this->error || (null !== $this->status && 'OK' !== $this->status);
     }
 
     /**
@@ -99,6 +100,7 @@ class GeocodingData extends Data
      *     short_name: string,
      *     types: array<string>
      * }> $components
+     *
      * @return array<string, string>
      */
     private static function extractAddressComponents(array $components): array
