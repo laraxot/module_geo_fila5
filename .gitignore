@@ -471,3 +471,4 @@ ${PWD}/
 *.Identifier
 laravel/Modules/Notify/.openviking
 laravel/phpstan_reports/
+laravel/Modules/Geo/
