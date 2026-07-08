@@ -113,7 +113,7 @@ class GetCoordinatesByAddressAction
      */
     private function makeHttpRequest(string $url, array $params): Response
     {
-        /* @var Response $response */
+        /** @var Response $response */
         return Http::get($url, $params);
     }
 
