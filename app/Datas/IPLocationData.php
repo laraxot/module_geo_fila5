@@ -31,5 +31,6 @@ class IPLocationData extends Data
         public readonly ?float $longitude = null,
         public readonly ?string $timezone = null,
         public readonly ?string $isp = null,
-    ) {}
+    ) {
+    }
 }

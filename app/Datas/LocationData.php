@@ -22,7 +22,8 @@ class LocationData extends Data
         public readonly float $longitude,
         public readonly ?string $name = null,
         public readonly ?string $address = null,
-    ) {}
+    ) {
+    }
 
     /**
      * Converte i dati in un array.

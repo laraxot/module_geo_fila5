@@ -25,7 +25,8 @@ class UpdateCoordinatesResult extends Data
         public readonly int $successCount,
         public readonly int $failureCount,
         public readonly Collection $errors,
-    ) {}
+    ) {
+    }
 
     /**
      * Check if there were any errors during processing.

@@ -24,7 +24,7 @@ class SearchPlacesAction
 
     public function __construct(string $userAgent)
     {
-        $this->client = new Client;
+        $this->client = new Client();
         $this->userAgent = $userAgent.' Application';
     }
 

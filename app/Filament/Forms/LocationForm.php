@@ -53,7 +53,7 @@ class LocationForm
 
                     $options = [];
                     foreach (ComuneJson::byRegion((string) $get('region')) as $row) {
-                        /** @var array{provincia: array{codice: string, nome: string}} $row */
+                        /* @var array{provincia: array{codice: string, nome: string}} $row */
                         $options[$row['provincia']['codice']] = $row['provincia']['nome'];
                     }
 
