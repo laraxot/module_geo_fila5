@@ -381,6 +381,8 @@ test*.php
 
 # Scripts bash locali
 bashscripts/
+!bashscripts/tools/
+!bashscripts/tools/guard-monorepo-push.sh
 
 # Copy files (duplicati temporanei)
 * copy
@@ -423,6 +425,7 @@ docs/wiki/concepts
 docs/wiki/rules/
 docs/wiki/skills/
 .githooks
+!.githooks/pre-push
 .gsd
 _bmad-output
 _bmad

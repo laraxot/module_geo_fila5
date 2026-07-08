@@ -1,0 +1,13 @@
+#!/bin/sh
+# Monorepo PTVX — pre-push: guard + Git LFS
+set -e
+
+ROOT="$(git rev-parse --show-toplevel)"
+GUARD="$ROOT/bashscripts/tools/guard-monorepo-push.sh"
+
+if [ -x "$GUARD" ]; then
+  "$GUARD" || exit 1
+fi
+
+command -v git-lfs >/dev/null 2>&1 || exit 0
+git lfs pre-push "$@"

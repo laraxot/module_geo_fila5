@@ -14,6 +14,46 @@ metadata:
 
 ---
 
+## Errori specifici PTVX (2026-07-08)
+
+### Origin su `module_geo_fila5` (SBAGLIATO)
+
+Il monorepo **non** è `laraxot/module_geo_fila5`. Geo è modulo opzionale e **non** va clonato in `laravel/Modules/Geo/`.
+
+```bash
+# Remote canonico
+git remote set-url origin git@github.com:provtv/base_ptv_fila5.git
+# Solo riferimento opzionale (mai come origin)
+git remote add geo git@github.com:laraxot/module_geo_fila5.git 2>/dev/null || true
+```
+
+### Rebase onto commit Geo (`331ba6c…`)
+
+**Mai** `git pull` / `git rebase` da remote `geo` sul branch `dev` del monorepo.
+
+```bash
+git rebase --abort 2>/dev/null || true
+git reset --hard dev
+git checkout dev
+```
+
+### Geo embedded / tracciato
+
+```bash
+git rm --cached -r laravel/Modules/Geo 2>/dev/null || true
+echo 'laravel/Modules/Geo/' >> .gitignore
+rm -rf laravel/Modules/Geo
+```
+
+### Guard automatico
+
+```bash
+bash bashscripts/tools/guard-monorepo-push.sh
+git config core.hooksPath .githooks   # hook versionato nel repo
+```
+
+---
+
 ## Configurazioni Permanente
 
 ### 1. LFS Incomplete Push (Allow)
