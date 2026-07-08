@@ -16,10 +16,8 @@
 ## 🏗️ **Core Design System**
 - 🎨 **[Layouts & Themes](./layouts-and-themes.md)** - Gestione dei temi per tenant e dark mode.
 - 📐 **[Architecture Rules](./architecture.md)** - Regole per la creazione di nuovi componenti UI.
-<<<<<<< HEAD
 - 🧭 **[Confine UI e Geo](./geo-boundary.md)** - UI non dipende da Geo; Geo puo' dipendere da UI.
-=======
->>>>>>> laraxot/dev
+- 🔀 **[Git push / LFS](./wiki/troubleshooting/git-push-lfs-missing-objects.md)** - Push rifiutato per oggetti LFS mancanti.
 - 🖋️ **[Icon System](./icon-system.md)** - Integrazione di Blade Icons e set personalizzati.
 
 ## 🧱 **Componenti & Widget**

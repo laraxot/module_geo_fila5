@@ -41,6 +41,7 @@ related:
 - [comparisons/](./comparisons/): Alternative implementations.
 - [decisions/](./decisions/): ADL (Architectural Decision Log).
 - [troubleshooting/](./troubleshooting/): Known issues and solutions.
+  - [git-push-lfs-missing-objects](./troubleshooting/git-push-lfs-missing-objects.md): push rifiutato per LFS mancanti
 - [_archive/](./_archive/): Legacy documentation.
 - [_templates/](./_templates/): Standard templates.
 
