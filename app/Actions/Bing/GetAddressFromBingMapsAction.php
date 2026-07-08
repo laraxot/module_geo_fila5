@@ -61,7 +61,7 @@ class GetAddressFromBingMapsAction
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
     {
-        $response = Http::get(self::BASE_URL, [)
+        $response = Http::get(self::BASE_URL, [
             'point' => "{$latitude},{$longitude}",
             'key' => $apiKey,
             'includeEntityTypes' => 'Address',
@@ -111,15 +111,15 @@ class GetAddressFromBingMapsAction
                 ],
             ],
             'address' => [
-                'countryRegion' => $this->extractStringField($address, 'countryRegion')
-                'adminDistrict' => $this->extractStringField($address, 'adminDistrict')
-                'adminDistrict2' => $this->extractStringField($address, 'adminDistrict2')
-                'locality' => $this->extractStringField($address, 'locality')
-                'postalCode' => $this->extractStringField($address, 'postalCode')
-                'addressLine' => $this->extractStringField($address, 'addressLine')
-                'countryRegionIso2' => $this->extractStringField($address, 'countryRegionIso2')
-                'neighborhood' => $this->extractStringField($address, 'neighborhood')
-                'houseNumber' => $this->extractStringField($address, 'houseNumber')
+                'countryRegion' => $this->extractStringField($address, 'countryRegion'),
+                'adminDistrict' => $this->extractStringField($address, 'adminDistrict'),
+                'adminDistrict2' => $this->extractStringField($address, 'adminDistrict2'),
+                'locality' => $this->extractStringField($address, 'locality'),
+                'postalCode' => $this->extractStringField($address, 'postalCode'),
+                'addressLine' => $this->extractStringField($address, 'addressLine'),
+                'countryRegionIso2' => $this->extractStringField($address, 'countryRegionIso2'),
+                'neighborhood' => $this->extractStringField($address, 'neighborhood'),
+                'houseNumber' => $this->extractStringField($address, 'houseNumber'),
             ],
         ];
 
