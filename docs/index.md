@@ -108,7 +108,6 @@
 
 ---
 
-**Ultimo aggiornamento**: Gennaio 2025
 **Versione**: 3.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Aggiornata
