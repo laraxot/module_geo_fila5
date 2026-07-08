@@ -10,7 +10,7 @@ use Modules\Geo\Models\Comune;
 
 beforeEach(function (): void {
     // Crea un file JSON di test
-    // @var mixed testData = [
+    $testData = [
         [
             'id' => 1,
             'regione' => 'Lombardia',
@@ -37,7 +37,7 @@ beforeEach(function (): void {
 
     File::put(
         base_path('database/content/comuni.json'),
-        json_encode(// @var mixed testData, JSON_PRETTY_PRINT
+        json_encode($testData, JSON_PRETTY_PRINT
     );
 });
 

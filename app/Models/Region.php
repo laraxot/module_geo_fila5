@@ -73,7 +73,7 @@ class Region extends BaseModel
     /** @return HasMany<Province, $this> */
     public function provinces(): HasMany
     {
-        return // @var mixed hasMany(Province::class;
+        return $this->hasMany(Province::class);
     }
 
     /** @return array<mixed> */

@@ -46,22 +46,22 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
 
     public function getLabel(): string
     {
-        return // @var mixed transClass(self::class, $this->value.'.label';
+        return $this->transClass(self::class, $this->value.'.label');
     }
 
     public function getColor(): string
     {
-        return // @var mixed transClass(self::class, $this->value.'.color';
+        return $this->transClass(self::class, $this->value.'.color');
     }
 
     public function getIcon(): string
     {
-        return // @var mixed transClass(self::class, $this->value.'.icon';
+        return $this->transClass(self::class, $this->value.'.icon');
     }
 
     public function getDescription(): string
     {
-        return // @var mixed transClass(self::class, $this->value.'.description';
+        return $this->transClass(self::class, $this->value.'.description');
     }
 
     /**
@@ -114,13 +114,13 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
      * Usage in migrations:
      * ```php
      * // In CREATE block (no hasColumn checks needed):
-     * // @var mixed tableCreate(function (Blueprint $table
+     * $this->tableCreate(function (Blueprint $table
      *     $table->id();
      *     AddressItemEnum::columns($table); // migration = null, adds all
      * });
      *
      * // In UPDATE block (with hasColumn checks):
-     * // @var mixed tableUpdate(function (Blueprint $table
+     * $this->tableUpdate(function (Blueprint $table
      *     AddressItemEnum::columns($table, $this); // loops with checks
      * });
      * ```
@@ -151,7 +151,7 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
      * Thin wrapper around columns() for semantic clarity in migrations:
      *
      * ```php
-     * // @var mixed tableUpdate(function (Blueprint $table
+     * $this->tableUpdate(function (Blueprint $table
      *     AddressItemEnum::updateColumns($table, $this);
      * });
      * ```

@@ -30,7 +30,7 @@ class GeoJsonCollection extends ResourceCollection
     {
         return [
             'type' => 'FeatureCollection',
-            'features' => // @var mixed collection,
+            'features' => $collection,
             /*'links' => [
              * 'self' => 'link-value',
              * ],*/

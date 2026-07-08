@@ -13,7 +13,7 @@ use Modules\Geo\Tests\LightTestCase;
 uses(LightTestCase::class);
 
 beforeEach(function () {
-    // @var mixed action = new GetCoordinatesAction(;
+    $action = new GetCoordinatesAction();
 });
 
 it('returns coordinates for valid address', function (): void {
@@ -42,7 +42,7 @@ it('returns coordinates for valid address', function (): void {
     ]);
 
     // Act
-    $result = // @var mixed action->execute($address;
+    $result = $action->execute($address);
 
     // Assert
     expect($result)
@@ -61,7 +61,7 @@ it('throws exception when api key missing', function (): void {
     Config::set('services.google.maps.key', null);
 
     // Act & Assert
-    expect(fn () => // @var mixed action->execute($address
+    expect(fn () => $action->execute($address
         ->toThrow(RuntimeException::class, 'Google Maps API key not found');
 });
 
@@ -75,7 +75,7 @@ it('throws exception when api request fails', function (): void {
     ]);
 
     // Act & Assert
-    expect(fn () => // @var mixed action->execute($address
+    expect(fn () => $action->execute($address
         ->toThrow(RuntimeException::class, 'Failed to get coordinates from Google Maps API');
 });
 
@@ -94,7 +94,7 @@ it('returns null for invalid address', function (): void {
     ]);
 
     // Act
-    $result = // @var mixed action->execute($address;
+    $result = $action->execute($address);
 
     // Assert
     expect($result)->toBeNull();
@@ -115,7 +115,7 @@ it('returns null for over query limit status', function (): void {
     ]);
 
     // Act
-    $result = // @var mixed action->execute($address;
+    $result = $action->execute($address);
 
     // Assert
     expect($result)->toBeNull();
@@ -136,7 +136,7 @@ it('returns null for request denied status', function (): void {
     ]);
 
     // Act
-    $result = // @var mixed action->execute($address;
+    $result = $action->execute($address);
 
     // Assert
     expect($result)->toBeNull();
@@ -157,7 +157,7 @@ it('handles empty results array', function (): void {
     ]);
 
     // Act
-    $result = // @var mixed action->execute($address;
+    $result = $action->execute($address);
 
     // Assert
     expect($result)->toBeNull();
@@ -197,7 +197,7 @@ it('handles multiple results and returns first', function (): void {
     ]);
 
     // Act
-    $result = // @var mixed action->execute($address;
+    $result = $action->execute($address);
 
     // Assert
     expect($result)
@@ -234,7 +234,7 @@ it('handles special characters in address', function (): void {
     ]);
 
     // Act
-    $result = // @var mixed action->execute($address;
+    $result = $action->execute($address);
 
     // Assert
     expect($result)->toBeInstanceOf(LocationData::class)->and($result->address)->toBe($address);
@@ -266,7 +266,7 @@ it('handles numeric coordinates correctly', function (): void {
     ]);
 
     // Act
-    $result = // @var mixed action->execute($address;
+    $result = $action->execute($address);
 
     // Assert
     expect($result)
@@ -303,7 +303,7 @@ it('handles very long addresses', function (): void {
     ]);
 
     // Act
-    $result = // @var mixed action->execute($address;
+    $result = $action->execute($address);
 
     // Assert
     expect($result)->toBeInstanceOf(LocationData::class)->and($result->address)->toBe($address);
@@ -335,7 +335,7 @@ it('handles coordinates with high precision', function (): void {
     ]);
 
     // Act
-    $result = // @var mixed action->execute($address;
+    $result = $action->execute($address);
 
     // Assert
     expect($result)
@@ -356,7 +356,7 @@ it('handles network timeout gracefully', function (): void {
     ]);
 
     // Act & Assert
-    expect(fn () => // @var mixed action->execute($address
+    expect(fn () => $action->execute($address
         ->toThrow(RuntimeException::class, 'Failed to get coordinates from Google Maps API');
 });
 
@@ -370,5 +370,5 @@ it('handles invalid json response', function (): void {
     ]);
 
     // Act & Assert
-    expect(fn () => // @var mixed action->execute($address;
+    expect(fn () => $action->execute($address));
 });

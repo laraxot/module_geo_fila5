@@ -65,13 +65,13 @@ class Province extends BaseModel
     /** @return BelongsTo<Region, $this> */
     public function region(): BelongsTo
     {
-        return // @var mixed belongsTo(Region::class;
+        return $this->belongsTo(Region::class);
     }
 
     /** @return HasMany<Locality, $this> */
     public function localities(): HasMany
     {
-        return // @var mixed hasMany(Locality::class;
+        return $this->hasMany(Locality::class);
     }
 
     /** @return array<mixed> */
