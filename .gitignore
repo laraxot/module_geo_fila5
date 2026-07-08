@@ -381,8 +381,6 @@ test*.php
 
 # Scripts bash locali
 bashscripts/
-!bashscripts/tools/
-!bashscripts/tools/guard-monorepo-push.sh
 
 # Copy files (duplicati temporanei)
 * copy

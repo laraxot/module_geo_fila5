@@ -3,7 +3,7 @@
 set -e
 
 ROOT="$(git rev-parse --show-toplevel)"
-GUARD="$ROOT/bashscripts/tools/guard-monorepo-push.sh"
+GUARD="$ROOT/laravel/tools/guard-monorepo-push.sh"
 
 if [ -x "$GUARD" ]; then
   "$GUARD" || exit 1

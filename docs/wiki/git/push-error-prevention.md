@@ -48,7 +48,7 @@ rm -rf laravel/Modules/Geo
 ### Guard automatico
 
 ```bash
-bash bashscripts/tools/guard-monorepo-push.sh
+bash laravel/tools/guard-monorepo-push.sh
 git config core.hooksPath .githooks   # hook versionato nel repo
 ```
 
