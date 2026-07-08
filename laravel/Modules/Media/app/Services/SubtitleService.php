@@ -17,6 +17,8 @@ use function Safe\simplexml_load_string;
 
 /**
  * SubtitleService.
+ *
+ * @phpstan-type SubtitleItem array{sentence_i: int, item_i: int, start: float|int, end: float|int, time: string, text: string}
  */
 class SubtitleService
 {
@@ -27,7 +29,7 @@ class SubtitleService
 
     public string $field_name = 'txt';
 
-    /** @var array<int, array<string, float|int|string|mixed>> */
+    /** @var list<SubtitleItem> */
     public array $subtitles = [];
 
     public Model $model;
@@ -100,7 +102,9 @@ class SubtitleService
     }
 
     /**
-     * @return array<int, array<string, float|int|string|mixed>>
+     * Restituisce i sottotitoli dal file.
+     *
+     * @return list<SubtitleItem>
      */
     public function get(): array
     {
@@ -126,9 +130,7 @@ class SubtitleService
     }
 
     /**
-     * @return array<int, array<string, float|int|string|mixed>>
-     *
-     * @psalm-return list{0?: array{sentence_i: int<0, max>, item_i: int<0, max>, start: float|int, end: float|int, time: string, text: mixed},...}
+     * @return list<SubtitleItem>
      */
     public function getFromXml(): array
     {

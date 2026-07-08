@@ -18,8 +18,8 @@ class SaveAttachmentsAction
     /**
      * Save attachments to media library.
      *
-     * @param  array<int, string>  $attachments
-     * @param  array<string, mixed>  $data
+     * @param  list<string>  $attachments
+     * @param  array<string, string|null>  $data
      */
     public function execute(HasMedia $record, array $attachments, array $data, string $disk = 'attachments'): void
     {
@@ -70,8 +70,8 @@ class SaveAttachmentsAction
     }
 
     /**
-     * @param  array<int, string>  $attachments
-     * @param  array<string, mixed>  $data
+     * @param  list<string>  $attachments
+     * @param  array<string, string|null>  $data
      */
     public function executeOLD(HasMedia $record, array $attachments, array $data, string $disk = 'attachments'): void
     {

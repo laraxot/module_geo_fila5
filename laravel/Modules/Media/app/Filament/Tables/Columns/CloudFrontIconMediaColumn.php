@@ -14,7 +14,7 @@ class CloudFrontIconMediaColumn extends IconColumn
         parent::setUp();
         $attachment = $this->getName();
 
-        $this->default(function ($record
+        $this->default(function ($record) use ($attachment) {
             if (is_object($record) && method_exists($record, 'getFirstMedia')) {
                 return $record->getFirstMedia($attachment);
             }

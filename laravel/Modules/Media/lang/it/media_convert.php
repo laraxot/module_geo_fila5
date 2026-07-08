@@ -99,17 +99,4 @@ return [
             'label' => 'Elimina Media Convert',
         ],
     ],
-    'label' => 'Media Convert',
-    'plural_label' => 'Media Convert (Plurale)',
-    'actions' => [
-        'create' => [
-            'label' => 'Crea Media Convert',
-        ],
-        'edit' => [
-            'label' => 'Modifica Media Convert',
-        ],
-        'delete' => [
-            'label' => 'Elimina Media Convert',
-        ],
-    ],
 ];
