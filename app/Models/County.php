@@ -38,6 +38,13 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|County                        newModelQuery()
  * @method static Builder<static>|County                        newQuery()
  * @method static Builder<static>|County                        query()
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+ *                                                                                                  >>>>>>> 65bf1208 (.)
+=======
+>>>>>>> origin/dev
+>>>>>>> Stashed changes
  *
  * @property string                          $id
  * @property string                          $county
