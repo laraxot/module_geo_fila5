@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Providers\Filament;
 
-use Filament\Facades\Filament;
 use Filament\Panel;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
@@ -23,7 +22,7 @@ class AdminPanelProvider extends XotBasePanelProvider
     public function panel(Panel $panel): Panel
     {
         $panel = parent::panel($panel);
-        if(!inAdmin()){
+        if (! inAdmin()) {
             return $panel;
         }
         FilamentAsset::register([

@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Modules\Geo\Contracts\HasGeolocation;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
+use Modules\Geo\Tests\TestCase;
 
 describe('Address Model', function () {
     it('can be created with factory', function () {
@@ -24,7 +25,7 @@ describe('Address Model', function () {
     });
 
     it('has correct fillable attributes', function () {
-        $address = new Address();
+        $address = new Address;
 
         expect($address->getFillable())->toContain([
             'model_type',
@@ -50,7 +51,7 @@ describe('Address Model', function () {
     });
 
     it('implements HasGeolocation contract', function () {
-        $address = new Address();
+        $address = new Address;
 
         expect($address)->toBeInstanceOf(HasGeolocation::class);
     });
