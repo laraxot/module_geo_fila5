@@ -36,7 +36,7 @@ jobs:
             echo "> Periodo: ultimi 30 giorni (da ${{ steps.period.outputs.since }})"
           } >> docs/chat/changelog-contributors-weekly.md
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: changelog-contributors-${{ github.run_id }}
           path: |
