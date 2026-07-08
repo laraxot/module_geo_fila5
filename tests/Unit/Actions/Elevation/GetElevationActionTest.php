@@ -20,7 +20,7 @@ afterEach(function () {
 
 it('gets elevation for valid location', function (): void {
     // Arrange
-    $location = new LocationData()
+    $location = new LocationData(
         latitude: 45.4642,
         longitude: 9.1900,
         address: 'Milano, Italia',
@@ -47,7 +47,7 @@ it('gets elevation for valid location', function (): void {
 
 it('throws exception for invalid latitude', function (): void {
     // Arrange
-    $location = new LocationData()
+    $location = new LocationData(
         latitude: 100.0, // Invalid latitude > 90
         longitude: 9.1900,
         address: 'Invalid Location',
@@ -60,7 +60,7 @@ it('throws exception for invalid latitude', function (): void {
 
 it('throws exception for invalid longitude', function (): void {
     // Arrange
-    $location = new LocationData()
+    $location = new LocationData(
         latitude: 45.4642,
         longitude: 200.0, // Invalid longitude > 180
         address: 'Invalid Location',
@@ -73,7 +73,7 @@ it('throws exception for invalid longitude', function (): void {
 
 it('throws exception for negative latitude', function (): void {
     // Arrange
-    $location = new LocationData()
+    $location = new LocationData(
         latitude: -100.0,
         longitude: 9.1900,
         address: 'Invalid Location',
@@ -86,7 +86,7 @@ it('throws exception for negative latitude', function (): void {
 
 it('throws exception for negative longitude', function (): void {
     // Arrange
-    $location = new LocationData()
+    $location = new LocationData(
         latitude: 45.4642,
         longitude: -200.0,
         address: 'Invalid Location',
@@ -99,7 +99,7 @@ it('throws exception for negative longitude', function (): void {
 
 it('throws exception for empty response', function (): void {
     // Arrange
-    $location = new LocationData()
+    $location = new LocationData(
         latitude: 45.4642,
         longitude: 9.1900,
         address: 'Milano, Italia',
@@ -116,7 +116,7 @@ it('throws exception for empty response', function (): void {
 
 it('throws exception for invalid response structure', function (): void {
     // Arrange
-    $location = new LocationData()
+    $location = new LocationData(
         latitude: 45.4642,
         longitude: 9.1900,
         address: 'Milano, Italia',
@@ -133,7 +133,7 @@ it('throws exception for invalid response structure', function (): void {
 
 it('throws exception when service throws generic exception', function (): void {
     // Arrange
-    $location = new LocationData()
+    $location = new LocationData(
         latitude: 45.4642,
         longitude: 9.1900,
         address: 'Milano, Italia',
@@ -183,7 +183,7 @@ it('handles high elevation correctly', function (): void {
 
 it('handles boundary latitude values', function (): void {
     // Arrange
-    $location = new LocationData()
+    $location = new LocationData(
         latitude: 90.0, // North pole
         longitude: 0.0,
         address: 'North Pole',
