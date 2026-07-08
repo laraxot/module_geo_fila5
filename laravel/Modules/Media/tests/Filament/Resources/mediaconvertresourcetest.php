@@ -7,7 +7,7 @@ namespace Modules\Media\Tests\Filament\Resources;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\TextInput;
 use Modules\Media\Filament\Resources\MediaConvertResource;
-use Modules\Media\Tests\TestCase;
+use Tests\TestCase;
 
 uses(TestCase::class);
 

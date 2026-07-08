@@ -60,8 +60,11 @@
             "/usr/bin/php artisan ide-helper:models --no-interaction",
             "/usr/bin/php artisan serve"
         ],
+        "fix-storage": [
+            "bash tools/fix-storage-permissions.sh"
+        ],
         "clear": [
-            "sudo chmod -R 777 .",
+            "bash tools/fix-storage-permissions.sh",
             "rm -rf resources/views/vendor",
             "rm -rf bootstrap/cache/filament",
             "@php artisan vendor:publish --all",
