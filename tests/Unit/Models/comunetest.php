@@ -7,8 +7,6 @@ namespace Modules\Geo\Tests\Unit\Models;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Models\Comune;
-use Tests\TestCase;
-
 
 beforeEach(function (): void {
     // Crea un file JSON di test

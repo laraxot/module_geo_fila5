@@ -6,13 +6,10 @@ namespace Modules\Geo\Tests\Unit\Actions\Nominatim;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\Nominatim\LookupPlaceAction;
 use Modules\Geo\Datas\LocationData;
-use Tests\TestCase;
-
 
 beforeEach(function (): void {
     $this->mockClient = Mockery::mock(Client::class);

@@ -9,7 +9,6 @@ use Modules\Geo\Tests\LightTestCase;
 
 uses(LightTestCase::class);
 
-
 beforeEach(function () {
     $this->action = new GetAddressDataFromFullAddressAction();
 });

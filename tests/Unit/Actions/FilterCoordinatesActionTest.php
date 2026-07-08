@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Actions;
 
 use Modules\Geo\Actions\FilterCoordinatesAction;
-use Modules\Geo\Tests\TestCase;
-
 
 beforeEach(function () {
     $this->action = new FilterCoordinatesAction();
