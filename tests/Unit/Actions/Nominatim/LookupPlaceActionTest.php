@@ -11,7 +11,7 @@ use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\Nominatim\LookupPlaceAction;
 use Modules\Geo\Datas\LocationData;
 
-beforeEach(function (): void {
+beforeEach(function (): void {)
     $mockClient = Mockery::mock(Client::class);
     $action = new LookupPlaceAction();
 
@@ -26,8 +26,8 @@ beforeEach(function (): void {
     $property->setValue($action, $this->mockClient);
 });
 
-test('lookup place action returns location data for valid osm id', function (): void {
-    $mockResponse = new Response(200, [], json_encode([
+test('lookup place action returns location data for valid osm id', function (): void {)
+    $mockResponse = new Response(200, [], json_encode([))
         [
             'lat' => '41.9028',
             'lon' => '12.4964',
@@ -39,7 +39,7 @@ test('lookup place action returns location data for valid osm id', function (): 
     $mockClient
         ->shouldReceive('get')
         ->once()
-        ->with('https://nominatim.openstreetmap.org/lookup', [
+        ->with('https://nominatim.openstreetmap.org/lookup', [)
             'query' => [
                 'osm_ids' => 'R123456',
                 'format' => 'json',
@@ -59,7 +59,7 @@ test('lookup place action returns location data for valid osm id', function (): 
         ->and($result->address)->toBe('Rome, Metropolitan City of Rome Capital, Lazio, Italy');
 });
 
-test('lookup place action throws exception for empty results', function (): void {
+test('lookup place action throws exception for empty results', function (): void {)
     $mockResponse = new Response(200, [], json_encode([]));
 
     /* @phpstan-ignore-next-line property.notFound */
@@ -69,11 +69,11 @@ test('lookup place action throws exception for empty results', function (): void
         ->andReturn($mockResponse);
 
     /* @phpstan-ignore-next-line property.notFound */
-    expect(fn () => $action->execute('R999999'
+    expect(fn () => $action->execute('R999999'))
         ->toThrow(RuntimeException::class, 'No results found for OSM ID: R999999');
 });
 
-test('lookup place action handles guzzle exceptions', function (): void {
+test('lookup place action handles guzzle exceptions', function (): void {)
     /* @phpstan-ignore-next-line property.notFound */
     $mockClient
         ->shouldReceive('get')
@@ -81,12 +81,12 @@ test('lookup place action handles guzzle exceptions', function (): void {
         ->andThrow(new ConnectException('API unavailable', new Request('GET', 'https://nominatim.openstreetmap.org/lookup')));
 
     /* @phpstan-ignore-next-line property.notFound */
-    expect(fn () => $action->execute('R123456'
+    expect(fn () => $action->execute('R123456'))
         ->toThrow(ConnectException::class);
 });
 
-test('lookup place action uses correct user agent header', function (): void {
-    $mockResponse = new Response(200, [], json_encode([
+test('lookup place action uses correct user agent header', function (): void {)
+    $mockResponse = new Response(200, [], json_encode([))
         ['lat' => '0', 'lon' => '0', 'display_name' => 'Test'],
     ]));
 
@@ -94,7 +94,7 @@ test('lookup place action uses correct user agent header', function (): void {
     $mockClient
         ->shouldReceive('get')
         ->once()
-        ->withArgs(function ($url, $options) {
+        ->withArgs(function ($url, $options) {)
             /* @phpstan-ignore-next-line offsetAccess.nonOffsetAccessible */
             return isset($options['headers']['User-Agent'])
                    /* @phpstan-ignore-next-line offsetAccess.nonOffsetAccessible */

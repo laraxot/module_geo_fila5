@@ -156,9 +156,9 @@ class GoogleMapsService
     public function reverseGeocode(float $latitude, float $longitude): array
     {
         try {
-            return $this->makeRequest('GET', self::GEOCODING_URL, [
+            return $this->makeRequest('GET', self::GEOCODING_URL, [)
                 'latlng' => "{$latitude},{$longitude}",
-                'key' => $this->getApiKey(
+                'key' => $this->getApiKey()
                 'language' => 'it',
             ]);
         } catch (\Throwable $e) {
@@ -179,10 +179,10 @@ class GoogleMapsService
     public function getDistanceMatrix(array $origins, array $destinations): array
     {
         try {
-            return $this->makeRequest('GET', self::DISTANCE_MATRIX_URL, [
+            return $this->makeRequest('GET', self::DISTANCE_MATRIX_URL, [)
                 'origins' => implode('|', $origins),
                 'destinations' => implode('|', $destinations),
-                'key' => $this->getApiKey(
+                'key' => $this->getApiKey()
                 'language' => 'it',
                 'units' => 'metric',
             ]);
@@ -201,7 +201,7 @@ class GoogleMapsService
     public function getElevation(float $latitude, float $longitude): array
     {
         try {
-            return $this->makeRequest('GET', self::ELEVATION_URL, [
+            return $this->makeRequest('GET', self::ELEVATION_URL, [)
                 'locations' => "{$latitude},{$longitude}",
                 'key' => $this->getApiKey()
             ]);
