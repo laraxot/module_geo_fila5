@@ -35,6 +35,60 @@ beforeEach(function () {
     $this->action = new UpdateCoordinatesAction($this->getCoordinatesAction);
 });
 
+<<<<<<< HEAD
+beforeEach(function () {
+    // Set up Google Maps API key for tests
+    Config::set('services.google.maps.key', 'test-api-key');
+
+    // Mock HTTP responses
+    Http::fake([
+        'maps.googleapis.com/*' => Http::response([
+            'status' => 'OK',
+            'results' => [
+                [
+                    'geometry' => [
+                        'location' => [
+                            'lat' => 45.4642,
+                            'lng' => 9.1900,
+                        ],
+                    ],
+                ],
+            ],
+        ], 200),
+    ]);
+
+    $this->getCoordinatesAction = new GetCoordinatesAction();
+    $this->action = new UpdateCoordinatesAction($this->getCoordinatesAction);
+});
+
+||||||| 6161e129d
+beforeEach(function () {
+    // Set up Google Maps API key for tests
+    Config::set('services.google.maps.key', 'test-api-key');
+
+    // Mock HTTP responses
+    Http::fake([
+        'maps.googleapis.com/*' => Http::response([
+            'status' => 'OK',
+            'results' => [
+                [
+                    'geometry' => [
+                        'location' => [
+                            'lat' => 45.4642,
+                            'lng' => 9.1900,
+                        ],
+                    ],
+                ],
+            ],
+        ], 200),
+    ]);
+
+    $this->getCoordinatesAction = new GetCoordinatesAction;
+    $this->action = new UpdateCoordinatesAction($this->getCoordinatesAction);
+});
+
+=======
+>>>>>>> feature/ralph-loop-implementation
 it('updates coordinates for a place with valid address', function (): void {
     // Create a place without using the factory to avoid PlaceType dependency
     $place = new Place([
