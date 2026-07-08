@@ -7,7 +7,6 @@ namespace Modules\Geo\Tests\Unit\Actions;
 use Modules\Geo\Actions\FilterCoordinatesAction;
 use Modules\Geo\Tests\TestCase;
 
-uses(TestCase::class);
 
 beforeEach(function () {
     $this->action = new FilterCoordinatesAction();

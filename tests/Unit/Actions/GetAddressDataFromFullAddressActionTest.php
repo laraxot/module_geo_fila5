@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Actions;
 
 use Modules\Geo\Actions\GetAddressDataFromFullAddressAction;
-use Modules\Geo\Tests\TestCase;
+use Modules\Geo\Tests\LightTestCase;
 
-uses(TestCase::class);
+uses(LightTestCase::class);
+
 
 beforeEach(function () {
     $this->action = new GetAddressDataFromFullAddressAction();

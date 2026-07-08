@@ -7,7 +7,6 @@ namespace Modules\Geo\Tests\Unit\Services;
 use Modules\Geo\Services\GoogleMapsService;
 use Modules\Geo\Tests\TestCase;
 
-uses(TestCase::class);
 
 beforeEach(function () {
     $this->service = new GoogleMapsService();
