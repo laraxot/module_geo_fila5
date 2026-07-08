@@ -212,7 +212,6 @@ trait HasAddress
             }
         }
 
-        /* @phpstan-ignore return.type */
         return $this->addresses()->create($data);
     }
 

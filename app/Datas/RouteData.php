@@ -27,8 +27,7 @@ class RouteData extends Data
         public readonly int $totalDistance,
         public readonly int $totalDuration,
         public readonly array $steps,
-    ) {
-    }
+    ) {}
 
     /**
      * Formatta la distanza totale in un formato leggibile.
