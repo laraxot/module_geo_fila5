@@ -5,20 +5,11 @@
 		}
 	],
 	"settings": {
-		"better-phpunit.phpunitBinary": "phpunit",
 		"editor.formatOnSave": true,
-		"editor.parameterHints.enabled": false,
-		"better-phpunit.phpunitBinary": "phpunit",
-		"editor.formatOnSave": true,
-		"editor.parameterHints.enabled": false,
-		"better-phpunit.phpunitBinary": "phpunit",
-		"editor.formatOnSave": true,
-		"editor.parameterHints.enabled": false,
 		"php-cs-fixer.onsave": true,
 		"php-cs-fixer.formatHtml": true,
-		"php-cs-fixer.config": ".php-cs-fixer.php",
-		"vscode-php-cs-fixer.config": ".php-cs-fixer.php",
-		"php-cs-fixer.executablePath": "php-cs-fixer",
+		"php-cs-fixer.executable": "php-cs-fixer",
+		"php-cs-fixer.executablePath":"",
 		"php-cs-fixer.executablePathWindows": "php-cs-fixer.bat",
 		"vscode-php-cs-fixer.allowRisky": true,
 		"phpmd.enabled": false,
@@ -26,7 +17,6 @@
 		"phpmd.SuppressWarnings":true,
 		"phpmd.verbose": false,
 		"php-cs-fixer.allowRisky": true,
-		"phpformatter.composer": true,
 		"editor.defaultFormatter": "junstyle.php-cs-fixer",
 		"[php]": {
 			"editor.defaultFormatter": "junstyle.php-cs-fixer"
@@ -35,19 +25,10 @@
 			"semanticHighlighting": true
 		},
 		"vscode-php-cs-fixer.useCache": true,
-		"editor.wordWrapColumn": 120,
-		"files.eol": "\n",
-		"git.autofetch": true,
 		"git.ignoreLimitWarning": true,
-		"deepscan.enable": true
-	
-	},
-	"extensions": {
-		"recommendations": [
-			"junstyle.php-cs-fixer"
-		]
-	},
-	"files.exclude": {
-		"**/.git": false
-   }
+		"files.eol": "\n",
+		"editor.wordWrap": "wordWrapColumn",
+		"editor.wordWrapColumn": 120,
+		"git.autofetch": "all"
+	}
 }

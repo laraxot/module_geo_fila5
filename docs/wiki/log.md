@@ -4,7 +4,7 @@ module: "ptvx-project"
 type: log
 tags: [wiki, second-brain, log, qmd]
 created: 2026-05-26
-updated: 2026-07-07
+updated: 2026-07-08
 qmd: "ptvx project wiki activity log second brain phpstan modules"
 issues:
   - "https://github.com/provtv/base_ptv_fila5_mono/issues/136"
@@ -17,6 +17,8 @@ discussions:
 > **Purpose:** Append-only chronological activity record tracking ingests, queries, and lint passes.
 
 ## Log Entries
+
+[2026-07-08 09:35:00 UTC] [RULE] Root moduli/temi: vietati `.txt`; massimo 4 `.md` diretti. Extra spostati in `docs/root-txt-files/` e `docs/root-md-files/`. Regole: [`module-theme-root-no-txt-files`](rules/module-theme-root-no-txt-files.md), [`module-theme-root-md-files-limit`](rules/module-theme-root-md-files-limit.md). Issue: #186, #187.
 
 [2026-07-07 10:05:00 UTC] [RULE] Cartelle figlie dirette di `Modules/*` e `Themes/*`: vietate maiuscole in root. Rimossa `laravel/Modules/Xot/Helpers/`; gia assenti `UI/Config`, `Xot/Datas`, `Xot/Filament`, `Xot/Providers`, `Xot/Services`, `Xot/View`. Verifica `find laravel/Modules laravel/Themes -mindepth 2 -maxdepth 2 -type d -regextype posix-extended -regex ".*/[^/]*[A-Z][^/]*"` -> output vuoto. Aggiornati `namespace-structure-rules`, `module-structure`, trigger map.
 
