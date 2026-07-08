@@ -18,6 +18,7 @@
 - 📐 **[Architecture Rules](./architecture.md)** - Regole per la creazione di nuovi componenti UI.
 - 🧭 **[Confine UI e Geo](./geo-boundary.md)** - UI non dipende da Geo; Geo puo' dipendere da UI.
 - 🔀 **[Git push / LFS](./wiki/troubleshooting/git-push-lfs-missing-objects.md)** - Push rifiutato per oggetti LFS mancanti.
+- 🧹 **[Root hygiene moduli/temi](./wiki/troubleshooting/module-theme-root-hygiene.md)** - Zero `.txt`, max 4 `.md` in root.
 - 🖋️ **[Icon System](./icon-system.md)** - Integrazione di Blade Icons e set personalizzati.
 
 ## 🧱 **Componenti & Widget**
