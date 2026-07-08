@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Geo\Actions;
 
 use Illuminate\Support\Collection;
+use InvalidArgumentException;
 use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
-use Modules\Geo\Contracts\CalculateDistanceActionContract;
 use Modules\Geo\Contracts\CalculateDistanceActionContract;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\DistanceCalculationException;
@@ -40,7 +40,7 @@ final class CalculateDistanceAction implements CalculateDistanceActionContract
      * @param LocationData $destination Punto di destinazione con coordinate valide
      *
      * @throws DistanceCalculationException Se il calcolo della distanza fallisce o restituisce dati non validi
-     * @throws \InvalidArgumentException    Se le coordinate non sono valide
+     * @throws InvalidArgumentException     Se le coordinate non sono valide
      *
      * @return array{
      *     distance: array{text: string, value: int},
@@ -69,7 +69,10 @@ final class CalculateDistanceAction implements CalculateDistanceActionContract
 
             return $response[0][0];
         } catch (\Throwable $e) {
-            throw DistanceCalculationException::calculationError('Errore nel calcolo della distanza: '.$e->getMessage(), $e);
+            throw DistanceCalculationException::calculationError(
+                'Errore nel calcolo della distanza: '.$e->getMessage(),
+                $e
+            );
         }
     }
 
@@ -78,12 +81,12 @@ final class CalculateDistanceAction implements CalculateDistanceActionContract
      *
      * @param int $meters Distanza in metri
      *
-     * @throws \InvalidArgumentException Se il valore in metri è negativo
+     * @throws InvalidArgumentException Se il valore in metri è negativo
      */
     public function formatDistance(int $meters): string
     {
         if ($meters < 0) {
-            throw new \InvalidArgumentException('La distanza non può essere negativa');
+            throw new InvalidArgumentException('La distanza non può essere negativa');
         }
 
         if ($meters < 1000) {
@@ -100,16 +103,20 @@ final class CalculateDistanceAction implements CalculateDistanceActionContract
      *
      * @param LocationData $location Posizione da validare
      *
-     * @throws \InvalidArgumentException Se le coordinate non sono valide
+     * @throws InvalidArgumentException Se le coordinate non sono valide
      */
     private function validateCoordinates(LocationData $location): void
     {
         if ($location->latitude < -90 || $location->latitude > 90) {
-            throw new \InvalidArgumentException(sprintf('Latitudine non valida: %f', $location->latitude));
+            throw new InvalidArgumentException(
+                sprintf('Latitudine non valida: %f', $location->latitude)
+            );
         }
 
         if ($location->longitude < -180 || $location->longitude > 180) {
-            throw new \InvalidArgumentException(sprintf('Longitudine non valida: %f', $location->longitude));
+            throw new InvalidArgumentException(
+                sprintf('Longitudine non valida: %f', $location->longitude)
+            );
         }
     }
 }
