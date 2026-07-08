@@ -35,5 +35,6 @@
     "Trasferte": true,
     "Theme": true,
     "Indennita": true,
-    "Incentivi": true
+    "Incentivi": true,
+    "Geo": false
 }

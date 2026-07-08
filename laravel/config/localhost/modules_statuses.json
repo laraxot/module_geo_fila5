@@ -30,6 +30,7 @@
     "BarberShop": true,
     "Booking": true,
     "Gdpr": true,
+    "Geo": false,
     "Ticket": true,
     "Shop": true,
     "RealEstate": true,
