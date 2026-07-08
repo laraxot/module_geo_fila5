@@ -41,6 +41,10 @@ Non riattivarlo in `UI`. Se in futuro servira' una mappa, crearla nel modulo `Ge
 
 Questa separazione evita dipendenze inverse, classi mancanti e accoppiamento tra design system e dominio geografico.
 
+## Progetto base_ptvx_fila5
+
+`laravel/Modules/Geo` **non è presente** — `"Geo": false` in `modules_statuses.json`. Per mappe/geocoding usare altro progetto o installare `laraxot/module_geo_fila5` solo se serve.
+
 ## Verifica
 
 ```bash

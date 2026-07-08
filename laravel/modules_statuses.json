@@ -39,7 +39,7 @@
     "Settings": true,
     "LU": true,
     "Indennita": true,
-    "Geo": true,
+    "Geo": false,
     "FormX": true,
     "Blog": true
 }
