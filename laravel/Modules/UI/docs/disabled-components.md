@@ -104,12 +104,8 @@ When UI module needs features from optional modules:
 
 ## Future Work
 
-<<<<<<< HEAD
 - [ ] Keep geographic components out of `UI`
 - [ ] Create `Modules/Geo` only when geographic features are needed
-=======
-- [ ] Create `Modules/Geo` when geographic features are needed
->>>>>>> laraxot/dev
 - [ ] Merge CMS localization pattern into Xot base
 - [ ] Document pattern for optional module dependencies in wiki
 
