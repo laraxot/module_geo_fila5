@@ -12,5 +12,6 @@ class GeoMapLayerConfigData extends Data
         public string $key,
         public string $label,
         public bool $enabled = false,
-    ) {}
+    ) {
+    }
 }
