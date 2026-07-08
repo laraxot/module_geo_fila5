@@ -10,7 +10,7 @@ use Modules\Geo\Tests\TestCase;
 uses(TestCase::class);
 
 beforeEach(function () {
-    $this->service = new GoogleMapsService;
+    $this->service = new GoogleMapsService();
 });
 
 it('can be instantiated', function (): void {
