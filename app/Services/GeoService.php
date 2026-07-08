@@ -34,7 +34,7 @@ class GeoService
     public static function getInstance(): self
     {
         if (! self::$_instance instanceof GeoService) {
-            self::$_instance = new self;
+            self::$_instance = new self();
         }
 
         return self::$_instance;
@@ -102,16 +102,16 @@ class GeoService
         if ($lat1 === $lat2 && $lon1 === $lon2) {
             return 0;
         }
-        if ($lat1 === null) {
+        if (null === $lat1) {
             return null;
         }
-        if ($lon1 === null) {
+        if (null === $lon1) {
             return null;
         }
-        if ($lat2 === null) {
+        if (null === $lat2) {
             return null;
         }
-        if ($lon2 === null) {
+        if (null === $lon2) {
             return null;
         }
         $theta = $lon1 - $lon2;
@@ -121,7 +121,7 @@ class GeoService
         $dist = acos($dist);
         $dist = rad2deg($dist);
         $miles = $dist * 60 * 1.1515;
-        if ($unit === null) {
+        if (null === $unit) {
             $unit = 'K'; // default
         }
         $unit = strtoupper($unit);
@@ -203,7 +203,7 @@ class GeoService
 
     public static function pointInPolygon(float $lat, float $lng, ?string $polygon): bool
     {
-        if ($polygon === null || $polygon === '') {
+        if (null === $polygon || '' === $polygon) {
             return false;
         }
 

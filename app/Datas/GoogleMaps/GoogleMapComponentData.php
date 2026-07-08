@@ -16,5 +16,6 @@ class GoogleMapComponentData extends Data
         public string $short_name,
         /** @var array<int, string> */
         public array $types,
-    ) {}
+    ) {
+    }
 }
