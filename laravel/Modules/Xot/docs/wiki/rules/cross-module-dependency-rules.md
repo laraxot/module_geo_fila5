@@ -20,6 +20,13 @@ I moduli devono essere indipendenti e disaccoppiati. Un modulo non deve dipender
 
 ## Regole obbligatorie
 
+### Commit su moduli separati
+
+- Ogni modulo (`laravel/Modules/<Modulo>/`) è un repository Git autonomo
+- Dopo aver modificato file in un modulo, bisogna **sempre** andare in quella directory e fare `git commit && git push`
+- Il commit nel root repo non basta — i moduli hanno remoto proprio
+- Verifica: `ls -la Modules/<Modulo>/.git` per confermare che è un repo separato
+
 ### Nessuna dipendenza orizzontale tra moduli
 
 - **VIETATO**: un modulo che importa classi, componenti o servizi da un altro modulo specifico
