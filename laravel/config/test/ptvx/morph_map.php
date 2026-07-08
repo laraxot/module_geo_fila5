@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Modules\Geo\Models\Place;
 use Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoroAdm;
 use Modules\IndennitaCondizioniLavoro\Models\CondizioniLavoroRep;
 use Modules\IndennitaCondizioniLavoro\Models\ServizioEsternoRep;
@@ -36,7 +35,6 @@ return ['__lista_tbl' => _ListaTbl::class,
     'my_rating' => 'Modules\Rating\Models\MyRating',
     'page' => 'Modules\Blog\Models\Page',
     'photo' => 'Modules\Blog\Models\Photo',
-    'place' => Place::class,
     'privacy' => 'Modules\Blog\Models\Privacy',
     'profile' => Profile::class,
     'rating' => 'Modules\Rating\Models\Rating',
