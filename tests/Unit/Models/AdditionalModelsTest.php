@@ -12,7 +12,6 @@ use Modules\Geo\Models\Locality;
 use Modules\Geo\Models\Place;
 use Modules\Geo\Models\PlaceType;
 use Modules\Geo\Models\State;
-use Modules\Geo\Tests\TestCase;
 
 uses(TestCase::class);
 
