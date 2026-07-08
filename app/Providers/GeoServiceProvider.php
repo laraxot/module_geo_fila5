@@ -35,4 +35,8 @@ class GeoServiceProvider extends XotBaseServiceProvider
             Css::make('leaflet-css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'),
         ], 'geo');
     }
+
+    // REMOVED: public function register(): void
+    // XotBaseServiceProvider gia' gestisce register() con registerBladeIcons().
+    // Non sovrascrivere: causa doppia registrazione del prefix "geo" nei BladeIcons.
 }
