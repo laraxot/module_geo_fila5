@@ -402,8 +402,5 @@ discussions:
 
 [2026-06-18] [GATE OK] User PHPStan — primo `./vendor/bin/phpstan analyse Modules/User` OOM 512M; batch + `bash bashscripts/tools/phpstan-modules-gate.sh User` OK; run finale esatto `Modules/User` OK 635/635. Nota locale: `laravel/Modules/User/docs/wiki/troubleshooting/phpstan-module-analysis-memory.md`.
 
-<<<<<<< HEAD
 [2026-07-06] [RULE] Infrastructural→Dominio dipendenza vietata — UI non deve importare da GEO (o altro modulo dominio). InteractiveMap.php (UI) rinominato in .old perché apparteneva a GEO. Regola aggiunta a `laravel/Modules/UI/docs/dependencies.md`.
-=======
 [2026-07-01] [FIX] Git collision sweep — rimossi marker residui in Xot PHP (`XotServiceProvider`, `Helper`) e docs Job/Notify/Tenant/User; aggiornato report `docs/wiki/sources/git-collision-docs-cleanup-report.md`; verifica `git grep` marker OK.
->>>>>>> b8f35c374 (Fix merge conflicts and clean up documentation)

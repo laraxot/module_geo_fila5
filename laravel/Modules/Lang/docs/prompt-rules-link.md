@@ -2,6 +2,7 @@
 
 Per la regola universale sui prompt condivisi (bashscripts/prompts), vedi [Modules/Xot/docs/PROMPT_RULES.md](../../Xot/docs/PROMPT_RULES.md)
 Per la regola universale sui prompt condivisi (bashscripts/prompts), vedi [Modules/Xot/docs/PROMPT_RULES.md](../../Xot/docs/PROMPT_RULES.md)
+Per la regola universale sui prompt condivisi (bashscripts/prompts), vedi [Modules/Xot/docs/PROMPT_RULES.md](../../Xot/docs/PROMPT_RULES.md)
 ### Versione HEAD
 
 ### Versione Incoming
@@ -15,4 +16,8 @@ Per la regola universale sui prompt condivisi (bashscripts/prompts), vedi [Modul
 * [prompt_rules_link.md](../../UI/docs/prompt_rules_link.md)
 * [prompt_rules_link.md](../../Cms/docs/prompt_rules_link.md)
 
+---
+---
+---
+---
 ---

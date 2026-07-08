@@ -89,9 +89,15 @@ Prima di ogni commit, verificare:
 
 - [Regole Traduzioni](../../laravel/Modules/Xot/docs/translation-standards.md)
 - [Regole Traduzioni](../../laravel/modules/xot/docs/translation-standards.md)
+- [Regole Traduzioni](../../laravel/modules/xot/docs/translation-standards.md)
 - [Best Practices Filament](filament-widget-best-practices.md)
 - [Enum Standards](enum_standards.md)
 
 ## Ultimo Aggiornamento
+2025-01-27 - Regola critica per evitare ->label()
+[DATE] - Regola critica per evitare ->label()
+[DATE] - Regola critica per evitare ->label()
+[DATE] - Regola critica per evitare ->label()
+[DATE] - Regola critica per evitare ->label()
 2025-01-27 - Regola critica per evitare ->label()
 [DATE] - Regola critica per evitare ->label()

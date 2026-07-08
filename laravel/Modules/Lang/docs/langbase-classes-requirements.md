@@ -188,6 +188,7 @@ LogicException: Plugin [spatie-translatable] is not registered for panel [xxx::a
 
 **Documentazione**: [Notify - Plugin Not Registered](../../Notify/docs/errori/plugin-spatie-translatable-not-registered.md)
 **Documentazione**: [Notify - Plugin Not Registered](../../notify/docs/errori/plugin-spatie-translatable-not-registered.md)
+**Documentazione**: [Notify - Plugin Not Registered](../../notify/docs/errori/plugin-spatie-translatable-not-registered.md)
 
 ### Errore: Undefined Method getTranslation()
 
@@ -325,9 +326,15 @@ $value = $model->field;  // Ritorna traduzione 'en' se esiste, altrimenti fallba
 - [Xot Filament Best Practices](../../Xot/docs/filament-best-practices.md)
 - [Notify Integration](../../notify/docs/spatie-translatable-integration.md)
 - [Xot Filament Best Practices](../../xot/docs/filament-best-practices.md)
+- [Notify Integration](../../notify/docs/spatie-translatable-integration.md)
+- [Xot Filament Best Practices](../../xot/docs/filament-best-practices.md)
 
 ---
 
 **Ultimo aggiornamento**: 27 Ottobre 2025
 **Versione Plugin**: lara-zeus/spatie-translatable 1.0.4
+**Compatibilità**: Filament 4.x, Laravel 12.x
+**Compatibilità**: Filament 4.x, Laravel 12.x
+**Compatibilità**: Filament 4.x, Laravel 12.x
+**Compatibilità**: Filament 4.x, Laravel 12.x
 **Compatibilità**: Filament 4.x, Laravel 12.x

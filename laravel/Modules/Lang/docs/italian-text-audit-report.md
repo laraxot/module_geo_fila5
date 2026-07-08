@@ -1,6 +1,7 @@
 # Italian Text in Non-Italian Translation Files - Audit Report
 
 **Data**: 2025-08-08 11:19:40
+**Data**: 2025-08-08 11:19:40
 
 ## Problemi Identificati
 
@@ -102,4 +103,8 @@
 
 **I file di traduzione non italiani NON devono contenere testi in italiano.**
 
+Ogni testo deve essere tradotto nella lingua appropriata del file.
+Ogni testo deve essere tradotto nella lingua appropriata del file.
+Ogni testo deve essere tradotto nella lingua appropriata del file.
+Ogni testo deve essere tradotto nella lingua appropriata del file.
 Ogni testo deve essere tradotto nella lingua appropriata del file.

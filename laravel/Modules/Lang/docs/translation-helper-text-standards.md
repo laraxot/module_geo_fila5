@@ -177,3 +177,6 @@ Il file `Modules/<nome progetto>/lang/it/profile_widget.php` conteneva:
 - [Standard di Qualità <nome progetto>](../../laravel/modules/<nome progetto>/docs/translation_quality_standards.md)
 
 *Ultimo aggiornamento: Gennaio 2025*
+- [Standard di Qualità <nome progetto>](../../laravel/modules/<nome progetto>/docs/translation_quality_standards.md)
+
+*Ultimo aggiornamento: Gennaio 2025*

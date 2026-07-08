@@ -228,3 +228,8 @@ Prima di ogni commit, verificare:
 
 ## Ultimo Aggiornamento
 2025-01-27 - Regola critica per enum translation pattern
+[DATE] - Regola critica per enum translation pattern
+[DATE] - Regola critica per enum translation pattern
+[DATE] - Regola critica per enum translation pattern
+[DATE] - Regola critica per enum translation pattern
+2025-01-27 - Regola critica per enum translation pattern

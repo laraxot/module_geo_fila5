@@ -89,7 +89,6 @@ Fix applicati in questa sessione:
   rotto `getType()?->getName()` (solo `ReflectionNamedType` ha `getName()`),
   import `Safe\*` mancanti, sintassi corrotta da un refactor automatico
   precedente.
-- Rimossi i probe PHPStan morti (`*PhpstanProbe*`) — vedi
-  `Modules/Xot/docs/wiki/concepts/phpstan-trait-probes.md`.
+- Rimossi i probe PHPStan morti (`*PhpstanProbe*`).
 
 Dettagli completi: `docs/chat/phpstan-notify-module-zero-2026-07-06.md` (root repo).

@@ -69,6 +69,7 @@ lang/
   - Sintassi: `__('chiave.traduzione')`
   
 
+
 - `trans()`: Versione più flessibile
   - Restituisce l'istanza del Translator se chiamato senza parametri
   - Utile per metodi concatenati: `trans()->getLocale()`
@@ -160,6 +161,9 @@ public function handle($request, Closure $next)
         app()->setLocale(session('locale'));
     }
 
+    
+    
+    
     return $next($request);
 }
 ```
@@ -510,4 +514,5 @@ La scelta tra file PHP e JSON dipende dalle esigenze del progetto:
 - **PHP**: migliore per progetti grandi con molte traduzioni
 - **JSON**: ideale per progetti più piccoli o con contenuti più fluidi
 
+Per questo progetto, si consiglia di utilizzare i file PHP per le traduzioni di sistema e i moduli, mantenendo una struttura organizzata e scalabile.
 Per questo progetto, si consiglia di utilizzare i file PHP per le traduzioni di sistema e i moduli, mantenendo una struttura organizzata e scalabile.

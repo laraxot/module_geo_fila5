@@ -310,10 +310,18 @@ class Language extends Model
 - [Best Practices Filament](../../../../docs/core/filament-best-practices.md)
 - [Convenzioni Sistema](../../../../docs/core/conventions.md)
 - [Template Modulo](../../../../docs/templates/module-template.md)
+- [Documentazione Core](../../../docs/core/)
+- [Best Practices Filament](../../../docs/core/filament-best-practices.md)
+- [Convenzioni Sistema](../../../docs/core/conventions.md)
+- [Template Modulo](../../../docs/templates/module-template.md)
 
 ---
 
 **Responsabile:** Team Lang
 **Data:** 2025-01-XX
 **Stato:** In Analisi
+**Priorità:** ALTA
+**Priorità:** ALTA
+**Priorità:** ALTA
+**Priorità:** ALTA
 **Priorità:** ALTA

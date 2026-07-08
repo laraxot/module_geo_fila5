@@ -198,6 +198,7 @@ Quando si lavora sui file di traduzione, non è mai consentito rimuovere chiavi 
 - [Best Practices](../translation-keys-best-practices.md)
 - [PHP Array Configuration Best Practices](../../Xot/docs/php_array_configuration_best_practices.md)
 - [PHP Array Configuration Best Practices](../../Xot/docs/php_array_configuration_best_practices.md)
+- [PHP Array Configuration Best Practices](../../Xot/docs/php_array_configuration_best_practices.md)
 
 ## Note per Sviluppatori Futuri
 
@@ -413,6 +414,7 @@ Quando si lavora sui file di traduzione, non è mai consentito rimuovere chiavi 
 - [Best Practices](../translation-keys-best-practices.md)
 - [PHP Array Configuration Best Practices](../../Xot/docs/php_array_configuration_best_practices.md)
 - [PHP Array Configuration Best Practices](../../Xot/docs/php_array_configuration_best_practices.md)
+- [PHP Array Configuration Best Practices](../../Xot/docs/php_array_configuration_best_practices.md)
 
 ## Note per Sviluppatori Futuri
 
@@ -426,4 +428,8 @@ Quando si lavora sui file di traduzione, non è mai consentito rimuovere chiavi 
 - **Data**: Gennaio 2025
 - **Modulo**: Lang
 - **File**: `docs/translation-file-syntax.md`
+- **Tipo Conflitto**: Documentazione best practice
+- **Tipo Conflitto**: Documentazione best practice
+- **Tipo Conflitto**: Documentazione best practice
+- **Tipo Conflitto**: Documentazione best practice
 - **Tipo Conflitto**: Documentazione best practice

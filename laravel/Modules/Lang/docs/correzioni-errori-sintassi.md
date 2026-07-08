@@ -138,6 +138,10 @@ php -l laravel/Modules/Chart/lang/it/mixed_chart.php
 # ... per tutti i file corretti
 
 # Verifica assenza array() 
+# Verifica assenza array()
+# Verifica assenza array()
+# Verifica assenza array()
+# Verifica assenza array() 
 grep -r "array(" laravel/Modules/*/lang/ --include="*.php"
 ```
 
@@ -166,5 +170,6 @@ grep -r "'label' => '[a-z_]\+'" Modules/*/lang/it/ --include="*.php"
 - [Regole sintassi array breve](/.cursor/rules/translation_files_array_syntax.mdc)
 - [Best practices traduzioni](./translation_rules.md)
 
+*Ultimo aggiornamento: 6 Gennaio 2025*
 *Ultimo aggiornamento: 6 Gennaio 2025*
 *Ultimo aggiornamento: 6 Gennaio 2025*

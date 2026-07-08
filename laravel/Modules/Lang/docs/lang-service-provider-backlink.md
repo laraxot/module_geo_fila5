@@ -10,6 +10,7 @@ La documentazione completa del LangServiceProvider è disponibile nel modulo Lan
 
 - [Analisi e Proposte di Miglioramento](../laravel/Modules/Lang/docs/lang-service-provider.md)
 - [Analisi e Proposte di Miglioramento](../laravel/modules/lang/docs/lang-service-provider.md)
+- [Analisi e Proposte di Miglioramento](../laravel/modules/lang/docs/lang-service-provider.md)
 
 ## Caratteristiche Principali
 
@@ -38,4 +39,8 @@ TextInput::make('name')
 - **Campi form**: `modulo::risorsa.fields.nome_campo.label`
 - **Azioni**: `modulo::risorsa.actions.nome_azione.label`
 - **Passi wizard**: `modulo::risorsa.steps.nome_passo.label`
+- **Altri attributi**: `.placeholder`, `.helperText`, `.description`
+- **Altri attributi**: `.placeholder`, `.helperText`, `.description`
+- **Altri attributi**: `.placeholder`, `.helperText`, `.description`
+- **Altri attributi**: `.placeholder`, `.helperText`, `.description`
 - **Altri attributi**: `.placeholder`, `.helperText`, `.description`

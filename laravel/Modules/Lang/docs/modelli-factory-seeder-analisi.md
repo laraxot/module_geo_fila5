@@ -106,3 +106,7 @@ Tutti i modelli attivi hanno le factory corrispondenti.
 
 *Ultimo aggiornamento: Gennaio 2025*
 *Analisi completa di 6 modelli, sistema traduzioni completo*
+*Analisi completa di 6 modelli, sistema traduzioni completo*
+*Analisi completa di 6 modelli, sistema traduzioni completo*
+*Analisi completa di 6 modelli, sistema traduzioni completo*
+*Analisi completa di 6 modelli, sistema traduzioni completo*

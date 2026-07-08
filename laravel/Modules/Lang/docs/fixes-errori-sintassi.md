@@ -168,3 +168,4 @@ grep -r "'label' => '[a-z_]\+'" Modules/*/lang/it/ --include="*.php"
 
 *Ultimo aggiornamento: 6 Gennaio 2025*
 *Ultimo aggiornamento: 6 Gennaio 2025*
+*Ultimo aggiornamento: 6 Gennaio 2025*

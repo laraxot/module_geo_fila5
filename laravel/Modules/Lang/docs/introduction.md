@@ -32,3 +32,13 @@ quando viene utilizzata in Francia, verrà visualizzato il testo tradotto in fra
 ### Versione Incoming
 
 ---
+
+### Versione Incoming
+
+---
+* [introduction.md](../../../Lang/docs/introduction.md)
+* [introduction.md](../../../Cms/docs/introduction.md)
+
+### Versione Incoming
+
+---

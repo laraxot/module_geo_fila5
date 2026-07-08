@@ -20,7 +20,7 @@ use Modules\Rating\Models\Rating;
  *
  * @see Modules/Rating/docs/schemaless-attributes.md
  */
-/** @phpstan-ignore trait.unused (Trade-off: usato da moduli esterni; PHPStan sul solo modulo Rating non vede i consumer.) */
+/** @phpstan-ignore trait.unused */
 trait HasRatingsTrait
 {
     /**
@@ -42,28 +42,24 @@ trait HasRatingsTrait
     /**
      * Get ratings for this model.
      *
-     * @return MorphToMany<Rating, static>
+     * @return MorphToMany<Rating, $this>
      */
     public function ratings(): MorphToMany
     {
-        /** @var MorphToMany<Rating, static> $result */
-        $result = $this->morphToMany(Rating::class, 'model', 'ratings', 'rating_morph');
-
-        return $result;
+        return $this->morphToMany(Rating::class, 'model', 'ratings', 'rating_morph');
     }
 
     /**
      * Get rating objectives with aggregated data.
      *
-     * @return HasMany<BaseRating, static>
+     * @return HasMany<BaseRating, $this>
      */
     public function ratingObjectives(): HasMany
     {
         $relatedClass = $this->getRatingClass();
         $userId = (int) Auth::id();
 
-        /** @var HasMany<BaseRating, static> $result */
-        $result = $this->hasMany($relatedClass, 'related_type', 'post_type')
+        return $this->hasMany($relatedClass, 'related_type', 'post_type')
             ->selectRaw(
                 'ratings.*,
                 count(value) as rating_count,
@@ -79,16 +75,10 @@ trait HasRatingsTrait
                 }
             )->groupBy('ratings.id')
             ->with('post');
-
-        return $result;
     }
 
     /**
      * Scope a query to only include popular users.
-     *
-     * @param Builder<static> $query
-     *
-     * @return Builder<static>
      */
     public function scopeWithRating(Builder $query): Builder
     {
@@ -103,21 +93,16 @@ trait HasRatingsTrait
     /**
      * Get my ratings for this model.
      *
-     * @return MorphToMany<Rating, static>
+     * @return MorphToMany<Rating, $this>
      */
     public function myRatings(): MorphToMany
     {
-        /** @var MorphToMany<Rating, static> $result */
-        $result = $this->morphToMany(Rating::class, 'model', 'ratings', 'rating_morph')
+        return $this->morphToMany(Rating::class, 'model', 'ratings', 'rating_morph')
             ->wherePivot('user_id', (string) Auth::id());
-
-        return $result;
     }
 
     // ----- mutators -----
-    /**
-     * @return Collection<int|string, mixed>
-     */
+    // *
     public function getMyRatingAttribute(): Collection
     {
         $myRatings = $this->myRatings;
@@ -186,8 +171,6 @@ trait HasRatingsTrait
 
     /**
      * @param array<string, mixed> $where
-     *
-     * @return Collection<int, mixed>
      */
     public function syncRatingsWhere(array $where): Collection
     {
@@ -199,10 +182,7 @@ trait HasRatingsTrait
         $rating_ids = $ratings->modelKeys();
         $this->ratings()->sync($rating_ids);
 
-        /** @var Collection<int, mixed> $result */
-        $result = $this->ratings;
-
-        return $result;
+        return $this->ratings;
     }
 
     // */
@@ -238,9 +218,6 @@ trait HasRatingsTrait
         return $msg.$btn.$btn_iframe;
     }
 
-    /**
-     * @return array<string, string>
-     */
     public function getRatingsRules(string $prefix, string $postfix): array
     {
         $rows = $this->ratings;
@@ -267,9 +244,6 @@ trait HasRatingsTrait
         return $res;
     }
 
-    /**
-     * @return array<string, string>
-     */
     public function getRatingsValidationAttributes(string $prefix, string $postfix): array
     {
         $rows = $this->ratings;

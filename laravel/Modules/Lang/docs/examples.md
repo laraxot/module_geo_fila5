@@ -929,3 +929,7 @@ class UserResourceTest extends TestCase
 **Versione**: 2.0.0
 **Autore**: Team Laraxot
 **Mantenuto da**: Community Laraxot
+**Mantenuto da**: Community Laraxot
+**Mantenuto da**: Community Laraxot
+**Mantenuto da**: Community Laraxot
+**Mantenuto da**: Community Laraxot
