@@ -34,9 +34,12 @@ final class OverlookWidget extends XotBaseSchemaWidget
 
     protected int|string|array $columnSpan = 1;
 
+<<<<<<< HEAD
     /**
      * @return array<string, mixed>
      */
+=======
+>>>>>>> laraxot/dev
     public function getFormSchema(): array
     {
         return [];

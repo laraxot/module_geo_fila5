@@ -25,7 +25,6 @@ return new class extends XotBaseMigration {
                 $table->string('icon')->nullable();
                 $table->string('rule')->nullable();
                 $table->text('txt')->nullable();
-                $table->decimal('value', 10, 2)->nullable();
             }
         );
 
@@ -49,10 +48,6 @@ return new class extends XotBaseMigration {
                 }
                 if (! $this->hasColumn('txt')) {
                     $table->string('txt')->nullable();
-                }
-                // ✅ value: essential for rating numeric value
-                if (! $this->hasColumn('value')) {
-                    $table->decimal('value', 10, 2)->nullable();
                 }
                 // @see Modules/Rating/docs/schemaless-attributes-errors.md
                 if (! $this->hasColumn('extra_attributes')) {

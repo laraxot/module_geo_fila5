@@ -61,7 +61,7 @@ final class OauthPersonalAccessClientResource extends XotBaseResource
      *
      * @return array<string, Tables\Columns\Column>
      */
-    public static function getTableColumns(): array
+    public function getTableColumns(): array
     {
         return [
             'id' => Tables\Columns\TextColumn::make('id')

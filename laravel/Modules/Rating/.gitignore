@@ -42,8 +42,6 @@ cache/
 *.bak
 *.backup
 *.backup.*
-*.backup-*
-*.backup_*
 
 # PHPStan documentation
 docs/phpstan/

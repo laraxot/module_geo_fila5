@@ -32,7 +32,10 @@ function createTestCalendarWidget(): UserCalendarWidget
 
 beforeEach(function (): void {
     /* @var \Modules\UI\Tests\TestCase $this */
+<<<<<<< HEAD
     /* @var TestCase $this */
+=======
+>>>>>>> laraxot/dev
     $this->mockService(SaveTransAction::class, static function (MockInterface $mock): void {
         /** @var ExpectationInterface $expectation */
         $expectation = $mock->shouldReceive('execute');

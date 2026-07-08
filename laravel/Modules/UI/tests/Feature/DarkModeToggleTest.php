@@ -167,7 +167,10 @@ it('backdrop effects work in dark mode', function (): void {
         Assert::assertTrue(
             str_contains($content, 'bg-white/5')
             || str_contains($content, 'bg-black/')
+<<<<<<< HEAD
             || str_contains($content, 'backdrop-blur')
+=======
+>>>>>>> laraxot/dev
         );
     }
 });
