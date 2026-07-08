@@ -6,29 +6,15 @@ namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-use Modules\Geo\Tests\LightTestCase;
-
-uses(LightTestCase::class);
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\GoogleMaps\GetCoordinatesFromGoogleMapsAction;
 use Modules\Geo\Datas\LocationData;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
 use Modules\Geo\Tests\LightTestCase;
-=======
->>>>>>> Stashed changes
 
+uses(LightTestCase::class);
 
 beforeEach(function () {
     $this->mockHandler = new MockHandler();
