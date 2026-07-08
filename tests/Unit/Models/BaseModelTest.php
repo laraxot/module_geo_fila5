@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Models;
 
-uses(\Modules\Geo\Tests\TestCase::class);
+uses(TestCase::class);
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Geo\Models\BaseModel;
+use Modules\Geo\Tests\TestCase;
 
 beforeEach(function () {
-    $this->baseModel = new class extends BaseModel {
+    $this->baseModel = new class extends BaseModel
+    {
         protected $table = 'test_geo_table';
     };
 });
