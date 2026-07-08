@@ -31,7 +31,7 @@ Se servira' un selettore geografico, crearlo in `Modules/Geo/` usando contratti 
 
 ## Caso InteractiveMap
 
-`app/Livewire/Components/Map/InteractiveMap.php` non appartiene a `UI`.
+`app/Livewire/Components/Map/InteractiveMap.php` e la relativa view Blade non appartengono a `UI`.
 
 Rimosso dal repo il 2026-07-08; backup locale opzionale `InteractiveMap.php.old` (`*.old` in `.gitignore`).
 
@@ -46,5 +46,6 @@ Questa separazione evita dipendenze inverse, classi mancanti e accoppiamento tra
 ```bash
 grep -r "Modules\\\\Geo" app/ --include="*.php" | grep -v '\.old' | grep -v '\.to_geo'
 test ! -f app/Livewire/Components/Map/InteractiveMap.php
+test ! -f resources/views/livewire/components/map/interactive-map.blade.php
 test ! -f app/Filament/Forms/Components/LocationSelector.php
 ```
