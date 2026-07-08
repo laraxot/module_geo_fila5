@@ -10,12 +10,9 @@ final class TestWidget extends XotBaseSchemaWidget
 {
     protected ?string $heading = 'Test Widget';
 
-<<<<<<< HEAD
     /**
      * @return array<string, mixed>
      */
-=======
->>>>>>> laraxot/dev
     public function getFormSchema(): array
     {
         return [];

@@ -10,12 +10,9 @@ final class GroupWidget extends XotBaseSchemaWidget
 {
     protected static ?string $heading = 'Group Widget';
 
-<<<<<<< HEAD
     /**
      * @return array<string, mixed>
      */
-=======
->>>>>>> laraxot/dev
     public function getFormSchema(): array
     {
         return [];
