@@ -7,10 +7,13 @@ namespace Modules\Geo\Tests\Unit\Models;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Models\Comune;
+use Tests\TestCase;
+
+uses(TestCase::class);
 
 beforeEach(function (): void {
     // Crea un file JSON di test
-    $testData = [
+    $this->testData = [
         [
             'id' => 1,
             'regione' => 'Lombardia',
@@ -37,7 +40,7 @@ beforeEach(function (): void {
 
     File::put(
         base_path('database/content/comuni.json'),
-        json_encode($testData, JSON_PRETTY_PRINT)
+        json_encode($this->testData, JSON_PRETTY_PRINT)
     );
 });
 

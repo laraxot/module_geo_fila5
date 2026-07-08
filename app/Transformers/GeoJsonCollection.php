@@ -30,7 +30,7 @@ class GeoJsonCollection extends ResourceCollection
     {
         return [
             'type' => 'FeatureCollection',
-            'features' => $collection,
+            'features' => $this->collection,
             /*'links' => [
              * 'self' => 'link-value',
              * ],*/
