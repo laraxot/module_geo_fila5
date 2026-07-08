@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\IPGeolocation;
 
-use Modules\Geo\Tests\LightTestCase;
 use Modules\Geo\Actions\IPGeolocation\FetchIPLocationAction;
 use Modules\Geo\Actions\IPGeolocation\GetLocationFromIPAction;
 use Modules\Geo\Datas\IPLocationData;
-use Mockery;
-use RuntimeException;
+use Modules\Geo\Tests\LightTestCase;
 
 uses(LightTestCase::class);
 
 beforeEach(function () {
-    $this->fetchAction = Mockery::mock(FetchIPLocationAction::class);
+    $this->fetchAction = \Mockery::mock(FetchIPLocationAction::class);
     $this->action = new GetLocationFromIPAction($this->fetchAction);
 });
 
@@ -48,8 +46,8 @@ it('returns null when fetch action returns null', function (): void {
         ->shouldReceive('execute')
         ->once()
         ->with('192.168.1.1')
-        ->andThrow(new RuntimeException('not found'));
+        ->andThrow(new \RuntimeException('not found'));
 
     expect(fn () => $this->action->execute('192.168.1.1'))
-        ->toThrow(RuntimeException::class);
+        ->toThrow(\RuntimeException::class);
 });
