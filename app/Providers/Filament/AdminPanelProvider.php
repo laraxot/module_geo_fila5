@@ -8,6 +8,7 @@ use Filament\Panel;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
+use Illuminate\Support\Facades\Vite;
 use Modules\Xot\Providers\Filament\XotBasePanelProvider;
 
 /**
@@ -23,10 +24,11 @@ class AdminPanelProvider extends XotBasePanelProvider
         $panel = parent::panel($panel);
 
         FilamentAsset::register([
-            Js::make('geo-map-widget', asset('modules/geo/geo-map-widget.js'))->module(),
-            Css::make('geo-map-picker', asset('modules/geo/map-picker.css')),
-            Js::make('geo-map-picker', asset('modules/geo/map-picker.js'))->module(),
-        ], 'geo');
+            Js::make('coordinate-picker', Vite::asset('resources/js/components/coordinate-picker-lit.js', 'assets/geo'))->module(),
+            Js::make('map-picker', Vite::asset('resources/js/components/map-picker-lit.js', 'assets/geo'))->module(),
+            Js::make('geopoint-picker', Vite::asset('resources/js/components/geopoint-picker-lit.js', 'assets/geo'))->module(),
+            Css::make('coordinate-picker', Vite::asset('resources/css/app.css', 'assets/geo')),
+        ]);
 
         return $panel;
     }
