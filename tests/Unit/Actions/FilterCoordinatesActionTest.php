@@ -7,7 +7,7 @@ namespace Modules\Geo\Tests\Unit\Actions;
 use Modules\Geo\Actions\FilterCoordinatesAction;
 
 beforeEach(function () {
-    $this->action = new FilterCoordinatesAction;
+    $this->action = new FilterCoordinatesAction();
 });
 
 it('filters coordinates within radius correctly', function (): void {

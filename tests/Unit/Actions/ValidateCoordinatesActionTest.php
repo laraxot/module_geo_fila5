@@ -7,7 +7,7 @@ namespace Modules\Geo\Tests\Unit\Actions;
 use Modules\Geo\Actions\ValidateCoordinatesAction;
 
 beforeEach(function () {
-    $this->action = new ValidateCoordinatesAction;
+    $this->action = new ValidateCoordinatesAction();
 });
 
 it('validates valid coordinates correctly', function (): void {
