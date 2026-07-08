@@ -24,10 +24,11 @@ class PhotonAddressData extends Data
         public ?string $housenumber,
         /** @var array{latitude: float, longitude: float} */
         public array $coordinates,
-    ) {}
+    ) {
+    }
 
     /**
-     * @param  array{properties: array<string, mixed>, geometry: array{coordinates: array<float>}}  $feature
+     * @param array{properties: array<string, mixed>, geometry: array{coordinates: array<float>}} $feature
      */
     public static function fromPhotonFeature(array $feature): self
     {
