@@ -149,10 +149,9 @@ class GoogleMapsService
     /**
      * Esegue una richiesta di geocodifica inversa.
      *
+     * @throws GoogleMapsApiException Se la richiesta fallisce
      *
      * @return array<string, mixed>
-     *
-     * @throws GoogleMapsApiException Se la richiesta fallisce
      */
     public function reverseGeocode(float $latitude, float $longitude): array
     {
@@ -170,11 +169,12 @@ class GoogleMapsService
     /**
      * Calcola la matrice delle distanze.
      *
-     * @param  array<string>  $origins  Punti di origine (formato: "lat,lng|lat,lng|...")
-     * @param  array<string>  $destinations  Punti di destinazione (formato: "lat,lng|lat,lng|...")
-     * @return array<string, mixed>
+     * @param array<string> $origins      Punti di origine (formato: "lat,lng|lat,lng|...")
+     * @param array<string> $destinations Punti di destinazione (formato: "lat,lng|lat,lng|...")
      *
      * @throws GoogleMapsApiException Se la richiesta fallisce
+     *
+     * @return array<string, mixed>
      */
     public function getDistanceMatrix(array $origins, array $destinations): array
     {
@@ -194,10 +194,9 @@ class GoogleMapsService
     /**
      * Ottiene l'elevazione per un punto.
      *
+     * @throws GoogleMapsApiException Se la richiesta fallisce
      *
      * @return array<string, mixed>
-     *
-     * @throws GoogleMapsApiException Se la richiesta fallisce
      */
     public function getElevation(float $latitude, float $longitude): array
     {
