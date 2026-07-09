@@ -83,7 +83,7 @@ class GetAddressFromBingMapsAction
             throw InvalidLocationException::invalidData('Risposta JSON non valida da Bing Maps');
         }
 
-        /** @var array<string, mixed> $jsonResponse */
+        /* @var array<string, mixed> $jsonResponse */
         return $jsonResponse;
     }
 
