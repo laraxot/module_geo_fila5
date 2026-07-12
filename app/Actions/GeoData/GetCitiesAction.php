@@ -6,7 +6,6 @@ namespace Modules\Geo\Actions\GeoData;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use Modules\Geo\Actions\GeoData\LoadGeoDataAction;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
