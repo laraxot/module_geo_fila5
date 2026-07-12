@@ -21,7 +21,7 @@ use Modules\Geo\Actions\GoogleMaps\OptimizeRouteAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\RouteData;
 
-function subject(): OptimizeRouteAction
+function subjectRouteAction(): OptimizeRouteAction
 {
     return new OptimizeRouteAction();
 }

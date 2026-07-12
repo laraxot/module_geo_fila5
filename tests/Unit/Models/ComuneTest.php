@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 use Modules\Geo\Models\Comune;
 use Tests\TestCase;
 
-uses(TestCase::class);
+uses(\Modules\Geo\Tests\TestCase::class);
 // Laraxot module file — see docs/wiki for domain contract.
 // Laraxot module file — see docs/wiki for domain contract.
 // Laraxot module file — see docs/wiki for domain contract.

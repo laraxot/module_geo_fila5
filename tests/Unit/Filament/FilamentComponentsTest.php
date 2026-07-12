@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Filament;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
 use Modules\Geo\Filament\Actions\UpdateCoordinatesBulkAction;
 use Modules\Geo\Filament\Forms\Components\AddressField;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
