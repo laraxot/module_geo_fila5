@@ -8,9 +8,12 @@ use Filament\Notifications\Notification;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\CoordinatesData;
+use Spatie\QueueableAction\QueueableAction;
 
 class GetCoordinatesByAddressAction
 {
+    use QueueableAction;
+
     public function execute(string $address): ?CoordinatesData
     {
         // Prova con Google Maps

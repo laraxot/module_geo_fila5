@@ -412,3 +412,9 @@ discussions:
 
 [2026-07-06] [RULE] Infrastructural→Dominio dipendenza vietata — UI non deve importare da GEO (o altro modulo dominio). InteractiveMap.php (UI) rinominato in .old perché apparteneva a GEO. Regola aggiunta a `laravel/Modules/UI/docs/dependencies.md`.
 [2026-07-01] [FIX] Git collision sweep — rimossi marker residui in Xot PHP (`XotServiceProvider`, `Helper`) e docs Job/Notify/Tenant/User; aggiornato report `docs/wiki/sources/git-collision-docs-cleanup-report.md`; verifica `git grep` marker OK.
+
+## [2026-07-12] phpstan | GeoDataValidationRules array shape
+
+- Corretto `GeoDataValidationRules::execute()` usando chiavi stringa `rules` e `messages`.
+- Motivo: in PHP le chiavi non quotate sono costanti; PHPStan segnala `constant.notFound` e shape errata.
+- Regola ponytail: fix nel punto unico condiviso, nessun wrapper o helper aggiuntivo.
