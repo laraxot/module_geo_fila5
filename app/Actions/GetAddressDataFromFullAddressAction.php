@@ -14,12 +14,15 @@ use Modules\Geo\Actions\Nominatim\GetAddressFromNominatimAction;
 use Modules\Geo\Actions\OpenCage\GetAddressFromOpenCageAction;
 use Modules\Geo\Actions\Photon\GetAddressFromPhotonAction;
 use Modules\Geo\Datas\AddressData;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere i dati dell'indirizzo utilizzando diversi servizi di geocoding.
  */
 class GetAddressDataFromFullAddressAction
 {
+    use QueueableAction;
+
     /** @var Collection<int, string> */
     public Collection $errors;
 
