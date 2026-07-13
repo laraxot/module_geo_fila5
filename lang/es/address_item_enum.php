@@ -2,24 +2,7 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
 return [
-=======
-// Geo translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
-// claude-audit static: ≥5% comment lines on files >100 LOC.
-// Canon: Modules/Geo/docs/wiki — domain i18n only.
-// File: lang/es/address_item_enum.php
-return [
-    // Laraxot — see module docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
->>>>>>> laraxot/dev
     'phone' => [
         'label' => 'Teléfono',
         'description' => 'Número de teléfono',

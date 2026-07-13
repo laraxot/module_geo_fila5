@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Nominatim;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\LocationData;
@@ -15,6 +17,8 @@ use function Safe\json_decode;
  */
 class FetchCoordinatesAction
 {
+    use QueueableAction;
+
     private const API_URL = 'https://nominatim.openstreetmap.org/search';
 
     private Client $client;

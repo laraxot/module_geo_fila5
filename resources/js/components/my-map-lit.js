@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
->>>>>>> laraxot/dev
 import { LitElement, html, css } from '@theme-lit';
 import L from '@theme-leaflet';
 

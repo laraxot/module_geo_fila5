@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Widgets;
 
 use Filament\Widgets\Widget;
-use Modules\Geo\Support\GeoMapDataset;
+use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
+use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
+use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
 
 /**
  * @phpstan-type GeoDataset array{type: string, features: list<array{
@@ -43,7 +45,7 @@ final class GeoMapWidget extends Widget
      */
     public function getDataset(): array
     {
-        return $this->getGeoMapDataset()->toArray();
+        return app(LoadGeoMapDatasetAction::class)->execute($this->getDatasetPath());
     }
 
     /**
@@ -51,7 +53,7 @@ final class GeoMapWidget extends Widget
      */
     public function getCategories(): array
     {
-        return $this->getGeoMapDataset()->getCategories();
+        return app(GetGeoMapDatasetCategoriesAction::class)->execute($this->getDatasetPath());
     }
 
     /**
@@ -88,7 +90,7 @@ final class GeoMapWidget extends Widget
      */
     public function getDatasetStats(): array
     {
-        return $this->getGeoMapDataset()->getStats();
+        return app(GetGeoMapDatasetStatsAction::class)->execute($this->getDatasetPath());
     }
 
     public function getDatasetJson(): string
@@ -125,9 +127,5 @@ final class GeoMapWidget extends Widget
             throw new \RuntimeException($message, 0, $exception);
         }
     }
-
-    private function getGeoMapDataset(): GeoMapDataset
-    {
-        return new GeoMapDataset($this->getDatasetPath());
-    }
 }
+

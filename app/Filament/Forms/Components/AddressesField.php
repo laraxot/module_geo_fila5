@@ -9,10 +9,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Utilities\Get;
-<<<<<<< HEAD
 use Filament\Schemas\Components\Utilities\Set;
-=======
->>>>>>> laraxot/dev
 use Modules\Geo\Filament\Resources\AddressResource;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
@@ -37,7 +34,6 @@ class AddressesField extends Repeater
 {
     // protected string $view = 'geo::filament.forms.components.addresses-field';
 
-<<<<<<< HEAD
     /**
      * @return list<array<string, mixed>>
      */
@@ -84,8 +80,6 @@ class AddressesField extends Repeater
         return $normalized;
     }
 
-=======
->>>>>>> laraxot/dev
     protected function setUp(): void
     {
         parent::setUp();
@@ -109,21 +103,11 @@ class AddressesField extends Repeater
         // Campo name: visibile solo con più di 1 elemento
         $baseSchema['name'] = TextInput::make('name')
             ->maxLength(255)
-<<<<<<< HEAD
             ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
-=======
-            ->visible(function (Get $get): bool {
-                $addresses = $get('../../addresses') ?? [];
-
-                /* @phpstan-ignore argument.type */
-                return count($addresses) > 1;
-            })
->>>>>>> laraxot/dev
             ->live();
 
         // Campo is_primary: logica complessa per esclusività
         $baseSchema['is_primary'] = Toggle::make('is_primary')
-<<<<<<< HEAD
             ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
             ->default(fn (Get $get): bool => count(self::repeaterAddresses($get)) <= 1)
             ->afterStateUpdated(function ($state, Set $set, Get $get, Component $component): void {
@@ -147,61 +131,12 @@ class AddressesField extends Repeater
                             }
                         }
                     }
-=======
-            ->visible(function (Get $get): bool {
-                $addresses = $get('../../addresses') ?? [];
-
-                /* @phpstan-ignore argument.type */
-                return count($addresses) > 1;
-            })
-            ->default(function (Get $get): bool {
-                $addresses = $get('../../addresses') ?? [];
-
-                // Se è il primo elemento o c'è un solo elemento, default true
-                /* @phpstan-ignore argument.type */
-                return count($addresses) <= 1;
-            })
-            ->afterStateUpdated(function ($state, $set, Get $get, Component $component): void {
-                if (true !== $state) {
-                    return;
-                }
-
-                if (! \is_callable($set)) {
-                    return;
-                }
-
-                $addresses = $get('../../addresses') ?? [];
-                $currentIndex = self::resolveAddressPrimaryIndex($component->getStatePath());
-                if (null === $currentIndex) {
-                    return;
-                }
-
-                $currentIndexStr = app(SafeStringCastAction::class)->execute($currentIndex);
-                if (! \is_iterable($addresses)) {
-                    return;
-                }
-
-                foreach ($addresses as $index => $address) {
-                    $indexStr = app(SafeStringCastAction::class)->execute($index);
-                    if ($indexStr === $currentIndexStr) {
-                        continue;
-                    }
-
-                    $set('../../addresses.'.$indexStr.'.is_primary', false);
->>>>>>> laraxot/dev
                 }
             })
             ->live()
             ->dehydrateStateUsing(function ($state, Get $get): bool {
-<<<<<<< HEAD
                 // Se c'è un solo elemento, forza sempre true
                 if (count(self::repeaterAddresses($get)) <= 1) {
-=======
-                $addresses = $get('../../addresses') ?? [];
-                // Se c'è un solo elemento, forza sempre true
-                /* @phpstan-ignore argument.type */
-                if (count($addresses) <= 1) {
->>>>>>> laraxot/dev
                     return true;
                 }
 
@@ -210,14 +145,4 @@ class AddressesField extends Repeater
 
         return $baseSchema;
     }
-<<<<<<< HEAD
-=======
-
-    private static function resolveAddressPrimaryIndex(?string $path): ?string
-    {
-        preg_match('/addresses\.(\d+)\.is_primary/', $path ?? '', $matches);
-
-        return $matches[1] ?? null;
-    }
->>>>>>> laraxot/dev
 }

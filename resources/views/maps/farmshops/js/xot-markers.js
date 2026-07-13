@@ -1,15 +1,4 @@
-<<<<<<< HEAD
 console.log("        @ @ @\n       []___\n      /    /\\____\n(~)  /_/\\_//____/\\ \n |   | || |||__|||\n     farmshops.eu \n Interesse am Code, Bug gefunden oder eine Verbesserungsidee? Schau vorbei auf GitHub! \n https://github.com/CodeforKarlsruhe/direktvermarkter");
-=======
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
->>>>>>> laraxot/dev
 var mappos = L.Permalink.getMapLocation();
 var map = L.map('map', {
     center: mappos.center,
@@ -94,10 +83,7 @@ var geojson1 = L.geoJson(farmshopGeoJson, {
             case 'vending_machine':return L.marker(latlng, { icon: machineMarker }); break;
             case 'restaurant':return L.marker(latlng, { icon: restaurantMarker }); break;
             default:
-<<<<<<< HEAD
                 console.log(feature.properties.p);
-=======
->>>>>>> laraxot/dev
                 return L.marker(latlng, { icon: blackMarker });
             break;
         }
@@ -112,10 +98,7 @@ var geojson1 = L.geoJson(farmshopGeoJson, {
             });
             */
             var $json_url=base_url+feature.properties.url+'?format=json';
-<<<<<<< HEAD
             console.log($json_url);
-=======
->>>>>>> laraxot/dev
             $.getJSON($json_url, function (data) {
                 layer.bindPopup(popupcontent(data, layer)).openPopup();
             });
@@ -153,13 +136,9 @@ var markers = L.markerClusterGroup({
                     case 'marketplace': marketsInCluster = true; break;
                     case 'vending_machine':machinesInCluster = true; break;
                     case "restaurant":restaurantInCluster =true;  break;
-<<<<<<< HEAD
                     default: console.log('don know ['+ $p +'] ');break;
                 }
                 //console.log("f " +farmsInCluster +" m " +marketsInCluster +" a " +machinesInCluster)
-=======
-                }
->>>>>>> laraxot/dev
             }
 
             function farmsAreInCluster(farmsInCluster)
@@ -217,10 +196,7 @@ var markers = L.markerClusterGroup({
 
             return returnWert;
         }
-<<<<<<< HEAD
         // console.log("markerS: " +markers)
-=======
->>>>>>> laraxot/dev
         var html = '<div class="circle"><strong>' +markerTypen(markers) + '</strong></div>';
         return L.divIcon({ html: html, className: 'test', iconSize: L.point(80,80) });
     },
@@ -233,10 +209,7 @@ var markers = L.markerClusterGroup({
 
 markers.addLayer(geojson1);
 map.addLayer(markers);
-<<<<<<< HEAD
 console.log(lastUpdate);
-=======
->>>>>>> laraxot/dev
 
 var sidebar = L.control.sidebar('sidebar').addTo(map);
 
@@ -280,10 +253,7 @@ L.control.locate({
 
 function popupcontent(feature, layer)
 {
-<<<<<<< HEAD
     console.log(feature);
-=======
->>>>>>> laraxot/dev
     /*
     var customPopup = `
             <img class="wwone__map-infobox__thumb" src="##img_src##" />
@@ -298,10 +268,7 @@ function popupcontent(feature, layer)
                 <a class="wwone__map-infobox__inner__btn btn" href="##url##" target="_blank">View &raquo;</a>
             </div>`;
     for (var prop in feature) {
-<<<<<<< HEAD
         console.log('prop :'+prop);
-=======
->>>>>>> laraxot/dev
         customPopup=customPopup.replace('##'+prop+'##',feature[prop]);
     }
     */

@@ -1,71 +1,4 @@
 @php
-<<<<<<< HEAD
-=======
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
->>>>>>> laraxot/dev
 /** @var \Modules\Geo\Filament\Forms\Components\MapPicker $field */
 $statePath = $field->getStatePath();
 $id = $field->getId();
@@ -85,17 +18,6 @@ $labels = [
     'longitude' => __('geo::coordinate-picker.longitude'),
     'address' => __('geo::coordinate-picker.address'),
 ];
-<<<<<<< HEAD
-=======
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot — see module docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
->>>>>>> laraxot/dev
 @endphp
 
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">

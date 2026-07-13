@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
->>>>>>> laraxot/dev
 import { test, expect } from '@playwright/test';
 
 test.describe('Segnalazioni Elenco Map Tests', () => {
@@ -168,8 +163,4 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
     await page.waitForTimeout(800);
     await expect(page.locator('.leaflet-container')).toBeVisible();
   });
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> laraxot/dev

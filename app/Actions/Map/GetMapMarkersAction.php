@@ -7,16 +7,18 @@ namespace Modules\Geo\Actions\Map;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
- * Ottiene i marker della mappa in base ai filtri.
+ * Marker mappa interattiva (stub — implementazione dominio futura).
+ *
+ * Sostituisce MapService::getMarkers().
  */
-class GetMapMarkersAction
+final class GetMapMarkersAction
 {
     use QueueableAction;
 
     /**
-     * @param array<string, mixed> $filters
+     * @param  array<string, mixed>  $filters
      *
-     * @return array<int, array<string, mixed>>
+     * @return list<array<string, mixed>>
      */
     public function execute(array $filters = []): array
     {

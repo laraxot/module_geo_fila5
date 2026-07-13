@@ -286,13 +286,8 @@ Il componente non solo elimina duplicazione, ma stabilisce un **pattern replicab
 ### Documentazione Correlata
 - [AddressesField Component Documentation](components/addresses-field.md)
 - [Form Schema Reuse Guidelines](form-schema-reuse.md)
-<<<<<<< HEAD
 - [StudioResource Implementation](../../<main module>/docs/studio-resource-addresses-improvement.md)
 - [Critical Errors Resolved](../../<main module>/docs/critical-errors-resolved.md)
-=======
-- [StudioResource Implementation](../../<main module>/project_docs/studio-resource-addresses-improvement.md)
-- [Critical Errors Resolved](../../<main module>/project_docs/critical-errors-resolved.md)
->>>>>>> laraxot/dev
 
 ### File Sorgente
 - [AddressesField.php](../app/Filament/Forms/Components/AddressesField.php)
@@ -303,8 +298,4 @@ Il componente non solo elimina duplicazione, ma stabilisce un **pattern replicab
 ---
 
 
-<<<<<<< HEAD
 **Il successo di questo caso studio conferma l'importanza di identificare e risolvere proattivamente la duplicazione di codice prima che diventi un debito tecnico significativo.**
-=======
-**Il successo di questo caso studio conferma l'importanza di identificare e risolvere proattivamente la duplicazione di codice prima che diventi un debito tecnico significativo.** 
->>>>>>> laraxot/dev

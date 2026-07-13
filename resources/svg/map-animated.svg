@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <style>
@@ -29,8 +28,3 @@
     <path class="map" d="M9 3V18"/>
     <path class="map" d="M15 6V21"/>
 </svg>
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:ad69020b5fd279eab56e560a82fa3cf713b2287c7350d0228f88439c0870c320
-size 1051
->>>>>>> laraxot/dev

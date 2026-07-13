@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GoogleMaps\OptimizeRouteAction;
 use Modules\Geo\Datas\LocationData;
@@ -16,31 +15,6 @@ uses(LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
     $action = new OptimizeRouteAction();
 
-=======
-use Modules\Geo\Tests\LightTestCase;
-
-uses(LightTestCase::class);
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-
-use Illuminate\Support\Facades\Http;
-use Modules\Geo\Actions\GoogleMaps\OptimizeRouteAction;
-use Modules\Geo\Datas\LocationData;
-use Modules\Geo\Datas\RouteData;
-
-function subjectRouteAction(): OptimizeRouteAction
-{
-    return new OptimizeRouteAction();
-}
-
-it('throws exception when api key is not configured', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps.key' => null]);
 
     $locations = [
@@ -49,7 +23,6 @@ it('throws exception when api key is not configured', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-<<<<<<< HEAD
     try {
         $action->execute($locations, $origin, $destination);
 
@@ -62,19 +35,11 @@ it('throws exception when api key is not configured', function (): void {
 it('returns empty array for empty locations', function (): void {
     $action = new OptimizeRouteAction();
 
-=======
-    expect(fn () => subject()->execute($locations, $origin, $destination))
-        ->toThrow(RuntimeException::class, 'API key not found');
-});
-
-it('returns empty array for empty locations', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps.key' => 'test_key']);
 
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-<<<<<<< HEAD
     $result = $action->execute([], $origin, $destination);
     Assert::assertEmpty($result);
 });
@@ -82,14 +47,6 @@ it('returns empty array for empty locations', function (): void {
 it('returns empty array when api returns no routes', function (): void {
     $action = new OptimizeRouteAction();
 
-=======
-    $result = subject()->execute([], $origin, $destination);
-
-    expect($result)->toBeArray()->toBeEmpty();
-});
-
-it('returns empty array when api returns no routes', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps.key' => 'test_key']);
 
     Http::fake([
@@ -102,7 +59,6 @@ it('returns empty array when api returns no routes', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-<<<<<<< HEAD
     $result = $action->execute($locations, $origin, $destination);
     Assert::assertEmpty($result);
 });
@@ -110,14 +66,6 @@ it('returns empty array when api returns no routes', function (): void {
 it('returns route data for valid request', function (): void {
     $action = new OptimizeRouteAction();
 
-=======
-    $result = subject()->execute($locations, $origin, $destination);
-
-    expect($result)->toBeArray()->toBeEmpty();
-});
-
-it('returns route data for valid request', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps.key' => 'test_key']);
 
     Http::fake([
@@ -162,7 +110,6 @@ it('returns route data for valid request', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-<<<<<<< HEAD
     $result = $action->execute($locations, $origin, $destination);
     Assert::assertCount(1, $result);
 
@@ -176,19 +123,6 @@ it('returns route data for valid request', function (): void {
 it('throws exception when api request fails', function (): void {
     $action = new OptimizeRouteAction();
 
-=======
-    $result = subject()->execute($locations, $origin, $destination);
-
-    expect($result)
-        ->toBeArray()
-        ->toHaveCount(1)
-        ->and($result[0])->toBeInstanceOf(RouteData::class)
-        ->and($result[0]->totalDistance)->toBe(1044000)
-        ->and($result[0]->totalDuration)->toBe(36000);
-});
-
-it('throws exception when api request fails', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps.key' => 'test_key']);
 
     Http::fake([
@@ -201,7 +135,6 @@ it('throws exception when api request fails', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-<<<<<<< HEAD
     try {
         $action->execute($locations, $origin, $destination);
 
@@ -209,8 +142,4 @@ it('throws exception when api request fails', function (): void {
     } catch (\RuntimeException $exception) {
         Assert::assertSame('Failed to get directions', $exception->getMessage());
     }
-=======
-    expect(fn () => subject()->execute($locations, $origin, $destination))
-        ->toThrow(RuntimeException::class, 'Failed to get directions');
->>>>>>> laraxot/dev
 });

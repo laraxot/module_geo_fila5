@@ -89,7 +89,6 @@ Il widget fa parte del piano di migrazione a Filament 4.x documentato in:
 - [Documentazione Widget Disabilitati](./widgets/disabled_widgets.md)
 - [Piano Migrazione Filament](../../../docs/filament_4x_migration_plan.md)
 
-<<<<<<< HEAD
 ---
 
 # PHPStan Zero Errors Achievement - 2026-06-13
@@ -181,6 +180,3 @@ Sempre documentare in docstring: `@throws \InvalidArgumentException`
 - [Pest Fully Qualified Class Names](../../../docs/wiki/skills/pest-fqn-resolution.md)
 
 *Ultimo aggiornamento: 2026-06-13*
-=======
-*Ultimo aggiornamento: 2025-01-27*
->>>>>>> laraxot/dev

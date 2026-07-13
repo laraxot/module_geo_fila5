@@ -1,71 +1,4 @@
 @php
-<<<<<<< HEAD
-=======
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
->>>>>>> laraxot/dev
 /** @var \Modules\Geo\Filament\Forms\Components\LocationPicker $field */
 $statePath = $field->getStatePath();
 $id = $field->getId();
@@ -85,13 +18,6 @@ $initLng = is_array($state) ? ($state['longitude'] ?? null) : null;
 
             init() {
                 this.$wire.$watch('{{ $statePath }}', (val) => {
-<<<<<<< HEAD
-=======
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
->>>>>>> laraxot/dev
                     if (this._suppressUpdate) return;
                     this._lat = val?.latitude ?? null;
                     this._lng = val?.longitude ?? null;

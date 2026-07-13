@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use Illuminate\Support\Collection;
 use Modules\Geo\Contracts\CalculateDistanceActionContract;
 use Modules\Geo\Datas\LocationData;
@@ -11,10 +13,12 @@ use Modules\Geo\Datas\LocationData;
 /**
  * Action per ottimizzare l'ordine di un percorso minimizzando la distanza totale.
  */
-readonly class OptimizeRouteAction
+class OptimizeRouteAction
 {
+    use QueueableAction;
+
     public function __construct(
-        private CalculateDistanceActionContract $calculateDistance,
+        private readonly CalculateDistanceActionContract $calculateDistance,
     ) {
     }
 

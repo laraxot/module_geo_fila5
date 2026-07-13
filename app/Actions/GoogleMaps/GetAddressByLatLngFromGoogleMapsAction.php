@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\GoogleMaps;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
-<<<<<<< HEAD
-=======
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
->>>>>>> laraxot/dev
 
 use function Safe\json_decode;
 
@@ -23,12 +21,14 @@ use Webmozart\Assert\Assert;
  * Questa classe utilizza l'API Google Maps Reverse Geocoding per convertire
  * coordinate geografiche in un indirizzo formattato.
  */
-readonly class GetAddressByLatLngFromGoogleMapsAction
+class GetAddressByLatLngFromGoogleMapsAction
 {
+    use QueueableAction;
+
     private const API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
     public function __construct(
-        private Client $client,
+        private readonly Client $client,
     ) {
     }
 
@@ -92,7 +92,6 @@ readonly class GetAddressByLatLngFromGoogleMapsAction
      */
     private function parseResponse(string $response, float $latitude, float $longitude): LocationData
     {
-<<<<<<< HEAD
         /** @var array{
          *     results: array<array{
          *         formatted_address: string,
@@ -115,30 +114,6 @@ readonly class GetAddressByLatLngFromGoogleMapsAction
 
         return new LocationData(
             address: $result['formatted_address'],
-=======
-        $decoded = json_decode($response, true);
-        if (! \is_array($decoded)) {
-            throw new \RuntimeException('No address found for coordinates');
-        }
-
-        /** @var array<string, mixed> $data */
-        $data = $decoded;
-
-        if ('OK' !== ($data['status'] ?? null)) {
-            throw new \RuntimeException('No address found for coordinates');
-        }
-
-        $results = $data['results'] ?? null;
-        if (! \is_array($results) || ! isset($results[0]) || ! \is_array($results[0])) {
-            throw new \RuntimeException('No address found for coordinates');
-        }
-
-        /** @var array<string, mixed> $result */
-        $result = $results[0];
-
-        return new LocationData(
-            address: SafeStringCastAction::cast($result['formatted_address'] ?? ''),
->>>>>>> laraxot/dev
             latitude: $latitude,
             longitude: $longitude,
         );

@@ -151,10 +151,6 @@ php artisan lang:check
 
 ---
 
-<<<<<<< HEAD
 **Ultimo aggiornamento**: 2025-01-06
-=======
-**
->>>>>>> laraxot/dev
 **Autore**: Sistema di correzione automatica
 **Stato**: ✅ Completato

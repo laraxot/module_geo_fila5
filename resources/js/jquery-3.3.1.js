@@ -3799,10 +3799,7 @@
         // Support: IE 8 - 9 only
         // Console exists when dev tools are open, which can happen at any time
         if ( window.console && window.console.warn && error && rerrorNames.test(error.name) ) {
-<<<<<<< HEAD
             window.console.warn("jQuery.Deferred exception: " + error.message, error.stack, stack);
-=======
->>>>>>> laraxot/dev
         }
     };
 

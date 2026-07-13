@@ -19,10 +19,6 @@ class GetProvincesAction
 
     public const CACHE_TTL = 86400;
 
-    public function __construct(
-        private readonly LoadGeoDataAction $loader = new LoadGeoDataAction(),
-    ) {
-    }
 
     /**
      * @param string $regionCode Codice della regione
@@ -36,7 +32,7 @@ class GetProvincesAction
         /** @var Collection<int, array{name: string, code: string}> $result */
         $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($regionCode): Collection {
             /** @var array<string, mixed>|null $region */
-            $region = $this->loader->execute()->firstWhere('code', $regionCode);
+            $region = app(LoadGeoDataAction::class)->execute()->firstWhere('code', $regionCode);
 
             if (! $region || ! \is_array($region) || ! isset($region['provinces']) || ! \is_array($region['provinces'])) {
                 /** @var Collection<int, array{name: string, code: string}> $empty */

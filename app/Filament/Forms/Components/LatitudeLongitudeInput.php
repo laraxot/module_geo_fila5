@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-<<<<<<< HEAD
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
@@ -26,11 +25,4 @@ class LatitudeLongitudeInput extends XotBaseField
         $this->setUpCoordinatePicker();
         $this->dehydrated(false);
     }
-=======
-/**
- * LatitudeLongitudeInput - Dual input fields with map assistance.
- */
-class LatitudeLongitudeInput extends XotBaseCoordinateField
-{
->>>>>>> laraxot/dev
 }

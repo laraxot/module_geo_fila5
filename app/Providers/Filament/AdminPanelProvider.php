@@ -22,7 +22,6 @@ class AdminPanelProvider extends XotBasePanelProvider
     public function panel(Panel $panel): Panel
     {
         $panel = parent::panel($panel);
-<<<<<<< HEAD
 
         if (! inAdmin()) {
             return $panel;
@@ -30,15 +29,6 @@ class AdminPanelProvider extends XotBasePanelProvider
 
         FilamentAsset::register([
             Js::make('coordinate-picker', Vite::asset('resources/js/components/coordinate-picker-lit.js', 'assets/geo'))->module(),
-=======
-        if (! inAdmin()) {
-            return $panel;
-        }
-        FilamentAsset::register([
-            Js::make('coordinate-picker', Vite::asset('resources/js/components/coordinate-picker-lit.js', 'assets/geo'))->module(),
-            Js::make('map-picker', Vite::asset('resources/js/components/map-picker-lit.js', 'assets/geo'))->module(),
-            Js::make('geopoint-picker', Vite::asset('resources/js/components/geopoint-picker-lit.js', 'assets/geo'))->module(),
->>>>>>> laraxot/dev
             Css::make('coordinate-picker', Vite::asset('resources/css/app.css', 'assets/geo')),
         ]);
 

@@ -7,19 +7,24 @@ namespace Modules\Geo\Actions\Map;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
- * Esporta i dati della mappa nel formato specificato.
+ * Export dati mappa (stub).
+ *
+ * Sostituisce MapService::exportData().
  */
-class ExportMapDataAction
+final class ExportMapDataAction
 {
     use QueueableAction;
 
     /**
-     * @param array<string, mixed> $filters
-     *
-     * @return array<string, mixed>|string
+     * @param  array<string, mixed>  $filters
      */
-    public function execute(array $filters = [], string $format = 'json'): array|string
+    public function execute(array $filters = [], string $format = 'json'): string
     {
-        return [];
+        return match ($format) {
+            'csv' => '',
+            'geojson' => '{"type":"FeatureCollection","features":[]}',
+            'kml' => '<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"></kml>',
+            default => '[]',
+        };
     }
 }

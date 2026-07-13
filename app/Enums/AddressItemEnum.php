@@ -4,16 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Enums;
 
-<<<<<<< HEAD
-=======
-use Filament\Forms\Components\TextInput;
->>>>>>> laraxot/dev
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
-<<<<<<< HEAD
 use Modules\Xot\Traits\EnumTrait;
 
 /**
@@ -25,19 +20,6 @@ use Modules\Xot\Traits\EnumTrait;
 enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
 {
     use EnumTrait;
-=======
-use Modules\Xot\Filament\Traits\TransTrait;
-
-/**
- * Enum per i driver SMS supportati.
- *
- * Questo enum centralizza la gestione dei driver SMS disponibili
- * e fornisce metodi helper per ottenere le opzioni e le etichette.
- */
-enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
-{
-    use TransTrait;
->>>>>>> laraxot/dev
 
     case PHONE = 'phone';
     case NAME = 'name';
@@ -61,165 +43,12 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
     case EMAIL = 'email';
     case NOTES = 'notes';
 
-<<<<<<< HEAD
-=======
-    public function getLabel(): string
-    {
-        return $this->transClass(self::class, $this->value.'.label');
-    }
-
-    public function getColor(): string
-    {
-        return $this->transClass(self::class, $this->value.'.color');
-    }
-
-    public function getIcon(): string
-    {
-        return $this->transClass(self::class, $this->value.'.icon');
-    }
-
-    public function getDescription(): string
-    {
-        return $this->transClass(self::class, $this->value.'.description');
-    }
-
-    /**
-     * @return array<int, string>
-     *
-     * @phpstan-return array<int, string>
-     */
-    public static function getSearchable(): array
-    {
-        return array_map(fn ($item) => $item->value, self::cases());
-    }
-
-    /**
-     * @return array<string, TextInput>
-     */
-    public static function getFormSchema(): array
-    {
-        $cases = self::cases();
-        /** @var array<string, TextInput> $res */
-        $res = [];
-
-        foreach ($cases as $item) {
-            $fieldName = $item->value;
-            $icon = $item->getIcon();
-
-            $res[$fieldName] = TextInput::make($fieldName)
-                ->prefixIcon($icon);
-        }
-
-        return $res;
-    }
-
-    /**
-     * Add all standard address columns to a migration table.
-     *
-     * Following the philosophy of ContactTypeEnum::columns() and the Laraxot
-     * XotBaseMigration pattern.
-     *
-     * This method intelligently handles BOTH CREATE and UPDATE contexts:
-     * - **CREATE context** ($migration = null): Adds all columns directly
-     * - **UPDATE context** ($migration provided): Loops with hasColumn() checks
-     *
-     * The method embodies:
-     * - **Logic**: Mathematical precision with conditional column addition
-     * - **Philosophy**: Single Source of Truth (DRY principle)
-     * - **Politics**: Centralized governance of address fields structure
-     * - **Religion**: Strong typing through enum values
-     * - **Zen**: Form without form - one method adapts to both contexts
-     *
-     * Usage in migrations:
-     * ```php
-     * // In CREATE block (no hasColumn checks needed):
-     * $this->tableCreate(function (Blueprint $table): void {
-     *     $table->id();
-     *     AddressItemEnum::columns($table); // migration = null, adds all
-     * });
-     *
-     * // In UPDATE block (with hasColumn checks):
-     * $this->tableUpdate(function (Blueprint $table): void {
-     *     AddressItemEnum::columns($table, $this); // loops with checks
-     * });
-     * ```
-     *
-     * @param Blueprint             $table      The table blueprint
-     * @param XotBaseMigration|null $migration  XotBaseMigration instance for UPDATE context (provides hasColumn())
-     * @param bool                  $withLegacy Whether to include legacy compatibility fields
-     */
-    public static function columns(Blueprint $table, ?XotBaseMigration $migration = null, bool $withLegacy = false): void
-    {
-        // Colonne indirizzo - aggiungi con check solo se in UPDATE context
-        // Following the Laraxot pattern from workers_table migration
-        foreach (self::getColumnDefinitions() as $name => $definition) {
-            if (null === $migration || ! $migration->hasColumn($name)) {
-                $definition($table);
-            }
-        }
-
-        // Campi legacy per compatibilità
-        if ($withLegacy) {
-            self::addLegacyColumns($table, $migration);
-        }
-    }
-
-    /**
-     * Ensure all standard address columns exist in UPDATE context.
-     *
-     * Thin wrapper around columns() for semantic clarity in migrations:
-     *
-     * ```php
-     * $this->tableUpdate(function (Blueprint $table): void {
-     *     AddressItemEnum::updateColumns($table, $this);
-     * });
-     * ```
-     */
-    public static function updateColumns(Blueprint $table, XotBaseMigration $migration, bool $withLegacy = false): void
-    {
-        self::columns($table, $migration, $withLegacy);
-    }
-
-    /**
-     * Drop all standard address columns from a table.
-     *
-     * Following the impermanence principle of Zen, this method gracefully
-     * removes the address structure when it's no longer needed.
-     *
-     * Usage in rollback migrations:
-     * ```php
-     * AddressItemEnum::dropColumns($table);
-     * ```
-     *
-     * @param Blueprint $table The table blueprint
-     */
-    public static function dropColumns(Blueprint $table): void
-    {
-        // Rimuoviamo le colonne - il ritorno al vuoto
-        $table->dropColumn(self::getColumnNames());
-    }
-
-    /**
-     * Get all column names as an array.
-     *
-     * @return array<int, string>
-     */
-    public static function getColumnNames(): array
-    {
-        return array_map(fn ($item) => $item->value, self::cases());
-    }
-
->>>>>>> laraxot/dev
     /**
      * Internal map of standard address column definitions.
      *
      * @return array<string, \Closure(Blueprint):void>
      */
-<<<<<<< HEAD
     public static function getColumnDefinitions(): array
-=======
-    private static function getColumnDefinitions(): array
->>>>>>> laraxot/dev
     {
         return [
             self::PHONE->value => static function (Blueprint $table): void {
@@ -331,7 +160,6 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
     }
 
     /**
-<<<<<<< HEAD
      * Add standard address columns plus legacy compatibility columns.
      */
     public static function columnsWithLegacy(Blueprint $table, ?XotBaseMigration $migration = null): void
@@ -349,8 +177,6 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
     }
 
     /**
-=======
->>>>>>> laraxot/dev
      * Add legacy compatibility columns.
      *
      * These fields maintain compatibility with older code that expects

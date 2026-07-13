@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\LocationIQ;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -14,6 +16,8 @@ use Modules\Geo\Datas\Geocoding\AddressData;
  */
 class GetAddressFromLocationIQAction
 {
+    use QueueableAction;
+
     private const BASE_URL = 'https://eu1.locationiq.com/v1';
 
     /**

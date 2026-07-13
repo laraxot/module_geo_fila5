@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 module: theme
 topic: polygon-mysql
@@ -6,8 +5,3 @@ canonical: ../../../Themes/docs/shared-components/polygon_mysql.txt
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/polygon_mysql.txt
-=======
-SET @g = ST_GEOMFROMTEXT('POLYGON((11.0000000 46.0000000,11.0000000 45.0000000,13.0000000 45.0000000,13.0000000 46.0000000, 11.0000000 46.0000000))');
-set @p = ST_GEOMFROMTEXT('POINT(12.2442554 45.5653223)');
-SELECT ST_CONTAINS(@g,@p);
->>>>>>> laraxot/dev

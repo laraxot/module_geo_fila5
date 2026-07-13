@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -16,6 +18,8 @@ use function Safe\json_decode;
  */
 class GetCoordinatesAction
 {
+    use QueueableAction;
+
     /**
      * Ottiene le coordinate geografiche da un indirizzo.
      *

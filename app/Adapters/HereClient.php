@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Adapters;
 
 use Illuminate\Support\Facades\Http;
-use Modules\Tenant\Services\TenantService;
+use Modules\Tenant\Actions\Config\ResolveTenantConfigValueAction;
 
 /**
  * Adapter per l'API HERE Routing (durata e lunghezza percorso).
@@ -19,7 +19,7 @@ class HereClient
      */
     public function getDurationAndLength(float $lat1, float $lon1, float $lat2, float $lon2): ?array
     {
-        $api_key = TenantService::config('services.here.api_key');
+        $api_key = app(ResolveTenantConfigValueAction::class)->execute('services.here.api_key');
 
         $data = [
             'transportMode' => 'car',

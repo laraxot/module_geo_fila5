@@ -10,17 +10,13 @@ class CheckGeoDataIntegrityAction
 {
     use QueueableAction;
 
-    public function __construct(
-        private readonly ValidateGeoDataAction $validateGeoDataAction = new ValidateGeoDataAction(),
-    ) {
-    }
 
     /**
      * @param array<string, mixed> $data
      */
     public function execute(array $data): bool
     {
-        if (! $this->validateGeoDataAction->execute($data)) {
+        if (! app(ValidateGeoDataAction::class)->execute($data)) {
             return false;
         }
 

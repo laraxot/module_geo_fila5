@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use Illuminate\Support\Facades\Http;
-<<<<<<< HEAD
 use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
@@ -16,34 +15,6 @@ uses(LightTestCase::class);
 it('throws exception when google maps api key is not configured', function (): void {
     $action = new CalculateDistanceMatrixAction();
 
-=======
-use Modules\Geo\Tests\LightTestCase;
-
-uses(LightTestCase::class);
-// Laraxot — see module docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-
-use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
-use Modules\Geo\Datas\LocationData;
-use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
-
-beforeEach(function (): void {
-    $this->action = new CalculateDistanceMatrixAction();
-});
-
-it('throws exception when google maps api key is not configured', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => null]);
 
     $origins = collect([
@@ -54,7 +25,6 @@ it('throws exception when google maps api key is not configured', function (): v
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
-<<<<<<< HEAD
     try {
         $action->execute($origins, $destinations);
 
@@ -67,13 +37,6 @@ it('throws exception when google maps api key is not configured', function (): v
 it('throws exception when api key is empty string', function (): void {
     $action = new CalculateDistanceMatrixAction();
 
-=======
-    expect(fn () => $this->action->execute($origins, $destinations))
-        ->toThrow(GoogleMapsApiException::class, 'API key non configurata');
-});
-
-it('throws exception when api key is empty string', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => '']);
 
     $origins = collect([
@@ -84,7 +47,6 @@ it('throws exception when api key is empty string', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
-<<<<<<< HEAD
     try {
         $action->execute($origins, $destinations);
 
@@ -96,13 +58,6 @@ it('throws exception when api key is empty string', function (): void {
 it('throws exception when api response is not successful', function (): void {
     $action = new CalculateDistanceMatrixAction();
 
-=======
-    expect(fn () => $this->action->execute($origins, $destinations))
-        ->toThrow(GoogleMapsApiException::class);
-});
-
-it('throws exception when api response is not successful', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -117,7 +72,6 @@ it('throws exception when api response is not successful', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
-<<<<<<< HEAD
     try {
         $action->execute($origins, $destinations);
 
@@ -130,13 +84,6 @@ it('throws exception when api response is not successful', function (): void {
 it('throws exception when response status is not OK', function (): void {
     $action = new CalculateDistanceMatrixAction();
 
-=======
-    expect(fn () => $this->action->execute($origins, $destinations))
-        ->toThrow(GoogleMapsApiException::class, 'Richiesta fallita');
-});
-
-it('throws exception when response status is not OK', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -151,7 +98,6 @@ it('throws exception when response status is not OK', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
-<<<<<<< HEAD
     try {
         $action->execute($origins, $destinations);
 
@@ -164,13 +110,6 @@ it('throws exception when response status is not OK', function (): void {
 it('throws exception when response has no rows', function (): void {
     $action = new CalculateDistanceMatrixAction();
 
-=======
-    expect(fn () => $this->action->execute($origins, $destinations))
-        ->toThrow(GoogleMapsApiException::class, 'Stato della risposta non valido');
-});
-
-it('throws exception when response has no rows', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -185,7 +124,6 @@ it('throws exception when response has no rows', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
-<<<<<<< HEAD
     try {
         $action->execute($origins, $destinations);
 
@@ -198,13 +136,6 @@ it('throws exception when response has no rows', function (): void {
 it('returns distance matrix for valid locations', function (): void {
     $action = new CalculateDistanceMatrixAction();
 
-=======
-    expect(fn () => $this->action->execute($origins, $destinations))
-        ->toThrow(GoogleMapsApiException::class, 'Nessun risultato');
-});
-
-it('returns distance matrix for valid locations', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -228,7 +159,6 @@ it('returns distance matrix for valid locations', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
-<<<<<<< HEAD
     $result = $action->execute($origins, $destinations);
     Assert::assertCount(1, $result);
 
@@ -244,20 +174,6 @@ it('returns distance matrix for valid locations', function (): void {
 it('handles multiple origins and destinations', function (): void {
     $action = new CalculateDistanceMatrixAction();
 
-=======
-    $result = $this->action->execute($origins, $destinations);
-
-    expect($result)
-        ->toBeArray()
-        ->toHaveCount(1)
-        ->and($result[0][0]['distance']['text'])->toBe('572 km')
-        ->and($result[0][0]['distance']['value'])->toBe(572000)
-        ->and($result[0][0]['duration']['text'])->toBe('5h 30m')
-        ->and($result[0][0]['status'])->toBe('OK');
-});
-
-it('handles multiple origins and destinations', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -290,7 +206,6 @@ it('handles multiple origins and destinations', function (): void {
         new LocationData(latitude: 40.8518, longitude: 14.2681, address: 'Napoli'),
     ]);
 
-<<<<<<< HEAD
     $result = $action->execute($origins, $destinations);
     Assert::assertCount(2, $result);
 
@@ -306,20 +221,6 @@ it('handles multiple origins and destinations', function (): void {
 it('handles zero results status', function (): void {
     $action = new CalculateDistanceMatrixAction();
 
-=======
-    $result = $this->action->execute($origins, $destinations);
-
-    expect($result)
-        ->toBeArray()
-        ->toHaveCount(2)
-        ->and($result[0][0]['distance']['value'])->toBe(100000)
-        ->and($result[0][1]['distance']['value'])->toBe(200000)
-        ->and($result[1][0]['distance']['value'])->toBe(150000)
-        ->and($result[1][1]['distance']['value'])->toBe(250000);
-});
-
-it('handles zero results status', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => 'test_key']);
 
     Http::fake([
@@ -343,13 +244,7 @@ it('handles zero results status', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
-<<<<<<< HEAD
     $result = $action->execute($origins, $destinations);
 
     Assert::assertSame('ZERO_RESULTS', $result[0][0]['status']);
-=======
-    $result = $this->action->execute($origins, $destinations);
-
-    expect($result[0][0]['status'])->toBe('ZERO_RESULTS');
->>>>>>> laraxot/dev
 });

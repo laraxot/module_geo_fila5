@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Maps;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Datas\Map\GeoMapWidgetData;
 use Modules\Geo\Models\Place;
@@ -12,6 +14,8 @@ use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 class BuildGeoMapWidgetPayloadAction
 {
+    use QueueableAction;
+
     public function execute(): GeoMapWidgetData
     {
         $places = $this->getPlaces();

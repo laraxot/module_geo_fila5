@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ✅ CORREZIONI PHPStan MULTIPLE COMPLETATE
 
 ## 🎯 Sessione di Bug Fixing Completata
@@ -157,12 +156,3 @@ array_merge(
 *Correzioni completate: 6 Gennaio 2025*  
 *Metodologia: Studio → Correzione → Prevenzione*  
 *Risultato: 0 errori PHPStan + regole preventive*
-=======
----
-module: theme
-topic: correzioni-phpstan-multiple-completate
-canonical: ../../../Themes/docs/shared-components/CORREZIONI_PHPSTAN_MULTIPLE_COMPLETATE.md
----
-
-See canonical documentation: ../../../Themes/docs/shared-components/CORREZIONI_PHPSTAN_MULTIPLE_COMPLETATE.md
->>>>>>> laraxot/dev

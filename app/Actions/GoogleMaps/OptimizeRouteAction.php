@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\GoogleMaps;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
@@ -20,6 +22,8 @@ use Modules\Geo\Datas\Routing\RouteData;
  */
 class OptimizeRouteAction
 {
+    use QueueableAction;
+
     private const BASE_URL = 'https://maps.googleapis.com/maps/api/directions/json';
 
     /**

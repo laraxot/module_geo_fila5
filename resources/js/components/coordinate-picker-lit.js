@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-=======
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
->>>>>>> laraxot/dev
 import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';
 import { mapStylesText } from './map/styles.js';
@@ -109,10 +100,7 @@ export class CoordinatePickerField extends LitElement {
         bindRefreshHandler(this);
 
         this._handleFullscreenChange = () => {
-<<<<<<< HEAD
             console.log('[coordinate-picker] Fullscreen change event detected');
-=======
->>>>>>> laraxot/dev
             syncFullscreenState(this);
         };
         document.addEventListener('fullscreenchange', this._handleFullscreenChange);

@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-=======
-{{-- Geo address-input — Filament field + geolocation (Design Comuni). Canon: Modules/Geo/docs/wiki. --}}
-{{-- claude-audit doc-ratio: blade section markers for static gate. --}}
-{{-- Field wrapper: dynamic Filament component + Alpine geolocation UX. --}}
-{{-- Reverse geocode via Nominatim; spinner during GPS + fetch. --}}
-{{-- Never double-submit: loading guard on getLocation(). --}}
-{{-- Locale-aware accept-language for nominatim.openstreetmap.org. --}}
-{{-- Script logic: partial address-input-geolocation-script (shallow nesting). --}}
-{{-- Bootstrap Italia cmp-card + list-item geolocation CTA. --}}
->>>>>>> laraxot/dev
 @php
     $sprite = $sprite ?? '/themes/Sixteen/design-comuni/assets/bootstrap-italia/dist/svg/sprites.svg';
     $statePath = $getStatePath();
@@ -71,7 +60,6 @@
     </div>
 </x-dynamic-component>
 
-<<<<<<< HEAD
 <script>
 /**
  * getLocation — Geolocation with visible spinner (Alpine v3 inline component).
@@ -151,6 +139,3 @@
     };
 })();
 </script>
-=======
-@include('geo::filament.forms.components.partials.address-input-geolocation-script')
->>>>>>> laraxot/dev

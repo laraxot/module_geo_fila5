@@ -10,18 +10,13 @@ class GetGeoMapDatasetStatsAction
 {
     use QueueableAction;
 
-    public function __construct(
-        private readonly LoadGeoMapDatasetAction $loadGeoMapDatasetAction = new LoadGeoMapDatasetAction(),
-        private readonly GetGeoMapDatasetCategoriesAction $getGeoMapDatasetCategoriesAction = new GetGeoMapDatasetCategoriesAction(),
-    ) {
-    }
 
     /**
      * @return array{total: int, points: int, zones: int, categories: int}
      */
     public function execute(string $path): array
     {
-        $features = $this->loadGeoMapDatasetAction->loadFeatures($path);
+        $features = app(LoadGeoMapDatasetAction::class)->loadFeatures($path);
         $points = 0;
         $zones = 0;
 
@@ -41,7 +36,7 @@ class GetGeoMapDatasetStatsAction
             'total' => count($features),
             'points' => $points,
             'zones' => $zones,
-            'categories' => count($this->getGeoMapDatasetCategoriesAction->execute($path)),
+            'categories' => count(app(GetGeoMapDatasetCategoriesAction::class)->execute($path)),
         ];
     }
 }

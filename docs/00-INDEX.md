@@ -28,6 +28,9 @@
 
 ## Actions
 
+- [Da Services a Queueable Actions](./wiki/concepts/no-app-support-queueable-actions.md) — contratto `QueueableAction`, `execute()` e composizione tra use case.
+
+
 | Action | Path | Descrizione |
 |--------|------|-------------|
 | GetCoordinatesAction | `app/Actions/GetCoordinatesAction.php` | Geocoding indirizzo → coordinate |

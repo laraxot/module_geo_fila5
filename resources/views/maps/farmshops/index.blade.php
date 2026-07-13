@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-=======
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
->>>>>>> laraxot/dev
 <?php
 
 declare(strict_types=1);
@@ -43,18 +18,6 @@ declare(strict_types=1);
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta charset="UTF-8">
     <meta name="description" content="farmshops.eu ist eine Übersichtskarte von Hofläden, Märkten, Essensautomaten und anderen Direktvermarktern aus der DACH-Region (Deutschland, Österreich, Schweiz). Die Karte erhält alle ihre Daten von Openstreetmap, bereitet sie optisch auf und unterstützt die Pflege der Daten indem sie fehlende Werte sichtbar macht und direkt auf den entsprechenden Ort auf OSM und in andere Kartendienste verlinkt."
-<<<<<<< HEAD
-=======
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
->>>>>>> laraxot/dev
     />
     <meta name="keywords" content="Hofladen, Hofläden, Bauernladen, Direktvermarkter, Verkauf ab Hof, Karte, Map, Farmshops, Bauernladen, Openstreetmap, Biologisch, Lokales Essen, Milchautomat, Eierautomat, Essensautomat, Open Knowledge, Freies Wissen, OKFN, Code for Karlsruhe, Code for Germany, Deutschland, Schweiz, Österreich"
     />
