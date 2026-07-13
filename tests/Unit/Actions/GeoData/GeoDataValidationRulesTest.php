@@ -10,8 +10,8 @@ use PHPUnit\Framework\Assert;
 it('returns validation rules and messages with string keys', function (): void {
     $payload = app(GeoDataValidationRules::class)->execute();
 
-    Assert::assertArrayHasKey("rules", $payload);
-    Assert::assertArrayHasKey("messages", $payload);
-    Assert::assertSame(GeoDataValidationRules::RULES, $payload["rules"]);
-    Assert::assertSame(GeoDataValidationRules::MESSAGES, $payload["messages"]);
+    Assert::assertArrayHasKey('rules', $payload);
+    Assert::assertArrayHasKey('messages', $payload);
+    Assert::assertSame(GeoDataValidationRules::RULES, $payload['rules']);
+    Assert::assertSame(GeoDataValidationRules::MESSAGES, $payload['messages']);
 });

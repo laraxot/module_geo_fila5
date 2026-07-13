@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use Filament\Notifications\Notification;
 use Illuminate\Support\Collection;
 use Modules\Geo\Actions\BingMaps\GetAddressFromBingMapsAction;
@@ -16,6 +14,7 @@ use Modules\Geo\Actions\Nominatim\GetAddressFromNominatimAction;
 use Modules\Geo\Actions\OpenCage\GetAddressFromOpenCageAction;
 use Modules\Geo\Actions\Photon\GetAddressFromPhotonAction;
 use Modules\Geo\Datas\Geocoding\AddressData;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere i dati dell'indirizzo utilizzando diversi servizi di geocoding.

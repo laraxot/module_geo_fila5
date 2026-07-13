@@ -10,7 +10,6 @@ class GetGeoMapDatasetStatsAction
 {
     use QueueableAction;
 
-
     /**
      * @return array{total: int, points: int, zones: int, categories: int}
      */

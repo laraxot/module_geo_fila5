@@ -10,7 +10,6 @@ class GetGeoMapDatasetCategoriesAction
 {
     use QueueableAction;
 
-
     /**
      * @return list<string>
      */

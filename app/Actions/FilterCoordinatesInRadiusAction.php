@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use Modules\Geo\Datas\LocationData;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per filtrare le coordinate geografiche all'interno di un raggio specificato.
@@ -24,7 +23,6 @@ use Modules\Geo\Datas\LocationData;
 class FilterCoordinatesInRadiusAction
 {
     use QueueableAction;
-
 
     /**
      * @param array<array{latitude: string, longitude: string}> $coordinates

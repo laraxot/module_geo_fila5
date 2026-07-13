@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use Modules\Geo\Models\Place;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per aggiornare le coordinate di un luogo.
@@ -14,7 +13,6 @@ use Modules\Geo\Models\Place;
 class UpdateCoordinatesAction
 {
     use QueueableAction;
-
 
     /**
      * Aggiorna le coordinate di un luogo usando il suo indirizzo.

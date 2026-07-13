@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Elevation;
 
-use Spatie\QueueableAction\QueueableAction;
-
+use Modules\Geo\Actions\GoogleMapsAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\ElevationException;
-use Modules\Geo\Actions\GoogleMapsAction;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere l'elevazione di un punto geografico.
@@ -23,10 +22,6 @@ use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 class GetElevationAction
 {
     use QueueableAction;
-
-    /**
-     * @param GoogleMapsAction $googleMapsAction Action per le richieste a Google Maps
-     */
 
     /**
      * Ottiene l'elevazione per una posizione geografica.

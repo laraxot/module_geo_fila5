@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\GoogleMaps;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
@@ -13,6 +11,7 @@ use Modules\Geo\Datas\LocationData;
 
 use function Safe\json_decode;
 
+use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
 /**

@@ -9,10 +9,10 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\TravelTimeData;
-use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
+use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
 /**

@@ -20,7 +20,6 @@ class LoadGeoDataAction
 
     private const JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
 
-
     /**
      * @throws \RuntimeException
      *
