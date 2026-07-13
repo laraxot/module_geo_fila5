@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Elevation;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\Elevation\ElevationData;
 
 use function Safe\json_decode;
+
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per ottenere l'elevazione di un punto usando OpenElevation API.

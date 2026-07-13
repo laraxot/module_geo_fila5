@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use Illuminate\Support\Collection;
 use Modules\Geo\Contracts\CalculateDistanceActionContract;
 use Modules\Geo\Datas\LocationData;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per ottimizzare l'ordine di un percorso minimizzando la distanza totale.

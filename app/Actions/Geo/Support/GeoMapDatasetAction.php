@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Geo\Support;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use function Safe\file_get_contents;
+
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * @phpstan-type GeoProperties array<string, scalar|null>

@@ -19,7 +19,6 @@ class GetCapAction
 
     public const CACHE_TTL = 86400;
 
-
     /**
      * @param string $provinceCode Codice della provincia
      * @param string $cityCode     Codice della città

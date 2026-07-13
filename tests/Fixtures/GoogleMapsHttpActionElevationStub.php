@@ -25,7 +25,7 @@ final class GoogleMapsHttpActionElevationStub extends GoogleMapsHttpAction
      */
     public function executeElevation(float $latitude, float $longitude): array
     {
-        if ($this->exception !== null) {
+        if (null !== $this->exception) {
             throw $this->exception;
         }
 

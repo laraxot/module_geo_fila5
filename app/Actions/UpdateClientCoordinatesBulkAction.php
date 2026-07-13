@@ -17,7 +17,6 @@ class UpdateClientCoordinatesBulkAction
 {
     use QueueableAction;
 
-
     /**
      * Execute the action to update coordinates for a collection of addresses.
      *

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\GoogleMaps;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -15,6 +13,7 @@ use Modules\Geo\Datas\GoogleMaps\GoogleMapResponseData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResultData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
 use Spatie\LaravelData\DataCollection;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Gestisce le richieste e l'elaborazione delle risposte dell'API di geocodifica di Google Maps.

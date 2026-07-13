@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\OpenStreetMap;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use Modules\Geo\Actions\Nominatim\FetchCoordinatesAction;
 use Modules\Geo\Datas\LocationData;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere le coordinate da OpenStreetMap.
@@ -15,7 +14,6 @@ use Modules\Geo\Datas\LocationData;
 class GetCoordinatesFromOpenStreetMapAction
 {
     use QueueableAction;
-
 
     /**
      * Ottiene le coordinate geografiche da un indirizzo usando OpenStreetMap.

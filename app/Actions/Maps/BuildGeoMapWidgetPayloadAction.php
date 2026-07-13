@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Maps;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Datas\Map\GeoMapWidgetData;
 use Modules\Geo\Models\Place;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Spatie\QueueableAction\QueueableAction;
 
 class BuildGeoMapWidgetPayloadAction
 {

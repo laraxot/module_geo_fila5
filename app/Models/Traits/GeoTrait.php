@@ -7,9 +7,9 @@ namespace Modules\Geo\Models\Traits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 // --- models ---
-use Modules\Geo\Datas\GeoData;
-// ---- services --
 use Modules\Geo\Actions\GeoAction;
+// ---- services --
+use Modules\Geo\Datas\GeoData;
 
 /**
  * Modules\Geo\Models\Traits\GeoTrait.

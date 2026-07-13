@@ -19,7 +19,6 @@ class GetProvincesAction
 
     public const CACHE_TTL = 86400;
 
-
     /**
      * @param string $regionCode Codice della regione
      *

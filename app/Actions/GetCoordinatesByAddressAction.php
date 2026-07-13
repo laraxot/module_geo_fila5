@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use Filament\Notifications\Notification;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Location\CoordinatesData;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
+use Spatie\QueueableAction\QueueableAction;
 
 class GetCoordinatesByAddressAction
 {

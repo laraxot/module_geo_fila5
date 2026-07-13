@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Nominatim;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Collection;
 use Modules\Geo\Datas\LocationData;
 
 use function Safe\json_decode;
+
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per cercare luoghi usando Nominatim.
