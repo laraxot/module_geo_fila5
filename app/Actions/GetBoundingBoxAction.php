@@ -7,11 +7,12 @@ namespace Modules\Geo\Actions;
 class GetBoundingBoxAction
 {
     /**
-<<<<<<< HEAD
+     * <<<<<<< HEAD.
+     *
      * @return array<string, float>
-=======
+     *                                                                               =======
      * @return array{min_lat: float, max_lat: float, min_lon: float, max_lon: float}
->>>>>>> laraxot/dev
+     *                                                                               >>>>>>> laraxot/dev
      */
     public function execute(float $latitude, float $longitude, float $distanceKm): array
     {

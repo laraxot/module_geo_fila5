@@ -24,12 +24,12 @@ class BingMapData extends Data
      *         postalCode: ?string,
      *         addressLine: ?string,
      *         countryRegionIso2: ?string,
-<<<<<<< HEAD
+     * <<<<<<< HEAD
      *         neighborhood: ?string,
      *         houseNumber: ?string
-=======
+     * =======
      *         neighborhood: ?string
->>>>>>> laraxot/dev
+     * >>>>>>> laraxot/dev
      *     }
      * } $data
      */
@@ -53,12 +53,12 @@ class BingMapData extends Data
      *         postalCode: ?string,
      *         addressLine: ?string,
      *         countryRegionIso2: ?string,
-<<<<<<< HEAD
+     * <<<<<<< HEAD
      *         neighborhood: ?string,
      *         houseNumber: ?string
-=======
+     * =======
      *         neighborhood: ?string
->>>>>>> laraxot/dev
+     * >>>>>>> laraxot/dev
      *     }
      * }
      */

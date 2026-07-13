@@ -15,21 +15,21 @@ class SushiCommand extends Command
 {
     /**
      * The name and signature of the console command.
-<<<<<<< HEAD
+     * <<<<<<< HEAD.
      *
      * @var string
-=======
->>>>>>> laraxot/dev
+     *             =======
+     *             >>>>>>> laraxot/dev
      */
     protected $signature = 'sushi:manage {action : L\'azione da eseguire (refresh|clear|status)}';
 
     /**
      * The console command description.
-<<<<<<< HEAD
+     * <<<<<<< HEAD.
      *
      * @var string
-=======
->>>>>>> laraxot/dev
+     *             =======
+     *             >>>>>>> laraxot/dev
      */
     protected $description = 'Gestisce il database SQLite di Sushi';
 

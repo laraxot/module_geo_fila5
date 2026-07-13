@@ -10,7 +10,7 @@ use Modules\Geo\Database\Factories\CountyFactory;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
-<<<<<<< HEAD
+ * <<<<<<< HEAD
  * Suddivisione tipo “county” (contesto USA / geonames), non il comune italiano.
  *
  * @property string               $id
@@ -27,7 +27,8 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|County newModelQuery()
  * @method static Builder<static>|County newQuery()
  * @method static Builder<static>|County query()
-=======
+ *                                                                           =======
+ *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  *
@@ -64,7 +65,8 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
->>>>>>> laraxot/dev
+ * >>>>>>> laraxot/dev
+ *
  * @method static Builder<static>|County whereCounty($value)
  * @method static Builder<static>|County whereCountyCode($value)
  * @method static Builder<static>|County whereCreatedAt($value)

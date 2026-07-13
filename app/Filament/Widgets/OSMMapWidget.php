@@ -65,16 +65,17 @@ class OSMMapWidget extends Widget
     }
 
     /**
-<<<<<<< HEAD
+     * <<<<<<< HEAD.
+     *
      * @return array<string, mixed>
-=======
+     *                              =======
      * @return array{markers: array<int, array{
      *     position: array{lat: float, lng: float},
      *     title: string,
      *     content: string,
      *     icon?: array{url: string, scaledSize: array{width: int, height: int}}
      * }>, center: array{lat: float, lng: float}, zoom: int}
->>>>>>> laraxot/dev
+     * >>>>>>> laraxot/dev
      */
     protected function getData(): array
     {

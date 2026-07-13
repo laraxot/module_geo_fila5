@@ -13,7 +13,8 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Class Location.
  *
-<<<<<<< HEAD
+ * <<<<<<< HEAD
+ *
  * @property int                                     $id
  * @property string|null                             $model_type
  * @property string|null                             $model_id
@@ -36,30 +37,30 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property ProfileContract|null                    $creator
  * @property array{lat: float|null, lng: float|null} $location
  * @property ProfileContract|null                    $updater
-=======
- * @property int                  $id
- * @property string|null          $model_type
- * @property string|null          $model_id
- * @property string|null          $name
- * @property float|null           $lat
- * @property float|null           $lng
- * @property string|null          $street
- * @property string|null          $city
- * @property string|null          $state
- * @property string|null          $zip
- * @property string|null          $formatted_address
- * @property string|null          $description
- * @property bool|null            $processed
- * @property Carbon|null          $created_at
- * @property Carbon|null          $updated_at
- * @property string|null          $updated_by
- * @property string|null          $created_by
- * @property string|null          $deleted_at
- * @property string|null          $deleted_by
- * @property ProfileContract|null $creator
- * @property array<string, float> $location
- * @property ProfileContract|null $updater
->>>>>>> laraxot/dev
+ *                                                                      =======
+ * @property int                                     $id
+ * @property string|null                             $model_type
+ * @property string|null                             $model_id
+ * @property string|null                             $name
+ * @property float|null                              $lat
+ * @property float|null                              $lng
+ * @property string|null                             $street
+ * @property string|null                             $city
+ * @property string|null                             $state
+ * @property string|null                             $zip
+ * @property string|null                             $formatted_address
+ * @property string|null                             $description
+ * @property bool|null                               $processed
+ * @property Carbon|null                             $created_at
+ * @property Carbon|null                             $updated_at
+ * @property string|null                             $updated_by
+ * @property string|null                             $created_by
+ * @property string|null                             $deleted_at
+ * @property string|null                             $deleted_by
+ * @property ProfileContract|null                    $creator
+ * @property array<string, float>                    $location
+ * @property ProfileContract|null                    $updater
+ *                                                                      >>>>>>> laraxot/dev
  *
  * @method static Builder<static>|Location newModelQuery()
  * @method static Builder<static>|Location newQuery()
@@ -112,12 +113,13 @@ class Location extends BaseModel
 
     /**
      * Get the latitude and longitude attributes.
-<<<<<<< HEAD
+     * <<<<<<< HEAD.
      */
     /**
-=======
+     * =======.
      *
->>>>>>> laraxot/dev
+     * >>>>>>> laraxot/dev
+     *
      * @return array<string, string>
      */
     public static function getLatLngAttributes(): array
@@ -168,14 +170,13 @@ class Location extends BaseModel
 
     /**
      * Accessor for the "location" attribute.
-<<<<<<< HEAD
+     * <<<<<<< HEAD.
      */
     /**
      * @return Attribute<array<string, mixed>, array<string, mixed>|null>
-=======
-     *
+     *                                                                    =======
      * @return Attribute<array<string, float>, array<string, float>|null>
->>>>>>> laraxot/dev
+     *                                                                    >>>>>>> laraxot/dev
      */
     protected function location(): Attribute
     {

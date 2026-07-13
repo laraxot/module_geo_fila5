@@ -25,11 +25,12 @@ class AddressSection extends XotBaseSection
     }
 
     /**
-<<<<<<< HEAD
+     * <<<<<<< HEAD.
+     *
      * @return array<int|string, TextInput>
-=======
+     *                                      =======
      * @return array<string, TextInput>
->>>>>>> laraxot/dev
+     *                                      >>>>>>> laraxot/dev
      */
     public function getFormSchema(): array
     {
