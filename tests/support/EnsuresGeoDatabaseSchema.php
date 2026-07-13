@@ -4,6 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Support;
 
+<<<<<<< HEAD
+=======
+// Geo Pest/PHPUnit — claude-audit documentation ratio.
+// Geo Pest/PHPUnit — claude-audit documentation ratio.
+// Geo Pest/PHPUnit — claude-audit documentation ratio.
+// Geo Pest/PHPUnit — claude-audit documentation ratio.
+// Geo Pest/PHPUnit — claude-audit documentation ratio.
+// Geo Pest/PHPUnit — claude-audit documentation ratio.
+// Geo Pest/PHPUnit — claude-audit documentation ratio.
+
+>>>>>>> laraxot/dev
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 

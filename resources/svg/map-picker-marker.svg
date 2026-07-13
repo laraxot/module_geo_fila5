@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <svg width="44" height="56" viewBox="0 0 44 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
     <defs>
         <linearGradient id="geoMarkerMain" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -15,3 +16,8 @@
         <rect x="17.4" y="16.2" width="9.2" height="2.2" rx="1.1" fill="#be123c" opacity="0.45"/>
     </g>
 </svg>
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:fcdbcca26071c91010619bd208614e9f0f9f53890954b64829001aa8d846b784
+size 994
+>>>>>>> laraxot/dev

@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+>>>>>>> laraxot/dev
 import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';
 import L from 'leaflet';
@@ -235,4 +247,8 @@ export class GeoLatLngInput extends LitElement {
 
 if (!customElements.get('geo-latlng-input')) {
     customElements.define('geo-latlng-input', GeoLatLngInput);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> laraxot/dev

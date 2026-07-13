@@ -10,12 +10,21 @@ use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\MapPlatforms\MapboxMapData;
 use Modules\Geo\Exceptions\InvalidLocationException;
+<<<<<<< HEAD
+=======
+use Spatie\QueueableAction\QueueableAction;
+>>>>>>> laraxot/dev
 
 /**
  * Classe per ottenere i dati dell'indirizzo dal servizio Mapbox.
  */
 class GetAddressFromMapboxLatLngAction
 {
+<<<<<<< HEAD
+=======
+    use QueueableAction;
+
+>>>>>>> laraxot/dev
     private const BASE_URL = 'https://api.mapbox.com/geocoding/v5/mapbox.places';
 
     /**
@@ -56,7 +65,11 @@ class GetAddressFromMapboxLatLngAction
     }
 
     /**
+<<<<<<< HEAD
      * @return array<mixed>
+=======
+     * @return array<string, mixed>
+>>>>>>> laraxot/dev
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
     {
@@ -83,11 +96,19 @@ class GetAddressFromMapboxLatLngAction
             throw InvalidLocationException::invalidData('Risposta di Mapbox non valida');
         }
 
+<<<<<<< HEAD
+=======
+        /* @var array<string, mixed> $data */
+>>>>>>> laraxot/dev
         return $data;
     }
 
     /**
+<<<<<<< HEAD
      * @param array<mixed> $response
+=======
+     * @param array<string, mixed> $response
+>>>>>>> laraxot/dev
      */
     private function parseResponse(array $response): MapboxMapData
     {

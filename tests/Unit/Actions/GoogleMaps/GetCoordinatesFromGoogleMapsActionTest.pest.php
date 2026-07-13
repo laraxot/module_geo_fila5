@@ -18,6 +18,20 @@ use PHPUnit\Framework\Assert;
 use function Safe\json_encode;
 
 uses(LightTestCase::class);
+<<<<<<< HEAD
+=======
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+>>>>>>> laraxot/dev
 
 it('throws exception when api key is not configured', function (): void {
     $mockHandler = new MockHandler();

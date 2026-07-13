@@ -38,6 +38,7 @@ class AddressField extends Section
      */
     protected function getAddressFormSchema(): array
     {
+<<<<<<< HEAD
         $baseSchema = AddressResource::getFormSchema();
 
         // Rimuovi campi non necessari per relazioni semplici
@@ -46,6 +47,20 @@ class AddressField extends Section
         // Se i live updates sono disabilitati, rimuovi la reattività
         if ($this->disableLiveUpdates) {
             $baseSchema = $this->removeReactivityFromSchema($baseSchema);
+=======
+        $baseSchema = [];
+
+        foreach (AddressResource::getFormSchema() as $key => $component) {
+            if (in_array($key, ['name', 'is_primary'], true) || ! $component instanceof Component) {
+                continue;
+            }
+
+            $baseSchema[$key] = $component;
+        }
+
+        if ($this->disableLiveUpdates) {
+            return $this->removeReactivityFromSchema($baseSchema);
+>>>>>>> laraxot/dev
         }
 
         return $baseSchema;
@@ -61,9 +76,27 @@ class AddressField extends Section
     protected function removeReactivityFromSchema(array $schema): array
     {
         foreach ($schema as $key => $field) {
+<<<<<<< HEAD
             $field->live(false);
             $field->afterStateUpdated(null);
             $field->disabled(false);
+=======
+            if (method_exists($field, 'live')) {
+                // Rimuovi reattività live
+                $field->live(false);
+            }
+
+            if (method_exists($field, 'afterStateUpdated')) {
+                // Rimuovi callback afterStateUpdated
+                $field->afterStateUpdated(null);
+            }
+
+            if (method_exists($field, 'disabled')) {
+                // Rimuovi condizioni disabled dinamiche
+                $field->disabled(false);
+            }
+
+>>>>>>> laraxot/dev
             $schema[$key] = $field;
         }
 

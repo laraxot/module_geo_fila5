@@ -14,7 +14,12 @@ final class FixedPairDistanceStub implements CalculateDistanceActionContract
 {
     public function __construct(
         private int $meters,
+<<<<<<< HEAD
     ) {}
+=======
+    ) {
+    }
+>>>>>>> laraxot/dev
 
     public function execute(LocationData $origin, LocationData $destination): array
     {

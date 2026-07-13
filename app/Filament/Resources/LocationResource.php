@@ -5,6 +5,13 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Resources;
 
 use Filament\Forms\Components\TextInput;
+<<<<<<< HEAD
+=======
+use Filament\Resources\Pages\PageRegistration;
+use Filament\Resources\RelationManagers\RelationGroup;
+use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Resources\RelationManagers\RelationManagerConfiguration;
+>>>>>>> laraxot/dev
 use Filament\Support\Components\Component;
 use Modules\Geo\Filament\Resources\LocationResource\Pages\CreateLocation;
 use Modules\Geo\Filament\Resources\LocationResource\Pages\EditLocation;
@@ -31,6 +38,11 @@ class LocationResource extends XotBaseResource
 
     /**
      * @return array<string, Component>
+<<<<<<< HEAD
+=======
+     *
+     * @phpstan-return array<string, Component>
+>>>>>>> laraxot/dev
      */
     #[\Override]
     public static function getFormSchema(): array
@@ -76,7 +88,11 @@ class LocationResource extends XotBaseResource
     /**
      * Definisce le relazioni disponibili per questo resource.
      *
+<<<<<<< HEAD
      * @return array<mixed> Le relazioni configurate
+=======
+     * @return array<class-string<RelationManager>|RelationGroup|RelationManagerConfiguration>
+>>>>>>> laraxot/dev
      */
     #[\Override]
     public static function getRelations(): array
@@ -92,7 +108,11 @@ class LocationResource extends XotBaseResource
      * - Creazione nuovo luogo
      * - Modifica luogo esistente
      *
+<<<<<<< HEAD
      * @return array<mixed> Le pagine configurate
+=======
+     * @return array<string, PageRegistration>
+>>>>>>> laraxot/dev
      */
     #[\Override]
     public static function getPages(): array

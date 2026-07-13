@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+=======
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+>>>>>>> laraxot/dev
 import{c as e,i as t,o as n,r}from"./leaflet-src-DxJVfkjP.js";var i={},a=r(class extends t{constructor(){super(...arguments),this.ot=i}render(e,t){return t()}update(e,[t,r]){if(Array.isArray(t)){if(Array.isArray(this.ot)&&this.ot.length===t.length&&t.every((e,t)=>e===this.ot[t]))return n}else if(this.ot===t)return n;return this.ot=Array.isArray(t)?Array.from(t):t,this.render(t,r)}}),o=e`
     :host {
         display: block;
@@ -214,4 +230,8 @@ import{c as e,i as t,o as n,r}from"./leaflet-src-DxJVfkjP.js";var i={},a=r(class
                 <rect x="17.4" y="16.2" width="9.2" height="2.2" rx="1.1" fill="#be123c" opacity="0.45"/>
             </g>
         </svg>
+<<<<<<< HEAD
     </div>`,iconSize:[32,45],iconAnchor:[22,54],popupAnchor:[0,-42]})}export{a as i,o as n,s as r,p as t};
+=======
+    </div>`,iconSize:[32,45],iconAnchor:[22,54],popupAnchor:[0,-42]})}export{a as i,o as n,s as r,p as t};
+>>>>>>> laraxot/dev

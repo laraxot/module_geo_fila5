@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+<<<<<<< HEAD
 use Illuminate\Support\Carbon;
+=======
+>>>>>>> laraxot/dev
 use Modules\Geo\Database\Factories\StateFactory;
 use Modules\Xot\Contracts\ProfileContract;
 
@@ -21,11 +24,19 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @method static StateFactory factory($count = null, $state = [])
  *
+<<<<<<< HEAD
  * @property string      $id
  * @property string      $state
  * @property string      $state_code
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+=======
+ * @property string                          $id
+ * @property string                          $state
+ * @property string                          $state_code
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+>>>>>>> laraxot/dev
  *
  * @method static Builder<static>|State whereCreatedAt($value)
  * @method static Builder<static>|State whereId($value)

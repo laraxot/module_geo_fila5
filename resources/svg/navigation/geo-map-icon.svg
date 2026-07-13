@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" 
      fill="none" 
@@ -38,3 +39,8 @@
               fill="currentColor" />
     </g>
 </svg> 
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:62e5b670f939bce7b6830bd11f3afb4e77c833458690805d37ad95e4fa78234d
+size 1396
+>>>>>>> laraxot/dev

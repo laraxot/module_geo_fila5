@@ -9,8 +9,11 @@ use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\HereMap\HereMapResponseData;
+<<<<<<< HEAD
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
+=======
+>>>>>>> laraxot/dev
 
 class GetAddressFromHereMapsAction
 {
@@ -47,11 +50,19 @@ class GetAddressFromHereMapsAction
         }
 
         return AddressData::from([
+<<<<<<< HEAD
             'latitude' => SafeFloatCastAction::cast($responseData->position['lat'] ?? 0),
             'longitude' => SafeFloatCastAction::cast($responseData->position['lng'] ?? 0),
             'country' => $responseData->address['countryName'] ?? 'Italia',
             'city' => $responseData->address['city'] ?? '',
             'postal_code' => SafeIntCastAction::cast($responseData->address['postalCode'] ?? 0),
+=======
+            'latitude' => (float) ($responseData->position['lat'] ?? 0),
+            'longitude' => (float) ($responseData->position['lng'] ?? 0),
+            'country' => $responseData->address['countryName'] ?? 'Italia',
+            'city' => $responseData->address['city'] ?? '',
+            'postal_code' => (int) ($responseData->address['postalCode'] ?? 0),
+>>>>>>> laraxot/dev
             'street' => $responseData->address['street'] ?? '',
             'street_number' => $responseData->address['houseNumber'] ?? '',
         ]);

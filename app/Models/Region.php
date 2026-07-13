@@ -7,10 +7,16 @@ namespace Modules\Geo\Models;
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Database\Factories\RegionFactory;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+=======
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Geo\Database\Factories\RegionFactory;
+>>>>>>> laraxot/dev
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
@@ -36,14 +42,29 @@ use Sushi\Sushi;
  */
 class Region extends BaseModel
 {
+<<<<<<< HEAD
     /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\RegionFactory> */
+=======
+    /** @use HasXotFactory<\Illuminate\Database\Eloquent\Factories\Factory<static>> */
+>>>>>>> laraxot/dev
     use HasXotFactory;
     use Sushi;
 
     /**
+<<<<<<< HEAD
      * The data type of the primary key ID.
      *
      * @var string
+=======
+     * The factory class for this model.
+     *
+     * @var class-string<Factory<Region>>
+     */
+    protected static $factory = RegionFactory::class;
+
+    /**
+     * The data type of the primary key ID.
+>>>>>>> laraxot/dev
      */
     protected $keyType = 'integer';
 
@@ -53,6 +74,7 @@ class Region extends BaseModel
         'name' => 'string',
     ];
 
+<<<<<<< HEAD
     /**
      * @return array<int, array<string, mixed>>
      */
@@ -115,11 +137,26 @@ class Region extends BaseModel
     /**
      * @return HasMany<Province, $this>
      */
+=======
+    /** @return array<mixed> */
+    public function getRows(): array
+    {
+        $rows = Comune::select('regione->codice as id', 'regione->nome as name')
+            ->distinct()
+            ->orderBy('regione->nome')
+            ->get();
+
+        return $rows->toArray();
+    }
+
+    /** @return HasMany<Province, $this> */
+>>>>>>> laraxot/dev
     public function provinces(): HasMany
     {
         return $this->hasMany(Province::class);
     }
 
+<<<<<<< HEAD
     /**
      * @return array<string, string>
      */
@@ -134,5 +171,14 @@ class Region extends BaseModel
         }
 
         return array_combine($keys, $values) ?: [];
+=======
+    /** @return array<mixed> */
+    public static function getOptions(Get $get): array
+    {
+        return self::orderBy('name')
+            ->get()
+            ->pluck('name', 'id')
+            ->toArray();
+>>>>>>> laraxot/dev
     }
 }

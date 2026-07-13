@@ -33,6 +33,12 @@ class LocationMapTableWidget extends BaseWidget
         return Location::query()->latest();
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @return array<int, TextColumn>
+     */
+>>>>>>> laraxot/dev
     protected function getTableColumns(): array
     {
         return [

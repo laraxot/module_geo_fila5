@@ -7,7 +7,13 @@ namespace Modules\Geo\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Geo\Models\GeoNamesCap;
 
+<<<<<<< HEAD
 /** @extends Factory<GeoNamesCap> */
+=======
+/**
+ * @extends Factory<GeoNamesCap>
+ */
+>>>>>>> laraxot/dev
 class GeoNamesCapFactory extends Factory
 {
     /**

@@ -7,6 +7,11 @@
 require('./bootstrap');
 
 require('./myvue3');
+<<<<<<< HEAD
+=======
+require('./components/maps/geo-map-widget.element.js');
+require('./components/map-picker-lit.js');
+>>>>>>> laraxot/dev
 
 //window.Vue = require('vue');
 

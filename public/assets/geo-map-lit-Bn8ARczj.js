@@ -23,5 +23,9 @@ import{d as e,i as t,l as n,s as r,t as i,u as a}from"./leaflet-src-DZX-yZgw.js"
                                 <strong class="geo-popup-title">${n.title||``}</strong>
                                 <span class="geo-popup-badge" style="background:${n.type_color||`#0066cc`}">${n.type_label||``}</span>
                                 <br><small>${n.address||``}</small>
+<<<<<<< HEAD
                             </div>
                         `,{maxWidth:260})}}),this._markersLayer.addLayer(this._geojsonLayer);let t=this._allFeatures.filter(e=>Array.isArray(e.geometry?.coordinates)&&e.geometry.coordinates.length===2).map(e=>[e.geometry.coordinates[1],e.geometry.coordinates[0],.5]);try{typeof u.default.heatLayer==`function`&&(this._heatLayer=u.default.heatLayer(t,{radius:25,blur:15,maxZoom:17,max:.8}))}catch{this._heatLayer=null}try{let e=this._geojsonLayer.getBounds();e&&e.isValid()&&this._map.fitBounds(e,{padding:[40,40],maxZoom:14})}catch(e){console.warn(`[geo-map-lit] fitBounds skipped:`,e.message)}this.dispatchEvent(new CustomEvent(`geo-map-loaded`,{detail:{count:this._allFeatures.length,types:[...new Set(this._allFeatures.map(e=>e.properties?.type).filter(Boolean))]},bubbles:!0,composed:!0}))}).catch(e=>console.error(`[geo-map-lit] Error loading GeoJSON:`,e))}filterByType(e){if(!this._markersLayer)return;this._markersLayer.clearLayers();let t=e?this._allMarkers.filter(t=>t.options.typeValue===e):this._allMarkers;this._markersLayer.addLayers(t)}disconnectedCallback(){super.disconnectedCallback(),this._mutationObserver?.disconnect(),this._map&&=(this._map.remove(),null)}};customElements.get(`geo-map-lit`)||customElements.define(`geo-map-lit`,_);
+=======
+                            </div>
+>>>>>>> laraxot/dev

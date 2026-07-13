@@ -1,4 +1,71 @@
 @php
+<<<<<<< HEAD
+=======
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+>>>>>>> laraxot/dev
     $statePath = $getStatePath();
     $latPath = $statePath.'.latitude';
     $lngPath = $statePath.'.longitude';
@@ -10,6 +77,7 @@
     $initialLng = $root !== null ? data_get($root, $scopeKey.'.longitude') : null;
     $mapId = 'latitude-longitude-map-lit-'.$getId();
     $fieldId = 'latitude-longitude-lit-field-'.$getId();
+<<<<<<< HEAD
     $defaultLat = $field->getDefaultLatitude();
     $defaultLng = $field->getDefaultLongitude();
     $defaultZoom = $field->getDefaultZoom();
@@ -17,6 +85,24 @@
     $mapLat = is_numeric($initialLat) ? (float) $initialLat : $defaultLat;
     $mapLng = is_numeric($initialLng) ? (float) $initialLng : $defaultLng;
 @endphp
+=======
+    $centerLat = $field->getLatitude() ?? 41.9028;
+    $centerLng = $field->getLongitude() ?? 12.4964;
+    $zoom = $field->getZoom();
+    $height = $field->getHeight();
+    $mapLat = is_numeric($initialLat) ? (float) $initialLat : $centerLat;
+    $mapLng = is_numeric($initialLng) ? (float) $initialLng : $centerLng;
+    $autoLocateOnInit = !is_numeric($initialLat) || !is_numeric($initialLng);
+@endphp
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot — see module docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+>>>>>>> laraxot/dev
 
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
     <div
@@ -29,9 +115,16 @@
             <geo-latlng-input
                 lat="{{ $mapLat }}"
                 lng="{{ $mapLng }}"
+<<<<<<< HEAD
                 zoom="{{ $defaultZoom }}"
                 height="{{ $height }}"
                 state-path="{{ $statePath }}"
+=======
+                zoom="{{ $zoom }}"
+                height="{{ $height }}"
+                state-path="{{ $statePath }}"
+                auto-locate-on-init="{{ $autoLocateOnInit ? 'true' : 'false' }}"
+>>>>>>> laraxot/dev
             ></geo-latlng-input>
         </div>
 

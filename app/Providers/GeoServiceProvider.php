@@ -9,6 +9,7 @@ use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
+<<<<<<< HEAD
 use function Safe\file_get_contents;
 use function Safe\json_decode;
 
@@ -16,17 +17,30 @@ class GeoServiceProvider extends XotBaseServiceProvider
 {
     public string $name = 'Geo';
     protected string $moduleName = 'Geo';
+=======
+class GeoServiceProvider extends XotBaseServiceProvider
+{
+    public string $name = 'Geo';
+
+    protected string $moduleName = 'Geo';
+
+>>>>>>> laraxot/dev
     protected string $namespace = 'geo';
 
     public function boot(): void
     {
         parent::boot();
 
+<<<<<<< HEAD
         // $this->registerMapAssets();
+=======
+        $this->registerMapAssets();
+>>>>>>> laraxot/dev
     }
 
     protected function registerMapAssets(): void
     {
+<<<<<<< HEAD
         $assets = [];
 
         if (is_file(public_path('themes/Geo/css/leaflet.css'))) {
@@ -66,6 +80,16 @@ class GeoServiceProvider extends XotBaseServiceProvider
         }
 
         return asset('themes/Sixteen/'.$entry);
+=======
+        FilamentAsset::register([
+            Js::make('map-picker-geo', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'),
+            Js::make('map-picker-lit', asset('themes/Geo/js/geo.js')),
+        ], 'geo');
+
+        FilamentAsset::register([
+            Css::make('leaflet-css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'),
+        ], 'geo');
+>>>>>>> laraxot/dev
     }
 
     // REMOVED: public function register(): void

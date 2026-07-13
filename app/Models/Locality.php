@@ -6,9 +6,14 @@ namespace Modules\Geo\Models;
 
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Builder;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Database\Factories\LocalityFactory;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+=======
+use Illuminate\Support\Arr;
+use Modules\Geo\Database\Factories\LocalityFactory;
+>>>>>>> laraxot/dev
 use Modules\Xot\Contracts\ProfileContract;
 use Sushi\Sushi;
 
@@ -54,6 +59,7 @@ class Locality extends BaseModel
      */
     public function getRows(): array
     {
+<<<<<<< HEAD
         $path = module_path('Geo', 'resources/json/comuni.json');
         if (! file_exists($path)) {
             return [];
@@ -112,6 +118,29 @@ class Locality extends BaseModel
 
     /**
      * @return array<string, string>
+=======
+        $rows = Comune::select(
+            'regione->codice as region_id',
+            'provincia->codice as province_id',
+            'nome as name',
+            'codice as id',
+            'cap as postal_code',
+        )
+            ->distinct()
+            ->orderBy('nome')
+            ->get()
+            ->map(static fn (mixed $row): mixed => $row);
+
+        $rawArray = $rows->toArray();
+        /** @var array<int, array<string, mixed>> $result */
+        $result = $rawArray;
+
+        return $result;
+    }
+
+    /**
+     * @return array<mixed>
+>>>>>>> laraxot/dev
      */
     public static function getOptions(Get $get): array
     {
@@ -124,6 +153,7 @@ class Locality extends BaseModel
             return [];
         }
 
+<<<<<<< HEAD
         $city = $get('locality');
 
         $keys = [];
@@ -143,6 +173,16 @@ class Locality extends BaseModel
 
     /**
      * @return array<string, string>
+=======
+        return self::where('region_id', $region)
+            ->where('province_id', $province)
+            ->pluck('name', 'id')
+            ->toArray();
+    }
+
+    /**
+     * @return array<mixed>
+>>>>>>> laraxot/dev
      */
     public static function getPostalCodeOptions(Get $get): array
     {
@@ -164,6 +204,7 @@ class Locality extends BaseModel
             ->orderBy('postal_code')
             ->get(); // ->pluck('postal_code', 'postal_code')
         // ->toArray()
+<<<<<<< HEAD
         /** @var array<string, string> $options */
         $options = [];
 
@@ -182,6 +223,21 @@ class Locality extends BaseModel
         }
 
         return $options;
+=======
+        /** @var array<int, array<string, mixed>> $arr */
+        $arr = $res->toArray();
+        $arr = Arr::mapWithKeys($arr, static function (array $item) {
+            if (! isset($item['postal_code']) || ! \is_array($item['postal_code'])) {
+                return [];
+            }
+            /** @var array<int, string> $postalCodes */
+            $postalCodes = array_values((array) $item['postal_code']);
+
+            return array_combine($postalCodes, $postalCodes);
+        });
+
+        return $arr;
+>>>>>>> laraxot/dev
     }
 
     /**

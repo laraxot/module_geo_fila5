@@ -15,8 +15,15 @@ class HereMapResponseData extends Data
      */
     public function __construct(
         #[MapInputName('items.0.position')]
+<<<<<<< HEAD
         public ?array $position,
         #[MapInputName('items.0.address')]
+=======
+        /** @var array{lat: float, lng: float}|null */
+        public ?array $position,
+        #[MapInputName('items.0.address')]
+        /** @var array<string, mixed>|null */
+>>>>>>> laraxot/dev
         public ?array $address,
     ) {
     }
