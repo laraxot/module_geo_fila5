@@ -1,47 +1,3 @@
-<<<<<<< HEAD
-=======
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-<<<<<<< HEAD
-var G=Object.defineProperty;var j=(e,t,r)=>t in e?G(e,t,{enumerable:!0,configurable:!0,writable:!0,value:r}):e[t]=r;var S=(e,t,r)=>j(e,typeof t!="symbol"?t+"":t,r);import{o as l,c as o,x as H,g as Z,p as D,s as K,f as Q,a as V,b as W,m as Y,i as X,L as h,d as J,e as x}from"./leaflet-src.js";const ee=`version https://git-lfs.github.com/spec/v1
-oid sha256:914656f036fbf631ea655e7e52ba2193fb23572c2bb4f493f9d6321035693471
-size 488
-`,te=`version https://git-lfs.github.com/spec/v1
-oid sha256:6c474ff8eae96de7d099374db278ebd48363e2d8910c7b91ef02b4580ba97a67
-size 655
-`,re=`version https://git-lfs.github.com/spec/v1
-oid sha256:a2cc3edc1e6c150c2c6db5136f6ca35ad3cd3d0ac3a83c633e6bdbc90e5fc3b6
-size 601
-`,ae=`version https://git-lfs.github.com/spec/v1
-oid sha256:5287e3645dfb7c059018a63415e17aec7d31724102187669e83b1730f42fc07e
-size 830
-`,ne=`version https://git-lfs.github.com/spec/v1
-oid sha256:49d82543c83b40e9486b3f2d2ba13d6147da0a8accbe4478d95065c4a9ba5af2
-size 497
-`,ie=`version https://git-lfs.github.com/spec/v1
-oid sha256:4a86b5de8f41b466a624ec70c5b00b624481ed59a92a067229295eb98c429064
-size 400
-`,oe=`version https://git-lfs.github.com/spec/v1
-oid sha256:39b64fe05524f200c0f40de72e271ed96046c241c9f8d340e824424d160882b0
-size 694
-`,se=`version https://git-lfs.github.com/spec/v1
-oid sha256:0ff7a6d9efcc4acc641132cd8fbcfa5f3c43e826629f201fc64e5038836c7262
-size 636
-`,le=`version https://git-lfs.github.com/spec/v1
-oid sha256:db8ceec9867b8dcb63efb1da7afaf6c66729e93f0e94b4352e97d6249d83680f
-size 429
-`,ce=`version https://git-lfs.github.com/spec/v1
-oid sha256:71f9dc980c507b7cfd044b7b322790f826e69cffcb6b06802c898502328a85b5
-size 501
-`,pe=`version https://git-lfs.github.com/spec/v1
-oid sha256:0187052648b5683b4f3dc671ee861039f6476325f08a666cc5abf1d5381d202f
-size 418
-`,de={"magnifying-glass":o`${l(Y)}`,"arrows-pointing-out":o`${l(W)}`,"arrows-pointing-in":o`${l(V)}`,"map-pin":o`${l(Q)}`,"squares-2x2":o`${l(K)}`,plus:o`${l(D)}`,minus:o`${l(Z)}`,"x-mark":o`${l(H)}`,"light-bulb":o`${l(ee)}`,trash:o`${l(te)}`,wrench:o`${l(re)}`,sparkles:o`${l(ae)}`,"archive-box":o`${l(ne)}`,"building-office":o`${l(ie)}`,"globe-alt":o`${l(oe)}`,truck:o`${l(se)}`,"shield-check":o`${l(le)}`,"document-text":o`${l(ce)}`,"question-mark-circle":o`${l(pe)}`};function c(e){return de[e]??o``}const ue=X`
-=======
-// Geo — frontend asset (claude-audit doc ratio).
->>>>>>> laraxot/dev
 var yr=Object.defineProperty;var wr=(s,r,a)=>r in s?yr(s,r,{enumerable:!0,configurable:!0,writable:!0,value:a}):s[r]=a;var ro=(s,r,a)=>wr(s,typeof r!="symbol"?r+"":r,a);/**
  * @license
  * Copyright 2019 Google LLC
@@ -117,10 +73,6 @@ var yr=Object.defineProperty;var wr=(s,r,a)=>r in s?yr(s,r,{enumerable:!0,config
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/>
 </svg>
 `,la={"magnifying-glass":C`${j(Wr)}`,"arrows-pointing-out":C`${j(qr)}`,"arrows-pointing-in":C`${j(jr)}`,"map-pin":C`${j(Gr)}`,"squares-2x2":C`${j(Vr)}`,plus:C`${j(Kr)}`,minus:C`${j(Yr)}`,"x-mark":C`${j(Xr)}`,"light-bulb":C`${j(Jr)}`,trash:C`${j(Qr)}`,wrench:C`${j(ta)}`,sparkles:C`${j(ea)}`,"archive-box":C`${j(ia)}`,"building-office":C`${j(na)}`,"globe-alt":C`${j(oa)}`,truck:C`${j(sa)}`,"shield-check":C`${j(ra)}`,"document-text":C`${j(aa)}`,"question-mark-circle":C`${j(ha)}`};function K(s){return la[s]??C``}const ua=Pr`
-<<<<<<< HEAD
-=======
->>>>>>> 6f1c3e4b3 (claude audit)
->>>>>>> laraxot/dev
     :host {
         display: block;
         width: 100%;
@@ -590,7 +542,6 @@ var yr=Object.defineProperty;var wr=(s,r,a)=>r in s?yr(s,r,{enumerable:!0,config
         background: #3a8fb3;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-<<<<<<< HEAD
 `,ca=ua.cssText;K("plus"),K("minus"),K("arrows-pointing-out"),K("arrows-pointing-in"),K("map-pin"),K("squares-2x2"),K("map-pin");function Gt(s,r=[0]){if(typeof s._refreshMapSize=="function"){s._refreshMapSize(r);return}r.forEach(a=>{setTimeout(()=>{var u;return(u=s._map)==null?void 0:u.invalidateSize()},a)})}function da(s){const r=s.labels||{},a=!s.isFullscreen,u=a?r.fullscreen||"Fullscreen":r.close_fullscreen||"Chiudi";return C`
         <button class="ctrl-btn" type="button"
             @click=${()=>Zo(s)}
@@ -612,43 +563,6 @@ var yr=Object.defineProperty;var wr=(s,r,a)=>r in s?yr(s,r,{enumerable:!0,config
             title="${r.zoom_out||"Zoom Out"}">
             ${K("minus")}
         </button>
-=======
-`,me=ue.cssText;c("plus"),c("minus"),c("arrows-pointing-out"),c("arrows-pointing-in"),c("map-pin"),c("squares-2x2"),c("map-pin");function d(e,t=[0]){if(typeof e._refreshMapSize=="function"){e._refreshMapSize(t);return}t.forEach(r=>{setTimeout(()=>{var n;return(n=e._map)==null?void 0:n.invalidateSize()},r)})}function he(e){const t=e.labels||{},r=!e.isFullscreen,n=r?t.fullscreen||"Fullscreen":t.close_fullscreen||"Chiudi";return o`
-        <button class="ctrl-btn" type="button"
-            @click=${()=>O(e)}
-            aria-label="${n}"
-            title="${n}">
-            ${c(r?"arrows-pointing-out":"arrows-pointing-in")}
-        </button>
-    `}async function O(e){var n;const t=M(e),r=!e.isFullscreen;if(t){if(r){if(e._previousBodyOverflow=document.body.style.overflow||"",e._previousHtmlOverflow=document.documentElement.style.overflow||"",document.documentElement.classList.add("geo-map-fullscreen-active"),document.body.style.overflow="hidden",document.documentElement.style.overflow="hidden",t.requestFullscreen&&!document.fullscreenElement)try{await t.requestFullscreen()}catch{g(e)}}else{if(document.fullscreenElement&&document.exitFullscreen)try{await document.exitFullscreen()}catch{}g(e)}e.isFullscreen=r,(n=e.requestUpdate)==null||n.call(e),e.dispatchEvent(new CustomEvent("fullscreen-changed",{detail:{isFullscreen:e.isFullscreen},bubbles:!0,composed:!0})),d(e,[0,160,380,700])}}function fe(e){var n;const t=M(e),r=document.fullscreenElement===t;document.fullscreenElement&&!r||(e.isFullscreen!==r&&(e.isFullscreen=r,(n=e.requestUpdate)==null||n.call(e)),r||g(e),d(e,[0,160,380]))}function M(e){var t,r,n;return((r=(t=e.renderRoot)==null?void 0:t.querySelector)==null?void 0:r.call(t,".map-container"))||((n=e.querySelector)==null?void 0:n.call(e,".map-container"))||null}function g(e){document.documentElement.classList.remove("geo-map-fullscreen-active"),document.body.style.overflow=e._previousBodyOverflow||"",document.documentElement.style.overflow=e._previousHtmlOverflow||""}function F(e){e._map&&(e._map.zoomIn(),d(e,[150]))}function A(e){e._map&&(e._map.zoomOut(),d(e,[150]))}function ge(e){const t=e.labels||{};return o`
-        <button class="ctrl-btn" type="button"
-            @click=${()=>F(e)}
-            aria-label="${t.zoom_in||"Zoom In"}"
-            title="${t.zoom_in||"Zoom In"}">
-            ${c("plus")}
-        </button>
-    `}function be(e){const t=e.labels||{};return o`
-        <button class="ctrl-btn" type="button"
-            @click=${()=>A(e)}
-            aria-label="${t.zoom_out||"Zoom Out"}"
-            title="${t.zoom_out||"Zoom Out"}">
-            ${c("minus")}
-        </button>
-<<<<<<< HEAD
-    `}function ye(e){return o`${ge(e)}${be(e)}`}const f=["street","humanitarian","satellite","topo"];function T(e){if(!e._map||!e._layers)return;const t=f.indexOf(e._currentLayer),r=f[(t+1)%f.length],n=e._layers[e._currentLayer];n&&e._map.removeLayer(n);const a=e._layers[r];a&&!a._map&&a.addTo(e._map),e._currentLayer=r,d(e,[0,120,300])}function _e(e){var t,r;return o`<button class="ctrl-btn" type="button"
-        @click=${()=>T(e)}
-        aria-label="${((t=e.labels)==null?void 0:t.switch_layer)||"Cambia Layer"}"
-        title="${((r=e.labels)==null?void 0:r.switch_layer)||"Cambia Layer"}">
-        ${c("squares-2x2")}
-    </button>`}function _(e,t={}){const{showLoading:r=!0}=t;navigator.geolocation&&(e.isLocating||e._geolocRequested&&!r||(e._geolocRequested=!0,r&&(e.isLocating=!0,e.requestUpdate()),navigator.geolocation.getCurrentPosition(n=>{var s;const a=n.coords.latitude,i=n.coords.longitude;if(typeof e._handleMapInteraction=="function"&&e._handleMapInteraction(a,i,"geolocation"),e.geolocated=!0,r&&(e.isLocating=!1),(s=e.requestUpdate)==null||s.call(e),e._map){const p=Number.isFinite(e.zoom)?Math.max(e.zoom,14):15;e._map.setView([a,i],p,{animate:!1}),e._isUserCentered=!0,d(e,[150])}},()=>{var n;e._geolocRequested=!1,r&&(e.isLocating=!1),(n=e.requestUpdate)==null||n.call(e),e.geolocated=!1},{enableHighAccuracy:!0,timeout:1e4,maximumAge:3e5})))}function ve(e){var t,r;return o`<button class="ctrl-btn" type="button"
-        @click=${()=>_(e)}
-        ?disabled=${e.isLocating}
-        aria-label="${((t=e.labels)==null?void 0:t.use_location)||"Mia posizione"}"
-        title="${((r=e.labels)==null?void 0:r.use_location)||"Mia posizione"}">
-        ${e.isLocating?o`<svg class="animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="M4 12a8 8 0 018-8" opacity=".75"/></svg>`:c("map-pin")}
-    </button>`}const C=3,we=350,ke="https://nominatim.openstreetmap.org/search";function Se(e){const t=e.renderRoot??e,r=typeof t.querySelector=="function"?t.querySelector.bind(t):null;if(!r)return;let n=r(".map-picker-search-input");if(!n){const a=r(".search-box");n=(a==null?void 0:a.querySelector("input"))??null}n&&typeof n.focus=="function"&&(n.focus(),document.activeElement!==n&&setTimeout(()=>n.focus(),50))}function I(e){var r,n;if(e.showSearch===!1)return;const t=e._searchOpen;e._searchOpen=!e._searchOpen,e._searchOpen||(e.searchQuery="",e.searchResults=[],e.showSearchResults=!1),(r=e.requestUpdate)==null||r.call(e),e._searchOpen&&!t&&((n=e.updateComplete)==null||n.then(()=>Se(e)))}function v(e){var t;e._searchOpen=!1,e.searchQuery="",e.searchResults=[],e.showSearchResults=!1,(t=e.requestUpdate)==null||t.call(e)}function ze(e,t){if(t.key==="Escape"){v(e);return}t.key==="Enter"&&(t.preventDefault(),w(e,{selectFirst:!0}))}function $e(e,t){var r;e.searchQuery=t||"",e.showSearchResults=!1,e._searchDebounce&&clearTimeout(e._searchDebounce),e.searchQuery.trim().length>=C?e._searchDebounce=setTimeout(()=>{w(e,{selectFirst:!1})},we):e.searchResults=[],(r=e.requestUpdate)==null||r.call(e)}async function w(e,t={}){var n,a,i;const r=String(e.searchQuery||"").trim();if(r.length<C){e.searchResults=[],e.showSearchResults=!1,(n=e.requestUpdate)==null||n.call(e);return}e.isSearching=!0,(a=e.requestUpdate)==null||a.call(e);try{const s=await Le(e,r);e.searchResults=Array.isArray(s)?s:[],e.showSearchResults=e.searchResults.length>0,t.selectFirst&&e.searchResults[0]&&q(e,e.searchResults[0])}catch(s){console.warn("[map-search] Address search failed",s),e.searchResults=[],e.showSearchResults=!1}finally{e.isSearching=!1,(i=e.requestUpdate)==null||i.call(e)}}function q(e,t){var s;const r=Number.parseFloat(t.lat),n=Number.parseFloat(t.lon??t.lng);if(!Number.isFinite(r)||!Number.isFinite(n))return;const a=t.display_name||`${r}, ${n}`,i=Re(t,r,n,a);e.searchQuery=a,e.searchResults=[],e.showSearchResults=!1,typeof e._handleSearchSelection=="function"?e._handleSearchSelection(t,r,n,i):typeof e._handleMapInteraction=="function"?e._handleMapInteraction(r,n,"search"):e._map&&e._map.setView([r,n],Math.max(e._map.getZoom(),16)),(s=e.requestUpdate)==null||s.call(e)}function Re(e,t,r,n){const a=e&&typeof e.address=="object"&&e.address!==null?e.address:{},i=(...s)=>{for(const p of s)if(typeof p=="string"&&p.trim()!=="")return p;return null};return{lat:t,lng:r,latitude:t,longitude:r,address:n,display_name:(e==null?void 0:e.display_name)??n,provider:"nominatim",place_id:(e==null?void 0:e.place_id)??null,osm_type:(e==null?void 0:e.osm_type)??null,osm_id:(e==null?void 0:e.osm_id)??null,licence:(e==null?void 0:e.licence)??null,importance:typeof(e==null?void 0:e.importance)=="number"?e.importance:null,type:(e==null?void 0:e.type)??null,class:(e==null?void 0:e.class)??null,boundingbox:Array.isArray(e==null?void 0:e.boundingbox)?e.boundingbox:null,street:i(a.road,a.pedestrian,a.footway,a.path,a.residential,a.highway),street_number:i(a.house_number),zip:i(a.postcode),postcode:i(a.postcode),city:i(a.city,a.town,a.village,a.municipality,a.hamlet,a.county),suburb:i(a.suburb,a.neighbourhood,a.quarter,a.city_district),province:i(a.province,a.county,a.state_district),state:i(a.state,a.region),country:i(a.country),country_code:i(a.country_code),address_details:a,raw:e}}async function Le(e,t){if(typeof e.searchAddress=="function")return e.searchAddress(t);const r=new URL(ke);r.searchParams.set("format","json"),r.searchParams.set("addressdetails","1"),r.searchParams.set("limit","5"),r.searchParams.set("q",t);const n=await fetch(r.toString(),{headers:{"Accept-Language":document.documentElement.lang||"it"}});if(!n.ok)throw new Error(`HTTP ${n.status}`);return n.json()}const P=Object.freeze({updateSearchQuery:$e,handleSearchKeydown:ze,executeAddressSearch:w,selectSearchResult:q,closeSearch:v,toggleSearch:I});function Ee(e,t=P){const r=e.labels||{},n=r.search_placeholder||"Cerca indirizzo...",a=Array.isArray(e.searchResults)?e.searchResults:[],i=!!(e.showSearchResults&&a.length>0);return o`
-=======
->>>>>>> laraxot/dev
     `}function ma(s){return C`${_a(s)}${pa(s)}`}const Ei=["street","humanitarian","satellite","topo"];function Ro(s){if(!s._map||!s._layers)return;const r=Ei.indexOf(s._currentLayer),a=Ei[(r+1)%Ei.length],u=s._layers[s._currentLayer];u&&s._map.removeLayer(u);const l=s._layers[a];l&&!l._map&&l.addTo(s._map),s._currentLayer=a,Gt(s,[0,120,300])}function ga(s){var r,a;return C`<button class="ctrl-btn" type="button"
         @click=${()=>Ro(s)}
         aria-label="${((r=s.labels)==null?void 0:r.switch_layer)||"Cambia Layer"}"
@@ -660,7 +574,6 @@ var yr=Object.defineProperty;var wr=(s,r,a)=>r in s?yr(s,r,{enumerable:!0,config
         aria-label="${((r=s.labels)==null?void 0:r.use_location)||"Mia posizione"}"
         title="${((a=s.labels)==null?void 0:a.use_location)||"Mia posizione"}">
         ${s.isLocating?C`<svg class="animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="M4 12a8 8 0 018-8" opacity=".75"/></svg>`:K("map-pin")}
-<<<<<<< HEAD
     </button>`}const No=3,ya=350,wa="https://nominatim.openstreetmap.org/search";function ba(s){const r=s.renderRoot??s,a=typeof r.querySelector=="function"?r.querySelector.bind(r):null;if(!a)return;let u=a(".map-picker-search-input");if(!u){const l=a(".search-box");u=(l==null?void 0:l.querySelector("input"))??null}u&&typeof u.focus=="function"&&(u.focus(),document.activeElement!==u&&setTimeout(()=>u.focus(),50))}function Do(s){var a,u;if(s.showSearch===!1)return;const r=s._searchOpen;s._searchOpen=!s._searchOpen,s._searchOpen||(s.searchQuery="",s.searchResults=[],s.showSearchResults=!1),(a=s.requestUpdate)==null||a.call(s),s._searchOpen&&!r&&((u=s.updateComplete)==null||u.then(()=>ba(s)))}function Di(s){var r;s._searchOpen=!1,s.searchQuery="",s.searchResults=[],s.showSearchResults=!1,(r=s.requestUpdate)==null||r.call(s)}function Pa(s,r){if(r.key==="Escape"){Di(s);return}r.key==="Enter"&&(r.preventDefault(),Hi(s,{selectFirst:!0}))}function xa(s,r){var a;s.searchQuery=r||"",s.showSearchResults=!1,s._searchDebounce&&clearTimeout(s._searchDebounce),s.searchQuery.trim().length>=No?s._searchDebounce=setTimeout(()=>{Hi(s,{selectFirst:!1})},ya):s.searchResults=[],(a=s.requestUpdate)==null||a.call(s)}async function Hi(s,r={}){var u,l,_;const a=String(s.searchQuery||"").trim();if(a.length<No){s.searchResults=[],s.showSearchResults=!1,(u=s.requestUpdate)==null||u.call(s);return}s.isSearching=!0,(l=s.requestUpdate)==null||l.call(s);try{const p=await Ta(s,a);s.searchResults=Array.isArray(p)?p:[],s.showSearchResults=s.searchResults.length>0,r.selectFirst&&s.searchResults[0]&&Ho(s,s.searchResults[0])}catch(p){console.warn("[map-search] Address search failed",p),s.searchResults=[],s.showSearchResults=!1}finally{s.isSearching=!1,(_=s.requestUpdate)==null||_.call(s)}}function Ho(s,r){var p;const a=Number.parseFloat(r.lat),u=Number.parseFloat(r.lon??r.lng);if(!Number.isFinite(a)||!Number.isFinite(u))return;const l=r.display_name||`${a}, ${u}`,_=La(r,a,u,l);s.searchQuery=l,s.searchResults=[],s.showSearchResults=!1,typeof s._handleSearchSelection=="function"?s._handleSearchSelection(r,a,u,_):typeof s._handleMapInteraction=="function"?s._handleMapInteraction(a,u,"search"):s._map&&s._map.setView([a,u],Math.max(s._map.getZoom(),16)),(p=s.requestUpdate)==null||p.call(s)}function La(s,r,a,u){const l=s&&typeof s.address=="object"&&s.address!==null?s.address:{},_=(...p)=>{for(const b of p)if(typeof b=="string"&&b.trim()!=="")return b;return null};return{lat:r,lng:a,latitude:r,longitude:a,address:u,display_name:(s==null?void 0:s.display_name)??u,provider:"nominatim",place_id:(s==null?void 0:s.place_id)??null,osm_type:(s==null?void 0:s.osm_type)??null,osm_id:(s==null?void 0:s.osm_id)??null,licence:(s==null?void 0:s.licence)??null,importance:typeof(s==null?void 0:s.importance)=="number"?s.importance:null,type:(s==null?void 0:s.type)??null,class:(s==null?void 0:s.class)??null,boundingbox:Array.isArray(s==null?void 0:s.boundingbox)?s.boundingbox:null,street:_(l.road,l.pedestrian,l.footway,l.path,l.residential,l.highway),street_number:_(l.house_number),zip:_(l.postcode),postcode:_(l.postcode),city:_(l.city,l.town,l.village,l.municipality,l.hamlet,l.county),suburb:_(l.suburb,l.neighbourhood,l.quarter,l.city_district),province:_(l.province,l.county,l.state_district),state:_(l.state,l.region),country:_(l.country),country_code:_(l.country_code),address_details:l,raw:s}}async function Ta(s,r){if(typeof s.searchAddress=="function")return s.searchAddress(r);const a=new URL(wa);a.searchParams.set("format","json"),a.searchParams.set("addressdetails","1"),a.searchParams.set("limit","5"),a.searchParams.set("q",r);const u=await fetch(a.toString(),{headers:{"Accept-Language":document.documentElement.lang||"it"}});if(!u.ok)throw new Error(`HTTP ${u.status}`);return u.json()}const Fo=Object.freeze({updateSearchQuery:xa,handleSearchKeydown:Pa,executeAddressSearch:Hi,selectSearchResult:Ho,closeSearch:Di,toggleSearch:Do});function Sa(s,r=Fo){const a=s.labels||{},u=a.search_placeholder||"Cerca indirizzo...",l=Array.isArray(s.searchResults)?s.searchResults:[],_=!!(s.showSearchResults&&l.length>0);return C`
         <div class="search-box geo-address-search geo-search-expanded"
              @click="${p=>p.stopPropagation()}">
@@ -673,42 +586,19 @@ var yr=Object.defineProperty;var wr=(s,r,a)=>r in s?yr(s,r,{enumerable:!0,config
                 .value="${s.searchQuery||""}"
                 @input="${p=>r.updateSearchQuery(s,p.target.value)}"
                 @keydown="${p=>r.handleSearchKeydown(s,p)}"
-=======
->>>>>>> 6f1c3e4b3 (claude audit)
-        <div class="search-box geo-address-search geo-search-expanded"
-             @click="${s=>s.stopPropagation()}">
-            <input
-                type="text"
-                class="map-picker-search-input"
-                placeholder="${n}"
-                aria-label="${n}"
-                autocomplete="off"
-                .value="${e.searchQuery||""}"
-                @input="${s=>t.updateSearchQuery(e,s.target.value)}"
-                @keydown="${s=>t.handleSearchKeydown(e,s)}"
->>>>>>> laraxot/dev
             />
             <button
                 class="ctrl-btn"
                 type="button"
-<<<<<<< HEAD
                 aria-label="${a.search||"Cerca"}"
                 title="${a.search||"Cerca"}"
                 @click="${()=>r.executeAddressSearch(s,{selectFirst:!0})}"
             >
                 ${s.isSearching?C`<svg class="animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="M4 12a8 8 0 018-8" opacity=".75"/></svg>`:K("magnifying-glass")}
-=======
-                aria-label="${r.search||"Cerca"}"
-                title="${r.search||"Cerca"}"
-                @click="${()=>t.executeAddressSearch(e,{selectFirst:!0})}"
-            >
-                ${e.isSearching?o`<svg class="animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="M4 12a8 8 0 018-8" opacity=".75"/></svg>`:c("magnifying-glass")}
->>>>>>> laraxot/dev
             </button>
             <button
                 class="ctrl-btn geo-search-close"
                 type="button"
-<<<<<<< HEAD
                 aria-label="${a.close_search||"Chiudi ricerca"}"
                 title="${a.close_search||"Chiudi ricerca"}"
                 @click="${()=>r.closeSearch(s)}"
@@ -725,30 +615,11 @@ var yr=Object.defineProperty;var wr=(s,r,a)=>r in s?yr(s,r,{enumerable:!0,config
                             title="${p.display_name||""}"
                         >
                             ${p.display_name||`${p.lat}, ${p.lon}`}
-=======
-                aria-label="${r.close_search||"Chiudi ricerca"}"
-                title="${r.close_search||"Chiudi ricerca"}"
-                @click="${()=>t.closeSearch(e)}"
-            >
-                ${c("x-mark")}
-            </button>
-
-            ${i?o`
-                <ul class="geo-address-search-results" role="listbox">
-                    ${a.map(s=>o`
-                        <li
-                            role="option"
-                            @click="${()=>t.selectSearchResult(e,s)}"
-                            title="${s.display_name||""}"
-                        >
-                            ${s.display_name||`${s.lat}, ${s.lon}`}
->>>>>>> laraxot/dev
                         </li>
                     `)}
                 </ul>
             `:""}
         </div>
-<<<<<<< HEAD
     `}function ka(s){var a,u;return s.showSearch!==!1?C`
         <button class="ctrl-btn" type="button"
             @click=${l=>{l.stopPropagation(),Do(s)}}
@@ -773,38 +644,6 @@ var yr=Object.defineProperty;var wr=(s,r,a)=>r in s?yr(s,r,{enumerable:!0,config
             <style>
                 coordinate-picker-lit { display: block; width: 100%; height: 100%; min-height: 200px; }
                 ${ca}
-=======
-    `}function Oe(e){var r,n;return e.showSearch!==!1?o`
-        <button class="ctrl-btn" type="button"
-            @click=${a=>{a.stopPropagation(),I(e)}}
-            aria-label="${((r=e.labels)==null?void 0:r.search)||"Cerca indirizzo"}"
-            title="${((n=e.labels)==null?void 0:n.search)||"Cerca indirizzo"}">
-            ${c("magnifying-glass")}
-        </button>
-    `:o``}const Me=[Oe,he,ve,_e,ye];function Fe(e){return o`
-        <div class="layer-controls-overlay">
-            ${Me.map(t=>t(e))}
-        </div>
-<<<<<<< HEAD
-    `}const z=32;function Ae(e){const t=String(e||"").trim();return t===""||!t.startsWith("/")||/["'<>]/.test(t)?null:t}function Te(e,t=z,r={}){const n=Ae(e);if(!n)return"";const a=Number(t)||z,i=r.monochrome===!0?"filter:brightness(0) saturate(100%);opacity:0.88;":"";return`<img src="${n}" alt="" class="geo-map-marker-glyph geo-map-marker-glyph--img" width="${a}" height="${a}" loading="lazy" decoding="async" style="width:${a}px;height:${a}px;max-width:${a}px;max-height:${a}px;${i}" />`}const Ce=/^#[0-9a-f]{3}([0-9a-f]{3})?$/i,$=40,b=40,Ie=b,qe=26,Pe=.94,Ue=.38;function U(e,t="#0066cc"){return Ce.test(String(e||""))?e:t}function R(e,t=1){const r=U(e).replace("#",""),n=r.length===3?r.split("").map(m=>m+m).join(""):r,a=Number.parseInt(n,16);if(!Number.isFinite(a))return`rgba(96, 125, 139, ${t})`;const i=a>>16&255,s=a>>8&255,p=a&255;return`rgba(${i}, ${s}, ${p}, ${t})`}function Ne(e){return`<span class="geo-map-marker-card__initial" aria-hidden="true">${String(e||"?").trim().charAt(0).toUpperCase()||"?"}</span>`}function Be(e,t="#0066cc",r=null,n=""){const a=U(t),i=R(t,Pe),s=R(t,Ue),p=Te(r,qe,{monochrome:!0}),m=p?"":Ne(n);return e.divIcon({html:`<div class="geo-map-marker-card geo-map-marker-card--square" style="--status-color:${a};--status-fill:${i};--status-glow:${s}" aria-hidden="true">
-=======
-    `}function Ea(s){return s&&s.__esModule&&Object.prototype.hasOwnProperty.call(s,"default")?s.default:s}var ue={exports:{}};/* @preserve
- * Leaflet 1.9.4, a JS library for interactive maps. https://leafletjs.com
- * (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade
->>>>>>> 6f1c3e4b3 (claude audit)
-            <div class="geo-map-marker-card__shell">
-                <div class="geo-map-marker-card__inner">
-                    <div class="geo-map-marker-card__glyph">${p}${m}</div>
-                </div>
-            </div>
-<<<<<<< HEAD
-        </div>`,className:"geo-map-marker-wrapper geo-map-marker-wrapper--card",iconSize:[$,Ie],iconAnchor:[$/2,b/2],popupAnchor:[0,-b/2]})}function Ge(e){return{street:e.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19}),humanitarian:e.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",{maxZoom:19}),satellite:e.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{maxZoom:19}),topo:e.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",{maxZoom:19})}}function je(e,t,r){[0,50,150,300,500,800,1200].forEach(n=>{setTimeout(()=>{e.offsetParent===null||!t||(t.invalidateSize({animate:!1}),He(e,t,n))},n)})}function He(e,t,r){var a,i;if(!e._shouldRecenterAfterResize||!e._marker)return;const n=(i=(a=e._marker).getLatLng)==null?void 0:i.call(a);n&&(t.setView(n,t.getZoom(),{animate:!1}),r>=800&&(e._shouldRecenterAfterResize=!1))}function u(e){e._map&&je(e,e._map)}function Ze(e){const{resizeObserver:t,mutationObserver:r}=Ke(e,()=>u(e));e._resizeObserver=t,e._mutationObserver=r}function De(e){e._resizeObserver&&(e._resizeObserver.disconnect(),e._resizeObserver=null),e._mutationObserver&&(e._mutationObserver.disconnect(),e._mutationObserver=null)}function Ke(e,t){const r=new ResizeObserver(t);r.observe(e);const n=new MutationObserver(()=>{e.offsetParent!==null&&t()});let a=e.parentElement;for(let i=0;i<20&&a;i++)n.observe(a,{attributes:!0,attributeFilter:["class","style","hidden"]}),a=a.parentElement;return{resizeObserver:r,mutationObserver:n}}function L(e){return!e||typeof e!="object"?{lat:null,lng:null}:{lat:e.lat??e.latitude??null,lng:e.lng??e.longitude??null}}function Qe(e,t){const r=Number.parseFloat(Number.parseFloat(e).toFixed(6)),n=Number.parseFloat(Number.parseFloat(t).toFixed(6));return!Number.isFinite(r)||!Number.isFinite(n)?null:{lat:r,lng:n}}const Ve="https://nominatim.openstreetmap.org/reverse";async function We(e,t){const r=new URL(Ve);r.searchParams.set("format","json"),r.searchParams.set("lat",String(e)),r.searchParams.set("lon",String(t)),r.searchParams.set("addressdetails","1"),r.searchParams.set("zoom","18");const n=await fetch(r.toString(),{headers:{"Accept-Language":document.documentElement.lang||"it"}});if(!n.ok)throw new Error(`HTTP ${n.status}`);const a=await n.json(),i=a==null?void 0:a.display_name;return typeof i!="string"||i.trim()===""?null:{display_name:i.trim(),raw:a}}const Ye=420;function Xe(e,t,r,n){n!=="search"&&(e._reverseGeocodeTimer&&clearTimeout(e._reverseGeocodeTimer),e._reverseGeocodeTimer=setTimeout(()=>{e._reverseGeocodeTimer=null,(async()=>{var a;try{const i=await We(t,r);if(!i)return;e.state={...e.state||{},address:i.display_name,display_name:i.display_name,provider:"nominatim",raw:i.raw},(a=e.requestUpdate)==null||a.call(e),e.dispatchEvent(new CustomEvent("coords-changed",{detail:{lat:t,lng:r,latitude:t,longitude:r,address:i.display_name,display_name:i.display_name,source:`${n}-reverse`},bubbles:!0,composed:!0}))}catch(i){console.warn("[map-events] reverse geocode failed",i)}})()},Ye))}function k(e,t,r,n="manual"){e._isProgrammaticUpdate=!0;const a=Qe(t,r);if(!a){e._isProgrammaticUpdate=!1;return}const i=n==="search";e.state={...e.state||{},lat:a.lat,lng:a.lng,latitude:a.lat,longitude:a.lng,...i?{}:{address:null,display_name:null}},e._shouldRecenterAfterResize=!0,e._updateMarker(a.lat,a.lng),e.dispatchEvent(new CustomEvent("coords-changed",{detail:{lat:a.lat,lng:a.lng,latitude:a.lat,longitude:a.lng,source:n,...i?{}:{address:null,display_name:null}},bubbles:!0,composed:!0})),Xe(e,a.lat,a.lng,n),window.setTimeout(()=>{e._isProgrammaticUpdate=!1},100)}function N(e,t,r){e._map&&(e._marker?e._marker.setLatLng([t,r]):(e._marker=h.marker([t,r],{draggable:!0,icon:Be(h)}).addTo(e._map),e._marker.on("dragend",n=>{const a=n.target.getLatLng();k(e,a.lat,a.lng,"dragend")})))}function y(e){if(!e._map)return;const t=e._lat,r=e._lng;N(e,t,r),e._shouldRecenterAfterResize=!0,e._map.setView([t,r],Math.max(e._map.getZoom(),e.zoom)),u(e)}function E(e){const t=e.querySelector(".map-picker-leaflet-pane");if(!t||e._map)return;e._layers=e._layers??{},e._currentLayer=e._currentLayer??"street";const r=e._lat!=null&&e._lng!=null,n=r?e._lat:41.9028,a=r?e._lng:12.4964;e._map=h.map(t,{center:[n,a],zoom:e.zoom,zoomControl:!1,attributionControl:!1}),e._layers=Ge(h),e._layers.street.addTo(e._map),e._map.on("click",i=>k(e,i.latlng.lat,i.latlng.lng,"click")),r?y(e):window.setTimeout(()=>{e._lat==null&&e._lng==null&&_(e,{showLoading:!0})},300),u(e)}class B extends J{get _lat(){return L(this.state).lat}get _lng(){return L(this.state).lng}createRenderRoot(){return this}constructor(){super(),this.state=null,this.zoom=13,this.height="400px",this.isLocating=!1,this.isFullscreen=!1,this.geolocateWhenEmpty=!1,this.geolocated=!1,this.labels={},this.provider="osm",this.showSearch=!0,this.searchQuery="",this.searchResults=[],this.showSearchResults=!1,this.isSearching=!1,this._searchOpen=!1,this._isProgrammaticUpdate=!1,this._reverseGeocodeTimer=null,this._layers={},this._marker=null,this._map=null,this._lastMeasuredSize=null,this._debounceTimeout=null,this._boundRefreshMapSize=null,this._resizeObserver=null,this._mutationObserver=null,this._currentLayer="street"}render(){return this.labels,o`
-=======
->>>>>>> 6f1c3e4b3 (claude audit)
-            <style>
-                coordinate-picker-lit { display: block; width: 100%; height: 100%; min-height: 200px; }
-                ${me}
->>>>>>> laraxot/dev
                 .map-container { min-height: 200px; }
                 .map-container.is-fullscreen,
                 .map-container:fullscreen { position: fixed !important; inset: 0 !important; width: 100vw !important; height: 100vh !important; border: none !important; border-radius: 0 !important; z-index: 999999 !important; }
@@ -814,26 +653,12 @@ var yr=Object.defineProperty;var wr=(s,r,a)=>r in s?yr(s,r,{enumerable:!0,config
             </style>
             <div class="map-container ${this.isFullscreen?"is-fullscreen":""}" style="--map-height: ${this.height}">
                 <div class="map-picker-viewport">
-<<<<<<< HEAD
                     ${Ur([],()=>C`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}
                 </div>
                 ${this.showSearch!==!1&&this._searchOpen?Sa(this,Fo):""}
                 ${Ca(this)}
-=======
-                    ${x([],()=>o`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}
-                </div>
-                ${this.showSearch!==!1&&this._searchOpen?Ee(this,P):""}
-                ${Fe(this)}
->>>>>>> laraxot/dev
                 <div class="loading-overlay ${this.isLocating?"active":""}">
                     <div class="spinner"></div>
                 </div>
             </div>
-<<<<<<< HEAD
         `}firstUpdated(){Lo(this),this._boundRefreshMapSize=()=>ge(this),ja(this),this._handleFullscreenChange=()=>{console.log("[coordinate-picker] Fullscreen change event detected"),fa(this)},document.addEventListener("fullscreenchange",this._handleFullscreenChange),this._handleEscapeKey=r=>{if(r.key==="Escape"){if(this._searchOpen){Di(this);return}this.isFullscreen&&this._toggleFullscreen()}},document.addEventListener("keydown",this._handleEscapeKey)}disconnectedCallback(){super.disconnectedCallback(),this._reverseGeocodeTimer&&(clearTimeout(this._reverseGeocodeTimer),this._reverseGeocodeTimer=null),this._map&&(this._map.remove(),this._map=null),Ga(this),this._handleEscapeKey&&document.removeEventListener("keydown",this._handleEscapeKey),this._handleFullscreenChange&&document.removeEventListener("fullscreenchange",this._handleFullscreenChange)}updated(r){r.has("state")&&!this._isProgrammaticUpdate&&this._map&&this._lat!=null&&this._lng!=null&&$i(this)}_switchLayer(){Ro(this)}_toggleFullscreen(){Zo(this)}_zoomIn(){Io(this)}_zoomOut(){Bo(this)}_requestGeolocation(){Ni(this)}_handleMapInteraction(r,a,u){Fi(this,r,a,u)}_updateMarker(r,a){Wo(this,r,a)}_syncMarkerToProperties(){$i(this)}_refreshMapSize(){ge(this)}_initMap(){Lo(this)}_handleSearchSelection(r,a,u,l=null){var p,b;const _=l&&typeof l=="object"?l:{lat:a,lng:u,latitude:a,longitude:u,address:(r==null?void 0:r.display_name)||((p=this.state)==null?void 0:p.address)||"",provider:"nominatim",raw:r};this.state={...this.state||{},..._},this._handleMapInteraction(a,u,"search"),(b=this._map)==null||b.setView([a,u],Math.max(this._map.getZoom(),16))}setCoordinates(r,a,u="programmatic"){var l;this._handleMapInteraction(r,a,u),(l=this._map)==null||l.setView([r,a],Math.max(this._map.getZoom(),this.zoom))}}ro(qo,"properties",{state:{type:Object},zoom:{type:Number},height:{type:String},isLocating:{type:Boolean,state:!0},isFullscreen:{type:Boolean,state:!0},geolocateWhenEmpty:{type:Boolean,attribute:"geolocate-when-empty"},labels:{type:Object},provider:{type:String},showSearch:{type:Boolean,attribute:"show-search"},searchQuery:{type:String,state:!0},searchResults:{type:Array,state:!0},showSearchResults:{type:Boolean,state:!0},isSearching:{type:Boolean,state:!0},_isProgrammaticUpdate:{type:Boolean,state:!0},_searchOpen:{type:Boolean,state:!0}});typeof customElements<"u"&&!customElements.get("coordinate-picker-lit")&&customElements.define("coordinate-picker-lit",qo);
-=======
-<<<<<<< HEAD
-        `}firstUpdated(){E(this),this._boundRefreshMapSize=()=>u(this),Ze(this),this._handleFullscreenChange=()=>{console.log("[coordinate-picker] Fullscreen change event detected"),fe(this)},document.addEventListener("fullscreenchange",this._handleFullscreenChange),this._handleEscapeKey=t=>{if(t.key==="Escape"){if(this._searchOpen){v(this);return}this.isFullscreen&&this._toggleFullscreen()}},document.addEventListener("keydown",this._handleEscapeKey)}disconnectedCallback(){super.disconnectedCallback(),this._reverseGeocodeTimer&&(clearTimeout(this._reverseGeocodeTimer),this._reverseGeocodeTimer=null),this._map&&(this._map.remove(),this._map=null),De(this),this._handleEscapeKey&&document.removeEventListener("keydown",this._handleEscapeKey),this._handleFullscreenChange&&document.removeEventListener("fullscreenchange",this._handleFullscreenChange)}updated(t){t.has("state")&&!this._isProgrammaticUpdate&&this._map&&this._lat!=null&&this._lng!=null&&y(this)}_switchLayer(){T(this)}_toggleFullscreen(){O(this)}_zoomIn(){F(this)}_zoomOut(){A(this)}_requestGeolocation(){_(this)}_handleMapInteraction(t,r,n){k(this,t,r,n)}_updateMarker(t,r){N(this,t,r)}_syncMarkerToProperties(){y(this)}_refreshMapSize(){u(this)}_initMap(){E(this)}_handleSearchSelection(t,r,n,a=null){var s,p;const i=a&&typeof a=="object"?a:{lat:r,lng:n,latitude:r,longitude:n,address:(t==null?void 0:t.display_name)||((s=this.state)==null?void 0:s.address)||"",provider:"nominatim",raw:t};this.state={...this.state||{},...i},this._handleMapInteraction(r,n,"search"),(p=this._map)==null||p.setView([r,n],Math.max(this._map.getZoom(),16))}setCoordinates(t,r,n="programmatic"){var a;this._handleMapInteraction(t,r,n),(a=this._map)==null||a.setView([t,r],Math.max(this._map.getZoom(),this.zoom))}}S(B,"properties",{state:{type:Object},zoom:{type:Number},height:{type:String},isLocating:{type:Boolean,state:!0},isFullscreen:{type:Boolean,state:!0},geolocateWhenEmpty:{type:Boolean,attribute:"geolocate-when-empty"},labels:{type:Object},provider:{type:String},showSearch:{type:Boolean,attribute:"show-search"},searchQuery:{type:String,state:!0},searchResults:{type:Array,state:!0},showSearchResults:{type:Boolean,state:!0},isSearching:{type:Boolean,state:!0},_isProgrammaticUpdate:{type:Boolean,state:!0},_searchOpen:{type:Boolean,state:!0}});typeof customElements<"u"&&!customElements.get("coordinate-picker-lit")&&customElements.define("coordinate-picker-lit",B);
-=======
->>>>>>> 6f1c3e4b3 (claude audit)
->>>>>>> laraxot/dev

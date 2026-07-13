@@ -7,7 +7,6 @@ namespace Modules\Geo\Tests\Unit\Actions;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GetCoordinatesByAddressAction;
-<<<<<<< HEAD
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
@@ -24,42 +23,18 @@ it('returns null for empty address', function (): void {
 it('returns null when google api key not configured', function (): void {
     $action = new GetCoordinatesByAddressAction();
 
-=======
-
-uses(\Modules\Geo\Tests\LightTestCase::class);
-
-beforeEach(function () {
-    $action = new GetCoordinatesByAddressAction();
-});
-
-it('returns null for empty address', function (): void {
-    // Without API keys configured, should return null
-    $result = $action->execute('');
-
-    expect($result)->toBeNull();
-});
-
-it('returns null when google api key not configured', function (): void {
->>>>>>> laraxot/dev
     Config::set('services.google.maps_api_key', null);
     Config::set('services.bing.maps_api_key', null);
     Config::set('services.opencage.api_key', null);
 
     $result = $action->execute('Fake Address XYZ');
 
-<<<<<<< HEAD
     Assert::assertNull($result);
 });
 
 it('returns null for non-existent address with mock', function (): void {
     $action = new GetCoordinatesByAddressAction();
 
-=======
-    expect($result)->toBeNull();
-});
-
-it('returns null for non-existent address with mock', function (): void {
->>>>>>> laraxot/dev
     Config::set('services.google.maps_api_key', 'fake-key');
     Config::set('services.bing.maps_api_key', null);
     Config::set('services.opencage.api_key', null);
@@ -74,9 +49,5 @@ it('returns null for non-existent address with mock', function (): void {
 
     $result = $action->execute('asdfghjklqwertyuizxcvbnm123456789');
 
-<<<<<<< HEAD
     Assert::assertNull($result);
-=======
-    expect($result)->toBeNull();
->>>>>>> laraxot/dev
 });

@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-=======
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
->>>>>>> laraxot/dev
 <?php
 
 declare(strict_types=1);
@@ -37,19 +18,6 @@ declare(strict_types=1);
                         <input type="text" name="civic" placeholder="N°" wire:model.lazy="form_data.street_number"
                             class="home-address-input home-civic-input ng-pristine ng-valid ng-touched d-none">
                     @endif
-<<<<<<< HEAD
-=======
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
->>>>>>> laraxot/dev
                     <button class="home-address-button home-geolocalize-button" type="button">
                         <img src="{{ Theme::asset('pub_theme::assets/img/svg/navigate.svg') }}" />
                     </button>

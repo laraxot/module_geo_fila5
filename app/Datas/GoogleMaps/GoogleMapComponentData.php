@@ -14,10 +14,6 @@ class GoogleMapComponentData extends Data
     public function __construct(
         public string $long_name,
         public string $short_name,
-<<<<<<< HEAD
-=======
-        /** @var array<int, string> */
->>>>>>> laraxot/dev
         public array $types,
     ) {
     }

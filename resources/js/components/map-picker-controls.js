@@ -82,15 +82,10 @@ export async function toggleFullscreen(ctx) {
     const container = getMapContainer(ctx);
     const entering = !ctx.isFullscreen;
     
-<<<<<<< HEAD
     console.log('[map-controls] Toggling fullscreen - entering:', entering, 'container:', container ? 'found' : 'not found');
     
     if (!container) {
         console.error('[map-controls] Cannot toggle fullscreen: container not found');
-=======
-    
-    if (!container) {
->>>>>>> laraxot/dev
         return;
     }
 
@@ -101,7 +96,6 @@ export async function toggleFullscreen(ctx) {
         document.body.style.overflow = 'hidden';
         document.documentElement.style.overflow = 'hidden';
         
-<<<<<<< HEAD
         console.log('[map-controls] Attempting to enter fullscreen...');
         if (container.requestFullscreen && !document.fullscreenElement) {
             try {
@@ -125,23 +119,6 @@ export async function toggleFullscreen(ctx) {
             }
         } else {
             console.log('[map-controls] Not in fullscreen or exitFullscreen not available');
-=======
-        if (container.requestFullscreen && !document.fullscreenElement) {
-            try {
-                await container.requestFullscreen();
-            } catch (error) {
-                restoreFullscreenDocumentState(ctx);
-            }
-        } else {
-        }
-    } else {
-        if (document.fullscreenElement && document.exitFullscreen) {
-            try {
-                await document.exitFullscreen();
-            } catch (error) {
-            }
-        } else {
->>>>>>> laraxot/dev
         }
         
         restoreFullscreenDocumentState(ctx);
@@ -163,23 +140,15 @@ export function syncFullscreenState(ctx) {
     const container = getMapContainer(ctx);
     const active = document.fullscreenElement === container;
     
-<<<<<<< HEAD
     console.log('[map-controls] Syncing fullscreen state - container:', container ? 'found' : 'not found', 'active:', active, 'ctx.isFullscreen:', ctx.isFullscreen);
 
     if (document.fullscreenElement && !active) {
         console.log('[map-controls] Different element is fullscreen, ignoring');
-=======
-
-    if (document.fullscreenElement && !active) {
->>>>>>> laraxot/dev
         return;
     }
 
     if (ctx.isFullscreen !== active) {
-<<<<<<< HEAD
         console.log('[map-controls] Updating fullscreen state from', ctx.isFullscreen, 'to', active);
-=======
->>>>>>> laraxot/dev
         ctx.isFullscreen = active;
         ctx.requestUpdate?.();
     }
@@ -218,34 +187,22 @@ export function requestGeolocation(ctx, options = {}) {
     const { showLoading = true } = options;
     
     if (!navigator.geolocation) {
-<<<<<<< HEAD
         console.error('[map-controls] Geolocation not supported by browser');
-=======
->>>>>>> laraxot/dev
         return;
     }
     
     if (ctx.isLocating) {
-<<<<<<< HEAD
         console.warn('[map-controls] Geolocation already in progress');
-=======
->>>>>>> laraxot/dev
         return;
     }
     
     if (ctx._geolocRequested && !showLoading) {
-<<<<<<< HEAD
         console.warn('[map-controls] Geolocation already requested, skipping duplicate request');
-=======
->>>>>>> laraxot/dev
         return;
     }
     
     ctx._geolocRequested = true;
-<<<<<<< HEAD
     console.log('[map-controls] Starting geolocation request...');
-=======
->>>>>>> laraxot/dev
     
     if (showLoading) {
         ctx.isLocating = true;
@@ -254,23 +211,15 @@ export function requestGeolocation(ctx, options = {}) {
     
     navigator.geolocation.getCurrentPosition(
         (pos) => {
-<<<<<<< HEAD
             console.log('[map-controls] Geolocation success:', pos.coords);
-=======
->>>>>>> laraxot/dev
             const lat = pos.coords.latitude;
             const lng = pos.coords.longitude;
             
             if (typeof ctx._handleMapInteraction === 'function') {
-<<<<<<< HEAD
                 console.log('[map-controls] Calling _handleMapInteraction with:', lat, lng);
                 ctx._handleMapInteraction(lat, lng, 'geolocation');
             } else {
                 console.error('[map-controls] _handleMapInteraction method not found');
-=======
-                ctx._handleMapInteraction(lat, lng, 'geolocation');
-            } else {
->>>>>>> laraxot/dev
             }
             
             ctx.geolocated = true;
@@ -282,25 +231,16 @@ export function requestGeolocation(ctx, options = {}) {
             
             if (ctx._map) {
                 const locateZoom = Number.isFinite(ctx.zoom) ? Math.max(ctx.zoom, 14) : 15;
-<<<<<<< HEAD
                 console.log('[map-controls] Centering map on user location:', lat, lng, 'zoom:', locateZoom);
-=======
->>>>>>> laraxot/dev
                 ctx._map.setView([lat, lng], locateZoom, { animate: false });
                 ctx._isUserCentered = true;
                 refreshMapSize(ctx, [150]);
             } else {
-<<<<<<< HEAD
                 console.error('[map-controls] Map not available for centering');
             }
         },
         (error) => {
             console.error('[map-controls] Geolocation error:', error);
-=======
-            }
-        },
-        (error) => {
->>>>>>> laraxot/dev
             ctx._geolocRequested = false;
             if (showLoading) {
                 ctx.isLocating = false;

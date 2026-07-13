@@ -397,10 +397,7 @@ function checkDeprecatedMixinEvents(includes) {
 
 	for (var i = 0; i < includes.length; i++) {
 		if (includes[i] === L.Mixin.Events) {
-<<<<<<< HEAD
 			console.warn('Deprecated include of L.Mixin.Events: ' +
-=======
->>>>>>> laraxot/dev
 				'this property will be removed in future releases, ' +
 				'please inherit from L.Evented instead.', new Error().stack);
 		}
@@ -6129,10 +6126,7 @@ function isFlat(latlngs) {
 }
 
 function _flat(latlngs) {
-<<<<<<< HEAD
 	console.warn('Deprecated use of _flat, please use L.LineUtil.isFlat instead.');
-=======
->>>>>>> laraxot/dev
 	return isFlat(latlngs);
 }
 

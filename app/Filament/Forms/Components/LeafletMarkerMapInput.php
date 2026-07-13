@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-<<<<<<< HEAD
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
@@ -25,11 +24,4 @@ class LeafletMarkerMapInput extends XotBaseField
         parent::setUp();
         $this->setUpCoordinatePicker();
     }
-=======
-/**
- * LeafletMarkerMapInput - Leaflet marker placement field.
- */
-class LeafletMarkerMapInput extends XotBaseCoordinateField
-{
->>>>>>> laraxot/dev
 }

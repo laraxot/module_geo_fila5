@@ -7,15 +7,15 @@ namespace Modules\Geo\Actions\Geocoding;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
- * Geocodifica un indirizzo in coordinate.
+ * Geocodifica indirizzo testuale (stub).
+ *
+ * Sostituisce GeocodingService::geocodeAddress().
  */
-class GeocodeAddressAction
+final class GeocodeAddressAction
 {
     use QueueableAction;
 
     /**
-     * @throws \RuntimeException Se l'indirizzo non viene trovato
-     *
      * @return array{latitude: float, longitude: float, address: string}
      */
     public function execute(string $address): array

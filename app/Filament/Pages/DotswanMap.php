@@ -14,15 +14,7 @@ use Modules\Xot\Filament\Pages\XotBasePage;
  */
 class DotswanMap extends XotBasePage
 {
-<<<<<<< HEAD
     /** @var array{lat: float, lng: float} */
-=======
-    /**
-     * @var array{lat: float, lng: float}
-     *
-     * @phpstan-var array{lat: float, lng: float}
-     */
->>>>>>> laraxot/dev
     public array $location;
 
     /**
@@ -45,12 +37,6 @@ class DotswanMap extends XotBasePage
         return 1;
     }
 
-<<<<<<< HEAD
-=======
-    /**
-     * @return array<string, \Filament\Schemas\Components\Component>
-     */
->>>>>>> laraxot/dev
     public function getFormSchema(): array
     {
         return [
@@ -82,12 +68,6 @@ class DotswanMap extends XotBasePage
         ];
     }
 
-<<<<<<< HEAD
-=======
-    /**
-     * @return array<int, class-string<\Filament\Widgets\Widget>>
-     */
->>>>>>> laraxot/dev
     protected function getHeaderWidgets(): array
     {
         return [];

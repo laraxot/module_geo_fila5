@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-<<<<<<< HEAD
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
@@ -25,13 +24,4 @@ class CoordinatePicker extends XotBaseField
         $this->setUpCoordinatePicker();
         $this->dehydrated();
     }
-=======
-/**
- * CoordinatePicker - Geographic selection component.
- *
- * View: geo::filament.forms.components.coordinate-picker
- */
-class CoordinatePicker extends XotBaseCoordinateField
-{
->>>>>>> laraxot/dev
 }

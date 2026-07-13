@@ -7,16 +7,11 @@ namespace Modules\Geo\Actions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
-<<<<<<< HEAD
 use Modules\Geo\Datas\Geocoding\AddressData;
-=======
-use Modules\Geo\Datas\AddressData;
->>>>>>> laraxot/dev
 use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per aggiornare le coordinate geografiche di un modello basandosi sul suo indirizzo.
-<<<<<<< HEAD
  *
  * Questa action utilizza il geocoding per ottenere le coordinate (latitude/longitude)
  * da un indirizzo completo e aggiorna il modello con i dati risultanti.
@@ -35,27 +30,20 @@ use Spatie\QueueableAction\QueueableAction;
  * // Utilizzo asincrono
  * $action->onQueue('geo')->execute($client);
  * ```
-=======
->>>>>>> laraxot/dev
  */
 class UpdateCoordinatesFromAddressAction
 {
     use QueueableAction;
 
     /**
-<<<<<<< HEAD
      * Collection per memorizzare eventuali errori durante l'esecuzione.
      *
-=======
->>>>>>> laraxot/dev
      * @var Collection<int, string>
      */
     private Collection $errors;
 
-    public function __construct(
-        private readonly GetAddressDataFromFullAddressAction $getAddressDataAction,
-    ) {
-<<<<<<< HEAD
+    public function __construct()
+    {
         $this->errors = new Collection();
     }
 
@@ -72,15 +60,6 @@ class UpdateCoordinatesFromAddressAction
         $this->errors = new Collection();
 
         // Ottieni l'indirizzo completo dal modello
-=======
-        $this->errors = $this->newErrorCollection();
-    }
-
-    public function execute(Model $model): bool
-    {
-        $this->errors = $this->newErrorCollection();
-
->>>>>>> laraxot/dev
         $fullAddress = $this->getFullAddressFromModel($model);
 
         if (empty($fullAddress)) {
@@ -89,70 +68,29 @@ class UpdateCoordinatesFromAddressAction
             return false;
         }
 
-<<<<<<< HEAD
         // Esegui geocoding per ottenere i dati dell'indirizzo
-        $addressData = $this->getAddressDataAction->execute($fullAddress);
+        $getAddressDataAction = app(GetAddressDataFromFullAddressAction::class);
+        $addressData = $getAddressDataAction->execute($fullAddress);
 
         if (null === $addressData) {
             // Raccogli errori dal servizio di geocoding
-            $geocodingErrors = $this->getAddressDataAction->getErrors();
+            $geocodingErrors = $getAddressDataAction->getErrors();
             if ($geocodingErrors->isNotEmpty()) {
                 $this->errors->merge($geocodingErrors);
             } else {
                 $this->errors->push(__('geo::actions.update_coordinates.errors.geocoding_failed'));
             }
-=======
-        $addressData = $this->getAddressDataAction->execute($fullAddress);
-
-        if (null === $addressData) {
-            $this->recordGeocodingFailure($this->getAddressDataAction->getErrors());
->>>>>>> laraxot/dev
 
             return false;
         }
 
-<<<<<<< HEAD
         // Aggiorna il modello con le coordinate ottenute
-=======
->>>>>>> laraxot/dev
         return $this->updateModelCoordinates($model, $addressData);
     }
 
     /**
-<<<<<<< HEAD
      * Restituisce la collezione degli errori verificatisi durante l'esecuzione.
      *
-=======
-     * @param Collection<int, string> $geocodingErrors
-     */
-    private function recordGeocodingFailure(Collection $geocodingErrors): void
-    {
-        if ($geocodingErrors->isEmpty()) {
-            $this->errors->push(__('geo::actions.update_coordinates.errors.geocoding_failed'));
-
-            return;
-        }
-
-        foreach ($geocodingErrors as $error) {
-            if (\is_string($error)) {
-                $this->errors->push($error);
-            }
-        }
-    }
-
-    /**
-     * @return Collection<int, string>
-     */
-    private function newErrorCollection(): Collection
-    {
-        /** @var Collection<int, string> $errors */
-        $errors = new Collection();
-
-        return $errors;
-    }
-
-    /**
->>>>>>> laraxot/dev
      * @return Collection<int, string>
      */
     public function getErrors(): Collection
@@ -160,7 +98,6 @@ class UpdateCoordinatesFromAddressAction
         return $this->errors;
     }
 
-<<<<<<< HEAD
     /**
      * Ottiene l'indirizzo completo dal modello.
      *
@@ -178,20 +115,11 @@ class UpdateCoordinatesFromAddressAction
         if (method_exists($model, 'getFullAddressAttribute')) {
             // Eloquent accessor pattern: get{AttributeName}Attribute($value)
             // Chiamiamo direttamente il metodo con il valore raw
-=======
-    private function getFullAddressFromModel(Model $model): string
-    {
-        /** @var string|int|float|bool|null $fullAddressRaw */
-        $fullAddressRaw = $model->getAttribute('full_address');
-
-        if (method_exists($model, 'getFullAddressAttribute')) {
->>>>>>> laraxot/dev
             $fullAddress = $model->getFullAddressAttribute($fullAddressRaw);
 
             return is_string($fullAddress) ? $fullAddress : '';
         }
 
-<<<<<<< HEAD
         // Fallback: attributo diretto
         return is_string($fullAddressRaw) ? $fullAddressRaw : '';
     }
@@ -201,11 +129,6 @@ class UpdateCoordinatesFromAddressAction
      *
      * @return bool True se l'aggiornamento è riuscito
      */
-=======
-        return is_string($fullAddressRaw) ? $fullAddressRaw : '';
-    }
-
->>>>>>> laraxot/dev
     private function updateModelCoordinates(Model $model, AddressData $addressData): bool
     {
         try {
@@ -216,10 +139,7 @@ class UpdateCoordinatesFromAddressAction
 
             return true;
         } catch (\Exception $e) {
-<<<<<<< HEAD
             // Log dell'errore per debugging
-=======
->>>>>>> laraxot/dev
             Log::error('Errore aggiornamento coordinate', [
                 'model' => $model::class,
                 'model_id' => $model->getKey(),

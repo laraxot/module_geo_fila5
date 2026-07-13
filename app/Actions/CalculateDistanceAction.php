@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use Illuminate\Support\Collection;
 use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
 use Modules\Geo\Contracts\CalculateDistanceActionContract;
@@ -24,13 +26,11 @@ use Modules\Geo\Exceptions\DistanceCalculationException;
  */
 final class CalculateDistanceAction implements CalculateDistanceActionContract
 {
+    use QueueableAction;
+
     /**
      * @param CalculateDistanceMatrixAction $distanceMatrixAction Servizio per il calcolo delle distanze
      */
-    public function __construct(
-        private readonly CalculateDistanceMatrixAction $distanceMatrixAction,
-    ) {
-    }
 
     /**
      * Calcola la distanza e il tempo di percorrenza tra due punti.
@@ -53,7 +53,7 @@ final class CalculateDistanceAction implements CalculateDistanceActionContract
         $this->validateCoordinates($destination);
 
         try {
-            $response = $this->distanceMatrixAction->execute(
+            $response = app(CalculateDistanceMatrixAction::class)->execute(
                 new Collection([$origin]),
                 new Collection([$destination])
             );

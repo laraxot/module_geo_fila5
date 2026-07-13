@@ -168,13 +168,9 @@ class Address extends BaseModel
      * return $this->belongsTo(Regione::class, 'administrative_area_level_1', 'name');
      * }
      */
-<<<<<<< HEAD
     /**
      * @return array{codice: mixed, nome: mixed}|null
      */
-=======
-    /** @return array{codice: mixed, nome: mixed}|null */
->>>>>>> laraxot/dev
     public function getRegione(): ?array
     {
         $res = Comune::select('regione')
@@ -195,13 +191,9 @@ class Address extends BaseModel
         return $res->first();
     }
 
-<<<<<<< HEAD
     /**
      * @return array{codice: string, nome: string}|null
      */
-=======
-    /** @return array{codice: mixed, nome: mixed}|null */
->>>>>>> laraxot/dev
     public function getProvincia(): ?array
     {
         $res = Comune::select('provincia')
@@ -209,7 +201,6 @@ class Address extends BaseModel
             ->orderBy('provincia->nome')
             ->where('provincia->codice', $this->administrative_area_level_2)
             ->get()
-<<<<<<< HEAD
             ->map(function ($item): array {
                 $provincia = is_array($item->provincia ?? null) ? $item->provincia : [];
 
@@ -218,19 +209,10 @@ class Address extends BaseModel
                     'nome' => is_string($provincia['nome'] ?? null) ? $provincia['nome'] : '',
                 ];
             });
-=======
-            ->map(fn ($item) => [
-                /* @phpstan-ignore offsetAccess.notFound */
-                'codice' => $item->provincia['codice'],
-                /* @phpstan-ignore offsetAccess.notFound */
-                'nome' => $item->provincia['nome'],
-            ]);
->>>>>>> laraxot/dev
 
         return $res->first();
     }
 
-<<<<<<< HEAD
     /**
      * @return array<string, mixed>|null
      */
@@ -245,15 +227,6 @@ class Address extends BaseModel
         }
 
         return $comune->attributesToArray();
-=======
-    /** @return array<mixed>|null */
-    public function getLocality(): ?array
-    {
-        return Comune::where('codice', $this->locality)
-            ->distinct()
-            ->first()
-            ?->toArray();
->>>>>>> laraxot/dev
     }
 
     /**

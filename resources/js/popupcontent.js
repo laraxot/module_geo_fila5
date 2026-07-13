@@ -12,10 +12,7 @@ function popupcontent(feature, layer) {
 	<a href="##url##" class="btn btn-primary"> &raquo; </a>
 	</div>
 	</div>`;
-<<<<<<< HEAD
 	//console.log(feature);
-=======
->>>>>>> laraxot/dev
 	for (var prop in feature) {
 		$val=feature[prop];
 		if($val==null) $val='';

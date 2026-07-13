@@ -1,76 +1,3 @@
-<<<<<<< HEAD
-=======
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
->>>>>>> laraxot/dev
 {{--
     Homepage /it civic content blocks
     Civic portal content blocks parity with Design Comuni
@@ -192,8 +119,4 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> laraxot/dev

@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 // --- models ---
 use Modules\Geo\Datas\GeoData;
 // ---- services --
-use Modules\Geo\Services\GeoService;
+use Modules\Geo\Actions\GeoAction;
 
 /**
  * Modules\Geo\Models\Traits\GeoTrait.
@@ -56,7 +56,7 @@ trait GeoTrait
 
     public function distance(?float $lat = null, ?float $lng = null): ?float
     {
-        return (float) GeoService::distance((float) $this->latitude, (float) $this->longitude, $lat, $lng, '');
+        return (float) GeoAction::distance((float) $this->latitude, (float) $this->longitude, $lat, $lng, '');
     }
 
     public function distanceCustomField(
@@ -66,7 +66,7 @@ trait GeoTrait
         ?float $lng = null,
         ?string $unit = '',
     ): ?float {
-        return (float) GeoService::distance(
+        return (float) GeoAction::distance(
             (float) $this->{$lat_field},
             (float) $this->{$lng_field},
             $lat,
@@ -81,7 +81,7 @@ trait GeoTrait
     {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
-            $haversine = GeoService::haversine($lat, $lng);
+            $haversine = GeoAction::haversine($lat, $lng);
 
             // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');
@@ -100,7 +100,7 @@ trait GeoTrait
     ): Builder {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
-            $haversine = GeoService::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
+            $haversine = GeoAction::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
 
             // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');

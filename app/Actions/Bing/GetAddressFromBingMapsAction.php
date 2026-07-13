@@ -4,22 +4,23 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Bing;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\MapPlatforms\BingMapData;
 use Modules\Geo\Exceptions\InvalidLocationException;
-<<<<<<< HEAD
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
-=======
->>>>>>> laraxot/dev
 
 /**
  * Classe per ottenere l'indirizzo da Bing Maps.
  */
 class GetAddressFromBingMapsAction
 {
+    use QueueableAction;
+
     private const BASE_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
 
     /**
@@ -61,11 +62,7 @@ class GetAddressFromBingMapsAction
     /**
      * @throws InvalidLocationException
      *
-<<<<<<< HEAD
      * @return array<mixed>
-=======
-     * @return array<string, mixed>
->>>>>>> laraxot/dev
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
     {
@@ -91,12 +88,8 @@ class GetAddressFromBingMapsAction
             throw InvalidLocationException::invalidData('Risposta JSON non valida da Bing Maps');
         }
 
-<<<<<<< HEAD
         /* @var array<string, mixed> $jsonResponse */
         return $jsonResponse;
-=======
-        return normalize_string_key_array($jsonResponse);
->>>>>>> laraxot/dev
     }
 
     /**
@@ -229,13 +222,8 @@ class GetAddressFromBingMapsAction
         }
 
         return [
-<<<<<<< HEAD
             0 => SafeFloatCastAction::cast($coordinates[0]),
             1 => SafeFloatCastAction::cast($coordinates[1]),
-=======
-            0 => (float) $coordinates[0],
-            1 => (float) $coordinates[1],
->>>>>>> laraxot/dev
         ];
     }
 

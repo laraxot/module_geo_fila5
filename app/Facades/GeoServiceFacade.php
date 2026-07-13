@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static float                calculateDistance(float $lat1, float $lon1, float $lat2, float $lon2)
  * @method static string               getCountryCode(float $lat, float $lon)
  *
- * @see \Modules\Geo\Services\GeoService
+ * @see \Modules\Geo\Actions\Distance\CalculateGeoDistanceAction
  */
 class GeoServiceFacade extends Facade
 {

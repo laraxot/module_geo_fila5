@@ -44,9 +44,5 @@ import{d as e,i as t,l as n,s as r,t as i,u as a}from"./leaflet-src-B7Nsx4ry.js"
                                                 <p class="geo-popup-description">${e.description||``}</p>
                                                 ${e.address?`<small class="text-muted d-block mb-1">${e.address}</small>`:``}
                                                 ${e.images&&e.images.length>0?`<div class="geo-popup-gallery" style="display:grid;grid-template-columns:1fr;gap:4px;margin-top:8px;">${e.images.map(e=>`<img src="${e}" style="width:100%;height:100px;object-fit:cover;border-radius:4px;">`).join(``)}</div>`:``}
-<<<<<<< HEAD
                                             </div>
                                         `;t.getPopup().setContent(i)}).catch(()=>{})})}}),this._markersLayer.addLayer(this._geojsonLayer);try{let e=this._geojsonLayer.getBounds();e&&e.isValid()&&this._map.fitBounds(e,{padding:[40,40],maxZoom:11})}catch(e){console.warn(`[geo-map-lit] fitBounds skipped:`,e.message)}this.dispatchEvent(new CustomEvent(`geo-map-loaded`,{detail:{count:this._allFeatures.length,types:[...new Set(this._allFeatures.map(e=>e.properties?.type).filter(Boolean))]},bubbles:!0,composed:!0}))}).catch(e=>console.error(`[geo-map-lit] Error loading GeoJSON:`,e))}filterByType(e){if(!this._markersLayer)return;this._markersLayer.clearLayers();let t=e?this._allMarkers.filter(t=>t.options.typeValue===e):this._allMarkers;this._markersLayer.addLayers(t)}disconnectedCallback(){super.disconnectedCallback(),this._mutationObserver?.disconnect(),this._map&&=(this._map.remove(),null)}};customElements.get(`geo-map-lit`)||customElements.define(`geo-map-lit`,S);
-=======
-                                            </div>
->>>>>>> laraxot/dev

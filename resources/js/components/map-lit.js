@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
->>>>>>> laraxot/dev
 import { LitElement, html } from 'lit';
 import L from 'leaflet';
 window.L = L;
@@ -47,12 +42,6 @@ import {
     buildTicketPopupLoadingHtml,
     popupTicketStylesText,
 } from './map/popup-ticket.js';
-<<<<<<< HEAD
-=======
-import { bindFeaturePopup } from './map/feature-popup-bind.js';
-import { mapLitTicketLayerDataMethods } from './map/map-lit-ticket-layer-data.js';
-import { mapLitTicketLayerUiMethods } from './map/map-lit-ticket-layer-ui.js';
->>>>>>> laraxot/dev
 
 const DEFAULT_TICKETS_JSON_URL = '/data/tickets.json';
 const DEFAULT_CENTER = [41.9028, 12.4964];
@@ -212,20 +201,14 @@ class MapLit extends LitElement {
         try {
             await this._initMap();
         } catch (error) {
-<<<<<<< HEAD
             console.error('[map-lit] Map init failed:', error);
-=======
->>>>>>> laraxot/dev
         }
     }
 
     async _initMap() {
         const container = this.renderRoot.querySelector('.geo-map-leaflet');
         if (!container) {
-<<<<<<< HEAD
             console.warn('[map-lit] .geo-map-leaflet container missing');
-=======
->>>>>>> laraxot/dev
             return;
         }
 
@@ -259,11 +242,8 @@ class MapLit extends LitElement {
 
         // Reference: direktvermarkter.js custom cluster group
         const clusterFactory = L.markerClusterGroup || (window.L && window.L.markerClusterGroup);
-<<<<<<< HEAD
         console.log('[map-lit] clusterFactory available:', typeof clusterFactory === 'function', L.MarkerClusterGroup);
         
-=======
->>>>>>> laraxot/dev
         if (typeof clusterFactory === 'function') {
             this._markersLayer = clusterFactory({
                 maxClusterRadius: (z) => (z < 12 ? 80 : 45),
@@ -327,19 +307,13 @@ class MapLit extends LitElement {
                     L.markerClusterGroup = (opts) => new L.MarkerClusterGroup(opts);
                 }
                 if (L.markerClusterGroup) {
-<<<<<<< HEAD
                     console.log('[map-lit] markerCluster ready after', i * 50, 'ms');
-=======
->>>>>>> laraxot/dev
                     return;
                 }
             }
             await new Promise(r => setTimeout(r, 50));
         }
-<<<<<<< HEAD
         console.warn('[map-lit] markerCluster not available after', maxWait * 50, 'ms');
-=======
->>>>>>> laraxot/dev
     }
 
     _setupMutationObserver() {
@@ -361,7 +335,6 @@ class MapLit extends LitElement {
             parent = parent.parentElement;
         }
 
-<<<<<<< HEAD
         document.addEventListener('shown.bs.tab', (e) => {
             if (!this._map) return;
             const target = String(e.target?.getAttribute?.('data-bs-target') || e.target?.getAttribute?.('href') || '');
@@ -376,35 +349,6 @@ class MapLit extends LitElement {
                 }, 80);
             }
         });
-=======
-        document.addEventListener('shown.bs.tab', (e) => this._handleBootstrapTabShown(e));
-    }
-
-    _handleBootstrapTabShown(e) {
-        if (!this._map) {
-            return;
-        }
-        const target = String(e.target?.getAttribute?.('data-bs-target') || e.target?.getAttribute?.('href') || '');
-        const isMapTab = target.includes('map') || target.includes('mappa') || target.includes('tab-mappa');
-        if (!isMapTab && this.offsetParent === null) {
-            return;
-        }
-        setTimeout(() => this._invalidateAfterTabShow(), 80);
-    }
-
-    _invalidateAfterTabShow() {
-        if (!this._map) {
-            return;
-        }
-        this._map.invalidateSize({ pan: false, animate: false });
-        if (!this._allFeatures?.length || !this._initialFitDone) {
-            return;
-        }
-        const features = this._resolveFilteredFeatures();
-        if (features.length) {
-            this._fitBoundsToMarkers(features);
-        }
->>>>>>> laraxot/dev
     }
 
     /**
@@ -483,7 +427,6 @@ class MapLit extends LitElement {
         return features.filter((f) => String((f.properties || {}).id ?? '') === id);
     }
 
-<<<<<<< HEAD
     _loadGeoJson() {
         // Use Lit property dataUrl (mapped from data-url attribute)
         const url = this.dataUrl || DEFAULT_TICKETS_JSON_URL;
@@ -1031,9 +974,6 @@ class MapLit extends LitElement {
         }, 80);
     }
 
-=======
-    // ticket layer methods → map/map-lit-ticket-layer.js
->>>>>>> laraxot/dev
     disconnectedCallback() {
         super.disconnectedCallback();
         if (this._onFiltersChanged) {
@@ -1049,11 +989,6 @@ class MapLit extends LitElement {
     }
 }
 
-<<<<<<< HEAD
-=======
-Object.assign(MapLit.prototype, mapLitTicketLayerDataMethods, mapLitTicketLayerUiMethods);
-
->>>>>>> laraxot/dev
 if (!customElements.get('map-lit')) {
     customElements.define('map-lit', MapLit);
 }

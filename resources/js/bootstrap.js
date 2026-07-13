@@ -35,11 +35,8 @@ var pub_res = '.';
 //require(pub_res+'/L.Control.Locate.min.js');
 //require(pub_res+'/opening_hours+deps.min.js');
 //var json=$.getJSON(base_url_lang + '/restaurant?responseType=geoJson').done(function(response){
-<<<<<<< HEAD
 //console.log('da bootstrap');
 //console.log(response);
-=======
->>>>>>> laraxot/dev
 //    var json=response;
 //    require(pub_res+'/xot-markers.js')(json);
 //    return json;

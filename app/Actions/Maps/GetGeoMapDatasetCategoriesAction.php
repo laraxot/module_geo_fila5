@@ -10,17 +10,13 @@ class GetGeoMapDatasetCategoriesAction
 {
     use QueueableAction;
 
-    public function __construct(
-        private readonly LoadGeoMapDatasetAction $loadGeoMapDatasetAction = new LoadGeoMapDatasetAction(),
-    ) {
-    }
 
     /**
      * @return list<string>
      */
     public function execute(string $path): array
     {
-        $features = $this->loadGeoMapDatasetAction->loadFeatures($path);
+        $features = app(LoadGeoMapDatasetAction::class)->loadFeatures($path);
         $categories = [];
 
         foreach ($features as $feature) {

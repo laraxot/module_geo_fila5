@@ -11,7 +11,6 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\Mapbox\GetAddressFromMapboxAction;
-<<<<<<< HEAD
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
@@ -59,48 +58,10 @@ it('throws exception for too long address', function (): void {
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressFromMapboxAction($client);
 
-=======
-use Modules\Geo\Datas\AddressData;
-use Modules\Geo\Tests\LightTestCase;
-
-uses(LightTestCase::class);
-// Laraxot — see module docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-
-beforeEach(function () {
-    $this->mockHandler = new MockHandler();
-    $handlerStack = HandlerStack::create($this->mockHandler);
-    $client = new Client(['handler' => $handlerStack]);
-    $this->action = new GetAddressFromMapboxAction($client);
-});
-
-it('throws exception when api key is not configured', function (): void {
-    config(['services.mapbox.access_token' => null]);
-
-    expect(fn () => $this->action->execute('Milano, Italia'))
-        ->toThrow(RuntimeException::class, 'Mapbox access token not configured');
-});
-
-it('throws exception for empty address', function (): void {
-    config(['services.mapbox.access_token' => 'test_key']);
-
-    expect(fn () => $this->action->execute(''))
-        ->toThrow(RuntimeException::class, 'Address cannot be empty');
-});
-
-it('throws exception for too long address', function (): void {
->>>>>>> laraxot/dev
     config(['services.mapbox.access_token' => 'test_key']);
 
     $longAddress = str_repeat('a', 1001);
 
-<<<<<<< HEAD
     try {
         $action->execute($longAddress);
 
@@ -151,38 +112,6 @@ it('returns address data for valid response', function (): void {
     config(['services.mapbox.access_token' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
-=======
-    expect(fn () => $this->action->execute($longAddress))
-        ->toThrow(RuntimeException::class, 'Address is too long');
-});
-
-it('throws exception for guzzle exception', function (): void {
-    config(['services.mapbox.access_token' => 'test_key']);
-
-    $this->mockHandler->append(new RequestException('Error', new Request('GET', 'http://test')));
-
-    $result = $this->action->execute('Milano, Italia');
-
-    expect($result)->toBeNull();
-});
-
-it('returns null when no features in response', function (): void {
-    config(['services.mapbox.access_token' => 'test_key']);
-
-    $this->mockHandler->append(new Response(200, [], json_encode([
-        'features' => [],
-    ])));
-
-    $result = $this->action->execute('NonExistentPlace');
-
-    expect($result)->toBeNull();
-});
-
-it('returns address data for valid response', function (): void {
-    config(['services.mapbox.access_token' => 'test_key']);
-
-    $this->mockHandler->append(new Response(200, [], json_encode([
->>>>>>> laraxot/dev
         'features' => [[
             'center' => [9.1900, 45.4642],
             'context' => [
@@ -196,7 +125,6 @@ it('returns address data for valid response', function (): void {
         ]],
     ])));
 
-<<<<<<< HEAD
     $result = $action->execute('Via Roma 1, Milano, Italia');
 
     Assert::assertInstanceOf(AddressData::class, $result);
@@ -227,26 +155,6 @@ it('handles address without house number', function (): void {
     config(['services.mapbox.access_token' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
-=======
-    $result = $this->action->execute('Via Roma 1, Milano, Italia');
-
-    expect($result)
-        ->toBeInstanceOf(AddressData::class)
-        ->and($result->latitude)->toBe(45.4642)
-        ->and($result->longitude)->toBe(9.1900)
-        ->and($result->country)->toBe('Italia')
-        ->and($result->city)->toBe('Milano')
-        ->and($result->postal_code)->toBe(20100)
-        ->and($result->street)->toBe('Via Roma')
-        ->and($result->street_number)->toBe('1')
-        ->and($result->province)->toBe('MI');
-});
-
-it('handles address without house number', function (): void {
-    config(['services.mapbox.access_token' => 'test_key']);
-
-    $this->mockHandler->append(new Response(200, [], json_encode([
->>>>>>> laraxot/dev
         'features' => [[
             'center' => [9.1900, 45.4642],
             'context' => [
@@ -257,7 +165,6 @@ it('handles address without house number', function (): void {
         ]],
     ])));
 
-<<<<<<< HEAD
     $result = $action->execute('Via Roma, Milano');
 
     Assert::assertInstanceOf(AddressData::class, $result);
@@ -265,12 +172,4 @@ it('handles address without house number', function (): void {
     Assert::assertSame('Via Roma', $result->street);
 
     Assert::assertSame('', $result->street_number);
-=======
-    $result = $this->action->execute('Via Roma, Milano');
-
-    expect($result)
-        ->toBeInstanceOf(AddressData::class)
-        ->and($result->street)->toBe('Via Roma')
-        ->and($result->street_number)->toBe('');
->>>>>>> laraxot/dev
 });

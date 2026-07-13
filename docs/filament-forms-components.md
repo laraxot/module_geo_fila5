@@ -105,12 +105,8 @@ LatitudeLongitudeInput::make('location')
     ->hiddenLabel()
     ->defaultCenter(41.9028, 12.4964)  // Roma
     ->defaultZoom(13)
-<<<<<<< HEAD
     ->mapHeight('340px')
     ->showMap(true),
-=======
-    ->mapHeight('340px'),
->>>>>>> laraxot/dev
 ```
 
 **Renderer Selection**:
@@ -127,10 +123,6 @@ LatitudeLongitudeInput::make('location')
 - `lit` è opt-in esplicito e usa un Web Component dedicato
 - Filament/PHP resta il layer di governo del field; il renderer JS cambia solo la UI
 - valori supportati: `blade`, `lit`
-<<<<<<< HEAD
-=======
-- la mappa è parte strutturale del componente: niente toggle `showMap()`
->>>>>>> laraxot/dev
 
 **Data Structure** (Livewire state):
 ```php

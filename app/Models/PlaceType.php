@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-<<<<<<< HEAD
 use Illuminate\Support\Carbon;
-=======
->>>>>>> laraxot/dev
 use Modules\Geo\Database\Factories\PlaceTypeFactory;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
@@ -25,19 +22,11 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  *
  * @method static PlaceTypeFactory factory($count = null, $state = [])
  *
-<<<<<<< HEAD
  * @property string      $id
  * @property string      $name
  * @property string|null $description
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
-=======
- * @property string                          $id
- * @property string                          $name
- * @property string|null                     $description
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
->>>>>>> laraxot/dev
  *
  * @method static Builder<static>|PlaceType whereCreatedAt($value)
  * @method static Builder<static>|PlaceType whereDescription($value)
@@ -49,11 +38,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  */
 class PlaceType extends BaseModel
 {
-<<<<<<< HEAD
     /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\PlaceTypeFactory> */
-=======
-    /** @use HasXotFactory<\Illuminate\Database\Eloquent\Factories\Factory<static>> */
->>>>>>> laraxot/dev
     use HasXotFactory;
 
     protected $fillable = [

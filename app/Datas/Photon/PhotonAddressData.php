@@ -14,11 +14,7 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 class PhotonAddressData extends Data
 {
     /**
-<<<<<<< HEAD
      * @param array<string, mixed> $coordinates
-=======
-     * @param array{latitude: float, longitude: float} $coordinates
->>>>>>> laraxot/dev
      */
     public function __construct(
         public ?string $country,
@@ -31,32 +27,19 @@ class PhotonAddressData extends Data
     }
 
     /**
-<<<<<<< HEAD
      * @param array{properties: array<string, mixed>, geometry: array{coordinates: array<float>}} $feature
-=======
-     * @param array<string, mixed> $feature
->>>>>>> laraxot/dev
      */
     public static function fromPhotonFeature(array $feature): self
     {
         if (! isset($feature['properties']) || ! is_array($feature['properties'])) {
             throw new \InvalidArgumentException('Properties mancanti nel feature');
         }
-<<<<<<< HEAD
         if (! isset($feature['geometry']['coordinates']) || ! is_array($feature['geometry']['coordinates'])) {
-=======
-        $geometry = $feature['geometry'] ?? null;
-        if (! is_array($geometry) || ! isset($geometry['coordinates']) || ! is_array($geometry['coordinates'])) {
->>>>>>> laraxot/dev
             throw new \InvalidArgumentException('Coordinate mancanti nel feature');
         }
 
         $properties = $feature['properties'];
-<<<<<<< HEAD
         $coordinates = $feature['geometry']['coordinates'];
-=======
-        $coordinates = $geometry['coordinates'];
->>>>>>> laraxot/dev
 
         if (! isset($coordinates[0], $coordinates[1])) {
             throw new \InvalidArgumentException('Coordinate non valide');

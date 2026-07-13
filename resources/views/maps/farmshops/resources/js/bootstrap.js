@@ -10,10 +10,7 @@ try {
     window.$ = window.jQuery = require('jquery');
     require('bootstrap');
 } catch (e) {
-<<<<<<< HEAD
     console.log(e);
-=======
->>>>>>> laraxot/dev
 }
 
 
@@ -33,8 +30,5 @@ let token = document.head.querySelector('meta[name="csrf-token"]');
 if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-<<<<<<< HEAD
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-=======
->>>>>>> laraxot/dev
 }

@@ -9,13 +9,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Database\Factories\ProvinceFactory;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
-=======
-use Modules\Geo\Database\Factories\ProvinceFactory;
->>>>>>> laraxot/dev
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
@@ -45,11 +41,7 @@ use Sushi\Sushi;
  */
 class Province extends BaseModel
 {
-<<<<<<< HEAD
     /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\ProvinceFactory> */
-=======
-    /** @use HasXotFactory<\Illuminate\Database\Eloquent\Factories\Factory<static>> */
->>>>>>> laraxot/dev
     use HasXotFactory;
     use Sushi;
 
@@ -60,7 +52,6 @@ class Province extends BaseModel
         'name' => 'string',
     ];
 
-<<<<<<< HEAD
     /**
      * @return array<int, array<string, mixed>>
      */
@@ -122,49 +113,26 @@ class Province extends BaseModel
     /**
      * @return BelongsTo<Region, $this>
      */
-=======
-    /** @return array<mixed> */
-    public function getRows(): array
-    {
-        $rows = Comune::select('regione->codice as region_id', 'provincia->codice as id', 'provincia->nome as name')
-            ->distinct()
-            ->orderBy('provincia->nome')
-            ->get();
-
-        return $rows->toArray();
-    }
-
-    /** @return BelongsTo<Region, $this> */
->>>>>>> laraxot/dev
     public function region(): BelongsTo
     {
         return $this->belongsTo(Region::class);
     }
 
-<<<<<<< HEAD
     /**
      * @return HasMany<Locality, $this>
      */
-=======
-    /** @return HasMany<Locality, $this> */
->>>>>>> laraxot/dev
     public function localities(): HasMany
     {
         return $this->hasMany(Locality::class);
     }
 
-<<<<<<< HEAD
     /**
      * @return array<string, string>
      */
-=======
-    /** @return array<mixed> */
->>>>>>> laraxot/dev
     public static function getOptions(Get $get): array
     {
         $region = $get('administrative_area_level_1') ?? $get('region');
 
-<<<<<<< HEAD
         $keys = [];
         $values = [];
 
@@ -174,12 +142,5 @@ class Province extends BaseModel
         }
 
         return array_combine($keys, $values) ?: [];
-=======
-        return self::where('region_id', $region)
-            ->orderBy('name')
-            ->get()
-            ->pluck('name', 'id')
-            ->toArray();
->>>>>>> laraxot/dev
     }
 }

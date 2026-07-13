@@ -7,14 +7,16 @@ namespace Modules\Geo\Actions\Geocoding;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
- * Ottiene suggerimenti per la ricerca di un indirizzo.
+ * Suggerimenti autocomplete indirizzo (stub).
+ *
+ * Sostituisce GeocodingService::getSuggestions().
  */
-class GetGeocodingSuggestionsAction
+final class GetGeocodingSuggestionsAction
 {
     use QueueableAction;
 
     /**
-     * @return array<int, array<string, mixed>>
+     * @return list<array<string, mixed>>
      */
     public function execute(string $query): array
     {

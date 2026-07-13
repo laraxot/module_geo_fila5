@@ -28,10 +28,7 @@ class GeoNamesCap extends BaseModel
 {
     // use Searchable;
 
-<<<<<<< HEAD
     /** @var string */
-=======
->>>>>>> laraxot/dev
     protected $table = 'geonames_cap';
 
     // protected $connection = 'geo';

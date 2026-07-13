@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Models;
 
-<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Builder;
-=======
->>>>>>> laraxot/dev
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
@@ -24,12 +21,9 @@ use Illuminate\Support\Facades\Cache;
  * @see docs/comune-unificazione-analisi.md Analisi dell'unificazione dei modelli
  * @see docs/geo-json-model.md Documentazione tecnica del modello base
  */
-<<<<<<< HEAD
 /**
  * @mixin Builder<*>
  */
-=======
->>>>>>> laraxot/dev
 class ComuneJson extends GeoJsonModel
 {
     /**
@@ -53,11 +47,6 @@ class ComuneJson extends GeoJsonModel
     #[\Override]
     public static function all(): Collection
     {
-<<<<<<< HEAD
-=======
-        $raw = static::loadData();
-
->>>>>>> laraxot/dev
         /** @var Collection<int, array{
          *     nome: string,
          *     codice: string,
@@ -67,11 +56,7 @@ class ComuneJson extends GeoJsonModel
          *     codiceCatastale: string,
          *     popolazione: int
          * }> $all */
-<<<<<<< HEAD
         $all = static::loadData();
-=======
-        $all = $raw;
->>>>>>> laraxot/dev
 
         return $all;
     }
@@ -166,11 +151,7 @@ class ComuneJson extends GeoJsonModel
      */
     public static function searchByName(string $name, int $limit = 0): Collection
     {
-<<<<<<< HEAD
         $name = mb_strtolower((string) $name);
-=======
-        $name = mb_strtolower($name);
->>>>>>> laraxot/dev
         $cacheKey = 'geo_search_'.md5($name).'_'.$limit;
 
         /** @var Collection<int, array{
@@ -184,11 +165,7 @@ class ComuneJson extends GeoJsonModel
          * }> $result */
         $result = Cache::remember($cacheKey, self::CACHE_TTL, static function () use ($name, $limit) {
             $results = static::all()
-<<<<<<< HEAD
                 ->filter(static fn (array $item): bool => str_contains(mb_strtolower(self::getComuneName($item)), $name))
-=======
-                ->filter(static fn (array $item): bool => str_contains(mb_strtolower($item['nome']), $name))
->>>>>>> laraxot/dev
                 ->sortBy('nome');
 
             return $limit > 0 ? $results->take($limit)->values() : $results->values();
@@ -222,11 +199,7 @@ class ComuneJson extends GeoJsonModel
          *     popolazione: int
          * }> $filtered */
         $filtered = static::all()
-<<<<<<< HEAD
             ->filter(static fn (array $item): bool => \in_array($cap, self::getCapList($item), true))
-=======
-            ->filter(static fn (array $item): bool => \in_array($cap, $item['cap'], true))
->>>>>>> laraxot/dev
             ->sortBy('nome')
             ->values();
 
@@ -234,7 +207,6 @@ class ComuneJson extends GeoJsonModel
     }
 
     /**
-<<<<<<< HEAD
      * @param array<string, mixed> $item
      */
     private static function getComuneName(array $item): string
@@ -261,8 +233,6 @@ class ComuneJson extends GeoJsonModel
     }
 
     /**
-=======
->>>>>>> laraxot/dev
      * Get all regions with their codes and names.
      *
      * @return Collection<string, string> [code => name]

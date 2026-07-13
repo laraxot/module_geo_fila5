@@ -9,8 +9,5 @@ try {
     require('opening_hours');
     require('bootstrap')
 } catch (e) {
-<<<<<<< HEAD
     console.log(e);
-=======
->>>>>>> laraxot/dev
 }

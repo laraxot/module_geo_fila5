@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\IPGeolocation;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use Modules\Geo\Datas\Location\IPLocationData;
 
 /**
  * Classe per ottenere la posizione da un indirizzo IP.
  */
-readonly class GetLocationFromIPAction
+class GetLocationFromIPAction
 {
-    public function __construct(
-        private FetchIPLocationAction $fetchIPLocationAction,
-    ) {
-    }
+    use QueueableAction;
+
 
     /**
      * Ottiene i dati di geolocalizzazione per un indirizzo IP.
@@ -25,6 +25,6 @@ readonly class GetLocationFromIPAction
      */
     public function execute(string $ip): ?IPLocationData
     {
-        return $this->fetchIPLocationAction->execute($ip);
+        return app(FetchIPLocationAction::class)->execute($ip);
     }
 }

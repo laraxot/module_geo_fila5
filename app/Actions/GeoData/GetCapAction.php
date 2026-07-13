@@ -19,10 +19,6 @@ class GetCapAction
 
     public const CACHE_TTL = 86400;
 
-    public function __construct(
-        private readonly LoadGeoDataAction $loader = new LoadGeoDataAction(),
-    ) {
-    }
 
     /**
      * @param string $provinceCode Codice della provincia
@@ -35,7 +31,7 @@ class GetCapAction
         /** @var string|null $result */
         $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode, $cityCode): null|string {
             /** @var array<string, mixed>|null $province */
-            $province = $this->loader->execute()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
+            $province = app(LoadGeoDataAction::class)->execute()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
                 ? $region['provinces']
                 : [])->firstWhere('code', $provinceCode);
 

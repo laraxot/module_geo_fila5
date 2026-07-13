@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use GuzzleHttp\Client;
-<<<<<<< HEAD
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -127,79 +126,6 @@ it('throws exception when no results found', function (): void {
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
 
-=======
-use Modules\Geo\Tests\LightTestCase;
-
-uses(LightTestCase::class);
-// Laraxot — see module docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
-use Modules\Geo\Actions\GoogleMaps\GetAddressByLatLngFromGoogleMapsAction;
-use Modules\Geo\Datas\LocationData;
-
-beforeEach(function () {
-    $mockHandler = new MockHandler();
-    $handlerStack = HandlerStack::create($mockHandler);
-    $client = new Client(['handler' => $handlerStack]);
-    $action = new GetAddressByLatLngFromGoogleMapsAction($this->client);
-});
-
-it('throws exception when api key is not configured', function (): void {
-    config(['services.google.maps_api_key' => null]);
-
-    expect(fn () => $action->execute(45.4642, 9.1900))
-        ->toThrow(RuntimeException::class, 'Google Maps API key not configured');
-});
-
-it('throws exception for invalid latitude below -90', function (): void {
-    config(['services.google.maps_api_key' => 'test_key']);
-
-    expect(fn () => $action->execute(-91.0, 9.1900))
-        ->toThrow(InvalidArgumentException::class, 'Invalid latitude');
-});
-
-it('throws exception for invalid latitude above 90', function (): void {
-    config(['services.google.maps_api_key' => 'test_key']);
-
-    expect(fn () => $action->execute(91.0, 9.1900))
-        ->toThrow(InvalidArgumentException::class, 'Invalid latitude');
-});
-
-it('throws exception for invalid longitude below -180', function (): void {
-    config(['services.google.maps_api_key' => 'test_key']);
-
-    expect(fn () => $action->execute(45.0, -181.0))
-        ->toThrow(InvalidArgumentException::class, 'Invalid longitude');
-});
-
-it('throws exception for invalid longitude above 180', function (): void {
-    config(['services.google.maps_api_key' => 'test_key']);
-
-    expect(fn () => $action->execute(45.0, 181.0))
-        ->toThrow(InvalidArgumentException::class, 'Invalid longitude');
-});
-
-it('throws exception for guzzle exception', function (): void {
-    config(['services.google.maps_api_key' => 'test_key']);
-
-    $mockHandler->append(new GuzzleHttp\Exception\RequestException('Error', new GuzzleHttp\Psr7\Request('GET', 'http://test')));
-
-    expect(fn () => $action->execute(45.4642, 9.1900))
-        ->toThrow(RuntimeException::class, 'Failed to get address from coordinates');
-});
-
-it('throws exception when no results found', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
@@ -207,7 +133,6 @@ it('throws exception when no results found', function (): void {
         'results' => [],
     ])));
 
-<<<<<<< HEAD
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected RuntimeException was not thrown');
@@ -222,13 +147,6 @@ it('throws exception for invalid response status', function (): void {
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
 
-=======
-    expect(fn () => $action->execute(45.4642, 9.1900))
-        ->toThrow(RuntimeException::class, 'No address found');
-});
-
-it('throws exception for invalid response status', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
@@ -236,7 +154,6 @@ it('throws exception for invalid response status', function (): void {
         'results' => [],
     ])));
 
-<<<<<<< HEAD
     try {
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected RuntimeException was not thrown');
@@ -251,13 +168,6 @@ it('returns location data for valid coordinates', function (): void {
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
 
-=======
-    expect(fn () => $action->execute(45.4642, 9.1900))
-        ->toThrow(RuntimeException::class, 'No address found');
-});
-
-it('returns location data for valid coordinates', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
@@ -275,7 +185,6 @@ it('returns location data for valid coordinates', function (): void {
 
     $result = $action->execute(45.4642, 9.1900);
 
-<<<<<<< HEAD
     Assert::assertInstanceOf(LocationData::class, $result);
     Assert::assertSame('Via Roma, Milano, MI, Italia', $result->address);
     Assert::assertSame(45.4642, $result->latitude);
@@ -288,16 +197,6 @@ it('handles boundary latitude values', function (): void {
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
 
-=======
-    expect($result)
-        ->toBeInstanceOf(LocationData::class)
-        ->and($result->address)->toBe('Via Roma, Milano, MI, Italia')
-        ->and($result->latitude)->toBe(45.4642)
-        ->and($result->longitude)->toBe(9.1900);
-});
-
-it('handles boundary latitude values', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
@@ -315,7 +214,6 @@ it('handles boundary latitude values', function (): void {
 
     $result = $action->execute(90.0, 0.0);
 
-<<<<<<< HEAD
     Assert::assertInstanceOf(LocationData::class, $result);
     Assert::assertSame(90.0, $result->latitude);
 });
@@ -326,14 +224,6 @@ it('handles boundary longitude values', function (): void {
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetAddressByLatLngFromGoogleMapsAction($client);
 
-=======
-    expect($result)
-        ->toBeInstanceOf(LocationData::class)
-        ->and($result->latitude)->toBe(90.0);
-});
-
-it('handles boundary longitude values', function (): void {
->>>>>>> laraxot/dev
     config(['services.google.maps_api_key' => 'test_key']);
 
     $mockHandler->append(new Response(200, [], json_encode([
@@ -351,12 +241,6 @@ it('handles boundary longitude values', function (): void {
 
     $result = $action->execute(0.0, 180.0);
 
-<<<<<<< HEAD
     Assert::assertInstanceOf(LocationData::class, $result);
     Assert::assertSame(180.0, $result->longitude);
-=======
-    expect($result)
-        ->toBeInstanceOf(LocationData::class)
-        ->and($result->longitude)->toBe(180.0);
->>>>>>> laraxot/dev
 });

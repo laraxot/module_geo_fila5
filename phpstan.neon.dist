@@ -1,5 +1,5 @@
 includes:
-    - ../../vendor/larastan/larastan/extension.neon
+    - ../../../vendor/larastan/larastan/extension.neon
 
 parameters:
     level: max
@@ -7,14 +7,7 @@ parameters:
         - .
     checkOctaneCompatibility: true
     checkModelProperties: true
-<<<<<<< HEAD
     excludePaths:
         - ./vendor/*
         - ./docs/*
         - ./tests/Unit/Traits/*
-=======
-    checkMissingIterableValueType: false
-    excludePaths:
-        - ./vendor/*
-        - ./docs/*
->>>>>>> laraxot/dev

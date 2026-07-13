@@ -32,7 +32,6 @@ export function scheduleClientReverseGeocode(ctx, lat, lng, source) {
 
     ctx._reverseGeocodeTimer = setTimeout(() => {
         ctx._reverseGeocodeTimer = null;
-<<<<<<< HEAD
         void (async () => {
             try {
                 const rev = await fetchNominatimReverse(lat, lng);
@@ -69,45 +68,6 @@ export function scheduleClientReverseGeocode(ctx, lat, lng, source) {
     }, REVERSE_DEBOUNCE_MS);
 }
 
-=======
-        void runClientReverseGeocode(ctx, lat, lng, source);
-    }, REVERSE_DEBOUNCE_MS);
-}
-
-async function runClientReverseGeocode(ctx, lat, lng, source) {
-    try {
-        const rev = await fetchNominatimReverse(lat, lng);
-        if (!rev) {
-            return;
-        }
-
-        ctx.state = {
-            ...(ctx.state || {}),
-            address: rev.display_name,
-            display_name: rev.display_name,
-            provider: 'nominatim',
-            raw: rev.raw,
-        };
-        ctx.requestUpdate?.();
-
-        ctx.dispatchEvent(new CustomEvent('coords-changed', {
-            detail: {
-                lat,
-                lng,
-                latitude: lat,
-                longitude: lng,
-                address: rev.display_name,
-                display_name: rev.display_name,
-                source: `${source}-reverse`,
-            },
-            bubbles: true,
-            composed: true,
-        }));
-    } catch (err) {
-    }
-}
-
->>>>>>> laraxot/dev
 /**
  * @param {Object} ctx - CoordinatePickerField instance (this)
  */

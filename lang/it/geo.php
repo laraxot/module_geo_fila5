@@ -2,24 +2,7 @@
 
 declare(strict_types=1);
 
-<<<<<<< HEAD
 return [
-=======
-// Geo translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
-// claude-audit static: ≥5% comment lines on files >100 LOC.
-// Canon: Modules/Geo/docs/wiki — domain i18n only.
-// File: lang/it/geo.php
-return [
-    // Laraxot — see module docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
->>>>>>> laraxot/dev
     'navigation' => [
         'name' => 'Geo',
         'group' => 'Mappe',
@@ -152,7 +135,6 @@ return [
             'label' => 'Elimina Geo',
         ],
     ],
-<<<<<<< HEAD
 
     // Coordinate Picker - Map Controls
     'coordinate-picker' => [
@@ -182,6 +164,4 @@ return [
         'no_results' => 'Nessun risultato',
         'coordinates_set' => 'Coordinate impostate',
     ],
-=======
->>>>>>> laraxot/dev
 ];

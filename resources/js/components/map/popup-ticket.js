@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-=======
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
->>>>>>> laraxot/dev
 /**
  * Popup marker mappa — card ricca (ispirazione farmshops.eu, palette Design Comuni / Fixcity).
  *
@@ -293,7 +267,6 @@ export function buildTicketPopupHtml(properties, ticketType, ticketStatus, detai
     `;
 }
 
-<<<<<<< HEAD
 export const popupTicketStylesText = `
     .leaflet-popup.popup-wrapper {
         margin-bottom: 12px;
@@ -688,6 +661,3 @@ export const popupTicketStylesText = `
         transform: translateY(-1px);
     }
 `;
-=======
-export { popupTicketStylesText } from './popup-ticket-styles.js';
->>>>>>> laraxot/dev

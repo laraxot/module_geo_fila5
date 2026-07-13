@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
->>>>>>> laraxot/dev
 import { test, expect } from '@playwright/test';
 
 /**

@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use Modules\Geo\Models\Place;
 
 /**
  * Action per aggiornare le coordinate di un luogo.
  */
-readonly class UpdateCoordinatesAction
+class UpdateCoordinatesAction
 {
-    public function __construct(
-        private GetCoordinatesAction $getCoordinates,
-    ) {
-    }
+    use QueueableAction;
+
 
     /**
      * Aggiorna le coordinate di un luogo usando il suo indirizzo.
@@ -27,7 +27,7 @@ readonly class UpdateCoordinatesAction
             throw new \RuntimeException('Place address is required');
         }
 
-        $location = $this->getCoordinates->execute($place->address->formatted_address);
+        $location = app(GetCoordinatesAction::class)->execute($place->address->formatted_address);
 
         if (! $location) {
             throw new \RuntimeException('Could not get coordinates for address: '.$place->address->formatted_address);

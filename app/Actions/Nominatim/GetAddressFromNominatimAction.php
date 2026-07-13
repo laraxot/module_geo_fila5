@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Nominatim;
 
+use Spatie\QueueableAction\QueueableAction;
+
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -14,6 +16,8 @@ use Modules\Geo\Datas\Geocoding\AddressData;
  */
 class GetAddressFromNominatimAction
 {
+    use QueueableAction;
+
     private const BASE_URL = 'https://nominatim.openstreetmap.org';
 
     /**
