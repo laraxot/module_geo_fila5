@@ -534,3 +534,4 @@ _base_ptvx_fila5_1.code-workspace
 _ptvx_fila5.code-workspace
 opencode.json
 gitmodules.ini
+audit-coverage/
