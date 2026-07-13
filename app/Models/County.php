@@ -27,22 +27,22 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property ProfileContract|null $updater
  *
  * @method static \Modules\Geo\Database\Factories\CountyFactory factory($count = null, $state = [])
- * @method static Builder<static>|County newModelQuery()
- * @method static Builder<static>|County newQuery()
- * @method static Builder<static>|County query()
+ * @method static Builder<static>|County                        newModelQuery()
+ * @method static Builder<static>|County                        newQuery()
+ * @method static Builder<static>|County                        query()
  *
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  *
  * @method static \Modules\Geo\Database\Factories\CountyFactory factory($count = null, $state = [])
- * @method static Builder<static>|County newModelQuery()
- * @method static Builder<static>|County newQuery()
- * @method static Builder<static>|County query()
+ * @method static Builder<static>|County                        newModelQuery()
+ * @method static Builder<static>|County                        newQuery()
+ * @method static Builder<static>|County                        query()
  *
- * @property string $id
- * @property string $county
+ * @property string      $id
+ * @property string      $county
  * @property string|null $county_code
- * @property int|null $state_id
+ * @property int|null    $state_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
