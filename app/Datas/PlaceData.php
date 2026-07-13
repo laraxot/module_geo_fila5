@@ -23,12 +23,12 @@ class PlaceData extends Data
     /**
      * @param array<string, string> $addressComponents
      * @param array<string, mixed>  $extraData
-<<<<<<< HEAD
-=======
+     *                                                 <<<<<<< HEAD
+     *                                                 =======
      *
      * @phpstan-param array<string, string> $addressComponents
      * @phpstan-param array<string, mixed> $extraData
->>>>>>> laraxot/dev
+     * >>>>>>> laraxot/dev
      */
     public function __construct(
         public readonly int $placeId,

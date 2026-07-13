@@ -18,11 +18,11 @@ class GeoJsonCollection extends ResourceCollection
 {
     /**
      * Undocumented variable.
-<<<<<<< HEAD
+     * <<<<<<< HEAD.
      *
      * @var string
-=======
->>>>>>> laraxot/dev
+     *             =======
+     *             >>>>>>> laraxot/dev
      */
     public $collects = GeoJsonResource::class;
 
