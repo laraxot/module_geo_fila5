@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Modules\Geo\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Model;
+=======
+>>>>>>> laraxot/dev
 use Modules\Geo\Models\Comune;
 
 /**
@@ -154,7 +157,11 @@ class ComuneFactory extends Factory
          * @param array<string, mixed> $attributes
          * @return array<string, mixed>
          */
+<<<<<<< HEAD
         return $this->state(function (array $attributes, ?Model $model = null) {
+=======
+        return $this->state(function (array $attributes, ?\Illuminate\Database\Eloquent\Model $model = null) {
+>>>>>>> laraxot/dev
             /** @var array<int, array{nome: string, provincia: string, cap: string}> $comuniLombardia */
             $comuniLombardia = [
                 ['nome' => 'Milano', 'provincia' => 'Milano', 'cap' => '20100'],
@@ -188,7 +195,11 @@ class ComuneFactory extends Factory
          * @param array<string, mixed> $attributes
          * @return array<string, mixed>
          */
+<<<<<<< HEAD
         return $this->state(function (array $attributes, ?Model $model = null) {
+=======
+        return $this->state(function (array $attributes, ?\Illuminate\Database\Eloquent\Model $model = null) {
+>>>>>>> laraxot/dev
             /** @var array<int, array{nome: string, provincia: string, cap: string}> $comuniEmiliaRomagna */
             $comuniEmiliaRomagna = [
                 ['nome' => 'Bologna', 'provincia' => 'Bologna', 'cap' => '40100'],

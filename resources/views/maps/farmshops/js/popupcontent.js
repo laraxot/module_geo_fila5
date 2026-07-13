@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+=======
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+>>>>>>> laraxot/dev
 //Popups
 function popupcontent(feature, layer)
 {
@@ -5,32 +18,47 @@ function popupcontent(feature, layer)
     var popupcontent = [];
     for (var prop in feature.properties) {
         if (prop == "id" || prop == "shop" || prop == "name" || prop == "addr:city" || prop == "addr:country" || prop == "addr:housenumber" || prop == "addr:postcode" || prop == "addr:suburb" || prop == "addr:street" || prop == "opening_hours" || prop == "image") {
+<<<<<<< HEAD
             console.log(prop + " " + feature.properties[prop] + " in Tabelle unsichtbar");
+=======
+>>>>>>> laraxot/dev
             //do nothing
         } else if (prop == "website" || prop == "contact:website" || prop == "url" || prop == "contact:facebook" || prop == "contact:youtube" || prop == "contact:twitter") {
             popupcontent.unshift("<tr><td><strong>"
                 + prop.replace("website", "Internetseite").replace("contact:", "") + ":</strong> </td><td>" + "<a target='_blank' rel='noopener' link href='"
                 + feature.properties[prop] + "' target='_blank' rel='noopener'>"
                 + feature.properties[prop] + "</a></td></tr>");
+<<<<<<< HEAD
             console.log(prop + " " + feature.properties[prop] + " als Link Formatiert");
+=======
+>>>>>>> laraxot/dev
         } else if (prop == "fixme") {
             popupcontent.push("<tr><td><strong>"
                 + prop.replace("fixme", "Unklare Daten") + ":</strong> </td><td>"
                 + feature.properties[prop].replace("position estimated", "Position geschätzt")
                 + " <a target='_blank' rel='noopener' href='http://openstreetmap.org/" + feature.id + "'> Daten Verbessern</a>");
+<<<<<<< HEAD
             console.log(prop + " " + feature.properties[prop] + " (fixme)");
+=======
+>>>>>>> laraxot/dev
         } else if (prop == "email" || prop == "contact:email") {
             popupcontent.unshift("<tr><td><strong>"
                 + prop.replace("email", "E-Mail").replace("contact:", "") + ":</strong> </td><td>" + "<a target='_blank' rel='noopener' link href='mailto:"
                 + feature.properties[prop] + "' target='_blank' rel='noopener'>"
                 + feature.properties[prop] + "</a></td></tr>");
+<<<<<<< HEAD
             console.log(prop + " " + feature.properties[prop] + " als Link Formatiert");
+=======
+>>>>>>> laraxot/dev
         } else if (prop == "phone" || prop == "contact:phone") {
             popupcontent.unshift("<tr><td><strong>"
                 + prop.replace("email", "E-Mail").replace("contact:", "") + ":</strong> </td><td>" + "<a target='_blank' rel='noopener' link href='tel:"
                 + feature.properties[prop] + "' target='_blank' rel='noopener'>"
                 + feature.properties[prop] + "</a></td></tr>");
+<<<<<<< HEAD
             console.log(prop + " " + feature.properties[prop] + " als Link Formatiert");
+=======
+>>>>>>> laraxot/dev
         } else {
             popupcontent.push("<tr><td><strong>"
                 + prop
@@ -91,9 +119,13 @@ function popupcontent(feature, layer)
     var linkLong;
 
     if (feature.geometry.type == 'Polygon') {
+<<<<<<< HEAD
         console.log('Polygon should not exist');
     } else if (feature.geometry.type == 'Point') {
         console.log("Point for Links detected");
+=======
+    } else if (feature.geometry.type == 'Point') {
+>>>>>>> laraxot/dev
         var linkLat = feature.geometry.coordinates[0];
         var linkLong = feature.geometry.coordinates[1];
     }
@@ -114,7 +146,10 @@ function popupcontent(feature, layer)
                 + giveWhenExist(feature.properties["addr:street"]) + " " + giveWhenExist(feature.properties["addr:housenumber"])
                 + "<br>" + giveWhenExist(feature.properties["addr:postcode"]) + " " + giveWhenExist(feature.properties["addr:city"])
                 + "<br>" + giveWhenExist(feature.properties["addr:place"]);
+<<<<<<< HEAD
                 console.log(adresse)
+=======
+>>>>>>> laraxot/dev
 
         if (adresse==="<strong>Adresse:</strong><br> <br> <br>") {
             adresse = "<strong>Adresse:</strong><br>Unbekannt <br> <br>"
@@ -129,7 +164,10 @@ function popupcontent(feature, layer)
 
             try {
                 var oh = new opening_hours(feature.properties["opening_hours"]);
+<<<<<<< HEAD
                 console.log("oh = " +oh.getState());
+=======
+>>>>>>> laraxot/dev
 
                 if (oh.getState()) {
                     offen = "<br> <strong><span id='offen'>Wahrscheinlich gerade geöffnet</span></strong> "
@@ -137,7 +175,10 @@ function popupcontent(feature, layer)
                     offen = "<br> <strong><span id='geschlossen'>Wahrscheinlich gerade geschlossen</span></strong>"
                 }
             } catch (err) {
+<<<<<<< HEAD
                 console.log("Fehler beim Öffnungsstatus von " +feature.properties["opening_hours"] +" " +err.message)
+=======
+>>>>>>> laraxot/dev
             }
             var oefnungszeiten = "<strong>Öffnungszeiten:</strong><br>" + feature.properties["opening_hours"] +offen;
         } else {

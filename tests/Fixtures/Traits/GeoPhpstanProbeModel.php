@@ -7,6 +7,7 @@ namespace Modules\Geo\Tests\Fixtures\Traits;
 use Modules\Geo\Models\BaseModel;
 
 /**
+<<<<<<< HEAD
  * @property int|string|null $id
  *                                    <<<<<<< HEAD
  *                                    <<<<<<< HEAD
@@ -17,6 +18,12 @@ use Modules\Geo\Models\BaseModel;
  *                                    =======
  * @property mixed|null      $address
  *                                    >>>>>>> 225c1bf (delete .claude-flow/)
+=======
+ * PHPStan probe model for Geo trait tests.
+ *
+ * @property int|string|null $id
+ * @property mixed|null      $address
+>>>>>>> laraxot/dev
  */
 abstract class GeoPhpstanProbeModel extends BaseModel
 {

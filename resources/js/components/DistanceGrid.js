@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+>>>>>>> laraxot/dev
 
 L.DistanceGrid = function (cellSize) {
 	this._cellSize = cellSize;

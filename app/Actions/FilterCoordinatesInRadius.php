@@ -6,12 +6,21 @@ namespace Modules\Geo\Actions;
 
 class FilterCoordinatesInRadius
 {
+<<<<<<< HEAD
     /**
      * @param array<mixed> $coordinateArray
      *
      * @return array<mixed>
      */
     // filtra Coordinate In Raggio
+=======
+    // filtra Coordinate In Raggio
+    /**
+     * @param array<string|int, array{latitude: string|null, longitude: string|null}> $coordinateArray
+     *
+     * @return array<string|int, array{latitude: string|null, longitude: string|null}>
+     */
+>>>>>>> laraxot/dev
     public function execute(float $latPartenza, float $lonPartenza, array $coordinateArray, int $raggio): array
     {
         $coordinateInRaggio = [];

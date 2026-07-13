@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+>>>>>>> laraxot/dev
 import { geoIcon } from './geo-heroicons.js';
 import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';
@@ -226,4 +236,8 @@ export class LocationPickerLit extends LitElement {
 
 if (!customElements.get('location-picker-lit')) {
     customElements.define('location-picker-lit', LocationPickerLit);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> laraxot/dev

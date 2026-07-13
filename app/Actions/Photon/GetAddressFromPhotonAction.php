@@ -9,8 +9,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\Photon\PhotonAddressData;
+<<<<<<< HEAD
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
+=======
+>>>>>>> laraxot/dev
 
 use function Safe\json_decode;
 
@@ -53,11 +56,19 @@ readonly class GetAddressFromPhotonAction
             $longitude = $photonData->coordinates['longitude'] ?? 0.0;
 
             return new AddressData(
+<<<<<<< HEAD
                 latitude: SafeFloatCastAction::cast($latitude),
                 longitude: SafeFloatCastAction::cast($longitude),
                 country: $photonData->country,
                 city: $photonData->city,
                 postal_code: SafeIntCastAction::cast($photonData->postcode ?: 0),
+=======
+                latitude: is_float($latitude) ? $latitude : (float) $latitude,
+                longitude: is_float($longitude) ? $longitude : (float) $longitude,
+                country: $photonData->country,
+                city: $photonData->city,
+                postal_code: (int) ($photonData->postcode ?: 0),
+>>>>>>> laraxot/dev
                 street: $photonData->street,
                 street_number: $photonData->housenumber,
             );

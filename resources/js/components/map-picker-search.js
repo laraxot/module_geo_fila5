@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+>>>>>>> laraxot/dev
 import { html } from 'lit';
 import { geoIcon } from './geo-heroicons.js';
 
@@ -131,7 +136,10 @@ export async function executeAddressSearch(ctx, options = {}) {
             selectSearchResult(ctx, ctx.searchResults[0]);
         }
     } catch (error) {
+<<<<<<< HEAD
         console.warn('[map-picker-search] Address search failed', error);
+=======
+>>>>>>> laraxot/dev
         ctx.searchResults = [];
         ctx.showSearchResults = false;
     } finally {

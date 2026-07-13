@@ -36,8 +36,14 @@ import{d as e,i as t,l as n,s as r,t as i,u as a}from"./leaflet-src-DZX-yZgw.js"
                                             ${o&&o.length>0?`<div class="geo-popup-gallery">${o.map(e=>`<img src="${e}" style="width:100%;height:auto;object-fit:cover;border-radius:4px;">`).join(``)}</div>`:``}
                                             ${s&&Object.entries(s).length>0?`<ul>${Object.entries(s).map(([e,t])=>`<li><strong>${e}</strong>: ${t}</li>`).join(``)}</ul>`:``}
                                         </div>
+<<<<<<< HEAD
                                     `;t.openPopup(),setTimeout(()=>{let e=t.getPopup();e&&e.setContent(c)},0)}).catch(e=>{console.error(`[geo-map-lit] Error loading detail data:`,e),t.bindPopup(`
                                         <div class="geo-popup error-popup">
                                             <strong>Errore</strong> - Dettagli non disponibili.
                                         </div>
                                     `,{maxWidth:260})})})}}),this._markersLayer.addLayer(this._geojsonLayer);let t=this._allFeatures.filter(e=>Array.isArray(e.geometry?.coordinates)&&e.geometry.coordinates.length===2).map(e=>[e.geometry.coordinates[1],e.geometry.coordinates[0],.5]);try{typeof u.default.heatLayer==`function`&&(this._heatLayer=u.default.heatLayer(t,{radius:25,blur:15,maxZoom:17,max:.8}))}catch{this._heatLayer=null}try{let e=this._geojsonLayer.getBounds();e&&e.isValid()&&this._map.fitBounds(e,{padding:[40,40],maxZoom:14})}catch(e){console.warn(`[geo-map-lit] fitBounds skipped:`,e.message)}this.dispatchEvent(new CustomEvent(`geo-map-loaded`,{detail:{count:this._allFeatures.length,types:[...new Set(this._allFeatures.map(e=>e.properties?.type).filter(Boolean))]},bubbles:!0,composed:!0}))}).catch(e=>console.error(`[geo-map-lit] Error loading GeoJSON:`,e))}filterByType(e){if(!this._markersLayer)return;this._markersLayer.clearLayers();let t=e?this._allMarkers.filter(t=>t.options.typeValue===e):this._allMarkers;this._markersLayer.addLayers(t)}disconnectedCallback(){super.disconnectedCallback(),this._mutationObserver?.disconnect(),this._map&&=(this._map.remove(),null),this.isFullscreen&&(document.documentElement.classList.remove(`geo-map-fullscreen-active`),document.body.style.overflow=this._previousBodyOverflow||``,document.documentElement.style.overflow=this._previousHtmlOverflow||``)}};customElements.get(`geo-map-lit`)||customElements.define(`geo-map-lit`,_);
+=======
+                                        <div class="geo-popup error-popup">
+                                            <strong>Errore</strong> - Dettagli non disponibili.
+                                        </div>
+>>>>>>> laraxot/dev

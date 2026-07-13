@@ -7,7 +7,10 @@ namespace Modules\Geo\Actions\Elevation;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\ElevationException;
 use Modules\Geo\Services\GoogleMapsService;
+<<<<<<< HEAD
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
+=======
+>>>>>>> laraxot/dev
 
 /**
  * Classe per ottenere l'elevazione di un punto geografico.
@@ -55,7 +58,11 @@ readonly class GetElevationAction
                 throw ElevationException::invalidResponse();
             }
 
+<<<<<<< HEAD
             return SafeFloatCastAction::cast($firstResult['elevation']);
+=======
+            return (float) $firstResult['elevation'];
+>>>>>>> laraxot/dev
         } catch (\Throwable $e) {
             if ($e instanceof ElevationException) {
                 throw $e;

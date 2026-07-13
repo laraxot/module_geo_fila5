@@ -8,9 +8,18 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\AddressData;
+<<<<<<< HEAD
 
 use function Safe\json_decode;
 
+=======
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
+
+use function Safe\json_decode;
+
+use Webmozart\Assert\Assert;
+
+>>>>>>> laraxot/dev
 /**
  * Action per ottenere l'indirizzo da coordinate tramite Bing Maps.
  *
@@ -93,6 +102,7 @@ readonly class GetAddressFromBingMapsAction
      */
     private function parseResponse(string $response): ?AddressData
     {
+<<<<<<< HEAD
         /** @var array{
          *     statusCode: int,
          *     resourceSets: array<array{
@@ -119,16 +129,68 @@ readonly class GetAddressFromBingMapsAction
         $resource = $data['resourceSets'][0]['resources'][0];
         $coordinates = $resource['point']['coordinates'];
         $address = $resource['address'];
+=======
+        $decoded = json_decode($response, true);
+        if (! \is_array($decoded)) {
+            return null;
+        }
+
+        /** @var array<string, mixed> $data */
+        $data = $decoded;
+
+        if (200 !== ($data['statusCode'] ?? null)) {
+            return null;
+        }
+
+        $resourceSets = $data['resourceSets'] ?? null;
+        if (! \is_array($resourceSets) || ! isset($resourceSets[0]) || ! \is_array($resourceSets[0])) {
+            return null;
+        }
+
+        $resources = $resourceSets[0]['resources'] ?? null;
+        if (! \is_array($resources) || ! isset($resources[0]) || ! \is_array($resources[0])) {
+            return null;
+        }
+
+        /** @var array<string, mixed> $resource */
+        $resource = $resources[0];
+
+        $point = $resource['point'] ?? null;
+        if (! \is_array($point)) {
+            return null;
+        }
+
+        $coordinates = $point['coordinates'] ?? null;
+        if (! \is_array($coordinates)) {
+            return null;
+        }
+
+        $address = $resource['address'] ?? null;
+        if (! \is_array($address)) {
+            return null;
+        }
+
+        Assert::isArray($address);
+>>>>>>> laraxot/dev
 
         return AddressData::from([
             'latitude' => (float) ($coordinates[0] ?? 0),
             'longitude' => (float) ($coordinates[1] ?? 0),
+<<<<<<< HEAD
             'country' => $address['countryRegion'] ?? 'Italia',
             'city' => $address['locality'] ?? '',
             'postal_code' => (int) ($address['postalCode'] ?? 0),
             'street' => $address['addressLine'] ?? '',
             'street_number' => '', // Bing Maps non fornisce direttamente il numero civico
             'province' => $address['adminDistrict'] ?? '',
+=======
+            'country' => SafeStringCastAction::cast($address['countryRegion'] ?? 'Italia'),
+            'city' => SafeStringCastAction::cast($address['locality'] ?? ''),
+            'postal_code' => (int) SafeStringCastAction::cast($address['postalCode'] ?? 0),
+            'street' => SafeStringCastAction::cast($address['addressLine'] ?? ''),
+            'street_number' => '',
+            'province' => SafeStringCastAction::cast($address['adminDistrict'] ?? ''),
+>>>>>>> laraxot/dev
         ]);
     }
 }

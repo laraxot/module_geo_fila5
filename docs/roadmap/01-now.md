@@ -1,5 +1,6 @@
 # Now (Module Geo)
 
+<<<<<<< HEAD
 ## Development
 - [x] Standardize all Geo-related Filament fields (CoordinatePicker, MapPicker, etc.) to extend XotBaseField and use separate Blade/JS.
 
@@ -9,5 +10,10 @@
     - Added **ResizeObserver** with delayed invalidation (350ms) for wizard step transitions.
     - Standardized icon rendering to **html templates** to resolve missing controls.
     - Implemented **_isProgrammaticUpdate** guard to prevent state sync loops.
+=======
+## Stabilization
+
+## Bugfixes
+>>>>>>> laraxot/dev
 
 ## Quality gates

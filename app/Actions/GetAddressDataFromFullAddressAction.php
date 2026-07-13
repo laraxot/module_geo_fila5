@@ -13,19 +13,35 @@ use Modules\Geo\Actions\Mapbox\GetAddressFromMapboxAction;
 use Modules\Geo\Actions\Nominatim\GetAddressFromNominatimAction;
 use Modules\Geo\Actions\OpenCage\GetAddressFromOpenCageAction;
 use Modules\Geo\Actions\Photon\GetAddressFromPhotonAction;
+<<<<<<< HEAD
 use Modules\Geo\Datas\Geocoding\AddressData;
+=======
+use Modules\Geo\Datas\AddressData;
+use Spatie\QueueableAction\QueueableAction;
+>>>>>>> laraxot/dev
 
 /**
  * Classe per ottenere i dati dell'indirizzo utilizzando diversi servizi di geocoding.
  */
 class GetAddressDataFromFullAddressAction
 {
+<<<<<<< HEAD
+=======
+    use QueueableAction;
+
+>>>>>>> laraxot/dev
     /** @var Collection<int, string> */
     public Collection $errors;
 
     public function __construct()
     {
+<<<<<<< HEAD
         $this->errors = new Collection();
+=======
+        /** @var Collection<int, string> $errors */
+        $errors = collect();
+        $this->errors = $errors;
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -39,6 +55,7 @@ class GetAddressDataFromFullAddressAction
      */
     public function execute(string $fullAddress): ?AddressData
     {
+<<<<<<< HEAD
         $this->errors = new Collection();
 
         // Catena di provider e ordine di default: stessi 7 provider, stesso
@@ -68,6 +85,25 @@ class GetAddressDataFromFullAddressAction
             $services = [$preferred => $preferredClass] + $services;
         }
 
+=======
+        /** @var Collection<int, string> $errors */
+        $errors = collect();
+        $this->errors = $errors;
+        $services = [
+            GetAddressFromGoogleMapsAction::class,
+            GetAddressFromPhotonAction::class,
+            GetAddressFromNominatimAction::class,
+            GetAddressFromBingMapsAction::class,
+            GetAddressFromHereMapsAction::class,
+            GetAddressFromMapboxAction::class,
+            // GetAddressFromMapTilerAction::class,
+            GetAddressFromOpenCageAction::class,
+            // GetAddressFromOpenStreetMapAction::class,
+            // GetAddressFromPeliasAction::class,
+            // GetAddressFromTomTomAction::class,
+        ];
+
+>>>>>>> laraxot/dev
         foreach ($services as $service) {
             // PHPStan knows these classes exist since they're hardcoded
             if (! class_exists($service)) {
@@ -94,9 +130,13 @@ class GetAddressDataFromFullAddressAction
         return null;
     }
 
+<<<<<<< HEAD
     /**
      * @return Collection<int, string>
      */
+=======
+    /** @return Collection<int, string> */
+>>>>>>> laraxot/dev
     public function getErrors(): Collection
     {
         return $this->errors;

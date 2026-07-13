@@ -1,9 +1,20 @@
+<<<<<<< HEAD
+=======
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+>>>>>>> laraxot/dev
 $t = loadMarkers(base_url_lang + '/restaurant?responseType=geoJson');
 var $ris = null;
 
 function loadMarkers($url)
 {
+<<<<<<< HEAD
     console.log('loadMarkers :' + $url);
+=======
+>>>>>>> laraxot/dev
     $('#map_progress').show();
     $.getJSON($url).done(function (response) {
         var $next = response.links.next;
@@ -21,10 +32,14 @@ function loadMarkers($url)
             loadMarkers($next);
             //$ris.features=$.merge($tmp.features,$ris.features);
             //$ris.features.concat($tmp.features);
+<<<<<<< HEAD
             //console.log($ris);
         } else {
             //console.log('FINIOOOOO');
             //console.log($ris);
+=======
+        } else {
+>>>>>>> laraxot/dev
             $('#map_progress').hide()
             xotMarkers($ris);
         }
@@ -112,8 +127,11 @@ function xotMarkers($data)
 
     //Marker
 
+<<<<<<< HEAD
     //console.log('marker');
     //console.log($data);
+=======
+>>>>>>> laraxot/dev
 
     var geojson1 = L.geoJson($data, {
         pointToLayer: function pointToLayer(feature, latlng)
@@ -139,14 +157,20 @@ function xotMarkers($data)
         onEachFeature: function onEachFeature(feature, layer)
         {
             layer.once("click", function () {
+<<<<<<< HEAD
                 //console.log(feature);
+=======
+>>>>>>> laraxot/dev
                 /*
                 $.getJSON('../data/' + feature.properties.id + '/details.json', function (data) {
                     layer.bindPopup(popupcontent(data, layer)).openPopup();
                 });
                 */
                 var $json_url = base_url + feature.properties.url + '?format=json';
+<<<<<<< HEAD
                 //console.log($json_url);
+=======
+>>>>>>> laraxot/dev
                 $.getJSON($json_url, function (data) {
                     layer.bindPopup(popupcontent(data, layer)).openPopup();
                 });
@@ -196,11 +220,17 @@ function xotMarkers($data)
                             restaurantInCluster = true;
                             break;
                         default:
+<<<<<<< HEAD
                             console.log('don know [' + $p + '] ');
                             break;
                     }
 
                     //console.log("f " +farmsInCluster +" m " +marketsInCluster +" a " +machinesInCluster)
+=======
+                            break;
+                    }
+
+>>>>>>> laraxot/dev
                 }
 
                 function farmsAreInCluster(farmsInCluster)
@@ -258,7 +288,10 @@ function xotMarkers($data)
 
                 return returnWert;
             }
+<<<<<<< HEAD
             // console.log("markerS: " +markers)
+=======
+>>>>>>> laraxot/dev
             var html = '<div class="circle"><strong>' + markerTypen(markers) + '</strong></div>';
             return L.divIcon({ html: html, className: 'test', iconSize: L.point(80, 80) });
         },
@@ -271,7 +304,10 @@ function xotMarkers($data)
 
     markers.addLayer(geojson1);
     map.addLayer(markers);
+<<<<<<< HEAD
     //console.log(lastUpdate);
+=======
+>>>>>>> laraxot/dev
 
     var sidebar = L.control.sidebar('sidebar').addTo(map);
 
@@ -313,4 +349,8 @@ function xotMarkers($data)
         }
     }).addTo(map);
 
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> laraxot/dev

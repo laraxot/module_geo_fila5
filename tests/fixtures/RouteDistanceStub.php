@@ -13,12 +13,21 @@ use Modules\Geo\Datas\LocationData;
 final class RouteDistanceStub implements CalculateDistanceActionContract
 {
     /**
+<<<<<<< HEAD
      * @param  array<string, int>  $distances
+=======
+     * @param array<string, int> $distances
+>>>>>>> laraxot/dev
      */
     public function __construct(
         private int $defaultMeters = 1000,
         private array $distances = [],
+<<<<<<< HEAD
     ) {}
+=======
+    ) {
+    }
+>>>>>>> laraxot/dev
 
     public function execute(LocationData $origin, LocationData $destination): array
     {

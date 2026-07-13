@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Modules\Geo\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Model;
+=======
+>>>>>>> laraxot/dev
 use Modules\Geo\Models\Province;
 use Modules\Geo\Models\Region;
 
@@ -161,7 +164,11 @@ class ProvinceFactory extends Factory
         return $this->state(
             /** @param array<string, mixed> $attributes */
             /** @return array<string, mixed> */
+<<<<<<< HEAD
             function (array $attributes, ?Model $model = null): array {
+=======
+            function (array $attributes, ?\Illuminate\Database\Eloquent\Model $model = null): array {
+>>>>>>> laraxot/dev
                 $provinceNord = [
                     'Milano',
                     'Torino',
@@ -232,7 +239,11 @@ class ProvinceFactory extends Factory
         return $this->state(
             /** @param array<string, mixed> $attributes */
             /** @return array<string, mixed> */
+<<<<<<< HEAD
             function (array $attributes, ?Model $model = null): array {
+=======
+            function (array $attributes, ?\Illuminate\Database\Eloquent\Model $model = null): array {
+>>>>>>> laraxot/dev
                 $provinceCentro = [
                     'Roma',
                     'Firenze',
@@ -284,7 +295,11 @@ class ProvinceFactory extends Factory
         return $this->state(
             /** @param array<string, mixed> $attributes */
             /** @return array<string, mixed> */
+<<<<<<< HEAD
             function (array $attributes, ?Model $model = null): array {
+=======
+            function (array $attributes, ?\Illuminate\Database\Eloquent\Model $model = null): array {
+>>>>>>> laraxot/dev
                 $provinceSud = [
                     'Napoli',
                     'Salerno',

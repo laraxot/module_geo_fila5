@@ -16,7 +16,11 @@ class GoogleMapResultData extends Data
      * @param DataCollection<int, GoogleMapAddressComponentData> $address_components Componenti dell'indirizzo
      * @param GoogleMapGeometryData                              $geometry           Dati geometrici
      * @param string                                             $formatted_address  Indirizzo formattato
+<<<<<<< HEAD
      * @param array<string>                                      $types              Tipi di indirizzo
+=======
+     * @param array<int, string>                                 $types              Tipi di indirizzo
+>>>>>>> laraxot/dev
      */
     public function __construct(
         public readonly DataCollection $address_components,

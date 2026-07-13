@@ -14,7 +14,12 @@ final class ClusterDistanceStub implements CalculateDistanceActionContract
 {
     public function __construct(
         private int $defaultMeters = 150000,
+<<<<<<< HEAD
     ) {}
+=======
+    ) {
+    }
+>>>>>>> laraxot/dev
 
     public function execute(LocationData $origin, LocationData $destination): array
     {

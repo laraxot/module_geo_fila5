@@ -18,6 +18,16 @@ trait EnsuresGeoDatabaseSchema
             return;
         }
 
+<<<<<<< HEAD
+=======
+        // Laraxot module file — see docs/wiki for domain contract.
+        // Laraxot module file — see docs/wiki for domain contract.
+        // Laraxot module file — see docs/wiki for domain contract.
+        // Laraxot module file — see docs/wiki for domain contract.
+        // Laraxot module file — see docs/wiki for domain contract.
+        // Laraxot module file — see docs/wiki for domain contract.
+        // Laraxot module file — see docs/wiki for domain contract.
+>>>>>>> laraxot/dev
         $schema = Schema::connection('geo');
 
         if (! $schema->hasTable('states')) {

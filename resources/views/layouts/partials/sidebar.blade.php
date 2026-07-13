@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+=======
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+@php
+// Geo Blade view — see Modules/Geo/docs/wiki.
+@endphp
+
+>>>>>>> laraxot/dev
 <?php
 
 declare(strict_types=1);
@@ -18,6 +37,21 @@ declare(strict_types=1);
                 </li>
                 <li>
                     <a href="https://github.com/CodeforKarlsruhe/direktvermarkter" role="tab" target="_blank" rel="noopener">
+<<<<<<< HEAD
+=======
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+>>>>>>> laraxot/dev
                         <img width="20px" style="padding-top: 8px;" margin-top="5px" src="img/github.svg" alt="Github" title="Repository auf Github.com">
                     </a>
                 </li>

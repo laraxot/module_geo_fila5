@@ -14,7 +14,12 @@ final class FetchIPLocationThrowingStub extends FetchIPLocationAction
 {
     public function __construct(
         private readonly \RuntimeException $exception,
+<<<<<<< HEAD
     ) {}
+=======
+    ) {
+    }
+>>>>>>> laraxot/dev
 
     public function execute(string $ip): IPLocationData
     {

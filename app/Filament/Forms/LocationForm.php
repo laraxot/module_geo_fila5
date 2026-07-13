@@ -47,12 +47,26 @@ class LocationForm
                 ->label('geo::fields.province.label')
                 ->placeholder('geo::fields.province.placeholder')
                 ->options(function (Get $get): array {
+<<<<<<< HEAD
                     $region = $get('region');
                     if (! is_string($region) || ! filled($region)) {
                         return [];
                     }
 
                     return ComuneJson::getProvincesByRegion($region)->toArray();
+=======
+                    if (! filled($get('region'))) {
+                        return [];
+                    }
+
+                    $options = [];
+                    foreach (ComuneJson::byRegion((string) $get('region')) as $row) {
+                        /* @var array{provincia: array{codice: string, nome: string}} $row */
+                        $options[$row['provincia']['codice']] = $row['provincia']['nome'];
+                    }
+
+                    return $options;
+>>>>>>> laraxot/dev
                 })
                 ->searchable()
                 ->required()
@@ -63,13 +77,21 @@ class LocationForm
                 ->label('geo::fields.city.label')
                 ->placeholder('geo::fields.city.placeholder')
                 ->options(function (Get $get): array {
+<<<<<<< HEAD
                     $province = $get('province');
                     if (! is_string($province) || ! filled($province)) {
+=======
+                    if (! filled($get('province'))) {
+>>>>>>> laraxot/dev
                         return [];
                     }
 
                     /** @var Collection<int, array{cap: array<int, string>, nome: string}> $cities */
+<<<<<<< HEAD
                     $cities = ComuneJson::byProvince($province);
+=======
+                    $cities = ComuneJson::byProvince((string) $get('province'));
+>>>>>>> laraxot/dev
 
                     return $cities->pluck('nome', 'nome')->toArray();
                 })
@@ -82,14 +104,22 @@ class LocationForm
                 ->label('geo::fields.cap.label')
                 ->placeholder('geo::fields.cap.placeholder')
                 ->options(function (Get $get): array {
+<<<<<<< HEAD
                     $province = $get('province');
                     $city = $get('city');
                     if (! is_string($province) || ! filled($province) || ! is_string($city) || ! filled($city)) {
+=======
+                    if (! filled($get('province')) || ! filled($get('city'))) {
+>>>>>>> laraxot/dev
                         return [];
                     }
 
                     /** @var Collection<int, array{cap: array<int, string>, nome: string}> $cities */
+<<<<<<< HEAD
                     $cities = ComuneJson::byProvince($province)->where('nome', $city);
+=======
+                    $cities = ComuneJson::byProvince((string) $get('province'))->where('nome', (string) $get('city'));
+>>>>>>> laraxot/dev
 
                     if ($cities->isEmpty()) {
                         return [];

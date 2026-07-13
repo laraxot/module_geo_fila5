@@ -10,6 +10,7 @@ use Modules\Geo\Database\Factories\CountyFactory;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
+<<<<<<< HEAD
  * Suddivisione tipo “county” (contesto USA / geonames), non il comune italiano.
  *
  * @property string               $id
@@ -26,6 +27,44 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|County newModelQuery()
  * @method static Builder<static>|County newQuery()
  * @method static Builder<static>|County query()
+=======
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
+ *
+ * @method static Builder<static>|County newModelQuery()
+ * @method static Builder<static>|County newQuery()
+ * @method static Builder<static>|County query()
+ *
+ * @property ProfileContract|null $deleter
+ *
+ * @method static CountyFactory factory($count = null, $state = [])
+ *
+ * @mixin \Eloquent
+ *
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
+ *
+ * @method static \Modules\Geo\Database\Factories\CountyFactory factory($count = null, $state = [])
+ * @method static Builder<static>|County                        newModelQuery()
+ * @method static Builder<static>|County                        newQuery()
+ * @method static Builder<static>|County                        query()
+ *
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
+ *
+ * @method static \Modules\Geo\Database\Factories\CountyFactory factory($count = null, $state = [])
+ * @method static Builder<static>|County                        newModelQuery()
+ * @method static Builder<static>|County                        newQuery()
+ * @method static Builder<static>|County                        query()
+ *
+ * @property string      $id
+ * @property string      $county
+ * @property string|null $county_code
+ * @property int|null    $state_id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ *
+>>>>>>> laraxot/dev
  * @method static Builder<static>|County whereCounty($value)
  * @method static Builder<static>|County whereCountyCode($value)
  * @method static Builder<static>|County whereCreatedAt($value)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: Geo Quality Checks
+=======
+name: Activity Quality Checks
+>>>>>>> laraxot/dev
 
 on:
   push:
@@ -6,13 +10,21 @@ on:
       - develop
       - main
     paths:
+<<<<<<< HEAD
       - 'laravel/Modules/Geo/**'
+=======
+      - 'laravel/Modules/Activity/**'
+>>>>>>> laraxot/dev
   pull_request:
     branches:
       - develop
       - main
     paths:
+<<<<<<< HEAD
       - 'laravel/Modules/Geo/**'
+=======
+      - 'laravel/Modules/Activity/**'
+>>>>>>> laraxot/dev
 
 jobs:
   quality:
@@ -20,7 +32,11 @@ jobs:
     environment: Testing
     
     steps:
+<<<<<<< HEAD
       - uses: actions/checkout@v5
+=======
+      - uses: actions/checkout@v4
+>>>>>>> laraxot/dev
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -38,13 +54,21 @@ jobs:
       - name: Run PHPStan
         working-directory: laravel
         run: |
+<<<<<<< HEAD
           ./vendor/bin/phpstan analyse Modules/Geo --level=10 --memory-limit=-1 || true
+=======
+          ./vendor/bin/phpstan analyse Modules/Activity --level=10 --memory-limit=-1 || true
+>>>>>>> laraxot/dev
 
       - name: Run PHPMD
         working-directory: laravel
         run: |
           if [ -f phpmd.phar ]; then
+<<<<<<< HEAD
             php phpmd.phar Modules/Geo text cleancode,codesize,design,naming,unusedcode || true
+=======
+            php phpmd.phar Modules/Activity text cleancode,codesize,design,naming,unusedcode || true
+>>>>>>> laraxot/dev
           else
             echo "PHPMD not found, skipping..."
           fi
@@ -52,14 +76,25 @@ jobs:
       - name: Run Pint
         working-directory: laravel
         run: |
+<<<<<<< HEAD
           ./vendor/bin/pint Modules/Geo || true
+=======
+          ./vendor/bin/pint Modules/Activity || true
+>>>>>>> laraxot/dev
 
       - name: Run PHPInsights
         working-directory: laravel
         run: |
           if [ -f vendor/bin/phpinsights ]; then
+<<<<<<< HEAD
             ./vendor/bin/phpinsights analyse Modules/Geo --format=table --no-interaction || true
           else
             echo "PHPInsights not found, skipping..."
           fi
 
+=======
+            ./vendor/bin/phpinsights analyse Modules/Activity --format=table --no-interaction || true
+          else
+            echo "PHPInsights not found, skipping..."
+          fi
+>>>>>>> laraxot/dev

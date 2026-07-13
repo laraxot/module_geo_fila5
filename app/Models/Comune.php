@@ -7,6 +7,10 @@ namespace Modules\Geo\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Modules\Geo\Database\Factories\ComuneFactory;
+<<<<<<< HEAD
+=======
+use Modules\Geo\Models\Traits\HasPlaceTrait;
+>>>>>>> laraxot/dev
 use Modules\Tenant\Models\Traits\SushiToJson;
 use Modules\Xot\Contracts\ProfileContract;
 
@@ -81,6 +85,10 @@ use Modules\Xot\Contracts\ProfileContract;
  */
 class Comune extends BaseModel
 {
+<<<<<<< HEAD
+=======
+    use HasPlaceTrait;
+>>>>>>> laraxot/dev
     use SushiToJson;
 
     public string $jsonDirectory = '';
@@ -127,9 +135,13 @@ class Comune extends BaseModel
         return module_path('Geo', 'resources/json/comuni.json');
     }
 
+<<<<<<< HEAD
     /**
      * @return array<int, array<string, mixed>>
      */
+=======
+    /** @return array<int, array<string, mixed>> */
+>>>>>>> laraxot/dev
     public function getRows(): array
     {
         return $this->getSushiRows();
@@ -138,6 +150,7 @@ class Comune extends BaseModel
     /**
      * Get all regions.
      *
+<<<<<<< HEAD
      * @return Collection<int, array<array-key, mixed>>
      */
     public static function getRegioni(): Collection
@@ -160,11 +173,24 @@ class Comune extends BaseModel
             ->values();
 
         return $result;
+=======
+     * @return Collection<int, string>
+     */
+    public static function getRegioni(): Collection
+    {
+        /* @phpstan-ignore return.type */
+        return static::all()
+            ->pluck('regione')
+            ->unique()
+            ->sort()
+            ->values();
+>>>>>>> laraxot/dev
     }
 
     /**
      * Get all provinces for a region.
      *
+<<<<<<< HEAD
      * @return Collection<int, array<array-key, mixed>>
      */
     public static function getProvinceByRegione(string $regione): Collection
@@ -187,6 +213,18 @@ class Comune extends BaseModel
             ->values();
 
         return $result;
+=======
+     * @return Collection<int, string>
+     */
+    public static function getProvinceByRegione(string $regione): Collection
+    {
+        /* @phpstan-ignore return.type */
+        return static::where('regione', $regione)
+            ->pluck('provincia')
+            ->unique()
+            ->sort()
+            ->values();
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -196,10 +234,15 @@ class Comune extends BaseModel
      */
     public static function getComuniByProvincia(string $provincia): Collection
     {
+<<<<<<< HEAD
         /** @var Collection<int, static> $comuni */
         $comuni = static::where('provincia', $provincia)->orderBy('nome')->get();
 
         return $comuni;
+=======
+        /* @phpstan-ignore return.type */
+        return static::where('provincia', $provincia)->orderBy('nome')->get();
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -211,11 +254,17 @@ class Comune extends BaseModel
      */
     public static function findByNome(string $nome): ?self
     {
+<<<<<<< HEAD
         /** @var static|null $comune */
         $comune = static::all()
             ->first(fn (self $item): bool => strtolower($item->nome ?? '') === strtolower($nome));
 
         return $comune;
+=======
+        /* @phpstan-ignore return.type */
+        return static::all()
+            ->first(fn ($comune) => strtolower($comune->nome ?? '') === strtolower($nome));
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -227,21 +276,31 @@ class Comune extends BaseModel
      */
     public static function findByCap(string $cap): Collection
     {
+<<<<<<< HEAD
         /** @var Collection<int, static> $comuni */
         $comuni = static::where('cap', 'like', "%{$cap}%")->get();
 
         return $comuni;
+=======
+        /* @phpstan-ignore return.type */
+        return static::where('cap', 'like', "%{$cap}%")->get();
+>>>>>>> laraxot/dev
     }
 
     /**
      * Find a city by ID.
      *
+<<<<<<< HEAD
      * @return array<string, mixed>|null
+=======
+     * @return array{id: int, nome: string, provincia: string, regione: string, cap: string, codice_catastale: string, popolazione: int, altitudine: int, superficie: float, lat: float, lng: float, zona_altimetrica: string}|null
+>>>>>>> laraxot/dev
      */
     public static function findComune(int $id): ?array
     {
         $comune = static::query()->where('id', $id)->first();
 
+<<<<<<< HEAD
         if (! $comune instanceof self) {
             return null;
         }
@@ -257,6 +316,10 @@ class Comune extends BaseModel
         }
 
         return $data;
+=======
+        /* @phpstan-ignore return.type */
+        return $comune ? $comune->toArray() : null;
+>>>>>>> laraxot/dev
     }
 
     /**

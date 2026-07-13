@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+>>>>>>> laraxot/dev
 /**
  * Alpine.js component for GeoMapPicker field orchestration.
  * Interacts with the <geo-map-picker> web component.

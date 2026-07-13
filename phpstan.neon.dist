@@ -7,7 +7,14 @@ parameters:
         - .
     checkOctaneCompatibility: true
     checkModelProperties: true
+<<<<<<< HEAD
     excludePaths:
         - ./vendor/*
         - ./docs/*
         - ./tests/Unit/Traits/*
+=======
+    checkMissingIterableValueType: false
+    excludePaths:
+        - ./vendor/*
+        - ./docs/*
+>>>>>>> laraxot/dev

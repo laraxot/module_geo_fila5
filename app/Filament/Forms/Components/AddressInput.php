@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
+<<<<<<< HEAD
 use Filament\Forms\Components\Field;
+=======
+use Modules\Xot\Filament\Forms\Components\XotBaseField;
+>>>>>>> laraxot/dev
 
 /**
  * Address input field with geolocation button.
@@ -26,7 +30,11 @@ use Filament\Forms\Components\Field;
  *
  * @see Modules/Geo/resources/views/filament/forms/components/address-input.blade.php
  */
+<<<<<<< HEAD
 class AddressInput extends Field
+=======
+class AddressInput extends XotBaseField
+>>>>>>> laraxot/dev
 {
     protected string $view = 'geo::filament.forms.components.address-input';
 

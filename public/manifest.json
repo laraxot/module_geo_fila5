@@ -11,6 +11,35 @@
     "file": "assets/marker-icon.png",
     "src": "../../node_modules/leaflet/dist/images/marker-icon.png"
   },
+<<<<<<< HEAD
+=======
+  "_leaflet-src.css": {
+    "file": "assets/leaflet-src.css",
+    "src": "_leaflet-src.css"
+  },
+  "_leaflet-src.js": {
+    "file": "assets/leaflet-src.js",
+    "name": "leaflet-src",
+    "css": [
+      "assets/leaflet-src.css"
+    ],
+    "assets": [
+      "assets/layers.png",
+      "assets/layers-2x.png",
+      "assets/marker-icon.png"
+    ]
+  },
+  "_map-picker-marker-config.js": {
+    "file": "assets/map-picker-marker-config.js",
+    "name": "map-picker-marker-config",
+    "imports": [
+      "_leaflet-src.js"
+    ],
+    "assets": [
+      "assets/map-picker-marker-fallback.svg"
+    ]
+  },
+>>>>>>> laraxot/dev
   "resources/css/app.css": {
     "file": "assets/app.js",
     "name": "app",
@@ -22,6 +51,7 @@
     "name": "coordinate-picker-lit",
     "src": "resources/js/components/coordinate-picker-lit.js",
     "isEntry": true,
+<<<<<<< HEAD
     "css": [
       "assets/coordinate-picker-lit.css"
     ],
@@ -30,5 +60,34 @@
       "assets/layers-2x.png",
       "assets/marker-icon.png"
     ]
+=======
+    "imports": [
+      "_leaflet-src.js"
+    ]
+  },
+  "resources/js/components/geopoint-picker-lit.js": {
+    "file": "assets/geopoint-picker-lit.js",
+    "name": "geopoint-picker-lit",
+    "src": "resources/js/components/geopoint-picker-lit.js",
+    "isEntry": true,
+    "imports": [
+      "_leaflet-src.js",
+      "_map-picker-marker-config.js"
+    ]
+  },
+  "resources/js/components/map-picker-lit.js": {
+    "file": "assets/map-picker-lit.js",
+    "name": "map-picker-lit",
+    "src": "resources/js/components/map-picker-lit.js",
+    "isEntry": true,
+    "imports": [
+      "_leaflet-src.js",
+      "_map-picker-marker-config.js"
+    ]
+  },
+  "resources/svg/map-picker-marker-fallback.svg": {
+    "file": "assets/map-picker-marker-fallback.svg",
+    "src": "resources/svg/map-picker-marker-fallback.svg"
+>>>>>>> laraxot/dev
   }
 }

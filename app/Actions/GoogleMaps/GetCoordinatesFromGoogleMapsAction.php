@@ -31,8 +31,12 @@ readonly class GetCoordinatesFromGoogleMapsAction
     /**
      * Ottiene le coordinate da un indirizzo.
      *
+<<<<<<< HEAD
      * @throws \InvalidArgumentException Se i dati di input non sono validi
      * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
+=======
+     * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
+>>>>>>> laraxot/dev
      */
     public function execute(string $address): LocationData
     {
@@ -55,7 +59,11 @@ readonly class GetCoordinatesFromGoogleMapsAction
     /**
      * Valida i dati di input.
      *
+<<<<<<< HEAD
      * @throws \InvalidArgumentException Se i dati non sono validi
+=======
+     * @throws \RuntimeException Se la chiave API non è configurata
+>>>>>>> laraxot/dev
      */
     private function validateInput(string $address): void
     {
@@ -89,6 +97,7 @@ readonly class GetCoordinatesFromGoogleMapsAction
      */
     private function parseResponse(string $response, string $address): LocationData
     {
+<<<<<<< HEAD
         /** @var array{
          *     results: array<array{
          *         geometry: array{
@@ -112,6 +121,39 @@ readonly class GetCoordinatesFromGoogleMapsAction
             address: $address,
             latitude: $location['lat'],
             longitude: $location['lng'],
+=======
+        $decoded = json_decode($response, true);
+        if (! \is_array($decoded)) {
+            throw new \RuntimeException('No coordinates found for address');
+        }
+
+        /** @var array<string, mixed> $data */
+        $data = $decoded;
+
+        if ('OK' !== ($data['status'] ?? null)) {
+            throw new \RuntimeException('No coordinates found for address');
+        }
+
+        $results = $data['results'] ?? null;
+        if (! \is_array($results) || ! isset($results[0]) || ! \is_array($results[0])) {
+            throw new \RuntimeException('No coordinates found for address');
+        }
+
+        $geometry = $results[0]['geometry'] ?? null;
+        if (! \is_array($geometry)) {
+            throw new \RuntimeException('No coordinates found for address');
+        }
+
+        $location = $geometry['location'] ?? null;
+        if (! \is_array($location)) {
+            throw new \RuntimeException('No coordinates found for address');
+        }
+
+        return new LocationData(
+            address: $address,
+            latitude: (float) ($location['lat'] ?? 0),
+            longitude: (float) ($location['lng'] ?? 0),
+>>>>>>> laraxot/dev
         );
     }
 }

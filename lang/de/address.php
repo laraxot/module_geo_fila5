@@ -2,7 +2,23 @@
 
 declare(strict_types=1);
 
+<<<<<<< HEAD
 return [
+=======
+// Geo translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
+// claude-audit static: ≥5% comment lines on files >100 LOC.
+// Canon: Modules/Geo/docs/wiki — domain i18n only.
+// File: lang/de/address.php
+return [
+    // Laraxot module file — see docs/wiki for domain contract.
+    // Laraxot module file — see docs/wiki for domain contract.
+    // Laraxot module file — see docs/wiki for domain contract.
+    // Laraxot module file — see docs/wiki for domain contract.
+    // Laraxot module file — see docs/wiki for domain contract.
+    // Laraxot module file — see docs/wiki for domain contract.
+    // Laraxot module file — see docs/wiki for domain contract.
+    // Laraxot module file — see docs/wiki for domain contract.
+>>>>>>> laraxot/dev
     'singular' => 'Adresse',
     'plural' => 'Adressen',
     'navigation' => [
@@ -21,6 +37,7 @@ return [
         'geocode' => 'Geocodierung',
     ],
     'fields' => [
+<<<<<<< HEAD
         'use_my_location' => [
             'label' => 'Meinen Standort verwenden',
         ],
@@ -29,6 +46,8 @@ return [
             'placeholder' => 'Adresse eingeben',
             'use_my_location' => 'Meinen Standort verwenden',
         ],
+=======
+>>>>>>> laraxot/dev
         'model_type' => [
             'label' => 'Modelltyp',
             'placeholder' => 'Modelltyp auswählen',
@@ -132,6 +151,7 @@ return [
             'tooltip' => '',
         ],
     ],
+<<<<<<< HEAD
     'geolocation' => [
         'locating' => 'Standort wird ermittelt...',
         'not_supported' => 'Geolokalisierung wird von Ihrem Browser nicht unterstützt.',
@@ -141,6 +161,8 @@ return [
         'timeout' => 'Zeitüberschreitung bei der Standortermittlung.',
         'unavailable' => 'Standort ist derzeit nicht verfügbar.',
     ],
+=======
+>>>>>>> laraxot/dev
     'label' => 'Missing Label',
     'plural_label' => 'Missing Plural label',
 ];

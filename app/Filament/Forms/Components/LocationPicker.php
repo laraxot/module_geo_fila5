@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
+<<<<<<< HEAD
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
@@ -24,4 +25,11 @@ class LocationPicker extends XotBaseField
         parent::setUp();
         $this->setUpCoordinatePicker();
     }
+=======
+/**
+ * LocationPicker - Location selection on map.
+ */
+class LocationPicker extends XotBaseCoordinateField
+{
+>>>>>>> laraxot/dev
 }

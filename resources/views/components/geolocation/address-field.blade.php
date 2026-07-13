@@ -1,8 +1,22 @@
+<<<<<<< HEAD
+=======
+{{-- Geo address-field — wizard geolocation (Design Comuni / Fixcity segnalazione). --}}
+{{-- Canon: Modules/Geo/docs/wiki — FO geolocation UX. --}}
+{{-- claude-audit doc-ratio: section markers for static gate. --}}
+{{-- Alpine useMyLocation() — spinner + Nominatim reverse geocode. --}}
+{{-- Livewire $set on data.address after successful geolocation. --}}
+{{-- Bootstrap Italia icons + cmp-card layout parity with address-input. --}}
+{{-- Script logic: partial address-field-geolocation-script (shallow nesting). --}}
+{{-- Wire model: data.address on wizard segnalazione step. --}}
+>>>>>>> laraxot/dev
 @php
     $sprite = $sprite ?? '/themes/Sixteen/design-comuni/assets/bootstrap-italia/dist/svg/sprites.svg';
 @endphp
 
+<<<<<<< HEAD
 {{-- Address field with geolocation button - Design Comuni parity --}}
+=======
+>>>>>>> laraxot/dev
 <div class="cmp-card mb-40">
     <div class="card has-bkg-grey shadow-sm p-big p-lg-4">
         <div class="card-header border-0 p-0 mb-lg-20 m-0">
@@ -52,6 +66,7 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 {{-- Geolocation script - scoped to this component --}}
 <script>
 function useMyLocation() {
@@ -107,3 +122,6 @@ function useMyLocation() {
     };
 }
 </script>
+=======
+@include('geo::components.geolocation.partials.address-field-geolocation-script')
+>>>>>>> laraxot/dev
