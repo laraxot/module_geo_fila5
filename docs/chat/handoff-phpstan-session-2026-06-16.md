@@ -6,7 +6,7 @@
 1. Scanned all 34 Laravel modules with random-order strategy (swarm approach)
 2. Found 2 modules with PHPStan errors
 3. Fixed all errors by implementing contracts + improving type casting
-4. Documented session in `docs/wiki/summaries/phpstan-session-2026-06-16-complete.md`
+4. Documented session in `docs/wiki/summaries/phpstan-session-complete.md`
 
 **Modules Fixed:**
 - **IndennitaCondizioniLavoro:** Implemented `DateRangeFieldsContract` + `EnteMatrFieldsContract` (9 errors → 0)
@@ -27,7 +27,7 @@
 
 ### If modifying a module:
 1. Run: `./vendor/bin/phpstan analyse Modules/<Name> --level=max`
-2. If errors appear, consult the pattern doc: `docs/wiki/summaries/phpstan-session-2026-06-16-complete.md`
+2. If errors appear, consult the pattern doc: `docs/wiki/summaries/phpstan-session-complete.md`
 
 ### Known Issues to Watch:
 - Sigma: needs memory flag (parallel workers issue)

@@ -318,7 +318,7 @@ discussions:
 
 **Total Operations:** 101
 
-[2026-05-19 10:40:00 UTC] [CREATE] `docs/chat/2026-05-19-agent-edit-discipline-confronto.md` — confronto obbligatorio tra agenti (anchor `#124`); `llm-wiki.txt` §10 Inter-Agent Collaboration reso esplicito (lettura chat ad avvio task + scrittura dopo decisioni condivise); commento `gh` su #124.
+[2026-05-19 10:40:00 UTC] [CREATE] `docs/chat/agent-edit-discipline-confronto.md` — confronto obbligatorio tra agenti (anchor `#124`); `llm-wiki.txt` §10 Inter-Agent Collaboration reso esplicito (lettura chat ad avvio task + scrittura dopo decisioni condivise); commento `gh` su #124.
 
 **Total Operations:** 102
 
