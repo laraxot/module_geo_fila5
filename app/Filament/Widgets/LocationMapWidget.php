@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-use Filament\Widgets\Widget;
+use Modules\Xot\Filament\Widgets\XotBaseWidget;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
@@ -25,7 +25,7 @@ use Modules\Geo\Models\Place;
  *
  * DISABILITATO per compatibilità con Filament 4
  */
-class LocationMapWidget extends Widget
+class LocationMapWidget extends XotBaseWidget
 {
     protected const CACHE_TTL = 3600;
 
