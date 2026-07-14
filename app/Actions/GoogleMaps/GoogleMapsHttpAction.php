@@ -46,8 +46,8 @@ class GoogleMapsHttpAction
     }
 
     /**
-     * @param  array<string>  $origins
-     * @param  array<string>  $destinations
+     * @param array<string> $origins
+     * @param array<string> $destinations
      *
      * @throws GoogleMapsApiException
      *
@@ -98,7 +98,7 @@ class GoogleMapsHttpAction
     }
 
     /**
-     * @param  array<string, mixed>  $params
+     * @param array<string, mixed> $params
      *
      * @return array<string, mixed>
      */
@@ -109,7 +109,7 @@ class GoogleMapsHttpAction
         if ($useCache && config('geo.cache.enabled')) {
             /** @var array<string, mixed>|null $cached */
             $cached = Cache::get($cacheKey);
-            if ($cached !== null) {
+            if (null !== $cached) {
                 return $cached;
             }
         }
@@ -168,7 +168,7 @@ class GoogleMapsHttpAction
     }
 
     /**
-     * @param  array<string, mixed>  $params
+     * @param array<string, mixed> $params
      */
     private function getCacheKey(string $method, string $url, array $params): string
     {

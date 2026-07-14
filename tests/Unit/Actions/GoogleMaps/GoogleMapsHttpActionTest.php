@@ -18,7 +18,7 @@ it('can be resolved from container', function (): void {
 
 it('exposes elevation entrypoint', function (): void {
     $reflection = new \ReflectionClass(GoogleMapsHttpAction::class);
-    Assert::assertTrue($reflection->hasMethod("executeElevation"));
-    Assert::assertTrue($reflection->hasMethod("executeReverseGeocode"));
-    Assert::assertTrue($reflection->hasMethod("executeDistanceMatrix"));
+    Assert::assertTrue($reflection->hasMethod('executeElevation'));
+    Assert::assertTrue($reflection->hasMethod('executeReverseGeocode'));
+    Assert::assertTrue($reflection->hasMethod('executeDistanceMatrix'));
 });

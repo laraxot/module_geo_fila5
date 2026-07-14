@@ -10,7 +10,6 @@ class CheckGeoDataIntegrityAction
 {
     use QueueableAction;
 
-
     /**
      * @param array<string, mixed> $data
      */

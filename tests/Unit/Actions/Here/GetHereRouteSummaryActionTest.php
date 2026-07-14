@@ -17,5 +17,5 @@ it('can be resolved from container', function (): void {
 });
 
 it('exposes execute method', function (): void {
-    Assert::assertTrue((new \ReflectionClass(GetHereRouteSummaryAction::class))->hasMethod("execute"));
+    Assert::assertTrue((new \ReflectionClass(GetHereRouteSummaryAction::class))->hasMethod('execute'));
 });

@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\GoogleMaps;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\RouteData;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per ottimizzare un percorso utilizzando l'API di Google Maps.
