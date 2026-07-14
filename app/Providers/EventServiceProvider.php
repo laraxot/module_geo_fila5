@@ -19,11 +19,8 @@ class EventServiceProvider extends XotBaseEventServiceProvider
 
     /**
      * Indicates if events should be discovered.
-     * <<<<<<< HEAD.
      *
      * @var bool
-     *           =======
-     *           >>>>>>> laraxot/dev
      */
     protected static $shouldDiscoverEvents = true;
 

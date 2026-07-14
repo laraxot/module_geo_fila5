@@ -13,12 +13,8 @@ class ListLocations extends XotBaseListRecords
     protected static string $resource = LocationResource::class;
 
     /**
-     * <<<<<<< HEAD.
      *
      * @return array<int, mixed>
-     *                                =======
-     * @return array<int, TextColumn>
-     *                                >>>>>>> laraxot/dev
      */
     public function getTableComumns(): array
     {
