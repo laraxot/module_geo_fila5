@@ -6,7 +6,7 @@ namespace Modules\Geo\Filament\Widgets;
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Filament\Widgets\TableWidget as BaseWidget;
+use Modules\Xot\Filament\Widgets\XotBaseTableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Geo\Models\Location;
 
