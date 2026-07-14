@@ -24,7 +24,6 @@ abstract class GeoJsonModel
      * Restituisce tutti i dati come collection.
      */
     /**
-     *
      * @return Collection<int, array<string, mixed>>
      */
     public static function all(): Collection
