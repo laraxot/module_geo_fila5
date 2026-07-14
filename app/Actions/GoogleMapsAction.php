@@ -39,6 +39,7 @@ class GoogleMapsAction
 
     /**
      * @param array<string, mixed> $params
+     *
      * @return array<string, mixed>
      */
     private function makeRequest(string $method, string $url, array $params = [], bool $useCache = true): array

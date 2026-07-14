@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Mapbox;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
@@ -13,6 +11,8 @@ use Modules\Geo\Datas\Geocoding\AddressData;
 
 use function Safe\json_decode;
 use function Safe\preg_match;
+
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per ottenere l'indirizzo e le coordinate tramite Mapbox.

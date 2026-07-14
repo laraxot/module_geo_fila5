@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\IPGeolocation;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\Location\IPLocationData;
 
 use function Safe\json_decode;
+
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per ottenere informazioni di geolocalizzazione da un indirizzo IP.

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Here;
 
-use Spatie\QueueableAction\QueueableAction;
-
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -13,6 +11,7 @@ use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\HereMap\HereMapResponseData;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
+use Spatie\QueueableAction\QueueableAction;
 
 class GetAddressFromHereMapsAction
 {

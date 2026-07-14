@@ -19,7 +19,6 @@ class GetRegionsAction
 
     public const CACHE_TTL = 86400;
 
-
     /**
      * @return Collection<int, array{name: string, code: string}>
      */
