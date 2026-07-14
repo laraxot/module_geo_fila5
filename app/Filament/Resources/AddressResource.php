@@ -35,11 +35,6 @@ class AddressResource extends XotBaseResource
 
     /**
      * @return array<string, Component>
-     *                                  <<<<<<< HEAD
-     *                                  =======
-     *
-     * @phpstan-return array<string, Component>
-     * >>>>>>> laraxot/dev
      */
     #[\Override]
     public static function getFormSchema(): array
@@ -99,14 +94,8 @@ class AddressResource extends XotBaseResource
     }
 
     /**
-     * <<<<<<< HEAD.
      *
      * @return array<string, mixed>
-     *                                  =======
-     * @return array<string, Component>
-     *
-     * @phpstan-return array<string, Component>
-     * >>>>>>> laraxot/dev
      */
     public static function getSearchStep(): array
     {

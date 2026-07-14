@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-use Filament\Widgets\Widget;
+use Modules\Xot\Filament\Widgets\XotBaseWidget;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
 use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
@@ -25,9 +25,8 @@ use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
  *     stats: array{total: int, points: int, zones: int, categories: int}
  * }
  */
-final class GeoMapWidget extends Widget
+final class GeoMapWidget extends XotBaseWidget
 {
-    protected string $view = 'geo::filament.widgets.geo-map-widget';
 
     protected int|string|array $columnSpan = 'full';
 
