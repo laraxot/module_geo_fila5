@@ -7,9 +7,9 @@ namespace Modules\Geo\Models\Traits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 // --- models ---
+use Modules\Geo\Actions\Distance\BuildHaversineSqlAction;
+use Modules\Geo\Actions\Distance\CalculateGeoDistanceAction;
 use Modules\Geo\Datas\GeoData;
-// ---- services --
-use Modules\Geo\Actions\GeoAction;
 
 /**
  * Modules\Geo\Models\Traits\GeoTrait.
@@ -56,7 +56,15 @@ trait GeoTrait
 
     public function distance(?float $lat = null, ?float $lng = null): ?float
     {
-        return (float) GeoAction::distance((float) $this->latitude, (float) $this->longitude, $lat, $lng, '');
+        $distance = app(CalculateGeoDistanceAction::class)->execute(
+            (float) $this->latitude,
+            (float) $this->longitude,
+            $lat,
+            $lng,
+            '',
+        );
+
+        return $distance !== null ? (float) $distance : null;
     }
 
     public function distanceCustomField(
@@ -66,13 +74,15 @@ trait GeoTrait
         ?float $lng = null,
         ?string $unit = '',
     ): ?float {
-        return (float) GeoAction::distance(
+        $distance = app(CalculateGeoDistanceAction::class)->execute(
             (float) $this->{$lat_field},
             (float) $this->{$lng_field},
             $lat,
             $lng,
             $unit,
         );
+
+        return $distance !== null ? (float) $distance : null;
     }
 
     // ---- Scopes ----
@@ -81,7 +91,7 @@ trait GeoTrait
     {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
-            $haversine = GeoAction::haversine($lat, $lng);
+            $haversine = app(BuildHaversineSqlAction::class)->execute($lat, $lng);
 
             // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');
@@ -100,7 +110,7 @@ trait GeoTrait
     ): Builder {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
-            $haversine = GeoAction::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
+            $haversine = app(BuildHaversineSqlAction::class)->execute($lat, $lng, $lat_field, $lng_field);
 
             // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');
