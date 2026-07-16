@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Forms\Components;
 
-use Filament\Forms\Components\Field;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\On;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
-class CoordinatePicker extends Field
+class CoordinatePicker extends XotBaseField
 {
     public ?string $latitudeColumn = 'latitude';
 
@@ -101,7 +101,7 @@ class CoordinatePicker extends Field
     }
 
     /**
-     * @param array<string, mixed> $input
+     * @param  array<string, mixed>  $input
      */
     protected function mutateState(array $input): void
     {
@@ -110,7 +110,7 @@ class CoordinatePicker extends Field
     }
 
     /**
-     * @param array<string, mixed> $coords
+     * @param  array<string, mixed>  $coords
      */
     #[On('coords-changed')]
     public function handleCoordsChanged(array $coords): void
@@ -149,7 +149,7 @@ class CoordinatePicker extends Field
             }
 
             $displayName = $data['display_name'] ?? null;
-            if (! is_string($displayName) || '' === trim($displayName)) {
+            if (! is_string($displayName) || trim($displayName) === '') {
                 return null;
             }
 
@@ -165,8 +165,7 @@ class CoordinatePicker extends Field
     }
 
     /**
-     * @param array<mixed> $data
-     *
+     * @param  array<mixed>  $data
      * @return array<string, float|null>
      */
     public static function extractCoordinates(array $data, string $fieldName = 'coordinates', string $latitudeColumn = 'latitude', string $longitudeColumn = 'longitude'): array
