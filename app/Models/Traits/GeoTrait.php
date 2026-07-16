@@ -14,8 +14,8 @@ use Modules\Geo\Datas\GeoData;
 /**
  * Modules\Geo\Models\Traits\GeoTrait.
  *
- * @property float $latitude
- * @property float $longitude
+ * @property float  $latitude
+ * @property float  $longitude
  * @property string $country.
  * @property string $country.
  * @property string $administrative_area_level_2.
@@ -64,7 +64,7 @@ trait GeoTrait
             '',
         );
 
-        return $distance !== null ? (float) $distance : null;
+        return null !== $distance ? (float) $distance : null;
     }
 
     public function distanceCustomField(
@@ -82,7 +82,7 @@ trait GeoTrait
             $unit,
         );
 
-        return $distance !== null ? (float) $distance : null;
+        return null !== $distance ? (float) $distance : null;
     }
 
     // ---- Scopes ----
@@ -149,7 +149,7 @@ trait GeoTrait
 
     public function getAddress(): string
     {
-        if ($this->country === '') {
+        if ('' === $this->country) {
             $this->country = 'Italia';
         }
 
@@ -173,7 +173,7 @@ trait GeoTrait
             return (float) $value;
         }
         $address = $this->address;
-        if ($address === null) {
+        if (null === $address) {
             return null;
         }
         if (is_string($address) && isJson($address)) {
@@ -181,7 +181,7 @@ trait GeoTrait
             $latlng = $geo->latlng;
             $lat = is_float($latlng['lat'] ?? null) || is_int($latlng['lat'] ?? null) ? (float) ($latlng['lat']) : null;
             $lng = is_float($latlng['lng'] ?? null) || is_int($latlng['lng'] ?? null) ? (float) ($latlng['lng']) : null;
-            if ($lat !== null && $lng !== null) {
+            if (null !== $lat && null !== $lng) {
                 $this->update([
                     'latitude' => $lat,
                     'longitude' => $lng,
@@ -262,7 +262,8 @@ trait GeoTrait
     }
 
     /**
-     * @param  mixed  $value
+     * @param mixed $value
+     *
      * @return bool|mixed|string
      */
     /*
@@ -296,7 +297,7 @@ trait GeoTrait
      */
     public function getFullAddressAttribute(?string $value): ?string
     {
-        if ($this->address === null) {
+        if (null === $this->address) {
             return null;
         }
         if (is_string($this->address) && isJson($this->address)) {

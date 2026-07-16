@@ -14,7 +14,7 @@ use Modules\Geo\Traits\HasAddresses;
  * @internal PHPStan probes — tests/ excluded from scan
  *
  * @property int|string|null $id
- * @property mixed|null $address
+ * @property mixed|null      $address
  */
 abstract class GeoPhpstanProbeModel extends BaseModel
 {
