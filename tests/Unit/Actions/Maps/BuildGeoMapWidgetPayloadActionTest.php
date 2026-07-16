@@ -25,12 +25,13 @@ test('build geo map widget payload action returns widget data contract', functio
     $place->setRelation('placeType', $placeType);
     $place->formatted_address = 'Via Roma 1, Milano';
 
-    $action = new class(new Collection([$place])) extends BuildGeoMapWidgetPayloadAction
-    {
+    $action = new class(new Collection([$place])) extends BuildGeoMapWidgetPayloadAction {
         /**
-         * @param  Collection<int, Place>  $places
+         * @param Collection<int, Place> $places
          */
-        public function __construct(private readonly Collection $places) {}
+        public function __construct(private readonly Collection $places)
+        {
+        }
 
         /**
          * @return Collection<int, Place>
