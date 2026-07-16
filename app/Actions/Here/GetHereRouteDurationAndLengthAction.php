@@ -13,8 +13,7 @@ class GetHereRouteDurationAndLengthAction
 
     public function __construct(
         private readonly HereClient $hereClient = new HereClient(),
-    ) {
-    }
+    ) {}
 
     /**
      * @return array<string, mixed>|null

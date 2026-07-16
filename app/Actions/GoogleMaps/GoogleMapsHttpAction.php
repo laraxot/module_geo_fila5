@@ -28,9 +28,9 @@ class GoogleMapsHttpAction
     private const ELEVATION_URL = 'https://maps.googleapis.com/maps/api/elevation/json';
 
     /**
-     * @throws GoogleMapsApiException
-     *
      * @return array<string, mixed>
+     *
+     * @throws GoogleMapsApiException
      */
     public function executeReverseGeocode(float $latitude, float $longitude): array
     {
@@ -46,12 +46,11 @@ class GoogleMapsHttpAction
     }
 
     /**
-     * @param array<string> $origins
-     * @param array<string> $destinations
+     * @param  array<string>  $origins
+     * @param  array<string>  $destinations
+     * @return array<string, mixed>
      *
      * @throws GoogleMapsApiException
-     *
-     * @return array<string, mixed>
      */
     public function executeDistanceMatrix(array $origins, array $destinations): array
     {
@@ -69,9 +68,9 @@ class GoogleMapsHttpAction
     }
 
     /**
-     * @throws GoogleMapsApiException
-     *
      * @return array<string, mixed>
+     *
+     * @throws GoogleMapsApiException
      */
     public function executeElevation(float $latitude, float $longitude): array
     {
@@ -98,8 +97,7 @@ class GoogleMapsHttpAction
     }
 
     /**
-     * @param array<string, mixed> $params
-     *
+     * @param  array<string, mixed>  $params
      * @return array<string, mixed>
      */
     private function makeRequest(string $method, string $url, array $params = [], bool $useCache = true): array
@@ -109,7 +107,7 @@ class GoogleMapsHttpAction
         if ($useCache && config('geo.cache.enabled')) {
             /** @var array<string, mixed>|null $cached */
             $cached = Cache::get($cacheKey);
-            if (null !== $cached) {
+            if ($cached !== null) {
                 return $cached;
             }
         }
@@ -168,7 +166,7 @@ class GoogleMapsHttpAction
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      */
     private function getCacheKey(string $method, string $url, array $params): string
     {
