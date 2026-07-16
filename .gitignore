@@ -160,7 +160,6 @@ laravel
 public_html
 lang/lang/
 _docs/
-_docs/
 
 # Second brain: no-docs-archive (wiki) — non tracciare albero legacy docs/archive/
 **/docs/archive/
@@ -178,3 +177,19 @@ agentdb.rvf
 test-results
 .vscode/
 .devcontainer/
+tests/AuditCoverage
+
+# AI/TOOL SCAFFOLD — must never exist in module tree (see docs/wiki/rules/module-theme-root-cleanup.md)
+scripts/
+bashscripts/
+docs/archive/
+docs/archived/
+docs/legacy/
+docs/workbench/
+.circleci/
+.claude-audit/
+tests/.claude-audit/
+_bmad-output/
+.kilocode/
+.kiro/
+.ralph/
