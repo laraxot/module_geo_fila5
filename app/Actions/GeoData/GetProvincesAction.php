@@ -20,8 +20,7 @@ class GetProvincesAction
     public const CACHE_TTL = 86400;
 
     /**
-     * @param string $regionCode Codice della regione
-     *
+     * @param  string  $regionCode  Codice della regione
      * @return Collection<int, array{name: string, code: string}>
      */
     public function execute(string $regionCode): Collection

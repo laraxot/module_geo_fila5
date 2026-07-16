@@ -12,8 +12,7 @@ class GetGeoDataValidationErrorsAction
     use QueueableAction;
 
     /**
-     * @param array<string, mixed> $data
-     *
+     * @param  array<string, mixed>  $data
      * @return array<string, array<int, string>>
      */
     public function execute(array $data): array

@@ -60,7 +60,7 @@ class LocationMapWidget extends XotBaseWidget
     public function getMarkers(): array
     {
         return $this->getPlaces()
-            ->filter(fn (Place $place) => null !== $place->latitude && null !== $place->longitude)
+            ->filter(fn (Place $place) => $place->latitude !== null && $place->longitude !== null)
             ->map(function (Place $place): array {
                 $marker = [
                     'position' => [
@@ -71,7 +71,7 @@ class LocationMapWidget extends XotBaseWidget
                 ];
 
                 $icon = $this->getMarkerIcon($place);
-                if (null !== $icon) {
+                if ($icon !== null) {
                     $marker['icon'] = $icon;
                 }
 

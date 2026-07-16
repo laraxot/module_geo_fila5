@@ -16,7 +16,7 @@ final class ExportMapDataAction
     use QueueableAction;
 
     /**
-     * @param array<string, mixed> $filters
+     * @param  array<string, mixed>  $filters
      */
     public function execute(array $filters = [], string $format = 'json'): string
     {
