@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Geocoding;
 
-use RuntimeException;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -21,6 +20,6 @@ final class GeocodeAddressAction
      */
     public function execute(string $address): array
     {
-        throw new RuntimeException('Geocoding non ancora implementato');
+        throw new \RuntimeException('Geocoding non ancora implementato');
     }
 }
