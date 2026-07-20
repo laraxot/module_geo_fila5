@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Geo\Support;
 
+use JsonException;
+use RuntimeException;
+
 use function Safe\file_get_contents;
 
 use Spatie\QueueableAction\QueueableAction;
@@ -111,19 +114,19 @@ final class GeoMapDatasetAction
         }
 
         if (! is_file($this->path)) {
-            throw new \RuntimeException("GeoMapWidget dataset not found at [{$this->path}]");
+            throw new RuntimeException("GeoMapWidget dataset not found at [{$this->path}]");
         }
 
         $contents = file_get_contents($this->path);
 
         try {
             $decoded = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
-        } catch (\JsonException $exception) {
-            throw new \RuntimeException('GeoMapWidget dataset contains invalid GeoJSON.', 0, $exception);
+        } catch (JsonException $exception) {
+            throw new RuntimeException('GeoMapWidget dataset contains invalid GeoJSON.', 0, $exception);
         }
 
         if (! is_array($decoded)) {
-            throw new \RuntimeException('GeoMapWidget dataset must decode to an array.');
+            throw new RuntimeException('GeoMapWidget dataset must decode to an array.');
         }
 
         $this->features = $this->normalizeFeatureCollection($decoded);
@@ -142,7 +145,7 @@ final class GeoMapDatasetAction
         $features = $decoded['features'] ?? null;
 
         if ('FeatureCollection' !== $type || ! is_array($features)) {
-            throw new \RuntimeException('GeoMapWidget dataset is not a valid FeatureCollection.');
+            throw new RuntimeException('GeoMapWidget dataset is not a valid FeatureCollection.');
         }
 
         $normalized = [];

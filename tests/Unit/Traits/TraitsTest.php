@@ -4,22 +4,24 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Traits;
 
+use Illuminate\Database\Eloquent\Model;
 use Modules\Geo\Models\Traits\HasPlaceTrait;
 use Modules\Geo\Tests\TestCase;
 use Modules\Geo\Traits\HandlesCoordinates;
 use Modules\Geo\Traits\HasAddresses;
-use Modules\TechPlanner\Models\Worker;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 test('HasAddresses trait can be used', function (): void {
-    new class extends Worker {
+    $modelWithAddresses = new class extends Model {
         use HasAddresses;
     };
-    new class extends Worker {
+    $modelWithPlace = new class extends Model {
         use HasPlaceTrait;
     };
 
+    Assert::assertInstanceOf(Model::class, $modelWithAddresses);
+    Assert::assertInstanceOf(Model::class, $modelWithPlace);
     Assert::assertTrue(trait_exists(HasAddresses::class));
 
     $reflection = new \ReflectionClass(HasAddresses::class);

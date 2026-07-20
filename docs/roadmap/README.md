@@ -1,3 +1,22 @@
+---
+title: "Geo Module Roadmap"
+type: documentation
+tags: [geo, documentation, roadmap]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation roadmap README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../README.md
+  - ../wiki/README.md
+  - ../docs/README.md
+  - ../index.md
+  - ../wiki/index.md
+---
+
 # Geo Module Roadmap
 
 > "Geographic and location services for the Laraxot ecosystem with maps, geocoding, and spatial features."

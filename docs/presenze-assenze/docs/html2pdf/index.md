@@ -1,3 +1,22 @@
+---
+title: "Html2Pdf - Panoramica e Installazione"
+type: documentation
+tags: [geo, documentation, presenze-assenze, html2pdf]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation presenze-assenze docs html2pdf index frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../../README.md
+  - ../../../wiki/README.md
+  - ../../../docs/README.md
+  - ../../../index.md
+  - ../../../wiki/index.md
+---
+
 # Html2Pdf - Panoramica e Installazione
 
 Questa sezione fornisce una panoramica generale della libreria Html2Pdf, le novità dell'ultima versione, le istruzioni per l'installazione e l'architettura di integrazione nel progetto.

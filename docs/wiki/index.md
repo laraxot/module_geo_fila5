@@ -1,18 +1,20 @@
 ---
 title: "Geo Wiki Index"
-type: index
-module: Geo
-tags: [geo, wiki, index, map-lit, leaflet]
-created: 2026-04-15
-updated: 2026-06-05
-qmd: "geo module wiki index map-lit leaflet marker popup"
+type: documentation
+tags: [geo, documentation, wiki]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation wiki index frontmatter naming wiki"
 issues:
-  - "https://github.com/laraxot/module_geo_fila5/issues/47"
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
 discussions:
-  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
 related:
-  - ./concepts/ai-harness-geo-discipline.md
-  - ../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md
+  - ../README.md
+  - README.md
+  - ../docs/README.md
+  - ../index.md
+  - ../INDEX.md
 ---
 
 # Geo Module Wiki

@@ -1,3 +1,22 @@
+---
+title: "Script GitIgnore - Laraxot PTVX"
+type: documentation
+tags: [geo, documentation, git, gitignore]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation git gitignore README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../../wiki/README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../../wiki/index.md
+---
+
 # Script GitIgnore - Laraxot PTVX
 
 Questa cartella contiene script per la gestione e standardizzazione dei file `.gitignore` dei moduli Laraxot.

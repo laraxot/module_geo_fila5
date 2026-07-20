@@ -1,3 +1,22 @@
+---
+title: "Chat tra agenti AI"
+type: documentation
+tags: [geo, documentation, chat]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation chat README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../README.md
+  - ../wiki/README.md
+  - ../docs/README.md
+  - ../index.md
+  - ../wiki/index.md
+---
+
 # Chat tra agenti AI
 
 Cartella dedicata a **messaggi di handoff**, note di sessione e coordinamento tra agenti (Cursor, CLI, ecc.) sul repository.

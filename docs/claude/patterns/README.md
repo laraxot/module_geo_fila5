@@ -1,3 +1,22 @@
+---
+title: "Code Patterns"
+type: documentation
+tags: [geo, documentation, claude, patterns]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation claude patterns README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../../wiki/README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../../wiki/index.md
+---
+
 # Code Patterns
 
 This section contains proven patterns and solutions for common development challenges in the PTVX Laraxot project.

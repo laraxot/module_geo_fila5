@@ -1,3 +1,22 @@
+---
+title: "Operazioni di Sistema 🖥️"
+type: documentation
+tags: [geo, documentation, system]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation system README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../README.md
+  - ../wiki/README.md
+  - ../docs/README.md
+  - ../index.md
+  - ../wiki/index.md
+---
+
 # Operazioni di Sistema 🖥️
 
 Questa directory contiene gli script per la gestione e manutenzione del sistema operativo, con focus su automazione, monitoraggio e ottimizzazione.

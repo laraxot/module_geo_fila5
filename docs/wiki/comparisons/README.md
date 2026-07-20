@@ -1,3 +1,22 @@
+---
+title: "Geo Wiki Comparisons"
+type: documentation
+tags: [geo, documentation, wiki, comparisons]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation wiki comparisons README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../index.md
+---
+
 # Geo Wiki Comparisons
 
 Bucket canonico per confronti architetturali/tecnici nel modulo Geo.

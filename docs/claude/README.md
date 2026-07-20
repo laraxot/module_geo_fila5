@@ -1,3 +1,22 @@
+---
+title: "PTVX Laraxot Development Guide"
+type: documentation
+tags: [geo, documentation, claude]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation claude README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../README.md
+  - ../wiki/README.md
+  - ../docs/README.md
+  - ../index.md
+  - ../wiki/index.md
+---
+
 # PTVX Laraxot Development Guide
 
 **PTVX** is a production-grade Laravel 12 + Filament 4 + Livewire 3 modular monolith application for public administration management in Italy. Built using the **Laraxot architecture**, it emphasizes strict typing, modularity, and PHPStan Level 10 compliance.

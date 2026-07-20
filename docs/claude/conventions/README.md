@@ -1,3 +1,22 @@
+---
+title: "Code Conventions"
+type: documentation
+tags: [geo, documentation, claude, conventions]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation claude conventions README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../../wiki/README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../../wiki/index.md
+---
+
 # Code Conventions
 
 This section contains all coding conventions and standards used in the PTVX Laraxot project.

@@ -1,3 +1,22 @@
+---
+title: "$(basename "$d")"
+type: documentation
+tags: [geo, documentation, wiki, _templates]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation wiki _templates README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../index.md
+---
+
 # $(basename "$d")
 
 This directory is part of the Geo module LLM wiki.

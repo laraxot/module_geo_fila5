@@ -1,3 +1,22 @@
+---
+title: "🚀 Toolkit di Automazione Git"
+type: documentation
+tags: [geo, documentation, it]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation it README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../README.md
+  - ../wiki/README.md
+  - ../docs/README.md
+  - ../index.md
+  - ../wiki/index.md
+---
+
 # 🚀 Toolkit di Automazione Git
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com)

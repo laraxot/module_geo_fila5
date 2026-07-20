@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
+use RuntimeException;
 
 use function Safe\json_decode;
 
@@ -34,7 +35,7 @@ class GetAddressByLatLngFromGoogleMapsAction
     /**
      * Ottiene l'indirizzo dalle coordinate.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
+     * @throws RuntimeException Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(float $latitude, float $longitude): LocationData
     {
@@ -50,14 +51,14 @@ class GetAddressByLatLngFromGoogleMapsAction
                 'coordinates' => compact('latitude', 'longitude'),
             ]);
 
-            throw new \RuntimeException('Failed to get address from coordinates');
+            throw new RuntimeException('Failed to get address from coordinates');
         }
     }
 
     /**
      * Valida i dati di input.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata
+     * @throws RuntimeException Se la chiave API non è configurata
      */
     private function validateInput(float $latitude, float $longitude): void
     {
@@ -87,7 +88,7 @@ class GetAddressByLatLngFromGoogleMapsAction
     /**
      * Elabora la risposta dell'API.
      *
-     * @throws \RuntimeException Se la risposta non è valida
+     * @throws RuntimeException Se la risposta non è valida
      */
     private function parseResponse(string $response, float $latitude, float $longitude): LocationData
     {
@@ -106,7 +107,7 @@ class GetAddressByLatLngFromGoogleMapsAction
         $data = json_decode($response, true);
 
         if ('OK' !== $data['status'] || empty($data['results'][0])) {
-            throw new \RuntimeException('No address found for coordinates');
+            throw new RuntimeException('No address found for coordinates');
         }
 
         $result = $data['results'][0];

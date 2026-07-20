@@ -1,3 +1,22 @@
+---
+title: "Librerie Bash: Documentazione delle Funzioni"
+type: documentation
+tags: [geo, documentation, lib]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation lib README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../README.md
+  - ../wiki/README.md
+  - ../docs/README.md
+  - ../index.md
+  - ../wiki/index.md
+---
+
 # Librerie Bash: Documentazione delle Funzioni
 
 ## Perché questa documentazione è importante
