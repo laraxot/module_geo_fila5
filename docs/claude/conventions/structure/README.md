@@ -1,3 +1,22 @@
+---
+title: "Laravel Framework Conventions"
+type: documentation
+tags: [geo, documentation, claude, conventions, structure]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation claude conventions structure README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../../README.md
+  - ../../../wiki/README.md
+  - ../../../docs/README.md
+  - ../../../index.md
+  - ../../../wiki/index.md
+---
+
 # Laravel Framework Conventions
 
 ## Basic Requirements

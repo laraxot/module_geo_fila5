@@ -1,3 +1,22 @@
+---
+title: "📊 Modulo Performance - Documentazione DRY + KISS"
+type: documentation
+tags: [geo, documentation, modules, performance]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation modules performance README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../../wiki/README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../../wiki/index.md
+---
+
 # 📊 Modulo Performance - Documentazione DRY + KISS
 
 > **MODULO PERFORMANCE**: Sistema di valutazione prestazioni per PTVX con architettura scalabile e manutenibile.

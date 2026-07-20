@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
+use Filament\Schemas\Components\Component;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
 use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
@@ -37,6 +38,12 @@ final class GeoMapWidget extends XotBaseWidget
     protected int $aggregateZoom = 8;
 
     protected int $detailZoom = 12;
+
+    /** @return array<int|string, Component> */
+    public function getFormSchema(): array
+    {
+        return [];
+    }
 
     /**
      * @return GeoDataset

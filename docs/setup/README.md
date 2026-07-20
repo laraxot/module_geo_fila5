@@ -1,3 +1,22 @@
+---
+title: "Script di Setup"
+type: documentation
+tags: [geo, documentation, setup]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation setup README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../README.md
+  - ../wiki/README.md
+  - ../docs/README.md
+  - ../index.md
+  - ../wiki/index.md
+---
+
 # Script di Setup
 
 ## Descrizione

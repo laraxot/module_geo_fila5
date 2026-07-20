@@ -1,3 +1,22 @@
+---
+title: "Geo Wiki Entities"
+type: documentation
+tags: [geo, documentation, wiki, entities]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation wiki entities README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../index.md
+---
+
 # Geo Wiki Entities
 
 Bucket canonico per entita' documentate del modulo Geo.

@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
+use Spatie\QueueableAction\QueueableAction;
+
 class GetBoundingBoxAction
 {
+    use QueueableAction;
+
     /**
      * @return array<string, float>
      */

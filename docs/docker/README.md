@@ -1,3 +1,22 @@
+---
+title: "Operazioni Docker 🐳"
+type: documentation
+tags: [geo, documentation, docker]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation docker README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../README.md
+  - ../wiki/README.md
+  - ../docs/README.md
+  - ../index.md
+  - ../wiki/index.md
+---
+
 # Operazioni Docker 🐳
 
 Questa directory contiene gli script per la gestione e automazione delle operazioni Docker, con focus su deployment, monitoraggio e manutenzione dei container.

@@ -1,3 +1,22 @@
+---
+title: "Geo Wiki Troubleshooting"
+type: documentation
+tags: [geo, documentation, wiki, troubleshooting]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation wiki troubleshooting README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../index.md
+---
+
 # Geo Wiki Troubleshooting
 
 Bucket canonico per runbook di troubleshooting del modulo Geo.

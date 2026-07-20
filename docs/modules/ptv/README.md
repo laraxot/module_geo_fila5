@@ -1,3 +1,22 @@
+---
+title: "📋 Modulo PTV - Documentazione DRY + KISS"
+type: documentation
+tags: [geo, documentation, modules, ptv]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation modules ptv README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../../wiki/README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../../wiki/index.md
+---
+
 # 📋 Modulo PTV - Documentazione DRY + KISS
 
 > **MODULO PTV**: Sistema di valutazione tecnica professionale con generazione PDF integrata e workflow complessi.

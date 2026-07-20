@@ -1,3 +1,22 @@
+---
+title: "Claude Code - Guida Completa per PTVX"
+type: documentation
+tags: [geo, documentation, ai, claude]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation ai claude README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../../wiki/README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../../wiki/index.md
+---
+
 # Claude Code - Guida Completa per PTVX
 
 **Ultimo aggiornamento**: 2026-01-12  

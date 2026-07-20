@@ -9,9 +9,12 @@ use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Spatie\QueueableAction\QueueableAction;
 
 class GetOpenWeatherDataAction
 {
+    use QueueableAction;
+
     private const ENDPOINT = 'https://api.openweathermap.org/data/2.5/weather';
 
     /**

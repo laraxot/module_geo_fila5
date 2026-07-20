@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\RateLimiter;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
+use RuntimeException;
 use Spatie\QueueableAction\QueueableAction;
+use Throwable;
 
 /**
  * Action per le interazioni con l'API di Google Maps.
@@ -31,7 +33,7 @@ class GoogleMapsAction
         $apiKey = config("geo.api_keys.{$this->getServiceName()}");
 
         if (empty($apiKey)) {
-            throw new \RuntimeException("API key non configurata per {$this->getServiceName()}");
+            throw new RuntimeException("API key non configurata per {$this->getServiceName()}");
         }
 
         return $apiKey;
@@ -66,13 +68,13 @@ class GoogleMapsAction
             $response = $client->{$methodLower}($url, $params);
 
             if (! $response->successful()) {
-                throw new \RuntimeException("Richiesta fallita a {$this->getServiceName()}: ".(string) $response->status());
+                throw new RuntimeException("Richiesta fallita a {$this->getServiceName()}: ".(string) $response->status());
             }
 
             $data = $response->json();
 
             if (! is_array($data)) {
-                throw new \RuntimeException('Risposta API non valida: atteso array, ricevuto '.gettype($data));
+                throw new RuntimeException('Risposta API non valida: atteso array, ricevuto '.gettype($data));
             }
 
             /** @var array<string, mixed> $validatedData */
@@ -85,8 +87,8 @@ class GoogleMapsAction
             }
 
             return $validatedData;
-        } catch (\Throwable $e) {
-            throw new \RuntimeException("Errore durante la richiesta a {$this->getServiceName()}: ".$e->getMessage(), 0, $e);
+        } catch (Throwable $e) {
+            throw new RuntimeException("Errore durante la richiesta a {$this->getServiceName()}: ".$e->getMessage(), 0, $e);
         }
     }
 
@@ -101,7 +103,7 @@ class GoogleMapsAction
         /** @var array<string> $whenTypes */
         $whenTypes = config('geo.http_client.retry.when', []);
 
-        return Http::timeout($timeout)->retry($retryTimes, $retrySleep, function (\Throwable $exception) use ($whenTypes): bool {
+        return Http::timeout($timeout)->retry($retryTimes, $retrySleep, function (Throwable $exception) use ($whenTypes): bool {
             foreach ($whenTypes as $type) {
                 if (is_a($exception, "\\GuzzleHttp\\Exception\\{$type}")) {
                     return true;
@@ -135,7 +137,7 @@ class GoogleMapsAction
                 'key' => $this->getApiKey(),
                 'language' => 'it',
             ]);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             throw GoogleMapsApiException::requestFailed($e->getMessage());
         }
     }
@@ -158,7 +160,7 @@ class GoogleMapsAction
                 'language' => 'it',
                 'units' => 'metric',
             ]);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             throw GoogleMapsApiException::requestFailed($e->getMessage());
         }
     }
@@ -175,7 +177,7 @@ class GoogleMapsAction
                 'locations' => "{$latitude},{$longitude}",
                 'key' => $this->getApiKey(),
             ]);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             throw GoogleMapsApiException::requestFailed($e->getMessage());
         }
     }

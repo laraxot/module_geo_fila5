@@ -7,6 +7,7 @@ namespace Modules\Geo\Actions\GeoData;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use RuntimeException;
 
 use function Safe\json_decode;
 
@@ -151,22 +152,22 @@ final class LoadGeoHierarchyAction
     private function loadData(): Collection
     {
         if (! File::exists(base_path(self::JSON_PATH))) {
-            throw new \RuntimeException('Il file JSON dei comuni non esiste');
+            throw new RuntimeException('Il file JSON dei comuni non esiste');
         }
 
         /** @var array<string, mixed> $data */
         $data = json_decode(File::get(base_path(self::JSON_PATH)), true);
 
         if (! is_array($data)) {
-            throw new \RuntimeException('Il file JSON dei comuni non è valido');
+            throw new RuntimeException('Il file JSON dei comuni non è valido');
         }
 
         if (! app(ValidateGeoDataIntegrityAction::class)->execute($data)) {
-            throw new \RuntimeException('Il file JSON dei comuni non è valido');
+            throw new RuntimeException('Il file JSON dei comuni non è valido');
         }
 
         if (! isset($data['regions']) || ! is_array($data['regions'])) {
-            throw new \RuntimeException('Regioni mancanti nel file JSON');
+            throw new RuntimeException('Regioni mancanti nel file JSON');
         }
 
         /** @var array<int, array<string, mixed>> $regions */

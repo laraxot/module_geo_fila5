@@ -1,9 +1,20 @@
 ---
 title: "Geo Module Documentation"
 type: documentation
-tags: [module, documentation, geospatial, mapping]
-created: 2026-07-14
-updated: 2026-07-14
+tags: [geo, documentation]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - wiki/README.md
+  - docs/README.md
+  - index.md
+  - wiki/index.md
+  - INDEX.md
 ---
 
 # Modulo Geo

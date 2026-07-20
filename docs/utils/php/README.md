@@ -1,3 +1,22 @@
+---
+title: "Script PHP di Utilità"
+type: documentation
+tags: [geo, documentation, utils, php]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation utils php README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../../wiki/README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../../wiki/index.md
+---
+
 # Script PHP di Utilità
 
 Questa directory contiene script PHP di utilità per il progetto.

@@ -1,3 +1,22 @@
+---
+title: "Git Conflict Resolution Scripts"
+type: documentation
+tags: [geo, documentation, git, conflict_resolution]
+created: 2026-07-20
+updated: 2026-07-20
+qmd: "geo module documentation git conflict_resolution README frontmatter naming wiki"
+issues:
+  - "https://github.com/laraxot/base_quaeris_fila5/issues/125"
+discussions:
+  - "https://github.com/laraxot/base_quaeris_fila5/discussions/126"
+related:
+  - ../../README.md
+  - ../../wiki/README.md
+  - ../../docs/README.md
+  - ../../index.md
+  - ../../wiki/index.md
+---
+
 # Git Conflict Resolution Scripts
 
 Questa cartella contiene script specializzati per la risoluzione automatica dei conflitti Git.
