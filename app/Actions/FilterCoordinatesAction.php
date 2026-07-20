@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
-use InvalidArgumentException;
 use Modules\Geo\Traits\HandlesCoordinates;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -24,7 +23,7 @@ class FilterCoordinatesAction
      * @param float                                                         $centerLng   Longitudine del punto centrale
      * @param float                                                         $radiusKm    Raggio in chilometri
      *
-     * @throws InvalidArgumentException Se le coordinate non sono valide
+     * @throws \InvalidArgumentException Se le coordinate non sono valide
      *
      * @return array<array{latitude: float, longitude: float, distance: float}> Coordinate filtrate con distanza
      */
@@ -38,10 +37,10 @@ class FilterCoordinatesAction
                 $lng = (float) $coord['longitude'];
 
                 if ($lat < -90 || $lat > 90) {
-                    throw new InvalidArgumentException('Latitudine non valida');
+                    throw new \InvalidArgumentException('Latitudine non valida');
                 }
                 if ($lng < -180 || $lng > 180) {
-                    throw new InvalidArgumentException('Longitudine non valida');
+                    throw new \InvalidArgumentException('Longitudine non valida');
                 }
 
                 return [
@@ -59,21 +58,21 @@ class FilterCoordinatesAction
     /**
      * Valida i dati di input.
      *
-     * @throws InvalidArgumentException Se i dati non sono validi
+     * @throws \InvalidArgumentException Se i dati non sono validi
      */
     private function validateInput(float $latitude, float $longitude, float $radius): void
     {
         if ($latitude < -90 || $latitude > 90) {
-            throw new InvalidArgumentException('Latitudine centrale non valida');
+            throw new \InvalidArgumentException('Latitudine centrale non valida');
         }
         if ($longitude < -180 || $longitude > 180) {
-            throw new InvalidArgumentException('Longitudine centrale non valida');
+            throw new \InvalidArgumentException('Longitudine centrale non valida');
         }
         if ($radius <= 0) {
-            throw new InvalidArgumentException('Il raggio deve essere maggiore di 0');
+            throw new \InvalidArgumentException('Il raggio deve essere maggiore di 0');
         }
         if ($radius >= 20000) {
-            throw new InvalidArgumentException('Il raggio non può essere maggiore della circonferenza terrestre');
+            throw new \InvalidArgumentException('Il raggio non può essere maggiore della circonferenza terrestre');
         }
     }
 }

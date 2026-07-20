@@ -7,9 +7,7 @@ namespace Modules\Geo\Actions\GoogleMaps;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
-use InvalidArgumentException;
 use Modules\Geo\Datas\LocationData;
-use RuntimeException;
 
 use function Safe\json_decode;
 
@@ -36,8 +34,8 @@ class GetCoordinatesFromGoogleMapsAction
     /**
      * Ottiene le coordinate da un indirizzo.
      *
-     * @throws InvalidArgumentException Se i dati di input non sono validi
-     * @throws RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
+     * @throws \InvalidArgumentException Se i dati di input non sono validi
+     * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(string $address): LocationData
     {
@@ -53,14 +51,14 @@ class GetCoordinatesFromGoogleMapsAction
                 'address' => $address,
             ]);
 
-            throw new RuntimeException('Failed to get coordinates from address');
+            throw new \RuntimeException('Failed to get coordinates from address');
         }
     }
 
     /**
      * Valida i dati di input.
      *
-     * @throws InvalidArgumentException Se i dati non sono validi
+     * @throws \InvalidArgumentException Se i dati non sono validi
      */
     private function validateInput(string $address): void
     {
@@ -90,7 +88,7 @@ class GetCoordinatesFromGoogleMapsAction
     /**
      * Elabora la risposta dell'API.
      *
-     * @throws RuntimeException Se la risposta non è valida
+     * @throws \RuntimeException Se la risposta non è valida
      */
     private function parseResponse(string $response, string $address): LocationData
     {
@@ -108,7 +106,7 @@ class GetCoordinatesFromGoogleMapsAction
         $data = json_decode($response, true);
 
         if ('OK' !== $data['status'] || empty($data['results'][0]['geometry']['location'])) {
-            throw new RuntimeException('No coordinates found for address');
+            throw new \RuntimeException('No coordinates found for address');
         }
 
         $location = $data['results'][0]['geometry']['location'];
