@@ -6,14 +6,14 @@ namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Modules\Geo\Enums\AddressItemEnum;
 use Modules\Geo\Models\Address;
+use Webmozart\Assert\Assert;
 
 use function Safe\preg_replace;
-
-use Webmozart\Assert\Assert;
 
 /**
  * Trait HasAddress.
@@ -25,14 +25,6 @@ use Webmozart\Assert\Assert;
  * @template TModel of Model
  *
  * @property Collection<int, Address> $addresses
-<<<<<<< HEAD
- * @property string|null              $route
- * @property string|null              $street_number
- * @property string|null              $postal_code
- * @property string|null              $city
- * @property string|null              $province
- * @property string|int               $id
-=======
  * @property string|null $route
  * @property string|null $street_number
  * @property string|null $postal_code
@@ -41,7 +33,6 @@ use Webmozart\Assert\Assert;
  * @property string|int $id
  *
  * @phpstan-require-extends Model
->>>>>>> df4b0e0 (.)
  *
  * @phpstan-ignore trait.unused
  */
@@ -53,7 +44,8 @@ trait HasAddress
      * @return MorphMany<Address, $this>
      */
     public function addresses(): MorphMany // @phpstan-ignore missingType.generics
-    {return $this->morphMany(Address::class, 'model');
+    {
+        return $this->morphMany(Address::class, 'model');
     }
 
     /**
@@ -62,7 +54,8 @@ trait HasAddress
      * @return MorphOne<Address, $this>
      */
     public function address(): MorphOne // @phpstan-ignore missingType.generics
-    {return $this->morphOne(Address::class, 'model');
+    {
+        return $this->morphOne(Address::class, 'model');
     }
 
     /**
@@ -71,7 +64,7 @@ trait HasAddress
     public function primaryAddress(): ?Address
     {
         $res = $this->addresses()->where('is_primary', true)->first();
-        if (null === $res) {
+        if ($res === null) {
             return $res;
         }
         Assert::isInstanceOf($res, Address::class);
@@ -91,7 +84,7 @@ trait HasAddress
 
     public function getFullAddressAttribute(?string $value): string
     {
-        if (null !== $value) {
+        if ($value !== null) {
             return $value;
         }
         $address = sprintf(
@@ -112,13 +105,13 @@ trait HasAddress
             return $value;
         }
         $address = $this->address()->first();
-        if (null === $address) {
+        if ($address === null) {
             return null;
         }
         Assert::isInstanceOf($address, Address::class);
 
         $locality = $address->getLocality();
-        if (null === $locality) {
+        if ($locality === null) {
             return null;
         }
 
@@ -217,25 +210,20 @@ trait HasAddress
      * @return Collection<int, Address>
      */
     public function getAddressesByType(string $type): Collection // @phpstan-ignore missingType.generics
-    {return $this->addresses()->where('type', $type)->get();
+    {
+        return $this->addresses()->where('type', $type)->get();
     }
 
     /**
      * Aggiunge un nuovo indirizzo al modello.
      *
-     * @param array<string, mixed> $data
-     * @param bool                 $setPrimary Se impostare questo indirizzo come principale
+     * @param  array<string, mixed>  $data
+     * @param  bool  $setPrimary  Se impostare questo indirizzo come principale
      */
-<<<<<<< HEAD
-    public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue, return.type
-    {// Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
-        if ($setPrimary || 0 === $this->addresses()->count()) {
-=======
     public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue
     {
         // Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
         if ($setPrimary || $this->addresses()->count() === 0) {
->>>>>>> df4b0e0 (.)
             $data['is_primary'] = true;
 
             // Rimuovi il flag is_primary da tutti gli altri indirizzi
@@ -253,10 +241,11 @@ trait HasAddress
     /**
      * Aggiorna l'indirizzo principale.
      *
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function updatePrimaryAddress(array $data): ?Address // @phpstan-ignore missingType.iterableValue
-    {$primaryAddress = $this->primaryAddress();
+    {
+        $primaryAddress = $this->primaryAddress();
         if (! $primaryAddress) {
             return $this->addAddress($data, true);
         }
@@ -267,20 +256,9 @@ trait HasAddress
     }
 
     /**
-<<<<<<< HEAD
      * Scope per filtrare i modelli in base alla città dell'indirizzo.
      *
      * @phpstan-ignore-next-line
-=======
-     * Scope: modelli con almeno un indirizzo nella città indicata (`locality`).
-     *
-     * Usare `Builder<static>` (non `Builder<TModel>`): nel contesto di analisi
-     * del modello che usa il trait, `TModel` non sempre si lega e PHPStan
-     * segnala `missingType.generics`. `static` risolve al modello concreto.
-     *
-     * @param  Builder<static>  $query
-     * @return Builder<static>
->>>>>>> df4b0e0 (.)
      */
     public function scopeInCity(Builder $query, string $city): Builder
     {
@@ -298,12 +276,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella provincia (`administrative_area_level_3`).
      *
-<<<<<<< HEAD
      * @phpstan-ignore-next-line
-=======
-     * @param  Builder<static>  $query
-     * @return Builder<static>
->>>>>>> df4b0e0 (.)
      */
     public function scopeInProvince(Builder $query, string $province): Builder
     {
@@ -321,12 +294,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella regione (`administrative_area_level_2`).
      *
-<<<<<<< HEAD
      * @phpstan-ignore-next-line
-=======
-     * @param  Builder<static>  $query
-     * @return Builder<static>
->>>>>>> df4b0e0 (.)
      */
     public function scopeInRegion(Builder $query, string $region): Builder
     {
@@ -344,12 +312,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo con il CAP indicato.
      *
-<<<<<<< HEAD
      * @phpstan-ignore-next-line
-=======
-     * @param  Builder<static>  $query
-     * @return Builder<static>
->>>>>>> df4b0e0 (.)
      */
     public function scopeInPostalCode(Builder $query, string $postalCode): Builder
     {
