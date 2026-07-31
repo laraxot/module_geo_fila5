@@ -12,7 +12,16 @@ use Modules\Geo\Models\Place;
 /**
  * Modules\Geo\Models\Traits\HasPlaceTrait.
  *
+<<<<<<< .merge_file_HBFIL8
  * @phpstan-require-extends Model
+=======
+ * <<<<<<< HEAD
+ * =======
+ *
+ * @phpstan-require-extends \Illuminate\Database\Eloquent\Model
+ *
+ * >>>>>>> df4b0e0 (.)
+>>>>>>> .merge_file_L1dbMv
  *
  * @phpstan-ignore trait.unused
  */
