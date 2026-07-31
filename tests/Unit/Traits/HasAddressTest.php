@@ -4,16 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Traits;
 
-<<<<<<< HEAD
-use Modules\Geo\Tests\Fixtures\Traits\HasAddressTestModel;
-
-/**
- * Alias fixture per HasAddressTestModel (legacy path).
- */
-class HasAddressTest extends HasAddressTestModel
-{
-}
-=======
 use Modules\Geo\Models\Traits\HasAddress;
 use Modules\Geo\Tests\Fixtures\Traits\HasAddressTestModel;
 use Modules\Geo\Tests\TestCase;
@@ -41,4 +31,3 @@ test('HasAddress trait exposes expected methods', function (): void {
     Assert::assertTrue($reflection->hasMethod('getFullAddress'));
     Assert::assertTrue($reflection->hasMethod('scopeInCity'));
 });
->>>>>>> df4b0e0 (.)

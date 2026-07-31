@@ -9,8 +9,6 @@ use Modules\Geo\Models\Traits\HasAddress;
 
 /**
  * Modello di test per il trait HasAddress (solo fixture — i test Pest stanno in HasAddressTest.php).
- *
- * @use HasAddress<HasAddressTestModel>
  */
 class HasAddressTestModel extends BaseModel
 {
