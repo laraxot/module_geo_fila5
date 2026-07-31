@@ -1,1 +1,1 @@
-*.psd binary
+*.psd !text !filter !merge !diff
