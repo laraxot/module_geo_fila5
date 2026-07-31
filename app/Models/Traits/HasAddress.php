@@ -32,7 +32,7 @@ use function Safe\preg_replace;
  * @property string|null $province
  * @property string|int $id
  *
- * @phpstan-require-extends \Illuminate\Database\Eloquent\Model
+ * @phpstan-require-extends Model
  *
  * @phpstan-ignore trait.unused
  */
@@ -278,10 +278,9 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella provincia (`administrative_area_level_3`).
      *
-     * @param  Builder<static>  $query
-     * @return Builder<static>
+     * @param  Builder<TModel>  $query
+     * @return Builder<TModel>
      */
-    // @phpstan-ignore-next-line missingType.generics
     public function scopeInProvince(Builder $query, string $province): Builder
     {
         return $query->whereHas(
@@ -298,10 +297,9 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella regione (`administrative_area_level_2`).
      *
-     * @param  Builder<static>  $query
-     * @return Builder<static>
+     * @param  Builder<TModel>  $query
+     * @return Builder<TModel>
      */
-    // @phpstan-ignore-next-line missingType.generics
     public function scopeInRegion(Builder $query, string $region): Builder
     {
         return $query->whereHas(
@@ -318,10 +316,9 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo con il CAP indicato.
      *
-     * @param  Builder<static>  $query
-     * @return Builder<static>
+     * @param  Builder<TModel>  $query
+     * @return Builder<TModel>
      */
-    // @phpstan-ignore-next-line missingType.generics
     public function scopeInPostalCode(Builder $query, string $postalCode): Builder
     {
         return $query->whereHas(
