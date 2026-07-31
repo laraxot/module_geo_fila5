@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Models\Traits;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Modules\Geo\Models\Place;
@@ -11,11 +12,8 @@ use Modules\Geo\Models\Place;
 /**
  * Modules\Geo\Models\Traits\HasPlaceTrait.
  *
-<<<<<<< HEAD
-=======
- * @phpstan-require-extends \Illuminate\Database\Eloquent\Model
+ * @phpstan-require-extends Model
  *
->>>>>>> df4b0e0 (.)
  * @phpstan-ignore trait.unused
  */
 trait HasPlaceTrait
