@@ -12,6 +12,7 @@ use Modules\Geo\Traits\HasAddresses;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
+<<<<<<< HEAD
 
 test('HasAddresses trait can be used', function (): void {
     $withAddresses = new class extends BaseModel {
@@ -37,7 +38,12 @@ test('HasAddresses trait can be used', function (): void {
 
     Assert::assertInstanceOf(BaseModel::class, $withAddresses);
     Assert::assertInstanceOf(BaseModel::class, $withPlace);
+=======
+
+test('HasAddresses trait exists with expected API', function (): void {
+>>>>>>> df4b0e0 (.)
     Assert::assertTrue(trait_exists(HasAddresses::class));
+    Assert::assertTrue(trait_exists(HasPlaceTrait::class));
 
     $reflection = new \ReflectionClass(HasAddresses::class);
     Assert::assertTrue($reflection->hasMethod('addresses'));
