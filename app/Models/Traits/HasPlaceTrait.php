@@ -11,11 +11,13 @@ use Modules\Geo\Models\Place;
 /**
  * Modules\Geo\Models\Traits\HasPlaceTrait.
  *
-<<<<<<< HEAD
-=======
+ * <<<<<<< HEAD
+ * =======
+ *
  * @phpstan-require-extends \Illuminate\Database\Eloquent\Model
  *
->>>>>>> df4b0e0 (.)
+ * >>>>>>> df4b0e0 (.)
+ *
  * @phpstan-ignore trait.unused
  */
 trait HasPlaceTrait
