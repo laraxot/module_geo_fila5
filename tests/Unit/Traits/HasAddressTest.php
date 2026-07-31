@@ -11,7 +11,7 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
-/**
+/*
  * Pest: verifica API del trait HasAddress sulla fixture canonica HasAddressTestModel.
  * Non istanziare Worker/TechPlanner né duplicare modelli fixture in Unit/Traits.
  */
