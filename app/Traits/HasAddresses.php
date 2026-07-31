@@ -81,7 +81,7 @@ trait HasAddresses
     /**
      * Aggiunge un nuovo indirizzo.
      *
-     * @param  array<string, mixed>  $data
+     * @param array<string, mixed> $data
      */
     public function addAddress(array $data, bool $isPrimary = false): Address
     {
