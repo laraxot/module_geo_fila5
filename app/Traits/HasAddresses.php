@@ -15,7 +15,11 @@ use Modules\Geo\Models\Address;
  *
  * Questo trait fornisce funzionalità per gestire indirizzi multipli su qualsiasi modello.
  *
+<<<<<<< HEAD
  * @property int|string $id
+=======
+ * @phpstan-require-extends \Illuminate\Database\Eloquent\Model
+>>>>>>> df4b0e0 (.)
  *
  * @phpstan-ignore trait.unused
  */
