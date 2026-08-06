@@ -13,6 +13,8 @@ use Modules\Geo\Models\Region;
  * Vietato uses()->in() qui (PHPStan method.internalClass).
  */
 
+require_once __DIR__.'/../../Xot/tests/XotBasePest.php';
+
 /*
  * |--------------------------------------------------------------------------
  * | Functions

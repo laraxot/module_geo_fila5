@@ -6,6 +6,7 @@ namespace Modules\Geo\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use Modules\Geo\Actions\FilterCoordinatesInRadiusAction;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
  * Regola di validazione per filtrare le coordinate all'interno di un raggio.
@@ -19,19 +20,18 @@ class FilterCoordinatesInRadius implements Rule
         private readonly float $centerLatitude,
         private readonly float $centerLongitude,
         private readonly int $radius,
-    ) {
-    }
+    ) {}
 
     /**
      * Determina se le coordinate passate sono all'interno del raggio specificato.
      *
-     * @param mixed $_attribute Nome dell'attributo
-     * @param mixed $value      Valore da validare
+     * @param  mixed  $_attribute  Nome dell'attributo
+     * @param  mixed  $value  Valore da validare
      */
     public function passes(mixed $_attribute, mixed $value): bool
     {
         // Convert to string for internal use
-        $_attribute = (string) $_attribute;
+        $_attribute = SafeStringCastAction::cast($_attribute);
 
         if (! \is_array($value)) {
             $this->message = 'Il valore deve essere un array di coordinate';
