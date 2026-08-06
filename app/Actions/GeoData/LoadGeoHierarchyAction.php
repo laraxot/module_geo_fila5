@@ -7,10 +7,10 @@ namespace Modules\Geo\Actions\GeoData;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
-
-use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Carica e espone gerarchia regioni/province/città da JSON comuni.
@@ -61,7 +61,7 @@ final class LoadGeoHierarchyAction
             $region = $this->loadData()->firstWhere('code', $regionCode);
 
             if (! $region || ! is_array($region) || ! isset($region['provinces']) || ! is_array($region['provinces'])) {
-                return new Collection();
+                return new Collection;
             }
 
             /** @var array<int, array<string, mixed>> $provinces */
@@ -73,8 +73,8 @@ final class LoadGeoHierarchyAction
                     $code = $province['code'] ?? '';
 
                     return [
-                        'name' => is_string($name) ? $name : (string) $name,
-                        'code' => is_string($code) ? $code : (string) $code,
+                        'name' => is_string($name) ? $name : SafeStringCastAction::cast($name),
+                        'code' => is_string($code) ? $code : SafeStringCastAction::cast($code),
                     ];
                 })
                 ->values();
@@ -98,7 +98,7 @@ final class LoadGeoHierarchyAction
                 : [])->firstWhere('code', $provinceCode);
 
             if (! $province || ! is_array($province) || ! isset($province['cities']) || ! is_array($province['cities'])) {
-                return new Collection();
+                return new Collection;
             }
 
             /** @var array<int, array<string, mixed>> $cities */
