@@ -13,8 +13,6 @@ use Modules\Geo\Models\Region;
  * Vietato uses()->in() qui (PHPStan method.internalClass).
  */
 
-require_once __DIR__.'/../../Xot/tests/XotBasePest.php';
-
 /*
  * |--------------------------------------------------------------------------
  * | Functions
@@ -36,3 +34,5 @@ function createComune(array $attributes = []): Comune
 {
     return ComuneFactory::new()->createOne($attributes);
 }
+
+pest()->extend(\Modules\Geo\Tests\TestCase::class)->in(__DIR__.'/Unit', __DIR__.'/Feature');
