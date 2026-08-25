@@ -8,6 +8,7 @@ use Filament\Support\Components\Attributes\ExposedLivewireMethod;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\Renderless;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
  * Trait HasCoordinatePicker - Shared logic for geographic components.
@@ -35,6 +36,9 @@ trait HasCoordinatePicker
     protected string $longitudeColumn = 'longitude';
 
     protected bool $geolocateWhenEmpty = false;
+
+    /** Mostra il pannello ricerca indirizzi sul componente Lit (MapPicker / GeopointPicker / …). */
+    protected bool $searchVisible = true;
 
     protected function setUpCoordinatePicker(): void
     {
@@ -126,6 +130,18 @@ trait HasCoordinatePicker
         return $this;
     }
 
+    public function showSearch(bool $visible = true): static
+    {
+        $this->searchVisible = $visible;
+
+        return $this;
+    }
+
+    public function isSearchVisible(): bool
+    {
+        return $this->searchVisible;
+    }
+
     public function getLatitudeColumn(): string
     {
         return $this->latitudeColumn;
@@ -190,7 +206,7 @@ trait HasCoordinatePicker
      * Searches for addresses matching the query string via Nominatim.
      * Server-side to respect rate-limiting and User-Agent policies.
      *
-     * @return array<int, array<string, mixed>>
+     * @return list<array<string, mixed>>
      */
     #[ExposedLivewireMethod]
     #[Renderless]
@@ -201,8 +217,8 @@ trait HasCoordinatePicker
         }
 
         try {
-            $appName = (string) config('app.name', 'Laraxot');
-            $appUrl = (string) config('app.url', 'localhost');
+            $appName = SafeStringCastAction::cast(config('app.name', 'Laraxot'));
+            $appUrl = SafeStringCastAction::cast(config('app.url', 'localhost'));
             $response = Http::withHeaders([
                 'User-Agent' => \sprintf('%s/1.0 (%s)', $appName, $appUrl),
             ])
@@ -224,8 +240,21 @@ trait HasCoordinatePicker
                 return [];
             }
 
-            /* @var array<int, array<string, mixed>> $data */
-            return $data;
+            $filtered = array_values(array_filter($data, static fn (mixed $item): bool => \is_array($item)));
+
+            /** @var list<array<string, mixed>> $results */
+            $results = [];
+            foreach ($filtered as $item) {
+                if (! \is_array($item)) {
+                    continue;
+                }
+
+                /** @var array<string, mixed> $row */
+                $row = $item;
+                $results[] = $row;
+            }
+
+            return $results;
         } catch (\Throwable) {
             return [];
         }
@@ -234,6 +263,8 @@ trait HasCoordinatePicker
     /**
      * Reverse geocodes coordinates to a structured address.
      * Returns a rich array for better form integration.
+     *
+     * @return array<string, mixed>|null
      */
     #[ExposedLivewireMethod]
     #[Renderless]
@@ -268,15 +299,26 @@ trait HasCoordinatePicker
 
             return [
                 'display_name' => \is_string($data['display_name'] ?? null) ? $data['display_name'] : '',
+                'address' => \is_string($data['display_name'] ?? null) ? $data['display_name'] : '',
+                'provider' => 'nominatim',
+                'place_id' => $data['place_id'] ?? null,
+                'osm_type' => $data['osm_type'] ?? null,
+                'osm_id' => $data['osm_id'] ?? null,
+                'licence' => $data['licence'] ?? null,
+                'importance' => is_numeric($data['importance'] ?? null) ? (float) $data['importance'] : null,
+                'type' => $data['type'] ?? null,
+                'class' => $data['category'] ?? $data['class'] ?? null,
+                'boundingbox' => isset($data['boundingbox']) && \is_array($data['boundingbox']) ? $data['boundingbox'] : null,
                 'street' => self::firstString($address, ['road', 'pedestrian', 'footway', 'path', 'residential', 'highway']),
                 'street_number' => self::firstString($address, ['house_number', 'street_number']),
-                'city' => self::firstString($address, ['city', 'town', 'village', 'municipality', 'county']),
+                'zip' => self::firstString($address, ['postcode']),
                 'postcode' => self::firstString($address, ['postcode']),
+                'city' => self::firstString($address, ['city', 'town', 'village', 'municipality', 'hamlet', 'county']),
+                'suburb' => self::firstString($address, ['suburb', 'neighbourhood', 'quarter', 'city_district']),
+                'province' => self::firstString($address, ['province', 'county', 'state_district']),
                 'state' => self::firstString($address, ['state', 'region']),
-                'province' => self::firstString($address, ['province', 'county']),
                 'country' => self::firstString($address, ['country']),
                 'country_code' => self::firstString($address, ['country_code']),
-                'suburb' => self::firstString($address, ['suburb', 'neighbourhood', 'quarter', 'city_district']),
                 'structured' => [
                     'road' => self::firstString($address, ['road', 'pedestrian', 'footway', 'path', 'residential', 'highway']),
                     'house_number' => self::firstString($address, ['house_number', 'street_number']),
@@ -286,6 +328,7 @@ trait HasCoordinatePicker
                     'country' => self::firstString($address, ['country']),
                     'city_district' => self::firstString($address, ['city_district', 'suburb', 'neighbourhood', 'quarter']),
                 ],
+                'address_details' => $address,
                 'raw' => $data,
             ];
         } catch (\Throwable) {
@@ -309,6 +352,11 @@ trait HasCoordinatePicker
         return '';
     }
 
+    /**
+     * @param array<string, mixed> $data
+     *
+     * @return array<string, mixed>
+     */
     public static function extractCoordinates(array $data, string $field = 'coordinates', string $latColumn = 'latitude', string $lngColumn = 'longitude'): array
     {
         $coordinates = $data[$field] ?? null;

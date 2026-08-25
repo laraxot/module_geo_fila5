@@ -1,9 +1,9 @@
 import markerFallbackUrl from '../../svg/map-picker-marker-fallback.svg';
 
 export const markerGeometry = {
-    iconSize: [35, 45],
-    iconAnchor: [17, 42],
-    popupAnchor: [1, -32],
+    iconSize: [44, 56],
+    iconAnchor: [22, 54],
+    popupAnchor: [0, -42],
 };
 
 export const defaultMarker = {
@@ -67,8 +67,6 @@ export function createMapPickerLeafletIcon(L, type = 'default') {
     return L.divIcon({
         className: 'map-picker-marker map-picker-marker--custom',
         html: `<div class="map-picker-marker__inner" aria-hidden="true">${markerSvg}</div>`,
-        iconSize: [32, 45],
-        iconAnchor: [22, 54],
-        popupAnchor: [0, -42],
+        ...markerGeometry,
     });
 }

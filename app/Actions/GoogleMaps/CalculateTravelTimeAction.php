@@ -8,10 +8,11 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
-use Modules\Geo\Datas\TravelTimeData;
+use Modules\Geo\Datas\Routing\TravelTimeData;
 
 use function Safe\json_decode;
 
+use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
 /**
@@ -20,19 +21,22 @@ use Webmozart\Assert\Assert;
  * Questa classe utilizza l'API Google Maps Distance Matrix per calcolare
  * il tempo di percorrenza tra due località, considerando il traffico attuale.
  */
-readonly class CalculateTravelTimeAction
+class CalculateTravelTimeAction
 {
+    use QueueableAction;
+
     private const API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
 
     public function __construct(
-        private Client $client,
+        private readonly Client $client,
     ) {
     }
 
     /**
      * Calcola il tempo di percorrenza tra due punti.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
+    * @throws \InvalidArgumentException Se i dati di input non sono validi
+     * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(LocationData $origin, LocationData $destination): TravelTimeData
     {
@@ -56,7 +60,8 @@ readonly class CalculateTravelTimeAction
     /**
      * Valida i dati di input.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata o i dati non sono validi
+    * @throws \InvalidArgumentException Se i dati di input non sono validi
+     * @throws \RuntimeException         Se la chiave API non è configurata o i dati non sono validi
      */
     private function validateInput(LocationData $origin, LocationData $destination): void
     {
@@ -114,13 +119,13 @@ readonly class CalculateTravelTimeAction
          * } $data */
         $data = json_decode($response, true);
 
-        if (($data['status'] ?? null) !== 'OK') {
-            return TravelTimeData::error($data['status'] ?? 'INVALID_RESPONSE');
+       if ('OK' !== $data['status']) {
+            return TravelTimeData::error($data['status']);
         }
 
-        $element = $data['rows'][0]['elements'][0] ?? null;
-        if (! $element || ($element['status'] ?? null) !== 'OK') {
-            return TravelTimeData::error($element['status'] ?? 'NO_ROUTE');
+        $element = $data['rows'][0]['elements'][0];
+        if ('OK' !== $element['status']) {
+            return TravelTimeData::error($element['status']);
         }
 
         return new TravelTimeData(

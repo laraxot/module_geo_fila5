@@ -49,3 +49,38 @@ Questo pattern replica l'idea chiave di `farmshops.eu`: performance stabili con 
 - `phpmd` via `php tools/phpmd.phar ...`
 - `phpinsights` via `.phar` workflow del progetto
 - `pest` per dataset support object e widget config
+
+## Pattern `geo-map-lit` (ticket-list pubblico)
+
+Variante del pattern per pagine pubbliche (non Filament admin):
+
+- **Generatore**: `Modules/Fixcity/app/Actions/GenerateTicketsJsonAction::execute()`
+- **Output path**: `base_path('../public_html/data/tickets.json')` (un livello sopra `laravel/`)
+- **Endpoint**: `/data/tickets.json` (servito da `public_html/data/`)
+- **Componente**: `<geo-map-lit data-url="/data/tickets.json">` via Vite bundle `assets/geo`
+- **Trigger rigenerazione**: da `ListTickets` page header action, o a mano via tinker
+
+### Path corretto
+
+```php
+// ✅ CORRETTO (public_html è UN livello sopra laravel/)
+$outputPath = base_path('../public_html/data/tickets.json');
+
+// ❌ SBAGLIATO (due livelli su — non esiste)
+$outputPath = base_path('../../public/data/tickets.json');
+
+// ❌ SBAGLIATO (public_html non è dentro laravel/)
+$outputPath = base_path('public_html/data/tickets.json');
+```
+
+### Fix bug noti (story 8-78, 2026-04-29)
+
+- `GenerateTicketsJsonAction`: usava `$t->title` (campo inesistente) → corretto in `$t->name`
+- `$t->type->value` su stringa → corretto con `getAttribute('type')` + `BackedEnum` check
+- Path errato → corretto in `../public_html/data/tickets.json`
+
+## Regole correlate
+
+- [geo-map-controls-unification-rule](./geo-map-controls-unification-rule.md) — controlli mappa devono essere unificati tra `geo-map-lit` e `coordinate-picker-lit`
+- [geo-vite-build-contract](./geo-vite-build-contract.md)
+- [geo-map-lit entity](../entities/geo-map-lit.md)

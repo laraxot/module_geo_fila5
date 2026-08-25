@@ -10,11 +10,15 @@ use Modules\Geo\Datas\LocationData;
 
 use function Safe\json_decode;
 
+use Spatie\QueueableAction\QueueableAction;
+
 /**
  * Action per ottenere l'indirizzo da coordinate geografiche usando Nominatim.
  */
 class ReverseGeocodeAction
 {
+   use QueueableAction;
+
     private const API_URL = 'https://nominatim.openstreetmap.org/reverse';
 
     private Client $client;

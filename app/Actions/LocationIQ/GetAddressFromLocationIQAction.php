@@ -7,13 +7,16 @@ namespace Modules\Geo\Actions\LocationIQ;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere i dati dell'indirizzo dal servizio LocationIQ.
  */
 class GetAddressFromLocationIQAction
 {
+   use QueueableAction;
+
     private const BASE_URL = 'https://eu1.locationiq.com/v1';
 
     /**

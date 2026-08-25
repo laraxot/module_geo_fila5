@@ -36,7 +36,7 @@ Seguendo il principio **DRY (Don't Repeat Yourself)** e le regole Laraxot, tutti
 <div class="relative">
     <input type="text" ...>
     <div class="absolute left-3 w-4 h-4">
-        @svg('geo::magnifying-glass', 'w-full h-full') {{-- SVG separato --}}
+        @svg('geo-magnifying-glass', 'w-full h-full') {{-- SVG separato --}}
     </div>
 </div>
 ```
@@ -79,7 +79,7 @@ laravel/Modules/Geo/resources/svg/
 
 **In Blade (PHP)**:
 ```blade
-@svg('geo::magnifying-glass', 'w-4 h-4 text-gray-400')
+@svg('geo-magnifying-glass', 'w-4 h-4 text-gray-400')
 ```
 
 **In Lit (JavaScript)**:
