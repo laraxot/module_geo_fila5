@@ -90,8 +90,8 @@ class OSMMapWidget extends XotBaseWidget
             return ['lat' => 41.9028, 'lng' => 12.4964]; // Rome, Italy
         }
 
-        $latitudes = $places->pluck('latitude')->filter(fn ($lat) => is_float($lat));
-        $longitudes = $places->pluck('longitude')->filter(fn ($lng) => is_float($lng));
+        $latitudes = $places->pluck('latitude')->filter(fn (mixed $lat) => is_float($lat));
+        $longitudes = $places->pluck('longitude')->filter(fn (mixed $lng) => is_float($lng));
 
         return [
             'lat' => $latitudes->average() ?? 0.0,
