@@ -23,7 +23,11 @@ abstract class GeoJsonModel
     /**
      * Restituisce tutti i dati come collection.
      */
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return Collection<int, array<string, mixed>>
      */
     public static function all(): Collection

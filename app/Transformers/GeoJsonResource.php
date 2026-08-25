@@ -33,7 +33,11 @@ use Illuminate\Http\Resources\Json\JsonResource as ResCollection;
  */
 class GeoJsonResource extends ResCollection
 {
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array

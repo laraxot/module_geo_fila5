@@ -15,7 +15,11 @@ use function Safe\json_encode;
 uses(TestCase::class);
 
 beforeEach(function (): void {
+<<<<<<< HEAD
    $comuneFixtureRows = [
+=======
+    $comuneFixtureRows = [
+>>>>>>> laraxot/dev
         [
             'id' => 1,
             'regione' => 'Lombardia',
@@ -40,7 +44,11 @@ beforeEach(function (): void {
         ],
     ];
 
+<<<<<<< HEAD
    File::ensureDirectoryExists(base_path('database/content'));
+=======
+    File::ensureDirectoryExists(base_path('database/content'));
+>>>>>>> laraxot/dev
     File::put(
         base_path('database/content/comuni.json'),
         json_encode($comuneFixtureRows, JSON_PRETTY_PRINT)
@@ -249,6 +257,10 @@ it('can create a new comune', function (): void {
         'lat' => 45.5389,
         'lng' => 9.1900,
     ]);
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
     Assert::assertNotNull($comune);
     Assert::assertSame('Bresso', $comune->nome);
     Assert::assertSame('Milano', $comune->provincia);

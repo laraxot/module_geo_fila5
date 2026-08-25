@@ -13,12 +13,20 @@ uses(LightTestCase::class);
 it('can instantiate map picker', function () {
     $field = MapPicker::make('location');
 
+<<<<<<< HEAD
    Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+    Assert::assertInstanceOf(MapPicker::class, $field);
+>>>>>>> laraxot/dev
 });
 
 it('can set and get latitude and longitude field names', function () {
     $field = MapPicker::make('location')
+<<<<<<< HEAD
        ->latitudeColumn('lat_field')
+=======
+        ->latitudeColumn('lat_field')
+>>>>>>> laraxot/dev
         ->longitudeColumn('lng_field');
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -38,7 +46,11 @@ it('can set and get latitude and longitude field names', function () {
 it('has default latitude and longitude field names', function () {
     $field = MapPicker::make('location');
 
+<<<<<<< HEAD
    Assert::assertSame('latitude', $field->getLatitudeColumn());
+=======
+    Assert::assertSame('latitude', $field->getLatitudeColumn());
+>>>>>>> laraxot/dev
 
     Assert::assertSame('longitude', $field->getLongitudeColumn());
 });
@@ -46,7 +58,11 @@ it('has default latitude and longitude field names', function () {
 it('can set zoom level', function () {
     $field = MapPicker::make('location')
         ->zoom(10);
+<<<<<<< HEAD
    Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+    Assert::assertInstanceOf(MapPicker::class, $field);
+>>>>>>> laraxot/dev
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -61,7 +77,11 @@ it('can set zoom level', function () {
 it('can enable or disable reverse geocoding', function () {
     $field = MapPicker::make('location')
         ->reverseGeocoding(false);
+<<<<<<< HEAD
    Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+    Assert::assertInstanceOf(MapPicker::class, $field);
+>>>>>>> laraxot/dev
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -79,7 +99,11 @@ it('can enable or disable reverse geocoding', function () {
 it('can enable or disable geolocation when empty', function () {
     $field = MapPicker::make('location')
         ->geolocateWhenEmpty(false);
+<<<<<<< HEAD
    Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+    Assert::assertInstanceOf(MapPicker::class, $field);
+>>>>>>> laraxot/dev
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -97,5 +121,9 @@ it('can enable or disable geolocation when empty', function () {
 it('uses the geo map picker blade view', function () {
     $field = MapPicker::make('location');
 
+<<<<<<< HEAD
    Assert::assertSame('geo::filament.forms.components.map-picker', $field->getView());
+=======
+    Assert::assertSame('geo::filament.forms.components.map-picker', $field->getView());
+>>>>>>> laraxot/dev
 });

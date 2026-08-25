@@ -23,29 +23,49 @@ test('StatePolicy can be instantiated', function () {
 test('CountyPolicy can be instantiated', function () {
     $policy = new CountyPolicy();
 
+<<<<<<< HEAD
    Assert::assertInstanceOf(CountyPolicy::class, $policy);
+=======
+    Assert::assertInstanceOf(CountyPolicy::class, $policy);
+>>>>>>> laraxot/dev
 });
 
 test('LocalityPolicy can be instantiated', function () {
     $policy = new LocalityPolicy();
 
+<<<<<<< HEAD
    Assert::assertInstanceOf(LocalityPolicy::class, $policy);
+=======
+    Assert::assertInstanceOf(LocalityPolicy::class, $policy);
+>>>>>>> laraxot/dev
 });
 
 test('PlacePolicy can be instantiated', function () {
     $policy = new PlacePolicy();
 
+<<<<<<< HEAD
    Assert::assertInstanceOf(PlacePolicy::class, $policy);
+=======
+    Assert::assertInstanceOf(PlacePolicy::class, $policy);
+>>>>>>> laraxot/dev
 });
 
 test('PlaceTypePolicy can be instantiated', function () {
     $policy = new PlaceTypePolicy();
 
+<<<<<<< HEAD
    Assert::assertInstanceOf(PlaceTypePolicy::class, $policy);
+=======
+    Assert::assertInstanceOf(PlaceTypePolicy::class, $policy);
+>>>>>>> laraxot/dev
 });
 
 test('GeoNamesCapPolicy can be instantiated', function () {
     $policy = new GeoNamesCapPolicy();
 
+<<<<<<< HEAD
    Assert::assertInstanceOf(GeoNamesCapPolicy::class, $policy);
+=======
+    Assert::assertInstanceOf(GeoNamesCapPolicy::class, $policy);
+>>>>>>> laraxot/dev
 });

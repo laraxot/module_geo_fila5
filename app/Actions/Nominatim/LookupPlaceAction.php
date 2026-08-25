@@ -17,7 +17,11 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class LookupPlaceAction
 {
+<<<<<<< HEAD
    use QueueableAction;
+=======
+    use QueueableAction;
+>>>>>>> laraxot/dev
 
     private const API_URL = 'https://nominatim.openstreetmap.org/lookup';
 

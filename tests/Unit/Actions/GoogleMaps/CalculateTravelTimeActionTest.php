@@ -29,7 +29,11 @@ it('throws exception when api key is not configured', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute($origin, $destination);
 
         Assert::fail('Expected RuntimeException was not thrown');
@@ -48,7 +52,11 @@ it('throws exception when origin and destination are the same', function (): voi
 
     $location = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
 
+<<<<<<< HEAD
    expect(fn (): TravelTimeData => $action->execute($location, $location))
+=======
+    expect(fn (): TravelTimeData => $action->execute($location, $location))
+>>>>>>> laraxot/dev
         ->toThrow(\InvalidArgumentException::class);
 });
 
@@ -65,7 +73,11 @@ it('returns error travel time data for failed api request', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
+<<<<<<< HEAD
    $result = $action->execute($origin, $destination);
+=======
+    $result = $action->execute($origin, $destination);
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(TravelTimeData::class, $result);
 
@@ -87,7 +99,11 @@ it('returns error for invalid response status', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
+<<<<<<< HEAD
    $result = $action->execute($origin, $destination);
+=======
+    $result = $action->execute($origin, $destination);
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(TravelTimeData::class, $result);
 
@@ -114,7 +130,11 @@ it('returns error when no route found', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
+<<<<<<< HEAD
    $result = $action->execute($origin, $destination);
+=======
+    $result = $action->execute($origin, $destination);
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(TravelTimeData::class, $result);
 
@@ -143,7 +163,11 @@ it('returns travel time data for valid route', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
+<<<<<<< HEAD
    $result = $action->execute($origin, $destination);
+=======
+    $result = $action->execute($origin, $destination);
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(TravelTimeData::class, $result);
 
@@ -181,7 +205,11 @@ it('uses duration as fallback for duration in traffic', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
+<<<<<<< HEAD
    $result = $action->execute($origin, $destination);
+=======
+    $result = $action->execute($origin, $destination);
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(TravelTimeData::class, $result);
 

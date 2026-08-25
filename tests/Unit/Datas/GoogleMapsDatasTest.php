@@ -59,7 +59,11 @@ test('GoogleMapResultData can be instantiated', function () {
                 'northeast' => ['lat' => 41.904, 'lng' => 12.498],
                 'southwest' => ['lat' => 41.901, 'lng' => 12.495],
             ],
+<<<<<<< HEAD
        ],
+=======
+        ],
+>>>>>>> laraxot/dev
         'place_id' => 'ChIJuQF2rcJ4t4kR2_1gJGeWQ0Y',
         'types' => ['locality', 'political'],
     ]);

@@ -33,7 +33,11 @@ class AddressColumn extends XotBaseViewColumn
     {
         parent::setUp();
 
+<<<<<<< HEAD
        /** @var array<string> $searchableArray */
+=======
+        /** @var array<string> $searchableArray */
+>>>>>>> laraxot/dev
         $searchableArray = AddressItemEnum::getSearchable();
 
         $this

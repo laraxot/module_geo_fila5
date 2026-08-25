@@ -21,7 +21,11 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class OptimizeRouteAction
 {
+<<<<<<< HEAD
    use QueueableAction;
+=======
+    use QueueableAction;
+>>>>>>> laraxot/dev
 
     private const BASE_URL = 'https://maps.googleapis.com/maps/api/directions/json';
 

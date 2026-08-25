@@ -30,7 +30,11 @@ class LocationResource extends XotBaseResource
     // ✅ CORRETTO - NIENTE navigationGroup - La gestione è centralizzata in XotBaseResource
 
     /**
+<<<<<<< HEAD
     * Schema legacy del form: la sorgente di verità è LocationForm::getFormSchema().
+=======
+     * Schema legacy del form: la sorgente di verità è LocationForm::getFormSchema().
+>>>>>>> laraxot/dev
      *
      * @return array<string, Component>
      */
@@ -44,7 +48,11 @@ class LocationResource extends XotBaseResource
     /**
      * Definisce le relazioni disponibili per questo resource.
      *
+<<<<<<< HEAD
     * @return array<mixed> Le relazioni configurate
+=======
+     * @return array<mixed> Le relazioni configurate
+>>>>>>> laraxot/dev
      */
     #[\Override]
     public static function getRelations(): array
@@ -60,7 +68,11 @@ class LocationResource extends XotBaseResource
      * - Creazione nuovo luogo
      * - Modifica luogo esistente
      *
+<<<<<<< HEAD
     * @return array<mixed> Le pagine configurate
+=======
+     * @return array<mixed> Le pagine configurate
+>>>>>>> laraxot/dev
      */
     #[\Override]
     public static function getPages(): array

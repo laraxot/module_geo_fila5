@@ -15,7 +15,11 @@ describe('LocationDTO', function () {
             longitude: 12.4964,
         );
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(LocationDTO::class, $dto);
+=======
+        Assert::assertInstanceOf(LocationDTO::class, $dto);
+>>>>>>> laraxot/dev
 
         Assert::assertSame(41.9028, $dto->latitude);
 
@@ -31,7 +35,11 @@ describe('LocationDTO', function () {
             name: 'Rome',
         );
 
+<<<<<<< HEAD
        Assert::assertSame('Rome', $dto->name);
+=======
+        Assert::assertSame('Rome', $dto->name);
+>>>>>>> laraxot/dev
     });
 
     test('fromLocationData creates instance from LocationData', function () {
@@ -44,7 +52,11 @@ describe('LocationDTO', function () {
 
         $dto = LocationDTO::fromLocationData($locationData);
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(LocationDTO::class, $dto);
+=======
+        Assert::assertInstanceOf(LocationDTO::class, $dto);
+>>>>>>> laraxot/dev
 
         Assert::assertSame(45.4654, $dto->latitude);
 
@@ -62,7 +74,11 @@ describe('LocationDTO', function () {
 
         $locationData = $dto->toLocationData();
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(LocationData::class, $locationData);
+=======
+        Assert::assertInstanceOf(LocationData::class, $locationData);
+>>>>>>> laraxot/dev
 
         Assert::assertSame(45.4654, $locationData->latitude);
 
@@ -75,7 +91,11 @@ describe('LocationDTO', function () {
 
     test('properties are readonly via readonly class', function () {
         $dto = new LocationDTO(latitude: 41.9028, longitude: 12.4964);
+<<<<<<< HEAD
        $reflection = new \ReflectionClass($dto);
+=======
+        $reflection = new \ReflectionClass($dto);
+>>>>>>> laraxot/dev
 
         Assert::assertTrue($reflection->isReadOnly());
     });
@@ -91,7 +111,11 @@ describe('LocationDTO', function () {
         $dto = LocationDTO::fromLocationData($original);
         $converted = $dto->toLocationData();
 
+<<<<<<< HEAD
        Assert::assertSame($original->latitude, $converted->latitude);
+=======
+        Assert::assertSame($original->latitude, $converted->latitude);
+>>>>>>> laraxot/dev
 
         Assert::assertSame($original->longitude, $converted->longitude);
 
@@ -106,6 +130,10 @@ describe('LocationDTO', function () {
 
         $dto = LocationDTO::fromLocationData($locationData);
 
+<<<<<<< HEAD
        Assert::assertNull($dto->name);
+=======
+        Assert::assertNull($dto->name);
+>>>>>>> laraxot/dev
     });
 });

@@ -136,7 +136,11 @@ class GetCoordinatesByAddressAction
         }
 
         return new CoordinatesData(
+<<<<<<< HEAD
            latitude: SafeFloatCastAction::cast($coordinates[0] ?? 0),
+=======
+            latitude: SafeFloatCastAction::cast($coordinates[0] ?? 0),
+>>>>>>> laraxot/dev
             longitude: SafeFloatCastAction::cast($coordinates[1] ?? 0),
         );
     }

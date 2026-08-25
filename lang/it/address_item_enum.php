@@ -3,7 +3,11 @@
 declare(strict_types=1);
 
 return [
+<<<<<<< HEAD
    'values' => [
+=======
+    'values' => [
+>>>>>>> laraxot/dev
         'phone' => [
             'label' => 'Telefono',
             'description' => 'Numero di telefono',
@@ -142,7 +146,11 @@ return [
         ],
         'label' => 'Address Item Enum',
         'sort' => 1,
+<<<<<<< HEAD
        'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-rectangle-stack',
+>>>>>>> laraxot/dev
     ],
     'fields' => [
         'id' => [

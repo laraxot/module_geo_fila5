@@ -25,7 +25,11 @@ class UpdateCoordinatesAction
             throw new \RuntimeException('Place address is required');
         }
 
+<<<<<<< HEAD
        $location = app(GetCoordinatesAction::class)->execute($place->address->formatted_address);
+=======
+        $location = app(GetCoordinatesAction::class)->execute($place->address->formatted_address);
+>>>>>>> laraxot/dev
 
         if (! $location) {
             throw new \RuntimeException('Could not get coordinates for address: '.$place->address->formatted_address);

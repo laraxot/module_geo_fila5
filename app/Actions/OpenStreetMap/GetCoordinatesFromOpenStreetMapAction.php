@@ -28,6 +28,10 @@ class GetCoordinatesFromOpenStreetMapAction
             return null;
         }
 
+<<<<<<< HEAD
        return app(FetchCoordinatesAction::class)->execute($address);
+=======
+        return app(FetchCoordinatesAction::class)->execute($address);
+>>>>>>> laraxot/dev
     }
 }

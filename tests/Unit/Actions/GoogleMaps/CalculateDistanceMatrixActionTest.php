@@ -25,7 +25,11 @@ it('throws exception when google maps api key is not configured', function (): v
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute($origins, $destinations);
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
@@ -47,7 +51,11 @@ it('throws exception when api key is empty string', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute($origins, $destinations);
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
@@ -72,7 +80,11 @@ it('throws exception when api response is not successful', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute($origins, $destinations);
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
@@ -98,7 +110,11 @@ it('throws exception when response status is not OK', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute($origins, $destinations);
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
@@ -124,7 +140,11 @@ it('throws exception when response has no rows', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute($origins, $destinations);
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
@@ -159,7 +179,11 @@ it('returns distance matrix for valid locations', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
+<<<<<<< HEAD
    $result = $action->execute($origins, $destinations);
+=======
+    $result = $action->execute($origins, $destinations);
+>>>>>>> laraxot/dev
     Assert::assertCount(1, $result);
 
     Assert::assertSame('572 km', $result[0][0]['distance']['text']);
@@ -206,7 +230,11 @@ it('handles multiple origins and destinations', function (): void {
         new LocationData(latitude: 40.8518, longitude: 14.2681, address: 'Napoli'),
     ]);
 
+<<<<<<< HEAD
    $result = $action->execute($origins, $destinations);
+=======
+    $result = $action->execute($origins, $destinations);
+>>>>>>> laraxot/dev
     Assert::assertCount(2, $result);
 
     Assert::assertSame(100000, $result[0][0]['distance']['value']);
@@ -244,7 +272,11 @@ it('handles zero results status', function (): void {
         new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
     ]);
 
+<<<<<<< HEAD
    $result = $action->execute($origins, $destinations);
+=======
+    $result = $action->execute($origins, $destinations);
+>>>>>>> laraxot/dev
 
     Assert::assertSame('ZERO_RESULTS', $result[0][0]['status']);
 });

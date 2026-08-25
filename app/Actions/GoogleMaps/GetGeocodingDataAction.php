@@ -121,7 +121,11 @@ class GetGeocodingDataAction
             return GeocodingData::error($data['status']);
         }
 
+<<<<<<< HEAD
        return GeocodingData::fromGoogleResponse([
+=======
+        return GeocodingData::fromGoogleResponse([
+>>>>>>> laraxot/dev
             'status' => $data['status'],
             'results' => $data['results'],
         ]);

@@ -60,7 +60,11 @@ it('throws exception for too long address', function (): void {
 
     $longAddress = str_repeat('a', 1001);
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute($longAddress);
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
@@ -98,7 +102,11 @@ it('returns error geocoding data for invalid status', function (): void {
         'results' => [],
     ])));
 
+<<<<<<< HEAD
    $result = $action->execute('NonExistentPlace');
+=======
+    $result = $action->execute('NonExistentPlace');
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(GeocodingData::class, $result);
     Assert::assertNotNull($result->error);
@@ -130,7 +138,11 @@ it('returns geocoding data for valid address', function (): void {
         ]],
     ])));
 
+<<<<<<< HEAD
    $result = $action->execute('Via Roma, Milano, Italia');
+=======
+    $result = $action->execute('Via Roma, Milano, Italia');
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(GeocodingData::class, $result);
     Assert::assertNull($result->error);

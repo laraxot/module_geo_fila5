@@ -41,7 +41,11 @@ it('filters coordinates within radius', function (): void {
 });
 
 it('returns empty array when no coordinates within radius', function (): void {
+<<<<<<< HEAD
    $action = makeFilterAction(new CalculateDistanceMatrixQueueStub([
+=======
+    $action = makeFilterAction(new CalculateDistanceMatrixQueueStub([
+>>>>>>> laraxot/dev
         [[['distance' => ['value' => 10000], 'duration' => ['value' => 600], 'status' => 'OK']]],
         [[['distance' => ['value' => 12000], 'duration' => ['value' => 800], 'status' => 'OK']]],
     ]));
@@ -55,7 +59,11 @@ it('returns empty array when no coordinates within radius', function (): void {
 });
 
 it('returns all coordinates when all within radius', function (): void {
+<<<<<<< HEAD
    $action = makeFilterAction(new CalculateDistanceMatrixQueueStub([
+=======
+    $action = makeFilterAction(new CalculateDistanceMatrixQueueStub([
+>>>>>>> laraxot/dev
         [[['distance' => ['value' => 1000], 'duration' => ['value' => 100], 'status' => 'OK']]],
         [[['distance' => ['value' => 8000], 'duration' => ['value' => 400], 'status' => 'OK']]],
         [[['distance' => ['value' => 3000], 'duration' => ['value' => 200], 'status' => 'OK']]],
@@ -71,7 +79,11 @@ it('returns all coordinates when all within radius', function (): void {
 });
 
 it('handles empty coordinates array', function (): void {
+<<<<<<< HEAD
    $action = makeFilterAction(new CalculateDistanceMatrixQueueStub());
+=======
+    $action = makeFilterAction(new CalculateDistanceMatrixQueueStub());
+>>>>>>> laraxot/dev
 
     $result = $action->execute(45.4642, 9.1900, [], 5000);
 
@@ -79,7 +91,11 @@ it('handles empty coordinates array', function (): void {
 });
 
 it('filters exactly at boundary', function (): void {
+<<<<<<< HEAD
    $action = makeFilterAction(new CalculateDistanceMatrixQueueStub([
+=======
+    $action = makeFilterAction(new CalculateDistanceMatrixQueueStub([
+>>>>>>> laraxot/dev
         [[['distance' => ['value' => 5000], 'duration' => ['value' => 300], 'status' => 'OK']]],
     ]));
 

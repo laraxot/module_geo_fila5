@@ -56,7 +56,11 @@ it('calculates bounding box with larger distance expands more', function (): voi
     $largeResult = $action->execute(45.4642, 9.1900, 10.0);
 
     // Larger distance should produce wider bounds
+<<<<<<< HEAD
    Assert::assertGreaterThan($smallResult['max_lat'] - $smallResult['min_lat'], $largeResult['max_lat'] - $largeResult['min_lat']);
+=======
+    Assert::assertGreaterThan($smallResult['max_lat'] - $smallResult['min_lat'], $largeResult['max_lat'] - $largeResult['min_lat']);
+>>>>>>> laraxot/dev
 });
 
 it('handles boundary coordinates at equator', function (): void {

@@ -57,7 +57,11 @@ it('throws exception for too long address', function (): void {
 
     $longAddress = str_repeat('a', 1001);
 
+<<<<<<< HEAD
    expect(fn (): LocationData => $action->execute($longAddress))
+=======
+    expect(fn (): LocationData => $action->execute($longAddress))
+>>>>>>> laraxot/dev
         ->toThrow(\InvalidArgumentException::class, 'Address is too long');
 });
 
@@ -93,7 +97,11 @@ it('throws exception when no coordinates found', function (): void {
         'results' => [],
     ])));
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute('NonExistentPlace');
 
         Assert::fail('Expected RuntimeException was not thrown');
@@ -143,7 +151,11 @@ it('returns location data for valid address', function (): void {
         ]],
     ])));
 
+<<<<<<< HEAD
    $result = $action->execute('Milano, Italia');
+=======
+    $result = $action->execute('Milano, Italia');
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(LocationData::class, $result);
 
@@ -174,7 +186,11 @@ it('handles address with special characters', function (): void {
         ]],
     ])));
 
+<<<<<<< HEAD
    $result = $action->execute('Piazza del Popolo, Roma, Italia');
+=======
+    $result = $action->execute('Piazza del Popolo, Roma, Italia');
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(LocationData::class, $result);
 

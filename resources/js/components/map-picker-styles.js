@@ -27,6 +27,16 @@ export const mapPickerStyles = css`
         left: 0 !important;
         width: 100vw !important;
         height: 100vh !important;
+<<<<<<< HEAD
+=======
+        z-index: var(--mp-fullscreen-z-index, 999999) !important;
+        border-radius: 0 !important;
+    }
+
+    .map-container:fullscreen {
+        width: 100vw !important;
+        height: 100vh !important;
+>>>>>>> laraxot/dev
         border-radius: 0 !important;
     }
 
@@ -38,10 +48,29 @@ export const mapPickerStyles = css`
         opacity: 1;
     }
 
+    .map-picker-leaflet-pane .leaflet-container,
+    .map-picker-leaflet-pane .leaflet-pane,
+    .map-picker-leaflet-pane .leaflet-layer,
+    .map-picker-leaflet-pane .leaflet-tile,
+    .map-picker-leaflet-pane .leaflet-tile-pane {
+        opacity: 1 !important;
+        filter: none !important;
+    }
+
     .layer-controls-overlay {
         position: absolute;
         top: 1rem;
         left: 1rem;
+<<<<<<< HEAD
+=======
+        z-index: 3001 !important;
+        display: flex !important;
+        flex-direction: column;
+        gap: 0.75rem;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+>>>>>>> laraxot/dev
     }
 
     .ctrl-btn {
@@ -58,6 +87,13 @@ export const mapPickerStyles = css`
         box-shadow: 0 8px 18px rgba(23, 50, 77, 0.22);
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 0;
+<<<<<<< HEAD
+=======
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: relative;
+        z-index: 3002;
+>>>>>>> laraxot/dev
     }
 
     .ctrl-btn:hover {
@@ -72,6 +108,16 @@ export const mapPickerStyles = css`
         height: 1.25rem !important;
     }
 
+<<<<<<< HEAD
+=======
+    .ctrl-btn .ctrl-fallback {
+        display: none;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+>>>>>>> laraxot/dev
     .ctrl-btn.no-svg .ctrl-fallback {
         display: inline-block;
     }
@@ -94,11 +140,80 @@ export const mapPickerStyles = css`
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(8px);
         max-width: 300px;
+<<<<<<< HEAD
+=======
+        width: min(300px, calc(100% - 5rem));
+        align-items: center;
+    }
+
+    .search-box input {
+        flex: 1;
+>>>>>>> laraxot/dev
         border: 1px solid #d1d5db;
         border-radius: 0.5rem;
         padding: 0.5rem 0.75rem;
         font-size: 0.875rem;
         width: 100%;
+<<<<<<< HEAD
+=======
+        min-width: 0;
+        outline: none;
+        color: #17324d;
+        background: #ffffff;
+        line-height: 1.25rem;
+    }
+
+    .search-box .ctrl-btn {
+        flex: 0 0 auto;
+        width: 2.75rem;
+        min-width: 2.75rem;
+        height: 2.75rem;
+    }
+
+    .search-box .ctrl-btn svg {
+        display: block;
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+        flex: 0 0 auto;
+    }
+
+    .geo-address-search-results {
+        flex: 0 0 100%;
+        max-height: 12rem;
+        margin: 0;
+        padding: 0.25rem 0;
+        overflow: auto;
+        list-style: none;
+        border: 1px solid #d1d5db;
+        border-radius: 0.75rem;
+        background: #ffffff;
+        color: #17324d;
+        box-shadow: 0 10px 24px rgba(23, 50, 77, 0.16);
+    }
+
+    .geo-address-search-results li {
+        padding: 0.55rem 0.75rem;
+        cursor: pointer;
+        font-size: 0.8125rem;
+        line-height: 1.25;
+    }
+
+    .geo-address-search-results li:hover,
+    .geo-address-search-results li:focus-visible {
+        background: #eef6ff;
+        color: #0050a4;
+        outline: none;
+    }
+
+    html.geo-map-fullscreen-active,
+    html.geo-map-fullscreen-active body {
+        overflow: hidden !important;
+    }
+
+    .map-container.is-fullscreen .layer-controls-overlay,
+    .map-container.is-fullscreen .search-box {
+        z-index: 3002 !important;
+>>>>>>> laraxot/dev
     }
 
     .loading-overlay {
@@ -156,6 +271,124 @@ export const mapPickerStyles = css`
         width: 100%;
         height: 100%;
         display: block;
+    }
+
+    /* Cluster Circle - farmshops.eu style for zoom < 8 */
+    .circle, .geo-cluster-circle {
+        color: #4ca7ce;
+        border: 3px solid #4ca7ce;
+        background: #ffffff;
+        border-radius: 50%;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 500;
+    }
+    .circle:hover, .geo-cluster-circle:hover {
+        transform: scale(1.1);
+    }
+    .circle strong, .geo-cluster-circle strong {
+        line-height: 1;
+    }
+
+    .circle-dots, .geo-cluster-type-icons {
+        display: flex;
+        gap: 3px;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 80%;
+        margin-top: 4px;
+    }
+
+    /* Leaflet cluster wrapper — remove default background */
+    .leaflet-marker-icon.geo-cluster-wrapper {
+        background: transparent;
+        border: none;
+    }
+
+    /* Popup - farmshops.eu structure */
+    .leaflet-popup-content-wrapper {
+        padding: 0;
+        overflow: hidden;
+        border-radius: 0.75rem;
+    }
+
+    .leaflet-popup-content {
+        margin: 0;
+        width: 100% !important;
+    }
+
+    .geo-popup-header {
+        background: #4ca7ce;
+        padding: 0.75rem 2.5rem 0.75rem 1rem;
+        color: #fff;
+    }
+
+    .geo-popup-header h1 {
+        font-size: 1.1rem;
+        margin: 0;
+        color: #fff;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    .geo-popup-body {
+        padding: 1rem;
+        font-size: 0.875rem;
+        color: #1e293b;
+    }
+
+    .geo-popup-section {
+        margin-bottom: 1rem;
+    }
+
+    .geo-popup-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .geo-popup-label {
+        font-weight: 700;
+        display: block;
+        margin-bottom: 0.25rem;
+        color: #4ca7ce;
+    }
+
+    .geo-popup-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .geo-popup-footer {
+        padding: 0.75rem 1rem;
+        border-top: 1px solid #e2e8f0;
+        background: #f8fafc;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .geo-popup-btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: #4ca7ce;
+        color: #fff !important;
+        border-radius: 0.5rem;
+        text-decoration: none !important;
+        font-weight: 600;
+        font-size: 0.75rem;
+        transition: all 0.2s;
+    }
+
+    .geo-popup-btn:hover {
+        background: #3a8fb3;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 `;
 

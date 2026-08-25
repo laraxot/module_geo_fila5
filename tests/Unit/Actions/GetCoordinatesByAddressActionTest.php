@@ -29,7 +29,11 @@ it('returns null when google api key not configured', function (): void {
 
     $result = $action->execute('Fake Address XYZ');
 
+<<<<<<< HEAD
    Assert::assertNull($result);
+=======
+    Assert::assertNull($result);
+>>>>>>> laraxot/dev
 });
 
 it('returns null for non-existent address with mock', function (): void {
@@ -49,5 +53,9 @@ it('returns null for non-existent address with mock', function (): void {
 
     $result = $action->execute('asdfghjklqwertyuizxcvbnm123456789');
 
+<<<<<<< HEAD
    Assert::assertNull($result);
+=======
+    Assert::assertNull($result);
+>>>>>>> laraxot/dev
 });

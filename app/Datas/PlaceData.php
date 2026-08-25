@@ -20,7 +20,11 @@ use Spatie\LaravelData\Data;
  */
 class PlaceData extends Data
 {
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param array<string, string> $addressComponents
      * @param array<string, mixed>  $extraData
      */

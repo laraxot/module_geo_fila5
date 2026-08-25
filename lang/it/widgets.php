@@ -22,7 +22,11 @@ return [
         ],
         'label' => 'Widgets',
         'sort' => 1,
+<<<<<<< HEAD
        'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-rectangle-stack',
+>>>>>>> laraxot/dev
     ],
     'fields' => [
         'id' => [

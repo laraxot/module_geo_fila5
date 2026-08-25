@@ -17,7 +17,11 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class FetchIPLocationAction
 {
+<<<<<<< HEAD
    use QueueableAction;
+=======
+    use QueueableAction;
+>>>>>>> laraxot/dev
 
     private const API_URL = 'http://ip-api.com/json/';
 

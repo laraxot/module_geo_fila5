@@ -17,7 +17,11 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class GetTimeZoneAction
 {
+<<<<<<< HEAD
    use QueueableAction;
+=======
+    use QueueableAction;
+>>>>>>> laraxot/dev
 
     private const API_URL = 'https://maps.googleapis.com/maps/api/timezone/json';
 

@@ -62,7 +62,11 @@ it('throws exception for too long address', function (): void {
 
     $longAddress = str_repeat('a', 1001);
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute($longAddress);
 
         Assert::fail('Expected RuntimeException was not thrown');
@@ -125,7 +129,11 @@ it('returns address data for valid response', function (): void {
         ]],
     ])));
 
+<<<<<<< HEAD
    $result = $action->execute('Via Roma 1, Milano, Italia');
+=======
+    $result = $action->execute('Via Roma 1, Milano, Italia');
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(AddressData::class, $result);
 
@@ -165,7 +173,11 @@ it('handles address without house number', function (): void {
         ]],
     ])));
 
+<<<<<<< HEAD
    $result = $action->execute('Via Roma, Milano');
+=======
+    $result = $action->execute('Via Roma, Milano');
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(AddressData::class, $result);
 

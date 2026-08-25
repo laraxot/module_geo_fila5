@@ -23,7 +23,11 @@ it('throws exception when api key is not configured', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute($locations, $origin, $destination);
 
         Assert::fail('Expected RuntimeException was not thrown');
@@ -40,7 +44,11 @@ it('returns empty array for empty locations', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
+<<<<<<< HEAD
    $result = $action->execute([], $origin, $destination);
+=======
+    $result = $action->execute([], $origin, $destination);
+>>>>>>> laraxot/dev
     Assert::assertEmpty($result);
 });
 
@@ -59,7 +67,11 @@ it('returns empty array when api returns no routes', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
+<<<<<<< HEAD
    $result = $action->execute($locations, $origin, $destination);
+=======
+    $result = $action->execute($locations, $origin, $destination);
+>>>>>>> laraxot/dev
     Assert::assertEmpty($result);
 });
 
@@ -110,7 +122,11 @@ it('returns route data for valid request', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
+<<<<<<< HEAD
    $result = $action->execute($locations, $origin, $destination);
+=======
+    $result = $action->execute($locations, $origin, $destination);
+>>>>>>> laraxot/dev
     Assert::assertCount(1, $result);
 
     Assert::assertInstanceOf(RouteData::class, $result[0]);
@@ -135,7 +151,11 @@ it('throws exception when api request fails', function (): void {
     $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
     $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute($locations, $origin, $destination);
 
         Assert::fail('Expected RuntimeException was not thrown');

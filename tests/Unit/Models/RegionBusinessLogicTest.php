@@ -24,24 +24,40 @@ describe('Region Business Logic', function () {
     test('region has factory trait for testing', function () {
         $traits = class_uses(Region::class);
 
+<<<<<<< HEAD
        Assert::assertArrayHasKey(HasXotFactory::class, $traits);
+=======
+        Assert::assertArrayHasKey(HasXotFactory::class, $traits);
+>>>>>>> laraxot/dev
     });
 
     test('region uses sushi trait for in-memory data', function () {
         $traits = class_uses(Region::class);
 
+<<<<<<< HEAD
        Assert::assertArrayHasKey(Sushi::class, $traits);
+=======
+        Assert::assertArrayHasKey(Sushi::class, $traits);
+>>>>>>> laraxot/dev
     });
 
     test('region has correct key type configured', function () {
         $region = new Region();
 
+<<<<<<< HEAD
        Assert::assertSame('integer', $region->getKeyType());
+=======
+        Assert::assertSame('integer', $region->getKeyType());
+>>>>>>> laraxot/dev
     });
 
     test('region has schema definition for geographic data', function () {
         $region = new Region();
+<<<<<<< HEAD
        $reflection = new \ReflectionClass($region);
+=======
+        $reflection = new \ReflectionClass($region);
+>>>>>>> laraxot/dev
         $schemaProperty = $reflection->getProperty('schema');
 
         Assert::assertTrue($schemaProperty->isProtected());
@@ -62,19 +78,31 @@ describe('Region Business Logic', function () {
     test('region model can be instantiated without errors', function () {
         $region = new Region();
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(Region::class, $region);
+=======
+        Assert::assertInstanceOf(Region::class, $region);
+>>>>>>> laraxot/dev
         Assert::assertInstanceOf(BaseModel::class, $region);
     });
 
     test('region can be queried by name', function () {
         $query = Region::whereName('Lombardia');
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(Builder::class, $query);
+=======
+        Assert::assertInstanceOf(Builder::class, $query);
+>>>>>>> laraxot/dev
     });
 
     test('region can be queried by id', function () {
         $query = Region::whereId(1);
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(Builder::class, $query);
+=======
+        Assert::assertInstanceOf(Builder::class, $query);
+>>>>>>> laraxot/dev
     });
 });

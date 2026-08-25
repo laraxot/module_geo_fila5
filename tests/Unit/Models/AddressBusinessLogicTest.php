@@ -43,7 +43,11 @@ describe('Address Business Logic', function () {
             'extra_data',
         ];
 
+<<<<<<< HEAD
        Assert::assertEquals($expectedFillable, $address->getFillable());
+=======
+        Assert::assertEquals($expectedFillable, $address->getFillable());
+>>>>>>> laraxot/dev
     });
 
     test('address has correct casts for geolocation and structured data', function () {
@@ -79,7 +83,11 @@ describe('Address Business Logic', function () {
         $address->street_number = '123';
         $address->locality = 'Milano';
 
+<<<<<<< HEAD
        Assert::assertStringContainsString('Via Roma 123', $address->full_address);
+=======
+        Assert::assertStringContainsString('Via Roma 123', $address->full_address);
+>>>>>>> laraxot/dev
         Assert::assertStringContainsString('Milano', $address->full_address);
     });
 
@@ -108,7 +116,11 @@ describe('Address Business Logic', function () {
 
         $schemaOrg = $address->toSchemaOrg();
 
+<<<<<<< HEAD
        Assert::assertArrayHasKey('@context', $schemaOrg);
+=======
+        Assert::assertArrayHasKey('@context', $schemaOrg);
+>>>>>>> laraxot/dev
         Assert::assertArrayHasKey('@type', $schemaOrg);
         Assert::assertSame('https://schema.org', $schemaOrg['@context']);
         Assert::assertSame('PostalAddress', $schemaOrg['@type']);
@@ -117,18 +129,30 @@ describe('Address Business Logic', function () {
     test('address scope can query nearby addresses', function () {
         $query = Address::nearby(45.4642, 9.1900, 10);
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(Builder::class, $query);
+=======
+        Assert::assertInstanceOf(Builder::class, $query);
+>>>>>>> laraxot/dev
     });
 
     test('address scope can query primary addresses', function () {
         $query = Address::primary();
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(Builder::class, $query);
+=======
+        Assert::assertInstanceOf(Builder::class, $query);
+>>>>>>> laraxot/dev
     });
 
     test('address scope can query by type', function () {
         $query = Address::ofType(AddressTypeEnum::BILLING);
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(Builder::class, $query);
+=======
+        Assert::assertInstanceOf(Builder::class, $query);
+>>>>>>> laraxot/dev
     });
 });

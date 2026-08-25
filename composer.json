@@ -12,7 +12,10 @@
     ],
     "extra": {
         "laravel": {
+<<<<<<< HEAD
 
+=======
+>>>>>>> laraxot/dev
       "providers": [
         "Modules\\Geo\\Providers\\GeoServiceProvider",
         "Modules\\Geo\\Providers\\Filament\\AdminPanelProvider"

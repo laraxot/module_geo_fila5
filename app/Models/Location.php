@@ -13,7 +13,11 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Class Location.
  *
+<<<<<<< HEAD
 * @property int                                     $id
+=======
+ * @property int                                     $id
+>>>>>>> laraxot/dev
  * @property string|null                             $model_type
  * @property string|null                             $model_id
  * @property string|null                             $name
@@ -88,7 +92,11 @@ class Location extends BaseModel
     /**
      * Get the latitude and longitude attributes.
      */
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return array<string, string>
      */
     public static function getLatLngAttributes(): array
@@ -110,7 +118,11 @@ class Location extends BaseModel
     /**
      * Scope to filter by a specific distance from a given point.
      */
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param Builder<static> $query
      *
      * @return Builder<static>
@@ -140,7 +152,11 @@ class Location extends BaseModel
     /**
      * Accessor for the "location" attribute.
      */
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return Attribute<array<string, mixed>, array<string, mixed>|null>
      */
     protected function location(): Attribute

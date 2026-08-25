@@ -15,7 +15,11 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class GetAddressFromNominatimAction
 {
+<<<<<<< HEAD
    use QueueableAction;
+=======
+    use QueueableAction;
+>>>>>>> laraxot/dev
 
     private const BASE_URL = 'https://nominatim.openstreetmap.org';
 

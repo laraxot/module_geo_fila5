@@ -50,7 +50,11 @@ class GetAddressFromHereMapsAction
         }
 
         return AddressData::from([
+<<<<<<< HEAD
            'latitude' => SafeFloatCastAction::cast($responseData->position['lat'] ?? 0),
+=======
+            'latitude' => SafeFloatCastAction::cast($responseData->position['lat'] ?? 0),
+>>>>>>> laraxot/dev
             'longitude' => SafeFloatCastAction::cast($responseData->position['lng'] ?? 0),
             'country' => $responseData->address['countryName'] ?? 'Italia',
             'city' => $responseData->address['city'] ?? '',

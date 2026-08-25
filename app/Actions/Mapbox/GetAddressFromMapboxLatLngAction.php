@@ -17,7 +17,11 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class GetAddressFromMapboxLatLngAction
 {
+<<<<<<< HEAD
    use QueueableAction;
+=======
+    use QueueableAction;
+>>>>>>> laraxot/dev
 
     private const BASE_URL = 'https://api.mapbox.com/geocoding/v5/mapbox.places';
 
@@ -58,7 +62,11 @@ class GetAddressFromMapboxLatLngAction
         return $apiKey;
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return array<mixed>
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
@@ -89,7 +97,11 @@ class GetAddressFromMapboxLatLngAction
         return $data;
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param array<mixed> $response
      */
     private function parseResponse(array $response): MapboxMapData
@@ -160,7 +172,11 @@ class GetAddressFromMapboxLatLngAction
         return new AddressData(
             latitude: (float) ($res['center'][1] ?? 0),
             longitude: (float) ($res['center'][0] ?? 0),
+<<<<<<< HEAD
            country: $res['context']['country'],
+=======
+            country: $res['context']['country'],
+>>>>>>> laraxot/dev
             city: $res['context']['place'],
             country_code: strtoupper($res['context']['country_code'] ?? 'IT'),
             postal_code: (int) ($res['context']['postcode'] ?? 0),
