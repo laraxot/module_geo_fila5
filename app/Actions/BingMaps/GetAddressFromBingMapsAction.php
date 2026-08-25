@@ -7,9 +7,11 @@ namespace Modules\Geo\Actions\BingMaps;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 
 use function Safe\json_decode;
+
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per ottenere l'indirizzo da coordinate tramite Bing Maps.
@@ -17,12 +19,14 @@ use function Safe\json_decode;
  * Questa classe utilizza l'API Bing Maps Geocoding per convertire
  * un indirizzo in coordinate geografiche e dettagli dell'indirizzo.
  */
-readonly class GetAddressFromBingMapsAction
+class GetAddressFromBingMapsAction
 {
+    use QueueableAction;
+
     private const API_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
 
     public function __construct(
-        private Client $client,
+        private readonly Client $client,
     ) {
     }
 

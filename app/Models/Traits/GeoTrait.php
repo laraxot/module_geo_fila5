@@ -7,9 +7,9 @@ namespace Modules\Geo\Models\Traits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 // --- models ---
+use Modules\Geo\Actions\Distance\BuildHaversineSqlAction;
+use Modules\Geo\Actions\Distance\CalculateGeoDistanceAction;
 use Modules\Geo\Datas\GeoData;
-// ---- services --
-use Modules\Geo\Services\GeoService;
 
 /**
  * Modules\Geo\Models\Traits\GeoTrait.
@@ -36,6 +36,7 @@ use Modules\Geo\Services\GeoService;
  * @property string $administrative_area_level_3.
  * @property string $administrative_area_level_2_short.
  */
+/** @phpstan-ignore trait.unused */
 trait GeoTrait
 {
     /*
@@ -56,7 +57,15 @@ trait GeoTrait
 
     public function distance(?float $lat = null, ?float $lng = null): ?float
     {
-        return (float) GeoService::distance((float) $this->latitude, (float) $this->longitude, $lat, $lng, '');
+       $distance = app(CalculateGeoDistanceAction::class)->execute(
+            (float) $this->latitude,
+            (float) $this->longitude,
+            $lat,
+            $lng,
+            '',
+        );
+
+        return null !== $distance ? (float) $distance : null;
     }
 
     public function distanceCustomField(
@@ -66,28 +75,32 @@ trait GeoTrait
         ?float $lng = null,
         ?string $unit = '',
     ): ?float {
-        return (float) GeoService::distance(
+       $distance = app(CalculateGeoDistanceAction::class)->execute(
             (float) $this->{$lat_field},
             (float) $this->{$lng_field},
             $lat,
             $lng,
             $unit,
         );
+        return null !== $distance ? (float) $distance : null;
     }
 
     // ---- Scopes ----
+    /** @phpstan-ignore-next-line */
     public function scopeWithDistance(Builder $query, float $lat, float $lng): Builder
     {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
-            $haversine = GeoService::haversine($lat, $lng);
+           $haversine = app(BuildHaversineSqlAction::class)->execute($lat, $lng);
 
+            // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');
         }
 
         return $q;
     }
 
+   /** @phpstan-ignore-next-line */
     public function scopeWithDistanceCustomField(
         Builder $query,
         string $lat_field,
@@ -97,44 +110,18 @@ trait GeoTrait
     ): Builder {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
-            $haversine = GeoService::setLatitudeLongitudeField('lat', 'lng')->haversine($lat, $lng);
+           $haversine = app(BuildHaversineSqlAction::class)->execute($lat, $lng, $lat_field, $lng_field);
 
+            // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');
         }
 
         return $q;
     }
 
+   /** @phpstan-ignore-next-line */
     public function scopeOfInPolygon(Builder $query, string $polygon_field, float $lat, float $lng): Builder
     {
-        // (concat('POLYGON(',replace(replace(replace(replace(Replace(REPLACE(zone_polygon,'"lat":',''),',"lng":',' '),'{',''),'}',''),'[','('),']',')'),')'))
-        // errore poligono non chiuso
-        /*
-         *
-         * SELECT ID,zone_polygon
-         * ,(ST_GeomFromText(
-         * concat('POLYGON((',
-         * REPLACE(
-         * REPLACE(
-         * REPLACE(
-         * REPLACE(
-         * replace(CONCAT(
-         * replace(replace(JSON_extract(zone_polygon,'$'),']',''),'[',''),
-         * ',',JSON_extract(zone_polygon,'$[0]'))
-         * ,'"lat":','')
-         * ,',"lng":',' ')
-         * ,'{',' ')
-         * ,', "lng":',' ')
-         * ,'}','')
-         * ,'))')
-         * )
-         * )
-         * AS test
-         *
-         * from vo_activities
-         * where zone_polygon IS NOT NULL
-         */
-
         $sql = "ST_Contains(
         ST_GeomFromText(
        concat('POLYGON((',
@@ -154,8 +141,7 @@ trait GeoTrait
        ), ST_GeomFromText('POINT(".$lat.' '.$lng.")')
        )";
 
-        // dddx($query->whereNotNull($polygon_field)->whereRaw($sql)->toSql());
-
+       // @phpstan-ignore-next-line
         return $query->whereNotNull($polygon_field)->whereRaw($sql);
     }
 

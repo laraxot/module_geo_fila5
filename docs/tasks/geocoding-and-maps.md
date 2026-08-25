@@ -179,3 +179,10 @@ The Geo module needs robust geocoding capabilities, map integration, and locatio
 
 **Status**: Pending
 **Assignee**: TBD
+---
+module: theme
+topic: geocoding-and-maps
+canonical: ../../../../Themes/docs/shared-components/001-geocoding-and-maps.md
+---
+
+See canonical documentation: ../../../../Themes/docs/shared-components/001-geocoding-and-maps.md

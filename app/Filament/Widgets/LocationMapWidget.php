@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-use Filament\Widgets\Widget;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\View as ViewFacade;
 use Modules\Geo\Models\Place;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
 // use Webbingbrasil\FilamentMaps\Widgets\MapWidget; // Disabilitato per compatibilità Filament 4
 
@@ -25,7 +26,7 @@ use Modules\Geo\Models\Place;
  *
  * DISABILITATO per compatibilità con Filament 4
  */
-class LocationMapWidget extends Widget
+class LocationMapWidget extends XotBaseWidget
 {
     protected const CACHE_TTL = 3600;
 
@@ -60,7 +61,7 @@ class LocationMapWidget extends Widget
     public function getMarkers(): array
     {
         return $this->getPlaces()
-            ->filter(fn (Place $place) => null !== $place->latitude && null !== $place->longitude)
+           ->filter(fn (Place $place) => $place->latitude !== null && $place->longitude !== null)
             ->map(function (Place $place): array {
                 $marker = [
                     'position' => [
@@ -71,7 +72,7 @@ class LocationMapWidget extends Widget
                 ];
 
                 $icon = $this->getMarkerIcon($place);
-                if (null !== $icon) {
+               if ($icon !== null) {
                     $marker['icon'] = $icon;
                 }
 
@@ -104,7 +105,7 @@ class LocationMapWidget extends Widget
     {
         $height = $this->maxHeight ?? '50vh';
 
-        return is_string($height) ? $height : (string) $height;
+       return is_string($height) ? $height : SafeStringCastAction::cast($height);
     }
 
     /**

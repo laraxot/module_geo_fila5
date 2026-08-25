@@ -16,10 +16,7 @@ You are the **Geo Wiki Maintainer**. Your job is to:
 
 - **raw/** = READ-ONLY (curated sources, NEVER modify)
 - **llm-wiki/** = WRITE-ALLOWED (LLM-generated knowledge)
-<<<<<<< .merge_file_YhVkpF
 - **docs/archive/** = FORBIDDEN for new docs (legacy read-only)
-=======
->>>>>>> .merge_file_Yk0YY6
 - All pages MUST use YAML frontmatter schema
 
 ## Frontmatter Schema

@@ -1,55 +1,67 @@
-# Geo Module LLM Wiki
+---
+title: "Geo Wiki Index"
+type: index
+module: Geo
+tags: [geo, wiki, index, map-lit, leaflet]
+created: 2026-04-15
+updated: 2026-06-05
+qmd: "geo module wiki index map-lit leaflet marker popup"
+issues:
+  - "https://github.com/laraxot/module_geo_fila5/issues/47"
+discussions:
+  - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
+related:
+  - ./concepts/ai-harness-geo-discipline.md
+  - ../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md
+---
 
-Indice operativo del wiki Geo.
+# Geo Module Wiki
 
-## Struttura canonica (sacra)
+## AI / second brain
 
-- `concepts/`
-- `entities/`
-- `sources/`
-- `comparisons/`
-- `decisions/`
-- `troubleshooting/`
-- `_archive/`
-- `_templates/`
+- [ai-harness-geo-discipline](./concepts/ai-harness-geo-discipline.md)
+- [hackernoon-ai-coding-tips-fixcity-map](../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md)
+- [bmad/architecture](../../../../docs/wiki/bmad/architecture.md)
+- [ai-harness-module-discipline](../../docs/wiki/concepts/ai-harness-module-discipline.md)
+- [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) → canon Xot
 
-## Regole collegate
 
-- [no-docs-archive-rule](./concepts/no-docs-archive-rule.md)
-- [wiki-sacred-structure-rule](../../../../../docs/wiki/concepts/wiki-sacred-structure-rule.md)
+## Indices
+- [Rules](rules/INDEX.md)
+- [Skills](skills/INDEX.md)
+- [Commands](commands/INDEX.md)
+- [Memories](memories/INDEX.md)
+- [Concepts](concepts/INDEX.md)
 
-## Scopo Mappa in Admin Ticket Create
+## Nota frontoffice (tema Sixteen)
 
-- [coordinate-picker-purpose](./concepts/coordinate-picker-purpose.md) — scopo mappa in `/fixcity/admin/tickets/create`: selezione precisa luogo, geolocalizzazione, search indirizzo, layer switching
-- [map-purpose](./concepts/map-purpose.md) — finalità mappa in wizard admin: lat/lng ticket, fallback geolocazione, UI controls
+## Map-lit /it (2026-06)
 
-## Regola Leaflet + Wizard
+**Ricostruzione:** [geo-map-lit-reconstruction-guide.md](concepts/geo-map-lit-reconstruction-guide.md) · [geo-map-fixes-registry.md](concepts/geo-map-fixes-registry.md) · hub root [map-lit-reconstruction-hub.md](../../../../../docs/wiki/memories/map-lit-reconstruction-hub.md)
 
-- [leaflet-wizard-step-invalidate-size](./concepts/leaflet-wizard-step-invalidate-size.md) — MutationObserver per rilevare cambio step wizard; invalidateSize() quando container diventa visibile
-- [filament-admin-panel-map-visibility-contract](./concepts/filament-admin-panel-map-visibility-contract.md) — contratto mappa in panel Filament admin (non frontoffice)
-- [geo-vite-build-contract](./concepts/geo-vite-build-contract.md) — contratto build Vite modulo Geo (entry reali, buildDirectory, verifica)
-- [lit-light-dom-map-controls-and-sync](./concepts/lit-light-dom-map-controls-and-sync.md) — fix controlli mappa Lit + sync lat/lng in Light DOM
-- [admin-map-magnifier-and-controls-visibility](./concepts/admin-map-magnifier-and-controls-visibility.md) — fix lente enorme e visibilità controlli mappa in admin
-- [admin-map-runtime-500-encryption-key-blocker](./concepts/admin-map-runtime-500-encryption-key-blocker.md) — visual check bloccato da errore bootstrap Laravel (cipher/key), non da rendering mappa
-- [reusable-search-ui-component-rule](./concepts/reusable-search-ui-component-rule.md) — il blocco search dei picker va estratto in componente Blade riutilizzabile
+- [map-lit-it-incidents-2026-06.md](troubleshooting/map-lit-it-incidents-2026-06.md) — STORY-121…129 runbook
+- [map-popup-header-whitespace-fix.md](troubleshooting/map-popup-header-whitespace-fix.md) — vuoto popup header→Tipologia
+- [farmshops-eu-applicability-fixcity.md](concepts/farmshops-eu-applicability-fixcity.md) — pattern cluster
+- [farmshops-cluster-type-icons-study.md](concepts/farmshops-cluster-type-icons-study.md) — STORY-284 gap stato→icone tipo
+- [map-lit-legend-types.md](concepts/map-lit-legend-types.md) — STORY-094 legenda tipologie
+- [map-lit-cluster-type-icons.md](concepts/map-lit-cluster-type-icons.md) — icone tipo cluster 14px (non stato)
+- [map-legend-status-semantics.md](concepts/map-legend-status-semantics.md) — STORY-125 stato vs tipologia
+- [geo-map-popup-bem.md](concepts/geo-map-popup-bem.md) — block `popup`, `<div class="popup__header">`
+- [geo-map-marker-status-background.md](concepts/geo-map-marker-status-background.md) — marker stato + pad bianco + punta
+- [bem-modifier-dom-contract.md](rules/bem-modifier-dom-contract.md) — vietato `.popup--loading .popup__footer`
 
-## SVG Assets (Filament Way)
 
-- [lit-icons-filament-way](./concepts/lit-icons-filament-way.md) — icone Lit via `geoIcon()` da file SVG in `resources/svg/`, non hardcoded
-- [svg-asset-architecture](./concepts/svg-asset-architecture.md) — SVG sempre in `Modules/Geo/resources/svg/`, mai CDN/unpkg
-- [blade-icons-registration-rule](./concepts/blade-icons-registration-rule.md) — Blade Icons registrati SOLO da XotBaseServiceProvider, mai nei moduli (evita collisioni prefix)
+Il **guscio** delle pagine pub (Tailwind + [DaisyUI docs](https://daisyui.com/docs/) + parity classi Design Comuni) è di competenza del tema; i componenti **Lit** mappa (`coordinate-picker-lit`, `map-lit`, …) non dipendono da DaisyUI ma convivono nello stesso bundle Vite del tema. Indice stack: [design-comuni-class-mapping](../../../../Themes/Sixteen/docs/wiki/entities/design-comuni-class-mapping.md). **Valutazione DaisyUI** (pro/contro, percentuali): [daisyui-pro-contro-metriche](../../../../Modules/Cms/docs/daisyui-pro-contro-metriche.md).
 
-## Story 8-56 — map-picker-lit.js admin fix
+## On-Demand Workflow
 
-- [map-picker-lit-admin-fix-8-56](./concepts/map-picker-lit-admin-fix-8-56.md) — 5 bug risolti: vite input mancante, CDN CSS, IntersectionObserver falso amico, SVG senza dimensioni
+```bash
+qmd search "Geo <topic>" --limit 5
+```
 
-## Troubleshooting recente
+---
+*Updated: 2026-06-03 — ricostruzione map-lit, marker pin, popup header fix*
 
-| Pagina | Tipo | Argomento |
-|--------|------|-----------|
-| [geo-module](./overviews/geo-module.md) | overview | Gerarchia geografica italiana, Address, Comune, geocoding, LeafletMarkerMapInput |
+## Composer / nwidart
 
-## Nuovi documenti 2026-04-27
-
-- [svg-asset-architecture](./concepts/svg-asset-architecture.md) — aggiornato con nuovi file SVG (magnifying-glass, arrows-pointing-out/in, map-pin, squares-2x2, plus, minus)
-- [blade-icons-registration-rule](./concepts/blade-icons-registration-rule.md) — collisioni prefix `geo` evitate: auto-registrazione XotBaseServiceProvider gestisce tutto
+- [composer-root-minimal-nwidart](concepts/composer-root-minimal-nwidart.md) — root skeleton nwidart (modello fixcity)

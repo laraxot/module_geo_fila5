@@ -9,7 +9,8 @@ use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\LocationData;
-use Modules\Geo\Datas\RouteData;
+use Modules\Geo\Datas\Routing\RouteData;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per ottimizzare un percorso utilizzando l'API di Google Maps.
@@ -20,6 +21,8 @@ use Modules\Geo\Datas\RouteData;
  */
 class OptimizeRouteAction
 {
+   use QueueableAction;
+
     private const BASE_URL = 'https://maps.googleapis.com/maps/api/directions/json';
 
     /**

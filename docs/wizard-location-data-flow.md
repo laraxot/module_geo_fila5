@@ -5,12 +5,6 @@
 **Bug**: La location della mappa non viene passata al salvataggio del ticket nel wizard.
 
 ### Root Cause
-```php
-// In HasCoordinatePicker.php (line 19)
-$this->dehydrated(false); // ❌ IMPEDISCE IL SALVATAGGIO!
-```
-
-Il metodo `dehydrated(false)` marca il campo come "non inviare al server", quindi quando il form viene sottomesso, i dati della mappa vengono ignorati.
 
 ---
 
@@ -56,7 +50,7 @@ Il metodo `dehydrated(false)` marca il campo come "non inviare al server", quind
 
 ## 🔧 Fix Implementato
 
-### Soluzione: Rimuovere `dehydrated(false)`
+### Soluzione A (storica): Rimuovere `dehydrated(false)`
 
 ```php
 // ❌ BEFORE (bug)

@@ -7,18 +7,21 @@ namespace Modules\Geo\Actions\GoogleMaps;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapAddressComponentData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResponseData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResultData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
 use Spatie\LaravelData\DataCollection;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Gestisce le richieste e l'elaborazione delle risposte dell'API di geocodifica di Google Maps.
  */
 final class GetAddressFromGoogleMapsAction
 {
+   use QueueableAction;
+
     private const BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
     /**
@@ -83,7 +86,7 @@ final class GetAddressFromGoogleMapsAction
      */
     private function getFirstResult(GoogleMapResponseData $responseData): GoogleMapResultData
     {
-        $firstResult = $responseData->results->first();
+       $firstResult = $responseData->results->toCollection()->first();
 
         if (! $firstResult instanceof GoogleMapResultData) {
             throw GoogleMapsApiException::noResultsFound();
@@ -111,8 +114,8 @@ final class GetAddressFromGoogleMapsAction
     }
 
     /**
-     * @param DataCollection<GoogleMapAddressComponentData> $components
-     * @param array<string>                                 $types
+    * @param DataCollection<int, GoogleMapAddressComponentData> $components
+     * @param array<string>                                      $types
      */
     private function getComponent(DataCollection $components, array $types, bool $short = false): ?string
     {

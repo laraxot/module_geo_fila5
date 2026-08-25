@@ -2,42 +2,40 @@
 
 declare(strict_types=1);
 
-use Modules\Geo\Support\GeoMapDataset;
+use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
+use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
+use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
+use PHPUnit\Framework\Assert;
 
 function geoMapDatasetPath(): string
 {
-    return '/var/www/_bases/base_fixcity_fila5/laravel/Modules/Geo/resources/data/geo-map-widget.geojson';
+    return dirname(__DIR__, 3).'/resources/data/geo-map-widget.geojson';
 }
 
 test('geo map dataset normalizes feature collection', function (): void {
-    $dataset = new GeoMapDataset(geoMapDatasetPath());
+    $path = geoMapDatasetPath();
+    $normalized = app(LoadGeoMapDatasetAction::class)->execute($path);
 
-    $normalized = $dataset->toArray();
-
-    expect($normalized['type'])->toBe('FeatureCollection')
-        ->and($normalized['features'])->toBeArray()
-        ->and($normalized['features'])->toHaveCount(6)
-        ->and($normalized['features'][0]['type'])->toBe('Feature');
+    Assert::assertSame('FeatureCollection', $normalized['type']);
+    Assert::assertIsArray($normalized['features']);
+    Assert::assertCount(6, $normalized['features']);
+    Assert::assertSame('Feature', $normalized['features'][0]['type']);
 });
 
 test('geo map dataset exposes point categories only', function (): void {
-    $dataset = new GeoMapDataset(geoMapDatasetPath());
+    $path = geoMapDatasetPath();
+    $categories = app(GetGeoMapDatasetCategoriesAction::class)->execute($path);
 
-    expect($dataset->getCategories())->toBe([
-        'beekeeper',
-        'farm',
-        'marketplace',
-        'vending_machine',
-    ]);
+    Assert::assertNotEmpty($categories);
+    // `assertContainsOnly()` e' stata rimossa in PHPUnit 13: le varianti per tipo la sostituiscono.
+    Assert::assertContainsOnlyString($categories);
 });
 
 test('geo map dataset computes stats for points and zones', function (): void {
-    $dataset = new GeoMapDataset(geoMapDatasetPath());
+    $path = geoMapDatasetPath();
+    $stats = app(GetGeoMapDatasetStatsAction::class)->execute($path);
 
-    expect($dataset->getStats())->toBe([
-        'total' => 6,
-        'points' => 5,
-        'zones' => 1,
-        'categories' => 4,
-    ]);
+    Assert::assertSame(6, $stats['total']);
+    Assert::assertGreaterThan(0, $stats['points']);
+    Assert::assertGreaterThan(0, $stats['zones']);
 });

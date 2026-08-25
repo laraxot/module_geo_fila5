@@ -10,11 +10,15 @@ use Modules\Geo\Datas\LocationData;
 
 use function Safe\json_decode;
 
+use Spatie\QueueableAction\QueueableAction;
+
 /**
  * Action per cercare un luogo usando Nominatim.
  */
 class LookupPlaceAction
 {
+   use QueueableAction;
+
     private const API_URL = 'https://nominatim.openstreetmap.org/lookup';
 
     private Client $client;

@@ -5,12 +5,16 @@ declare(strict_types=1);
 namespace Modules\Geo\Actions\Maps;
 
 use Illuminate\Database\Eloquent\Collection;
-use Modules\Geo\Datas\Map\GeoMapLayerConfigData;
 use Modules\Geo\Datas\Map\GeoMapWidgetData;
 use Modules\Geo\Models\Place;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Spatie\QueueableAction\QueueableAction;
 
 class BuildGeoMapWidgetPayloadAction
 {
+    use QueueableAction;
+
     public function execute(): GeoMapWidgetData
     {
         $places = $this->getPlaces();
@@ -38,26 +42,10 @@ class BuildGeoMapWidgetPayloadAction
                 ],
             ],
             layerConfig: [
-                GeoMapLayerConfigData::from([
-                    'key' => 'cluster',
-                    'label' => 'Cluster',
-                    'enabled' => true,
-                ])->toArray(),
-                GeoMapLayerConfigData::from([
-                    'key' => 'points',
-                    'label' => 'Points',
-                    'enabled' => false,
-                ])->toArray(),
-                GeoMapLayerConfigData::from([
-                    'key' => 'heatmap',
-                    'label' => 'Heatmap',
-                    'enabled' => false,
-                ])->toArray(),
-                GeoMapLayerConfigData::from([
-                    'key' => 'zones',
-                    'label' => 'Zones',
-                    'enabled' => false,
-                ])->toArray(),
+               ['key' => 'cluster', 'label' => 'Cluster', 'enabled' => true],
+                ['key' => 'points', 'label' => 'Points', 'enabled' => false],
+                ['key' => 'heatmap', 'label' => 'Heatmap', 'enabled' => false],
+                ['key' => 'zones', 'label' => 'Zones', 'enabled' => false],
             ],
             meta: [
                 'totalFeatures' => \count($features),
@@ -116,16 +104,16 @@ class BuildGeoMapWidgetPayloadAction
         $address = $place->getFormattedAddress();
         $description = \is_string($place->description ?? null) ? $place->description : '';
         $search = trim(strtolower(implode(' ', array_filter([
-            $title,
-            $category,
-            $address,
-            $description,
+           SafeStringCastAction::cast($title),
+            SafeStringCastAction::cast($category),
+            SafeStringCastAction::cast($address),
+            SafeStringCastAction::cast($description),
         ]))));
 
         return [
             'type' => 'Feature',
             'properties' => [
-                'id' => (string) $place->getKey(),
+               'id' => SafeStringCastAction::cast($place->getKey()),
                 'title' => $title,
                 'name' => $title,
                 'category' => \is_string($category) ? $category : 'unknown',
@@ -142,8 +130,8 @@ class BuildGeoMapWidgetPayloadAction
             'geometry' => [
                 'type' => 'Point',
                 'coordinates' => [
-                    (float) $place->longitude,
-                    (float) $place->latitude,
+                   SafeFloatCastAction::cast($place->longitude),
+                    SafeFloatCastAction::cast($place->latitude),
                 ],
             ],
         ];
@@ -164,8 +152,8 @@ class BuildGeoMapWidgetPayloadAction
         $longitudes = $places->pluck('longitude')->filter(static fn ($value): bool => \is_float($value) || \is_int($value));
 
         return [
-            'lat' => (float) ($latitudes->average() ?? 45.4642),
-            'lng' => (float) ($longitudes->average() ?? 9.1900),
+           'lat' => SafeFloatCastAction::cast($latitudes->average() ?? 45.4642),
+            'lng' => SafeFloatCastAction::cast($longitudes->average() ?? 9.1900),
         ];
     }
 
@@ -183,6 +171,6 @@ class BuildGeoMapWidgetPayloadAction
             return $formattedAddress;
         }
 
-        return 'Place #'.$place->getKey();
+       return 'Place #'.SafeStringCastAction::cast($place->getKey());
     }
 }

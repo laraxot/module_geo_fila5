@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-use Filament\Widgets\Widget;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Models\Place;
+use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
 // use Webbingbrasil\FilamentMaps\Widgets\MapWidget; // Disabilitato per compatibilità Filament 4
 
@@ -16,7 +16,7 @@ use Modules\Geo\Models\Place;
  *
  * DISABILITATO per compatibilità con Filament 4
  */
-class OSMMapWidget extends Widget
+class OSMMapWidget extends XotBaseWidget
 {
     protected int|string|array $columnSpan = 'full';
 
@@ -64,6 +64,9 @@ class OSMMapWidget extends Widget
         ]);
     }
 
+   /**
+     * @return array<string, mixed>
+     */
     protected function getData(): array
     {
         /** @var Collection<int, Place> $places */

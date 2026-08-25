@@ -8,11 +8,6 @@ use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
 /**
- * CoordinatePicker - Senior Architectural Core for geographic selection.
- *
- * Rule: Extends XotBaseField.
- * Rule: No "Default" prefixes.
- * Rule: Unified state.
  */
 class CoordinatePicker extends XotBaseField
 {
