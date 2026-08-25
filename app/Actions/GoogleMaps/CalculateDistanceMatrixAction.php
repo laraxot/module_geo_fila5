@@ -19,7 +19,7 @@ class CalculateDistanceMatrixAction
 {
     use QueueableAction;
 
-    private const BASE_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+    private const string BASE_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
 
     /**
      * Calcola la matrice delle distanze tra origini e destinazioni.
