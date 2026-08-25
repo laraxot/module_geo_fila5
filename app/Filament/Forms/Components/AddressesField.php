@@ -98,29 +98,17 @@ class AddressesField extends XotBaseRepeater
      */
     protected function getAddressFormSchema(): array
     {
-<<<<<<< HEAD
-       $baseSchema = AddressForm::getFormSchema();
-=======
         $baseSchema = AddressForm::getFormSchema();
->>>>>>> laraxot/dev
 
         // Campo name: visibile solo con più di 1 elemento
         $baseSchema['name'] = TextInput::make('name')
             ->maxLength(255)
-<<<<<<< HEAD
-           ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
-=======
             ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
->>>>>>> laraxot/dev
             ->live();
 
         // Campo is_primary: logica complessa per esclusività
         $baseSchema['is_primary'] = Toggle::make('is_primary')
-<<<<<<< HEAD
-           ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
-=======
             ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
->>>>>>> laraxot/dev
             ->default(fn (Get $get): bool => count(self::repeaterAddresses($get)) <= 1)
             ->afterStateUpdated(function ($state, Set $set, Get $get, Component $component): void {
                 // Se questo diventa primary, disattiva tutti gli altri
@@ -147,11 +135,7 @@ class AddressesField extends XotBaseRepeater
             })
             ->live()
             ->dehydrateStateUsing(function ($state, Get $get): bool {
-<<<<<<< HEAD
-               // Se c'è un solo elemento, forza sempre true
-=======
                 // Se c'è un solo elemento, forza sempre true
->>>>>>> laraxot/dev
                 if (count(self::repeaterAddresses($get)) <= 1) {
                     return true;
                 }

@@ -9,11 +9,7 @@ use Modules\Xot\Filament\Forms\Components\XotBaseField;
 /**
  * Address input field with geolocation button.
  *
-<<<<<<< HEAD
- * Filament Component** (not Blade render) — extends XotBaseField so it integrates
-=======
  * **Filament Component** (not Blade render) — extends XotBaseField so it integrates
->>>>>>> laraxot/dev
  * natively with Filament's form/schema system, Livewire state, and validation.
  *
  * Why in Geo**: Geolocation and reverse geocoding are geo-spatial concerns.

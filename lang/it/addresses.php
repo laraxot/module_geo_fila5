@@ -5,11 +5,7 @@ declare(strict_types=1);
 return [
     'field' => [
         'label' => 'Indirizzi',
-<<<<<<< HEAD
-       'help' => ['title' => 'Gestione Indirizzi', 'description' => 'Puoi aggiungere più indirizzi. Con più indirizzi potrai specificare un nome identificativo e designare uno come principale.', 'primary_note' => 'Solo un indirizzo può essere impostato come principale alla volta.'],
-=======
         'help' => ['title' => 'Gestione Indirizzi', 'description' => 'Puoi aggiungere più indirizzi. Con più indirizzi potrai specificare un nome identificativo e designare uno come principale.', 'primary_note' => 'Solo un indirizzo può essere impostato come principale alla volta.'],
->>>>>>> laraxot/dev
         'actions' => ['add' => 'Aggiungi Indirizzo', 'remove' => 'Rimuovi Indirizzo', 'move_up' => 'Sposta Su', 'move_down' => 'Sposta Giù'],
         'empty_state' => ['title' => 'Nessun indirizzo configurato', 'description' => 'Inizia aggiungendo il primo indirizzo.'],
     ],
@@ -33,11 +29,7 @@ return [
     'navigation' => [
         'name' => 'Addresses',
         'plural' => 'Addresses',
-<<<<<<< HEAD
-       'group' => ['name' => 'General', 'description' => 'General Settings'],
-=======
         'group' => ['name' => 'General', 'description' => 'General Settings'],
->>>>>>> laraxot/dev
         'label' => 'Addresses',
         'sort' => 1,
         'icon' => 'heroicon-o-rectangle-stack',

@@ -11,11 +11,7 @@ use Modules\Geo\Models\Place;
 
 /**
  * Modules\Geo\Models\Traits\HasPlaceTrait.
-<<<<<<< HEAD
-*
-=======
  *
->>>>>>> laraxot/dev
  * @phpstan-require-extends Model
  *
  * @phpstan-ignore trait.unused
@@ -24,21 +20,13 @@ trait HasPlaceTrait
 {
     // ----- relationship -----
 
-<<<<<<< HEAD
-   /** @phpstan-ignore-next-line */
-=======
     /** @phpstan-ignore-next-line */
->>>>>>> laraxot/dev
     public function place(): MorphOne
     {
         return $this->morphOne(Place::class, 'model');
     }
 
-<<<<<<< HEAD
-   /** @phpstan-ignore-next-line */
-=======
     /** @phpstan-ignore-next-line */
->>>>>>> laraxot/dev
     public function places(): MorphMany
     {
         return $this->morphMany(Place::class, 'model');

@@ -36,11 +36,7 @@ use Sushi\Sushi;
  */
 class Region extends BaseModel
 {
-<<<<<<< HEAD
-   /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\RegionFactory> */
-=======
     /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\RegionFactory> */
->>>>>>> laraxot/dev
     use HasXotFactory;
     use Sushi;
 
@@ -51,21 +47,13 @@ class Region extends BaseModel
      */
     protected $keyType = 'integer';
 
-<<<<<<< HEAD
-   /** @var array<string, string> */
-=======
     /** @var array<string, string> */
->>>>>>> laraxot/dev
     protected array $schema = [
         'id' => 'integer',
         'name' => 'string',
     ];
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array<int, array<string, mixed>>
      */
     public function getRows(): array
@@ -132,11 +120,7 @@ class Region extends BaseModel
         return $this->hasMany(Province::class);
     }
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array<string, string>
      */
     public static function getOptions(Get $get): array

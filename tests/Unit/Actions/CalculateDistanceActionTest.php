@@ -36,11 +36,7 @@ it('calculates distance between two valid locations', function (): void {
         ],
     ];
 
-<<<<<<< HEAD
-   $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub($expectedResponse));
-=======
     $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub($expectedResponse));
->>>>>>> laraxot/dev
 
     $origin = new LocationData(
         latitude: 45.4642,
@@ -190,11 +186,7 @@ it('handles boundary latitude values', function (): void {
                 'status' => 'OK',
             ],
         ],
-<<<<<<< HEAD
-   ]));
-=======
     ]));
->>>>>>> laraxot/dev
 
     $result = $action->execute(
         new LocationData(latitude: 90.0, longitude: 9.1900, address: 'Boundary Location'),
@@ -213,11 +205,7 @@ it('handles boundary longitude values', function (): void {
                 'status' => 'OK',
             ],
         ],
-<<<<<<< HEAD
-   ]));
-=======
     ]));
->>>>>>> laraxot/dev
 
     $result = $action->execute(
         new LocationData(latitude: 45.4642, longitude: 180.0, address: 'Boundary Location'),
@@ -234,11 +222,7 @@ it('handles same origin and destination', function (): void {
         address: 'Milano, Italia',
     );
 
-<<<<<<< HEAD
-   $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub([
-=======
     $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub([
->>>>>>> laraxot/dev
         [
             [
                 'distance' => ['text' => '0 m', 'value' => 0],
@@ -246,11 +230,7 @@ it('handles same origin and destination', function (): void {
                 'status' => 'OK',
             ],
         ],
-<<<<<<< HEAD
-   ]));
-=======
     ]));
->>>>>>> laraxot/dev
 
     $result = $action->execute($sameLocation, $sameLocation);
 

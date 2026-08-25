@@ -8,11 +8,7 @@ use PHPUnit\Framework\Assert;
 test('map picker resolves explicit coordinate fields', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('data.map_picker')
-<<<<<<< HEAD
-       ->latitudeColumn('latitude')
-=======
         ->latitudeColumn('latitude')
->>>>>>> laraxot/dev
         ->longitudeColumn('longitude')
         ->zoom(12);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -38,11 +34,7 @@ test('map picker resolves explicit coordinate fields', function (): void {
 test('map picker accepts absolute coordinate paths', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('data.map_picker')
-<<<<<<< HEAD
-       ->latitudeColumn('filters.latitude')
-=======
         ->latitudeColumn('filters.latitude')
->>>>>>> laraxot/dev
         ->longitudeColumn('filters.longitude')
         ->geolocateWhenEmpty(false)
         ->reverseGeocoding(false);
@@ -67,11 +59,7 @@ test('map picker accepts absolute coordinate paths', function (): void {
 test('map picker keeps bare coordinate paths at root level', function (): void {
     $field = MapPicker::make('map_picker')
         ->statePath('map_picker')
-<<<<<<< HEAD
-       ->latitudeColumn('latitude')
-=======
         ->latitudeColumn('latitude')
->>>>>>> laraxot/dev
         ->longitudeColumn('longitude');
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);

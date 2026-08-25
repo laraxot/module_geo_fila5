@@ -120,11 +120,7 @@ class Address extends BaseModel
 
     /**
      * Get the parent model.
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @return MorphTo<Model, $this>
      */
     public function model(): MorphTo
@@ -134,11 +130,7 @@ class Address extends BaseModel
 
     /**
      * Relazione polimorfica (alternativa con nome più descrittivo).
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @return MorphTo<Model, $this>
      */
     public function addressable(): MorphTo
@@ -176,11 +168,7 @@ class Address extends BaseModel
      * return $this->belongsTo(Regione::class, 'administrative_area_level_1', 'name');
      * }
      */
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array{codice: mixed, nome: mixed}|null
      */
     public function getRegione(): ?array
@@ -203,11 +191,7 @@ class Address extends BaseModel
         return $res->first();
     }
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array{codice: string, nome: string}|null
      */
     public function getProvincia(): ?array
@@ -217,11 +201,7 @@ class Address extends BaseModel
             ->orderBy('provincia->nome')
             ->where('provincia->codice', $this->administrative_area_level_2)
             ->get()
-<<<<<<< HEAD
-           ->map(function ($item): array {
-=======
             ->map(function ($item): array {
->>>>>>> laraxot/dev
                 $provincia = is_array($item->provincia ?? null) ? $item->provincia : [];
 
                 return [
@@ -233,11 +213,7 @@ class Address extends BaseModel
         return $res->first();
     }
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array<string, mixed>|null
      */
     public function getLocality(): ?array
@@ -413,11 +389,7 @@ class Address extends BaseModel
     /**
      * Scope per cercare indirizzi nelle vicinanze.
      */
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @param Builder<static> $query
      *
      * @return Builder<static>
@@ -436,11 +408,7 @@ class Address extends BaseModel
     /**
      * Scope a query to only include primary addresses.
      */
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @param Builder<static> $query
      *
      * @return Builder<static>
@@ -453,11 +421,7 @@ class Address extends BaseModel
     /**
      * Scope a query to filter by address type.
      */
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @param Builder<static> $query
      *
      * @return Builder<static>

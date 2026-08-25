@@ -35,11 +35,7 @@ class CalculateTravelTimeAction
     /**
      * Calcola il tempo di percorrenza tra due punti.
      *
-<<<<<<< HEAD
-    * @throws \InvalidArgumentException Se i dati di input non sono validi
-=======
      * @throws \InvalidArgumentException Se i dati di input non sono validi
->>>>>>> laraxot/dev
      * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(LocationData $origin, LocationData $destination): TravelTimeData
@@ -64,11 +60,7 @@ class CalculateTravelTimeAction
     /**
      * Valida i dati di input.
      *
-<<<<<<< HEAD
-    * @throws \InvalidArgumentException Se i dati di input non sono validi
-=======
      * @throws \InvalidArgumentException Se i dati di input non sono validi
->>>>>>> laraxot/dev
      * @throws \RuntimeException         Se la chiave API non è configurata o i dati non sono validi
      */
     private function validateInput(LocationData $origin, LocationData $destination): void
@@ -127,11 +119,7 @@ class CalculateTravelTimeAction
          * } $data */
         $data = json_decode($response, true);
 
-<<<<<<< HEAD
-       if ('OK' !== $data['status']) {
-=======
         if ('OK' !== $data['status']) {
->>>>>>> laraxot/dev
             return TravelTimeData::error($data['status']);
         }
 

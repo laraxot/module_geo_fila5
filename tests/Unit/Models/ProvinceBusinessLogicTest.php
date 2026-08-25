@@ -23,30 +23,18 @@ describe('Province Business Logic', function () {
     test('province has factory trait for testing', function () {
         $traits = class_uses(Province::class);
 
-<<<<<<< HEAD
-       Assert::assertArrayHasKey(HasXotFactory::class, $traits);
-=======
         Assert::assertArrayHasKey(HasXotFactory::class, $traits);
->>>>>>> laraxot/dev
     });
 
     test('province uses sushi trait for in-memory data', function () {
         $traits = class_uses(Province::class);
 
-<<<<<<< HEAD
-       Assert::assertArrayHasKey(Sushi::class, $traits);
-=======
         Assert::assertArrayHasKey(Sushi::class, $traits);
->>>>>>> laraxot/dev
     });
 
     test('province has schema definition for geographic hierarchy', function () {
         $province = new Province();
-<<<<<<< HEAD
-       $reflection = new \ReflectionClass($province);
-=======
         $reflection = new \ReflectionClass($province);
->>>>>>> laraxot/dev
         $schemaProperty = $reflection->getProperty('schema');
 
         Assert::assertTrue($schemaProperty->isProtected());
@@ -61,11 +49,7 @@ describe('Province Business Logic', function () {
 
     test('province can get rows from comune data', function () {
         $province = new Province();
-<<<<<<< HEAD
-       $rows = $province->getRows();
-=======
         $rows = $province->getRows();
->>>>>>> laraxot/dev
 
         Assert::assertNotEmpty($rows);
     });
@@ -73,31 +57,19 @@ describe('Province Business Logic', function () {
     test('province model can be instantiated without errors', function () {
         $province = new Province();
 
-<<<<<<< HEAD
-       Assert::assertInstanceOf(Province::class, $province);
-=======
         Assert::assertInstanceOf(Province::class, $province);
->>>>>>> laraxot/dev
         Assert::assertInstanceOf(BaseModel::class, $province);
     });
 
     test('province can be queried by name', function () {
         $query = Province::whereName('Milano');
 
-<<<<<<< HEAD
-       Assert::assertInstanceOf(Builder::class, $query);
-=======
         Assert::assertInstanceOf(Builder::class, $query);
->>>>>>> laraxot/dev
     });
 
     test('province can be queried by region id', function () {
         $query = Province::whereRegionId(1);
 
-<<<<<<< HEAD
-       Assert::assertInstanceOf(Builder::class, $query);
-=======
         Assert::assertInstanceOf(Builder::class, $query);
->>>>>>> laraxot/dev
     });
 });

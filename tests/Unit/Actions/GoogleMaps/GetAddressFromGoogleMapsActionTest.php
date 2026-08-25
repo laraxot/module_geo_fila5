@@ -48,11 +48,7 @@ it('throws exception when api response is not successful', function (): void {
         '*' => Http::response(['statusCode' => 500], 500),
     ]);
 
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute('Milano, Italia');
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
@@ -72,11 +68,7 @@ it('throws exception when no results found', function (): void {
         ], 200),
     ]);
 
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute('NonExistentPlace123');
 
         Assert::fail('Expected GoogleMapsApiException was not thrown');
@@ -114,11 +106,7 @@ it('returns address data for valid address', function (): void {
         ], 200),
     ]);
 
-<<<<<<< HEAD
-   $result = $action->execute('Via Roma 1, Milano, Italia');
-=======
     $result = $action->execute('Via Roma 1, Milano, Italia');
->>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(AddressData::class, $result);
 
@@ -166,11 +154,7 @@ it('handles missing optional address components', function (): void {
         ], 200),
     ]);
 
-<<<<<<< HEAD
-   $result = $action->execute('Italia');
-=======
     $result = $action->execute('Italia');
->>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(AddressData::class, $result);
 

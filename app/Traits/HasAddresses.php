@@ -15,11 +15,7 @@ use Modules\Geo\Models\Address;
  * Trait HasAddresses.
  *
  * Questo trait fornisce funzionalità per gestire indirizzi multipli su qualsiasi modello.
-<<<<<<< HEAD
-*
-=======
  *
->>>>>>> laraxot/dev
  * @property int|string $id
  *
  * @phpstan-require-extends Model
@@ -100,11 +96,7 @@ trait HasAddresses
         return $this->addresses()->create($data);
     }
 
-<<<<<<< HEAD
-   /** @return Collection<int, Address> */
-=======
     /** @return Collection<int, Address> */
->>>>>>> laraxot/dev
     public function getAddressesByType(AddressTypeEnum|string $type): Collection
     {
         $typeValue = $type instanceof AddressTypeEnum ? $type->value : $type;

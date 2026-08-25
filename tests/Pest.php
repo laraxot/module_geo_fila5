@@ -17,19 +17,11 @@ use Modules\Geo\Models\Region;
  * |--------------------------------------------------------------------------
  * | Functions
  * |--------------------------------------------------------------------------
-<<<<<<< HEAD
 */
 
 /**
  * @param array<string, mixed> $attributes
  */
-=======
- */
-
-/**
- * @param array<string, mixed> $attributes
- */
->>>>>>> laraxot/dev
 function createRegion(array $attributes = []): Region
 {
     return RegionFactory::new()->createOne($attributes);

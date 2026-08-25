@@ -25,11 +25,7 @@ use Spatie\QueueableAction\QueueableAction;
  */
 final class CalculateDistanceAction implements CalculateDistanceActionContract
 {
-<<<<<<< HEAD
-   use QueueableAction;
-=======
     use QueueableAction;
->>>>>>> laraxot/dev
 
     /**
      * Calcola la distanza e il tempo di percorrenza tra due punti.
@@ -52,11 +48,7 @@ final class CalculateDistanceAction implements CalculateDistanceActionContract
         $this->validateCoordinates($destination);
 
         try {
-<<<<<<< HEAD
-           $response = app(CalculateDistanceMatrixAction::class)->execute(
-=======
             $response = app(CalculateDistanceMatrixAction::class)->execute(
->>>>>>> laraxot/dev
                 new Collection([$origin]),
                 new Collection([$destination])
             );

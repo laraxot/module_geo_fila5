@@ -29,11 +29,7 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
     case ADMINISTRATIVE_AREA_LEVEL_2 = 'administrative_area_level_2'; // provincia
     case ADMINISTRATIVE_AREA_LEVEL_1 = 'administrative_area_level_1'; // regione
     case COUNTRY = 'country'; // Stato/Paese
-<<<<<<< HEAD
-   case LATITUDE = 'latitude';
-=======
     case LATITUDE = 'latitude';
->>>>>>> laraxot/dev
     case LONGITUDE = 'longitude';
     case NOTES = 'notes';
 
@@ -42,11 +38,7 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
      *
      * @return array<string, \Closure(Blueprint):void>
      */
-<<<<<<< HEAD
-   public static function getColumnDefinitions(): array
-=======
     public static function getColumnDefinitions(): array
->>>>>>> laraxot/dev
     {
         return [
             self::NAME->value => static function (Blueprint $table): void {
@@ -113,11 +105,7 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
     }
 
     /**
-<<<<<<< HEAD
-    * Add standard address columns plus legacy compatibility columns.
-=======
      * Add standard address columns plus legacy compatibility columns.
->>>>>>> laraxot/dev
      */
     public static function columnsWithLegacy(Blueprint $table, ?XotBaseMigration $migration = null): void
     {

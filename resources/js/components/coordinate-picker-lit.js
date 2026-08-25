@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';
 import { mapStylesText } from './map/styles.js';
@@ -188,7 +186,6 @@ export class CoordinatePickerField extends LitElement {
     }
 }
 
->>>>>>> laraxot/dev
 if (typeof customElements !== 'undefined' && !customElements.get('coordinate-picker-lit')) {
     customElements.define('coordinate-picker-lit', CoordinatePickerField);
 }

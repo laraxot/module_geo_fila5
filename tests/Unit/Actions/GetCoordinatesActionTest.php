@@ -41,11 +41,7 @@ it('returns coordinates for valid address', function (): void {
     ]);
 
     // Act
-<<<<<<< HEAD
-   $result = $action->execute($address);
-=======
     $result = $action->execute($address);
->>>>>>> laraxot/dev
 
     // Assert
     Assert::assertInstanceOf(LocationData::class, $result);
@@ -62,11 +58,7 @@ it('throws exception when api key missing', function (): void {
     Config::set('services.google.maps.key', null);
 
     // Act & Assert
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute($address);
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
@@ -86,11 +78,7 @@ it('throws exception when api request fails', function (): void {
     ]);
 
     // Act & Assert
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute($address);
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
@@ -115,11 +103,7 @@ it('returns null for invalid address', function (): void {
     ]);
 
     // Act
-<<<<<<< HEAD
-   $result = $action->execute($address);
-=======
     $result = $action->execute($address);
->>>>>>> laraxot/dev
 
     // Assert
     Assert::assertNull($result);
@@ -142,11 +126,7 @@ it('returns null for over query limit status', function (): void {
     ]);
 
     // Act
-<<<<<<< HEAD
-   $result = $action->execute($address);
-=======
     $result = $action->execute($address);
->>>>>>> laraxot/dev
 
     // Assert
     Assert::assertNull($result);
@@ -169,11 +149,7 @@ it('returns null for request denied status', function (): void {
     ]);
 
     // Act
-<<<<<<< HEAD
-   $result = $action->execute($address);
-=======
     $result = $action->execute($address);
->>>>>>> laraxot/dev
 
     // Assert
     Assert::assertNull($result);
@@ -196,11 +172,7 @@ it('handles empty results array', function (): void {
     ]);
 
     // Act
-<<<<<<< HEAD
-   $result = $action->execute($address);
-=======
     $result = $action->execute($address);
->>>>>>> laraxot/dev
 
     // Assert
     Assert::assertNull($result);
@@ -242,11 +214,7 @@ it('handles multiple results and returns first', function (): void {
     ]);
 
     // Act
-<<<<<<< HEAD
-   $result = $action->execute($address);
-=======
     $result = $action->execute($address);
->>>>>>> laraxot/dev
 
     // Assert
     Assert::assertInstanceOf(LocationData::class, $result);
@@ -282,11 +250,7 @@ it('handles special characters in address', function (): void {
     ]);
 
     // Act
-<<<<<<< HEAD
-   $result = $action->execute($address);
-=======
     $result = $action->execute($address);
->>>>>>> laraxot/dev
 
     // Assert
     Assert::assertInstanceOf(LocationData::class, $result);
@@ -321,11 +285,7 @@ it('handles numeric coordinates correctly', function (): void {
     ]);
 
     // Act
-<<<<<<< HEAD
-   $result = $action->execute($address);
-=======
     $result = $action->execute($address);
->>>>>>> laraxot/dev
 
     // Assert
     Assert::assertInstanceOf(LocationData::class, $result);
@@ -361,11 +321,7 @@ it('handles very long addresses', function (): void {
     ]);
 
     // Act
-<<<<<<< HEAD
-   $result = $action->execute($address);
-=======
     $result = $action->execute($address);
->>>>>>> laraxot/dev
 
     // Assert
     Assert::assertInstanceOf(LocationData::class, $result);
@@ -400,11 +356,7 @@ it('handles coordinates with high precision', function (): void {
     ]);
 
     // Act
-<<<<<<< HEAD
-   $result = $action->execute($address);
-=======
     $result = $action->execute($address);
->>>>>>> laraxot/dev
 
     // Assert
     Assert::assertInstanceOf(LocationData::class, $result);
@@ -424,11 +376,7 @@ it('handles network timeout gracefully', function (): void {
     ]);
 
     // Act & Assert
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute($address);
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {

@@ -64,11 +64,7 @@ class OSMMapWidget extends XotBaseWidget
         ]);
     }
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array<string, mixed>
      */
     protected function getData(): array

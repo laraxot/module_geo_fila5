@@ -27,42 +27,6 @@ export const mapPickerStyles = css`
         left: 0 !important;
         width: 100vw !important;
         height: 100vh !important;
-<<<<<<< HEAD
-=======
-        z-index: var(--mp-fullscreen-z-index, 999999) !important;
-        border-radius: 0 !important;
-    }
-
-    .map-container:fullscreen {
-        width: 100vw !important;
-        height: 100vh !important;
->>>>>>> laraxot/dev
-        border-radius: 0 !important;
-    }
-
-    .map-picker-leaflet-pane {
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        background: #e5e7eb;
-        opacity: 1;
-    }
-
-    .map-picker-leaflet-pane .leaflet-container,
-    .map-picker-leaflet-pane .leaflet-pane,
-    .map-picker-leaflet-pane .leaflet-layer,
-    .map-picker-leaflet-pane .leaflet-tile,
-    .map-picker-leaflet-pane .leaflet-tile-pane {
-        opacity: 1 !important;
-        filter: none !important;
-    }
-
-    .layer-controls-overlay {
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
-<<<<<<< HEAD
-=======
         z-index: 3001 !important;
         display: flex !important;
         flex-direction: column;
@@ -70,7 +34,6 @@ export const mapPickerStyles = css`
         opacity: 1 !important;
         visibility: visible !important;
         pointer-events: auto !important;
->>>>>>> laraxot/dev
     }
 
     .ctrl-btn {
@@ -87,29 +50,6 @@ export const mapPickerStyles = css`
         box-shadow: 0 8px 18px rgba(23, 50, 77, 0.22);
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 0;
-<<<<<<< HEAD
-=======
-        opacity: 1 !important;
-        visibility: visible !important;
-        position: relative;
-        z-index: 3002;
->>>>>>> laraxot/dev
-    }
-
-    .ctrl-btn:hover {
-        background: white;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        color: #2563eb;
-    }
-
-    .ctrl-btn svg {
-        width: 1.25rem !important;
-        height: 1.25rem !important;
-    }
-
-<<<<<<< HEAD
-=======
     .ctrl-btn .ctrl-fallback {
         display: none;
         font-size: 1rem;
@@ -117,7 +57,6 @@ export const mapPickerStyles = css`
         line-height: 1;
     }
 
->>>>>>> laraxot/dev
     .ctrl-btn.no-svg .ctrl-fallback {
         display: inline-block;
     }
@@ -140,22 +79,6 @@ export const mapPickerStyles = css`
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(8px);
         max-width: 300px;
-<<<<<<< HEAD
-=======
-        width: min(300px, calc(100% - 5rem));
-        align-items: center;
-    }
-
-    .search-box input {
-        flex: 1;
->>>>>>> laraxot/dev
-        border: 1px solid #d1d5db;
-        border-radius: 0.5rem;
-        padding: 0.5rem 0.75rem;
-        font-size: 0.875rem;
-        width: 100%;
-<<<<<<< HEAD
-=======
         min-width: 0;
         outline: none;
         color: #17324d;
@@ -213,7 +136,6 @@ export const mapPickerStyles = css`
     .map-container.is-fullscreen .layer-controls-overlay,
     .map-container.is-fullscreen .search-box {
         z-index: 3002 !important;
->>>>>>> laraxot/dev
     }
 
     .loading-overlay {

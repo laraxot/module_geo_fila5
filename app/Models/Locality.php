@@ -40,11 +40,7 @@ class Locality extends BaseModel
 {
     use Sushi;
 
-<<<<<<< HEAD
-   /** @var array<string, string> */
-=======
     /** @var array<string, string> */
->>>>>>> laraxot/dev
     protected array $schema = [
         'region_id' => 'integer',
         'province_id' => 'integer',
@@ -53,11 +49,7 @@ class Locality extends BaseModel
         'postal_code' => 'json',
     ];
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array<int, array<string, mixed>>
      */
     public function getRows(): array
@@ -134,11 +126,7 @@ class Locality extends BaseModel
 
         $city = $get('locality');
 
-<<<<<<< HEAD
-       $keys = [];
-=======
         $keys = [];
->>>>>>> laraxot/dev
         $values = [];
 
         foreach (
@@ -176,11 +164,7 @@ class Locality extends BaseModel
             ->orderBy('postal_code')
             ->get(); // ->pluck('postal_code', 'postal_code')
         // ->toArray()
-<<<<<<< HEAD
-       /** @var array<string, string> $options */
-=======
         /** @var array<string, string> $options */
->>>>>>> laraxot/dev
         $options = [];
 
         foreach ($res as $item) {

@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-- [ ] Update LLM Wiki index with new entries
-=======
 --- GEO MAP LIT — BMAD Story Prompt & Technical Reference ---
 Last updated: 2026-04-30
 Scope: Modules/Geo — reusable GeoMapWidget + geo-map-lit Web Component
@@ -63,4 +60,3 @@ _loadGeoJson() {
 - [x] laravel/Modules/Geo/docs/prompts/geo-map-widget.txt (this file)
 - [ ] Ingest new documents into QMD/Second Brain
 - [ ] Update LLM Wiki index with new entries
->>>>>>> laraxot/dev

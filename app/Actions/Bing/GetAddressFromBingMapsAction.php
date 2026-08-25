@@ -18,11 +18,7 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class GetAddressFromBingMapsAction
 {
-<<<<<<< HEAD
-   use QueueableAction;
-=======
     use QueueableAction;
->>>>>>> laraxot/dev
 
     private const BASE_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
 
@@ -64,11 +60,7 @@ class GetAddressFromBingMapsAction
 
     /**
      * @throws InvalidLocationException
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @return array<mixed>
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
@@ -145,11 +137,7 @@ class GetAddressFromBingMapsAction
         return new AddressData(
             latitude: (float) ($res['point']['coordinates'][0] ?? 0),
             longitude: (float) ($res['point']['coordinates'][1] ?? 0),
-<<<<<<< HEAD
-           country: $res['address']['countryRegion'],
-=======
             country: $res['address']['countryRegion'],
->>>>>>> laraxot/dev
             city: $res['address']['locality'],
             country_code: strtoupper($res['address']['countryRegionIso2'] ?? 'IT'),
             postal_code: (int) ($res['address']['postalCode'] ?? 0),
@@ -233,11 +221,7 @@ class GetAddressFromBingMapsAction
         }
 
         return [
-<<<<<<< HEAD
-           0 => SafeFloatCastAction::cast($coordinates[0]),
-=======
             0 => SafeFloatCastAction::cast($coordinates[0]),
->>>>>>> laraxot/dev
             1 => SafeFloatCastAction::cast($coordinates[1]),
         ];
     }

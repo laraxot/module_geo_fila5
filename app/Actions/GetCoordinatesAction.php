@@ -18,11 +18,7 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class GetCoordinatesAction
 {
-<<<<<<< HEAD
-   use QueueableAction;
-=======
     use QueueableAction;
->>>>>>> laraxot/dev
 
     /**
      * Ottiene le coordinate geografiche da un indirizzo.

@@ -39,11 +39,7 @@ class GetElevationAction
 
         try {
             /** @var array<string, mixed> $response */
-<<<<<<< HEAD
-           $response = app(GoogleMapsAction::class)->getElevation($location->latitude, $location->longitude);
-=======
             $response = app(GoogleMapsAction::class)->getElevation($location->latitude, $location->longitude);
->>>>>>> laraxot/dev
 
             if (! isset($response['results']) || ! is_array($response['results']) || empty($response['results'])) {
                 throw ElevationException::invalidResponse();
@@ -54,11 +50,7 @@ class GetElevationAction
                 throw ElevationException::invalidResponse();
             }
 
-<<<<<<< HEAD
-           return SafeFloatCastAction::cast($firstResult['elevation']);
-=======
             return SafeFloatCastAction::cast($firstResult['elevation']);
->>>>>>> laraxot/dev
         } catch (\Throwable $e) {
             if ($e instanceof ElevationException) {
                 throw $e;

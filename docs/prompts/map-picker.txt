@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-*Last updated: 2026-05-01 | Version: 2.1.123.ac1*
-=======
 # GEO MAP PICKER PROMPT (CANONICAL) — v2.1.123.ac1
 
 > STACK: TailwindCSS + AlpineJS + Lit + Livewire + Filament v5 + Laraxot
@@ -224,4 +221,3 @@ php artisan insights --fix  # if auto-fixes available
 ---
 
 *Last updated: 2026-05-01 | Version: 2.1.123.ac1*
->>>>>>> laraxot/dev

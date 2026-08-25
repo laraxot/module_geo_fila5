@@ -6,27 +6,7 @@ namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
-use function Safe\json_decode;
-use function Safe\json_encode;
-
-use Sushi\Sushi;
-
-/** @phpstan-ignore trait.unused */
-trait SushiToJsons
-{
-    use Sushi;
-
-    /**
-     * Carica i dati dal file JSON.
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @return array<int, array<string, mixed>>
      */
     public function getSushiRows(): array
@@ -44,11 +24,7 @@ trait SushiToJsons
 
     /**
      * Salva i dati nel file JSON.
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @param array<int, array<string, mixed>> $data
      */
     public function saveToJson(array $data): bool
@@ -69,11 +45,7 @@ trait SushiToJsons
 
     /**
      * Crea un nuovo record.
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @param array<string, mixed> $attributes
      */
     public function create(array $attributes = []): static
@@ -94,11 +66,7 @@ trait SushiToJsons
 
     /**
      * Aggiorna un record esistente.
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @param array<string, mixed> $attributes
      */
     public function update(array $attributes = [], array $options = []): bool
@@ -111,11 +79,7 @@ trait SushiToJsons
         }
 
         $attributes['updated_at'] = now();
-<<<<<<< HEAD
-       $itemData = $data[$index];
-=======
         $itemData = $data[$index];
->>>>>>> laraxot/dev
         if (! is_array($itemData)) {
             return false;
         }
@@ -144,11 +108,7 @@ trait SushiToJsons
 
     /**
      * Carica i dati dal file JSON.
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @return array<int, array<string, mixed>>
      */
     protected function loadFromJson(): array
@@ -159,11 +119,7 @@ trait SushiToJsons
             return [];
         }
 
-<<<<<<< HEAD
-       $content = File::get($path);
-=======
         $content = File::get($path);
->>>>>>> laraxot/dev
         if (! is_string($content)) {
             return [];
         }
@@ -197,20 +153,12 @@ trait SushiToJsons
     /**
      * Trova l'indice di un record.
      */
-<<<<<<< HEAD
-   protected function findIndex(mixed $id): ?int
-=======
     protected function findIndex(mixed $id): ?int
->>>>>>> laraxot/dev
     {
         $data = $this->loadFromJson();
 
         foreach ($data as $index => $item) {
-<<<<<<< HEAD
-           if (is_array($item) && array_key_exists('id', $item) && $item['id'] === $id) {
-=======
             if (is_array($item) && array_key_exists('id', $item) && $item['id'] === $id) {
->>>>>>> laraxot/dev
                 /* @var int $index */
                 return $index;
             }

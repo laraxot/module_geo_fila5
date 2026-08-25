@@ -42,11 +42,7 @@ class BuildGeoMapWidgetPayloadAction
                 ],
             ],
             layerConfig: [
-<<<<<<< HEAD
-               ['key' => 'cluster', 'label' => 'Cluster', 'enabled' => true],
-=======
                 ['key' => 'cluster', 'label' => 'Cluster', 'enabled' => true],
->>>>>>> laraxot/dev
                 ['key' => 'points', 'label' => 'Points', 'enabled' => false],
                 ['key' => 'heatmap', 'label' => 'Heatmap', 'enabled' => false],
                 ['key' => 'zones', 'label' => 'Zones', 'enabled' => false],
@@ -108,11 +104,7 @@ class BuildGeoMapWidgetPayloadAction
         $address = $place->getFormattedAddress();
         $description = \is_string($place->description ?? null) ? $place->description : '';
         $search = trim(strtolower(implode(' ', array_filter([
-<<<<<<< HEAD
-           SafeStringCastAction::cast($title),
-=======
             SafeStringCastAction::cast($title),
->>>>>>> laraxot/dev
             SafeStringCastAction::cast($category),
             SafeStringCastAction::cast($address),
             SafeStringCastAction::cast($description),
@@ -121,11 +113,7 @@ class BuildGeoMapWidgetPayloadAction
         return [
             'type' => 'Feature',
             'properties' => [
-<<<<<<< HEAD
-               'id' => SafeStringCastAction::cast($place->getKey()),
-=======
                 'id' => SafeStringCastAction::cast($place->getKey()),
->>>>>>> laraxot/dev
                 'title' => $title,
                 'name' => $title,
                 'category' => \is_string($category) ? $category : 'unknown',
@@ -142,11 +130,7 @@ class BuildGeoMapWidgetPayloadAction
             'geometry' => [
                 'type' => 'Point',
                 'coordinates' => [
-<<<<<<< HEAD
-                   SafeFloatCastAction::cast($place->longitude),
-=======
                     SafeFloatCastAction::cast($place->longitude),
->>>>>>> laraxot/dev
                     SafeFloatCastAction::cast($place->latitude),
                 ],
             ],
@@ -168,11 +152,7 @@ class BuildGeoMapWidgetPayloadAction
         $longitudes = $places->pluck('longitude')->filter(static fn ($value): bool => \is_float($value) || \is_int($value));
 
         return [
-<<<<<<< HEAD
-           'lat' => SafeFloatCastAction::cast($latitudes->average() ?? 45.4642),
-=======
             'lat' => SafeFloatCastAction::cast($latitudes->average() ?? 45.4642),
->>>>>>> laraxot/dev
             'lng' => SafeFloatCastAction::cast($longitudes->average() ?? 9.1900),
         ];
     }
@@ -191,10 +171,6 @@ class BuildGeoMapWidgetPayloadAction
             return $formattedAddress;
         }
 
-<<<<<<< HEAD
-       return 'Place #'.SafeStringCastAction::cast($place->getKey());
-=======
         return 'Place #'.SafeStringCastAction::cast($place->getKey());
->>>>>>> laraxot/dev
     }
 }

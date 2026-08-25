@@ -20,11 +20,7 @@ test('AddressField can be instantiated', function () {
 
 test('MapPicker can be instantiated', function () {
     $field = MapPicker::make('map_picker')
-<<<<<<< HEAD
-       ->latitudeColumn('latitude')
-=======
         ->latitudeColumn('latitude')
->>>>>>> laraxot/dev
         ->longitudeColumn('longitude');
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);

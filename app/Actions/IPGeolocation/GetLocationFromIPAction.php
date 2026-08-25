@@ -23,10 +23,6 @@ class GetLocationFromIPAction
      */
     public function execute(string $ip): ?IPLocationData
     {
-<<<<<<< HEAD
-       return app(FetchIPLocationAction::class)->execute($ip);
-=======
         return app(FetchIPLocationAction::class)->execute($ip);
->>>>>>> laraxot/dev
     }
 }
