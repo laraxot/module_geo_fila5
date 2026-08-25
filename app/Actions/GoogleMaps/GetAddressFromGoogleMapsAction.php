@@ -86,7 +86,7 @@ final class GetAddressFromGoogleMapsAction
      */
     private function getFirstResult(GoogleMapResponseData $responseData): GoogleMapResultData
     {
-        $firstResult = $responseData->results->first();
+        $firstResult = $responseData->results->toCollection()->first();
 
         if (! $firstResult instanceof GoogleMapResultData) {
             throw GoogleMapsApiException::noResultsFound();
