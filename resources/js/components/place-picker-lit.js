@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-}
-=======
 import { geoIcon } from './geo-heroicons.js';
 import { LitElement, html, nothing } from 'lit';
 import { guard } from 'lit/directives/guard.js';
@@ -253,4 +250,3 @@ export class PlacePickerField extends LitElement {
 if (!customElements.get('place-picker-lit')) {
     customElements.define('place-picker-lit', PlacePickerField);
 }
->>>>>>> laraxot/dev

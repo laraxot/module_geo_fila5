@@ -19,20 +19,12 @@ class FilterCoordinatesInRadius implements ValidationRule
         private readonly float $centerLatitude,
         private readonly float $centerLongitude,
         private readonly int $radius,
-<<<<<<< HEAD
-   ) {}
-=======
     ) {}
->>>>>>> laraxot/dev
 
     /**
      * Determina se le coordinate passate sono all'interno del raggio specificato.
      *
-<<<<<<< HEAD
-    * @param  string  $attribute  Nome dell'attributo
-=======
      * @param  string  $attribute  Nome dell'attributo
->>>>>>> laraxot/dev
      * @param  mixed  $value  Valore da validare
      * @param  Closure(string, ?string=): PotentiallyTranslatedString  $fail
      */
@@ -66,11 +58,7 @@ class FilterCoordinatesInRadius implements ValidationRule
             $this->radius,
         );
 
-<<<<<<< HEAD
-       if ($filteredCoordinates === []) {
-=======
         if ($filteredCoordinates === []) {
->>>>>>> laraxot/dev
             $fail($this->message());
         }
     }
@@ -80,10 +68,6 @@ class FilterCoordinatesInRadius implements ValidationRule
      */
     public function message(): string
     {
-<<<<<<< HEAD
-       return 'Nessuna coordinata trovata nel raggio specificato';
-=======
         return 'Nessuna coordinata trovata nel raggio specificato';
->>>>>>> laraxot/dev
     }
 }

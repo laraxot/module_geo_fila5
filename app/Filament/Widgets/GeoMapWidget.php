@@ -13,11 +13,7 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
  * @phpstan-type GeoDataset array{type: string, features: list<array{
  *     type: string,
  *     properties: array<string, scalar|null>,
-<<<<<<< HEAD
-*     geometry: array{type: string, coordinates: array<mixed>}
-=======
  *     geometry: array{type: string, coordinates: array<mixed>}
->>>>>>> laraxot/dev
  * }>}
  * @phpstan-type GeoMapConfig array{
  *     defaultZoom: int,
@@ -47,11 +43,7 @@ final class GeoMapWidget extends XotBaseWidget
      */
     public function getDataset(): array
     {
-<<<<<<< HEAD
-       return app(LoadGeoMapDatasetAction::class)->execute($this->getDatasetPath());
-=======
         return app(LoadGeoMapDatasetAction::class)->execute($this->getDatasetPath());
->>>>>>> laraxot/dev
     }
 
     /**
@@ -59,11 +51,7 @@ final class GeoMapWidget extends XotBaseWidget
      */
     public function getCategories(): array
     {
-<<<<<<< HEAD
-       return app(GetGeoMapDatasetCategoriesAction::class)->execute($this->getDatasetPath());
-=======
         return app(GetGeoMapDatasetCategoriesAction::class)->execute($this->getDatasetPath());
->>>>>>> laraxot/dev
     }
 
     /**
@@ -100,11 +88,7 @@ final class GeoMapWidget extends XotBaseWidget
      */
     public function getDatasetStats(): array
     {
-<<<<<<< HEAD
-       return app(GetGeoMapDatasetStatsAction::class)->execute($this->getDatasetPath());
-=======
         return app(GetGeoMapDatasetStatsAction::class)->execute($this->getDatasetPath());
->>>>>>> laraxot/dev
     }
 
     public function getDatasetJson(): string
@@ -131,11 +115,7 @@ final class GeoMapWidget extends XotBaseWidget
     }
 
     /**
-<<<<<<< HEAD
-    * @param array<string, mixed> $payload
-=======
      * @param array<string, mixed> $payload
->>>>>>> laraxot/dev
      */
     private function encodeJson(array $payload, string $message): string
     {

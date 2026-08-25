@@ -16,11 +16,7 @@ it('throws exception when api key is not configured', function (): void {
     config(['services.bing.maps_api_key' => null]);
 
     $action = new GetAddressFromBingMapsAction();
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
     } catch (InvalidLocationException $exception) {
@@ -32,11 +28,7 @@ it('throws exception for invalid latitude range', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     $action = new GetAddressFromBingMapsAction();
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute(91.0, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
     } catch (InvalidLocationException) {
@@ -47,11 +39,7 @@ it('throws exception for invalid longitude range', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
     $action = new GetAddressFromBingMapsAction();
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute(45.0, 181.0);
         Assert::fail('Expected InvalidLocationException was not thrown');
     } catch (InvalidLocationException) {
@@ -66,11 +54,7 @@ it('throws exception when api response is not successful', function (): void {
     ]);
 
     $action = new GetAddressFromBingMapsAction();
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
     } catch (InvalidLocationException $exception) {
@@ -86,11 +70,7 @@ it('throws exception when api response is not valid json', function (): void {
     ]);
 
     $action = new GetAddressFromBingMapsAction();
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
     } catch (InvalidLocationException $exception) {
@@ -110,11 +90,7 @@ it('throws exception when no results in response', function (): void {
     ]);
 
     $action = new GetAddressFromBingMapsAction();
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
     } catch (InvalidLocationException $exception) {
@@ -136,11 +112,7 @@ it('throws exception when point is missing in response', function (): void {
     ]);
 
     $action = new GetAddressFromBingMapsAction();
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
     } catch (InvalidLocationException $exception) {
@@ -163,11 +135,7 @@ it('throws exception when coordinates are missing in response', function (): voi
     ]);
 
     $action = new GetAddressFromBingMapsAction();
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
     } catch (InvalidLocationException $exception) {
@@ -189,11 +157,7 @@ it('throws exception when address is missing in response', function (): void {
     ]);
 
     $action = new GetAddressFromBingMapsAction();
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
     } catch (InvalidLocationException $exception) {
@@ -226,11 +190,7 @@ it('returns address data for valid coordinates', function (): void {
     $action = new GetAddressFromBingMapsAction();
     $result = $action->execute(45.4642, 9.1900);
 
-<<<<<<< HEAD
-   Assert::assertInstanceOf(AddressData::class, $result);
-=======
     Assert::assertInstanceOf(AddressData::class, $result);
->>>>>>> laraxot/dev
 
     Assert::assertSame(45.4642, $result->latitude);
 

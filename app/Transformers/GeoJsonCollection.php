@@ -23,11 +23,7 @@ class GeoJsonCollection extends ResourceCollection
      */
     public $collects = GeoJsonResource::class;
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array

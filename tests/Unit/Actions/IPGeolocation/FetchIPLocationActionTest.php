@@ -48,11 +48,7 @@ it('fetches IP location successfully', function (): void {
         'isp' => 'Google LLC',
     ])));
 
-<<<<<<< HEAD
-   $result = $action->execute('8.8.8.8');
-=======
     $result = $action->execute('8.8.8.8');
->>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(IPLocationData::class, $result);
     Assert::assertSame('8.8.8.8', $result->ip);

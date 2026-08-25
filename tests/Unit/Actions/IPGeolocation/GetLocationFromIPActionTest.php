@@ -13,11 +13,7 @@ use Modules\Geo\Tests\LightTestCase;
 
 uses(LightTestCase::class);
 
-<<<<<<< HEAD
-t('delegates to fetch action and returns result', function (): void {
-=======
 it('delegates to fetch action and returns result', function (): void {
->>>>>>> laraxot/dev
     app()->instance(FetchIPLocationAction::class, new FetchIPLocationReturningStub(new IPLocationData(
         ip: '8.8.8.8',
         city: 'Ashburn',
@@ -29,7 +25,6 @@ it('delegates to fetch action and returns result', function (): void {
         timezone: null,
         isp: null,
     )));
-<<<<<<< HEAD
 
     $action = app(GetLocationFromIPAction::class);
 
@@ -45,23 +40,6 @@ it('propagates exception when fetch action throws', function (): void {
 
     $action = app(GetLocationFromIPAction::class);
 
-=======
-
-    $action = app(GetLocationFromIPAction::class);
-
-    $result = $action->execute('8.8.8.8');
-
-    expect($result)->toBeInstanceOf(IPLocationData::class)
-        ->and($result?->ip)->toBe('8.8.8.8')
-        ->and($result?->city)->toBe('Ashburn');
-});
-
-it('propagates exception when fetch action throws', function (): void {
-    app()->instance(FetchIPLocationAction::class, new FetchIPLocationThrowingStub(new \RuntimeException('not found')));
-
-    $action = app(GetLocationFromIPAction::class);
-
->>>>>>> laraxot/dev
     expect(fn (): ?IPLocationData => $action->execute('192.168.1.1'))
         ->toThrow(\RuntimeException::class, 'not found');
 });

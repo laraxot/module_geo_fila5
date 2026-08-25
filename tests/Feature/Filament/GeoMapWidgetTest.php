@@ -26,9 +26,5 @@ test('geo map widget uses the expected blade view', function (): void {
     $property = $reflection->getProperty('view');
     $property->setAccessible(true);
 
-<<<<<<< HEAD
-   Assert::assertSame('geo::filament.widgets.geo-map-widget', $property->getValue($widget));
-=======
     Assert::assertSame('geo::filament.widgets.geo-map-widget', $property->getValue($widget));
->>>>>>> laraxot/dev
 });

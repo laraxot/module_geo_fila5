@@ -32,11 +32,7 @@ enum AddressTypeEnum: string implements HasLabel
     public static function options(): array
     {
         return [
-<<<<<<< HEAD
-           self::HOME->value => self::HOME->getLabel(),
-=======
             self::HOME->value => self::HOME->getLabel(),
->>>>>>> laraxot/dev
             self::WORK->value => self::WORK->getLabel(),
             self::BILLING->value => self::BILLING->getLabel(),
             self::SHIPPING->value => self::SHIPPING->getLabel(),

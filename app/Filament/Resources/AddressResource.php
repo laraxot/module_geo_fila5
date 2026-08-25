@@ -33,11 +33,7 @@ class AddressResource extends XotBaseResource
     // ✅ CORRETTO - NIENTE navigationGroup - La gestione è centralizzata in XotBaseResource
 
     /**
-<<<<<<< HEAD
-    * Schema legacy del form: la sorgente di verità è AddressForm::getFormSchema().
-=======
      * Schema legacy del form: la sorgente di verità è AddressForm::getFormSchema().
->>>>>>> laraxot/dev
      *
      * @return array<string, Component>
      */

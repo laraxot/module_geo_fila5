@@ -57,11 +57,7 @@ trait GeoTrait
 
     public function distance(?float $lat = null, ?float $lng = null): ?float
     {
-<<<<<<< HEAD
-       $distance = app(CalculateGeoDistanceAction::class)->execute(
-=======
         $distance = app(CalculateGeoDistanceAction::class)->execute(
->>>>>>> laraxot/dev
             (float) $this->latitude,
             (float) $this->longitude,
             $lat,
@@ -79,35 +75,14 @@ trait GeoTrait
         ?float $lng = null,
         ?string $unit = '',
     ): ?float {
-<<<<<<< HEAD
-       $distance = app(CalculateGeoDistanceAction::class)->execute(
-=======
         $distance = app(CalculateGeoDistanceAction::class)->execute(
->>>>>>> laraxot/dev
             (float) $this->{$lat_field},
             (float) $this->{$lng_field},
             $lat,
             $lng,
             $unit,
         );
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
-        return null !== $distance ? (float) $distance : null;
-    }
-
-    // ---- Scopes ----
-    /** @phpstan-ignore-next-line */
-    public function scopeWithDistance(Builder $query, float $lat, float $lng): Builder
-    {
-        $q = $query;
-        if ($lat > 0 && $lng > 0) {
-<<<<<<< HEAD
-           $haversine = app(BuildHaversineSqlAction::class)->execute($lat, $lng);
-=======
             $haversine = app(BuildHaversineSqlAction::class)->execute($lat, $lng);
->>>>>>> laraxot/dev
 
             // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');
@@ -116,11 +91,7 @@ trait GeoTrait
         return $q;
     }
 
-<<<<<<< HEAD
-   /** @phpstan-ignore-next-line */
-=======
     /** @phpstan-ignore-next-line */
->>>>>>> laraxot/dev
     public function scopeWithDistanceCustomField(
         Builder $query,
         string $lat_field,
@@ -130,11 +101,7 @@ trait GeoTrait
     ): Builder {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
-<<<<<<< HEAD
-           $haversine = app(BuildHaversineSqlAction::class)->execute($lat, $lng, $lat_field, $lng_field);
-=======
             $haversine = app(BuildHaversineSqlAction::class)->execute($lat, $lng, $lat_field, $lng_field);
->>>>>>> laraxot/dev
 
             // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');
@@ -143,11 +110,7 @@ trait GeoTrait
         return $q;
     }
 
-<<<<<<< HEAD
-   /** @phpstan-ignore-next-line */
-=======
     /** @phpstan-ignore-next-line */
->>>>>>> laraxot/dev
     public function scopeOfInPolygon(Builder $query, string $polygon_field, float $lat, float $lng): Builder
     {
         $sql = "ST_Contains(
@@ -169,11 +132,7 @@ trait GeoTrait
        ), ST_GeomFromText('POINT(".$lat.' '.$lng.")')
        )";
 
-<<<<<<< HEAD
-       // @phpstan-ignore-next-line
-=======
         // @phpstan-ignore-next-line
->>>>>>> laraxot/dev
         return $query->whereNotNull($polygon_field)->whereRaw($sql);
     }
 

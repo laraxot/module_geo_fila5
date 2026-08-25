@@ -182,11 +182,7 @@ class Place extends BaseModel implements HasGeolocation
     /**
      * Get the linked model.
      */
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return MorphTo<Model, $this>
      */
     public function linked(): MorphTo
@@ -197,11 +193,7 @@ class Place extends BaseModel implements HasGeolocation
     /**
      * Get the place type.
      */
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return BelongsTo<PlaceType, $this>
      */
     public function placeType(): BelongsTo
@@ -212,11 +204,7 @@ class Place extends BaseModel implements HasGeolocation
     /**
      * Get the address.
      */
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return BelongsTo<Address, $this>
      */
     public function address(): BelongsTo
@@ -227,21 +215,13 @@ class Place extends BaseModel implements HasGeolocation
     #[\Override]
     public function getLatitude(): ?float
     {
-<<<<<<< HEAD
-       return $this->latitude;
-=======
         return $this->latitude;
->>>>>>> laraxot/dev
     }
 
     #[\Override]
     public function getLongitude(): ?float
     {
-<<<<<<< HEAD
-       return $this->longitude;
-=======
         return $this->longitude;
->>>>>>> laraxot/dev
     }
 
     #[\Override]

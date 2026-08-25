@@ -106,11 +106,7 @@ class Comune extends BaseModel
         'lng',
     ];
 
-<<<<<<< HEAD
-   /** @var array<string, string> */
-=======
     /** @var array<string, string> */
->>>>>>> laraxot/dev
     protected array $schema = [
         'id' => 'integer',
         'title' => 'json',
@@ -131,11 +127,7 @@ class Comune extends BaseModel
         return module_path('Geo', 'resources/json/comuni.json');
     }
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array<int, array<string, mixed>>
      */
     public function getRows(): array
@@ -146,11 +138,7 @@ class Comune extends BaseModel
     /**
      * Get all regions.
      *
-<<<<<<< HEAD
-    * @return Collection<int, array<array-key, mixed>>
-=======
      * @return Collection<int, array<array-key, mixed>>
->>>>>>> laraxot/dev
      */
     public static function getRegioni(): Collection
     {
@@ -177,11 +165,7 @@ class Comune extends BaseModel
     /**
      * Get all provinces for a region.
      *
-<<<<<<< HEAD
-    * @return Collection<int, array<array-key, mixed>>
-=======
      * @return Collection<int, array<array-key, mixed>>
->>>>>>> laraxot/dev
      */
     public static function getProvinceByRegione(string $regione): Collection
     {
@@ -208,11 +192,7 @@ class Comune extends BaseModel
     /**
      * Get all comuni for a province.
      *
-<<<<<<< HEAD
-    * @return Collection<int, static>
-=======
      * @return Collection<int, static>
->>>>>>> laraxot/dev
      */
     public static function getComuniByProvincia(string $provincia): Collection
     {
@@ -231,11 +211,7 @@ class Comune extends BaseModel
      */
     public static function findByNome(string $nome): ?self
     {
-<<<<<<< HEAD
-       /** @var static|null $comune */
-=======
         /** @var static|null $comune */
->>>>>>> laraxot/dev
         $comune = static::all()
             ->first(fn (self $item): bool => strtolower($item->nome ?? '') === strtolower($nome));
 
@@ -247,11 +223,7 @@ class Comune extends BaseModel
      *
      * @param string $cap The CAP code to search for
      *
-<<<<<<< HEAD
-    * @return Collection<int, static> Collection of matching comuni
-=======
      * @return Collection<int, static> Collection of matching comuni
->>>>>>> laraxot/dev
      */
     public static function findByCap(string $cap): Collection
     {
@@ -264,21 +236,13 @@ class Comune extends BaseModel
     /**
      * Find a city by ID.
      *
-<<<<<<< HEAD
-    * @return array<string, mixed>|null
-=======
      * @return array<string, mixed>|null
->>>>>>> laraxot/dev
      */
     public static function findComune(int $id): ?array
     {
         $comune = static::query()->where('id', $id)->first();
 
-<<<<<<< HEAD
-       if (! $comune instanceof self) {
-=======
         if (! $comune instanceof self) {
->>>>>>> laraxot/dev
             return null;
         }
 

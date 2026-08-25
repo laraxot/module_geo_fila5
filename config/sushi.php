@@ -21,11 +21,7 @@ return [
      * |
      */
     'cache' => [
-<<<<<<< HEAD
-       'enabled' => Illuminate\Support\Env::get('SUSHI_CACHE_ENABLED', true),
-=======
         'enabled' => Illuminate\Support\Env::get('SUSHI_CACHE_ENABLED', true),
->>>>>>> laraxot/dev
         'duration' => Illuminate\Support\Env::get('SUSHI_CACHE_DURATION', 60 * 24 * 7), // 7 giorni
     ],
     /*
@@ -33,11 +29,7 @@ return [
      * | Database Configuration
      * |--------------------------------------------------------------------------
      * |
-<<<<<<< HEAD
-    * | Configurazione del database per i modelli Sushi.
-=======
      * | Configurazione del database per i modelli Sushi.
->>>>>>> laraxot/dev
      * |
      * | Il default eredita dalla connessione applicativa: un modulo riusabile non
      * | puo' contenere il nome di un database di progetto, tanto meno quello di

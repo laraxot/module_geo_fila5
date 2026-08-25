@@ -34,11 +34,7 @@ class GetCoordinatesFromGoogleMapsAction
     /**
      * Ottiene le coordinate da un indirizzo.
      *
-<<<<<<< HEAD
-    * @throws \InvalidArgumentException Se i dati di input non sono validi
-=======
      * @throws \InvalidArgumentException Se i dati di input non sono validi
->>>>>>> laraxot/dev
      * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(string $address): LocationData
@@ -62,11 +58,7 @@ class GetCoordinatesFromGoogleMapsAction
     /**
      * Valida i dati di input.
      *
-<<<<<<< HEAD
-    * @throws \InvalidArgumentException Se i dati non sono validi
-=======
      * @throws \InvalidArgumentException Se i dati non sono validi
->>>>>>> laraxot/dev
      */
     private function validateInput(string $address): void
     {

@@ -12,11 +12,7 @@ trait GeographicalScopes
 {
     /**
      * Scope per calcolare la distanza tra due punti.
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @phpstan-ignore-next-line
      */
     public function scopeWithDistance(Builder $query, float $latitude, float $longitude): Builder
@@ -26,11 +22,7 @@ trait GeographicalScopes
 
     /**
      * Scope per ordinare i risultati per distanza.
-<<<<<<< HEAD
-    *
-=======
      *
->>>>>>> laraxot/dev
      * @phpstan-ignore-next-line
      */
     public function scopeOrderByDistance(Builder $query, float $latitude, float $longitude): Builder
@@ -38,11 +30,7 @@ trait GeographicalScopes
         return $query->orderBy($this->getDistanceExpression($latitude, $longitude));
     }
 
-<<<<<<< HEAD
-   /** @phpstan-ignore-next-line */
-=======
     /** @phpstan-ignore-next-line */
->>>>>>> laraxot/dev
     public function getDistanceExpression(
         float $latitude,
         float $longitude,
@@ -61,11 +49,7 @@ trait GeographicalScopes
             $sql .= " AS {$alias}";
         }
 
-<<<<<<< HEAD
-       // @phpstan-ignore-next-line
-=======
         // @phpstan-ignore-next-line
->>>>>>> laraxot/dev
         return new Expression($sql);
     }
 }

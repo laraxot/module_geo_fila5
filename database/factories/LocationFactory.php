@@ -68,11 +68,7 @@ class LocationFactory extends Factory
             'Toscana',
         ];
 
-<<<<<<< HEAD
-       $city = SafeStringCastAction::cast($this->faker->randomElement($italianCities));
-=======
         $city = SafeStringCastAction::cast($this->faker->randomElement($italianCities));
->>>>>>> laraxot/dev
         $street = SafeStringCastAction::cast($this->faker->randomElement($italianStreets));
         $state = SafeStringCastAction::cast($this->faker->randomElement($italianRegions));
 
@@ -117,11 +113,7 @@ class LocationFactory extends Factory
     {
         return $this->state(fn (array $attributes): array => [
             'city' => $city,
-<<<<<<< HEAD
-           'state' => $state ?? SafeStringCastAction::cast($attributes['state'] ?? 'Lazio'),
-=======
             'state' => $state ?? SafeStringCastAction::cast($attributes['state'] ?? 'Lazio'),
->>>>>>> laraxot/dev
             'formatted_address' => sprintf(
                 '%s, %s, %s, Italia',
                 SafeStringCastAction::cast($attributes['street'] ?? 'Via Roma 1'),

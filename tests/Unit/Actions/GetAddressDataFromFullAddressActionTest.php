@@ -23,11 +23,7 @@ it('returns AddressData when first service succeeds', function (): void {
 it('initializes with empty errors collection', function (): void {
     $action = new GetAddressDataFromFullAddressAction();
 
-<<<<<<< HEAD
-   $action = new GetAddressDataFromFullAddressAction();
-=======
     $action = new GetAddressDataFromFullAddressAction();
->>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(Collection::class, $action->getErrors());
     Assert::assertSame(0, $action->getErrors()->count());
@@ -44,11 +40,7 @@ it('executes without throwing error for basic call', function (): void {
     $result = $action->execute('Test Address');
 
     // The method should return null if no services are available
-<<<<<<< HEAD
-   Assert::assertNull($result);
-=======
     Assert::assertNull($result);
->>>>>>> laraxot/dev
 
     // And should have set error messages
     Assert::assertInstanceOf(Collection::class, $action->getErrors());

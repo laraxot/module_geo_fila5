@@ -1,19 +1,11 @@
-<<<<<<< HEAD
-php
-=======
 @php
->>>>>>> laraxot/dev
     /** @var \Illuminate\Database\Eloquent\Model|array<string, mixed> $record */
     $record = $getRecord();
     $parts = [];
 
     $fullAddress = data_get($record, 'full_address');
     if (is_string($fullAddress) && $fullAddress !== '') {
-<<<<<<< HEAD
-       $parts = array_values(array_filter(explode(' - ', $fullAddress)));
-=======
         $parts = array_values(array_filter(explode(' - ', $fullAddress)));
->>>>>>> laraxot/dev
     } else {
         foreach (['address', 'route', 'street_number', 'postal_code', 'locality', 'city', 'province', 'country'] as $field) {
             $value = data_get($record, $field);
@@ -25,11 +17,7 @@ php
 @endphp
 
 <div class="flex flex-col text-sm leading-tight">
-<<<<<<< HEAD
-   @if ($parts === [])
-=======
     @if ($parts === [])
->>>>>>> laraxot/dev
         <span class="text-gray-400">-</span>
     @else
         @foreach ($parts as $part)

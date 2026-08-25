@@ -64,11 +64,7 @@ class TravelTimeData extends Data
             return self::error($response['status']);
         }
 
-<<<<<<< HEAD
-       $element = $response['rows'][0]['elements'][0];
-=======
         $element = $response['rows'][0]['elements'][0];
->>>>>>> laraxot/dev
         if ('OK' !== $element['status']) {
             return self::error($element['status']);
         }

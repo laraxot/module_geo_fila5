@@ -32,11 +32,7 @@ class UpdateClientCoordinatesBulkAction
         DB::transaction(function () use ($addresses, &$successCount, &$errorMessages) {
             foreach ($addresses as $address) {
                 $fullAddress = is_string($address->full_address) ? $address->full_address : '';
-<<<<<<< HEAD
-               $addressData = app(GetAddressDataFromFullAddressAction::class)->execute($fullAddress);
-=======
                 $addressData = app(GetAddressDataFromFullAddressAction::class)->execute($fullAddress);
->>>>>>> laraxot/dev
 
                 if (null !== $addressData) {
                     $toArray = $addressData->toArray();
@@ -51,11 +47,7 @@ class UpdateClientCoordinatesBulkAction
 
                 // PHPStan L10: $address->name è già string|null, non serve is_string()
                 $addressName = $address->name ?? 'Unknown';
-<<<<<<< HEAD
-               $errors = app(GetAddressDataFromFullAddressAction::class)->getErrors();
-=======
                 $errors = app(GetAddressDataFromFullAddressAction::class)->getErrors();
->>>>>>> laraxot/dev
                 // PHPStan L10: Collection::implode() restituisce string, non serve ?:
                 $errorMsg = $errors->implode(', ');
                 if ('' === $errorMsg) {

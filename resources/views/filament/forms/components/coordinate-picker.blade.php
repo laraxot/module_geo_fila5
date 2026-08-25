@@ -1,6 +1,4 @@
 @php
-<<<<<<< HEAD
-=======
 /** @var \Modules\Geo\Filament\Forms\Components\CoordinatePicker $field */
 $statePath = $field->getStatePath();
 $id = $field->getId();
@@ -12,7 +10,6 @@ $labels = [
 'close_fullscreen'=> __('geo::coordinate-picker.close_fullscreen'),
 'use_location' => __('geo::coordinate-picker.use_my_location'),
 'locating' => __('geo::coordinate-picker.locating'),
->>>>>>> laraxot/dev
 'search' => __('geo::coordinate-picker.search'),
 'search_placeholder' => __('geo::coordinate-picker.search_placeholder'),
 'close_search' => __('geo::coordinate-picker.close_search'),

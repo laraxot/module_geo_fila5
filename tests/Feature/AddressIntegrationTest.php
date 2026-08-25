@@ -18,11 +18,7 @@ uses(TestCase::class);
  */
 
 /**
-<<<<<<< HEAD
-* Build an in-memory address array with sane defaults.
-=======
  * Build an in-memory address array with sane defaults.
->>>>>>> laraxot/dev
  *
  * @param  array<string, mixed>  $overrides
  * @return array<string, mixed>
@@ -52,11 +48,7 @@ function makeAddress(array $overrides = []): array
         'deleted_at' => null,
     ];
 
-<<<<<<< HEAD
-   return array_replace($defaults, $overrides);
-=======
     return array_replace($defaults, $overrides);
->>>>>>> laraxot/dev
 }
 
 /**
@@ -82,11 +74,7 @@ function formatFullAddress(array $address): string
 
 describe('Address Integration', function () {
     it('can attach address to patient via polymorphic relationship', function () {
-<<<<<<< HEAD
-       $patient = ['id' => 1001, 'type' => 'patient'];
-=======
         $patient = ['id' => 1001, 'type' => 'patient'];
->>>>>>> laraxot/dev
 
         $address = makeAddress([
             'model_type' => 'patient',
@@ -98,11 +86,7 @@ describe('Address Integration', function () {
             'is_primary' => true,
         ]);
 
-<<<<<<< HEAD
-       Assert::assertSame('patient', $address['model_type']);
-=======
         Assert::assertSame('patient', $address['model_type']);
->>>>>>> laraxot/dev
         Assert::assertSame($patient['id'], $address['model_id']);
         Assert::assertTrue($address['is_primary']);
     });
@@ -119,11 +103,7 @@ describe('Address Integration', function () {
 
         $fullAddress = formatFullAddress($address);
 
-<<<<<<< HEAD
-       Assert::assertStringContainsString('Via Giuseppe Verdi', $fullAddress);
-=======
         Assert::assertStringContainsString('Via Giuseppe Verdi', $fullAddress);
->>>>>>> laraxot/dev
         Assert::assertStringContainsString('42', $fullAddress);
         Assert::assertStringContainsString('Milano', $fullAddress);
         Assert::assertStringContainsString('20121', $fullAddress);
@@ -135,11 +115,7 @@ describe('Address Integration', function () {
             'longitude' => 9.1900,
         ]);
 
-<<<<<<< HEAD
-       Assert::assertSame(45.4642, $milan['latitude']);
-=======
         Assert::assertSame(45.4642, $milan['latitude']);
->>>>>>> laraxot/dev
         Assert::assertSame(9.1900, $milan['longitude']);
     });
 
@@ -154,11 +130,7 @@ describe('Address Integration', function () {
             ],
         ]);
 
-<<<<<<< HEAD
-       Assert::assertSame('ChIJu46S-ZZjhkcRLuFvLjVZ400', $address['place_id']);
-=======
         Assert::assertSame('ChIJu46S-ZZjhkcRLuFvLjVZ400', $address['place_id']);
->>>>>>> laraxot/dev
         $extraData = $address['extra_data'];
         Assert::assertIsArray($extraData);
         Assert::assertIsArray($extraData['google_types'] ?? null);
@@ -179,22 +151,14 @@ describe('Address Integration', function () {
 
         $workAddress = makeAddress([
             'model_type' => 'patient',
-<<<<<<< HEAD
-           'model_id' => $patient['id'],
-=======
             'model_id' => $patient['id'],
->>>>>>> laraxot/dev
             'type' => AddressTypeEnum::WORK->value,
             'is_primary' => false,
         ]);
 
         $patientAddresses = [$homeAddress, $workAddress];
 
-<<<<<<< HEAD
-       Assert::assertCount(2, $patientAddresses);
-=======
         Assert::assertCount(2, $patientAddresses);
->>>>>>> laraxot/dev
 
         $primary = null;
         foreach ($patientAddresses as $addr) {
@@ -203,22 +167,14 @@ describe('Address Integration', function () {
                 break;
             }
         }
-<<<<<<< HEAD
-       Assert::assertNotNull($primary);
-=======
         Assert::assertNotNull($primary);
->>>>>>> laraxot/dev
         Assert::assertSame($homeAddress['id'], $primary['id']);
     });
 
     it('handles soft deletion correctly', function () {
         $address = makeAddress();
 
-<<<<<<< HEAD
-       $address['deleted_at'] = date('c');
-=======
         $address['deleted_at'] = date('c');
->>>>>>> laraxot/dev
 
         Assert::assertNotNull($address['deleted_at']);
     });

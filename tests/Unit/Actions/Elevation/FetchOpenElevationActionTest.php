@@ -42,11 +42,7 @@ it('fetches elevation successfully', function (): void {
                 ],
             ],
         ])
-<<<<<<< HEAD
-   ));
-=======
     ));
->>>>>>> laraxot/dev
 
     $result = $action->execute(45.4642, 9.1900);
 

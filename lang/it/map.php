@@ -6,21 +6,13 @@ return [
     'navigation' => [
         'name' => 'Mappe',
         'plural' => 'Mappe',
-<<<<<<< HEAD
-       'group' => ['name' => 'Geo', 'description' => 'Gestione e visualizzazione delle mappe'],
-=======
         'group' => ['name' => 'Geo', 'description' => 'Gestione e visualizzazione delle mappe'],
->>>>>>> laraxot/dev
         'label' => 'Mappe',
         'sort' => 33,
         'icon' => 'ui-geo-map',
     ],
     'fields' => [
-<<<<<<< HEAD
-       'title' => ['label' => 'Titolo', 'tooltip' => '', 'helper_text' => '', 'description' => ''],
-=======
         'title' => ['label' => 'Titolo', 'tooltip' => '', 'helper_text' => '', 'description' => ''],
->>>>>>> laraxot/dev
         'type' => ['label' => 'Tipo Mappa', 'tooltip' => '', 'helper_text' => '', 'description' => ''],
         'zoom_level' => ['label' => 'Livello Zoom', 'tooltip' => '', 'helper_text' => '', 'description' => ''],
         'center_lat' => ['label' => 'Latitudine Centro', 'tooltip' => '', 'helper_text' => '', 'description' => ''],

@@ -124,11 +124,7 @@ return [
         ],
         'label' => 'Boundary',
         'sort' => 1,
-<<<<<<< HEAD
-       'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-rectangle-stack',
->>>>>>> laraxot/dev
     ],
     'actions' => [
         'create' => [

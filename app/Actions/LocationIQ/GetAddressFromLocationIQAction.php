@@ -15,11 +15,7 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class GetAddressFromLocationIQAction
 {
-<<<<<<< HEAD
-   use QueueableAction;
-=======
     use QueueableAction;
->>>>>>> laraxot/dev
 
     private const BASE_URL = 'https://eu1.locationiq.com/v1';
 

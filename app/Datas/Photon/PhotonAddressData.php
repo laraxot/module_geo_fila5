@@ -13,11 +13,7 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 #[MapOutputName(SnakeCaseMapper::class)]
 class PhotonAddressData extends Data
 {
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @param array<string, mixed> $coordinates
      */
     public function __construct(

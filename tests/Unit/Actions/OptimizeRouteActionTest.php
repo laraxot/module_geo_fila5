@@ -17,11 +17,7 @@ it('returns same locations when count is 2 or less', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
     $location2 = new LocationData(latitude: 46.4642, longitude: 10.1900);
 
-<<<<<<< HEAD
-   $action = new OptimizeRouteAction(new RouteDistanceStub());
-=======
     $action = new OptimizeRouteAction(new RouteDistanceStub());
->>>>>>> laraxot/dev
 
     Assert::assertCount(1, $action->execute(collect([$location1])));
     Assert::assertCount(2, $action->execute(collect([$location1, $location2])));
@@ -29,11 +25,7 @@ it('returns same locations when count is 2 or less', function (): void {
 
 it('optimizes route for three locations', function (): void {
     $locationA = new LocationData(latitude: 45.0, longitude: 9.0);
-<<<<<<< HEAD
-   $locationB = new LocationData(latitude: 45.1, longitude: 9.1);
-=======
     $locationB = new LocationData(latitude: 45.1, longitude: 9.1);
->>>>>>> laraxot/dev
     $locationC = new LocationData(latitude: 47.0, longitude: 11.0);
 
     $stub = new RouteDistanceStub(999999, [
@@ -66,11 +58,7 @@ it('handles route optimization with multiple locations', function (): void {
     $locationC = new LocationData(latitude: 2, longitude: 2);
     $locationD = new LocationData(latitude: 3, longitude: 3);
 
-<<<<<<< HEAD
-   $stub = new RouteDistanceStub(999999, [
-=======
     $stub = new RouteDistanceStub(999999, [
->>>>>>> laraxot/dev
         '0,0|1,1' => 100000,
         '0,0|2,2' => 200000,
         '0,0|3,3' => 300000,
@@ -92,11 +80,7 @@ it('stops optimization when no more locations remain', function (): void {
     $locationA = new LocationData(latitude: 45.0, longitude: 9.0);
     $locationB = new LocationData(latitude: 45.1, longitude: 9.1);
 
-<<<<<<< HEAD
-   $result = (new OptimizeRouteAction(new RouteDistanceStub(1000)))->execute(collect([$locationA, $locationB]));
-=======
     $result = (new OptimizeRouteAction(new RouteDistanceStub(1000)))->execute(collect([$locationA, $locationB]));
->>>>>>> laraxot/dev
 
     Assert::assertCount(2, $result);
     Assert::assertSame($locationA, $result->first());
@@ -105,11 +89,7 @@ it('stops optimization when no more locations remain', function (): void {
 
 it('correctly calculates nearest location', function (): void {
     $locationA = new LocationData(latitude: 45.0, longitude: 9.0);
-<<<<<<< HEAD
-   $locationB = new LocationData(latitude: 45.1, longitude: 9.1);
-=======
     $locationB = new LocationData(latitude: 45.1, longitude: 9.1);
->>>>>>> laraxot/dev
     $locationC = new LocationData(latitude: 47.0, longitude: 11.0);
 
     $stub = new RouteDistanceStub(999999, [

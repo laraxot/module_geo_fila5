@@ -133,11 +133,7 @@ it('throws exception when no results found', function (): void {
         'results' => [],
     ])));
 
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
@@ -158,11 +154,7 @@ it('throws exception for invalid response status', function (): void {
         'results' => [],
     ])));
 
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
         Assert::fail('Expected RuntimeException was not thrown');
     } catch (\RuntimeException $exception) {
@@ -191,11 +183,7 @@ it('returns location data for valid coordinates', function (): void {
         ]],
     ])));
 
-<<<<<<< HEAD
-   $result = $action->execute(45.4642, 9.1900);
-=======
     $result = $action->execute(45.4642, 9.1900);
->>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(LocationData::class, $result);
     Assert::assertSame('Via Roma, Milano, MI, Italia', $result->address);
@@ -224,11 +212,7 @@ it('handles boundary latitude values', function (): void {
         ]],
     ])));
 
-<<<<<<< HEAD
-   $result = $action->execute(90.0, 0.0);
-=======
     $result = $action->execute(90.0, 0.0);
->>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(LocationData::class, $result);
     Assert::assertSame(90.0, $result->latitude);
@@ -255,11 +239,7 @@ it('handles boundary longitude values', function (): void {
         ]],
     ])));
 
-<<<<<<< HEAD
-   $result = $action->execute(0.0, 180.0);
-=======
     $result = $action->execute(0.0, 180.0);
->>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(LocationData::class, $result);
     Assert::assertSame(180.0, $result->longitude);

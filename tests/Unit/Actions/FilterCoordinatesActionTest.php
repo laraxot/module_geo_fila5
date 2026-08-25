@@ -19,11 +19,7 @@ it('filters coordinates within radius correctly', function (): void {
     ];
 
     // Filter within 10km radius from Milano center
-<<<<<<< HEAD
-   $filtered = $action->execute($coordinates, 45.4642, 9.1900, 10.0);
-=======
     $filtered = $action->execute($coordinates, 45.4642, 9.1900, 10.0);
->>>>>>> laraxot/dev
 
     // Should return 2 coordinates (the center and the close one)
     Assert::assertCount(2, $filtered);
@@ -48,11 +44,7 @@ it('returns empty array when no coordinates are within radius', function (): voi
     ];
 
     // Filter within 1km radius from Milano center
-<<<<<<< HEAD
-   $filtered = $action->execute($coordinates, 45.4642, 9.1900, 1.0);
-=======
     $filtered = $action->execute($coordinates, 45.4642, 9.1900, 1.0);
->>>>>>> laraxot/dev
     Assert::assertCount(0, $filtered);
 });
 
@@ -63,11 +55,7 @@ it('handles single coordinate within radius', function (): void {
         ['latitude' => 45.4642, 'longitude' => 9.1900],
     ];
 
-<<<<<<< HEAD
-   $filtered = $action->execute($coordinates, 45.4642, 9.1900, 5.0);
-=======
     $filtered = $action->execute($coordinates, 45.4642, 9.1900, 5.0);
->>>>>>> laraxot/dev
 
     Assert::assertCount(1, $filtered);
     Assert::assertSame(45.4642, $filtered[0]['latitude']);
@@ -83,11 +71,7 @@ it('handles coordinates with string values', function (): void {
         ['latitude' => '45.4700', 'longitude' => '9.2000'],
     ];
 
-<<<<<<< HEAD
-   $filtered = $action->execute($coordinates, 45.4642, 9.1900, 10.0);
-=======
     $filtered = $action->execute($coordinates, 45.4642, 9.1900, 10.0);
->>>>>>> laraxot/dev
 
     Assert::assertCount(2, $filtered);
 });
@@ -99,11 +83,7 @@ it('throws exception for invalid center latitude', function (): void {
         ['latitude' => 45.4642, 'longitude' => 9.1900],
     ];
 
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute($coordinates, 91, 9.1900, 10.0);
 
         Assert::fail('Expected InvalidArgumentException was not thrown');
@@ -126,11 +106,7 @@ it('throws exception for invalid center longitude', function (): void {
         ['latitude' => 45.4642, 'longitude' => 9.1900],
     ];
 
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute($coordinates, 45.4642, 181, 10.0);
 
         Assert::fail('Expected InvalidArgumentException was not thrown');
@@ -153,11 +129,7 @@ it('throws exception for invalid radius', function (): void {
         ['latitude' => 45.4642, 'longitude' => 9.1900],
     ];
 
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute($coordinates, 45.4642, 9.1900, 0);
 
         Assert::fail('Expected InvalidArgumentException was not thrown');
@@ -180,11 +152,7 @@ it('throws exception for invalid coordinate latitude', function (): void {
         ['latitude' => 91, 'longitude' => 9.1900], // Invalid latitude
     ];
 
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute($coordinates, 45.4642, 9.1900, 10.0);
 
         Assert::fail('Expected InvalidArgumentException was not thrown');
@@ -200,11 +168,7 @@ it('throws exception for invalid coordinate longitude', function (): void {
         ['latitude' => 45.4642, 'longitude' => 181], // Invalid longitude
     ];
 
-<<<<<<< HEAD
-   try {
-=======
     try {
->>>>>>> laraxot/dev
         $action->execute($coordinates, 45.4642, 9.1900, 10.0);
 
         Assert::fail('Expected InvalidArgumentException was not thrown');
@@ -222,11 +186,7 @@ it('sorts results by distance', function (): void {
         ['latitude' => 45.4642, 'longitude' => 9.1900], // Closest (center)
     ];
 
-<<<<<<< HEAD
-   $filtered = $action->execute($coordinates, 45.4642, 9.1900, 20.0);
-=======
     $filtered = $action->execute($coordinates, 45.4642, 9.1900, 20.0);
->>>>>>> laraxot/dev
 
     // Should be sorted by distance (closest first)
     Assert::assertCount(3, $filtered);

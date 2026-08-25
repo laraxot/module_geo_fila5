@@ -33,11 +33,7 @@ class AddressField extends XotBaseSection
         return $this;
     }
 
-<<<<<<< HEAD
-   /**
-=======
     /**
->>>>>>> laraxot/dev
      * @return array<string, Component>
      */
     protected function getAddressFormSchema(): array
@@ -58,22 +54,14 @@ class AddressField extends XotBaseSection
     /**
      * Rimuove tutti i pattern reattivi dai campi per prevenire loop infiniti.
      *
-<<<<<<< HEAD
-    * @param array<string, Component> $schema
-=======
      * @param array<string, Component> $schema
->>>>>>> laraxot/dev
      *
      * @return array<string, Component>
      */
     protected function removeReactivityFromSchema(array $schema): array
     {
         foreach ($schema as $key => $field) {
-<<<<<<< HEAD
-           $field->live(false);
-=======
             $field->live(false);
->>>>>>> laraxot/dev
             $field->afterStateUpdated(null);
             $field->disabled(false);
             $schema[$key] = $field;

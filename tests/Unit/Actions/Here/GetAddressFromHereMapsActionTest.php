@@ -34,11 +34,7 @@ it('returns null when api response is not successful', function (): void {
         '*' => Http::response(['statusCode' => 500], 500),
     ]);
 
-<<<<<<< HEAD
-   $result = $action->execute('Milano, Italia');
-=======
     $result = $action->execute('Milano, Italia');
->>>>>>> laraxot/dev
 
     Assert::assertNull($result);
 });
@@ -59,11 +55,7 @@ it('returns null when no position in response', function (): void {
         ], 200),
     ]);
 
-<<<<<<< HEAD
-   $result = $action->execute('Milano, Italia');
-=======
     $result = $action->execute('Milano, Italia');
->>>>>>> laraxot/dev
 
     Assert::assertNull($result);
 });
@@ -84,11 +76,7 @@ it('returns null when no address in response', function (): void {
         ], 200),
     ]);
 
-<<<<<<< HEAD
-   $result = $action->execute('Milano, Italia');
-=======
     $result = $action->execute('Milano, Italia');
->>>>>>> laraxot/dev
 
     Assert::assertNull($result);
 });
@@ -116,11 +104,7 @@ it('returns address data for valid response', function (): void {
         ], 200),
     ]);
 
-<<<<<<< HEAD
-   $result = $action->execute('Via Roma 1, Milano, Italia');
-=======
     $result = $action->execute('Via Roma 1, Milano, Italia');
->>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(AddressData::class, $result);
 
@@ -158,11 +142,7 @@ it('uses default country when missing', function (): void {
         ], 200),
     ]);
 
-<<<<<<< HEAD
-   $result = $action->execute('Milano');
-=======
     $result = $action->execute('Milano');
->>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(AddressData::class, $result);
 
