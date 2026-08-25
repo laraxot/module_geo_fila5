@@ -37,7 +37,11 @@ class UpdateCoordinatesFromAddressAction
 
     /**
      * Collection per memorizzare eventuali errori durante l'esecuzione.
+<<<<<<< HEAD
     *
+=======
+     *
+>>>>>>> laraxot/dev
      * @var Collection<int, string>
      */
     private Collection $errors;
@@ -57,7 +61,11 @@ class UpdateCoordinatesFromAddressAction
     public function execute(Model $model): bool
     {
         // Reset errori per questa esecuzione
+<<<<<<< HEAD
        $this->errors = new Collection();
+=======
+        $this->errors = new Collection();
+>>>>>>> laraxot/dev
 
         // Ottieni l'indirizzo completo dal modello
         $fullAddress = $this->getFullAddressFromModel($model);
@@ -69,7 +77,11 @@ class UpdateCoordinatesFromAddressAction
         }
 
         // Esegui geocoding per ottenere i dati dell'indirizzo
+<<<<<<< HEAD
        $getAddressDataAction = app(GetAddressDataFromFullAddressAction::class);
+=======
+        $getAddressDataAction = app(GetAddressDataFromFullAddressAction::class);
+>>>>>>> laraxot/dev
         $addressData = $getAddressDataAction->execute($fullAddress);
 
         if (null === $addressData) {

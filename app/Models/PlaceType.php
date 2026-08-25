@@ -38,7 +38,11 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  */
 class PlaceType extends BaseModel
 {
+<<<<<<< HEAD
    /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\PlaceTypeFactory> */
+=======
+    /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\PlaceTypeFactory> */
+>>>>>>> laraxot/dev
     use HasXotFactory;
 
     protected $fillable = [

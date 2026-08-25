@@ -41,7 +41,11 @@ use Sushi\Sushi;
  */
 class Province extends BaseModel
 {
+<<<<<<< HEAD
    /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\ProvinceFactory> */
+=======
+    /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\ProvinceFactory> */
+>>>>>>> laraxot/dev
     use HasXotFactory;
     use Sushi;
 
@@ -52,7 +56,11 @@ class Province extends BaseModel
         'name' => 'string',
     ];
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return array<int, array<string, mixed>>
      */
     public function getRows(): array
@@ -118,7 +126,11 @@ class Province extends BaseModel
         return $this->belongsTo(Region::class);
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return HasMany<Locality, $this>
      */
     public function localities(): HasMany
@@ -126,14 +138,22 @@ class Province extends BaseModel
         return $this->hasMany(Locality::class);
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return array<string, string>
      */
     public static function getOptions(Get $get): array
     {
         $region = $get('administrative_area_level_1') ?? $get('region');
 
+<<<<<<< HEAD
        $keys = [];
+=======
+        $keys = [];
+>>>>>>> laraxot/dev
         $values = [];
 
         foreach (self::where('region_id', $region)->orderBy('name')->get() as $item) {

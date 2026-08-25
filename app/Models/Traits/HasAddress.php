@@ -23,7 +23,11 @@ use Webmozart\Assert\Assert;
  * Questo trait implementa la relazione polimorfica con il modello Address
  * e offre metodi di utilità per la gestione degli indirizzi.
  *
+<<<<<<< HEAD
 * @template TModel of Model
+=======
+ * @template TModel of Model
+>>>>>>> laraxot/dev
  *
  * @property Collection<int, Address> $addresses
  * @property string|null              $route
@@ -41,7 +45,11 @@ trait HasAddress
 {
     /**
      * Ottiene gli indirizzi associati al modello.
+<<<<<<< HEAD
     *
+=======
+     *
+>>>>>>> laraxot/dev
      * @return MorphMany<Address, $this>
      */
     public function addresses(): MorphMany // @phpstan-ignore missingType.generics
@@ -50,7 +58,11 @@ trait HasAddress
 
     /**
      * Ottiene indirizzo associato al modello.
+<<<<<<< HEAD
     *
+=======
+     *
+>>>>>>> laraxot/dev
      * @return MorphOne<Address, $this>
      */
     public function address(): MorphOne // @phpstan-ignore missingType.generics
@@ -88,7 +100,11 @@ trait HasAddress
         }
         $address = sprintf(
             '%s, %s - %s, %s (%s)',
+<<<<<<< HEAD
            $this->route ?? '',
+=======
+            $this->route ?? '',
+>>>>>>> laraxot/dev
             $this->street_number ?? '',
             $this->postal_code ?? '',
             $this->city ?? '',
@@ -205,7 +221,11 @@ trait HasAddress
 
     /**
      * Ottiene gli indirizzi di un determinato tipo.
+<<<<<<< HEAD
     *
+=======
+     *
+>>>>>>> laraxot/dev
      * @return Collection<int, Address>
      */
     public function getAddressesByType(string $type): Collection // @phpstan-ignore missingType.generics
@@ -218,7 +238,11 @@ trait HasAddress
      * @param array<string, mixed> $data
      * @param bool                 $setPrimary Se impostare questo indirizzo come principale
      */
+<<<<<<< HEAD
    public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue
+=======
+    public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue
+>>>>>>> laraxot/dev
     {// Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
         if ($setPrimary || 0 === $this->addresses()->count()) {
             $data['is_primary'] = true;
@@ -229,7 +253,11 @@ trait HasAddress
             }
         }
 
+<<<<<<< HEAD
        $address = $this->addresses()->create($data); // @phpstan-ignore argument.type
+=======
+        $address = $this->addresses()->create($data); // @phpstan-ignore argument.type
+>>>>>>> laraxot/dev
         Assert::isInstanceOf($address, Address::class);
 
         return $address;
@@ -240,19 +268,31 @@ trait HasAddress
      *
      * @param array<string, mixed> $data
      */
+<<<<<<< HEAD
    public function updatePrimaryAddress(array $data): ?Address // @phpstan-ignore missingType.iterableValue
+=======
+    public function updatePrimaryAddress(array $data): ?Address // @phpstan-ignore missingType.iterableValue
+>>>>>>> laraxot/dev
     {$primaryAddress = $this->primaryAddress();
         if (! $primaryAddress) {
             return $this->addAddress($data, true);
         }
 
+<<<<<<< HEAD
        $primaryAddress->update($data); // @phpstan-ignore argument.type
+=======
+        $primaryAddress->update($data); // @phpstan-ignore argument.type
+>>>>>>> laraxot/dev
 
         return $primaryAddress;
     }
 
     /**
+<<<<<<< HEAD
     * Scope: modelli con almeno un indirizzo nella città indicata (`locality`).
+=======
+     * Scope: modelli con almeno un indirizzo nella città indicata (`locality`).
+>>>>>>> laraxot/dev
      *
      * @param Builder<static> $query
      *
@@ -334,7 +374,11 @@ trait HasAddress
 
     /**
      * Initialize the trait.
+<<<<<<< HEAD
     */
+=======
+     */
+>>>>>>> laraxot/dev
     protected function initializeHasAddress(): void
     {
         /** @var array<string> $fields */

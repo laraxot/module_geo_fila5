@@ -10,7 +10,11 @@ use Spatie\LaravelData\DataCollection;
 
 class PhotonResponseData extends Data
 {
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param DataCollection<int, PhotonFeatureData>|null $features
      */
     public function __construct(

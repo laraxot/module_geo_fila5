@@ -56,7 +56,11 @@ class GetAddressFromPhotonAction
             $longitude = $photonData->coordinates['longitude'] ?? 0.0;
 
             return new AddressData(
+<<<<<<< HEAD
                latitude: SafeFloatCastAction::cast($latitude),
+=======
+                latitude: SafeFloatCastAction::cast($latitude),
+>>>>>>> laraxot/dev
                 longitude: SafeFloatCastAction::cast($longitude),
                 country: $photonData->country,
                 city: $photonData->city,

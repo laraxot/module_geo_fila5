@@ -135,7 +135,11 @@ describe('Geocoding Business Logic', function () {
 
     describe('Geocoding Provider Logic', function () {
         it('validates geocoding coordinate precision', function () {
+<<<<<<< HEAD
            $result = geocodingResultFixture();
+=======
+            $result = geocodingResultFixture();
+>>>>>>> laraxot/dev
 
             Assert::assertGreaterThan(35.0, $result['latitude']);
             Assert::assertLessThan(47.5, $result['latitude']);
@@ -200,7 +204,11 @@ describe('Geocoding Business Logic', function () {
             $primaryProvider = 'nominatim';
             $fallbackProviders = ['bing', 'mapbox', 'here'];
 
+<<<<<<< HEAD
            Assert::assertContains($primaryProvider, $providers);
+=======
+            Assert::assertContains($primaryProvider, $providers);
+>>>>>>> laraxot/dev
             Assert::assertGreaterThan(0, count($fallbackProviders));
 
             foreach ($fallbackProviders as $fallback) {
@@ -212,7 +220,11 @@ describe('Geocoding Business Logic', function () {
 
     describe('Weather Data Integration', function () {
         it('validates weather data structure', function () {
+<<<<<<< HEAD
            $weather = weatherDataFixture();
+=======
+            $weather = weatherDataFixture();
+>>>>>>> laraxot/dev
 
             Assert::assertArrayHasKey('temperature', $weather);
             Assert::assertArrayHasKey('humidity', $weather);
@@ -260,7 +272,11 @@ describe('Geocoding Business Logic', function () {
 
     describe('Place Classification Logic', function () {
         it('validates place hierarchy and types', function () {
+<<<<<<< HEAD
            $place = placeFixture();
+=======
+            $place = placeFixture();
+>>>>>>> laraxot/dev
             $validTypes = [
                 'country', 'region', 'province', 'city', 'town', 'village',
                 'district', 'neighborhood', 'landmark',
@@ -286,7 +302,11 @@ describe('Geocoding Business Logic', function () {
         });
 
         it('validates geographic measurements', function () {
+<<<<<<< HEAD
            $place = placeFixture();
+=======
+            $place = placeFixture();
+>>>>>>> laraxot/dev
 
             if (isset($place['area_km2'])) {
                 Assert::assertGreaterThan(0, $place['area_km2']);
@@ -300,7 +320,11 @@ describe('Geocoding Business Logic', function () {
         });
 
         it('validates timezone assignments', function () {
+<<<<<<< HEAD
            $place = placeFixture();
+=======
+            $place = placeFixture();
+>>>>>>> laraxot/dev
 
             if (isset($place['timezone'])) {
                 Assert::assertContains($place['timezone'], ['Europe/Rome']);
@@ -310,7 +334,11 @@ describe('Geocoding Business Logic', function () {
 
     describe('Distance and Route Calculations', function () {
         it('calculates distance between coordinates', function () {
+<<<<<<< HEAD
            $point1 = ['lat' => 45.4642, 'lng' => 9.1900];
+=======
+            $point1 = ['lat' => 45.4642, 'lng' => 9.1900];
+>>>>>>> laraxot/dev
             $point2 = ['lat' => 41.9028, 'lng' => 12.4964];
 
             $earthRadius = 6371;
@@ -337,12 +365,20 @@ describe('Geocoding Business Logic', function () {
             $pointInMilan = ['lat' => 45.4642, 'lng' => 9.1900];
             $pointOutsideMilan = ['lat' => 41.9028, 'lng' => 12.4964];
 
+<<<<<<< HEAD
            $isInBounds = fn (array $point, array $bounds): bool => $point['lat'] >= $bounds['south']
+=======
+            $isInBounds = fn (array $point, array $bounds): bool => $point['lat'] >= $bounds['south']
+>>>>>>> laraxot/dev
                 && $point['lat'] <= $bounds['north']
                 && $point['lng'] >= $bounds['west']
                 && $point['lng'] <= $bounds['east'];
 
+<<<<<<< HEAD
            Assert::assertTrue($isInBounds($pointInMilan, $milanBounds));
+=======
+            Assert::assertTrue($isInBounds($pointInMilan, $milanBounds));
+>>>>>>> laraxot/dev
             Assert::assertFalse($isInBounds($pointOutsideMilan, $milanBounds));
         });
 
@@ -356,6 +392,7 @@ describe('Geocoding Business Logic', function () {
     describe('Data Quality and Validation', function () {
         it('ensures coordinate precision limits', function () {
             $coordinates = ['lat' => 45.4642035, 'lng' => 9.1899738];
+<<<<<<< HEAD
             $latFraction = strrchr((string) $coordinates['lat'], '.');
             Assert::assertIsString($latFraction);
             $lngFraction = strrchr((string) $coordinates['lng'], '.');
@@ -364,6 +401,17 @@ describe('Geocoding Business Logic', function () {
             $latPrecision = strlen(substr($latFraction, 1));
             $lngPrecision = strlen(substr($lngFraction, 1));
 
+=======
+
+            $latFraction = strrchr((string) $coordinates['lat'], '.');
+            Assert::assertIsString($latFraction);
+            $lngFraction = strrchr((string) $coordinates['lng'], '.');
+            Assert::assertIsString($lngFraction);
+
+            $latPrecision = strlen(substr($latFraction, 1));
+            $lngPrecision = strlen(substr($lngFraction, 1));
+
+>>>>>>> laraxot/dev
             Assert::assertLessThanOrEqual(8, $latPrecision);
             Assert::assertLessThanOrEqual(8, $lngPrecision);
         });
@@ -385,12 +433,20 @@ describe('Geocoding Business Logic', function () {
                 }
             }
 
+<<<<<<< HEAD
            Assert::assertGreaterThan(80, $score);
+=======
+            Assert::assertGreaterThan(80, $score);
+>>>>>>> laraxot/dev
         });
 
         it('validates geocoding cache invalidation logic', function () {
             $cacheEntry = [
+<<<<<<< HEAD
                'address' => italianAddressFixture(),
+=======
+                'address' => italianAddressFixture(),
+>>>>>>> laraxot/dev
                 'result' => geocodingResultFixture(),
                 'cached_at' => time() - 86400,
                 'expires_at' => time() + (86400 * 30),

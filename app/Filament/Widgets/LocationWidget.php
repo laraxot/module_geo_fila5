@@ -43,7 +43,11 @@ class LocationWidget extends XotBaseSchemaWidget
      */
     protected int|string|array $columnSpan = 'full';
 
+<<<<<<< HEAD
    /** @var view-string */
+=======
+    /** @var view-string */
+>>>>>>> laraxot/dev
     protected string $view = 'geo::filament.widgets.location';
 
     /**

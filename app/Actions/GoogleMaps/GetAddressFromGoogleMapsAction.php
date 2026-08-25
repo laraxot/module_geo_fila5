@@ -20,7 +20,11 @@ use Spatie\QueueableAction\QueueableAction;
  */
 final class GetAddressFromGoogleMapsAction
 {
+<<<<<<< HEAD
    use QueueableAction;
+=======
+    use QueueableAction;
+>>>>>>> laraxot/dev
 
     private const BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
@@ -86,7 +90,11 @@ final class GetAddressFromGoogleMapsAction
      */
     private function getFirstResult(GoogleMapResponseData $responseData): GoogleMapResultData
     {
+<<<<<<< HEAD
        $firstResult = $responseData->results->toCollection()->first();
+=======
+        $firstResult = $responseData->results->toCollection()->first();
+>>>>>>> laraxot/dev
 
         if (! $firstResult instanceof GoogleMapResultData) {
             throw GoogleMapsApiException::noResultsFound();
@@ -114,7 +122,11 @@ final class GetAddressFromGoogleMapsAction
     }
 
     /**
+<<<<<<< HEAD
     * @param DataCollection<int, GoogleMapAddressComponentData> $components
+=======
+     * @param DataCollection<int, GoogleMapAddressComponentData> $components
+>>>>>>> laraxot/dev
      * @param array<string>                                      $types
      */
     private function getComponent(DataCollection $components, array $types, bool $short = false): ?string

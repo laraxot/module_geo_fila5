@@ -27,7 +27,11 @@ describe('Comune Business Logic', function () {
     test('comune has sushi to json trait', function () {
         $traits = class_uses(Comune::class);
 
+<<<<<<< HEAD
        Assert::assertArrayHasKey(SushiToJson::class, $traits);
+=======
+        Assert::assertArrayHasKey(SushiToJson::class, $traits);
+>>>>>>> laraxot/dev
     });
 
     test('comune has expected fillable fields for italian municipalities', function () {
@@ -49,12 +53,20 @@ describe('Comune Business Logic', function () {
             'lng',
         ];
 
+<<<<<<< HEAD
        Assert::assertEquals($expectedFillable, $comune->getFillable());
+=======
+        Assert::assertEquals($expectedFillable, $comune->getFillable());
+>>>>>>> laraxot/dev
     });
 
     test('comune has schema definition for structured geographic data', function () {
         $comune = new Comune();
+<<<<<<< HEAD
        $reflection = new \ReflectionClass($comune);
+=======
+        $reflection = new \ReflectionClass($comune);
+>>>>>>> laraxot/dev
         $schemaProperty = $reflection->getProperty('schema');
 
         Assert::assertTrue($schemaProperty->isProtected());
@@ -71,19 +83,31 @@ describe('Comune Business Logic', function () {
     test('comune has json directory property for data source', function () {
         $comune = new Comune();
 
+<<<<<<< HEAD
        Assert::assertObjectHasProperty('jsonDirectory', $comune);
+=======
+        Assert::assertObjectHasProperty('jsonDirectory', $comune);
+>>>>>>> laraxot/dev
     });
 
     test('comune has translatable array configured', function () {
         $comune = new Comune();
 
+<<<<<<< HEAD
        Assert::assertIsArray($comune->translatable);
+=======
+        Assert::assertIsArray($comune->translatable);
+>>>>>>> laraxot/dev
     });
 
     test('comune model can be instantiated without errors', function () {
         $comune = new Comune();
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(Comune::class, $comune);
+=======
+        Assert::assertInstanceOf(Comune::class, $comune);
+>>>>>>> laraxot/dev
         Assert::assertInstanceOf(BaseModel::class, $comune);
     });
 });

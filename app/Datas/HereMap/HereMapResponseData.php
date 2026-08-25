@@ -9,7 +9,11 @@ use Spatie\LaravelData\Data;
 
 class HereMapResponseData extends Data
 {
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param array<string, mixed>|null $position
      * @param array<string, mixed>|null $address
      */

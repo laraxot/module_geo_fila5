@@ -22,7 +22,11 @@ use Illuminate\Support\Facades\Cache;
  * @see docs/geo-json-model.md Documentazione tecnica del modello base
  */
 /**
+<<<<<<< HEAD
 * @mixin Builder<*>
+=======
+ * @mixin Builder<*>
+>>>>>>> laraxot/dev
  */
 class ComuneJson extends GeoJsonModel
 {
@@ -151,7 +155,11 @@ class ComuneJson extends GeoJsonModel
      */
     public static function searchByName(string $name, int $limit = 0): Collection
     {
+<<<<<<< HEAD
        $name = mb_strtolower((string) $name);
+=======
+        $name = mb_strtolower((string) $name);
+>>>>>>> laraxot/dev
         $cacheKey = 'geo_search_'.md5($name).'_'.$limit;
 
         /** @var Collection<int, array{
@@ -165,7 +173,11 @@ class ComuneJson extends GeoJsonModel
          * }> $result */
         $result = Cache::remember($cacheKey, self::CACHE_TTL, static function () use ($name, $limit) {
             $results = static::all()
+<<<<<<< HEAD
                ->filter(static fn (array $item): bool => str_contains(mb_strtolower(self::getComuneName($item)), $name))
+=======
+                ->filter(static fn (array $item): bool => str_contains(mb_strtolower(self::getComuneName($item)), $name))
+>>>>>>> laraxot/dev
                 ->sortBy('nome');
 
             return $limit > 0 ? $results->take($limit)->values() : $results->values();
@@ -199,7 +211,11 @@ class ComuneJson extends GeoJsonModel
          *     popolazione: int
          * }> $filtered */
         $filtered = static::all()
+<<<<<<< HEAD
            ->filter(static fn (array $item): bool => \in_array($cap, self::getCapList($item), true))
+=======
+            ->filter(static fn (array $item): bool => \in_array($cap, self::getCapList($item), true))
+>>>>>>> laraxot/dev
             ->sortBy('nome')
             ->values();
 
@@ -207,7 +223,11 @@ class ComuneJson extends GeoJsonModel
     }
 
     /**
+<<<<<<< HEAD
     * @param array<string, mixed> $item
+=======
+     * @param array<string, mixed> $item
+>>>>>>> laraxot/dev
      */
     private static function getComuneName(array $item): string
     {
@@ -423,7 +443,11 @@ class ComuneJson extends GeoJsonModel
             }
 
             return [
+<<<<<<< HEAD
                'regione' => $comune['regione'],
+=======
+                'regione' => $comune['regione'],
+>>>>>>> laraxot/dev
                 'provincia' => $comune['provincia'],
                 'comune' => [
                     'nome' => $comune['nome'],
@@ -453,7 +477,11 @@ class ComuneJson extends GeoJsonModel
             'regione_codice' => [
                 $requiredRule,
                 'string',
+<<<<<<< HEAD
                static function (string $_attribute, mixed $value, \Closure $fail): void {
+=======
+                static function (string $_attribute, mixed $value, \Closure $fail): void {
+>>>>>>> laraxot/dev
                     if (\is_string($value) && ! static::allRegions()->has($value)) {
                         $fail('La regione selezionata non è valida.');
                     }
@@ -462,7 +490,11 @@ class ComuneJson extends GeoJsonModel
             'provincia_codice' => [
                 $requiredRule,
                 'string',
+<<<<<<< HEAD
                static function (string $_attribute, mixed $value, \Closure $fail): void {
+=======
+                static function (string $_attribute, mixed $value, \Closure $fail): void {
+>>>>>>> laraxot/dev
                     if (\is_string($value) && ! static::allProvinces()->has($value)) {
                         $fail('La provincia selezionata non è valida.');
                     }
@@ -471,7 +503,11 @@ class ComuneJson extends GeoJsonModel
             'comune_nome' => [
                 $requiredRule,
                 'string',
+<<<<<<< HEAD
                static function (string $_attribute, mixed $value, \Closure $fail): void {
+=======
+                static function (string $_attribute, mixed $value, \Closure $fail): void {
+>>>>>>> laraxot/dev
                     if (\is_string($value) && ! empty($value) && static::searchByName($value, 1)->isEmpty()) {
                         $fail('Il comune selezionato non è valido.');
                     }
@@ -480,7 +516,11 @@ class ComuneJson extends GeoJsonModel
             'cap' => [
                 $requiredRule,
                 'string',
+<<<<<<< HEAD
                static function (string $_attribute, mixed $value, \Closure $fail): void {
+=======
+                static function (string $_attribute, mixed $value, \Closure $fail): void {
+>>>>>>> laraxot/dev
                     if (\is_string($value) && ! empty($value) && ! static::isValidCap($value)) {
                         $fail('Il CAP inserito non è valido.');
                     }

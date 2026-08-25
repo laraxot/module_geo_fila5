@@ -8,7 +8,11 @@ use Spatie\LaravelData\Data;
 
 class GoogleMapComponentData extends Data
 {
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param array<int, string> $types
      */
     public function __construct(

@@ -15,7 +15,11 @@ readonly class LocationDTO
     ) {
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return array<string, float|string|null>
      */
     public function toArray(): array

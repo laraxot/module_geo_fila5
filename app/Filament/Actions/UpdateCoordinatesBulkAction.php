@@ -64,7 +64,11 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
     /**
      * Invia le notifiche di risultato all'utente.
      *
+<<<<<<< HEAD
     * @param  \Illuminate\Support\Collection<int, string>  $errorMessages
+=======
+     * @param  \Illuminate\Support\Collection<int, string>  $errorMessages
+>>>>>>> laraxot/dev
      */
     protected function sendNotifications(
         int $successCount,
@@ -95,7 +99,11 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
     /**
      * Invia la notifica di errore.
      *
+<<<<<<< HEAD
     * @param  \Illuminate\Support\Collection<int, string>  $errorMessages
+=======
+     * @param  \Illuminate\Support\Collection<int, string>  $errorMessages
+>>>>>>> laraxot/dev
      */
     protected function notifyErrors(\Illuminate\Support\Collection $errorMessages): void
     {
@@ -119,7 +127,11 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
     /**
      * Elabora i record selezionati aggiornando le coordinate.
      *
+<<<<<<< HEAD
     * @param  Collection<int, Place>  $records
+=======
+     * @param  Collection<int, Place>  $records
+>>>>>>> laraxot/dev
      */
     private function processRecords(Collection $records): void
     {
@@ -131,7 +143,11 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
         foreach ($records as $record) {
             try {
                 $action->execute($record);
+<<<<<<< HEAD
                $successCount++;
+=======
+                $successCount++;
+>>>>>>> laraxot/dev
             } catch (\Throwable $e) {
                 $errors->push(sprintf('Place #%s: %s', SafeStringCastAction::cast($record->getKey()), $e->getMessage()));
             }

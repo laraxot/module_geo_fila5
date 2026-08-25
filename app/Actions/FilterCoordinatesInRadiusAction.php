@@ -44,7 +44,11 @@ class FilterCoordinatesInRadiusAction
                 address: null,
             );
 
+<<<<<<< HEAD
            $distance = app(CalculateDistanceAction::class)->execute($centerLocation, $targetLocation)['distance']['value'];
+=======
+            $distance = app(CalculateDistanceAction::class)->execute($centerLocation, $targetLocation)['distance']['value'];
+>>>>>>> laraxot/dev
 
             return $distance <= $radius;
         });

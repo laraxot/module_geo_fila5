@@ -18,7 +18,11 @@ abstract class UnitTestCase extends BaseTestCase
 {
     use CreatesApplication;
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return array<int, class-string>
      */
     protected function getPackageProviders(Application $app): array

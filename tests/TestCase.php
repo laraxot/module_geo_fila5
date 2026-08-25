@@ -77,7 +77,11 @@ abstract class TestCase extends XotBaseTestCase
             'pub_theme' => 'Meetup',
             'main_module' => 'User',
         ]);
+<<<<<<< HEAD
    }
+=======
+    }
+>>>>>>> laraxot/dev
 
     /**
      * @return array<int, class-string<ServiceProvider>>

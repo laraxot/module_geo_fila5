@@ -21,7 +21,11 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class GetAddressDataFromFullAddressAction
 {
+<<<<<<< HEAD
    use QueueableAction;
+=======
+    use QueueableAction;
+>>>>>>> laraxot/dev
 
     /** @var Collection<int, string> */
     public Collection $errors;
@@ -42,7 +46,11 @@ class GetAddressDataFromFullAddressAction
      */
     public function execute(string $fullAddress): ?AddressData
     {
+<<<<<<< HEAD
        $this->errors = new Collection();
+=======
+        $this->errors = new Collection();
+>>>>>>> laraxot/dev
 
         // Catena di provider e ordine di default: stessi 7 provider, stesso
         // ordine, dell'array hardcoded preesistente (Google per primo). La
@@ -97,7 +105,11 @@ class GetAddressDataFromFullAddressAction
         return null;
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @return Collection<int, string>
      */
     public function getErrors(): Collection

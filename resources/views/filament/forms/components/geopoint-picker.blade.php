@@ -2,7 +2,11 @@
 /** @var \Modules\Geo\Filament\Forms\Components\GeopointPicker $field */
 $statePath = $field->getStatePath();
 $id = $field->getId();
+<<<<<<< HEAD
 height = $field->getHeight() ?: '400px';
+=======
+$height = $field->getHeight() ?: '400px';
+>>>>>>> laraxot/dev
 
 $labels = [
     'zoom_in' => __('geo::coordinate-picker.zoom_in'),
@@ -81,7 +85,11 @@ $labels = [
             },
 
             handleFullscreenChanged(event) {
+<<<<<<< HEAD
                this.isFullscreen = event.detail.isFullscreen;
+=======
+                this.isFullscreen = event.detail.isFullscreen;
+>>>>>>> laraxot/dev
             },
 
             async reverseGeocode(lat, lng) {
@@ -128,7 +136,11 @@ $labels = [
             x-transition:leave="transition ease-in duration-150"
         >
             <div class="flex flex-wrap gap-x-4 gap-y-1">
+<<<<<<< HEAD
                <span>Lat: <strong class="text-gray-700" x-text="(state && (state.latitude != null || state.latitude === 0)) ? Number(state.latitude).toFixed(6) : '--'"></strong></span>
+=======
+                <span>Lat: <strong class="text-gray-700" x-text="(state && (state.latitude != null || state.latitude === 0)) ? Number(state.latitude).toFixed(6) : '--'"></strong></span>
+>>>>>>> laraxot/dev
                 <span>Lng: <strong class="text-gray-700" x-text="(state && (state.longitude != null || state.longitude === 0)) ? Number(state.longitude).toFixed(6) : '--'"></strong></span>
             </div>
             <div class="truncate max-w-full sm:max-w-[400px]" x-show="state?.address" :title="state?.address || ''">

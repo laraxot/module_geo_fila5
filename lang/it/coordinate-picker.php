@@ -3,7 +3,11 @@
 declare(strict_types=1);
 
 return [
+<<<<<<< HEAD
    'search' => 'Cerca indirizzo',
+=======
+    'search' => 'Cerca indirizzo',
+>>>>>>> laraxot/dev
     'search_placeholder' => 'Cerca indirizzo',
     'close_search' => 'Chiudi ricerca',
     'use_my_location' => 'Usa la mia posizione',
@@ -11,7 +15,11 @@ return [
     'no_position' => 'Clicca sulla mappa per indicare la posizione',
     'latitude' => 'Latitudine',
     'longitude' => 'Longitudine',
+<<<<<<< HEAD
    'address' => 'Indirizzo',
+=======
+    'address' => 'Indirizzo',
+>>>>>>> laraxot/dev
     'city' => 'Città',
     'fullscreen' => 'Schermo intero',
     'close_fullscreen' => 'Esci da schermo intero',

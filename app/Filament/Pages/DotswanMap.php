@@ -15,7 +15,11 @@ use Modules\Xot\Filament\Pages\XotBasePage;
  */
 class DotswanMap extends XotBasePage
 {
+<<<<<<< HEAD
    /** @var array{lat: float, lng: float} */
+=======
+    /** @var array{lat: float, lng: float} */
+>>>>>>> laraxot/dev
     public array $location;
 
     /**
@@ -29,7 +33,11 @@ class DotswanMap extends XotBasePage
         return $places->map(fn (Place $place): array => [
             'lat' => (float) $place->latitude,
             'lng' => (float) $place->longitude,
+<<<<<<< HEAD
            'title' => SafeStringCastAction::cast($place->getAttribute('name') ?? 'Unnamed Place'),
+=======
+            'title' => SafeStringCastAction::cast($place->getAttribute('name') ?? 'Unnamed Place'),
+>>>>>>> laraxot/dev
         ]);
     }
 

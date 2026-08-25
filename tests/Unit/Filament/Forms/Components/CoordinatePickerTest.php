@@ -14,7 +14,11 @@ use PHPUnit\Framework\Assert;
 uses(UnitTestCase::class);
 
 test('CoordinatePicker extends XotBaseField', function (): void {
+<<<<<<< HEAD
    Assert::assertInstanceOf(XotBaseField::class, CoordinatePicker::make('test'));
+=======
+    Assert::assertInstanceOf(XotBaseField::class, CoordinatePicker::make('test'));
+>>>>>>> laraxot/dev
 });
 
 test('LatitudeLongitudeInput extends XotBaseField', function (): void {
@@ -73,7 +77,11 @@ test('CoordinatePicker can extract coordinates from data', function (): void {
 
     $extracted = CoordinatePicker::extractCoordinates($data);
 
+<<<<<<< HEAD
    Assert::assertSame(45.4642, $extracted['latitude']);
+=======
+    Assert::assertSame(45.4642, $extracted['latitude']);
+>>>>>>> laraxot/dev
     Assert::assertSame(9.1900, $extracted['longitude']);
 });
 

@@ -13,7 +13,11 @@ use Spatie\LaravelData\DataCollection;
 class GoogleMapResultData extends Data
 {
     /**
+<<<<<<< HEAD
     * @param DataCollection<int, GoogleMapAddressComponentData> $address_components Componenti dell'indirizzo
+=======
+     * @param DataCollection<int, GoogleMapAddressComponentData> $address_components Componenti dell'indirizzo
+>>>>>>> laraxot/dev
      * @param GoogleMapGeometryData                              $geometry           Dati geometrici
      * @param string                                             $formatted_address  Indirizzo formattato
      * @param array<string>                                      $types              Tipi di indirizzo

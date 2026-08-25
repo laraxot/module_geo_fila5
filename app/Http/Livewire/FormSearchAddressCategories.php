@@ -24,12 +24,20 @@ class FormSearchAddressCategories extends Component
     // public \Illuminate\Support\HtmlString $slot;
     public string $name = 'address';
 
+<<<<<<< HEAD
    /** @var array<string, mixed> */
+=======
+    /** @var array<string, mixed> */
+>>>>>>> laraxot/dev
     public array $form_data = [];
 
     public bool $showActivityTypes = false;
 
+<<<<<<< HEAD
    /** @var Collection<int, mixed> */
+=======
+    /** @var Collection<int, mixed> */
+>>>>>>> laraxot/dev
     public Collection $enabledTypes;
 
     public bool $warningSuggestedAddresses = false;
@@ -143,7 +151,11 @@ class FormSearchAddressCategories extends Component
         $this->warningCivicNumber = false;
         $this->showActivityTypes = false;
 
+<<<<<<< HEAD
        $decoded = json_decode($val0, true, 512, JSON_THROW_ON_ERROR);
+=======
+        $decoded = json_decode($val0, true, 512, JSON_THROW_ON_ERROR);
+>>>>>>> laraxot/dev
         $merged = $this->form_data;
         if (\is_array($decoded)) {
             foreach ($decoded as $key => $value) {

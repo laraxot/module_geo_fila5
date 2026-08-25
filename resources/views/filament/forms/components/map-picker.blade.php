@@ -2,6 +2,10 @@
 /** @var \Modules\Geo\Filament\Forms\Components\MapPicker $field */
 $statePath = $field->getStatePath();
 $id = $field->getId();
+<<<<<<< HEAD
+=======
+
+>>>>>>> laraxot/dev
 $labels = [
     'zoom_in' => __('geo::coordinate-picker.zoom_in'),
     'zoom_out' => __('geo::coordinate-picker.zoom_out'),
@@ -21,7 +25,11 @@ $labels = [
 
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
     <div x-data="{
+<<<<<<< HEAD
            state: $wire.{{ $applyStateBindingModifiers("\$entangle('{$statePath}')") }},
+=======
+            state: $wire.{{ $applyStateBindingModifiers("\$entangle('{$statePath}')") }},
+>>>>>>> laraxot/dev
             isFullscreen: false,
             labels: @js($labels),
 
@@ -79,7 +87,11 @@ $labels = [
             },
 
             handleFullscreenChanged(event) {
+<<<<<<< HEAD
                this.isFullscreen = event.detail.isFullscreen;
+=======
+                this.isFullscreen = event.detail.isFullscreen;
+>>>>>>> laraxot/dev
             },
 
             async reverseGeocode(lat, lng) {
@@ -126,7 +138,11 @@ $labels = [
             x-transition:leave="transition ease-in duration-150"
         >
             <div class="flex flex-wrap gap-x-4 gap-y-1">
+<<<<<<< HEAD
                <span>Lat: <strong class="text-gray-700" x-text="(state && (state.latitude != null || state.latitude === 0)) ? Number(state.latitude).toFixed(6) : '--'"></strong></span>
+=======
+                <span>Lat: <strong class="text-gray-700" x-text="(state && (state.latitude != null || state.latitude === 0)) ? Number(state.latitude).toFixed(6) : '--'"></strong></span>
+>>>>>>> laraxot/dev
                 <span>Lng: <strong class="text-gray-700" x-text="(state && (state.longitude != null || state.longitude === 0)) ? Number(state.longitude).toFixed(6) : '--'"></strong></span>
                 <template x-if="state?.address_details?.city">
                     <span>Città: <strong class="text-gray-700" x-text="state.address_details.city"></strong></span>

@@ -18,7 +18,11 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class SearchPlacesAction
 {
+<<<<<<< HEAD
    use QueueableAction;
+=======
+    use QueueableAction;
+>>>>>>> laraxot/dev
 
     private const API_URL = 'https://nominatim.openstreetmap.org/search';
 
@@ -90,7 +94,11 @@ class SearchPlacesAction
          *     lon: string,
          *     type: string,
          *     importance: float,
+<<<<<<< HEAD
         *     address: array<string, mixed>
+=======
+         *     address: array<string, mixed>
+>>>>>>> laraxot/dev
          * }> $data */
         $data = json_decode($response, true);
 

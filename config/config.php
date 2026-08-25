@@ -20,7 +20,11 @@ return [
      * |
      */
     'api_keys' => [
+<<<<<<< HEAD
        'google_maps' => Env::get('GOOGLE_MAPS_API_KEY'),
+=======
+        'google_maps' => Env::get('GOOGLE_MAPS_API_KEY'),
+>>>>>>> laraxot/dev
         'bing_maps' => Env::get('BING_MAPS_API_KEY'),
         'mapbox' => Env::get('MAPBOX_API_KEY'),
     ],

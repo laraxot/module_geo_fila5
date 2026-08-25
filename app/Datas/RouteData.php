@@ -13,7 +13,11 @@ use Spatie\LaravelData\Data;
 class RouteData extends Data
 {
     /**
+<<<<<<< HEAD
     * @param Collection<int, LocationData> $waypoints         Punti del percorso ottimizzato
+=======
+     * @param Collection<int, LocationData> $waypoints         Punti del percorso ottimizzato
+>>>>>>> laraxot/dev
      * @param Collection<int, LocationData> $originalWaypoints Punti del percorso originale
      * @param array<int, array{
      *     distance: array{value: int, text: string},
@@ -90,7 +94,11 @@ class RouteData extends Data
         ];
     }
 
+<<<<<<< HEAD
    /**
+=======
+    /**
+>>>>>>> laraxot/dev
      * @param Collection<int, array{key: mixed}> $routeData
      */
     public function validateRouteData(Collection $routeData): bool

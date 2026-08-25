@@ -24,13 +24,21 @@ describe('Address Model', function () {
     it('has correct fillable attributes', function () {
         $address = new Address();
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(Address::class, $address);
+=======
+        Assert::assertInstanceOf(Address::class, $address);
+>>>>>>> laraxot/dev
     });
 
     it('implements HasGeolocation contract', function () {
         $address = new Address();
 
+<<<<<<< HEAD
        Assert::assertInstanceOf(HasGeolocation::class, $address);
+=======
+        Assert::assertInstanceOf(HasGeolocation::class, $address);
+>>>>>>> laraxot/dev
     });
 
     it('supports deleted_at timestamp column', function () {
@@ -52,7 +60,11 @@ describe('Address Model', function () {
             'extra_data' => ['key' => 'value'],
         ]);
 
+<<<<<<< HEAD
        Assert::assertIsArray($address->extra_data);
+=======
+        Assert::assertIsArray($address->extra_data);
+>>>>>>> laraxot/dev
     });
 
     it('has polymorphic relationship', function () {
@@ -63,14 +75,22 @@ describe('Address Model', function () {
 
     describe('Accessors', function () {
         it('generates full_address accessor', function () {
+<<<<<<< HEAD
            $address = AddressFactory::new()->createOne([
+=======
+            $address = AddressFactory::new()->createOne([
+>>>>>>> laraxot/dev
                 'route' => 'Via Roma',
                 'street_number' => '123',
                 'locality' => 'Milano',
                 'postal_code' => '20100',
             ]);
 
+<<<<<<< HEAD
            Assert::assertIsString($address->full_address);
+=======
+            Assert::assertIsString($address->full_address);
+>>>>>>> laraxot/dev
             Assert::assertStringContainsString('Via Roma', $address->full_address);
             Assert::assertStringContainsString('123', $address->full_address);
             Assert::assertStringContainsString('Milano', $address->full_address);
@@ -82,7 +102,11 @@ describe('Address Model', function () {
                 'street_number' => '123',
             ]);
 
+<<<<<<< HEAD
            Assert::assertIsString($address->street_address);
+=======
+            Assert::assertIsString($address->street_address);
+>>>>>>> laraxot/dev
             Assert::assertStringContainsString('Via Roma', $address->street_address);
             Assert::assertStringContainsString('123', $address->street_address);
         });
@@ -90,12 +114,20 @@ describe('Address Model', function () {
 
     describe('Geolocation Features', function () {
         it('stores coordinates correctly', function () {
+<<<<<<< HEAD
            $address = AddressFactory::new()->createOne([
+=======
+            $address = AddressFactory::new()->createOne([
+>>>>>>> laraxot/dev
                 'latitude' => 45.4642,
                 'longitude' => 9.1900,
             ]);
 
+<<<<<<< HEAD
            Assert::assertSame(45.4642, $address->latitude);
+=======
+            Assert::assertSame(45.4642, $address->latitude);
+>>>>>>> laraxot/dev
             Assert::assertSame(9.1900, $address->longitude);
         });
 
@@ -105,21 +137,33 @@ describe('Address Model', function () {
                 'longitude' => 9.1900,
             ]);
 
+<<<<<<< HEAD
            $address2 = AddressFactory::new()->createOne([
+=======
+            $address2 = AddressFactory::new()->createOne([
+>>>>>>> laraxot/dev
                 'latitude' => 45.4654,
                 'longitude' => 9.1859,
             ]);
 
             if (method_exists($address1, 'distanceTo')) {
                 $distance = $address1->distanceTo($address2);
+<<<<<<< HEAD
                Assert::assertGreaterThan(0, $distance);
+=======
+                Assert::assertGreaterThan(0, $distance);
+>>>>>>> laraxot/dev
             }
         });
     });
 
     describe('Address Types', function () {
         it('can be set as primary address', function () {
+<<<<<<< HEAD
            $address = AddressFactory::new()->createOne(['is_primary' => true]);
+=======
+            $address = AddressFactory::new()->createOne(['is_primary' => true]);
+>>>>>>> laraxot/dev
 
             Assert::assertTrue($address->is_primary);
         });
@@ -133,7 +177,11 @@ describe('Address Model', function () {
 
     describe('Scopes and Queries', function () {
         it('can filter by primary addresses', function () {
+<<<<<<< HEAD
            AddressFactory::new()->createOne(['is_primary' => true]);
+=======
+            AddressFactory::new()->createOne(['is_primary' => true]);
+>>>>>>> laraxot/dev
             AddressFactory::new()->createOne(['is_primary' => false]);
 
             $primaryAddresses = Address::where('is_primary', true)->get();
@@ -162,7 +210,11 @@ describe('Address Model', function () {
 
     describe('Google Places Integration', function () {
         it('can store place_id from Google Places', function () {
+<<<<<<< HEAD
            $address = AddressFactory::new()->createOne([
+=======
+            $address = AddressFactory::new()->createOne([
+>>>>>>> laraxot/dev
                 'place_id' => 'ChIJu46S-ZZjhkcRLuFvLjVZ400',
             ]);
 
@@ -187,7 +239,11 @@ describe('Address Model', function () {
                 'buzzer_code' => '123',
             ];
 
+<<<<<<< HEAD
            $address = AddressFactory::new()->createOne(['extra_data' => $extraData]);
+=======
+            $address = AddressFactory::new()->createOne(['extra_data' => $extraData]);
+>>>>>>> laraxot/dev
 
             Assert::assertSame($extraData, $address->extra_data);
             Assert::assertSame('residential', $address->extra_data['building_type']);

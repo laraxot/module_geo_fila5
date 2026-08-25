@@ -83,7 +83,11 @@ it('throws exception when api response is not successful', function (): void {
         '*' => Http::response(['statusCode' => 500], 500),
     ]);
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
 
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -101,7 +105,11 @@ it('throws exception when response is not valid json', function (): void {
         '*' => Http::response('not valid json', 200),
     ]);
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
 
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -121,7 +129,11 @@ it('throws exception when no features in response', function (): void {
         ], 200),
     ]);
 
+<<<<<<< HEAD
    try {
+=======
+    try {
+>>>>>>> laraxot/dev
         $action->execute(45.4642, 9.1900);
 
         Assert::fail('Expected InvalidLocationException was not thrown');
@@ -152,7 +164,11 @@ it('returns address data for valid coordinates', function (): void {
         ], 200),
     ]);
 
+<<<<<<< HEAD
    $result = $action->execute(45.4642, 9.1900);
+=======
+    $result = $action->execute(45.4642, 9.1900);
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(AddressData::class, $result);
 
@@ -198,7 +214,11 @@ it('handles boundary coordinate values', function (): void {
         ], 200),
     ]);
 
+<<<<<<< HEAD
    $result = $action->execute(90.0, 180.0);
+=======
+    $result = $action->execute(90.0, 180.0);
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(AddressData::class, $result);
 
@@ -221,7 +241,11 @@ it('handles missing context items', function (): void {
         ], 200),
     ]);
 
+<<<<<<< HEAD
    $result = $action->execute(45.4642, 9.1900);
+=======
+    $result = $action->execute(45.4642, 9.1900);
+>>>>>>> laraxot/dev
 
     Assert::assertInstanceOf(AddressData::class, $result);
 

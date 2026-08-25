@@ -3,7 +3,11 @@
 declare(strict_types=1);
 
 return [
+<<<<<<< HEAD
    'search' => 'Search address',
+=======
+    'search' => 'Search address',
+>>>>>>> laraxot/dev
     'search_placeholder' => 'Search address',
     'close_search' => 'Close search',
     'use_my_location' => 'Use my location',
@@ -11,7 +15,11 @@ return [
     'no_position' => 'Click on the map to set the position',
     'latitude' => 'Latitude',
     'longitude' => 'Longitude',
+<<<<<<< HEAD
    'address' => 'Address',
+=======
+    'address' => 'Address',
+>>>>>>> laraxot/dev
     'city' => 'City',
     'fullscreen' => 'Fullscreen',
     'close_fullscreen' => 'Exit fullscreen',
