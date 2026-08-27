@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Forms\Components;
 
 use Filament\Schemas\Components\Component;
-use Modules\Geo\Filament\Resources\AddressResource;
+use Modules\Geo\Filament\Resources\AddressResource\Schemas\AddressForm;
 use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
 
 // use Squire\Models\Country;
@@ -38,7 +38,7 @@ class AddressField extends XotBaseSection
      */
     protected function getAddressFormSchema(): array
     {
-        $baseSchema = AddressResource::getFormSchema();
+        $baseSchema = AddressForm::getFormSchema();
 
         // Rimuovi campi non necessari per relazioni semplici
         unset($baseSchema['name'], $baseSchema['is_primary']);

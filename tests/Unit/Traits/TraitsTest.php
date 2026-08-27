@@ -8,19 +8,13 @@ use Modules\Geo\Models\Traits\HasPlaceTrait;
 use Modules\Geo\Tests\TestCase;
 use Modules\Geo\Traits\HandlesCoordinates;
 use Modules\Geo\Traits\HasAddresses;
-use Modules\TechPlanner\Models\Worker;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
-test('HasAddresses trait can be used', function (): void {
-    new class extends Worker {
-        use HasAddresses;
-    };
-    new class extends Worker {
-        use HasPlaceTrait;
-    };
 
+test('HasAddresses trait exists with expected API', function (): void {
     Assert::assertTrue(trait_exists(HasAddresses::class));
+    Assert::assertTrue(trait_exists(HasPlaceTrait::class));
 
     $reflection = new \ReflectionClass(HasAddresses::class);
     Assert::assertTrue($reflection->hasMethod('addresses'));

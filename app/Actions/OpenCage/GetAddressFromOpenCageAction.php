@@ -17,7 +17,7 @@ class GetAddressFromOpenCageAction
 {
     use QueueableAction;
 
-    private const BASE_URL = 'https://api.opencagedata.com/geocode/v1';
+    private const string BASE_URL = 'https://api.opencagedata.com/geocode/v1';
 
     /**
      * Esegue la ricerca dell'indirizzo su OpenCage.

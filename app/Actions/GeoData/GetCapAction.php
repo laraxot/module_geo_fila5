@@ -15,9 +15,9 @@ class GetCapAction
 {
     use QueueableAction;
 
-    public const CACHE_KEY = 'geo.cap.%s.%s';
+    public const string CACHE_KEY = 'geo.cap.%s.%s';
 
-    public const CACHE_TTL = 86400;
+    public const int CACHE_TTL = 86400;
 
     /**
      * @param string $provinceCode Codice della provincia

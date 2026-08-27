@@ -22,7 +22,7 @@ final class GetAddressFromGoogleMapsAction
 {
     use QueueableAction;
 
-    private const BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    private const string BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
     /**
      * @throws GoogleMapsApiException Se la richiesta fallisce o i dati non sono validi
@@ -86,7 +86,7 @@ final class GetAddressFromGoogleMapsAction
      */
     private function getFirstResult(GoogleMapResponseData $responseData): GoogleMapResultData
     {
-        $firstResult = $responseData->results->first();
+        $firstResult = $responseData->results->toCollection()->first();
 
         if (! $firstResult instanceof GoogleMapResultData) {
             throw GoogleMapsApiException::noResultsFound();
@@ -122,7 +122,7 @@ final class GetAddressFromGoogleMapsAction
         /** @var GoogleMapAddressComponentData|null $component */
         $component = $components
             ->toCollection()
-            ->first(function ($component) use ($types) {
+            ->first(function (mixed $component) use ($types) {
                 if (! $component instanceof GoogleMapAddressComponentData) {
                     return false;
                 }

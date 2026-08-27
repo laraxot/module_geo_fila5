@@ -9,7 +9,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
-use Modules\Geo\Filament\Resources\AddressResource;
+use Modules\Geo\Filament\Resources\AddressResource\Schemas\AddressForm;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Forms\Components\XotBaseRepeater;
 
@@ -98,7 +98,7 @@ class AddressesField extends XotBaseRepeater
      */
     protected function getAddressFormSchema(): array
     {
-        $baseSchema = AddressResource::getFormSchema();
+        $baseSchema = AddressForm::getFormSchema();
 
         // Campo name: visibile solo con più di 1 elemento
         $baseSchema['name'] = TextInput::make('name')

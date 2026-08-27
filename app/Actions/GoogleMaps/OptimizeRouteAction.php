@@ -23,7 +23,7 @@ class OptimizeRouteAction
 {
     use QueueableAction;
 
-    private const BASE_URL = 'https://maps.googleapis.com/maps/api/directions/json';
+    private const string BASE_URL = 'https://maps.googleapis.com/maps/api/directions/json';
 
     /**
      * Ottimizza il percorso tra i punti specificati.

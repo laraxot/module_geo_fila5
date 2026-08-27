@@ -23,6 +23,8 @@ use Webmozart\Assert\Assert;
  * Questo trait implementa la relazione polimorfica con il modello Address
  * e offre metodi di utilità per la gestione degli indirizzi.
  *
+ * @template TModel of Model
+ *
  * @property Collection<int, Address> $addresses
  * @property string|null              $route
  * @property string|null              $street_number
@@ -30,6 +32,10 @@ use Webmozart\Assert\Assert;
  * @property string|null              $city
  * @property string|null              $province
  * @property string|int               $id
+ *
+ * @phpstan-require-extends Model
+ *
+ * @phpstan-ignore trait.unused
  */
 trait HasAddress
 {
@@ -82,11 +88,11 @@ trait HasAddress
         }
         $address = sprintf(
             '%s, %s - %s, %s (%s)',
-            $this->route,
-            $this->street_number,
-            $this->postal_code,
-            $this->city,
-            $this->province,
+            $this->route ?? '',
+            $this->street_number ?? '',
+            $this->postal_code ?? '',
+            $this->city ?? '',
+            $this->province ?? '',
         );
 
         return trim(preg_replace('/[,\s]+/', ' ', $address));
@@ -212,19 +218,19 @@ trait HasAddress
      * @param array<string, mixed> $data
      * @param bool                 $setPrimary Se impostare questo indirizzo come principale
      */
-    public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue, return.type
+    public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue
     {// Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
-                                            if ($setPrimary || 0 === $this->addresses()->count()) {
-                                                $data['is_primary'] = true;
+        if ($setPrimary || 0 === $this->addresses()->count()) {
+            $data['is_primary'] = true;
 
-                                                // Rimuovi il flag is_primary da tutti gli altri indirizzi
-                                                if ($this->addresses()->count() > 0) {
-                                                    $this->addresses()->update(['is_primary' => false]);
-                                                }
-                                            }
+            // Rimuovi il flag is_primary da tutti gli altri indirizzi
+            if ($this->addresses()->count() > 0) {
+                $this->addresses()->update(['is_primary' => false]);
+            }
+        }
 
-        /** @var Address $address */
         $address = $this->addresses()->create($data); // @phpstan-ignore argument.type
+        Assert::isInstanceOf($address, Address::class);
 
         return $address;
     }
@@ -246,53 +252,84 @@ trait HasAddress
     }
 
     /**
-     * Scope per filtrare i modelli in base alla città dell'indirizzo.
+     * Scope: modelli con almeno un indirizzo nella città indicata (`locality`).
+     *
+     * @param Builder<static> $query
+     *
+     * @return Builder<static>
      */
-    /** @param Builder<Model> $query
-     *  @return Builder<Model> */
-    public function scopeInCity(Builder $query, string $city): Builder // @phpstan-ignore missingType.generics
-    {return $query->whereHas('addresses', function (Builder $q) use ($city): void {
-        $q->where('locality', $city);
-    });
+    // @phpstan-ignore-next-line missingType.generics
+    public function scopeInCity(Builder $query, string $city): Builder
+    {
+        return $query->whereHas(
+            'addresses',
+            /**
+             * @param Builder<Address> $q
+             */
+            function (Builder $q) use ($city): void {
+                $q->where('locality', $city);
+            },
+        );
     }
 
     /**
-     * Scope per filtrare i modelli in base alla provincia dell'indirizzo.
+     * Scope: modelli con almeno un indirizzo nella provincia (`administrative_area_level_3`).
      *
-     * @param Builder<Model> $query
+     * @param Builder<TModel> $query
      *
-     * @return Builder<Model>
+     * @return Builder<TModel>
      */
-    public function scopeInProvince(Builder $query, string $province): Builder // @phpstan-ignore missingType.generics
-    {return $query->whereHas('addresses', function (Builder $q) use ($province): void {
-        $q->where('administrative_area_level_3', $province);
-    });
+    public function scopeInProvince(Builder $query, string $province): Builder
+    {
+        return $query->whereHas(
+            'addresses',
+            /**
+             * @param Builder<Address> $q
+             */
+            function (Builder $q) use ($province): void {
+                $q->where('administrative_area_level_3', $province);
+            },
+        );
     }
 
     /**
-     * Scope per filtrare i modelli in base alla regione dell'indirizzo.
+     * Scope: modelli con almeno un indirizzo nella regione (`administrative_area_level_2`).
      *
-     * @param Builder<Model> $query
+     * @param Builder<TModel> $query
      *
-     * @return Builder<Model>
+     * @return Builder<TModel>
      */
-    public function scopeInRegion(Builder $query, string $region): Builder // @phpstan-ignore missingType.generics
-    {return $query->whereHas('addresses', function (Builder $q) use ($region): void {
-        $q->where('administrative_area_level_2', $region);
-    });
+    public function scopeInRegion(Builder $query, string $region): Builder
+    {
+        return $query->whereHas(
+            'addresses',
+            /**
+             * @param Builder<Address> $q
+             */
+            function (Builder $q) use ($region): void {
+                $q->where('administrative_area_level_2', $region);
+            },
+        );
     }
 
     /**
-     * Scope per filtrare i modelli in base al CAP dell'indirizzo.
+     * Scope: modelli con almeno un indirizzo con il CAP indicato.
      *
-     * @param Builder<Model> $query
+     * @param Builder<TModel> $query
      *
-     * @return Builder<Model>
+     * @return Builder<TModel>
      */
-    public function scopeInPostalCode(Builder $query, string $postalCode): Builder // @phpstan-ignore missingType.generics
-    {return $query->whereHas('addresses', function (Builder $q) use ($postalCode): void {
-        $q->where('postal_code', $postalCode);
-    });
+    public function scopeInPostalCode(Builder $query, string $postalCode): Builder
+    {
+        return $query->whereHas(
+            'addresses',
+            /**
+             * @param Builder<Address> $q
+             */
+            function (Builder $q) use ($postalCode): void {
+                $q->where('postal_code', $postalCode);
+            },
+        );
     }
 
     /**

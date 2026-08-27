@@ -178,7 +178,7 @@ class Address extends BaseModel
             ->orderBy('regione->nome')
             ->where('regione->codice', $this->administrative_area_level_1)
             ->get()
-            ->map(function ($item) {
+            ->map(function (mixed $item) {
                 $regione = $item->regione;
                 if (! is_array($regione) || ! isset($regione['codice'], $regione['nome'])) {
                     return;
@@ -201,7 +201,7 @@ class Address extends BaseModel
             ->orderBy('provincia->nome')
             ->where('provincia->codice', $this->administrative_area_level_2)
             ->get()
-            ->map(function ($item): array {
+            ->map(function (mixed $item): array {
                 $provincia = is_array($item->provincia ?? null) ? $item->provincia : [];
 
                 return [
@@ -241,7 +241,7 @@ class Address extends BaseModel
             $this->administrative_area_level_2, // Regione
             $this->postal_code,
             $this->country,
-        ], function ($part): bool {
+        ], function (mixed $part): bool {
             // PHPStan L10: verifica prima il tipo, poi se è vuoto
             if (! \is_string($part)) {
                 return false;

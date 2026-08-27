@@ -19,7 +19,7 @@ class FetchOpenElevationAction
 {
     use QueueableAction;
 
-    private const API_URL = 'https://api.open-elevation.com/api/v1/lookup';
+    private const string API_URL = 'https://api.open-elevation.com/api/v1/lookup';
 
     public function __construct(
         private readonly Client $client,
