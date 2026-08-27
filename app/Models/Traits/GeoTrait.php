@@ -36,6 +36,7 @@ use Modules\Geo\Datas\GeoData;
  * @property string $administrative_area_level_3.
  * @property string $administrative_area_level_2_short.
  */
+/** @phpstan-ignore trait.unused */
 trait GeoTrait
 {
     /*

@@ -56,7 +56,7 @@ final class GeoMapDatasetAction
         $categories = [];
 
         foreach ($this->getFeatures() as $feature) {
-            if (($feature['geometry']['type'] ?? null) !== 'Point') {
+            if ('Point' !== $feature['geometry']['type']) {
                 continue;
             }
 
@@ -82,7 +82,7 @@ final class GeoMapDatasetAction
         $zones = 0;
 
         foreach ($this->getFeatures() as $feature) {
-            $geometryType = $feature['geometry']['type'] ?? null;
+            $geometryType = $feature['geometry']['type'];
 
             if ('Point' === $geometryType) {
                 ++$points;

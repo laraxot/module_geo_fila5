@@ -25,7 +25,7 @@ class CalculateTravelTimeAction
 {
     use QueueableAction;
 
-    private const API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+    private const string API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
 
     public function __construct(
         private readonly Client $client,
@@ -119,13 +119,13 @@ class CalculateTravelTimeAction
          * } $data */
         $data = json_decode($response, true);
 
-        if (($data['status'] ?? null) !== 'OK') {
-            return TravelTimeData::error($data['status'] ?? 'INVALID_RESPONSE');
+        if ('OK' !== $data['status']) {
+            return TravelTimeData::error($data['status']);
         }
 
-        $element = $data['rows'][0]['elements'][0] ?? null;
-        if (! $element || ($element['status'] ?? null) !== 'OK') {
-            return TravelTimeData::error($element['status'] ?? 'NO_ROUTE');
+        $element = $data['rows'][0]['elements'][0];
+        if ('OK' !== $element['status']) {
+            return TravelTimeData::error($element['status']);
         }
 
         return new TravelTimeData(

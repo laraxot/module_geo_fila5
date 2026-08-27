@@ -29,7 +29,7 @@ class ComuneJson extends GeoJsonModel
     /**
      * Cache duration in seconds (1 week).
      */
-    protected const CACHE_TTL = 604800;
+    protected const int CACHE_TTL = 604800;
 
     /**
      * Get all comuni with their complete data.
@@ -322,7 +322,7 @@ class ComuneJson extends GeoJsonModel
 
         // Chiavi specifiche per regione
         static::allRegions()
-            ->each(static function ($_nome, $code) use (&$clearedKeys): void {
+            ->each(static function (mixed $_nome, int|string $code) use (&$clearedKeys): void {
                 $keys = ["geo_region_{$code}", "geo_region_{$code}_provinces"];
                 foreach ($keys as $key) {
                     Cache::forget($key);
@@ -332,7 +332,7 @@ class ComuneJson extends GeoJsonModel
 
         // Chiavi specifiche per provincia
         static::allProvinces()
-            ->each(static function ($_nome, $code) use (&$clearedKeys): void {
+            ->each(static function (mixed $_nome, int|string $code) use (&$clearedKeys): void {
                 $key = "geo_province_{$code}";
                 Cache::forget($key);
                 $clearedKeys[] = $key;
@@ -423,15 +423,15 @@ class ComuneJson extends GeoJsonModel
             }
 
             return [
-                'regione' => $comune['regione'] ?? null,
-                'provincia' => $comune['provincia'] ?? null,
+                'regione' => $comune['regione'],
+                'provincia' => $comune['provincia'],
                 'comune' => [
                     'nome' => $comune['nome'],
-                    'codice' => $comune['codice'] ?? null,
-                    'codiceCatastale' => $comune['codiceCatastale'] ?? null,
-                    'popolazione' => $comune['popolazione'] ?? null,
+                    'codice' => $comune['codice'],
+                    'codiceCatastale' => $comune['codiceCatastale'],
+                    'popolazione' => $comune['popolazione'],
                 ],
-                'cap' => $comune['cap'] ?? [],
+                'cap' => $comune['cap'],
             ];
         });
 

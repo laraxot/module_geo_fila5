@@ -16,7 +16,7 @@ final class ValidateGeoDataIntegrityAction
 {
     use QueueableAction;
 
-    private const VALIDATION_RULES = [
+    private const array VALIDATION_RULES = [
         'regions' => 'required|array',
         'regions.*.name' => 'required|string',
         'regions.*.code' => 'required|string|size:2',

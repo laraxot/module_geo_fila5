@@ -17,7 +17,7 @@ use Modules\Geo\Models\Region;
  * |--------------------------------------------------------------------------
  * | Functions
  * |--------------------------------------------------------------------------
- */
+*/
 
 /**
  * @param array<string, mixed> $attributes
@@ -34,3 +34,5 @@ function createComune(array $attributes = []): Comune
 {
     return ComuneFactory::new()->createOne($attributes);
 }
+
+pest()->extend(\Modules\Geo\Tests\TestCase::class)->in(__DIR__.'/Unit', __DIR__.'/Feature');
