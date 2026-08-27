@@ -16,7 +16,7 @@ uses(TestCase::class);
 
 it('clusters locations that are close together', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
-$location2 = new LocationData(latitude: 45.4643, longitude: 9.1901);
+    $location2 = new LocationData(latitude: 45.4643, longitude: 9.1901);
     $location3 = new LocationData(latitude: 46.4642, longitude: 10.1900);
 
     $clusters = (new ClusterLocationsAction(new ClusterDistanceStub()))->execute(
@@ -31,7 +31,7 @@ $location2 = new LocationData(latitude: 45.4643, longitude: 9.1901);
 
 it('creates separate clusters for distant locations', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
-$location2 = new LocationData(latitude: 47.0000, longitude: 11.0000);
+    $location2 = new LocationData(latitude: 47.0000, longitude: 11.0000);
 
     $clusters = (new ClusterLocationsAction(new FixedPairDistanceStub(200000)))->execute(
         [$location1, $location2],
@@ -85,7 +85,7 @@ it('throws exception when location is integer', function (): void {
 
 it('handles single location correctly', function (): void {
     $location = new LocationData(latitude: 45.4642, longitude: 9.1900);
-$clusters = (new ClusterLocationsAction(new FixedPairDistanceStub(100)))->execute([$location], 1.0);
+    $clusters = (new ClusterLocationsAction(new FixedPairDistanceStub(100)))->execute([$location], 1.0);
 
     Assert::assertCount(1, $clusters);
     Assert::assertCount(1, $clusters[0]['points']);
@@ -98,7 +98,7 @@ it('handles empty locations array', function (): void {
 
 it('works with different max distance parameter', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
-$location2 = new LocationData(latitude: 45.4700, longitude: 9.1950);
+    $location2 = new LocationData(latitude: 45.4700, longitude: 9.1950);
     $stub = new FixedPairDistanceStub(1500);
 
     Assert::assertCount(1, (new ClusterLocationsAction($stub))->execute([$location1, $location2], 2.0));
@@ -108,7 +108,7 @@ $location2 = new LocationData(latitude: 45.4700, longitude: 9.1950);
 it('updates cluster centers correctly', function (): void {
     $location1 = new LocationData(latitude: 45.0, longitude: 9.0);
     $location2 = new LocationData(latitude: 46.0, longitude: 10.0);
-$clusters = (new ClusterLocationsAction(new FixedPairDistanceStub(100)))->execute(
+    $clusters = (new ClusterLocationsAction(new FixedPairDistanceStub(100)))->execute(
         [$location1, $location2],
         5.0,
     );

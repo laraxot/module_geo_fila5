@@ -6,6 +6,7 @@ namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use RuntimeException;
 
 use function Safe\json_decode;
 use function Safe\json_encode;
@@ -74,7 +75,7 @@ trait SushiToJsons
             return $this->newInstance($attributes);
         }
 
-        throw new \RuntimeException('Impossibile salvare il record');
+        throw new RuntimeException('Impossibile salvare il record');
     }
 
     /**

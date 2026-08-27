@@ -61,7 +61,7 @@ final class LoadGeoHierarchyAction
             $region = $this->loadData()->firstWhere('code', $regionCode);
 
             if (! $region || ! is_array($region) || ! isset($region['provinces']) || ! is_array($region['provinces'])) {
-                return new Collection;
+                return new Collection();
             }
 
             /** @var array<int, array<string, mixed>> $provinces */
@@ -98,7 +98,7 @@ final class LoadGeoHierarchyAction
                 : [])->firstWhere('code', $provinceCode);
 
             if (! $province || ! is_array($province) || ! isset($province['cities']) || ! is_array($province['cities'])) {
-                return new Collection;
+                return new Collection();
             }
 
             /** @var array<int, array<string, mixed>> $cities */
