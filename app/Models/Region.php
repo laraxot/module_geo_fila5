@@ -16,14 +16,14 @@ use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
 
 /**
- * @property int                       $id
- * @property string|null               $name
- * @property ProfileContract|null      $creator
+ * @property int $id
+ * @property string|null $name
+ * @property ProfileContract|null $creator
  * @property Collection<int, Province> $provinces
- * @property int|null                  $provinces_count
- * @property ProfileContract|null      $updater
+ * @property int|null $provinces_count
+ * @property ProfileContract|null $updater
  *
- * @method static RegionFactory          factory($count = null, $state = [])
+ * @method static RegionFactory factory($count = null, $state = [])
  * @method static Builder<static>|Region newModelQuery()
  * @method static Builder<static>|Region newQuery()
  * @method static Builder<static>|Region query()
@@ -36,7 +36,6 @@ use Sushi\Sushi;
  */
 class Region extends BaseModel
 {
-    /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\RegionFactory> */
     use HasXotFactory;
     use Sushi;
 
@@ -87,7 +86,7 @@ class Region extends BaseModel
                 continue;
             }
 
-            if (null === $id || null === $name) {
+            if ($id === null || $name === null) {
                 continue;
             }
 

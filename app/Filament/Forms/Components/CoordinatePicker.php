@@ -7,8 +7,6 @@ namespace Modules\Geo\Filament\Forms\Components;
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
-/**
- */
 class CoordinatePicker extends XotBaseField
 {
     use HasCoordinatePicker;
