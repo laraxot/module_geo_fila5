@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit;
 
-use Modules\Geo\Tests\TestCase;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 /**
  * @return array<string, string>

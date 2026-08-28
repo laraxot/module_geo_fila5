@@ -10,15 +10,9 @@ use Modules\Geo\Tests\TestCase;
 
 /*
  * Bootstrap Pest — modulo Geo.
- * Ogni file test dichiara uses(\Modules\Geo\Tests\TestCase::class) o LightTestCase/UnitTestCase FQCN.
- * Vietato uses()->in() qui (PHPStan method.internalClass).
+ * `pest()->extend(TestCase::class)->in(...)` è la forma **consigliata** (XOT-5.41).
+ * Non duplicare `uses(TestCase::class)` nei file: XOR → TestCaseAlreadyInUse.
  */
-
-/*
- * |--------------------------------------------------------------------------
- * | Functions
- * |--------------------------------------------------------------------------
-*/
 
 /**
  * @param  array<string, mixed>  $attributes

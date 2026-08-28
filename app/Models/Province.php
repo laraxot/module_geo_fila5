@@ -10,9 +10,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\File;
-use Modules\Geo\Database\Factories\ProvinceFactory;
+use Modules\TechPlanner\Models\Profile;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
-use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
 
@@ -20,22 +19,19 @@ use Sushi\Sushi;
  * @property int|null $region_id
  * @property int $id
  * @property string|null $name
- * @property ProfileContract|null $creator
- * @property Collection<int, Locality> $localities
- * @property int|null $localities_count
- * @property Region|null $region
- * @property ProfileContract|null $updater
+ * @property-read Profile|null $creator
+ * @property-read Collection<int, Locality> $localities
+ * @property-read int|null $localities_count
+ * @property-read Region|null $region
+ * @property-read Profile|null $updater
  *
+ * @method static \Modules\Geo\Database\Factories\ProvinceFactory factory($count = null, $state = [])
  * @method static Builder<static>|Province newModelQuery()
  * @method static Builder<static>|Province newQuery()
  * @method static Builder<static>|Province query()
  * @method static Builder<static>|Province whereId($value)
  * @method static Builder<static>|Province whereName($value)
  * @method static Builder<static>|Province whereRegionId($value)
- *
- * @property ProfileContract|null $deleter
- *
- * @method static ProvinceFactory factory($count = null, $state = [])
  *
  * @mixin \Eloquent
  */
