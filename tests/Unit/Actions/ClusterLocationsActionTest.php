@@ -9,10 +9,7 @@ use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\InvalidLocationException;
 use Modules\Geo\Tests\Fixtures\ClusterDistanceStub;
 use Modules\Geo\Tests\Fixtures\FixedPairDistanceStub;
-use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 it('clusters locations that are close together', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
