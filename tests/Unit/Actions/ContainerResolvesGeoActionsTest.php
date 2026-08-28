@@ -32,8 +32,6 @@ use PHPUnit\Framework\Assert;
  * Story ROOT-17.10.
  */
 
-uses(TestCase::class);
-
 test('il container risolve le action di geocoding senza sollevare', function (): void {
     Assert::assertTrue(is_callable([app(GetAddressFromGoogleMapsAction::class), 'execute']));
     Assert::assertTrue(is_callable([app(GetAddressFromHereMapsAction::class), 'execute']));

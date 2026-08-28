@@ -7,19 +7,18 @@ namespace Modules\Geo\Models;
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\File;
-use Modules\Geo\Database\Factories\LocalityFactory;
+use Modules\TechPlanner\Models\Profile;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
-use Modules\Xot\Contracts\ProfileContract;
 use Sushi\Sushi;
 
 /**
  * @property int|null $region_id
  * @property int|null $province_id
- * @property string|null $name
  * @property int $id
+ * @property string|null $name
  * @property array<array-key, mixed>|null $postal_code
- * @property ProfileContract|null $creator
- * @property ProfileContract|null $updater
+ * @property-read Profile|null $creator
+ * @property-read Profile|null $updater
  *
  * @method static Builder<static>|Locality newModelQuery()
  * @method static Builder<static>|Locality newQuery()
@@ -29,10 +28,6 @@ use Sushi\Sushi;
  * @method static Builder<static>|Locality wherePostalCode($value)
  * @method static Builder<static>|Locality whereProvinceId($value)
  * @method static Builder<static>|Locality whereRegionId($value)
- *
- * @property ProfileContract|null $deleter
- *
- * @method static LocalityFactory factory($count = null, $state = [])
  *
  * @mixin \Eloquent
  */
