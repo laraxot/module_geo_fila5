@@ -5,12 +5,9 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Feature;
 
 use Modules\Geo\Enums\AddressTypeEnum;
-use Modules\Geo\Tests\TestCase;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 /**
  * In-memory Address tests (no factories / DB / container).

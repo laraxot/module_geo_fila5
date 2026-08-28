@@ -6,10 +6,7 @@ namespace Modules\Geo\Tests\Unit\Traits;
 
 use Modules\Geo\Models\Traits\HasAddress;
 use Modules\Geo\Tests\Fixtures\Traits\HasAddressTestModel;
-use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 /*
  * Pest: verifica API del trait HasAddress sulla fixture canonica HasAddressTestModel.
