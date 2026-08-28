@@ -109,7 +109,7 @@ class AddressesField extends XotBaseRepeater
         $baseSchema['is_primary'] = Toggle::make('is_primary')
             ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
             ->default(fn (Get $get): bool => count(self::repeaterAddresses($get)) <= 1)
-            ->afterStateUpdated(function ($state, Set $set, Get $get, Component $component): void {
+            ->afterStateUpdated(function (mixed $state, Set $set, Get $get, Component $component): void {
                 // Se questo diventa primary, disattiva tutti gli altri
                 if ($state === true) {
                     $addresses = self::repeaterAddresses($get);
@@ -133,7 +133,7 @@ class AddressesField extends XotBaseRepeater
                 }
             })
             ->live()
-            ->dehydrateStateUsing(function ($state, Get $get): bool {
+            ->dehydrateStateUsing(function (mixed $state, Get $get): bool {
                 // Se c'è un solo elemento, forza sempre true
                 if (count(self::repeaterAddresses($get)) <= 1) {
                     return true;
