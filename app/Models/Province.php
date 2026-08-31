@@ -25,7 +25,6 @@ use Sushi\Sushi;
  * @property-read int|null $localities_count
  * @property-read Region|null $region
  * @property-read ProfileContract|null $updater
- *
  * @method static \Modules\Geo\Database\Factories\ProvinceFactory factory($count = null, $state = [])
  * @method static Builder<static>|Province newModelQuery()
  * @method static Builder<static>|Province newQuery()
@@ -33,7 +32,7 @@ use Sushi\Sushi;
  * @method static Builder<static>|Province whereId($value)
  * @method static Builder<static>|Province whereName($value)
  * @method static Builder<static>|Province whereRegionId($value)
- *
+ * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
  * @mixin \Eloquent
  */
 class Province extends BaseModel

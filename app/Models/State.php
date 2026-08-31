@@ -11,11 +11,9 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * @property-read ProfileContract|null $creator
  * @property-read ProfileContract|null $updater
- *
  * @method static Builder<static>|State newModelQuery()
  * @method static Builder<static>|State newQuery()
  * @method static Builder<static>|State query()
- *
  * @property int $id
  * @property string $state Nome dello stato/regione
  * @property string|null $state_code Codice dello stato/regione
@@ -25,7 +23,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string|null $created_by
  * @property string|null $deleted_at
  * @property string|null $deleted_by
- *
  * @method static Builder<static>|State whereCreatedAt($value)
  * @method static Builder<static>|State whereCreatedBy($value)
  * @method static Builder<static>|State whereDeletedAt($value)
@@ -35,7 +32,8 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|State whereStateCode($value)
  * @method static Builder<static>|State whereUpdatedAt($value)
  * @method static Builder<static>|State whereUpdatedBy($value)
- *
+ * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
+ * @method static \Modules\Geo\Database\Factories\StateFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class State extends BaseModel

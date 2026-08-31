@@ -19,7 +19,6 @@ use Sushi\Sushi;
  * @property array<array-key, mixed>|null $postal_code
  * @property-read ProfileContract|null $creator
  * @property-read ProfileContract|null $updater
- *
  * @method static Builder<static>|Locality newModelQuery()
  * @method static Builder<static>|Locality newQuery()
  * @method static Builder<static>|Locality query()
@@ -28,7 +27,8 @@ use Sushi\Sushi;
  * @method static Builder<static>|Locality wherePostalCode($value)
  * @method static Builder<static>|Locality whereProvinceId($value)
  * @method static Builder<static>|Locality whereRegionId($value)
- *
+ * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
+ * @method static \Modules\Geo\Database\Factories\LocalityFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Locality extends BaseModel
