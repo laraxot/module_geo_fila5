@@ -9,18 +9,18 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\File;
-use Modules\TechPlanner\Models\Profile;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
 
 /**
  * @property int|null $id
  * @property string|null $name
- * @property-read Profile|null $creator
+ * @property-read ProfileContract|null $creator
  * @property-read Collection<int, Province> $provinces
  * @property-read int|null $provinces_count
- * @property-read Profile|null $updater
+ * @property-read ProfileContract|null $updater
  *
  * @method static \Modules\Geo\Database\Factories\RegionFactory factory($count = null, $state = [])
  * @method static Builder<static>|Region newModelQuery()
