@@ -26,12 +26,10 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property-read ProfileContract|null $creator
  * @property-read array<string, mixed> $location
  * @property-read ProfileContract|null $updater
- *
  * @method static Builder<static>|Location newModelQuery()
  * @method static Builder<static>|Location newQuery()
  * @method static Builder<static>|Location query()
  * @method static Builder<static>|Location withinDistance(float $latitude, float $longitude, float $distanceInKm)
- *
  * @property string|null $model_type
  * @property string|null $model_id
  * @property Carbon|null $created_at
@@ -40,7 +38,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string|null $created_by
  * @property string|null $deleted_at
  * @property string|null $deleted_by
- *
  * @method static Builder<static>|Location whereCity($value)
  * @method static Builder<static>|Location whereCreatedAt($value)
  * @method static Builder<static>|Location whereCreatedBy($value)
@@ -60,7 +57,8 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Location whereUpdatedAt($value)
  * @method static Builder<static>|Location whereUpdatedBy($value)
  * @method static Builder<static>|Location whereZip($value)
- *
+ * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
+ * @method static \Modules\Geo\Database\Factories\LocationFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Location extends BaseModel
