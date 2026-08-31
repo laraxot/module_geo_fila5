@@ -10,13 +10,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
 use Modules\Geo\Contracts\HasGeolocation;
-use Modules\TechPlanner\Models\Profile;
+use Modules\Xot\Contracts\ProfileContract;
 
 use function Safe\json_encode;
 
 /**
  * @property-read Address|null $address
- * @property-read Profile|null $creator
+ * @property-read ProfileContract|null $creator
  * @property-read string $formatted_address
  * @property-read float|null $latitude
  * @property-read float|null $longitude
@@ -24,7 +24,7 @@ use function Safe\json_encode;
  * @property string|null $name
  * @property string|null $description
  * @property-read PlaceType|null $placeType
- * @property-read Profile|null $updater
+ * @property-read ProfileContract|null $updater
  *
  * @method static Builder<static>|Place newModelQuery()
  * @method static Builder<static>|Place newQuery()
