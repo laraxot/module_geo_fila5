@@ -45,17 +45,20 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property-read string $street_address
  * @property-read Model $model
  * @property-read ProfileContract|null $updater
+ *
  * @method static Builder<static>|Address nearby(float $latitude, float $longitude, float $radiusKm = 10)
  * @method static Builder<static>|Address newModelQuery()
  * @method static Builder<static>|Address newQuery()
  * @method static Builder<static>|Address ofType(\Modules\Geo\Enums\AddressTypeEnum|string $type)
  * @method static Builder<static>|Address primary()
  * @method static Builder<static>|Address query()
+ *
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
  * @property string|null $deleted_by
+ *
  * @method static Builder<static>|Address onlyTrashed()
  * @method static Builder<static>|Address whereAdministrativeAreaLevel1($value)
  * @method static Builder<static>|Address whereAdministrativeAreaLevel2($value)
@@ -86,8 +89,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Address whereUpdatedBy($value)
  * @method static Builder<static>|Address withTrashed(bool $withTrashed = true)
  * @method static Builder<static>|Address withoutTrashed()
- * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
- * @method static \Modules\Geo\Database\Factories\AddressFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Address extends BaseModel
