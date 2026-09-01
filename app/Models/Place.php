@@ -25,9 +25,11 @@ use function Safe\json_encode;
  * @property string|null $description
  * @property-read PlaceType|null $placeType
  * @property-read ProfileContract|null $updater
+ *
  * @method static Builder<static>|Place newModelQuery()
  * @method static Builder<static>|Place newQuery()
  * @method static Builder<static>|Place query()
+ *
  * @property int $id
  * @property string|null $model_type
  * @property int|null $model_id
@@ -38,6 +40,7 @@ use function Safe\json_encode;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $post_type
+ *
  * @method static Builder<static>|Place whereAddress($value)
  * @method static Builder<static>|Place whereCreatedAt($value)
  * @method static Builder<static>|Place whereCreatedBy($value)
@@ -52,8 +55,7 @@ use function Safe\json_encode;
  * @method static Builder<static>|Place wherePostType($value)
  * @method static Builder<static>|Place whereUpdatedAt($value)
  * @method static Builder<static>|Place whereUpdatedBy($value)
- * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
- * @method static \Modules\Geo\Database\Factories\PlaceFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Place extends BaseModel implements HasGeolocation

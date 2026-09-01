@@ -22,13 +22,14 @@ use Sushi\Sushi;
  * @property-read Collection<int, Province> $provinces
  * @property-read int|null $provinces_count
  * @property-read ProfileContract|null $updater
+ *
  * @method static \Modules\Geo\Database\Factories\RegionFactory factory($count = null, $state = [])
  * @method static Builder<static>|Region newModelQuery()
  * @method static Builder<static>|Region newQuery()
  * @method static Builder<static>|Region query()
  * @method static Builder<static>|Region whereId($value)
  * @method static Builder<static>|Region whereName($value)
- * @property-read \Modules\WorkOrder\Models\Profile|null $deleter
+ *
  * @mixin \Eloquent
  */
 class Region extends BaseModel
