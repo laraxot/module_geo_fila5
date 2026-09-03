@@ -35,7 +35,6 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  */
 class PlaceType extends BaseModel
 {
-    /** @use HasXotFactory<PlaceType> */
     use HasXotFactory;
 
     protected $fillable = [

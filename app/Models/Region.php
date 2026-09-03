@@ -33,7 +33,6 @@ use Sushi\Sushi;
  */
 class Region extends BaseModel
 {
-    /** @use HasXotFactory<Region> */
     use HasXotFactory;
 
     use Sushi;
