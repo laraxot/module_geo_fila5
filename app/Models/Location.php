@@ -7,7 +7,7 @@ namespace Modules\Geo\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Carbon;
-use Modules\TechPlanner\Models\Profile;
+use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * Class Location.
@@ -23,9 +23,9 @@ use Modules\TechPlanner\Models\Profile;
  * @property string|null $formatted_address
  * @property bool $processed
  * @property string|null $description
- * @property-read Profile|null $creator
+ * @property-read ProfileContract|null $creator
  * @property-read array<string, mixed> $location
- * @property-read Profile|null $updater
+ * @property-read ProfileContract|null $updater
  *
  * @method static Builder<static>|Location newModelQuery()
  * @method static Builder<static>|Location newQuery()
