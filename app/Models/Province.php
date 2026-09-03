@@ -41,7 +41,6 @@ use Sushi\Sushi;
  */
 class Province extends BaseModel
 {
-    /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\ProvinceFactory> */
     use HasXotFactory;
     use Sushi;
 
