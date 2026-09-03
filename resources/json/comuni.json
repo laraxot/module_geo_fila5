@@ -96,5 +96,23 @@
         "id": 6,
         "updated_at": "2026-09-01T10:22:55.300316Z",
         "created_at": "2026-09-01T10:22:55.300336Z"
+    },
+    {
+        "nome": "Torino",
+        "codice": 4574,
+        "regione": "\"Piemonte\"",
+        "provincia": "\"Torino\"",
+        "sigla_provincia": "TO",
+        "cap": "\"10100\"",
+        "codice_catastale": "L330",
+        "popolazione": 808458,
+        "zona_altimetrica": "collina",
+        "altitudine": 546,
+        "superficie": 21.71,
+        "lat": 44.9876,
+        "lng": 7.707199999999999,
+        "id": 7,
+        "updated_at": "2026-09-03T13:26:57.733592Z",
+        "created_at": "2026-09-03T13:26:57.733614Z"
     }
 ]
