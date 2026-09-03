@@ -170,7 +170,7 @@ class Address extends BaseModel
      * }
      */
     /**
-     * @return array{codice: mixed, nome: mixed}|null
+     * @return array{codice: string, nome: string}|null
      */
     public function getRegione(): ?array
     {
@@ -179,13 +179,14 @@ class Address extends BaseModel
             ->orderBy('regione->nome')
             ->where('regione->codice', $this->administrative_area_level_1)
             ->get()
-            ->map(function (mixed $item) {
+            ->map(function (Comune $item): ?array {
+                /** @var array{codice?: string, nome?: string}|null $regione */
                 $regione = $item->regione;
                 if (! is_array($regione) || ! isset($regione['codice'], $regione['nome'])) {
-                    return;
+                    return null;
                 }
 
-                return ['codice' => $regione['codice'], 'nome' => $regione['nome']];
+                return ['codice' => (string) $regione['codice'], 'nome' => (string) $regione['nome']];
             })
             ->filter();
 
@@ -202,7 +203,7 @@ class Address extends BaseModel
             ->orderBy('provincia->nome')
             ->where('provincia->codice', $this->administrative_area_level_2)
             ->get()
-            ->map(function (mixed $item): array {
+            ->map(function (Model $item): array {
                 $provincia = is_array($item->provincia ?? null) ? $item->provincia : [];
 
                 return [
@@ -215,6 +216,12 @@ class Address extends BaseModel
     }
 
     /**
+     * Attributi del Comune corrispondente a `locality`.
+     *
+     * I valori non sono tutti stringhe: le relazioni caricate (`provincia`)
+     * arrivano come array annidati, per questo il consumatore
+     * `HasAddress::getFullAddressesAttribute()` verifica ogni chiave.
+     *
      * @return array<string, mixed>|null
      */
     public function getLocality(): ?array
@@ -235,22 +242,25 @@ class Address extends BaseModel
      */
     public function getFullAddressAttribute(): string
     {
-        $parts = array_filter([
-            is_string($this->route) && is_string($this->street_number) ? $this->route.($this->street_number !== '' ? ' '.$this->street_number : '') : null,
-            $this->locality,
-            $this->administrative_area_level_3, // Provincia
-            $this->administrative_area_level_2, // Regione
-            $this->postal_code,
-            $this->country,
-        ], function (mixed $part): bool {
-            // PHPStan L10: verifica prima il tipo, poi se è vuoto
-            if (! \is_string($part)) {
-                return false;
-            }
+        $route = is_string($this->route) ? $this->route : null;
+        $street_number = is_string($this->street_number) ? $this->street_number : null;
+        $locality = is_string($this->locality) ? $this->locality : null;
+        $level_3 = is_string($this->administrative_area_level_3) ? $this->administrative_area_level_3 : null;
+        $level_2 = is_string($this->administrative_area_level_2) ? $this->administrative_area_level_2 : null;
+        $postal = is_string($this->postal_code) ? $this->postal_code : null;
+        $country = is_string($this->country) ? $this->country : null;
 
-            // Dopo is_string(), $part è string, quindi verifica se è vuoto
-            return $part !== '';
-        });
+        $parts = array_filter(
+            [
+                $route !== null && $street_number !== null ? $route.($street_number !== '' ? ' '.$street_number : '') : null,
+                $locality,
+                $level_3, // Provincia
+                $level_2, // Regione
+                $postal,
+                $country,
+            ],
+            static fn (mixed $value): bool => is_string($value) && $value !== '',
+        );
 
         return implode(', ', $parts);
     }
@@ -369,11 +379,15 @@ class Address extends BaseModel
     /**
      * Restituisce i dati in formato Schema.org PostalAddress.
      *
-     * @return array<string, mixed>
+     * Le proprietà non valorizzate vengono omesse: Schema.org non prevede
+     * valori null, una chiave assente è la rappresentazione corretta.
+     *
+     * @return array<string, string>
+     * @phpstan-return array<string, string>
      */
     public function toSchemaOrg(): array
     {
-        return [
+        return array_filter([
             '@context' => 'https://schema.org',
             '@type' => 'PostalAddress',
             'name' => $this->name,
@@ -384,7 +398,7 @@ class Address extends BaseModel
             'addressRegion' => $this->administrative_area_level_2, // Regione
             'addressCountry' => $this->country,
             'postalCode' => $this->postal_code,
-        ];
+        ], static fn (?string $value): bool => $value !== null);
     }
 
     /**
