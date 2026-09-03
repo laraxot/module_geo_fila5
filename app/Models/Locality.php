@@ -7,8 +7,8 @@ namespace Modules\Geo\Models;
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\File;
-use Modules\TechPlanner\Models\Profile;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Modules\Xot\Contracts\ProfileContract;
 use Sushi\Sushi;
 
 /**
@@ -17,8 +17,8 @@ use Sushi\Sushi;
  * @property int $id
  * @property string|null $name
  * @property array<array-key, mixed>|null $postal_code
- * @property-read Profile|null $creator
- * @property-read Profile|null $updater
+ * @property-read ProfileContract|null $creator
+ * @property-read ProfileContract|null $updater
  *
  * @method static Builder<static>|Locality newModelQuery()
  * @method static Builder<static>|Locality newQuery()

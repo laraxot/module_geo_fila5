@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Modules\Geo\Enums\AddressTypeEnum;
-use Modules\TechPlanner\Models\Profile;
+use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * Class Address.
@@ -40,11 +40,11 @@ use Modules\TechPlanner\Models\Profile;
  * @property bool $is_primary
  * @property array<string, mixed>|null $extra_data
  * @property-read Model $addressable
- * @property-read Profile|null $creator
+ * @property-read ProfileContract|null $creator
  * @property-read string $full_address
  * @property-read string $street_address
  * @property-read Model $model
- * @property-read Profile|null $updater
+ * @property-read ProfileContract|null $updater
  *
  * @method static Builder<static>|Address nearby(float $latitude, float $longitude, float $radiusKm = 10)
  * @method static Builder<static>|Address newModelQuery()
