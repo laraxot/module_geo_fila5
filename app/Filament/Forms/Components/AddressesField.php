@@ -122,7 +122,7 @@ class AddressesField extends XotBaseRepeater
 
                     if (null !== $currentIndex) {
                         // Disattiva is_primary negli altri elementi
-                        foreach ($addresses as $index => $address) {
+                        foreach (array_keys($addresses) as $index) {
                             $indexStr = app(SafeStringCastAction::class)->execute($index);
                             $currentIndexStr = app(SafeStringCastAction::class)
                                 ->execute($currentIndex);

@@ -308,6 +308,33 @@ class Address extends BaseModel
         }
 
         // Località e provincia (formato italiano)
+        $localityParts = $this->getFormattedAddressLocalityParts();
+        if ([] !== $localityParts) {
+            $parts[] = implode(' ', $localityParts);
+        }
+
+        // Regione
+        if ($this->administrative_area_level_2 && is_string($this->administrative_area_level_2)) {
+            $parts[] = $this->administrative_area_level_2;
+        }
+
+        // Paese
+        if ($this->country && is_string($this->country)) {
+            $countryName = ($this->administrative_area_level_1 ?? $this->country) ?? '';
+            $parts[] = strtoupper(is_string($countryName) ? $countryName : '');
+        }
+
+        return implode("\n", $parts);
+    }
+
+    /**
+     * Costruisce le parti "località (provincia)" dell'indirizzo formattato,
+     * seguendo la convenzione italiana quando il paese è IT.
+     *
+     * @return list<string>
+     */
+    private function getFormattedAddressLocalityParts(): array
+    {
         $localityParts = [];
         if ($this->postal_code && is_string($this->postal_code)) {
             $localityParts[] = $this->postal_code;
@@ -326,22 +353,7 @@ class Address extends BaseModel
             }
         }
 
-        if (! empty($localityParts)) {
-            $parts[] = implode(' ', $localityParts);
-        }
-
-        // Regione
-        if ($this->administrative_area_level_2 && is_string($this->administrative_area_level_2)) {
-            $parts[] = $this->administrative_area_level_2;
-        }
-
-        // Paese
-        if ($this->country && is_string($this->country)) {
-            $countryName = ($this->administrative_area_level_1 ?? $this->country) ?? '';
-            $parts[] = strtoupper(is_string($countryName) ? $countryName : '');
-        }
-
-        return implode("\n", $parts);
+        return $localityParts;
     }
 
     /**

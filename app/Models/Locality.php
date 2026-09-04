@@ -64,7 +64,7 @@ class Locality extends BaseModel
             return [];
         }
 
-        /** @var array<string, array{region_id: mixed, province_id: mixed, id: mixed, name: string, postal_code: mixed}> $unique */
+        /** @var array<string, array{region_id: int|string|null, province_id: int|string, id: int|string, name: string, postal_code: int|string|null}> $unique */
         $unique = [];
 
         foreach ($items as $item) {
@@ -123,8 +123,6 @@ class Locality extends BaseModel
         if (! $province) {
             return [];
         }
-
-        $city = $get('locality');
 
         $keys = [];
         $values = [];
