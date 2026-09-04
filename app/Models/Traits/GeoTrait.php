@@ -168,7 +168,7 @@ trait GeoTrait
     /**
      * Get latitude attribute.
      */
-    public function getLatitudeAttribute(mixed $value): ?float
+    public function getLatitudeAttribute(float|int|string|null $value): ?float
     {
         if (is_float($value) || is_int($value)) {
             return (float) $value;
