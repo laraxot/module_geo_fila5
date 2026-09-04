@@ -46,7 +46,7 @@ trait HasCoordinatePicker
         // Note: Removed $this->dehydrated(false) to allow location data to be saved.
         // The component now properly persists coordinates to the form state.
 
-        $this->afterStateHydrated(static function (self $component, mixed $state): void {
+        $this->afterStateHydrated(static function (self $component, array|string|null $state): void {
             if (\is_array($state) && isset($state['latitude'], $state['longitude'])) {
                 return;
             }

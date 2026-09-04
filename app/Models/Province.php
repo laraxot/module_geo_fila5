@@ -25,18 +25,14 @@ use Sushi\Sushi;
  * @property int|null                  $localities_count
  * @property Region|null               $region
  * @property ProfileContract|null      $updater
- *
  * @method static Builder<static>|Province newModelQuery()
  * @method static Builder<static>|Province newQuery()
  * @method static Builder<static>|Province query()
  * @method static Builder<static>|Province whereId($value)
  * @method static Builder<static>|Province whereName($value)
  * @method static Builder<static>|Province whereRegionId($value)
- *
  * @property ProfileContract|null $deleter
- *
  * @method static ProvinceFactory factory($count = null, $state = [])
- *
  * @mixin \Eloquent
  */
 class Province extends BaseModel
@@ -66,7 +62,7 @@ class Province extends BaseModel
             return [];
         }
 
-        /** @var array<string, array{region_id: mixed, id: mixed, name: string}> $unique */
+        /** @var array<string, array{region_id: int|string|null, id: int|string, name: string}> $unique */
         $unique = [];
 
         foreach ($items as $item) {

@@ -22,16 +22,13 @@ use Sushi\Sushi;
  * @property Collection<int, Province> $provinces
  * @property int|null                  $provinces_count
  * @property ProfileContract|null      $updater
- *
  * @method static RegionFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Region newModelQuery()
  * @method static Builder<static>|Region newQuery()
  * @method static Builder<static>|Region query()
  * @method static Builder<static>|Region whereId($value)
  * @method static Builder<static>|Region whereName($value)
- *
  * @property ProfileContract|null $deleter
- *
  * @mixin \Eloquent
  */
 class Region extends BaseModel
@@ -67,7 +64,7 @@ class Region extends BaseModel
             return [];
         }
 
-        /** @var array<string, array{id: mixed, name: string}> $unique */
+        /** @var array<string, array{id: int|string, name: string}> $unique */
         $unique = [];
 
         foreach ($items as $item) {
