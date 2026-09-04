@@ -44,7 +44,7 @@ class LocationResource extends XotBaseResource
     /**
      * Definisce le relazioni disponibili per questo resource.
      *
-     * @return array<mixed> Le relazioni configurate
+     * @return array<class-string<\Filament\Resources\RelationManagers\RelationManager>|\Filament\Resources\RelationManagers\RelationGroup|\Filament\Resources\RelationManagers\RelationManagerConfiguration> Le relazioni configurate
      */
     #[\Override]
     public static function getRelations(): array
@@ -60,7 +60,7 @@ class LocationResource extends XotBaseResource
      * - Creazione nuovo luogo
      * - Modifica luogo esistente
      *
-     * @return array<mixed> Le pagine configurate
+     * @return array<string, \Filament\Resources\Pages\PageRegistration> Le pagine configurate
      */
     #[\Override]
     public static function getPages(): array

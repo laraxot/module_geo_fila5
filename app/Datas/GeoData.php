@@ -8,7 +8,7 @@ use Spatie\LaravelData\Data;
 
 class GeoData extends Data
 {
-    /** @var array<mixed> */
+    /** @var array{lat?: float|int, lng?: float|int} */
     public array $latlng;
 
     public string $route;
