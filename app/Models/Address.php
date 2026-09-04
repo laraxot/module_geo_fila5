@@ -169,7 +169,7 @@ class Address extends BaseModel
      * }
      */
     /**
-     * @return array{codice: mixed, nome: mixed}|null
+     * @return array{codice: int|string, nome: string}|null
      */
     public function getRegione(): ?array
     {
@@ -178,13 +178,16 @@ class Address extends BaseModel
             ->orderBy('regione->nome')
             ->where('regione->codice', $this->administrative_area_level_1)
             ->get()
-            ->map(function (mixed $item) {
-                $regione = $item->regione;
-                if (! is_array($regione) || ! isset($regione['codice'], $regione['nome'])) {
-                    return;
+            ->map(function (mixed $item): ?array {
+                $regione = is_array($item->regione ?? null) ? $item->regione : [];
+                $codice = $regione['codice'] ?? null;
+                $nome = $regione['nome'] ?? null;
+
+                if ((! is_int($codice) && ! is_string($codice)) || ! is_string($nome)) {
+                    return null;
                 }
 
-                return ['codice' => $regione['codice'], 'nome' => $regione['nome']];
+                return ['codice' => $codice, 'nome' => $nome];
             })
             ->filter();
 
