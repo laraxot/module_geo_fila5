@@ -12,27 +12,29 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
- *
  * @method static Builder<static>|State newModelQuery()
  * @method static Builder<static>|State newQuery()
  * @method static Builder<static>|State query()
- *
  * @property ProfileContract|null $deleter
- *
  * @method static StateFactory factory($count = null, $state = [])
- *
  * @property string      $id
  * @property string      $state
  * @property string      $state_code
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- *
  * @method static Builder<static>|State whereCreatedAt($value)
  * @method static Builder<static>|State whereId($value)
  * @method static Builder<static>|State whereState($value)
  * @method static Builder<static>|State whereStateCode($value)
  * @method static Builder<static>|State whereUpdatedAt($value)
- *
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property Carbon|null $deleted_at
+ * @property string|null $deleted_by
+ * @method static Builder<static>|State whereCreatedBy($value)
+ * @method static Builder<static>|State whereDeletedAt($value)
+ * @method static Builder<static>|State whereDeletedBy($value)
+ * @method static Builder<static>|State whereUpdatedBy($value)
  * @mixin \Eloquent
  */
 class State extends BaseModel
