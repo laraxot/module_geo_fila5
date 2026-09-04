@@ -21,7 +21,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  * @property ProfileContract|null $deleter
- *
  * @method static CountyFactory          factory($count = null, $state = [])
  * @method static Builder<static>|County newModelQuery()
  * @method static Builder<static>|County newQuery()
@@ -32,7 +31,16 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|County whereId($value)
  * @method static Builder<static>|County whereStateId($value)
  * @method static Builder<static>|County whereUpdatedAt($value)
- *
+ * @property int|null $state_index Indice progressivo entro lo stato
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property Carbon|null $deleted_at
+ * @property string|null $deleted_by
+ * @method static Builder<static>|County whereCreatedBy($value)
+ * @method static Builder<static>|County whereDeletedAt($value)
+ * @method static Builder<static>|County whereDeletedBy($value)
+ * @method static Builder<static>|County whereStateIndex($value)
+ * @method static Builder<static>|County whereUpdatedBy($value)
  * @mixin \Eloquent
  */
 class County extends BaseModel

@@ -37,7 +37,7 @@ class AddressInput extends XotBaseField
     {
         parent::setUp();
 
-        $this->afterStateHydrated(function (AddressInput $component, mixed $state): void {
+        $this->afterStateHydrated(function (AddressInput $component, string|null $state): void {
             // Ensure state is a string
             if (! is_string($state)) {
                 $component->state('');

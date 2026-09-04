@@ -47,7 +47,7 @@ abstract class XotBaseCoordinateField extends XotBaseField
     {
         $this->default(['latitude' => null, 'longitude' => null]);
 
-        $this->afterStateHydrated(static function (self $component, mixed $state): void {
+        $this->afterStateHydrated(static function (self $component, array|string|null $state): void {
             if (\is_array($state) && isset($state['latitude'], $state['longitude'])) {
                 return;
             }

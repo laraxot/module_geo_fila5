@@ -91,7 +91,7 @@ class RouteData extends Data
     }
 
     /**
-     * @param Collection<int, array{key: mixed}> $routeData
+     * @param Collection<int, array{key: int|string|float}> $routeData
      */
     public function validateRouteData(Collection $routeData): bool
     {
