@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\File;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
+use Modules\Geo\Database\Factories\RegionFactory;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
 
@@ -33,7 +34,7 @@ use Sushi\Sushi;
  */
 class Region extends BaseModel
 {
-    /** @use HasXotFactory<\Illuminate\Database\Eloquent\Factories\Factory<static>> */
+    /** @use HasXotFactory<RegionFactory> */
     use HasXotFactory;
 
     use Sushi;
