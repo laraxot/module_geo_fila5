@@ -1,7 +1,7 @@
 # MapPicker/LocationPicker Architecture (Unified State)
 
 **Data aggiornamento:** 2026-04-20  
-**Status:** Produzione (Laravel 12 / Filament v5 / Livewire v4 / Lit 3.x / Leaflet 1.9.x)  
+**Status:** Produzione (Laravel 13 / Filament v5 / Livewire v4 / Lit 3.x / Leaflet 1.9.x)  
 **Modulo:** Geo  
 **Story:** [1-7-mappicker-locationpicker-consolidation](../../../.planning/stories/1-7-mappicker-locationpicker-consolidation.story.md)
 
