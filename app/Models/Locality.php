@@ -16,7 +16,7 @@ use Sushi\Sushi;
  * @property int|null $province_id
  * @property int $id
  * @property string|null $name
- * @property array<array-key, string>|null $postal_code
+ * @property array<array-key, mixed>|null $postal_code
  * @property-read ProfileContract|null $creator
  * @property-read ProfileContract|null $updater
  *
@@ -45,8 +45,7 @@ class Locality extends BaseModel
     ];
 
     /**
-     * @return array<int, array<string, string>>
-     * @phpstan-return array<int, array<string, string>>
+     * @return array<int, array<string, mixed>>
      */
     public function getRows(): array
     {
@@ -60,7 +59,7 @@ class Locality extends BaseModel
             return [];
         }
 
-        /** @var array<string, array{region_id: string, province_id: string, id: string, name: string, postal_code: string}> $unique */
+        /** @var array<string, array{region_id: mixed, province_id: mixed, id: mixed, name: string, postal_code: mixed}> $unique */
         $unique = [];
 
         foreach ($items as $item) {
@@ -85,11 +84,11 @@ class Locality extends BaseModel
             $key = SafeStringCastAction::cast($id);
             if (! isset($unique[$key])) {
                 $unique[$key] = [
-                    'region_id' => SafeStringCastAction::cast($regionId),
-                    'province_id' => SafeStringCastAction::cast($provinceId),
-                    'id' => $key,
+                    'region_id' => $regionId,
+                    'province_id' => $provinceId,
+                    'id' => $id,
                     'name' => SafeStringCastAction::cast($name),
-                    'postal_code' => SafeStringCastAction::cast($item['cap'] ?? ''),
+                    'postal_code' => $item['cap'] ?? null,
                 ];
             }
         }
@@ -103,10 +102,7 @@ class Locality extends BaseModel
             ),
         );
 
-        /** @var array<int, array<string, string>> $filtered */
-        $filtered = array_map(static fn (array $row) => array_map(static fn ($v) => is_string($v) ? $v : (string) $v, $row), $rows);
-
-        return $filtered;
+        return $rows;
     }
 
     /**
