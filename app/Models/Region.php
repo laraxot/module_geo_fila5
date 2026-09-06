@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\File;
+use Modules\Geo\Database\Factories\RegionFactory;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Geo\Database\Factories\RegionFactory;
@@ -67,7 +68,7 @@ class Region extends BaseModel
             return [];
         }
 
-        /** @var array<string, array{id: int|string, name: string}> $unique */
+        /** @var array<string, array{id: mixed, name: string}> $unique */
         $unique = [];
 
         foreach ($items as $item) {

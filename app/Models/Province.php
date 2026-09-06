@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\File;
+use Modules\Geo\Database\Factories\ProvinceFactory;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Geo\Database\Factories\ProvinceFactory;
@@ -51,8 +52,7 @@ class Province extends BaseModel
     ];
 
     /**
-     * @return array<int, array<string, string>>
-     * @phpstan-return array<int, array<string, string>>
+     * @return array<int, array<string, mixed>>
      */
     public function getRows(): array
     {
@@ -66,7 +66,7 @@ class Province extends BaseModel
             return [];
         }
 
-        /** @var array<string, array{region_id: string, id: string, name: string}> $unique */
+        /** @var array<string, array{region_id: mixed, id: mixed, name: string}> $unique */
         $unique = [];
 
         foreach ($items as $item) {
@@ -90,8 +90,8 @@ class Province extends BaseModel
             $key = SafeStringCastAction::cast($id);
             if (! isset($unique[$key])) {
                 $unique[$key] = [
-                    'region_id' => SafeStringCastAction::cast($regionId),
-                    'id' => $key,
+                    'region_id' => $regionId,
+                    'id' => $id,
                     'name' => SafeStringCastAction::cast($name),
                 ];
             }
