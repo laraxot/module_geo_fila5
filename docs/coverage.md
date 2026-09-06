@@ -20,6 +20,10 @@
     1124▕             throw new BindingResolutionException("Target class [$concrete] does not exist.", 0, $e);
     1125▕         }
     1126▕
+## Status
+
+**2026-09-06**: philosophy.md created. PHPStan analyzed (OK). Pest suite (TBD). Coverage target: +5% per module.
+
 
       [2m+13 vendor frames [22m
   14  Modules/Geo/tests/Unit/Traits/HasAddressTest.php:47
