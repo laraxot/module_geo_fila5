@@ -12,7 +12,7 @@
 
 Configurato un completo set di skills ottimizzate per lavorare al meglio sul progetto Laraxot PTVX con focus su:
 
-- ✅ Laravel 12 & PHP 8.3+
+- ✅ Laravel 13 & PHP 8.3+
 - ✅ Filament v5
 - ✅ PHPStan Level 10
 - ✅ Documentation Standards
@@ -41,7 +41,7 @@ Configurato un completo set di skills ottimizzate per lavorare al meglio sul pro
 **Level:** Master
 
 **Capabilities:**
-- Laravel 12 expert
+- Laravel 13 expert
 - PHP 8.3+ features
 - Coding standards
 - Best practices
@@ -149,7 +149,7 @@ set -o pipefail # Catch pipe errors
 .qwen/skills/
 ├── README.md              # Overview & quick start
 ├── INDEX.md               # Navigation index
-├── laravel-expert.md      # Laravel 12 & PHP 8.3+
+├── laravel-expert.md      # Laravel 13 & PHP 8.3+
 ├── documentation-master.md # Product & code docs
 ├── ai-agent-coordination.md # Multi-agent collaboration
 ├── bash-scripts.md        # Shell scripts best practices
@@ -325,7 +325,7 @@ Skills should be updated when:
 ### Development Tools
 
 - PHP 8.3+
-- Laravel 12
+- Laravel 13
 - Filament v5
 - Pest v4
 - PHPStan Level 10
