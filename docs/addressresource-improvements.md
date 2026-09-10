@@ -1,6 +1,5 @@
 # Suggerimenti di Miglioramento per AddressResource.php
 
-**Data**: 2025-07-30  
 **File**: `/laravel/Modules/Geo/app/Filament/Resources/AddressResource.php`  
 **Priorità**: Alta (per performance e manutenibilità)
 
@@ -104,7 +103,7 @@ class GeoDataService
 }
 
 // Nel Resource
-public static function getFormSchema(): array
+public function getFormSchema(): array
 {
     $geoService = app(GeoDataService::class);
     

@@ -21,30 +21,17 @@ class LocationMapTableWidget extends BaseWidget
     public function table(Table $table): Table
     {
         return $table
-            ->query($this->getTableQuery()) // @phpstan-ignore method.deprecated (hook di progetto: la deprecazione e ereditata per nome dal prototipo Filament 5, il codice eseguito e il nostro — story 16.12)
-            ->columns($this->getTableColumns()); // @phpstan-ignore method.deprecated (hook di progetto: la deprecazione e ereditata per nome dal prototipo Filament 5, il codice eseguito e il nostro — story 16.12)
-    }
-
-    /**
-     * @return Builder<Location>
-     */
-    protected function getTableQuery(): Builder
-    {
-        return Location::query()->latest();
-    }
-
-    protected function getTableColumns(): array
-    {
-        return [
-            TextColumn::make('name')
-                ->searchable()
-                ->sortable(),
-            TextColumn::make('city')
-                ->searchable()
-                ->sortable(),
-            TextColumn::make('state')
-                ->searchable()
-                ->sortable(),
-        ];
+            ->query(fn (): Builder => Location::query()->latest())
+            ->columns([
+                TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('city')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('state')
+                    ->searchable()
+                    ->sortable(),
+            ]);
     }
 }

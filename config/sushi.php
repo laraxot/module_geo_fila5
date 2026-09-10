@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+use Illuminate\Support\Env;
 
 return [
     /*
@@ -21,8 +22,8 @@ return [
      * |
      */
     'cache' => [
-        'enabled' => Illuminate\Support\Env::get('SUSHI_CACHE_ENABLED', true),
-        'duration' => Illuminate\Support\Env::get('SUSHI_CACHE_DURATION', 60 * 24 * 7), // 7 giorni
+        'enabled' => Env::get('SUSHI_CACHE_ENABLED', true),
+        'duration' => Env::get('SUSHI_CACHE_DURATION', 60 * 24 * 7), // 7 giorni
     ],
     /*
      * |--------------------------------------------------------------------------
@@ -37,8 +38,8 @@ return [
      * |
      */
     'database' => [
-        'connection' => Illuminate\Support\Env::get('SUSHI_DB_CONNECTION', 'mysql'),
-        'database' => Illuminate\Support\Env::get('SUSHI_DB_DATABASE', Illuminate\Support\Env::get('DB_DATABASE')),
+        'connection' => Env::get('SUSHI_DB_CONNECTION', 'mysql'),
+        'database' => Env::get('SUSHI_DB_DATABASE', Env::get('DB_DATABASE')),
     ],
     /*
      * |--------------------------------------------------------------------------

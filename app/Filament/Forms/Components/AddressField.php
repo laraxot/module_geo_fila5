@@ -38,7 +38,7 @@ class AddressField extends XotBaseSection
      */
     protected function getAddressFormSchema(): array
     {
-        $baseSchema = AddressForm::getFormSchema();
+        $baseSchema = app(AddressForm::class)->getFormSchema();
 
         // Rimuovi campi non necessari per relazioni semplici
         unset($baseSchema['name'], $baseSchema['is_primary']);
@@ -54,8 +54,7 @@ class AddressField extends XotBaseSection
     /**
      * Rimuove tutti i pattern reattivi dai campi per prevenire loop infiniti.
      *
-     * @param array<string, Component> $schema
-     *
+     * @param  array<string, Component>  $schema
      * @return array<string, Component>
      */
     protected function removeReactivityFromSchema(array $schema): array

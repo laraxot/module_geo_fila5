@@ -36,7 +36,7 @@ class AddressSection extends XotBaseSection
 
         return $schema;
         */
-        return AddressItemEnum::getFormSchema();
+        return AddressItemEnum::NAME->getFormSchema();
     }
 
     /*

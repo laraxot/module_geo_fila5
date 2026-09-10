@@ -7,19 +7,19 @@ namespace Modules\Geo\Models;
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\File;
-use Modules\Geo\Database\Factories\LocalityFactory;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Sushi\Sushi;
 
 /**
- * @property int|null                     $region_id
- * @property int|null                     $province_id
- * @property string|null                  $name
- * @property int                          $id
+ * @property int|null $region_id
+ * @property int|null $province_id
+ * @property int $id
+ * @property string|null $name
  * @property array<array-key, mixed>|null $postal_code
- * @property ProfileContract|null         $creator
- * @property ProfileContract|null         $updater
+ * @property-read ProfileContract|null $creator
+ * @property-read ProfileContract|null $updater
+ *
  * @method static Builder<static>|Locality newModelQuery()
  * @method static Builder<static>|Locality newQuery()
  * @method static Builder<static>|Locality query()
@@ -28,8 +28,7 @@ use Sushi\Sushi;
  * @method static Builder<static>|Locality wherePostalCode($value)
  * @method static Builder<static>|Locality whereProvinceId($value)
  * @method static Builder<static>|Locality whereRegionId($value)
- * @property ProfileContract|null $deleter
- * @method static LocalityFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Locality extends BaseModel
@@ -60,7 +59,7 @@ class Locality extends BaseModel
             return [];
         }
 
-        /** @var array<string, array{region_id: int|string|null, province_id: int|string, id: int|string, name: string, postal_code: int|string|null}> $unique */
+        /** @var array<string, array{region_id: mixed, province_id: mixed, id: mixed, name: string, postal_code: mixed}> $unique */
         $unique = [];
 
         foreach ($items as $item) {
@@ -78,7 +77,7 @@ class Locality extends BaseModel
             $provinceId = $provincia['codice'] ?? null;
             $id = $item['codice'] ?? $item['id'] ?? null;
             $name = $item['nome'] ?? null;
-            if (null === $regionId || null === $provinceId || null === $id || null === $name) {
+            if ($regionId === null || $provinceId === null || $id === null || $name === null) {
                 continue;
             }
 
@@ -120,6 +119,8 @@ class Locality extends BaseModel
             return [];
         }
 
+        $city = $get('locality');
+
         $keys = [];
         $values = [];
 
@@ -152,7 +153,7 @@ class Locality extends BaseModel
         $city = $get('locality');
         $res = self::where('region_id', $region)
             ->where('province_id', $province)
-            ->when(null !== $city, static fn (Builder $query) => $query->where('id', $city))
+            ->when($city !== null, static fn (Builder $query) => $query->where('id', $city))
             ->select('postal_code')
             ->distinct()
             ->orderBy('postal_code')

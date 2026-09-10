@@ -27,24 +27,12 @@ class LocationResource extends XotBaseResource
 {
     protected static ?string $model = Location::class;
 
-    // ✅ CORRETTO - NIENTE navigationGroup - La gestione è centralizzata in XotBaseResource
-
-    /**
-     * Schema legacy del form: la sorgente di verità è LocationForm::getFormSchema().
-     *
-     * @return array<string, Component>
-     */
-    public static function getFormSchemaOld(): array
-    {
-        return LocationForm::getFormSchema();
-    }
-
     // ✅ CORRETTO - NIENTE metodo table() - La gestione è centralizzata in XotBaseResource
 
     /**
      * Definisce le relazioni disponibili per questo resource.
      *
-     * @return array<class-string<\Filament\Resources\RelationManagers\RelationManager>|\Filament\Resources\RelationManagers\RelationGroup|\Filament\Resources\RelationManagers\RelationManagerConfiguration> Le relazioni configurate
+     * @return array<mixed> Le relazioni configurate
      */
     #[\Override]
     public static function getRelations(): array
@@ -60,7 +48,7 @@ class LocationResource extends XotBaseResource
      * - Creazione nuovo luogo
      * - Modifica luogo esistente
      *
-     * @return array<string, \Filament\Resources\Pages\PageRegistration> Le pagine configurate
+     * @return array<mixed> Le pagine configurate
      */
     #[\Override]
     public static function getPages(): array

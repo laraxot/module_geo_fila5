@@ -1,7 +1,7 @@
 # MapPicker Filament Field (Lit + Leaflet + Livewire) - Refactored v2
 
 **Data aggiornamento:** 2026-04-20  
-**Status:** Produzione (Laravel 12 / Filament v5)  
+**Status:** Produzione (Laravel 13 / Filament v5)  
 **Argomento:** Campo Filament `MapPicker` con stato unico `{ latitude, longitude }` e Alpine adapter minimale.
 
 ---

@@ -7,10 +7,9 @@ namespace Modules\Geo\Actions\Nominatim;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\LocationData;
+use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
-
-use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per cercare un luogo usando Nominatim.
@@ -31,7 +30,7 @@ class LookupPlaceAction
     /**
      * Cerca un luogo usando il suo OSM ID.
      *
-     * @param string $osmId ID OpenStreetMap del luogo
+     * @param  string  $osmId  ID OpenStreetMap del luogo
      *
      * @throws GuzzleException
      * @throws \RuntimeException

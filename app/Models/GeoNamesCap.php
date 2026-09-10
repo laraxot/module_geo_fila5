@@ -5,20 +5,20 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Modules\Geo\Database\Factories\GeoNamesCapFactory;
+use Illuminate\Support\Carbon;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * Modules\Geo\Models\GeoNamesCap.
  *
- * @property ProfileContract|null $creator
- * @property ProfileContract|null $updater
+ * @property-read ProfileContract|null $creator
+ * @property-read ProfileContract|null $updater
+ *
  * @method static Builder<static>|GeoNamesCap newModelQuery()
  * @method static Builder<static>|GeoNamesCap newQuery()
  * @method static Builder<static>|GeoNamesCap query()
- * @property ProfileContract|null $deleter
- * @method static GeoNamesCapFactory factory($count = null, $state = [])
- * @property string $id
+ *
+ * @property int $id
  * @property string|null $country_code Codice paese ISO (es. IT)
  * @property string|null $postal_code CAP / codice postale
  * @property string|null $place_name Nome della località
@@ -31,12 +31,13 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property numeric|null $latitude
  * @property numeric|null $longitude
  * @property int|null $accuracy Accuratezza coordinate GeoNames
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null $updated_by
  * @property string|null $created_by
- * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property string|null $deleted_at
  * @property string|null $deleted_by
+ *
  * @method static Builder<static>|GeoNamesCap whereAccuracy($value)
  * @method static Builder<static>|GeoNamesCap whereAdminCode1($value)
  * @method static Builder<static>|GeoNamesCap whereAdminCode2($value)
@@ -56,6 +57,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|GeoNamesCap wherePostalCode($value)
  * @method static Builder<static>|GeoNamesCap whereUpdatedAt($value)
  * @method static Builder<static>|GeoNamesCap whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class GeoNamesCap extends BaseModel

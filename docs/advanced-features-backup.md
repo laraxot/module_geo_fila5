@@ -1,6 +1,7 @@
-# Funzionalità Avanzate del Modulo Geo
+---
+module: theme
+topic: advanced-features-backup
+canonical: ../../../Themes/docs/shared-components/ADVANCED_FEATURES.md
+---
 
-## Ottimizzazione Percorsi
-
-### Algoritmo del Commesso Viaggiatore
-L'`OptimizeRouteAction` implementa una soluzione euristica al problema del commesso viaggiatore (TSP) utilizzando l'algoritmo del "nearest neighbor": 
+See canonical documentation: ../../../Themes/docs/shared-components/ADVANCED_FEATURES.md

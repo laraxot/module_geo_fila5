@@ -35,7 +35,7 @@ class GetProvincesAction
 
             if (! $region || ! \is_array($region) || ! isset($region['provinces']) || ! \is_array($region['provinces'])) {
                 /** @var Collection<int, array{name: string, code: string}> $empty */
-                $empty = new Collection;
+                $empty = new Collection();
 
                 return $empty;
             }

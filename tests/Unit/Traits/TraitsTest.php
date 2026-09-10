@@ -5,12 +5,9 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Traits;
 
 use Modules\Geo\Models\Traits\HasPlaceTrait;
-use Modules\Geo\Tests\TestCase;
 use Modules\Geo\Traits\HandlesCoordinates;
 use Modules\Geo\Traits\HasAddresses;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 test('HasAddresses trait exists with expected API', function (): void {
     Assert::assertTrue(trait_exists(HasAddresses::class));
