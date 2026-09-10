@@ -18,5 +18,5 @@ return [
     ],
     'geolocation' => ['locating' => 'Rilevamento posizione in corso...', 'not_supported' => 'Geolocalizzazione non supportata dal browser.', 'address_not_found' => 'Indirizzo non trovato.', 'error' => 'Errore durante la geolocalizzazione.', 'permission_denied' => 'Permesso di geolocalizzazione negato.', 'timeout' => 'Timeout durante il rilevamento della posizione.', 'unavailable' => 'Posizione non disponibile al momento.'],
     'validation' => ['required' => 'L\'indirizzo è obbligatorio.', 'max' => 'L\'indirizzo non può superare :max caratteri.'],
-    'navigation' => ['group' => 'address.navigation', 'label' => 'address.navigation'],
+    'navigation' => ['group' => 'Indirizzo', 'label' => 'Indirizzo'],
 ];
