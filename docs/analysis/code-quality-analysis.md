@@ -1,6 +1,6 @@
 ---
 module: theme
-topic: code-quality-analysis
+topic: code-quality-analysis-
 canonical: ../../../../Themes/docs/shared-components/code-quality-analysis.md
 ---
 
