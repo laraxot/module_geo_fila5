@@ -18,6 +18,7 @@ return [
         'administrative_area_level_2' => ['label' => 'administrative_area_level_2'],
         'postal_code' => ['label' => 'postal_code'],
         'type' => ['label' => 'type'],
+        'street_number' => ['label' => 'street_number'],
     ],
     'messages' => [
         'validation' => ['min_items' => 'È richiesto almeno :min indirizzo/i.', 'max_items' => 'Non è possibile avere più di :max indirizzi.', 'primary_required' => 'Almeno un indirizzo deve essere designato come principale.'],
