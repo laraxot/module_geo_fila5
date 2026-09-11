@@ -125,3 +125,30 @@ cancellato per rispetto della regola "mai cancellare di propria iniziativa";
 segnalato qui come raccomandazione: valutare la rimozione di
 `AddresssTable.php` in un ticket dedicato (fuori scope di questo batch), dato
 che non è mai risolto a runtime.
+
+## Addendum 2026-09-11 — cancellazione confermata (follow-up dead-code)
+
+Rif. `docs/stories/xotbaseresourcetable-dead-code-duplicate-table-classes-followup.story.md`
+(root del monorepo, riga Geo), item `AddressResource/Tables/AddresssTable.php`.
+
+Verifica pre-cancellazione ripetuta in questa sessione, indipendente dal
+batch sopra:
+
+- `git log -S"AddresssTable" --oneline -- .` (repo `module_geo_fila5`): due
+  commit, entrambi introducono/toccano il file insieme al suo gemello
+  `AddressesTable.php` nello stesso audit (`96551cc audit(tables): add $model
+  to XotBaseResourceTable classes...`, `ac66f37 .`) — nessun refactor a metà
+  in corso, nessun commit che sposta logica da `AddresssTable` verso
+  `AddressesTable` in modo incompleto.
+- `git log --follow --oneline -- app/Filament/Resources/AddressResource/Tables/AddresssTable.php`:
+  stessa storia, il file è sempre stato un doppione mai referenziato.
+- `grep -rn "AddresssTable" laravel/ --include="*.php"`: solo la propria
+  dichiarazione di classe, zero `use`/riferimenti da `AddressResource.php`,
+  pagine, o altrove nel monorepo.
+- Confronto contenuto con `AddressesTable.php`: identico riga per riga a
+  parte il nome della classe (nessuna differenza non migrata da salvare).
+
+Esito: cancellato `app/Filament/Resources/AddressResource/Tables/AddresssTable.php`
+via `git rm`. Nessuna modifica a `AddressesTable.php` (resta l'unica classe
+tabella per `AddressResource`, risolta per convenzione da
+`XotBaseResource::getTableClass()`).

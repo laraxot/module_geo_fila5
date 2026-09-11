@@ -1,5 +1,41 @@
 # Code Coverage: Geo
 
+## Aggiornamento 2026-09-11 — rimozione dead code `AddresssTable.php` (followup xotbaseresourcetable-dead-code)
+
+**Contesto**: cancellato `app/Filament/Resources/AddressResource/Tables/AddresssTable.php`
+(typo di pluralizzazione mai corretto, mai risolto a runtime — vedi
+`docs/stories/xotbaseresourcetable-model-audit-batch-geo.story.md`, addendum
+2026-09-11). `AddressesTable.php` resta l'unica classe tabella viva per
+`AddressResource`.
+
+**PHPStan** (`cd laravel && vendor/bin/phpstan analyse Modules/Geo --no-progress`):
+`[OK] No errors` (0 errori sull'intero modulo).
+
+**PHPMD** (`cd laravel/Modules/Geo && bash ../../tools/phpmd.sh app/Filament/Resources/AddressResource text ../../../docs/phpmd.ruleset.xml`):
+0 violazioni sull'albero toccato (`AddressResource/`). Girato anche su tutto
+`app/` per completezza: violazioni pre-esistenti e non correlate (naming
+snake_case sui parametri delle Policy generate, complessità ciclomatica in
+`Province::getRows()`/`Region::getRows()`, variabili corte in
+`HandlesCoordinates.php`), nessuna nei file toccati da questo task, fuori
+scope di questo item.
+
+**Pest** (`cd laravel && vendor/bin/pest Modules/Geo --no-coverage`):
+
+```
+Tests: 237 failed, 9 risky, 273 passed (721 assertions)
+Duration: ~1s
+```
+
+Stesso totale (519 test) della run narrata sotto (2026-09-07: 104+16+399=519).
+Verificato che nessun fallimento cita `AddresssTable`, `AddressesTable` o
+classi Filament Table (`grep -n "AddresssTable\|AddressesTable\|Filament.*Table"`
+sul log completo → zero risultati): i 237 fallimenti sono pre-esistenti,
+stessa famiglia già documentata (chiamate di rete reali a
+Mapbox/Bing/Google/IPGeolocation senza mock, formati Faker mancanti nel
+locale configurato — es. `Unknown format "streetName"` in
+`AddressFactory.php`, mismatch di contratto `HasGeolocation` su `Address`),
+non introdotti da questa cancellazione.
+
 ## Aggiornamento 2026-09-07 — PHPStan static-call fix (story `01.Geo-phpstan-fix`)
 
 **Comando:** `./vendor/bin/pest Modules/Geo/tests -c Modules/Geo/phpunit.xml --no-coverage`
