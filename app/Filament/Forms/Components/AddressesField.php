@@ -97,11 +97,7 @@ class AddressesField extends XotBaseRepeater
      */
     protected function getAddressFormSchema(): array
     {
-<<<<<<< .merge_file_Kjg7bw
         $baseSchema = app(AddressForm::class)->getFormSchema();
-=======
-        $baseSchema = AddressForm::getFormSchema();
->>>>>>> .merge_file_qBnBDt
 
         // Campo name: visibile solo con più di 1 elemento
         $baseSchema['name'] = TextInput::make('name')
