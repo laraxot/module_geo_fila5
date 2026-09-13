@@ -38,7 +38,11 @@ class AddressField extends XotBaseSection
      */
     protected function getAddressFormSchema(): array
     {
+<<<<<<< .merge_file_zXKbXM
         $baseSchema = app(AddressForm::class)->getFormSchema();
+=======
+        $baseSchema = AddressForm::getFormSchema();
+>>>>>>> .merge_file_o2iJ0j
 
         // Rimuovi campi non necessari per relazioni semplici
         unset($baseSchema['name'], $baseSchema['is_primary']);
