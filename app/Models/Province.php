@@ -7,6 +7,7 @@ namespace Modules\Geo\Models;
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\File;
@@ -37,6 +38,7 @@ use Sushi\Sushi;
  */
 class Province extends BaseModel
 {
+    /** @use HasXotFactory<Factory<static>> */
     use HasXotFactory;
     use Sushi;
 
