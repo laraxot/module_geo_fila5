@@ -16,6 +16,7 @@ use Modules\Geo\Providers\GeoServiceProvider;
 use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Datas\XotData;
 use Modules\Xot\Tests\XotBaseTestCase;
+use Modules\User\Models\User;
 
 /**
  * @property object|null $action
@@ -62,17 +63,20 @@ abstract class TestCase extends XotBaseTestCase
 
     /** @var list<string> */
     protected $connectionsToTransact = [
-        'sqlite',
-        'xot',
+        'mysql',
+        'user',
     ];
 
     protected function setUp(): void
     {
+<<<<<<< .merge_file_6lhtfa
         // Senza il fixture condiviso i test cercano MariaDB con le credenziali
         // dello sviluppatore che ha scritto il .env, e falliscono su ogni altra
         // macchina.
         $this->prepareSharedSqliteForTesting();
 
+=======
+>>>>>>> .merge_file_KSvssj
         parent::setUp();
 
         config(['xra.pub_theme' => 'Meetup']);
