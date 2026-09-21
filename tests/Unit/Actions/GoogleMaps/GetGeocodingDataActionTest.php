@@ -19,7 +19,7 @@ use function Safe\json_encode;
 
 uses(LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetGeocodingDataAction($client);
@@ -35,7 +35,7 @@ it('throws exception when api key is not configured', function (): void {
 });
 
 it('throws exception for empty address', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetGeocodingDataAction($client);
@@ -51,7 +51,7 @@ it('throws exception for empty address', function (): void {
 });
 
 it('throws exception for too long address', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetGeocodingDataAction($client);
@@ -69,7 +69,7 @@ it('throws exception for too long address', function (): void {
 });
 
 it('returns error geocoding data for guzzle exception', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetGeocodingDataAction($client);
@@ -86,7 +86,7 @@ it('returns error geocoding data for guzzle exception', function (): void {
 });
 
 it('returns error geocoding data for invalid status', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetGeocodingDataAction($client);
@@ -106,7 +106,7 @@ it('returns error geocoding data for invalid status', function (): void {
 });
 
 it('returns geocoding data for valid address', function (): void {
-    $mockHandler = new MockHandler();
+    $mockHandler = new MockHandler;
     $handlerStack = HandlerStack::create($mockHandler);
     $client = new Client(['handler' => $handlerStack]);
     $action = new GetGeocodingDataAction($client);

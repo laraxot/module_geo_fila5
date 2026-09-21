@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-
 ?>
 <div class="b-pop-places__item">
     <div class="b-pop-place">

@@ -68,7 +68,7 @@ it('returns all coordinates when all within radius', function (): void {
 });
 
 it('handles empty coordinates array', function (): void {
-    $action = makeFilterAction(new CalculateDistanceMatrixQueueStub());
+    $action = makeFilterAction(new CalculateDistanceMatrixQueueStub);
 
     $result = $action->execute(45.4642, 9.1900, [], 5000);
 

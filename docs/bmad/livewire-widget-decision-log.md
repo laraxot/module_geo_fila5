@@ -11,3 +11,7 @@ related:
 ## [2026-09-21] Test out, FO search stays
 
 Docs only.
+
+## [2026-09-21, audit] Drift worktree
+
+Verifica repo-wide nell'inventario: i file di `Test` risultano di nuovo su disco (identici a HEAD) pur con story 12.1 `done`; `_components.json` registra solo l'alias `test` (cache parziale: `form-search-address-categories` assente). Decisione confermata: ritiro `Test`, esclusione `FormSearchAddressCategories`. Dettagli: [livewire-inventory.md](./livewire-inventory.md).
