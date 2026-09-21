@@ -1,13 +1,12 @@
 <?php
 
 declare(strict_types=1);
-
 use Modules\Geo\Filament\Pages\Dashboard;
 use Modules\Geo\Filament\Widgets\GeoMapWidget;
 use PHPUnit\Framework\Assert;
 
 test('geo map widget resolves embedded geojson dataset', function (): void {
-    $widget = new GeoMapWidget();
+    $widget = new GeoMapWidget;
     $dataset = $widget->getDataset();
 
     Assert::assertSame('FeatureCollection', $dataset['type']);
@@ -18,7 +17,7 @@ test('geo map widget resolves embedded geojson dataset', function (): void {
 });
 
 test('geo map widget exposes categories and config', function (): void {
-    $widget = new GeoMapWidget();
+    $widget = new GeoMapWidget;
     $config = $widget->getMapConfig();
 
     foreach (['farm', 'marketplace', 'beekeeper', 'vending_machine'] as $category) {
@@ -31,7 +30,7 @@ test('geo map widget exposes categories and config', function (): void {
 });
 
 test('geo map widget serializes dataset and config to json', function (): void {
-    $widget = new GeoMapWidget();
+    $widget = new GeoMapWidget;
 
     Assert::assertStringStartsWith('{', (string) $widget->getDatasetJson());
 
@@ -39,7 +38,7 @@ test('geo map widget serializes dataset and config to json', function (): void {
 });
 
 test('geo dashboard registers geo map widget', function (): void {
-    $dashboard = new Dashboard();
+    $dashboard = new Dashboard;
 
     Assert::assertContains(GeoMapWidget::class, $dashboard->getWidgets());
 });
