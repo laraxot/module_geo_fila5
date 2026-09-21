@@ -261,6 +261,7 @@ Geo module possiede TUTTE le concern geospaziali:
 
 ## Documenti Correlati
 
+- [Inventario Livewire → widget](./bmad/livewire-inventory.md) — Test/form FO ≠ KPI ([story 12.1](./stories/12.1.retire-geo-test-livewire.story.md))
 - [Geo Models Domain Analysis](./geo-models-domain-analysis.md)
 - [Map Component Architecture](./map-component-architecture.md)
 - [Geocoding Provider Integration](./geocoding-providers.md)
