@@ -8,4 +8,4 @@ related:
 
 # Geo — canone
 
-SSoT: [livewire-inventory.md](./livewire-inventory.md). `Test` e form FO address **non** sono widget dashboard. Widget Geo chart restano dove sono.
+SSoT: [livewire-inventory.md](./livewire-inventory.md). Zero conversioni: `Test` è dead code (ritiro, Cluster C); `FormSearchAddressCategories` è un form FO orfano, mai `XotBaseWidget` KPI (Cluster C, FR-G003). Widget mappa FQCN intatti.

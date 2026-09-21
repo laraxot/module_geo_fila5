@@ -26,7 +26,7 @@ class GetTimeZoneAction
 
     public function __construct(?string $apiKey = null)
     {
-        $this->client = new Client();
+        $this->client = new Client;
         $this->apiKey = $apiKey;
     }
 

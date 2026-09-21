@@ -8,9 +8,15 @@ use PHPUnit\Framework\Assert;
 use function Safe\file_get_contents;
 
 test('Http Livewire Test e ritirato', function (): void {
-    $path = dirname(__DIR__, 2).'/app/Http/Livewire/Test.php';
-    Assert::assertFileDoesNotExist($path);
+    $livewireDir = dirname(__DIR__, 2).'/app/Http/Livewire';
+    Assert::assertFileDoesNotExist($livewireDir.'/Test.php');
+    Assert::assertFileDoesNotExist($livewireDir.'/Test.test');
+    Assert::assertFileDoesNotExist($livewireDir.'/test.test');
     Assert::assertFalse(class_exists('Modules\\Geo\\Http\\Livewire\\Test', false));
+
+    $cache = file_get_contents($livewireDir.'/_components.json');
+    Assert::assertStringContainsString('form-search-address-categories', $cache);
+    Assert::assertStringNotContainsString('"name":"test"', $cache);
 });
 
 test('FormSearchAddressCategories resta Livewire HTTP', function (): void {

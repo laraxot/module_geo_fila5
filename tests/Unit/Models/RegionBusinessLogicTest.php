@@ -16,7 +16,7 @@ use function Safe\class_uses;
 
 describe('Region Business Logic', function () {
     test('region extends base model', function () {
-        Assert::assertInstanceOf(BaseModel::class, new Region());
+        Assert::assertInstanceOf(BaseModel::class, new Region);
     });
 
     test('region has factory trait for testing', function () {
@@ -32,13 +32,13 @@ describe('Region Business Logic', function () {
     });
 
     test('region has correct key type configured', function () {
-        $region = new Region();
+        $region = new Region;
 
         Assert::assertSame('integer', $region->getKeyType());
     });
 
     test('region has schema definition for geographic data', function () {
-        $region = new Region();
+        $region = new Region;
         $reflection = new \ReflectionClass($region);
         $schemaProperty = $reflection->getProperty('schema');
 
@@ -58,7 +58,7 @@ describe('Region Business Logic', function () {
     });
 
     test('region model can be instantiated without errors', function () {
-        $region = new Region();
+        $region = new Region;
 
         Assert::assertInstanceOf(Region::class, $region);
         Assert::assertInstanceOf(BaseModel::class, $region);

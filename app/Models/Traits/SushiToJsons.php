@@ -165,6 +165,8 @@ trait SushiToJsons
 
     /**
      * Trova l'indice di un record.
+     *
+     * @param  mixed  $id  Chiave primaria del record (int|string da Model::getKey())
      */
     protected function findIndex(mixed $id): ?int
     {

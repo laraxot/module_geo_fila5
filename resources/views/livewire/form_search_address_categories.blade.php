@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-
 ?>
 <div>
     <div class="home-address-container delay-1s animate__fadeInUp animate__animated">
