@@ -318,7 +318,7 @@ class ComuneJson extends GeoJsonModel
 
         // Chiavi specifiche per regione
         static::allRegions()
-            ->each(static function (mixed $_nome, int|string $code) use (&$clearedKeys): void {
+            ->each(static function (string $_nome, string $code) use (&$clearedKeys): void {
                 $keys = ["geo_region_{$code}", "geo_region_{$code}_provinces"];
                 foreach ($keys as $key) {
                     Cache::forget($key);
@@ -328,7 +328,7 @@ class ComuneJson extends GeoJsonModel
 
         // Chiavi specifiche per provincia
         static::allProvinces()
-            ->each(static function (mixed $_nome, int|string $code) use (&$clearedKeys): void {
+            ->each(static function (string $_nome, string $code) use (&$clearedKeys): void {
                 $key = "geo_province_{$code}";
                 Cache::forget($key);
                 $clearedKeys[] = $key;
