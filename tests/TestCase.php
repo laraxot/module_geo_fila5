@@ -69,14 +69,6 @@ abstract class TestCase extends XotBaseTestCase
 
     protected function setUp(): void
     {
-<<<<<<< .merge_file_6lhtfa
-        // Senza il fixture condiviso i test cercano MariaDB con le credenziali
-        // dello sviluppatore che ha scritto il .env, e falliscono su ogni altra
-        // macchina.
-        $this->prepareSharedSqliteForTesting();
-
-=======
->>>>>>> .merge_file_KSvssj
         parent::setUp();
 
         config(['xra.pub_theme' => 'Meetup']);
