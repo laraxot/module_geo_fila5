@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Modules\Geo\Datas\Routing;
 
 use Spatie\LaravelData\Data;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
  * Data Transfer Object per i risultati del calcolo del tempo di percorrenza.
@@ -70,11 +72,11 @@ class TravelTimeData extends Data
         }
 
         return new self(
-            duration_seconds: (int) $element['duration']['value'],
+            duration_seconds: SafeIntCastAction::cast($element['duration']['value']),
             duration_in_traffic_seconds: isset($element['duration_in_traffic'])
-                ? ((int) $element['duration_in_traffic']['value'])
-                : ((int) $element['duration']['value']),
-            distance_meters: (int) $element['distance']['value'],
+                ? (SafeIntCastAction::cast($element['duration_in_traffic']['value']))
+                : (SafeIntCastAction::cast($element['duration']['value'])),
+            distance_meters: SafeIntCastAction::cast($element['distance']['value']),
             formatted_duration: $element['duration']['text'],
             formatted_distance: $element['distance']['text'],
             status: $response['status'],

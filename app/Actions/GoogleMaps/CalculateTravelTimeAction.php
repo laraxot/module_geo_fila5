@@ -12,6 +12,8 @@ use Modules\Geo\Datas\Routing\TravelTimeData;
 
 use function Safe\json_decode;
 
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
@@ -129,12 +131,12 @@ class CalculateTravelTimeAction
         }
 
         return new TravelTimeData(
-            duration_seconds: (int) ($element['duration']['value'] ?? 0),
-            duration_in_traffic_seconds: (int) ($element['duration_in_traffic']['value'] ?? $element['duration']['value'] ?? 0),
-            distance_meters: (int) ($element['distance']['value'] ?? 0),
-            formatted_duration: (string) ($element['duration']['text'] ?? ''),
-            formatted_distance: (string) ($element['distance']['text'] ?? ''),
-            status: (string) ($data['status'] ?? 'ERROR'),
+            duration_seconds: SafeIntCastAction::cast($element['duration']['value'] ?? 0),
+            duration_in_traffic_seconds: SafeIntCastAction::cast($element['duration_in_traffic']['value'] ?? $element['duration']['value'] ?? 0),
+            distance_meters: SafeIntCastAction::cast($element['distance']['value'] ?? 0),
+            formatted_duration: SafeStringCastAction::cast($element['duration']['text'] ?? ''),
+            formatted_distance: SafeStringCastAction::cast($element['distance']['text'] ?? ''),
+            status: SafeStringCastAction::cast($data['status'] ?? 'ERROR'),
         );
     }
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Models;
 
+use Modules\Geo\Models\Traits\GeoTrait;
+
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -94,6 +96,7 @@ use Modules\Xot\Contracts\ProfileContract;
  */
 class Address extends BaseModel
 {
+    use GeoTrait;
     use SoftDeletes;
 
     /** @var list<string> */

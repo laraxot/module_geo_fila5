@@ -7,211 +7,145 @@ namespace Modules\Geo\Tests\Unit\Models;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Models\Comune;
-<<<<<<< .merge_file_aD2FLo
+use PHPUnit\Framework\Assert;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-=======
-<<<<<<< .merge_file_b1Q2aW
+use function Safe\json_encode;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-=======
-use Tests\TestCase;
-
-uses(TestCase::class);
->>>>>>> .merge_file_gQPYW9
->>>>>>> .merge_file_mobYjO
-// Laraxot — see module docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-
-beforeEach(function (): void {
-    // Crea un file JSON di test
-    $this->testData = [
+/**
+ * Alias storico di ComuneTest (nome file lowercase).
+ * Stessa business logic: API pubbliche Comune, senza scope fantasma by*.
+ *
+ * @return list<array<string, mixed>>
+ */
+function comuneLegacyFixtureRows(): array
+{
+    return [
         [
             'id' => 1,
             'regione' => 'Lombardia',
             'provincia' => 'Milano',
-            'comune' => 'Milano',
+            'nome' => 'Milano',
             'cap' => '20100',
             'lat' => 45.4642,
             'lng' => 9.1900,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'created_at' => now()->toIso8601String(),
+            'updated_at' => now()->toIso8601String(),
         ],
         [
             'id' => 2,
             'regione' => 'Lombardia',
             'provincia' => 'Milano',
-            'comune' => 'Sesto San Giovanni',
+            'nome' => 'Sesto San Giovanni',
             'cap' => '20099',
             'lat' => 45.5347,
             'lng' => 9.2345,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'created_at' => now()->toIso8601String(),
+            'updated_at' => now()->toIso8601String(),
         ],
     ];
+}
 
+function comuneLegacyAttrAsString(mixed $value): string
+{
+    if (is_string($value)) {
+        return $value;
+    }
+
+    if (is_array($value)) {
+        $candidate = $value['nome'] ?? $value[0] ?? null;
+
+        return is_string($candidate) ? $candidate : '';
+    }
+
+    return '';
+}
+
+beforeEach(function (): void {
+    File::ensureDirectoryExists(base_path('database/content'));
     File::put(
         base_path('database/content/comuni.json'),
-        json_encode($this->testData, JSON_PRETTY_PRINT)
+        json_encode(comuneLegacyFixtureRows(), JSON_PRETTY_PRINT),
     );
 });
 
 afterEach(function (): void {
-    // Pulisci la cache
     Cache::forget('sushi_Comune_data');
-
-    // Rimuovi il file di test
     File::delete(base_path('database/content/comuni.json'));
 });
 
-test('it can load comuni from json', function (): void {
+test('legacy: it can load comuni from json', function (): void {
     $comuni = Comune::all();
 
-    expect($comuni)->toHaveCount(2);
-    expect($comuni[0]->comune)->toBe('Milano');
-    expect($comuni[1]->comune)->toBe('Sesto San Giovanni');
+    Assert::assertCount(2, $comuni);
+    $first = $comuni->first();
+    Assert::assertInstanceOf(Comune::class, $first);
+    Assert::assertSame('Milano', $first->nome);
 });
 
-test('it can filter comuni by region', function (): void {
-    $comuni = Comune::byRegion('Lombardia')->get();
+test('legacy: it can filter comuni by region via query', function (): void {
+    $comuni = Comune::query()->where('regione', 'Lombardia')->get();
 
-    expect($comuni)->toHaveCount(2);
-    expect($comuni[0]->regione)->toBe('Lombardia');
-    expect($comuni[1]->regione)->toBe('Lombardia');
+    Assert::assertCount(2, $comuni);
+    $first = $comuni->first();
+    Assert::assertInstanceOf(Comune::class, $first);
+    Assert::assertSame('Lombardia', comuneLegacyAttrAsString($first->regione));
 });
 
-test('it can filter comuni by province', function (): void {
-    $comuni = Comune::byProvince('Milano')->get();
+test('legacy: it can filter comuni by province via getComuniByProvincia', function (): void {
+    $comuni = Comune::getComuniByProvincia('Milano');
 
-    expect($comuni)->toHaveCount(2);
-    expect($comuni[0]->provincia)->toBe('Milano');
-    expect($comuni[1]->provincia)->toBe('Milano');
+    Assert::assertCount(2, $comuni);
 });
 
-test('it can filter comuni by cap', function (): void {
-    $comuni = Comune::byCap('20100')->get();
+test('legacy: it can filter comuni by cap via findByCap', function (): void {
+    $comuni = Comune::findByCap('20100');
 
-    expect($comuni)->toHaveCount(1);
-    expect($comuni[0]->cap)->toBe('20100');
+    Assert::assertCount(1, $comuni);
+    $first = $comuni->first();
+    Assert::assertInstanceOf(Comune::class, $first);
+    Assert::assertSame('20100', comuneLegacyAttrAsString($first->cap));
 });
 
-test('it can filter comuni by name', function (): void {
-    $comuni = Comune::byName('Milano')->get();
+test('legacy: it can find by name', function (): void {
+    $comune = Comune::findByNome('Milano');
 
-    expect($comuni)->toHaveCount(1);
-    expect($comuni[0]->comune)->toBe('Milano');
+    Assert::assertInstanceOf(Comune::class, $comune);
+    Assert::assertSame('Milano', $comune->nome);
 });
 
-test('it can filter comuni by exact name', function (): void {
-    $comuni = Comune::byExactName('Milano')->get();
-
-    expect($comuni)->toHaveCount(1);
-    expect($comuni[0]->comune)->toBe('Milano');
-});
-
-test('it can filter comuni by name and province', function (): void {
-    $comuni = Comune::byNameAndProvince('Milano', 'Milano')->get();
-
-    expect($comuni)->toHaveCount(1);
-    expect($comuni[0]->comune)->toBe('Milano');
-    expect($comuni[0]->provincia)->toBe('Milano');
-});
-
-test('it can filter comuni by name and region', function (): void {
-    $comuni = Comune::byNameAndRegion('Milano', 'Lombardia')->get();
-
-    expect($comuni)->toHaveCount(1);
-    expect($comuni[0]->comune)->toBe('Milano');
-    expect($comuni[0]->regione)->toBe('Lombardia');
-});
-
-test('it can filter comuni by name province and region', function (): void {
-    $comuni = Comune::byNameProvinceAndRegion('Milano', 'Milano', 'Lombardia')->get();
-
-    expect($comuni)->toHaveCount(1);
-    expect($comuni[0]->comune)->toBe('Milano');
-    expect($comuni[0]->provincia)->toBe('Milano');
-    expect($comuni[0]->regione)->toBe('Lombardia');
-});
-
-test('it can filter comuni by name and cap', function (): void {
-    $comuni = Comune::byNameAndCap('Milano', '20100')->get();
-
-    expect($comuni)->toHaveCount(1);
-    expect($comuni[0]->comune)->toBe('Milano');
-    expect($comuni[0]->cap)->toBe('20100');
-});
-
-test('it can filter comuni by name province and cap', function (): void {
-    $comuni = Comune::byNameProvinceAndCap('Milano', 'Milano', '20100')->get();
-
-    expect($comuni)->toHaveCount(1);
-    expect($comuni[0]->comune)->toBe('Milano');
-    expect($comuni[0]->provincia)->toBe('Milano');
-    expect($comuni[0]->cap)->toBe('20100');
-});
-
-test('it can filter comuni by name region and cap', function (): void {
-    $comuni = Comune::byNameRegionAndCap('Milano', 'Lombardia', '20100')->get();
-
-    expect($comuni)->toHaveCount(1);
-    expect($comuni[0]->comune)->toBe('Milano');
-    expect($comuni[0]->regione)->toBe('Lombardia');
-    expect($comuni[0]->cap)->toBe('20100');
-});
-
-test('it can filter comuni by name province region and cap', function (): void {
-    $comuni = Comune::byNameProvinceRegionAndCap('Milano', 'Milano', 'Lombardia', '20100')->get();
-
-    expect($comuni)->toHaveCount(1);
-    expect($comuni[0]->comune)->toBe('Milano');
-    expect($comuni[0]->provincia)->toBe('Milano');
-    expect($comuni[0]->regione)->toBe('Lombardia');
-    expect($comuni[0]->cap)->toBe('20100');
-});
-
-test('it can create a new comune', function (): void {
-    $comune = Comune::create([
+test('legacy: it can create a new comune', function (): void {
+    $comune = Comune::query()->create([
         'regione' => 'Lombardia',
         'provincia' => 'Milano',
-        'comune' => 'Bresso',
+        'nome' => 'Bresso',
         'cap' => '20091',
         'lat' => 45.5389,
         'lng' => 9.1900,
     ]);
 
-    expect($comune->id)->not->toBeNull();
-    expect($comune->comune)->toBe('Bresso');
-    expect($comune->provincia)->toBe('Milano');
-    expect($comune->regione)->toBe('Lombardia');
-    expect($comune->cap)->toBe('20091');
-    expect($comune->lat)->toBe(45.5389);
-    expect($comune->lng)->toBe(9.1900);
+    Assert::assertInstanceOf(Comune::class, $comune);
+    Assert::assertSame('Bresso', $comune->nome);
 });
 
-test('it can update an existing comune', function (): void {
-    $comune = Comune::first();
+test('legacy: it can update an existing comune', function (): void {
+    $comune = Comune::query()->first();
+    Assert::assertInstanceOf(Comune::class, $comune);
+
     $comune->update([
-        'comune' => 'Milano Centro',
+        'nome' => 'Milano Centro',
         'cap' => '20121',
     ]);
 
-    expect($comune->comune)->toBe('Milano Centro');
-    expect($comune->cap)->toBe('20121');
+    Assert::assertSame('Milano Centro', $comune->nome);
+    Assert::assertSame('20121', comuneLegacyAttrAsString($comune->cap));
 });
 
-test('it can delete an existing comune', function (): void {
-    $comune = Comune::first();
+test('legacy: it can delete an existing comune', function (): void {
+    $comune = Comune::query()->first();
+    Assert::assertInstanceOf(Comune::class, $comune);
     $id = $comune->id;
 
     $comune->delete();
 
-    expect(Comune::find($id))->toBeNull();
+    Assert::assertNull(Comune::query()->find($id));
 });

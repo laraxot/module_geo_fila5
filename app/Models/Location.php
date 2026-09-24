@@ -7,6 +7,8 @@ namespace Modules\Geo\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Carbon;
+use Modules\Geo\Models\Traits\HasAddress;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
@@ -65,6 +67,16 @@ use Modules\Xot\Contracts\ProfileContract;
  */
 class Location extends BaseModel
 {
+    /**
+     * Location può avere più Address morfici (sede, fatturazione, ecc.).
+     * Non merge-iamo i fillable AddressItemEnum sulla tabella locations.
+     *
+     * @use HasAddress<Location>
+     */
+    use HasAddress {
+        initializeHasAddress as private initializeHasAddressFromTrait;
+    }
+
     protected $fillable = [
         'name',
         'lat',
@@ -134,6 +146,14 @@ class Location extends BaseModel
     }
 
     /**
+     * Location tiene lat/lng propri; i campi AddressItemEnum non vanno sul fillable.
+     */
+    protected function initializeHasAddress(): void
+    {
+        // no-op: non mergeFillable dei campi address sulla tabella locations
+    }
+
+    /**
      * Accessor for the "location" attribute.
      */
     /**
@@ -143,8 +163,8 @@ class Location extends BaseModel
     {
         return Attribute::make(
             get: fn (): array => [
-                'lat' => (float) $this->lat,
-                'lng' => (float) $this->lng,
+                'lat' => SafeFloatCastAction::cast($this->lat),
+                'lng' => SafeFloatCastAction::cast($this->lng),
             ],
             set: function (?array $value): void {
                 if (is_array($value)) {
