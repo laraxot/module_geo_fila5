@@ -1,3 +1,8 @@
+<<<<<<< .merge_file_Jv8Bkx
+version https://git-lfs.github.com/spec/v1
+oid sha256:86b434c25383eac3d9827dc78ead57385eef5f8592a0d939361374fac0293fb8
+size 856
+=======
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="37px" height="34px" viewBox="0 0 37 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
@@ -13,3 +18,4 @@
         </g>
     </g>
 </svg>
+>>>>>>> .merge_file_n4Adiu

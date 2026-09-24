@@ -1,23 +1,6 @@
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
 <?php
 
 declare(strict_types=1);
-
 ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -34,13 +17,6 @@ declare(strict_types=1);
         <style>
             html, body {
                 background-color: #fff;
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot — see module docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;

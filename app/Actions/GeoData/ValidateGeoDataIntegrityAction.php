@@ -82,8 +82,13 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
+<<<<<<< .merge_file_S1Wryu
      * @param array<mixed, mixed> $region
      * @param list<string>        $regionCodes
+=======
+     * @param array<array-key, mixed> $region
+     * @param list<string>            $regionCodes
+>>>>>>> .merge_file_ILnBi5
      *
      * @param-out list<string> $regionCodes
      */
@@ -115,8 +120,13 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
+<<<<<<< .merge_file_S1Wryu
      * @param array<mixed, mixed> $province
      * @param list<string>        $provinceCodes
+=======
+     * @param array<array-key, mixed> $province
+     * @param list<string>            $provinceCodes
+>>>>>>> .merge_file_ILnBi5
      *
      * @param-out list<string> $provinceCodes
      */
@@ -157,8 +167,13 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
+<<<<<<< .merge_file_S1Wryu
      * @param array<mixed, mixed> $city
      * @param list<string>        $cityCodes
+=======
+     * @param array<array-key, mixed> $city
+     * @param list<string>            $cityCodes
+>>>>>>> .merge_file_ILnBi5
      *
      * @param-out list<string> $cityCodes
      */
