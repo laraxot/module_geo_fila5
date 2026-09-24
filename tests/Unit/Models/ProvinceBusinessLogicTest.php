@@ -9,13 +9,14 @@ use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Province;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use PHPUnit\Framework\Assert;
-use Sushi\Sushi;
 
 use function Safe\class_uses;
 
+use Sushi\Sushi;
+
 describe('Province Business Logic', function () {
     test('province extends base model', function () {
-        Assert::assertInstanceOf(BaseModel::class, new Province);
+        Assert::assertInstanceOf(BaseModel::class, new Province());
     });
 
     test('province has factory trait for testing', function () {
@@ -31,7 +32,7 @@ describe('Province Business Logic', function () {
     });
 
     test('province has schema definition for geographic hierarchy', function () {
-        $province = new Province;
+        $province = new Province();
         $reflection = new \ReflectionClass($province);
         $schemaProperty = $reflection->getProperty('schema');
 
@@ -46,14 +47,14 @@ describe('Province Business Logic', function () {
     });
 
     test('province can get rows from comune data', function () {
-        $province = new Province;
+        $province = new Province();
         $rows = $province->getRows();
 
         Assert::assertNotEmpty($rows);
     });
 
     test('province model can be instantiated without errors', function () {
-        $province = new Province;
+        $province = new Province();
 
         Assert::assertInstanceOf(Province::class, $province);
         Assert::assertInstanceOf(BaseModel::class, $province);

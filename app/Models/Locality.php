@@ -12,13 +12,13 @@ use Modules\Xot\Contracts\ProfileContract;
 use Sushi\Sushi;
 
 /**
- * @property int|null $region_id
- * @property int|null $province_id
- * @property int $id
- * @property string|null $name
+ * @property int|null                     $region_id
+ * @property int|null                     $province_id
+ * @property int                          $id
+ * @property string|null                  $name
  * @property array<array-key, mixed>|null $postal_code
- * @property-read ProfileContract|null $creator
- * @property-read ProfileContract|null $updater
+ * @property ProfileContract|null         $creator
+ * @property ProfileContract|null         $updater
  *
  * @method static Builder<static>|Locality newModelQuery()
  * @method static Builder<static>|Locality newQuery()
@@ -77,7 +77,7 @@ class Locality extends BaseModel
             $provinceId = $provincia['codice'] ?? null;
             $id = $item['codice'] ?? $item['id'] ?? null;
             $name = $item['nome'] ?? null;
-            if ($regionId === null || $provinceId === null || $id === null || $name === null) {
+            if (null === $regionId || null === $provinceId || null === $id || null === $name) {
                 continue;
             }
 
@@ -153,7 +153,7 @@ class Locality extends BaseModel
         $city = $get('locality');
         $res = self::where('region_id', $region)
             ->where('province_id', $province)
-            ->when($city !== null, static fn (Builder $query) => $query->where('id', $city))
+            ->when(null !== $city, static fn (Builder $query) => $query->where('id', $city))
             ->select('postal_code')
             ->distinct()
             ->orderBy('postal_code')

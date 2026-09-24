@@ -57,7 +57,7 @@ it('calculates distance between two valid locations', function (): void {
 });
 
 it('throws exception for invalid latitude', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect(fn (): array => $action->execute(
         new LocationData(latitude: 100.0, longitude: 9.1900, address: 'Invalid Location'),
@@ -66,7 +66,7 @@ it('throws exception for invalid latitude', function (): void {
 });
 
 it('throws exception for invalid longitude', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect(fn (): array => $action->execute(
         new LocationData(latitude: 45.4642, longitude: 200.0, address: 'Milano, Italia'),
@@ -75,7 +75,7 @@ it('throws exception for invalid longitude', function (): void {
 });
 
 it('throws exception for negative latitude', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect(fn (): array => $action->execute(
         new LocationData(latitude: -100.0, longitude: 9.1900, address: 'Invalid Location'),
@@ -84,7 +84,7 @@ it('throws exception for negative latitude', function (): void {
 });
 
 it('throws exception for negative longitude', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect(fn (): array => $action->execute(
         new LocationData(latitude: 45.4642, longitude: -200.0, address: 'Milano, Italia'),
@@ -126,50 +126,50 @@ it('throws exception when distance matrix fails', function (): void {
 });
 
 it('formats distance in meters correctly', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect($action->formatDistance(500))->toBe('500 m');
 });
 
 it('formats distance in kilometers correctly', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect($action->formatDistance(1500))->toBe('1.5 km');
 });
 
 it('formats distance with decimal kilometers', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect($action->formatDistance(2500))->toBe('2.5 km');
 });
 
 it('formats exact kilometer distance', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect($action->formatDistance(1000))->toBe('1.0 km');
 });
 
 it('throws exception for negative distance', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect(fn (): string => $action->formatDistance(-100))
         ->toThrow(\InvalidArgumentException::class, 'La distanza non può essere negativa');
 });
 
 it('handles zero distance', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect($action->formatDistance(0))->toBe('0 m');
 });
 
 it('handles very small distances', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect($action->formatDistance(1))->toBe('1 m');
 });
 
 it('handles very large distances', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub);
+    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
 
     expect($action->formatDistance(999999))->toBe('1000.0 km');
 });
