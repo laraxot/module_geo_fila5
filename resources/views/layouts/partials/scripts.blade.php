@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 ?>
 {{--
 <script src="js/leaflet.js"></script>

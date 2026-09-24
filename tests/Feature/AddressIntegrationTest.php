@@ -56,21 +56,18 @@ function makeAddress(array $overrides = []): array
  */
 function formatFullAddress(array $address): string
 {
-    /** @var list<string|int|float|bool|null> $rawParts */
-    $rawParts = [
-        $address['route'] ?? null,
-        $address['street_number'] ?? null,
-        $address['locality'] ?? null,
-        $address['postal_code'] ?? null,
-        $address['country'] ?? null,
-    ];
-
     $parts = array_filter(
-        $rawParts,
-        static fn (string|int|float|bool|null $value): bool => '' !== SafeStringCastAction::cast($value),
+        [
+            $address['route'] ?? null,
+            $address['street_number'] ?? null,
+            $address['locality'] ?? null,
+            $address['postal_code'] ?? null,
+            $address['country'] ?? null,
+        ],
+        static fn (mixed $value): bool => '' !== SafeStringCastAction::cast($value),
     );
 
-    return implode(', ', array_map(static fn (string|int|float|bool|null $part): string => SafeStringCastAction::cast($part), $parts));
+    return implode(', ', array_map(static fn (mixed $part): string => SafeStringCastAction::cast($part), $parts));
 }
 
 describe('Address Integration', function () {
