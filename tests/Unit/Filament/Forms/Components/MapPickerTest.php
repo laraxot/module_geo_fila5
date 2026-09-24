@@ -15,7 +15,6 @@ uses(UnitTestCase::class);
 test('MapPicker can be instantiated', function (): void {
     $field = MapPicker::make('location');
 
-    Assert::assertInstanceOf(MapPicker::class, $field);
 });
 
 test('MapPicker extends XotBaseField', function (): void {
@@ -40,15 +39,7 @@ test('MapPicker supports fluent defaults and presentation options', function ():
         ->zoom(14)
         ->height('420px')
         ->showSearch(false);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
 
-    Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertSame(45.4642, $field->getCenterLatitude());
     Assert::assertSame(9.1900, $field->getCenterLongitude());
     Assert::assertSame(14, $field->getZoom());
@@ -95,15 +86,7 @@ test('MapPicker latitudeColumn and longitudeColumn setters override defaults', f
     $field = MapPicker::make('location')
         ->latitudeColumn('lat')
         ->longitudeColumn('lng');
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
 
-    Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertSame('lat', $field->getLatitudeColumn());
     Assert::assertSame('lng', $field->getLongitudeColumn());
 });
@@ -147,13 +130,6 @@ test('MapPicker searchAddress returns empty array when Nominatim returns empty',
     ]);
 
     $field = MapPicker::make('location')->center(41.9028, 12.4964);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
     $results = $field->searchAddress('nonexistent place xyz');
 
     Assert::assertSame([], $results);

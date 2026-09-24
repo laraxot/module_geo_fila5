@@ -6,10 +6,9 @@ namespace Modules\Geo\Actions\GeoData;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
-
-use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Carica e valida il file JSON dei dati geografici (regioni/province/città).

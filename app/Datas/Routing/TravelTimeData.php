@@ -21,8 +21,7 @@ class TravelTimeData extends Data
         public readonly string $formatted_duration,
         public readonly string $formatted_distance,
         public readonly string $status = 'OK',
-    ) {
-    }
+    ) {}
 
     /**
      * Crea un'istanza di errore.
@@ -60,21 +59,21 @@ class TravelTimeData extends Data
      */
     public static function fromGoogleResponse(array $response): self
     {
-        if ('OK' !== $response['status']) {
+        if ($response['status'] !== 'OK') {
             return self::error($response['status']);
         }
 
         $element = $response['rows'][0]['elements'][0];
-        if ('OK' !== $element['status']) {
+        if ($element['status'] !== 'OK') {
             return self::error($element['status']);
         }
 
         return new self(
-            duration_seconds: SafeIntCastAction::cast($element['duration']['value']),
+            duration_seconds: (int) $element['duration']['value'],
             duration_in_traffic_seconds: isset($element['duration_in_traffic'])
-                ? (SafeIntCastAction::cast($element['duration_in_traffic']['value']))
-                : (SafeIntCastAction::cast($element['duration']['value'])),
-            distance_meters: SafeIntCastAction::cast($element['distance']['value']),
+                ? ((int) $element['duration_in_traffic']['value'])
+                : ((int) $element['duration']['value']),
+            distance_meters: (int) $element['distance']['value'],
             formatted_duration: $element['duration']['text'],
             formatted_distance: $element['distance']['text'],
             status: $response['status'],

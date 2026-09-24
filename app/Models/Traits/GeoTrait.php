@@ -58,14 +58,14 @@ trait GeoTrait
     public function distance(?float $lat = null, ?float $lng = null): ?float
     {
         $distance = app(CalculateGeoDistanceAction::class)->execute(
-            SafeFloatCastAction::cast($this->latitude),
-            SafeFloatCastAction::cast($this->longitude),
+            (float) $this->latitude,
+            (float) $this->longitude,
             $lat,
             $lng,
             '',
         );
 
-        return null !== $distance ? SafeFloatCastAction::cast($distance) : null;
+        return $distance !== null ? (float) $distance : null;
     }
 
     public function distanceCustomField(
@@ -92,7 +92,7 @@ trait GeoTrait
             $unit,
         );
 
-        return null !== $distance ? SafeFloatCastAction::cast($distance) : null;
+        return $distance !== null ? (float) $distance : null;
     }
 
     // ---- Scopes ----
@@ -159,19 +159,19 @@ trait GeoTrait
 
     public function getAddress(): string
     {
-        if ('' === $this->country) {
+        if ($this->country === '') {
             $this->country = 'Italia';
         }
 
-        return SafeStringCastAction::cast($this->route).
+        return $this->route.
             ', '.
-            SafeStringCastAction::cast($this->street_number).
+            $this->street_number.
             ', '.
-            SafeStringCastAction::cast($this->locality).
+            $this->locality.
             ', '.
-            SafeStringCastAction::cast($this->administrative_area_level_2).
+            $this->administrative_area_level_2.
             ', '.
-            SafeStringCastAction::cast($this->country);
+            $this->country;
     }
 
     /**
@@ -180,25 +180,24 @@ trait GeoTrait
     public function getLatitudeAttribute(mixed $value): ?float
     {
         if (is_float($value) || is_int($value)) {
-            return SafeFloatCastAction::cast($value);
+            return (float) $value;
         }
         $address = $this->address;
-        if (null === $address) {
+        if ($address === null) {
             return null;
         }
         if (is_string($address) && isJson($address)) {
             $geo = GeoData::from(json_decode($address, true, 512, JSON_THROW_ON_ERROR));
             $latlng = $geo->latlng;
-            if (! isset($latlng['lat'], $latlng['lng'])) {
-                return null;
+            $lat = is_float($latlng['lat'] ?? null) || is_int($latlng['lat'] ?? null) ? (float) ($latlng['lat']) : null;
+            $lng = is_float($latlng['lng'] ?? null) || is_int($latlng['lng'] ?? null) ? (float) ($latlng['lng']) : null;
+            if ($lat !== null && $lng !== null) {
+                $this->update([
+                    'latitude' => $lat,
+                    'longitude' => $lng,
+                ]);
+                $this->save();
             }
-            $lat = SafeFloatCastAction::cast($latlng['lat']);
-            $lng = SafeFloatCastAction::cast($latlng['lng']);
-            $this->update([
-                'latitude' => $lat,
-                'longitude' => $lng,
-            ]);
-            $this->save();
 
             return $lat;
         }
@@ -241,11 +240,8 @@ trait GeoTrait
 
             $geo = GeoData::from(json_decode((string) $value, true, 512, JSON_THROW_ON_ERROR));
             $latlng = $geo->latlng;
-            if (! isset($latlng['lat'], $latlng['lng'])) {
-                return;
-            }
-            $lat = SafeFloatCastAction::cast($latlng['lat']);
-            $lng = SafeFloatCastAction::cast($latlng['lng']);
+            $lat = $latlng['lat'];
+            $lng = $latlng['lng'];
 
             // unset($json['latlng'], $json['value']);
             // $this->attributes = array_merge($this->attributes, $json);
@@ -258,13 +254,12 @@ trait GeoTrait
             $rawFullAddress = $this->attributes['full_address'] ?? '';
             $fullAddress = is_string($rawFullAddress) ? $rawFullAddress : '';
             if (strlen($fullAddress) < 10) {
-                $tmp = [
-                    SafeStringCastAction::cast($geo->route),
-                    SafeStringCastAction::cast($geo->street_number),
-                    SafeStringCastAction::cast($geo->postal_code),
-                    SafeStringCastAction::cast($geo->administrative_area_level_3),
-                    SafeStringCastAction::cast($geo->administrative_area_level_2_short),
-                ];
+                $tmp = [];
+                $tmp[] = $geo->route ?? '';
+                $tmp[] = $geo->street_number ?? '';
+                $tmp[] = $geo->postal_code ?? '';
+                $tmp[] = $geo->administrative_area_level_3 ?? '';
+                $tmp[] = $geo->administrative_area_level_2_short ?? '';
                 $this->attributes['full_address'] = implode(', ', $tmp);
             }
         }
@@ -278,8 +273,7 @@ trait GeoTrait
     }
 
     /**
-     * @param mixed $value
-     *
+     * @param  mixed  $value
      * @return bool|mixed|string
      */
     /*
@@ -313,7 +307,7 @@ trait GeoTrait
      */
     public function getFullAddressAttribute(?string $value): ?string
     {
-        if (null === $this->address) {
+        if ($this->address === null) {
             return null;
         }
         if (is_string($this->address) && isJson($this->address)) {
@@ -373,13 +367,12 @@ trait GeoTrait
          * return $value;
          * }
          */
-        $tmp = [
-            SafeStringCastAction::cast($this->route),
-            SafeStringCastAction::cast($this->street_number),
-            SafeStringCastAction::cast($this->postal_code),
-            SafeStringCastAction::cast($this->administrative_area_level_3),
-            SafeStringCastAction::cast($this->administrative_area_level_2_short),
-        ];
+        $tmp = [];
+        $tmp[] = $this->route;
+        $tmp[] = $this->street_number;
+        $tmp[] = $this->postal_code;
+        $tmp[] = $this->administrative_area_level_3;
+        $tmp[] = $this->administrative_area_level_2_short;
 
         return implode(', ', $tmp);
     }

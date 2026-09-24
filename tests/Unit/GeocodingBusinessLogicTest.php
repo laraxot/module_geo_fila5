@@ -118,13 +118,13 @@ describe('Geocoding Business Logic', function () {
         it('validates Italian regional hierarchy', function () {
             $address = italianAddressFixture();
 
-            if ('Milano' === $address['city']) {
+            if ($address['city'] === 'Milano') {
                 Assert::assertSame('Lombardia', $address['region']);
                 Assert::assertSame('MI', $address['province']);
             }
 
             $lombardyProvinces = ['MI', 'BG', 'BS', 'CO', 'CR', 'MN', 'PV', 'SO', 'VA'];
-            if ('Lombardia' === $address['region']) {
+            if ($address['region'] === 'Lombardia') {
                 Assert::assertContains($address['province'], $lombardyProvinces);
             }
         });
@@ -271,12 +271,12 @@ describe('Geocoding Business Logic', function () {
         it('validates population data for cities', function () {
             $place = placeFixture();
 
-            if ('city' === $place['type']) {
+            if ($place['type'] === 'city') {
                 Assert::assertArrayHasKey('population', $place);
                 Assert::assertGreaterThan(0, $place['population']);
             }
 
-            if ('Milano' === $place['name']) {
+            if ($place['name'] === 'Milano') {
                 Assert::assertGreaterThan(1000000, $place['population']);
                 Assert::assertLessThan(2000000, $place['population']);
             }
@@ -371,12 +371,12 @@ describe('Geocoding Business Logic', function () {
 
             $score = 0;
             foreach ($requiredFields as $field) {
-                if (isset($address[$field]) && '' !== $address[$field]) {
+                if (isset($address[$field]) && $address[$field] !== '') {
                     $score += 40;
                 }
             }
             foreach ($optionalFields as $field) {
-                if (isset($address[$field]) && '' !== $address[$field]) {
+                if (isset($address[$field]) && $address[$field] !== '') {
                     $score += 20 / count($optionalFields);
                 }
             }

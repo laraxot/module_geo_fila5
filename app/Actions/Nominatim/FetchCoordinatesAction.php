@@ -7,10 +7,9 @@ namespace Modules\Geo\Actions\Nominatim;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\LocationData;
+use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
-
-use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per ottenere le coordinate geografiche da un indirizzo usando Nominatim.
@@ -31,7 +30,7 @@ class FetchCoordinatesAction
     /**
      * Ottiene le coordinate geografiche da un indirizzo.
      *
-     * @param string $address Indirizzo da geocodificare
+     * @param  string  $address  Indirizzo da geocodificare
      *
      * @throws GuzzleException
      * @throws \RuntimeException

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Rules;
 
+use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Translation\PotentiallyTranslatedString;
 use Modules\Geo\Actions\FilterCoordinatesInRadiusAction;
@@ -18,17 +19,16 @@ class FilterCoordinatesInRadius implements ValidationRule
         private readonly float $centerLatitude,
         private readonly float $centerLongitude,
         private readonly int $radius,
-    ) {
-    }
+    ) {}
 
     /**
      * Determina se le coordinate passate sono all'interno del raggio specificato.
      *
-     * @param string                                                  $attribute Nome dell'attributo
-     * @param mixed                                                   $value     Valore da validare
-     * @param \Closure(string, ?string=): PotentiallyTranslatedString $fail
+     * @param  string  $attribute  Nome dell'attributo
+     * @param  mixed  $value  Valore da validare
+     * @param  Closure(string, ?string=): PotentiallyTranslatedString  $fail
      */
-    public function validate(string $attribute, mixed $value, \Closure $fail): void
+    public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (! \is_array($value)) {
             $fail('Il valore deve essere un array di coordinate');
@@ -58,7 +58,7 @@ class FilterCoordinatesInRadius implements ValidationRule
             $this->radius,
         );
 
-        if ([] === $filteredCoordinates) {
+        if ($filteredCoordinates === []) {
             $fail($this->message());
         }
     }

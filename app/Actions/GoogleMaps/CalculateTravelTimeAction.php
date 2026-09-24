@@ -9,13 +9,10 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\TravelTimeData;
-
-use function Safe\json_decode;
-
-use Modules\Xot\Actions\Cast\SafeIntCastAction;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
+
+use function Safe\json_decode;
 
 /**
  * Action per calcolare il tempo di percorrenza tra due punti tramite Google Maps.
@@ -31,14 +28,13 @@ class CalculateTravelTimeAction
 
     public function __construct(
         private readonly Client $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Calcola il tempo di percorrenza tra due punti.
      *
      * @throws \InvalidArgumentException Se i dati di input non sono validi
-     * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
+     * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(LocationData $origin, LocationData $destination): TravelTimeData
     {
@@ -63,7 +59,7 @@ class CalculateTravelTimeAction
      * Valida i dati di input.
      *
      * @throws \InvalidArgumentException Se i dati di input non sono validi
-     * @throws \RuntimeException         Se la chiave API non è configurata o i dati non sono validi
+     * @throws \RuntimeException Se la chiave API non è configurata o i dati non sono validi
      */
     private function validateInput(LocationData $origin, LocationData $destination): void
     {
@@ -121,22 +117,22 @@ class CalculateTravelTimeAction
          * } $data */
         $data = json_decode($response, true);
 
-        if ('OK' !== $data['status']) {
+        if ($data['status'] !== 'OK') {
             return TravelTimeData::error($data['status']);
         }
 
         $element = $data['rows'][0]['elements'][0];
-        if ('OK' !== $element['status']) {
+        if ($element['status'] !== 'OK') {
             return TravelTimeData::error($element['status']);
         }
 
         return new TravelTimeData(
-            duration_seconds: SafeIntCastAction::cast($element['duration']['value'] ?? 0),
-            duration_in_traffic_seconds: SafeIntCastAction::cast($element['duration_in_traffic']['value'] ?? $element['duration']['value'] ?? 0),
-            distance_meters: SafeIntCastAction::cast($element['distance']['value'] ?? 0),
-            formatted_duration: SafeStringCastAction::cast($element['duration']['text'] ?? ''),
-            formatted_distance: SafeStringCastAction::cast($element['distance']['text'] ?? ''),
-            status: SafeStringCastAction::cast($data['status'] ?? 'ERROR'),
+            duration_seconds: (int) ($element['duration']['value'] ?? 0),
+            duration_in_traffic_seconds: (int) ($element['duration_in_traffic']['value'] ?? $element['duration']['value'] ?? 0),
+            distance_meters: (int) ($element['distance']['value'] ?? 0),
+            formatted_duration: (string) ($element['duration']['text'] ?? ''),
+            formatted_distance: (string) ($element['distance']['text'] ?? ''),
+            status: (string) ($data['status'] ?? 'ERROR'),
         );
     }
 }

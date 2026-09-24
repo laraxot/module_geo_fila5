@@ -11,30 +11,8 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-/**
- * Normalizza attributi Comune che in JSON sono stringhe ma in phpdoc risultano array|string.
- */
-function comuneAttrAsString(mixed $value): string
-{
-    if (is_string($value)) {
-        return $value;
-    }
-
-    if (is_array($value)) {
-        $candidate = $value['nome'] ?? $value[0] ?? null;
-
-        return is_string($candidate) ? $candidate : '';
-    }
-
-    return '';
-}
-
-/**
- * @return list<array<string, mixed>>
- */
-function comuneFixtureRows(): array
-{
-    return [
+beforeEach(function (): void {
+    $comuneFixtureRows = [
         [
             'id' => 1,
             'regione' => 'Lombardia',
@@ -43,8 +21,8 @@ function comuneFixtureRows(): array
             'cap' => '20100',
             'lat' => 45.4642,
             'lng' => 9.1900,
-            'created_at' => now()->toIso8601String(),
-            'updated_at' => now()->toIso8601String(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ],
         [
             'id' => 2,
@@ -54,17 +32,15 @@ function comuneFixtureRows(): array
             'cap' => '20099',
             'lat' => 45.5347,
             'lng' => 9.2345,
-            'created_at' => now()->toIso8601String(),
-            'updated_at' => now()->toIso8601String(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ],
     ];
-}
 
-beforeEach(function (): void {
     File::ensureDirectoryExists(base_path('database/content'));
     File::put(
         base_path('database/content/comuni.json'),
-        json_encode(comuneFixtureRows(), JSON_PRETTY_PRINT),
+        json_encode($comuneFixtureRows, JSON_PRETTY_PRINT)
     );
 });
 
@@ -77,11 +53,11 @@ it('can load comuni from json', function (): void {
     $comuni = Comune::all();
 
     Assert::assertCount(2, $comuni);
+    /** @var Comune $first */
     $first = $comuni->first();
-    Assert::assertInstanceOf(Comune::class, $first);
     Assert::assertSame('Milano', $first->nome);
+    /** @var Comune $last */
     $last = $comuni->last();
-    Assert::assertInstanceOf(Comune::class, $last);
     Assert::assertSame('Sesto San Giovanni', $last->nome);
 });
 
@@ -271,19 +247,18 @@ it('can create a new comune', function (): void {
         'lng' => 9.1900,
     ]);
 
-    Assert::assertInstanceOf(Comune::class, $comune);
+    Assert::assertNotNull($comune);
     Assert::assertSame('Bresso', $comune->nome);
-    Assert::assertSame('Milano', comuneAttrAsString($comune->provincia));
-    Assert::assertSame('Lombardia', comuneAttrAsString($comune->regione));
-    Assert::assertSame('20091', comuneAttrAsString($comune->cap));
+    Assert::assertSame('Milano', $comune->provincia);
+    Assert::assertSame('Lombardia', $comune->regione);
+    Assert::assertSame('20091', $comune->cap);
     Assert::assertSame(45.5389, $comune->lat);
     Assert::assertSame(9.1900, $comune->lng);
 });
 
 it('can update an existing comune', function (): void {
-    $comune = Comune::query()->first();
-    Assert::assertInstanceOf(Comune::class, $comune);
-
+    $comune = Comune::first();
+    /* @phpstan-ignore-next-line -- $comune may be null from first() */
     $comune->update([
         'nome' => 'Milano Centro',
         'cap' => '20121',
