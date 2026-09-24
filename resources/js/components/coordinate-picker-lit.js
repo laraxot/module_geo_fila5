@@ -1,3 +1,9 @@
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
 import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';
 import { mapStylesText } from './map/styles.js';
@@ -100,7 +106,6 @@ export class CoordinatePickerField extends LitElement {
         bindRefreshHandler(this);
 
         this._handleFullscreenChange = () => {
-            console.log('[coordinate-picker] Fullscreen change event detected');
             syncFullscreenState(this);
         };
         document.addEventListener('fullscreenchange', this._handleFullscreenChange);

@@ -4,32 +4,31 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions;
 
-use Illuminate\Support\Collection;
 use Modules\Geo\Actions\GetAddressDataFromFullAddressAction;
-use PHPUnit\Framework\Assert;
+use Modules\Geo\Tests\TestCase;
+
+uses(TestCase::class);
+
+beforeEach(function () {
+    $this->action = new GetAddressDataFromFullAddressAction();
+});
 
 it('returns AddressData when first service succeeds', function (): void {
-    $action = new GetAddressDataFromFullAddressAction();
-
     // As this action depends on multiple external services which are difficult to mock,
     // we can test that it at least has the correct structure and properties
-    Assert::assertInstanceOf(GetAddressDataFromFullAddressAction::class, $action);
-    Assert::assertInstanceOf(Collection::class, $action->getErrors());
-    Assert::assertSame(0, $action->getErrors()->count());
+    expect($this->action)->toBeInstanceOf(GetAddressDataFromFullAddressAction::class);
+    expect($this->action->getErrors())->toBeInstanceOf(Illuminate\Support\Collection::class);
+    expect($this->action->getErrors()->count())->toBe(0);
 });
 
 it('initializes with empty errors collection', function (): void {
     $action = new GetAddressDataFromFullAddressAction();
 
-    $action = new GetAddressDataFromFullAddressAction();
-
-    Assert::assertInstanceOf(Collection::class, $action->getErrors());
-    Assert::assertSame(0, $action->getErrors()->count());
+    expect($action->getErrors())->toBeInstanceOf(Illuminate\Support\Collection::class);
+    expect($action->getErrors()->count())->toBe(0);
 });
 
 it('executes without throwing error for basic call', function (): void {
-    $action = new GetAddressDataFromFullAddressAction();
-
     // This tests that the action can be instantiated and executed without critical errors
     // Since it depends on external services, we can't easily test the full functionality
     $action = new GetAddressDataFromFullAddressAction();
@@ -38,8 +37,8 @@ it('executes without throwing error for basic call', function (): void {
     $result = $action->execute('Test Address');
 
     // The method should return null if no services are available
-    Assert::assertNull($result);
+    expect($result)->toBeNull();
 
     // And should have set error messages
-    Assert::assertInstanceOf(Collection::class, $action->getErrors());
+    expect($action->getErrors())->toBeInstanceOf(Illuminate\Support\Collection::class);
 });

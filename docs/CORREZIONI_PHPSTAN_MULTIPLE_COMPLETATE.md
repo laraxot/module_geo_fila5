@@ -1,10 +1,7 @@
 ---
-title: "Rimando a correzioni_phpstan_multiple_completate.md"
-description: "Documento unificato: il contenuto canonico vive in correzioni_phpstan_multiple_completate.md."
-status: merged
-tags: [merge, duplicato, case-only]
+module: theme
+topic: correzioni-phpstan-multiple-completate
+canonical: ../../../Themes/docs/shared-components/CORREZIONI_PHPSTAN_MULTIPLE_COMPLETATE.md
 ---
 
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [correzioni_phpstan_multiple_completate.md](./correzioni_phpstan_multiple_completate.md).
+See canonical documentation: ../../../Themes/docs/shared-components/CORREZIONI_PHPSTAN_MULTIPLE_COMPLETATE.md

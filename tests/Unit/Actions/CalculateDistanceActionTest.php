@@ -4,37 +4,27 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions;
 
+use Modules\Geo\Tests\TestCase;
+
+uses(TestCase::class);
+
+use Illuminate\Support\Collection;
 use Modules\Geo\Actions\CalculateDistanceAction;
 use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\DistanceCalculationException;
-use Modules\Geo\Tests\Fixtures\CalculateDistanceMatrixActionStub;
 
-/**
- * Bind the distance-matrix stub into the container and resolve the action
- * under test through the container, honouring the QueueableAction convention
- * (dependencies are resolved via app(), never injected through `new`).
- */
-function makeCalculateDistanceAction(CalculateDistanceMatrixActionStub $stub): CalculateDistanceAction
-{
-    app()->instance(CalculateDistanceMatrixAction::class, $stub);
+beforeEach(function (): void {
+    $this->mockDistanceMatrixAction = \Mockery::mock(CalculateDistanceMatrixAction::class);
+    $this->action = new CalculateDistanceAction($this->mockDistanceMatrixAction);
+});
 
-    return app(CalculateDistanceAction::class);
-}
+afterEach(function () {
+    \Mockery::close();
+});
 
 it('calculates distance between two valid locations', function (): void {
-    $expectedResponse = [
-        [
-            [
-                'distance' => ['text' => '572 km', 'value' => 572000],
-                'duration' => ['text' => '5 ore 30 min', 'value' => 19800],
-                'status' => 'OK',
-            ],
-        ],
-    ];
-
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub($expectedResponse));
-
+    // Arrange
     $origin = new LocationData(
         latitude: 45.4642,
         longitude: 9.1900,
@@ -47,135 +37,289 @@ it('calculates distance between two valid locations', function (): void {
         address: 'Roma, Italia',
     );
 
-    $result = $action->execute($origin, $destination);
+    $expectedResponse = [
+        [
+            [
+                'distance' => ['text' => '572 km', 'value' => 572000],
+                'duration' => ['text' => '5 ore 30 min', 'value' => 19800],
+                'status' => 'OK',
+            ],
+        ],
+    ];
 
-    expect($result['distance']['text'])->toBe('572 km')
-        ->and($result['distance']['value'])->toBe(572000)
-        ->and($result['duration']['text'])->toBe('5 ore 30 min')
-        ->and($result['duration']['value'])->toBe(19800)
-        ->and($result['status'])->toBe('OK');
+    $this->mockDistanceMatrixAction
+        ->shouldReceive('execute')
+        ->once()
+        ->with(\Mockery::type(Collection::class), \Mockery::type(Collection::class))
+        ->andReturn($expectedResponse);
+
+    // Act
+    $result = $this->action->execute($origin, $destination);
+
+    // Assert
+    expect($result)
+        ->toBeArray()
+        ->and($result['distance']['text'])
+        ->toBe('572 km')
+        ->and($result['distance']['value'])
+        ->toBe(572000)
+        ->and($result['duration']['text'])
+        ->toBe('5 ore 30 min')
+        ->and($result['duration']['value'])
+        ->toBe(19800)
+        ->and($result['status'])
+        ->toBe('OK');
 });
 
 it('throws exception for invalid latitude', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $origin = new LocationData(
+        latitude: 100.0, // Invalid latitude > 90
+        longitude: 9.1900,
+        address: 'Invalid Location',
+    );
 
-    expect(fn (): array => $action->execute(
-        new LocationData(latitude: 100.0, longitude: 9.1900, address: 'Invalid Location'),
-        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
-    ))->toThrow(\InvalidArgumentException::class, 'Latitudine non valida: 100.000000');
+    $destination = new LocationData(
+        latitude: 41.9028,
+        longitude: 12.4964,
+        address: 'Roma, Italia',
+    );
+
+    // Act & Assert
+    expect(fn () => $this->action->execute($origin, $destination))
+        ->toThrow(\InvalidArgumentException::class, 'Latitudine non valida: 100.000000');
 });
 
 it('throws exception for invalid longitude', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $origin = new LocationData(
+        latitude: 45.4642,
+        longitude: 200.0, // Invalid longitude > 180
+        address: 'Milano, Italia',
+    );
 
-    expect(fn (): array => $action->execute(
-        new LocationData(latitude: 45.4642, longitude: 200.0, address: 'Milano, Italia'),
-        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
-    ))->toThrow(\InvalidArgumentException::class, 'Longitudine non valida: 200.000000');
+    $destination = new LocationData(
+        latitude: 41.9028,
+        longitude: 12.4964,
+        address: 'Roma, Italia',
+    );
+
+    // Act & Assert
+    expect(fn () => $this->action->execute($origin, $destination))
+        ->toThrow(\InvalidArgumentException::class, 'Longitudine non valida: 200.000000');
 });
 
 it('throws exception for negative latitude', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $origin = new LocationData(
+        latitude: -100.0, // Invalid latitude < -90
+        longitude: 9.1900,
+        address: 'Invalid Location',
+    );
 
-    expect(fn (): array => $action->execute(
-        new LocationData(latitude: -100.0, longitude: 9.1900, address: 'Invalid Location'),
-        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
-    ))->toThrow(\InvalidArgumentException::class, 'Latitudine non valida: -100.000000');
+    $destination = new LocationData(
+        latitude: 41.9028,
+        longitude: 12.4964,
+        address: 'Roma, Italia',
+    );
+
+    // Act & Assert
+    expect(fn () => $this->action->execute($origin, $destination))
+        ->toThrow(\InvalidArgumentException::class, 'Latitudine non valida: -100.000000');
 });
 
 it('throws exception for negative longitude', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $origin = new LocationData(
+        latitude: 45.4642,
+        longitude: -200.0, // Invalid longitude < -180
+        address: 'Milano, Italia',
+    );
 
-    expect(fn (): array => $action->execute(
-        new LocationData(latitude: 45.4642, longitude: -200.0, address: 'Milano, Italia'),
-        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
-    ))->toThrow(\InvalidArgumentException::class, 'Longitudine non valida: -200.000000');
+    $destination = new LocationData(
+        latitude: 41.9028,
+        longitude: 12.4964,
+        address: 'Roma, Italia',
+    );
+
+    // Act & Assert
+    expect(fn () => $this->action->execute($origin, $destination))
+        ->toThrow(\InvalidArgumentException::class, 'Longitudine non valida: -200.000000');
 });
 
 it('throws exception for empty response', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub([]));
-
-    expect(fn (): array => $action->execute(
-        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano, Italia'),
-        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
-    ))->toThrow(
-        DistanceCalculationException::class,
-        'Errore nel calcolo della distanza: Risposta non valida dal servizio di calcolo distanze',
+    // Arrange
+    $origin = new LocationData(
+        latitude: 45.4642,
+        longitude: 9.1900,
+        address: 'Milano, Italia',
     );
+
+    $destination = new LocationData(
+        latitude: 41.9028,
+        longitude: 12.4964,
+        address: 'Roma, Italia',
+    );
+
+    $this->mockDistanceMatrixAction
+        ->shouldReceive('execute')
+        ->once()
+        ->andReturn([]);
+
+    // Act & Assert
+    expect(fn () => $this->action->execute($origin, $destination));
 });
 
 it('throws exception for malformed response', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub([[]]));
-
-    expect(fn (): array => $action->execute(
-        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano, Italia'),
-        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
-    ))->toThrow(
-        DistanceCalculationException::class,
-        'Errore nel calcolo della distanza: Risposta non valida dal servizio di calcolo distanze',
+    // Arrange
+    $origin = new LocationData(
+        latitude: 45.4642,
+        longitude: 9.1900,
+        address: 'Milano, Italia',
     );
+
+    $destination = new LocationData(
+        latitude: 41.9028,
+        longitude: 12.4964,
+        address: 'Roma, Italia',
+    );
+
+    $malformedResponse = [['invalid_structure']];
+
+    $this->mockDistanceMatrixAction
+        ->shouldReceive('execute')
+        ->once()
+        ->andReturn($malformedResponse);
+
+    // Act & Assert
+    expect(fn () => $this->action->execute($origin, $destination));
 });
 
 it('throws exception when distance matrix fails', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub([], new \Exception('API Error')));
+    // Arrange
+    $origin = new LocationData(
+        latitude: 45.4642,
+        longitude: 9.1900,
+        address: 'Milano, Italia',
+    );
 
-    expect(fn (): array => $action->execute(
-        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano, Italia'),
-        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
-    ))->toThrow(DistanceCalculationException::class, 'Errore nel calcolo della distanza: API Error');
+    $destination = new LocationData(
+        latitude: 41.9028,
+        longitude: 12.4964,
+        address: 'Roma, Italia',
+    );
+
+    $this->mockDistanceMatrixAction
+        ->shouldReceive('execute')
+        ->once()
+        ->andThrow(new Exception('API Error'));
+
+    // Act & Assert
+    expect(fn () => $this->action->execute($origin, $destination))
+        ->toThrow(DistanceCalculationException::class, 'Errore nel calcolo della distanza: API Error');
 });
 
 it('formats distance in meters correctly', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $meters = 500;
 
-    expect($action->formatDistance(500))->toBe('500 m');
+    // Act
+    $result = $this->action->formatDistance($meters);
+
+    // Assert
+    expect($result)->toBe('500 m');
 });
 
 it('formats distance in kilometers correctly', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $meters = 1500;
 
-    expect($action->formatDistance(1500))->toBe('1.5 km');
+    // Act
+    $result = $this->action->formatDistance($meters);
+
+    // Assert
+    expect($result)->toBe('1.5 km');
 });
 
 it('formats distance with decimal kilometers', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $meters = 2500;
 
-    expect($action->formatDistance(2500))->toBe('2.5 km');
+    // Act
+    $result = $this->action->formatDistance($meters);
+
+    // Assert
+    expect($result)->toBe('2.5 km');
 });
 
 it('formats exact kilometer distance', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $meters = 1000;
 
-    expect($action->formatDistance(1000))->toBe('1.0 km');
+    // Act
+    $result = $this->action->formatDistance($meters);
+
+    // Assert
+    expect($result)->toBe('1.0 km');
 });
 
 it('throws exception for negative distance', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $negativeMeters = -100;
 
-    expect(fn (): string => $action->formatDistance(-100))
+    // Act & Assert
+    expect(fn () => $this->action->formatDistance($negativeMeters))
         ->toThrow(\InvalidArgumentException::class, 'La distanza non può essere negativa');
 });
 
 it('handles zero distance', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $zeroMeters = 0;
 
-    expect($action->formatDistance(0))->toBe('0 m');
+    // Act
+    $result = $this->action->formatDistance($zeroMeters);
+
+    // Assert
+    expect($result)->toBe('0 m');
 });
 
 it('handles very small distances', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $smallMeters = 1;
 
-    expect($action->formatDistance(1))->toBe('1 m');
+    // Act
+    $result = $this->action->formatDistance($smallMeters);
+
+    // Assert
+    expect($result)->toBe('1 m');
 });
 
 it('handles very large distances', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub());
+    // Arrange
+    $largeMeters = 999999;
 
-    expect($action->formatDistance(999999))->toBe('1000.0 km');
+    // Act
+    $result = $this->action->formatDistance($largeMeters);
+
+    // Assert
+    expect($result)->toBe('1000.0 km');
 });
 
 it('handles boundary latitude values', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub([
+    // Arrange
+    $origin = new LocationData(
+        latitude: 90.0, // Boundary value
+        longitude: 9.1900,
+        address: 'Boundary Location',
+    );
+
+    $destination = new LocationData(
+        latitude: 41.9028,
+        longitude: 12.4964,
+        address: 'Roma, Italia',
+    );
+
+    $expectedResponse = [
         [
             [
                 'distance' => ['text' => '100 km', 'value' => 100000],
@@ -183,18 +327,35 @@ it('handles boundary latitude values', function (): void {
                 'status' => 'OK',
             ],
         ],
-    ]));
+    ];
 
-    $result = $action->execute(
-        new LocationData(latitude: 90.0, longitude: 9.1900, address: 'Boundary Location'),
-        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
-    );
+    $this->mockDistanceMatrixAction
+        ->shouldReceive('execute')
+        ->once()
+        ->andReturn($expectedResponse);
 
-    expect($result['status'])->toBe('OK');
+    // Act
+    $result = $this->action->execute($origin, $destination);
+
+    // Assert
+    expect($result)->toBeArray()->and($result['status'])->toBe('OK');
 });
 
 it('handles boundary longitude values', function (): void {
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub([
+    // Arrange
+    $origin = new LocationData(
+        latitude: 45.4642,
+        longitude: 180.0, // Boundary value
+        address: 'Boundary Location',
+    );
+
+    $destination = new LocationData(
+        latitude: 41.9028,
+        longitude: 12.4964,
+        address: 'Roma, Italia',
+    );
+
+    $expectedResponse = [
         [
             [
                 'distance' => ['text' => '100 km', 'value' => 100000],
@@ -202,24 +363,29 @@ it('handles boundary longitude values', function (): void {
                 'status' => 'OK',
             ],
         ],
-    ]));
+    ];
 
-    $result = $action->execute(
-        new LocationData(latitude: 45.4642, longitude: 180.0, address: 'Boundary Location'),
-        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma, Italia'),
-    );
+    $this->mockDistanceMatrixAction
+        ->shouldReceive('execute')
+        ->once()
+        ->andReturn($expectedResponse);
 
-    expect($result['status'])->toBe('OK');
+    // Act
+    $result = $this->action->execute($origin, $destination);
+
+    // Assert
+    expect($result)->toBeArray()->and($result['status'])->toBe('OK');
 });
 
 it('handles same origin and destination', function (): void {
+    // Arrange
     $sameLocation = new LocationData(
         latitude: 45.4642,
         longitude: 9.1900,
         address: 'Milano, Italia',
     );
 
-    $action = makeCalculateDistanceAction(new CalculateDistanceMatrixActionStub([
+    $expectedResponse = [
         [
             [
                 'distance' => ['text' => '0 m', 'value' => 0],
@@ -227,10 +393,21 @@ it('handles same origin and destination', function (): void {
                 'status' => 'OK',
             ],
         ],
-    ]));
+    ];
 
-    $result = $action->execute($sameLocation, $sameLocation);
+    $this->mockDistanceMatrixAction
+        ->shouldReceive('execute')
+        ->once()
+        ->andReturn($expectedResponse);
 
-    expect($result['distance']['value'])->toBe(0)
-        ->and($result['duration']['value'])->toBe(0);
+    // Act
+    $result = $this->action->execute($sameLocation, $sameLocation);
+
+    // Assert
+    expect($result)
+        ->toBeArray()
+        ->and($result['distance']['value'])
+        ->toBe(0)
+        ->and($result['duration']['value'])
+        ->toBe(0);
 });

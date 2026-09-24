@@ -12,7 +12,6 @@ function popupcontent(feature, layer) {
 	<a href="##url##" class="btn btn-primary"> &raquo; </a>
 	</div>
 	</div>`;
-	//console.log(feature);
 	for (var prop in feature) {
 		$val=feature[prop];
 		if($val==null) $val='';

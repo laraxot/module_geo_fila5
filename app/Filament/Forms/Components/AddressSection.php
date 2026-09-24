@@ -25,7 +25,7 @@ class AddressSection extends XotBaseSection
     }
 
     /**
-     * @return array<int|string, TextInput>
+     * @return array<string, TextInput>
      */
     public function getFormSchema(): array
     {

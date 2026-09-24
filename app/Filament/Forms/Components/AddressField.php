@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Forms\Components;
 
 use Filament\Schemas\Components\Component;
-use Modules\Geo\Filament\Resources\AddressResource\Schemas\AddressForm;
-use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
+use Filament\Schemas\Components\Section;
+use Modules\Geo\Filament\Resources\AddressResource;
 
 // use Squire\Models\Country;
 
-class AddressField extends XotBaseSection
+class AddressField extends Section
 {
     // protected string $view = 'filament-forms::components.group';
 
@@ -38,14 +38,18 @@ class AddressField extends XotBaseSection
      */
     protected function getAddressFormSchema(): array
     {
-        $baseSchema = app(AddressForm::class)->getFormSchema();
+        $baseSchema = [];
 
-        // Rimuovi campi non necessari per relazioni semplici
-        unset($baseSchema['name'], $baseSchema['is_primary']);
+        foreach (AddressResource::getFormSchema() as $key => $component) {
+            if (in_array($key, ['name', 'is_primary'], true) || ! $component instanceof Component) {
+                continue;
+            }
 
-        // Se i live updates sono disabilitati, rimuovi la reattività
+            $baseSchema[$key] = $component;
+        }
+
         if ($this->disableLiveUpdates) {
-            $baseSchema = $this->removeReactivityFromSchema($baseSchema);
+            return $this->removeReactivityFromSchema($baseSchema);
         }
 
         return $baseSchema;
@@ -54,15 +58,28 @@ class AddressField extends XotBaseSection
     /**
      * Rimuove tutti i pattern reattivi dai campi per prevenire loop infiniti.
      *
-     * @param  array<string, Component>  $schema
+     * @param array<string, Component> $schema
+     *
      * @return array<string, Component>
      */
     protected function removeReactivityFromSchema(array $schema): array
     {
         foreach ($schema as $key => $field) {
-            $field->live(false);
-            $field->afterStateUpdated(null);
-            $field->disabled(false);
+            if (method_exists($field, 'live')) {
+                // Rimuovi reattività live
+                $field->live(false);
+            }
+
+            if (method_exists($field, 'afterStateUpdated')) {
+                // Rimuovi callback afterStateUpdated
+                $field->afterStateUpdated(null);
+            }
+
+            if (method_exists($field, 'disabled')) {
+                // Rimuovi condizioni disabled dinamiche
+                $field->disabled(false);
+            }
+
             $schema[$key] = $field;
         }
 

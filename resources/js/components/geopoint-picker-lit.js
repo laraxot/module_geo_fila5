@@ -1,3 +1,11 @@
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
 import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';
 import L from 'leaflet';

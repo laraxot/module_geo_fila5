@@ -12,6 +12,8 @@ class PhotonResponseData extends Data
 {
     /**
      * @param DataCollection<int, PhotonFeatureData>|null $features
+     *
+     * @phpstan-param DataCollection<int, PhotonFeatureData>|null $features
      */
     public function __construct(
         #[DataCollectionOf(PhotonFeatureData::class)]
