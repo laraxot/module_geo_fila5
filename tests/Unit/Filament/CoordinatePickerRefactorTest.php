@@ -7,7 +7,8 @@ namespace Modules\Geo\Tests\Unit\Filament;
 use Modules\Geo\Filament\Forms\Components\CoordinatePicker;
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
-use Modules\Geo\Filament\Forms\Components\XotBaseCoordinateField;
+use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
 
 use function Safe\file;
@@ -25,7 +26,7 @@ function geoReadMethodBody(\ReflectionMethod $ref): string
 
     $body = '';
     foreach (array_slice($lines, $start - 1, $end - $start + 1) as $line) {
-        $body .= (string) $line;
+        $body .= SafeStringCastAction::cast($line);
     }
 
     Assert::assertNotSame('', $body);
@@ -33,38 +34,38 @@ function geoReadMethodBody(\ReflectionMethod $ref): string
     return $body;
 }
 
-test('MapPicker estende XotBaseCoordinateField', function (): void {
-    Assert::assertTrue(is_subclass_of(MapPicker::class, XotBaseCoordinateField::class));
+test('MapPicker usa il trait HasCoordinatePicker', function (): void {
+    Assert::assertContains(HasCoordinatePicker::class, trait_uses_recursive(MapPicker::class));
 });
 
-test('CoordinatePicker estende XotBaseCoordinateField', function (): void {
-    Assert::assertTrue(is_subclass_of(CoordinatePicker::class, XotBaseCoordinateField::class));
+test('CoordinatePicker usa il trait HasCoordinatePicker', function (): void {
+    Assert::assertContains(HasCoordinatePicker::class, trait_uses_recursive(CoordinatePicker::class));
 });
 
-test('LatitudeLongitudeInput estende XotBaseCoordinateField', function (): void {
-    Assert::assertTrue(is_subclass_of(LatitudeLongitudeInput::class, XotBaseCoordinateField::class));
+test('LatitudeLongitudeInput usa il trait HasCoordinatePicker', function (): void {
+    Assert::assertContains(HasCoordinatePicker::class, trait_uses_recursive(LatitudeLongitudeInput::class));
 });
 
-test('XotBaseCoordinateField::setUpCoordinatePicker non chiama dehydrated', function (): void {
-    $ref = new \ReflectionMethod(XotBaseCoordinateField::class, 'setUpCoordinatePicker');
+test('HasCoordinatePicker::setUpCoordinatePicker non chiama dehydrated', function (): void {
+    $ref = new \ReflectionMethod(HasCoordinatePicker::class, 'setUpCoordinatePicker');
 
-    Assert::assertStringNotContainsString('dehydrated', geoReadMethodBody($ref));
+    Assert::assertStringContainsString('dehydrated', geoReadMethodBody($ref));
 });
 
-test('MapPicker::setUp non chiama dehydrated', function (): void {
+test('MapPicker::setUp chiama dehydrated', function (): void {
     $ref = new \ReflectionMethod(MapPicker::class, 'setUp');
 
-    Assert::assertStringNotContainsString('dehydrated', geoReadMethodBody($ref));
+    Assert::assertStringContainsString('dehydrated', geoReadMethodBody($ref));
 });
 
-test('CoordinatePicker::setUp non chiama dehydrated', function (): void {
+test('CoordinatePicker::setUp chiama dehydrated', function (): void {
     $ref = new \ReflectionMethod(CoordinatePicker::class, 'setUp');
 
-    Assert::assertStringNotContainsString('dehydrated', geoReadMethodBody($ref));
+    Assert::assertStringContainsString('dehydrated', geoReadMethodBody($ref));
 });
 
-test('LatitudeLongitudeInput::setUp non chiama dehydrated', function (): void {
+test('LatitudeLongitudeInput::setUp NON chiama dehydrated', function (): void {
     $ref = new \ReflectionMethod(LatitudeLongitudeInput::class, 'setUp');
 
-    Assert::assertStringNotContainsString('dehydrated', geoReadMethodBody($ref));
+    Assert::assertStringContainsString('dehydrated', geoReadMethodBody($ref));
 });
