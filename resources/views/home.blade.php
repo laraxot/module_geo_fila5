@@ -1,73 +1,7 @@
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
+<?php
 
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
+declare(strict_types=1);
+?>
 {{--
     Homepage /it civic content blocks
     Civic portal content blocks parity with Design Comuni

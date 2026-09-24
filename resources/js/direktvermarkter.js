@@ -1,12 +1,4 @@
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
+console.log("        @ @ @\n       []___\n      /    /\\____\n(~)  /_/\\_//____/\\ \n |   | || |||__|||\n     farmshops.eu \n Interesse am Code, Bug gefunden oder eine Verbesserungsidee? Schau vorbei auf GitHub! \n https://github.com/CodeforKarlsruhe/direktvermarkter");
 var mappos = L.Permalink.getMapLocation();
 var map = L.map('map', {
     center: mappos.center,
@@ -68,7 +60,7 @@ var blackMarker = L.ExtraMarkers.icon({
 
 //Marker
 
-var geojson1 = L.geoJson(farmshopGeoJson, {
+var geojson1 = L.geoJson(sampleGeoJsonData, {
     pointToLayer: function pointToLayer(feature, latlng)
     {
         if (feature.properties.p === 'beekeeper') {
@@ -80,6 +72,7 @@ var geojson1 = L.geoJson(farmshopGeoJson, {
         } else if (feature.properties.p === 'vending_machine') {
             return L.marker(latlng, { icon: machineMarker });
         } else {
+            console.log("nicht bekannte Daten verwendet");
             return L.marker(latlng, { icon: blackMarker });
         }
     },
@@ -126,8 +119,10 @@ var markers = L.markerClusterGroup({
                 } else if (markers[c].feature.properties.p ==="vending_machine") {
                     machinesInCluster = true;
                 } else {
+                    console.log("else schleife")
                 }
 
+                //console.log("f " +farmsInCluster +" m " +marketsInCluster +" a " +machinesInCluster)
             }
 
             function farmsAreInCluster(farmsInCluster)
@@ -175,6 +170,7 @@ var markers = L.markerClusterGroup({
 
             return returnWert;
         }
+        // console.log("markerS: " +markers)
         var html = '<div class="circle"><strong>' +markerTypen(markers) + '</strong></div>';
         return L.divIcon({ html: html, className: 'test', iconSize: L.point(80,80) });
     },
@@ -187,6 +183,7 @@ var markers = L.markerClusterGroup({
 
 markers.addLayer(geojson1);
 map.addLayer(markers);
+console.log(lastUpdate);
 
 var sidebar = L.control.sidebar('sidebar').addTo(map);
 
