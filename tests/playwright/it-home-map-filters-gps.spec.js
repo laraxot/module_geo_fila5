@@ -1,7 +1,3 @@
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
 import { test, expect } from '@playwright/test';
 
 /**
