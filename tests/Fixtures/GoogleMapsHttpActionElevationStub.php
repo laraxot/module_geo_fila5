@@ -12,19 +12,20 @@ use Modules\Geo\Actions\GoogleMaps\GoogleMapsHttpAction;
 final class GoogleMapsHttpActionElevationStub extends GoogleMapsHttpAction
 {
     /**
-     * @param  array<string, mixed>  $elevationResponse
+     * @param array<string, mixed> $elevationResponse
      */
     public function __construct(
         private array $elevationResponse = [],
         private ?\Throwable $exception = null,
-    ) {}
+    ) {
+    }
 
     /**
      * @return array<string, mixed>
      */
     public function executeElevation(float $latitude, float $longitude): array
     {
-        if ($this->exception !== null) {
+        if (null !== $this->exception) {
             throw $this->exception;
         }
 

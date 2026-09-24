@@ -17,7 +17,7 @@ test('address can be created', function (): void {
 });
 
 test('address has fillable attributes', function (): void {
-    $address = new Address;
+    $address = new Address();
     $fillable = $address->getFillable();
 
     Assert::assertContains('route', $fillable);
@@ -27,7 +27,7 @@ test('address has fillable attributes', function (): void {
 });
 
 test('address has casts defined', function (): void {
-    $address = new Address;
+    $address = new Address();
     $casts = $address->getCasts();
 
     Assert::assertArrayHasKey('latitude', $casts);
@@ -37,13 +37,13 @@ test('address has casts defined', function (): void {
 });
 
 test('address has proper table name', function (): void {
-    $address = new Address;
+    $address = new Address();
 
     Assert::assertSame('addresses', $address->getTable());
 });
 
 test('address morphs to parent model', function (): void {
-    $address = new Address;
+    $address = new Address();
 
     Assert::assertInstanceOf(MorphTo::class, $address->model());
     Assert::assertInstanceOf(MorphTo::class, $address->addressable());
