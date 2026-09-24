@@ -16,7 +16,12 @@ final class IsPointInPolygonAction
     use QueueableAction;
 
     /**
+<<<<<<< HEAD
      * @param array<mixed> $polygon
+=======
+     *
+     * @param array<mixed>      $polygon
+>>>>>>> laraxot/dev
      */
     public function execute(float $latitude, float $longitude, array $polygon): bool
     {
