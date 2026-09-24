@@ -10,13 +10,16 @@ use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\MapPlatforms\MapboxMapData;
 use Modules\Geo\Exceptions\InvalidLocationException;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere i dati dell'indirizzo dal servizio Mapbox.
  */
 class GetAddressFromMapboxLatLngAction
 {
-    private const BASE_URL = 'https://api.mapbox.com/geocoding/v5/mapbox.places';
+    use QueueableAction;
+
+    private const string BASE_URL = 'https://api.mapbox.com/geocoding/v5/mapbox.places';
 
     /**
      * Ottiene l'indirizzo da coordinate geografiche.
@@ -56,7 +59,7 @@ class GetAddressFromMapboxLatLngAction
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<array-key, mixed>
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
     {
@@ -83,12 +86,11 @@ class GetAddressFromMapboxLatLngAction
             throw InvalidLocationException::invalidData('Risposta di Mapbox non valida');
         }
 
-        /* @var array<string, mixed> $data */
         return $data;
     }
 
     /**
-     * @param array<string, mixed> $response
+     * @param array<array-key, mixed> $response
      */
     private function parseResponse(array $response): MapboxMapData
     {
@@ -158,16 +160,16 @@ class GetAddressFromMapboxLatLngAction
         return new AddressData(
             latitude: (float) ($res['center'][1] ?? 0),
             longitude: (float) ($res['center'][0] ?? 0),
-            country: $res['context']['country'] ?? null,
-            city: $res['context']['place'] ?? null,
+            country: $res['context']['country'],
+            city: $res['context']['place'],
             country_code: strtoupper($res['context']['country_code'] ?? 'IT'),
             postal_code: (int) ($res['context']['postcode'] ?? 0),
-            locality: $res['context']['locality'] ?? null,
-            county: $res['context']['region'] ?? null,
-            street: $res['text'] ?? null,
-            street_number: $res['address'] ?? null,
-            district: $res['context']['neighborhood'] ?? null,
-            state: $res['context']['region'] ?? null,
+            locality: $res['context']['locality'],
+            county: $res['context']['region'],
+            street: $res['text'],
+            street_number: $res['address'],
+            district: $res['context']['neighborhood'],
+            state: $res['context']['region'],
         );
     }
 }

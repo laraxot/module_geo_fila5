@@ -11,11 +11,15 @@ use Modules\Geo\Datas\LocationData;
 
 use function Safe\json_decode;
 
+use Spatie\QueueableAction\QueueableAction;
+
 /**
  * Action per ottenere le coordinate geografiche da un indirizzo usando Google Maps Geocoding API.
  */
 class GetCoordinatesAction
 {
+    use QueueableAction;
+
     /**
      * Ottiene le coordinate geografiche da un indirizzo.
      *

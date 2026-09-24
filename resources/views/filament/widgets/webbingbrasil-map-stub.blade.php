@@ -1,3 +1,7 @@
+<?php
+
+declare(strict_types=1);
+?>
 <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
     <div class="text-gray-400 mb-2">
         <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
