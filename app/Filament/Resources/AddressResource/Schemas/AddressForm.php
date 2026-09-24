@@ -13,7 +13,7 @@ class AddressForm extends XotBaseResourceForm
     /**
      * @return array<int|string, Component>
      */
-    public static function getFormSchema(): array
+    public function getFormSchema(): array
     {
         return [
             'main' => TextInput::make('name'),
