@@ -82,6 +82,7 @@ Tabella dedicata ma classe **senza logica**: non è duplicato di `Comune`/`cap` 
 ## 3. Trait e basi
 
 - `Traits/HasAddress`, `HasPlaceTrait`, `GeoTrait`, `GeographicalScopes`, `SushiToJsons`: incapsulano comportamento condiviso; non sono “modelli doppi”.
+- `GeoTrait`: consumer reale su `Address` (distanza/scope Haversine). Dettaglio: [traits/geo-trait.md](./traits/geo-trait.md).
 
 ---
 

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Modules\Geo\Enums\AddressTypeEnum;
+use Modules\Geo\Models\Traits\GeoTrait;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
@@ -94,6 +95,7 @@ use Modules\Xot\Contracts\ProfileContract;
  */
 class Address extends BaseModel
 {
+    use GeoTrait;
     use SoftDeletes;
 
     /** @var list<string> */
