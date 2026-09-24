@@ -11,11 +11,11 @@ use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
 test('geo map widget extends filament widget', function (): void {
-    Assert::assertInstanceOf(Widget::class, new GeoMapWidget());
+    Assert::assertInstanceOf(Widget::class, new GeoMapWidget);
 });
 
 test('geo map widget exposes expected view', function (): void {
-    $widget = new GeoMapWidget();
+    $widget = new GeoMapWidget;
     $reflection = new \ReflectionClass($widget);
     $property = $reflection->getProperty('view');
     $property->setAccessible(true);
@@ -24,7 +24,7 @@ test('geo map widget exposes expected view', function (): void {
 });
 
 test('geo map widget returns dataset and config payloads', function (): void {
-    $widget = new GeoMapWidget();
+    $widget = new GeoMapWidget;
     $dataset = $widget->getDataset();
     $config = $widget->getMapConfig();
 

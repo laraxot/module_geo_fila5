@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-
 /** @var \Modules\Geo\Filament\Widgets\GeoMapWidget $this */
 $widgetId = 'geo-map-widget-'.spl_object_id($this);
 ?>

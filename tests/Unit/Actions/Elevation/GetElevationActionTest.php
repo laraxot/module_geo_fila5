@@ -43,7 +43,7 @@ it('gets elevation for valid location', function (): void {
 });
 
 it('throws exception for invalid latitude', function (): void {
-    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub);
 
     expect(fn (): float => $action->execute(
         new LocationData(latitude: 100.0, longitude: 9.1900, address: 'Invalid Location'),
@@ -51,7 +51,7 @@ it('throws exception for invalid latitude', function (): void {
 });
 
 it('throws exception for invalid longitude', function (): void {
-    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub);
 
     expect(fn (): float => $action->execute(
         new LocationData(latitude: 45.4642, longitude: 200.0, address: 'Invalid Location'),
@@ -59,7 +59,7 @@ it('throws exception for invalid longitude', function (): void {
 });
 
 it('throws exception for negative latitude', function (): void {
-    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub);
 
     expect(fn (): float => $action->execute(
         new LocationData(latitude: -100.0, longitude: 9.1900, address: 'Invalid Location'),
@@ -67,7 +67,7 @@ it('throws exception for negative latitude', function (): void {
 });
 
 it('throws exception for negative longitude', function (): void {
-    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub);
 
     expect(fn (): float => $action->execute(
         new LocationData(latitude: 45.4642, longitude: -200.0, address: 'Invalid Location'),
@@ -99,25 +99,25 @@ it('throws exception when service throws generic exception', function (): void {
 });
 
 it('formats elevation correctly', function (): void {
-    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub);
 
     expect($action->formatElevation(1234.5))->toBe('1234.5 m s.l.m.');
 });
 
 it('formats elevation with zero value', function (): void {
-    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub);
 
     expect($action->formatElevation(0))->toBe('0.0 m s.l.m.');
 });
 
 it('formats negative elevation correctly', function (): void {
-    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub);
 
     expect($action->formatElevation(-430.0))->toBe('-430.0 m s.l.m.');
 });
 
 it('handles high elevation correctly', function (): void {
-    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub());
+    $action = makeGetElevationAction(new GoogleMapsServiceElevationStub);
 
     expect($action->formatElevation(8848.0))->toBe('8848.0 m s.l.m.');
 });
