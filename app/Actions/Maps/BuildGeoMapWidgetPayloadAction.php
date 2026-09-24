@@ -138,12 +138,7 @@ class BuildGeoMapWidgetPayloadAction
     }
 
     /**
-<<<<<<< HEAD
      * @param  Collection<int, Place>  $places
-=======
-     * @param Collection<int, Place> $places
-     *
->>>>>>> laraxot/dev
      * @return array{lat: float, lng: float}
      */
     private function resolveCenter(Collection $places): array
@@ -165,21 +160,13 @@ class BuildGeoMapWidgetPayloadAction
     {
         $title = $place->name;
 
-<<<<<<< HEAD
         if (\is_string($title) && trim($title) !== '') {
-=======
-        if (\is_string($title) && '' !== trim($title)) {
->>>>>>> laraxot/dev
             return trim($title);
         }
 
         $formattedAddress = $place->getFormattedAddress();
 
-<<<<<<< HEAD
         if ($formattedAddress !== '') {
-=======
-        if ('' !== $formattedAddress) {
->>>>>>> laraxot/dev
             return $formattedAddress;
         }
 

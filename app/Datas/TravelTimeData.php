@@ -5,11 +5,6 @@ declare(strict_types=1);
 namespace Modules\Geo\Datas;
 
 use Spatie\LaravelData\Data;
-<<<<<<< HEAD
-=======
-use Modules\Xot\Actions\Cast\SafeIntCastAction;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
->>>>>>> laraxot/dev
 
 /**
  * Data Transfer Object per i risultati del calcolo del tempo di percorrenza.
@@ -26,12 +21,7 @@ class TravelTimeData extends Data
         public readonly string $formatted_duration,
         public readonly string $formatted_distance,
         public readonly string $status = 'OK',
-<<<<<<< HEAD
     ) {}
-=======
-    ) {
-    }
->>>>>>> laraxot/dev
 
     /**
      * Crea un'istanza di errore.
@@ -69,37 +59,21 @@ class TravelTimeData extends Data
      */
     public static function fromGoogleResponse(array $response): self
     {
-<<<<<<< HEAD
         if ($response['status'] !== 'OK') {
-=======
-        if ('OK' !== $response['status']) {
->>>>>>> laraxot/dev
             return self::error($response['status']);
         }
 
         $element = $response['rows'][0]['elements'][0];
-<<<<<<< HEAD
         if ($element['status'] !== 'OK') {
-=======
-        if ('OK' !== $element['status']) {
->>>>>>> laraxot/dev
             return self::error($element['status']);
         }
 
         return new self(
-<<<<<<< HEAD
             duration_seconds: (int) $element['duration']['value'],
             duration_in_traffic_seconds: isset($element['duration_in_traffic'])
                 ? ((int) $element['duration_in_traffic']['value'])
                 : ((int) $element['duration']['value']),
             distance_meters: (int) $element['distance']['value'],
-=======
-            duration_seconds: SafeIntCastAction::cast($element['duration']['value']),
-            duration_in_traffic_seconds: isset($element['duration_in_traffic'])
-                ? (SafeIntCastAction::cast($element['duration_in_traffic']['value']))
-                : (SafeIntCastAction::cast($element['duration']['value'])),
-            distance_meters: SafeIntCastAction::cast($element['distance']['value']),
->>>>>>> laraxot/dev
             formatted_duration: $element['duration']['text'],
             formatted_distance: $element['distance']['text'],
             status: $response['status'],

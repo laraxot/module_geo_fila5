@@ -8,18 +8,10 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\GeocodingData;
-<<<<<<< HEAD
 use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
-=======
-
-use function Safe\json_decode;
-
-use Spatie\QueueableAction\QueueableAction;
-
->>>>>>> laraxot/dev
 /**
  * Action per ottenere i dati di geocodifica da Google Maps.
  */
@@ -31,12 +23,7 @@ class GetGeocodingDataAction
 
     public function __construct(
         private readonly Client $client,
-<<<<<<< HEAD
     ) {}
-=======
-    ) {
-    }
->>>>>>> laraxot/dev
 
     /**
      * Ottiene i dati di geocodifica per un indirizzo.
@@ -123,11 +110,7 @@ class GetGeocodingDataAction
          * } $data */
         $data = json_decode($response, true);
 
-<<<<<<< HEAD
         if ($data['status'] !== 'OK' || empty($data['results'])) {
-=======
-        if ('OK' !== $data['status'] || empty($data['results'])) {
->>>>>>> laraxot/dev
             Log::warning('Geocodifica fallita', [
                 'status' => $data['status'],
                 'error' => $data['error_message'] ?? 'Nessun risultato trovato',

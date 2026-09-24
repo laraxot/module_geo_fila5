@@ -21,12 +21,7 @@ class GetProvincesAction
     public const int CACHE_TTL = 86400;
 
     /**
-<<<<<<< HEAD
      * @param  string  $regionCode  Codice della regione
-=======
-     * @param string $regionCode Codice della regione
-     *
->>>>>>> laraxot/dev
      * @return Collection<int, array{name: string, code: string}>
      */
     public function execute(string $regionCode): Collection

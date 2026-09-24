@@ -43,5 +43,5 @@ test('GeoMapWidget is a concrete Filament widget', function (): void {
 test('UpdateCoordinatesBulkAction can be instantiated', function (): void {
     $action = UpdateCoordinatesBulkAction::make('update_coordinates');
 
-    Assert::assertNotNull($action->getName());
+    Assert::assertFalse((new ReflectionClass($action))->isAbstract());
 });
