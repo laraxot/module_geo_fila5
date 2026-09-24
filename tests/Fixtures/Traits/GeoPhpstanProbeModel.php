@@ -7,6 +7,11 @@ namespace Modules\Geo\Tests\Fixtures\Traits;
 use Modules\Geo\Models\BaseModel;
 
 /**
+<<<<<<< .merge_file_aPtali
+=======
+ * PHPStan probe model for Geo trait tests.
+ *
+>>>>>>> .merge_file_hbo9zr
  * @property int|string|null $id
  * @property mixed|null      $address
  */
