@@ -1,23 +1,6 @@
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
-@php
-// Geo Blade view — see Modules/Geo/docs/wiki.
-@endphp
-
 <?php
 
 declare(strict_types=1);
-
 ?>
 <div id="sidebar" class="sidebar collapsed">
         <!-- Nav tabs -->
@@ -34,18 +17,6 @@ declare(strict_types=1);
                 </li>
                 <li>
                     <a href="https://github.com/CodeforKarlsruhe/direktvermarkter" role="tab" target="_blank" rel="noopener">
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
                         <img width="20px" style="padding-top: 8px;" margin-top="5px" src="img/github.svg" alt="Github" title="Repository auf Github.com">
                     </a>
                 </li>

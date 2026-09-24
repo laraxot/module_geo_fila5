@@ -6,26 +6,26 @@ namespace Modules\Geo\Actions\Maps;
 
 use Spatie\QueueableAction\QueueableAction;
 
-final class GetGeoMapDatasetCategoriesAction
+class GetGeoMapDatasetCategoriesAction
 {
     use QueueableAction;
 
     /**
-     * @param  list<array{type: string, properties: array<string, scalar|null>, geometry: array{type: string, coordinates: array<mixed>}}>  $features
      * @return list<string>
      */
-    public function execute(array $features): array
+    public function execute(string $path): array
     {
+        $features = app(LoadGeoMapDatasetAction::class)->loadFeatures($path);
         $categories = [];
 
         foreach ($features as $feature) {
-            if (($feature['geometry']['type'] ?? null) !== 'Point') {
+            if ('Point' !== $feature['geometry']['type']) {
                 continue;
             }
 
             $category = $feature['properties']['p'] ?? $feature['properties']['category'] ?? null;
 
-            if (is_string($category) && $category !== '') {
+            if (is_string($category) && '' !== $category) {
                 $categories[] = $category;
             }
         }

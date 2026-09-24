@@ -7,7 +7,8 @@ namespace Modules\Geo\Actions;
 use Filament\Notifications\Notification;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Datas\CoordinatesData;
+use Modules\Geo\Datas\Location\CoordinatesData;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Spatie\QueueableAction\QueueableAction;
 
 class GetCoordinatesByAddressAction
@@ -116,6 +117,7 @@ class GetCoordinatesByAddressAction
      */
     private function makeHttpRequest(string $url, array $params): Response
     {
+        /* @var Response $response */
         return Http::get($url, $params);
     }
 
@@ -134,17 +136,15 @@ class GetCoordinatesByAddressAction
         }
 
         return new CoordinatesData(
-            latitude: (float) ($coordinates[0] ?? 0),
-            longitude: (float) ($coordinates[1] ?? 0),
+            latitude: SafeFloatCastAction::cast($coordinates[0] ?? 0),
+            longitude: SafeFloatCastAction::cast($coordinates[1] ?? 0),
         );
     }
 
     /**
-     * Extract coordinates from Bing response.
+     * @param array<array-key, mixed> $data
      *
-     * @param array<string, mixed> $data
-     *
-     * @return array<int, float>|null
+     * @return array<int, mixed>|null
      */
     private function extractBingCoordinates(array $data): ?array
     {
@@ -176,7 +176,7 @@ class GetCoordinatesByAddressAction
             return null;
         }
 
-        return [(float) $coordinates[0], (float) $coordinates[1]];
+        return array_values($coordinates);
     }
 
     /**
