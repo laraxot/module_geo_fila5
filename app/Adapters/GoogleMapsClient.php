@@ -18,9 +18,15 @@ class GoogleMapsClient extends GeoHttpClientBase
     private const string ELEVATION_URL = 'https://maps.googleapis.com/maps/api/elevation/json';
 
     /**
+<<<<<<< HEAD
      * @return array<string, mixed>
      *
      * @throws GoogleMapsApiException
+=======
+     * @throws GoogleMapsApiException
+     *
+     * @return array<string, mixed>
+>>>>>>> laraxot/dev
      */
     public function reverseGeocode(float $latitude, float $longitude): array
     {
@@ -36,11 +42,20 @@ class GoogleMapsClient extends GeoHttpClientBase
     }
 
     /**
+<<<<<<< HEAD
      * @param  array<string>  $origins
      * @param  array<string>  $destinations
      * @return array<string, mixed>
      *
      * @throws GoogleMapsApiException
+=======
+     * @param array<string> $origins
+     * @param array<string> $destinations
+     *
+     * @throws GoogleMapsApiException
+     *
+     * @return array<string, mixed>
+>>>>>>> laraxot/dev
      */
     public function getDistanceMatrix(array $origins, array $destinations): array
     {
@@ -58,9 +73,15 @@ class GoogleMapsClient extends GeoHttpClientBase
     }
 
     /**
+<<<<<<< HEAD
      * @return array<string, mixed>
      *
      * @throws GoogleMapsApiException
+=======
+     * @throws GoogleMapsApiException
+     *
+     * @return array<string, mixed>
+>>>>>>> laraxot/dev
      */
     public function getElevation(float $latitude, float $longitude): array
     {

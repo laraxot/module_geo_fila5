@@ -80,8 +80,13 @@ class GetCoordinatesByAddressAction
         $coordinatesClass = CoordinatesData::class;
 
         return $coordinatesClass::from([
+<<<<<<< HEAD
             'latitude' => (float) $location['lat'],
             'longitude' => (float) $location['lng'],
+=======
+            'latitude' => SafeFloatCastAction::cast($location['lat']),
+            'longitude' => SafeFloatCastAction::cast($location['lng']),
+>>>>>>> laraxot/dev
         ]);
     }
 
@@ -227,8 +232,13 @@ class GetCoordinatesByAddressAction
         $coordinatesClass = CoordinatesData::class;
 
         return $coordinatesClass::from([
+<<<<<<< HEAD
             'latitude' => (float) $location['lat'],
             'longitude' => (float) $location['lng'],
+=======
+            'latitude' => SafeFloatCastAction::cast($location['lat']),
+            'longitude' => SafeFloatCastAction::cast($location['lng']),
+>>>>>>> laraxot/dev
         ]);
     }
 
@@ -270,8 +280,13 @@ class GetCoordinatesByAddressAction
         $coordinatesClass = CoordinatesData::class;
 
         return $coordinatesClass::from([
+<<<<<<< HEAD
             'latitude' => (float) $location['lat'],
             'longitude' => (float) $location['lon'],
+=======
+            'latitude' => SafeFloatCastAction::cast($location['lat']),
+            'longitude' => SafeFloatCastAction::cast($location['lon']),
+>>>>>>> laraxot/dev
         ]);
     }
 
@@ -316,8 +331,13 @@ class GetCoordinatesByAddressAction
         $coordinatesClass = CoordinatesData::class;
 
         return $coordinatesClass::from([
+<<<<<<< HEAD
             'latitude' => (float) $firstResult['latitude'],
             'longitude' => (float) $firstResult['longitude'],
+=======
+            'latitude' => SafeFloatCastAction::cast($firstResult['latitude']),
+            'longitude' => SafeFloatCastAction::cast($firstResult['longitude']),
+>>>>>>> laraxot/dev
         ]);
     }
 }
