@@ -1,7 +1,3 @@
-<?php
-
-declare(strict_types=1);
-?>
 @php
 /** @var \Modules\Geo\Filament\Forms\Components\MapLocationInput $field */
 $statePath = $field->getStatePath();

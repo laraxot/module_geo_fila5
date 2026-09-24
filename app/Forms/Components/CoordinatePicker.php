@@ -165,7 +165,7 @@ class CoordinatePicker extends XotBaseField
     }
 
     /**
-     * @param array<array-key, mixed> $data
+     * @param array<mixed> $data
      *
      * @return array<string, float|null>
      */
