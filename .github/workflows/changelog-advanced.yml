@@ -61,7 +61,7 @@ jobs:
       - name: Build structured changelog (PR/commits)
         if: steps.range.outputs.from != '' || steps.range.outputs.to_tag != ''
         id: changelog
-        uses: mikepenz/release-changelog-builder-action@v5
+        uses: mikepenz/release-changelog-builder-action@v6
         with:
           fromTag: ${{ steps.range.outputs.from }}
           toTag: ${{ steps.range.outputs.to_tag != '' && steps.range.outputs.to_tag || steps.range.outputs.to }}
