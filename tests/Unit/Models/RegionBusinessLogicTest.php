@@ -10,9 +10,10 @@ use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Region;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use PHPUnit\Framework\Assert;
-use Sushi\Sushi;
 
 use function Safe\class_uses;
+
+use Sushi\Sushi;
 
 describe('Region Business Logic', function () {
     test('region extends base model', function () {
