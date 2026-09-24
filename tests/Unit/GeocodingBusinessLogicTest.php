@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit;
 
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use PHPUnit\Framework\Assert;
-
-uses(\Modules\Geo\Tests\TestCase::class);
 
 /**
  * @return array<string, string>
@@ -173,12 +172,12 @@ describe('Geocoding Business Logic', function () {
             Assert::assertArrayHasKey('east', $bbox);
             Assert::assertArrayHasKey('west', $bbox);
 
-            $latitude = (float) $result['latitude'];
-            $longitude = (float) $result['longitude'];
-            $north = (float) $bbox['north'];
-            $south = (float) $bbox['south'];
-            $east = (float) $bbox['east'];
-            $west = (float) $bbox['west'];
+            $latitude = SafeFloatCastAction::cast($result['latitude']);
+            $longitude = SafeFloatCastAction::cast($result['longitude']);
+            $north = SafeFloatCastAction::cast($bbox['north']);
+            $south = SafeFloatCastAction::cast($bbox['south']);
+            $east = SafeFloatCastAction::cast($bbox['east']);
+            $west = SafeFloatCastAction::cast($bbox['west']);
 
             Assert::assertGreaterThan($latitude, $north);
             Assert::assertLessThan($latitude, $south);
@@ -336,9 +335,9 @@ describe('Geocoding Business Logic', function () {
             $pointOutsideMilan = ['lat' => 41.9028, 'lng' => 12.4964];
 
             $isInBounds = fn (array $point, array $bounds): bool => $point['lat'] >= $bounds['south']
-                && $point['lat'] <= $bounds['north']
-                && $point['lng'] >= $bounds['west']
-                && $point['lng'] <= $bounds['east'];
+                            && $point['lat'] <= $bounds['north']
+                            && $point['lng'] >= $bounds['west']
+                            && $point['lng'] <= $bounds['east'];
 
             Assert::assertTrue($isInBounds($pointInMilan, $milanBounds));
             Assert::assertFalse($isInBounds($pointOutsideMilan, $milanBounds));
@@ -354,7 +353,6 @@ describe('Geocoding Business Logic', function () {
     describe('Data Quality and Validation', function () {
         it('ensures coordinate precision limits', function () {
             $coordinates = ['lat' => 45.4642035, 'lng' => 9.1899738];
-
             $latFraction = strrchr((string) $coordinates['lat'], '.');
             Assert::assertIsString($latFraction);
             $lngFraction = strrchr((string) $coordinates['lng'], '.');
@@ -362,7 +360,6 @@ describe('Geocoding Business Logic', function () {
 
             $latPrecision = strlen(substr($latFraction, 1));
             $lngPrecision = strlen(substr($lngFraction, 1));
-
             Assert::assertLessThanOrEqual(8, $latPrecision);
             Assert::assertLessThanOrEqual(8, $lngPrecision);
         });

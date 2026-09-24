@@ -20,7 +20,7 @@ class SearchPlacesAction
 {
     use QueueableAction;
 
-    private const API_URL = 'https://nominatim.openstreetmap.org/search';
+    private const string API_URL = 'https://nominatim.openstreetmap.org/search';
 
     private Client $client;
 

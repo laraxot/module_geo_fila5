@@ -7,6 +7,7 @@ namespace Modules\Geo\Actions\GeoData;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 use function Safe\json_decode;
 
@@ -21,17 +22,17 @@ final class LoadGeoHierarchyAction
 {
     use QueueableAction;
 
-    private const CACHE_KEY_REGIONS = 'geo.regions';
+    private const string CACHE_KEY_REGIONS = 'geo.regions';
 
-    private const CACHE_KEY_PROVINCES = 'geo.provinces.%s';
+    private const string CACHE_KEY_PROVINCES = 'geo.provinces.%s';
 
-    private const CACHE_KEY_CITIES = 'geo.cities.%s';
+    private const string CACHE_KEY_CITIES = 'geo.cities.%s';
 
-    private const CACHE_KEY_CAP = 'geo.cap.%s.%s';
+    private const string CACHE_KEY_CAP = 'geo.cap.%s.%s';
 
-    private const CACHE_TTL = 86400;
+    private const int CACHE_TTL = 86400;
 
-    private const JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
+    private const string JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
 
     /**
      * @return Collection<int, array{name: string, code: string}>
@@ -73,8 +74,8 @@ final class LoadGeoHierarchyAction
                     $code = $province['code'] ?? '';
 
                     return [
-                        'name' => is_string($name) ? $name : (string) $name,
-                        'code' => is_string($code) ? $code : (string) $code,
+                        'name' => is_string($name) ? $name : SafeStringCastAction::cast($name),
+                        'code' => is_string($code) ? $code : SafeStringCastAction::cast($code),
                     ];
                 })
                 ->values();

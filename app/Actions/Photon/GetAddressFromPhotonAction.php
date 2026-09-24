@@ -27,7 +27,7 @@ class GetAddressFromPhotonAction
 {
     use QueueableAction;
 
-    private const API_URL = 'https://photon.komoot.io/api';
+    private const string API_URL = 'https://photon.komoot.io/api';
 
     public function __construct(
         private readonly Client $client,

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Modules\Geo\Enums\AddressTypeEnum;
@@ -14,6 +15,12 @@ use Modules\Geo\Models\Address;
  * Trait HasAddresses.
  *
  * Questo trait fornisce funzionalità per gestire indirizzi multipli su qualsiasi modello.
+ *
+ * @property int|string $id
+ *
+ * @phpstan-require-extends Model
+ *
+ * @phpstan-ignore trait.unused
  */
 trait HasAddresses
 {
