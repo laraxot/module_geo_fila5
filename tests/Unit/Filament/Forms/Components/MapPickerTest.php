@@ -12,18 +12,6 @@ use Modules\Xot\Filament\Forms\Components\XotBaseField;
 use PHPUnit\Framework\Assert;
 
 uses(UnitTestCase::class);
-// Laraxot — see module docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
 test('MapPicker can be instantiated', function (): void {
     $field = MapPicker::make('location');
 
