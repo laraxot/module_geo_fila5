@@ -38,8 +38,7 @@ class AddressResource extends XotBaseResource
      *
      * @phpstan-return array<string, Component>
      */
-    #[\Override]
-    public static function getFormSchema(): array
+    public function getFormSchemaOld(): array
     {
         return [
             'name' => TextInput::make('name')->maxLength(255),
