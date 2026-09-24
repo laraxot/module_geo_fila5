@@ -1,10 +1,7 @@
-<<<<<<< .merge_file_q9rnji
-=======
 ---
 scope: module:Geo
 ---
 
->>>>>>> .merge_file_hxdZ9v
 # STORY-001: Consolidamento stack release + changelog avanzato con analytics per-contributore
 
 **Epic:** CI/CD — Release Automation
@@ -177,8 +174,6 @@ Ricerca online (best practice 2026) per la parte analytics:
 ---
 
 **This story was created using BMAD Method v6 - Phase 4 (Implementation Planning)**
-<<<<<<< .merge_file_q9rnji
-=======
 
 ## GitHub (tracciamento)
 
@@ -196,4 +191,3 @@ gh issue create --repo laraxot/base_quaeris_fila5 \
   --title "STORY-001: Consolidamento stack release + changelog avanzato con analytics per-contributore" --body-file <FILE>
 gh api repos/laraxot/base_quaeris_fila5/discussions -f title="STORY-001: Consolidamento stack release + changelog avanzato con analytics per-contributore" -f body="vedi la story"
 ```
->>>>>>> .merge_file_hxdZ9v

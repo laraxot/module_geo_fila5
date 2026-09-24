@@ -149,22 +149,8 @@ tests/AuditCoverage
 .vscode/
 .windsurf/
 tests/AuditCoverage/
-<<<<<<< .merge_file_wEniZs
-.claude-flow
-.devin
-.windsurf
-.githooks
-test-results
-_base_ptvx_fila5.code-workspace
-_base_ptvx_fila5_1.code-workspace
-_ptvx_fila5.code-workspace
-opencode.json
-gitmodules.ini
-audit-coverage/
-=======
 
 # Laraxot — quality tool configs forbidden in module/theme root (use laravel/phpinsights.php, laravel/rector.php)
 phpinsights.php
 rector.php
 test-results/
->>>>>>> .merge_file_60qGJl
