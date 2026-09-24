@@ -220,7 +220,6 @@ trait HasAddress
      * @param array<string, mixed> $data
      * @param bool                 $setPrimary Se impostare questo indirizzo come principale
      */
-<<<<<<< .merge_file_EG7P7B
     public function addAddress(array $data, bool $setPrimary = false): Address
     {
         // Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
@@ -234,20 +233,6 @@ trait HasAddress
         }
 
         $address = $this->addresses()->create($data);
-=======
-    public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue
-    {// Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
-                if ($setPrimary || 0 === $this->addresses()->count()) {
-                    $data['is_primary'] = true;
-
-                    // Rimuovi il flag is_primary da tutti gli altri indirizzi
-                    if ($this->addresses()->count() > 0) {
-                        $this->addresses()->update(['is_primary' => false]);
-                    }
-                }
-
-        $address = $this->addresses()->create($data); // @phpstan-ignore argument.type
->>>>>>> .merge_file_gIiic4
         Assert::isInstanceOf($address, Address::class);
 
         return $address;
