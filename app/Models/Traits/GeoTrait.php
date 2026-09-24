@@ -64,7 +64,7 @@ trait GeoTrait
             '',
         );
 
-        return $distance !== null ? (float) $distance : null;
+        return null !== $distance ? (float) $distance : null;
     }
 
     public function distanceCustomField(
@@ -82,7 +82,7 @@ trait GeoTrait
             $unit,
         );
 
-        return $distance !== null ? (float) $distance : null;
+        return null !== $distance ? (float) $distance : null;
     }
 
     // ---- Scopes ----
