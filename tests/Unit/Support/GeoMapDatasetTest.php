@@ -5,11 +5,15 @@ declare(strict_types=1);
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
 use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
-use Modules\Geo\Tests\Support\GeoMapDatasetFixture;
 use PHPUnit\Framework\Assert;
 
+function geoMapDatasetPath(): string
+{
+    return dirname(__DIR__, 3).'/resources/data/geo-map-widget.geojson';
+}
+
 test('geo map dataset normalizes feature collection', function (): void {
-    $path = GeoMapDatasetFixture::path();
+    $path = geoMapDatasetPath();
     $normalized = app(LoadGeoMapDatasetAction::class)->execute($path);
 
     Assert::assertSame('FeatureCollection', $normalized['type']);
@@ -19,16 +23,20 @@ test('geo map dataset normalizes feature collection', function (): void {
 });
 
 test('geo map dataset exposes point categories only', function (): void {
-    $path = GeoMapDatasetFixture::path();
+    $path = geoMapDatasetPath();
     $categories = app(GetGeoMapDatasetCategoriesAction::class)->execute($path);
 
     Assert::assertNotEmpty($categories);
-    // `assertContainsOnly()` e' stata rimossa in PHPUnit 13: le varianti per tipo la sostituiscono.
-    Assert::assertContainsOnlyString($categories);
+
+    $nonStringCategories = array_filter(
+        $categories,
+        static fn (mixed $category): bool => ! is_string($category),
+    );
+    Assert::assertSame([], $nonStringCategories);
 });
 
 test('geo map dataset computes stats for points and zones', function (): void {
-    $path = GeoMapDatasetFixture::path();
+    $path = geoMapDatasetPath();
     $stats = app(GetGeoMapDatasetStatsAction::class)->execute($path);
 
     Assert::assertSame(6, $stats['total']);
