@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 ?>
 {{--
     Vista per il componente AddressesField.

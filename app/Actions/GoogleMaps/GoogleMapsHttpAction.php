@@ -46,11 +46,20 @@ class GoogleMapsHttpAction
     }
 
     /**
+<<<<<<< .merge_file_CE4JJ5
      * @param  array<string>  $origins
      * @param  array<string>  $destinations
      * @return array<string, mixed>
      *
      * @throws GoogleMapsApiException
+=======
+     * @param array<string> $origins
+     * @param array<string> $destinations
+     *
+     * @throws GoogleMapsApiException
+     *
+     * @return array<string, mixed>
+>>>>>>> .merge_file_l1vsaw
      */
     public function executeDistanceMatrix(array $origins, array $destinations): array
     {
@@ -97,7 +106,12 @@ class GoogleMapsHttpAction
     }
 
     /**
+<<<<<<< .merge_file_CE4JJ5
      * @param  array<string, mixed>  $params
+=======
+     * @param array<string, mixed> $params
+     *
+>>>>>>> .merge_file_l1vsaw
      * @return array<string, mixed>
      */
     private function makeRequest(string $method, string $url, array $params = [], bool $useCache = true): array
@@ -107,7 +121,11 @@ class GoogleMapsHttpAction
         if ($useCache && config('geo.cache.enabled')) {
             /** @var array<string, mixed>|null $cached */
             $cached = Cache::get($cacheKey);
+<<<<<<< .merge_file_CE4JJ5
             if ($cached !== null) {
+=======
+            if (null !== $cached) {
+>>>>>>> .merge_file_l1vsaw
                 return $cached;
             }
         }
@@ -166,7 +184,11 @@ class GoogleMapsHttpAction
     }
 
     /**
+<<<<<<< .merge_file_CE4JJ5
      * @param  array<string, mixed>  $params
+=======
+     * @param array<string, mixed> $params
+>>>>>>> .merge_file_l1vsaw
      */
     private function getCacheKey(string $method, string $url, array $params): string
     {

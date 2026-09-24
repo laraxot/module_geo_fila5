@@ -1,7 +1,3 @@
-<?php
-
-declare(strict_types=1);
-?>
 {{-- Reusable Alpine contract:
      expects: searchQuery, searchAddress(), showResults, searchResults, selectSearchResult(), isSearching --}}
 <div class="relative items-center gap-2" x-show="!isFullscreen">

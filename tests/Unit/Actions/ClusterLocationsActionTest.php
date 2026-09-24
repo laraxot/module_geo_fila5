@@ -40,14 +40,7 @@ it('creates separate clusters for distant locations', function (): void {
     Assert::assertCount(1, $clusters[1]['points']);
 });
 
-/**
- * Helper che invoca execute() via reflection per testare input non validi.
- *
- * @param array<array-key, mixed> $locations
- *
- * @return mixed Valore di ritorno di ReflectionMethod::invoke (eterogeneo)
- */
-function invokeClusterLocations(ClusterLocationsAction $action, array $locations, float $maxDistance = 1.0): mixed
+function invokeClusterLocations(ClusterLocationsAction $action, mixed $locations, float $maxDistance = 1.0): mixed
 {
     $method = new \ReflectionMethod(ClusterLocationsAction::class, 'execute');
 

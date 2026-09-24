@@ -59,7 +59,7 @@ class GetAddressFromMapboxLatLngAction
     }
 
     /**
-     * @return array<array-key, mixed>
+     * @return array<mixed>
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
     {
@@ -90,7 +90,7 @@ class GetAddressFromMapboxLatLngAction
     }
 
     /**
-     * @param array<array-key, mixed> $response
+     * @param array<mixed> $response
      */
     private function parseResponse(array $response): MapboxMapData
     {
