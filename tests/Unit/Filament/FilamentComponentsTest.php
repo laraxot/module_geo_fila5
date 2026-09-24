@@ -20,14 +20,10 @@ test('MapPicker can be instantiated', function () {
     $field = MapPicker::make('map_picker')
         ->latitudeColumn('latitude')
         ->longitudeColumn('longitude');
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
-    Assert::assertInstanceOf(MapPicker::class, $field);
+
+    Assert::assertSame('latitude', $field->getLatitudeColumn());
+    Assert::assertSame('longitude', $field->getLongitudeColumn());
+    Assert::assertSame('geo::filament.forms.components.map-picker', $field->getView());
 });
 
 test('LocationWidget can be instantiated', function () {
