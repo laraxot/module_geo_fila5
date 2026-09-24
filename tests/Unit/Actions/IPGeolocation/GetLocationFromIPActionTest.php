@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Actions\IPGeolocation;
 
+use Modules\Geo\Actions\IPGeolocation\FetchIPLocationAction;
 use Modules\Geo\Actions\IPGeolocation\GetLocationFromIPAction;
 use Modules\Geo\Datas\Location\IPLocationData;
 use Modules\Geo\Tests\Fixtures\FetchIPLocationReturningStub;
 use Modules\Geo\Tests\Fixtures\FetchIPLocationThrowingStub;
 use Modules\Geo\Tests\LightTestCase;
-use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
+
 it('delegates to fetch action and returns result', function (): void {
-    $fetchAction = new FetchIPLocationReturningStub(new IPLocationData(
+    app()->instance(FetchIPLocationAction::class, new FetchIPLocationReturningStub(new IPLocationData(
         ip: '8.8.8.8',
         city: 'Ashburn',
         region: null,
@@ -23,24 +24,22 @@ it('delegates to fetch action and returns result', function (): void {
         longitude: null,
         timezone: null,
         isp: null,
-    ));
-    $action = new GetLocationFromIPAction($fetchAction);
+    )));
+
+    $action = app(GetLocationFromIPAction::class);
 
     $result = $action->execute('8.8.8.8');
 
-    Assert::assertInstanceOf(IPLocationData::class, $result);
-    Assert::assertSame('8.8.8.8', $result->ip);
-    Assert::assertSame('Ashburn', $result->city);
+    expect($result)->toBeInstanceOf(IPLocationData::class)
+        ->and($result?->ip)->toBe('8.8.8.8')
+        ->and($result?->city)->toBe('Ashburn');
 });
 
 it('propagates exception when fetch action throws', function (): void {
-    $fetchAction = new FetchIPLocationThrowingStub(new \RuntimeException('not found'));
-    $action = new GetLocationFromIPAction($fetchAction);
+    app()->instance(FetchIPLocationAction::class, new FetchIPLocationThrowingStub(new \RuntimeException('not found')));
 
-    try {
-        $action->execute('192.168.1.1');
-        Assert::fail('Expected RuntimeException was not thrown');
-    } catch (\RuntimeException $exception) {
-        Assert::assertSame('not found', $exception->getMessage());
-    }
+    $action = app(GetLocationFromIPAction::class);
+
+    expect(fn (): ?IPLocationData => $action->execute('192.168.1.1'))
+        ->toThrow(\RuntimeException::class, 'not found');
 });

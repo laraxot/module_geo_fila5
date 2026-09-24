@@ -1,13 +1,20 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_QaNRG2
 
+=======
+>>>>>>> .merge_file_P6AuCF
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Geo\Models\County;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
+<<<<<<< .merge_file_QaNRG2
 return new class() extends XotBaseMigration
 {
+=======
+return new class extends XotBaseMigration {
+>>>>>>> .merge_file_P6AuCF
     protected ?string $model_class = County::class;
 
     public function up(): void

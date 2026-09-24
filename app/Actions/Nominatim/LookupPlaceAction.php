@@ -19,7 +19,7 @@ class LookupPlaceAction
 {
     use QueueableAction;
 
-    private const API_URL = 'https://nominatim.openstreetmap.org/lookup';
+    private const string API_URL = 'https://nominatim.openstreetmap.org/lookup';
 
     private Client $client;
 

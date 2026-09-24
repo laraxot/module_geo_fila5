@@ -19,7 +19,7 @@ class ReverseGeocodeAction
 {
     use QueueableAction;
 
-    private const API_URL = 'https://nominatim.openstreetmap.org/reverse';
+    private const string API_URL = 'https://nominatim.openstreetmap.org/reverse';
 
     private Client $client;
 

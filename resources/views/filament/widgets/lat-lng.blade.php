@@ -1,7 +1,6 @@
 <?php
 
 declare(strict_types=1);
-
 ?>
 <x-filament-widgets::widget>
     <div x-data="{ loading: false }" x-init="loading = true; getLocation()">
