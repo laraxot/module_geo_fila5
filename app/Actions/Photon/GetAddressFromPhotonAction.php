@@ -11,20 +11,11 @@ use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\Photon\PhotonAddressData;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeIntCastAction;
-<<<<<<< HEAD
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
 use function Safe\json_decode;
 
-=======
-
-use function Safe\json_decode;
-
-use Spatie\QueueableAction\QueueableAction;
-use Webmozart\Assert\Assert;
-
->>>>>>> laraxot/dev
 /**
  * Action per ottenere l'indirizzo e le coordinate tramite Photon.
  *
@@ -39,12 +30,7 @@ class GetAddressFromPhotonAction
 
     public function __construct(
         private readonly Client $client,
-<<<<<<< HEAD
     ) {}
-=======
-    ) {
-    }
->>>>>>> laraxot/dev
 
     /**
      * Ottiene i dettagli dell'indirizzo utilizzando Photon.

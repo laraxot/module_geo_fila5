@@ -15,7 +15,6 @@ use Modules\Xot\Contracts\ProfileContract;
 use function Safe\json_encode;
 
 /**
-<<<<<<< HEAD
  * @property-read Address|null $address
  * @property-read ProfileContract|null $creator
  * @property-read string $formatted_address
@@ -26,32 +25,14 @@ use function Safe\json_encode;
  * @property string|null $description
  * @property-read PlaceType|null $placeType
  * @property-read ProfileContract|null $updater
-=======
- * @property Address|null         $address
- * @property ProfileContract|null $creator
- * @property string               $formatted_address
- * @property float|null           $latitude
- * @property float|null           $longitude
- * @property Model                $linked
- * @property string|null          $name
- * @property string|null          $description
- * @property PlaceType|null       $placeType
- * @property ProfileContract|null $updater
->>>>>>> laraxot/dev
  *
  * @method static Builder<static>|Place newModelQuery()
  * @method static Builder<static>|Place newQuery()
  * @method static Builder<static>|Place query()
  *
-<<<<<<< HEAD
  * @property int $id
  * @property string|null $model_type
  * @property int|null $model_id
-=======
- * @property int         $id
- * @property string|null $model_type
- * @property int|null    $model_id
->>>>>>> laraxot/dev
  * @property string|null $nearest_street
  * @property string|null $created_by
  * @property string|null $updated_by
@@ -163,26 +144,14 @@ class Place extends BaseModel implements HasGeolocation
     {
         return $this->belongsTo(Address::class);
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
     public function getLatitude(): ?float
     {
         return $this->latitude;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
     public function getLongitude(): ?float
     {
         return $this->longitude;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
     public function getFormattedAddress(): string
     {
         return (string) ($this->formatted_address ?? $this->address->formatted_address ?? '');
@@ -242,41 +211,23 @@ class Place extends BaseModel implements HasGeolocation
     public function getName(): ?string
     {
         $name = $this->attributes['name'] ?? null;
-<<<<<<< HEAD
         if (is_string($name) && trim($name) !== '') {
-=======
-        if (is_string($name) && '' !== trim($name)) {
->>>>>>> laraxot/dev
             return $name;
         }
 
         $premise = $this->attributes['premise'] ?? null;
 
-<<<<<<< HEAD
         return is_string($premise) && trim($premise) !== '' ? $premise : null;
     }
     public function hasValidCoordinates(): bool
     {
         return $this->latitude !== null
             && $this->longitude !== null
-=======
-        return is_string($premise) && '' !== trim($premise) ? $premise : null;
-    }
-
-    public function hasValidCoordinates(): bool
-    {
-        return null !== $this->latitude
-            && null !== $this->longitude
->>>>>>> laraxot/dev
             && $this->latitude >= -90
             && $this->latitude <= 90
             && $this->longitude >= -180
             && $this->longitude <= 180;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
     public function getMapIcon(): ?string
     {
         $slug = $this->placeType->slug ?? null;
@@ -299,10 +250,6 @@ class Place extends BaseModel implements HasGeolocation
 
         return is_string($icon) ? $icon : null;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> laraxot/dev
     public function getLocationType(): ?string
     {
         $name = $this->placeType->name ?? null;

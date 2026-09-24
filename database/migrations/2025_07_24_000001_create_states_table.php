@@ -6,12 +6,8 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\Geo\Models\State;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-<<<<<<< HEAD
 return new class() extends XotBaseMigration
 {
-=======
-return new class extends XotBaseMigration {
->>>>>>> laraxot/dev
     protected ?string $model_class = State::class;
 
     public function up(): void

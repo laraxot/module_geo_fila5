@@ -11,19 +11,10 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Modules\Geo\Enums\AddressItemEnum;
 use Modules\Geo\Models\Address;
-<<<<<<< HEAD
 use Webmozart\Assert\Assert;
 
 use function Safe\preg_replace;
 
-=======
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
-
-use function Safe\preg_replace;
-
-use Webmozart\Assert\Assert;
-
->>>>>>> laraxot/dev
 /**
  * Trait HasAddress.
  *
@@ -34,7 +25,6 @@ use Webmozart\Assert\Assert;
  * @template TModel of Model
  *
  * @property Collection<int, Address> $addresses
-<<<<<<< HEAD
  * @property string|null $route
  * @property string|null $street_number
  * @property string|null $postal_code
@@ -45,16 +35,6 @@ use Webmozart\Assert\Assert;
  * @phpstan-require-extends Model
  *
  * @phpstan-ignore trait.unused
-=======
- * @property string|null              $route
- * @property string|null              $street_number
- * @property string|null              $postal_code
- * @property string|null              $city
- * @property string|null              $province
- * @property string|int               $id
- *
- * @phpstan-require-extends Model
->>>>>>> laraxot/dev
  */
 trait HasAddress
 {
@@ -63,11 +43,7 @@ trait HasAddress
      *
      * @return MorphMany<Address, $this>
      */
-<<<<<<< HEAD
     public function addresses(): MorphMany // @phpstan-ignore missingType.generics
-=======
-    public function addresses(): MorphMany
->>>>>>> laraxot/dev
     {
         return $this->morphMany(Address::class, 'model');
     }
@@ -77,11 +53,7 @@ trait HasAddress
      *
      * @return MorphOne<Address, $this>
      */
-<<<<<<< HEAD
     public function address(): MorphOne // @phpstan-ignore missingType.generics
-=======
-    public function address(): MorphOne
->>>>>>> laraxot/dev
     {
         return $this->morphOne(Address::class, 'model');
     }
@@ -92,11 +64,7 @@ trait HasAddress
     public function primaryAddress(): ?Address
     {
         $res = $this->addresses()->where('is_primary', true)->first();
-<<<<<<< HEAD
         if ($res === null) {
-=======
-        if (null === $res) {
->>>>>>> laraxot/dev
             return $res;
         }
         Assert::isInstanceOf($res, Address::class);
@@ -116,11 +84,7 @@ trait HasAddress
 
     public function getFullAddressAttribute(?string $value): string
     {
-<<<<<<< HEAD
         if ($value !== null) {
-=======
-        if (null !== $value) {
->>>>>>> laraxot/dev
             return $value;
         }
         $address = sprintf(
@@ -132,11 +96,7 @@ trait HasAddress
             $this->province ?? '',
         );
 
-<<<<<<< HEAD
         return trim(preg_replace('/[,\s]+/', ' ', $address));
-=======
-        return trim(SafeStringCastAction::cast(preg_replace('/[,\s]+/', ' ', $address)));
->>>>>>> laraxot/dev
     }
 
     public function getFullAddressesAttribute(?string $value): ?string
@@ -145,21 +105,13 @@ trait HasAddress
             return $value;
         }
         $address = $this->address()->first();
-<<<<<<< HEAD
         if ($address === null) {
-=======
-        if (null === $address) {
->>>>>>> laraxot/dev
             return null;
         }
         Assert::isInstanceOf($address, Address::class);
 
         $locality = $address->getLocality();
-<<<<<<< HEAD
         if ($locality === null) {
-=======
-        if (null === $locality) {
->>>>>>> laraxot/dev
             return null;
         }
 
@@ -257,36 +209,20 @@ trait HasAddress
      *
      * @return Collection<int, Address>
      */
-<<<<<<< HEAD
     public function getAddressesByType(string $type): Collection // @phpstan-ignore missingType.generics
     {
         return $this->addresses()->where('type', $type)->get();
-=======
-    public function getAddressesByType(string $type): Collection
-    {
-        return $this->addresses()->where('type', $type)->get()->ensure(Address::class);
->>>>>>> laraxot/dev
     }
 
     /**
      * Aggiunge un nuovo indirizzo al modello.
      *
-<<<<<<< HEAD
      * @param  array<string, mixed>  $data
      * @param  bool  $setPrimary  Se impostare questo indirizzo come principale
      */
     public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue
     {// Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
         if ($setPrimary || $this->addresses()->count() === 0) {
-=======
-     * @param array<string, mixed> $data
-     * @param bool                 $setPrimary Se impostare questo indirizzo come principale
-     */
-    public function addAddress(array $data, bool $setPrimary = false): Address
-    {
-        // Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
-        if ($setPrimary || 0 === $this->addresses()->count()) {
->>>>>>> laraxot/dev
             $data['is_primary'] = true;
 
             // Rimuovi il flag is_primary da tutti gli altri indirizzi
@@ -295,11 +231,7 @@ trait HasAddress
             }
         }
 
-<<<<<<< HEAD
         $address = $this->addresses()->create($data); // @phpstan-ignore argument.type
-=======
-        $address = $this->addresses()->create($data);
->>>>>>> laraxot/dev
         Assert::isInstanceOf($address, Address::class);
 
         return $address;
@@ -308,26 +240,16 @@ trait HasAddress
     /**
      * Aggiorna l'indirizzo principale.
      *
-<<<<<<< HEAD
      * @param  array<string, mixed>  $data
      */
     public function updatePrimaryAddress(array $data): ?Address // @phpstan-ignore missingType.iterableValue
-=======
-     * @param array<string, mixed> $data
-     */
-    public function updatePrimaryAddress(array $data): ?Address
->>>>>>> laraxot/dev
     {
         $primaryAddress = $this->primaryAddress();
         if (! $primaryAddress) {
             return $this->addAddress($data, true);
         }
 
-<<<<<<< HEAD
         $primaryAddress->update($data); // @phpstan-ignore argument.type
-=======
-        $primaryAddress->update($data);
->>>>>>> laraxot/dev
 
         return $primaryAddress;
     }
@@ -335,27 +257,16 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella città indicata (`locality`).
      *
-<<<<<<< HEAD
      * @param  Builder<static>  $query
      * @return Builder<static>
      */
     // @phpstan-ignore-next-line missingType.generics
-=======
-     * @param Builder<static> $query
-     *
-     * @return Builder<static>
-     */
->>>>>>> laraxot/dev
     public function scopeInCity(Builder $query, string $city): Builder
     {
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< HEAD
              * @param  Builder<Address>  $q
-=======
-             * @param Builder<Address> $q
->>>>>>> laraxot/dev
              */
             function (Builder $q) use ($city): void {
                 $q->where('locality', $city);
@@ -366,12 +277,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella provincia (`administrative_area_level_3`).
      *
-<<<<<<< HEAD
      * @param  Builder<TModel>  $query
-=======
-     * @param Builder<TModel> $query
-     *
->>>>>>> laraxot/dev
      * @return Builder<TModel>
      */
     public function scopeInProvince(Builder $query, string $province): Builder
@@ -379,11 +285,7 @@ trait HasAddress
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< HEAD
              * @param  Builder<Address>  $q
-=======
-             * @param Builder<Address> $q
->>>>>>> laraxot/dev
              */
             function (Builder $q) use ($province): void {
                 $q->where('administrative_area_level_3', $province);
@@ -394,12 +296,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella regione (`administrative_area_level_2`).
      *
-<<<<<<< HEAD
      * @param  Builder<TModel>  $query
-=======
-     * @param Builder<TModel> $query
-     *
->>>>>>> laraxot/dev
      * @return Builder<TModel>
      */
     public function scopeInRegion(Builder $query, string $region): Builder
@@ -407,11 +304,7 @@ trait HasAddress
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< HEAD
              * @param  Builder<Address>  $q
-=======
-             * @param Builder<Address> $q
->>>>>>> laraxot/dev
              */
             function (Builder $q) use ($region): void {
                 $q->where('administrative_area_level_2', $region);
@@ -422,12 +315,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo con il CAP indicato.
      *
-<<<<<<< HEAD
      * @param  Builder<TModel>  $query
-=======
-     * @param Builder<TModel> $query
-     *
->>>>>>> laraxot/dev
      * @return Builder<TModel>
      */
     public function scopeInPostalCode(Builder $query, string $postalCode): Builder
@@ -435,11 +323,7 @@ trait HasAddress
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< HEAD
              * @param  Builder<Address>  $q
-=======
-             * @param Builder<Address> $q
->>>>>>> laraxot/dev
              */
             function (Builder $q) use ($postalCode): void {
                 $q->where('postal_code', $postalCode);
@@ -452,14 +336,9 @@ trait HasAddress
      */
     protected function initializeHasAddress(): void
     {
-<<<<<<< HEAD
         /** @var array<string> $fields */
         $fields = array_values(array_map(
             fn (AddressItemEnum $item): string => $item->value,
-=======
-        $fields = array_values(array_map(
-            static fn (AddressItemEnum $item): string => $item->value,
->>>>>>> laraxot/dev
             AddressItemEnum::cases(),
         ));
         $this->mergeFillable($fields);
