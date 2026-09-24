@@ -12,20 +12,20 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Class Location.
  *
- * @property int $id
- * @property string|null $name
- * @property float|null $lat
- * @property float|null $lng
- * @property string|null $street
- * @property string|null $city
- * @property string|null $state
- * @property string|null $zip
- * @property string|null $formatted_address
- * @property bool $processed
- * @property string|null $description
- * @property-read ProfileContract|null $creator
- * @property-read array<string, mixed> $location
- * @property-read ProfileContract|null $updater
+ * @property int                  $id
+ * @property string|null          $name
+ * @property float|null           $lat
+ * @property float|null           $lng
+ * @property string|null          $street
+ * @property string|null          $city
+ * @property string|null          $state
+ * @property string|null          $zip
+ * @property string|null          $formatted_address
+ * @property bool                 $processed
+ * @property string|null          $description
+ * @property ProfileContract|null $creator
+ * @property array<string, mixed> $location
+ * @property ProfileContract|null $updater
  *
  * @method static Builder<static>|Location newModelQuery()
  * @method static Builder<static>|Location newQuery()
@@ -108,7 +108,8 @@ class Location extends BaseModel
      * Scope to filter by a specific distance from a given point.
      */
     /**
-     * @param  Builder<static>  $query
+     * @param Builder<static> $query
+     *
      * @return Builder<static>
      */
     public function scopeWithinDistance(Builder $query, float $latitude, float $longitude, float $distanceInKm): Builder
