@@ -17,10 +17,11 @@ use Webmozart\Assert\Assert;
  * mutator JSON legacy che collidono con accessor già definiti sui modelli.
  * SQL letterale + binding (come Address::scopeNearby) per tipizzare literal-string.
  *
+ * @template TModel of \Illuminate\Database\Eloquent\Model
+ *
  * @property float|null $latitude
  * @property float|null $longitude
  *
- * @template TModel of Model
  * @phpstan-require-extends Model
  */
 trait GeoTrait
@@ -35,7 +36,7 @@ trait GeoTrait
             '',
         );
 
-        return null !== $distance ? SafeFloatCastAction::cast($distance) : null;
+        return $distance !== null ? SafeFloatCastAction::cast($distance) : null;
     }
 
     public function distanceCustomField(
@@ -59,7 +60,7 @@ trait GeoTrait
             $unit,
         );
 
-        return null !== $distance ? SafeFloatCastAction::cast($distance) : null;
+        return $distance !== null ? SafeFloatCastAction::cast($distance) : null;
     }
 
     /**
