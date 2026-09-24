@@ -5,45 +5,18 @@ declare(strict_types=1);
 namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 // --- models ---
 use Modules\Geo\Actions\Distance\BuildHaversineSqlAction;
 use Modules\Geo\Actions\Distance\CalculateGeoDistanceAction;
 use Modules\Geo\Datas\GeoData;
-<<<<<<< HEAD
-=======
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
->>>>>>> laraxot/dev
 
 /**
  * Modules\Geo\Models\Traits\GeoTrait.
  *
-<<<<<<< HEAD
- * @property float $latitude
- * @property float $longitude
- * @property string $country.
- * @property string $country.
- * @property string $administrative_area_level_2.
- * @property string $country.
- * @property string $locality.
- * @property string $route.
- * @property string $street_number.
- * @property string $country.
- * @property string $country.
- * @property string $administrative_area_level_2.
- * @property string $country.
- * @property string $locality.
- * @property string $route.
- * @property string $street_number.
- * @property string $route.
- * @property string $street_number.
- * @property string $postal_code.
- * @property string $administrative_area_level_3.
- * @property string $administrative_area_level_2_short.
- */
-/** @phpstan-ignore trait.unused */
-=======
  * @property float       $latitude
  * @property float       $longitude
  * @property string      $country
@@ -56,7 +29,6 @@ use Modules\Xot\Actions\Cast\SafeStringCastAction;
  * @property string      $postal_code
  * @property string|null $address
  */
->>>>>>> laraxot/dev
 trait GeoTrait
 {
     /*
@@ -78,23 +50,14 @@ trait GeoTrait
     public function distance(?float $lat = null, ?float $lng = null): ?float
     {
         $distance = app(CalculateGeoDistanceAction::class)->execute(
-<<<<<<< HEAD
-            (float) $this->latitude,
-            (float) $this->longitude,
-=======
             SafeFloatCastAction::cast($this->latitude),
             SafeFloatCastAction::cast($this->longitude),
->>>>>>> laraxot/dev
             $lat,
             $lng,
             '',
         );
 
-<<<<<<< HEAD
-        return $distance !== null ? (float) $distance : null;
-=======
         return null !== $distance ? SafeFloatCastAction::cast($distance) : null;
->>>>>>> laraxot/dev
     }
 
     public function distanceCustomField(
@@ -106,17 +69,8 @@ trait GeoTrait
     ): ?float {
         $latFieldValue = $this->{$lat_field};
         $lngFieldValue = $this->{$lng_field};
-<<<<<<< HEAD
-        $latFromField = is_float($latFieldValue) || is_int($latFieldValue)
-            ? (float) $latFieldValue
-            : (is_string($latFieldValue) && is_numeric($latFieldValue) ? (float) $latFieldValue : 0.0);
-        $lngFromField = is_float($lngFieldValue) || is_int($lngFieldValue)
-            ? (float) $lngFieldValue
-            : (is_string($lngFieldValue) && is_numeric($lngFieldValue) ? (float) $lngFieldValue : 0.0);
-=======
         $latFromField = SafeFloatCastAction::cast($latFieldValue);
         $lngFromField = SafeFloatCastAction::cast($lngFieldValue);
->>>>>>> laraxot/dev
 
         $distance = app(CalculateGeoDistanceAction::class)->execute(
             $latFromField,
@@ -126,11 +80,7 @@ trait GeoTrait
             $unit,
         );
 
-<<<<<<< HEAD
-        return $distance !== null ? (float) $distance : null;
-=======
         return null !== $distance ? SafeFloatCastAction::cast($distance) : null;
->>>>>>> laraxot/dev
     }
 
     // ---- Scopes ----
@@ -197,21 +147,6 @@ trait GeoTrait
 
     public function getAddress(): string
     {
-<<<<<<< HEAD
-        if ($this->country === '') {
-            $this->country = 'Italia';
-        }
-
-        return $this->route.
-            ', '.
-            $this->street_number.
-            ', '.
-            $this->locality.
-            ', '.
-            $this->administrative_area_level_2.
-            ', '.
-            $this->country;
-=======
         if ('' === $this->country) {
             $this->country = 'Italia';
         }
@@ -225,7 +160,6 @@ trait GeoTrait
             SafeStringCastAction::cast($this->administrative_area_level_2).
             ', '.
             SafeStringCastAction::cast($this->country);
->>>>>>> laraxot/dev
     }
 
     /**
@@ -234,33 +168,15 @@ trait GeoTrait
     public function getLatitudeAttribute(mixed $value): ?float
     {
         if (is_float($value) || is_int($value)) {
-<<<<<<< HEAD
-            return (float) $value;
-        }
-        $address = $this->address;
-        if ($address === null) {
-=======
             return SafeFloatCastAction::cast($value);
         }
         $address = $this->address;
         if (null === $address) {
->>>>>>> laraxot/dev
             return null;
         }
         if (is_string($address) && isJson($address)) {
             $geo = GeoData::from(json_decode($address, true, 512, JSON_THROW_ON_ERROR));
             $latlng = $geo->latlng;
-<<<<<<< HEAD
-            $lat = is_float($latlng['lat'] ?? null) || is_int($latlng['lat'] ?? null) ? (float) ($latlng['lat']) : null;
-            $lng = is_float($latlng['lng'] ?? null) || is_int($latlng['lng'] ?? null) ? (float) ($latlng['lng']) : null;
-            if ($lat !== null && $lng !== null) {
-                $this->update([
-                    'latitude' => $lat,
-                    'longitude' => $lng,
-                ]);
-                $this->save();
-            }
-=======
             if (! isset($latlng['lat'], $latlng['lng'])) {
                 return null;
             }
@@ -271,7 +187,6 @@ trait GeoTrait
                 'longitude' => $lng,
             ]);
             $this->save();
->>>>>>> laraxot/dev
 
             return $lat;
         }
@@ -314,16 +229,11 @@ trait GeoTrait
 
             $geo = GeoData::from(json_decode((string) $value, true, 512, JSON_THROW_ON_ERROR));
             $latlng = $geo->latlng;
-<<<<<<< HEAD
-            $lat = $latlng['lat'];
-            $lng = $latlng['lng'];
-=======
             if (! isset($latlng['lat'], $latlng['lng'])) {
                 return;
             }
             $lat = SafeFloatCastAction::cast($latlng['lat']);
             $lng = SafeFloatCastAction::cast($latlng['lng']);
->>>>>>> laraxot/dev
 
             // unset($json['latlng'], $json['value']);
             // $this->attributes = array_merge($this->attributes, $json);
@@ -336,14 +246,6 @@ trait GeoTrait
             $rawFullAddress = $this->attributes['full_address'] ?? '';
             $fullAddress = is_string($rawFullAddress) ? $rawFullAddress : '';
             if (strlen($fullAddress) < 10) {
-<<<<<<< HEAD
-                $tmp = [];
-                $tmp[] = $geo->route ?? '';
-                $tmp[] = $geo->street_number ?? '';
-                $tmp[] = $geo->postal_code ?? '';
-                $tmp[] = $geo->administrative_area_level_3 ?? '';
-                $tmp[] = $geo->administrative_area_level_2_short ?? '';
-=======
                 $tmp = [
                     SafeStringCastAction::cast($geo->route),
                     SafeStringCastAction::cast($geo->street_number),
@@ -351,7 +253,6 @@ trait GeoTrait
                     SafeStringCastAction::cast($geo->administrative_area_level_3),
                     SafeStringCastAction::cast($geo->administrative_area_level_2_short),
                 ];
->>>>>>> laraxot/dev
                 $this->attributes['full_address'] = implode(', ', $tmp);
             }
         }
@@ -365,12 +266,8 @@ trait GeoTrait
     }
 
     /**
-<<<<<<< HEAD
-     * @param  mixed  $value
-=======
      * @param mixed $value
      *
->>>>>>> laraxot/dev
      * @return bool|mixed|string
      */
     /*
@@ -404,11 +301,7 @@ trait GeoTrait
      */
     public function getFullAddressAttribute(?string $value): ?string
     {
-<<<<<<< HEAD
-        if ($this->address === null) {
-=======
         if (null === $this->address) {
->>>>>>> laraxot/dev
             return null;
         }
         if (is_string($this->address) && isJson($this->address)) {
@@ -468,14 +361,6 @@ trait GeoTrait
          * return $value;
          * }
          */
-<<<<<<< HEAD
-        $tmp = [];
-        $tmp[] = $this->route;
-        $tmp[] = $this->street_number;
-        $tmp[] = $this->postal_code;
-        $tmp[] = $this->administrative_area_level_3;
-        $tmp[] = $this->administrative_area_level_2_short;
-=======
         $tmp = [
             SafeStringCastAction::cast($this->route),
             SafeStringCastAction::cast($this->street_number),
@@ -483,7 +368,6 @@ trait GeoTrait
             SafeStringCastAction::cast($this->administrative_area_level_3),
             SafeStringCastAction::cast($this->administrative_area_level_2_short),
         ];
->>>>>>> laraxot/dev
 
         return implode(', ', $tmp);
     }

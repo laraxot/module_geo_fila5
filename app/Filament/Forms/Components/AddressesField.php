@@ -60,12 +60,7 @@ class AddressesField extends XotBaseRepeater
     }
 
     /**
-<<<<<<< HEAD
      * @param  array<mixed>  $address
-=======
-     * @param array<mixed> $address
-     *
->>>>>>> laraxot/dev
      * @return array<string, mixed>
      */
     private static function normalizeAddressRow(array $address): array
@@ -116,11 +111,7 @@ class AddressesField extends XotBaseRepeater
             ->default(fn (Get $get): bool => count(self::repeaterAddresses($get)) <= 1)
             ->afterStateUpdated(function (mixed $state, Set $set, Get $get, Component $component): void {
                 // Se questo diventa primary, disattiva tutti gli altri
-<<<<<<< HEAD
                 if ($state === true) {
-=======
-                if (true === $state) {
->>>>>>> laraxot/dev
                     $addresses = self::repeaterAddresses($get);
 
                     // Estrae l'indice dal path del componente (es. "addresses.0.is_primary")
@@ -128,11 +119,7 @@ class AddressesField extends XotBaseRepeater
                     preg_match('/addresses\.(\d+)\.is_primary/', $path ?? '', $matches);
                     $currentIndex = $matches[1] ?? null;
 
-<<<<<<< HEAD
                     if ($currentIndex !== null) {
-=======
-                    if (null !== $currentIndex) {
->>>>>>> laraxot/dev
                         // Disattiva is_primary negli altri elementi
                         foreach ($addresses as $index => $address) {
                             $indexStr = app(SafeStringCastAction::class)->execute($index);
