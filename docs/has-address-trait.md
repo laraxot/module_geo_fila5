@@ -2,7 +2,7 @@
 title: HasAddress trait — PHPStan template e uso
 type: concept
 tags: [geo, trait, phpstan, has-address, address]
-updated_at: '2026-07-27'
+updated_at: '2026-09-24'
 qmd: hasaddress trait template tmodel phpstan use builder-static
 ---
 
@@ -14,10 +14,12 @@ Un solo punto per relazioni polimorfiche verso `Address` (Geo), riusabile sui mo
 
 ## Contratto PHPStan (obbligatorio)
 
-1. **Un solo PHPDoc sul trait** — `@property`, `@phpstan-require-extends`, `@template` e `@phpstan-ignore trait.unused` nello **stesso** blocco. Un docblock separato solo con `trait.unused` **cancella** le annotazioni e genera cascate `property.notFound` / `argument.type`.
-2. **`@template TModel of Model`** resta sul trait; gli **scope locali** tipizzano `Builder<static>` / `Builder<static>` di ritorno — **non** `Builder<TModel>`. Nel contesto di analisi del modello concreto, `TModel` non si lega sempre e PHPStan segnala `missingType.generics`. `static` sì. Closure `whereHas`: `@param Builder<\Modules\Geo\Models\Address> $q`.
-3. **Sul modello concreto**: `/** @use HasAddress<SelfClass> */`.
-4. **Vietato** `@phpstan-ignore missingType.generics` sugli scope, baseline, neon temp — solo `laravel/phpstan.neon` (immutabile per agenti).
+1. **Un solo PHPDoc sul trait** — `@property`, `@phpstan-require-extends`, `@template` nello **stesso** blocco. Un docblock separato **cancella** le annotazioni e genera cascate `property.notFound` / `argument.type`.
+2. **Consumer obbligatorio** — niente `@phpstan-ignore trait.unused` né probe: fixture `HasAddressTestModel` (o modello dominio) deve `use` il trait.
+3. **`@template TModel of Model`** resta sul trait; gli **scope locali** tipizzano `Builder<static>` di ritorno — **non** `Builder<TModel>`. Closure `whereHas`: `@param Builder<\Modules\Geo\Models\Address> $q`.
+4. **Sul modello concreto**: `/** @use HasAddress<SelfClass> */`.
+5. **`setAsPrimaryAddress`**: ritorno `void` + `InvalidArgumentException` se l'indirizzo non appartiene al modello (niente `bool` — `symplify.noReturnSetterMethod`).
+6. **Vietato** `@phpstan-ignore`, baseline, neon temp — solo `laravel/phpstan.neon` (immutabile per agenti).
 
 ```php
 use Modules\Geo\Models\Traits\HasAddress;
@@ -55,7 +57,7 @@ Report: `laravel/build/phpstan/`, `laravel/build/pest/` — mai `.claude-audit`.
 
 - [traits/has-address-implementation.md](./traits/has-address-implementation.md)
 - [traits/has-addresses.md](./traits/has-addresses.md)
+- [traits/geo-trait.md](./traits/geo-trait.md)
 - Memory: `docs/wiki/memories/trait-eloquent-scope-builder-static.md`
-- Rule: `docs/wiki/rules/phpstan-trait-phpdoc-merged-ignore.md`
 - Chat: `docs/chat/phpstan-modules-swarm-session.md`
 - Lock: `bashscripts/docs/lock-system.md`
