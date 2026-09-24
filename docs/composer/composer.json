@@ -17,6 +17,7 @@
     "require": {},
     "require-dev": {
         "larastan/larastan": "*"
+<<<<<<< .merge_file_2ph8HN
         "larastan/larastan": "^3.0"
         "larastan/larastan": "*"
 
@@ -37,6 +38,8 @@
         "larastan/larastan": "^3.0"
         "larastan/larastan": "*"
         "larastan/larastan": "*"
+=======
+>>>>>>> .merge_file_lnlwMN
     },
     "config": {
         "sort-packages": true,

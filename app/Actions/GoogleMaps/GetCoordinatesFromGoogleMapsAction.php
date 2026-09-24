@@ -11,6 +11,7 @@ use Modules\Geo\Datas\LocationData;
 
 use function Safe\json_decode;
 
+use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
 /**
@@ -19,19 +20,22 @@ use Webmozart\Assert\Assert;
  * Questa classe utilizza l'API Google Maps Geocoding per convertire
  * un indirizzo testuale in coordinate geografiche.
  */
-readonly class GetCoordinatesFromGoogleMapsAction
+class GetCoordinatesFromGoogleMapsAction
 {
-    private const API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    use QueueableAction;
+
+    private const string API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
     public function __construct(
-        private Client $client,
+        private readonly Client $client,
     ) {
     }
 
     /**
      * Ottiene le coordinate da un indirizzo.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
+     * @throws \InvalidArgumentException Se i dati di input non sono validi
+     * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(string $address): LocationData
     {
@@ -54,7 +58,7 @@ readonly class GetCoordinatesFromGoogleMapsAction
     /**
      * Valida i dati di input.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata
+     * @throws \InvalidArgumentException Se i dati non sono validi
      */
     private function validateInput(string $address): void
     {
@@ -88,37 +92,29 @@ readonly class GetCoordinatesFromGoogleMapsAction
      */
     private function parseResponse(string $response, string $address): LocationData
     {
-        $decoded = json_decode($response, true);
-        if (! \is_array($decoded)) {
+        /** @var array{
+         *     results: array<array{
+         *         geometry: array{
+         *             location: array{
+         *                 lat: float,
+         *                 lng: float
+         *             }
+         *         }
+         *     }>,
+         *     status: string
+         * } $data */
+        $data = json_decode($response, true);
+
+        if ('OK' !== $data['status'] || empty($data['results'][0]['geometry']['location'])) {
             throw new \RuntimeException('No coordinates found for address');
         }
 
-        /** @var array<string, mixed> $data */
-        $data = $decoded;
-
-        if ('OK' !== ($data['status'] ?? null)) {
-            throw new \RuntimeException('No coordinates found for address');
-        }
-
-        $results = $data['results'] ?? null;
-        if (! \is_array($results) || ! isset($results[0]) || ! \is_array($results[0])) {
-            throw new \RuntimeException('No coordinates found for address');
-        }
-
-        $geometry = $results[0]['geometry'] ?? null;
-        if (! \is_array($geometry)) {
-            throw new \RuntimeException('No coordinates found for address');
-        }
-
-        $location = $geometry['location'] ?? null;
-        if (! \is_array($location)) {
-            throw new \RuntimeException('No coordinates found for address');
-        }
+        $location = $data['results'][0]['geometry']['location'];
 
         return new LocationData(
             address: $address,
-            latitude: (float) ($location['lat'] ?? 0),
-            longitude: (float) ($location['lng'] ?? 0),
+            latitude: $location['lat'],
+            longitude: $location['lng'],
         );
     }
 }

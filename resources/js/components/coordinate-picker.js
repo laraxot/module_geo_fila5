@@ -1,11 +1,3 @@
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
 import { LitElement, html, css } from 'lit';
 import { map } from 'lit/directives/map.js';
 import L from 'leaflet';
@@ -235,6 +227,7 @@ export class CoordinatePickerLit extends LitElement {
                 }
             })
             .catch(err => {
+                console.error('Reverse geocoding failed:', err);
                 this.address = '';
                 this.formattedAddress = '';
             });

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-use Filament\Widgets\Widget;
+use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
 /**
  * Widget mappa temporaneamente disabilitato per migrazione Filament v4.
@@ -12,8 +12,9 @@ use Filament\Widgets\Widget;
  *
  * @see https://github.com/webbingbrasil/filament-maps/issues
  */
-class WebbingbrasilMap extends Widget
+class WebbingbrasilMap extends XotBaseWidget
 {
+    /** @var view-string */
     protected string $view = 'geo::filament.widgets.webbingbrasil-map-stub';
 
     protected int|string|array $columnSpan = 2;

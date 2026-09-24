@@ -8,11 +8,10 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\AddressData;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 use function Safe\json_decode;
 
-use Webmozart\Assert\Assert;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per ottenere l'indirizzo da coordinate tramite Bing Maps.
@@ -20,12 +19,14 @@ use Webmozart\Assert\Assert;
  * Questa classe utilizza l'API Bing Maps Geocoding per convertire
  * un indirizzo in coordinate geografiche e dettagli dell'indirizzo.
  */
-readonly class GetAddressFromBingMapsAction
+class GetAddressFromBingMapsAction
 {
-    private const API_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
+    use QueueableAction;
+
+    private const string API_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
 
     public function __construct(
-        private Client $client,
+        private readonly Client $client,
     ) {
     }
 
@@ -96,57 +97,42 @@ readonly class GetAddressFromBingMapsAction
      */
     private function parseResponse(string $response): ?AddressData
     {
-        $decoded = json_decode($response, true);
-        if (! \is_array($decoded)) {
+        /** @var array{
+         *     statusCode: int,
+         *     resourceSets: array<array{
+         *         resources: array<array{
+         *             point: array{
+         *                 coordinates: array<float>
+         *             },
+         *             address: array{
+         *                 countryRegion: string,
+         *                 locality: string,
+         *                 postalCode: string,
+         *                 addressLine: string,
+         *                 adminDistrict: string
+         *             }
+         *         }>
+         *     }>
+         * } $data */
+        $data = json_decode($response, true);
+
+        if (200 !== $data['statusCode'] || empty($data['resourceSets'][0]['resources'])) {
             return null;
         }
 
-        /** @var array<string, mixed> $data */
-        $data = $decoded;
-
-        if (200 !== ($data['statusCode'] ?? null)) {
-            return null;
-        }
-
-        $resourceSets = $data['resourceSets'] ?? null;
-        if (! \is_array($resourceSets) || ! isset($resourceSets[0]) || ! \is_array($resourceSets[0])) {
-            return null;
-        }
-
-        $resources = $resourceSets[0]['resources'] ?? null;
-        if (! \is_array($resources) || ! isset($resources[0]) || ! \is_array($resources[0])) {
-            return null;
-        }
-
-        /** @var array<string, mixed> $resource */
-        $resource = $resources[0];
-
-        $point = $resource['point'] ?? null;
-        if (! \is_array($point)) {
-            return null;
-        }
-
-        $coordinates = $point['coordinates'] ?? null;
-        if (! \is_array($coordinates)) {
-            return null;
-        }
-
-        $address = $resource['address'] ?? null;
-        if (! \is_array($address)) {
-            return null;
-        }
-
-        Assert::isArray($address);
+        $resource = $data['resourceSets'][0]['resources'][0];
+        $coordinates = $resource['point']['coordinates'];
+        $address = $resource['address'];
 
         return AddressData::from([
             'latitude' => (float) ($coordinates[0] ?? 0),
             'longitude' => (float) ($coordinates[1] ?? 0),
-            'country' => SafeStringCastAction::cast($address['countryRegion'] ?? 'Italia'),
-            'city' => SafeStringCastAction::cast($address['locality'] ?? ''),
-            'postal_code' => (int) SafeStringCastAction::cast($address['postalCode'] ?? 0),
-            'street' => SafeStringCastAction::cast($address['addressLine'] ?? ''),
-            'street_number' => '',
-            'province' => SafeStringCastAction::cast($address['adminDistrict'] ?? ''),
+            'country' => $address['countryRegion'] ?? 'Italia',
+            'city' => $address['locality'] ?? '',
+            'postal_code' => (int) ($address['postalCode'] ?? 0),
+            'street' => $address['addressLine'] ?? '',
+            'street_number' => '', // Bing Maps non fornisce direttamente il numero civico
+            'province' => $address['adminDistrict'] ?? '',
         ]);
     }
 }
