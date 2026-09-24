@@ -16,8 +16,12 @@ final class IsPointInPolygonAction
     use QueueableAction;
 
     /**
+<<<<<<< .merge_file_acmBbo
      *
      * @param array<mixed>      $polygon
+=======
+     * @param array<mixed> $polygon
+>>>>>>> .merge_file_rE9zIN
      */
     public function execute(float $latitude, float $longitude, array $polygon): bool
     {

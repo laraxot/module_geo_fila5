@@ -122,8 +122,12 @@ final class GetAddressFromGoogleMapsAction
         /** @var GoogleMapAddressComponentData|null $component */
         $component = $components
             ->toCollection()
-            ->first(function (GoogleMapAddressComponentData $component) use ($types): bool {
-                return [] !== $component->types && count(array_intersect($component->types, $types)) > 0;
+            ->first(function (mixed $component) use ($types) {
+                if (! $component instanceof GoogleMapAddressComponentData) {
+                    return false;
+                }
+
+                return ! empty($component->types) && count(array_intersect($component->types, $types)) > 0;
             });
 
         if (! $component instanceof GoogleMapAddressComponentData) {

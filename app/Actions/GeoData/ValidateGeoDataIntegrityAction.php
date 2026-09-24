@@ -30,7 +30,10 @@ final class ValidateGeoDataIntegrityAction
     ];
 
     /**
+<<<<<<< .merge_file_2FsGzH
      *
+=======
+>>>>>>> .merge_file_Zam91d
      * @param array<string, mixed> $data
      */
     public function execute(array $data): bool
@@ -58,7 +61,10 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
+<<<<<<< .merge_file_2FsGzH
      *
+=======
+>>>>>>> .merge_file_Zam91d
      * @param array<string, mixed> $data
      *
      * @return array<string, array<int, string>>
@@ -74,7 +80,10 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
+<<<<<<< .merge_file_2FsGzH
      *
+=======
+>>>>>>> .merge_file_Zam91d
      * @param array<string, mixed> $data
      */
     private function validate(array $data): bool
@@ -85,9 +94,14 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
+<<<<<<< .merge_file_2FsGzH
      *
      * @param array<mixed, mixed>     $region
      * @param list<string>            $regionCodes
+=======
+     * @param array<mixed, mixed> $region
+     * @param list<string>        $regionCodes
+>>>>>>> .merge_file_Zam91d
      *
      * @param-out list<string> $regionCodes
      */
@@ -119,9 +133,14 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
+<<<<<<< .merge_file_2FsGzH
      *
      * @param array<mixed, mixed>     $province
      * @param list<string>            $provinceCodes
+=======
+     * @param array<mixed, mixed> $province
+     * @param list<string>        $provinceCodes
+>>>>>>> .merge_file_Zam91d
      *
      * @param-out list<string> $provinceCodes
      */
@@ -162,9 +181,14 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
+<<<<<<< .merge_file_2FsGzH
      *
      * @param array<mixed, mixed>     $city
      * @param list<string>            $cityCodes
+=======
+     * @param array<mixed, mixed> $city
+     * @param list<string>        $cityCodes
+>>>>>>> .merge_file_Zam91d
      *
      * @param-out list<string> $cityCodes
      */
