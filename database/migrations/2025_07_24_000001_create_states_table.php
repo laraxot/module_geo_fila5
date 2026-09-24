@@ -1,37 +1,12 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_vZWSnt
 
-=======
-<<<<<<< .merge_file_96bwFN
-
-=======
-<<<<<<< .merge_file_wAY6KW
-
-=======
->>>>>>> .merge_file_xBVtGM
->>>>>>> .merge_file_yLh4BD
->>>>>>> .merge_file_PLsT2S
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Geo\Models\State;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-<<<<<<< .merge_file_vZWSnt
-return new class() extends XotBaseMigration
-{
-=======
-<<<<<<< .merge_file_96bwFN
 return new class extends XotBaseMigration {
-=======
-<<<<<<< .merge_file_wAY6KW
-return new class() extends XotBaseMigration
-{
-=======
-return new class extends XotBaseMigration {
->>>>>>> .merge_file_xBVtGM
->>>>>>> .merge_file_yLh4BD
->>>>>>> .merge_file_PLsT2S
     protected ?string $model_class = State::class;
 
     public function up(): void
