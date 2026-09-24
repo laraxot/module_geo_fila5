@@ -17,7 +17,8 @@ use PHPUnit\Framework\Assert;
 /**
  * Build an in-memory address array with sane defaults.
  *
- * @param  array<string, mixed>  $overrides
+ * @param array<string, mixed> $overrides
+ *
  * @return array<string, mixed>
  */
 function makeAddress(array $overrides = []): array
@@ -51,25 +52,22 @@ function makeAddress(array $overrides = []): array
 /**
  * Compose a displayable full address from array parts.
  *
- * @param  array<string, mixed>  $address
+ * @param array<string, mixed> $address
  */
 function formatFullAddress(array $address): string
 {
-    /** @var list<string|int|float|bool|null> $rawParts */
-    $rawParts = [
-        $address['route'] ?? null,
-        $address['street_number'] ?? null,
-        $address['locality'] ?? null,
-        $address['postal_code'] ?? null,
-        $address['country'] ?? null,
-    ];
-
     $parts = array_filter(
-        $rawParts,
-        static fn (string|int|float|bool|null $value): bool => (SafeStringCastAction::cast($value)) !== '',
+        [
+            $address['route'] ?? null,
+            $address['street_number'] ?? null,
+            $address['locality'] ?? null,
+            $address['postal_code'] ?? null,
+            $address['country'] ?? null,
+        ],
+        static fn (mixed $value): bool => '' !== SafeStringCastAction::cast($value),
     );
 
-    return implode(', ', array_map(static fn (string|int|float|bool|null $part): string => SafeStringCastAction::cast($part), $parts));
+    return implode(', ', array_map(static fn (mixed $part): string => SafeStringCastAction::cast($part), $parts));
 }
 
 describe('Address Integration', function () {
@@ -162,7 +160,7 @@ describe('Address Integration', function () {
 
         $primary = null;
         foreach ($patientAddresses as $addr) {
-            if ($addr['is_primary'] === true) {
+            if (true === $addr['is_primary']) {
                 $primary = $addr;
                 break;
             }

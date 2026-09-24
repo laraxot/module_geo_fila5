@@ -13,7 +13,7 @@ class GeoDatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        if ($this->command !== null) {
+        if (null !== $this->command) {
             $this->command->info('GeoDatabaseSeeder: entity seeders…');
         }
 
@@ -32,7 +32,7 @@ class GeoDatabaseSeeder extends Seeder
             StateSeeder::class,
         ]);
 
-        if ($this->command !== null) {
+        if (null !== $this->command) {
             $this->command->info('GeoDatabaseSeeder: completato.');
         }
     }

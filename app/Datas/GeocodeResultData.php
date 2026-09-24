@@ -18,5 +18,6 @@ class GeocodeResultData extends Data
         public ?string $countryCode = null,
         /** @var array<string, mixed> */
         public array $components = [], // e.g., ['city' => 'New York', 'state' => 'NY']
-    ) {}
+    ) {
+    }
 }

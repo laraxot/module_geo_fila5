@@ -15,24 +15,24 @@ use Modules\Xot\Contracts\ProfileContract;
 use function Safe\json_encode;
 
 /**
- * @property-read Address|null $address
- * @property-read ProfileContract|null $creator
- * @property-read string $formatted_address
- * @property-read float|null $latitude
- * @property-read float|null $longitude
- * @property-read Model $linked
- * @property string|null $name
- * @property string|null $description
- * @property-read PlaceType|null $placeType
- * @property-read ProfileContract|null $updater
+ * @property Address|null         $address
+ * @property ProfileContract|null $creator
+ * @property string               $formatted_address
+ * @property float|null           $latitude
+ * @property float|null           $longitude
+ * @property Model                $linked
+ * @property string|null          $name
+ * @property string|null          $description
+ * @property PlaceType|null       $placeType
+ * @property ProfileContract|null $updater
  *
  * @method static Builder<static>|Place newModelQuery()
  * @method static Builder<static>|Place newQuery()
  * @method static Builder<static>|Place query()
  *
- * @property int $id
+ * @property int         $id
  * @property string|null $model_type
- * @property int|null $model_id
+ * @property int|null    $model_id
  * @property string|null $nearest_street
  * @property string|null $created_by
  * @property string|null $updated_by
@@ -214,19 +214,19 @@ class Place extends BaseModel implements HasGeolocation
     public function getName(): ?string
     {
         $name = $this->attributes['name'] ?? null;
-        if (is_string($name) && trim($name) !== '') {
+        if (is_string($name) && '' !== trim($name)) {
             return $name;
         }
 
         $premise = $this->attributes['premise'] ?? null;
 
-        return is_string($premise) && trim($premise) !== '' ? $premise : null;
+        return is_string($premise) && '' !== trim($premise) ? $premise : null;
     }
 
     public function hasValidCoordinates(): bool
     {
-        return $this->latitude !== null
-            && $this->longitude !== null
+        return null !== $this->latitude
+            && null !== $this->longitude
             && $this->latitude >= -90
             && $this->latitude <= 90
             && $this->longitude >= -180

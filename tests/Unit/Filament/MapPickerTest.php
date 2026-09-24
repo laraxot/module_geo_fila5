@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 use Modules\Geo\Filament\Forms\Components\MapPicker;
 use PHPUnit\Framework\Assert;
 

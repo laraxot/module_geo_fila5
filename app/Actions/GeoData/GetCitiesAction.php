@@ -20,7 +20,8 @@ class GetCitiesAction
     public const int CACHE_TTL = 86400;
 
     /**
-     * @param  string  $provinceCode  Codice della provincia
+     * @param string $provinceCode Codice della provincia
+     *
      * @return Collection<int, array{name: string, code: string}>
      */
     public function execute(string $provinceCode): Collection
@@ -35,7 +36,7 @@ class GetCitiesAction
                 : [])->firstWhere('code', $provinceCode);
 
             if (! $province || ! \is_array($province) || ! isset($province['cities']) || ! \is_array($province['cities'])) {
-                return new Collection;
+                return new Collection();
             }
 
             /** @var array<int, array<string, mixed>> $cities */

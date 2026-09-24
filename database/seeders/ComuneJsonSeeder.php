@@ -18,7 +18,7 @@ class ComuneJsonSeeder extends Seeder
         ComuneJson::allProvinces();
         ComuneJson::searchByName('Milano', 1);
 
-        if ($this->command !== null) {
+        if (null !== $this->command) {
             $this->command->info('ComuneJsonSeeder: cache geo scaldata da resources/json/comuni.json');
         }
     }
