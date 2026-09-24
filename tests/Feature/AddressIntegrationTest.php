@@ -17,7 +17,12 @@ use PHPUnit\Framework\Assert;
 /**
  * Build an in-memory address array with sane defaults.
  *
+<<<<<<< HEAD
  * @param  array<string, mixed>  $overrides
+=======
+ * @param array<string, mixed> $overrides
+ *
+>>>>>>> laraxot/dev
  * @return array<string, mixed>
  */
 function makeAddress(array $overrides = []): array
@@ -51,7 +56,11 @@ function makeAddress(array $overrides = []): array
 /**
  * Compose a displayable full address from array parts.
  *
+<<<<<<< HEAD
  * @param  array<string, mixed>  $address
+=======
+ * @param array<string, mixed> $address
+>>>>>>> laraxot/dev
  */
 function formatFullAddress(array $address): string
 {
@@ -63,7 +72,11 @@ function formatFullAddress(array $address): string
             $address['postal_code'] ?? null,
             $address['country'] ?? null,
         ],
+<<<<<<< HEAD
         static fn (mixed $value): bool => (SafeStringCastAction::cast($value)) !== '',
+=======
+        static fn (mixed $value): bool => '' !== SafeStringCastAction::cast($value),
+>>>>>>> laraxot/dev
     );
 
     return implode(', ', array_map(static fn (mixed $part): string => SafeStringCastAction::cast($part), $parts));
@@ -159,7 +172,11 @@ describe('Address Integration', function () {
 
         $primary = null;
         foreach ($patientAddresses as $addr) {
+<<<<<<< HEAD
             if ($addr['is_primary'] === true) {
+=======
+            if (true === $addr['is_primary']) {
+>>>>>>> laraxot/dev
                 $primary = $addr;
                 break;
             }

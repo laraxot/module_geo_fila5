@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+<<<<<<< HEAD
 use InvalidArgumentException;
+=======
+>>>>>>> laraxot/dev
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
 
@@ -68,7 +71,11 @@ trait HasAddresses
     {
         // Assicurati che l'indirizzo appartenga a questo modello
         if ($address->model_id !== $this->id || $address->model_type !== static::class) {
+<<<<<<< HEAD
             throw new InvalidArgumentException('L\'indirizzo non appartiene a questo modello.');
+=======
+            throw new \InvalidArgumentException('L\'indirizzo non appartiene a questo modello.');
+>>>>>>> laraxot/dev
         }
 
         // Rimuovi lo stato primario da tutti gli altri indirizzi
@@ -82,7 +89,11 @@ trait HasAddresses
     /**
      * Aggiunge un nuovo indirizzo.
      *
+<<<<<<< HEAD
      * @param  array<string, mixed>  $data
+=======
+     * @param array<string, mixed> $data
+>>>>>>> laraxot/dev
      */
     public function addAddress(array $data, bool $isPrimary = false): Address
     {

@@ -11,8 +11,35 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
+<<<<<<< HEAD
 beforeEach(function (): void {
     $comuneFixtureRows = [
+=======
+/**
+ * Normalizza attributi Comune che in JSON sono stringhe ma in phpdoc risultano array|string.
+ */
+function comuneAttrAsString(mixed $value): string
+{
+    if (is_string($value)) {
+        return $value;
+    }
+
+    if (is_array($value)) {
+        $candidate = $value['nome'] ?? $value[0] ?? null;
+
+        return is_string($candidate) ? $candidate : '';
+    }
+
+    return '';
+}
+
+/**
+ * @return list<array<string, mixed>>
+ */
+function comuneFixtureRows(): array
+{
+    return [
+>>>>>>> laraxot/dev
         [
             'id' => 1,
             'regione' => 'Lombardia',
@@ -21,8 +48,13 @@ beforeEach(function (): void {
             'cap' => '20100',
             'lat' => 45.4642,
             'lng' => 9.1900,
+<<<<<<< HEAD
             'created_at' => now(),
             'updated_at' => now(),
+=======
+            'created_at' => now()->toIso8601String(),
+            'updated_at' => now()->toIso8601String(),
+>>>>>>> laraxot/dev
         ],
         [
             'id' => 2,
@@ -32,6 +64,7 @@ beforeEach(function (): void {
             'cap' => '20099',
             'lat' => 45.5347,
             'lng' => 9.2345,
+<<<<<<< HEAD
             'created_at' => now(),
             'updated_at' => now(),
         ],
@@ -41,6 +74,19 @@ beforeEach(function (): void {
     File::put(
         base_path('database/content/comuni.json'),
         json_encode($comuneFixtureRows, JSON_PRETTY_PRINT)
+=======
+            'created_at' => now()->toIso8601String(),
+            'updated_at' => now()->toIso8601String(),
+        ],
+    ];
+}
+
+beforeEach(function (): void {
+    File::ensureDirectoryExists(base_path('database/content'));
+    File::put(
+        base_path('database/content/comuni.json'),
+        json_encode(comuneFixtureRows(), JSON_PRETTY_PRINT),
+>>>>>>> laraxot/dev
     );
 });
 
@@ -53,15 +99,24 @@ it('can load comuni from json', function (): void {
     $comuni = Comune::all();
 
     Assert::assertCount(2, $comuni);
+<<<<<<< HEAD
     /** @var Comune $first */
     $first = $comuni->first();
     Assert::assertSame('Milano', $first->nome);
     /** @var Comune $last */
     $last = $comuni->last();
+=======
+    $first = $comuni->first();
+    Assert::assertInstanceOf(Comune::class, $first);
+    Assert::assertSame('Milano', $first->nome);
+    $last = $comuni->last();
+    Assert::assertInstanceOf(Comune::class, $last);
+>>>>>>> laraxot/dev
     Assert::assertSame('Sesto San Giovanni', $last->nome);
 });
 
 it('can filter comuni by region', function (): void {
+<<<<<<< HEAD
     /** @phpstan-ignore-next-line -- Dynamic scope */
     $comuni = Comune::byRegion('Lombardia')->get();
 
@@ -239,6 +294,106 @@ it('can filter comuni by name, province, region and cap', function (): void {
 
 it('can create a new comune', function (): void {
     $comune = Comune::create([
+=======
+    $comuni = Comune::query()->where('regione', 'Lombardia')->get();
+
+    Assert::assertCount(2, $comuni);
+    foreach ($comuni as $comune) {
+        Assert::assertInstanceOf(Comune::class, $comune);
+        Assert::assertSame('Lombardia', comuneAttrAsString($comune->regione));
+    }
+});
+
+it('can filter comuni by province', function (): void {
+    $comuni = Comune::getComuniByProvincia('Milano');
+
+    Assert::assertCount(2, $comuni);
+    foreach ($comuni as $comune) {
+        Assert::assertInstanceOf(Comune::class, $comune);
+        Assert::assertSame('Milano', comuneAttrAsString($comune->provincia));
+    }
+});
+
+it('can filter comuni by cap', function (): void {
+    $comuni = Comune::findByCap('20100');
+
+    Assert::assertCount(1, $comuni);
+    $first = $comuni->first();
+    Assert::assertInstanceOf(Comune::class, $first);
+    Assert::assertSame('20100', comuneAttrAsString($first->cap));
+});
+
+it('can find comune by name', function (): void {
+    $comune = Comune::findByNome('Milano');
+
+    Assert::assertInstanceOf(Comune::class, $comune);
+    Assert::assertSame('Milano', $comune->nome);
+});
+
+it('can find comune by name case insensitive', function (): void {
+    $comune = Comune::findByNome('milano');
+
+    Assert::assertInstanceOf(Comune::class, $comune);
+    Assert::assertSame('Milano', $comune->nome);
+});
+
+it('can filter comuni by name and province', function (): void {
+    $comuni = Comune::query()
+        ->where('nome', 'Milano')
+        ->where('provincia', 'Milano')
+        ->get();
+
+    Assert::assertCount(1, $comuni);
+    $first = $comuni->first();
+    Assert::assertInstanceOf(Comune::class, $first);
+    Assert::assertSame('Milano', $first->nome);
+    Assert::assertSame('Milano', comuneAttrAsString($first->provincia));
+});
+
+it('can filter comuni by name and region', function (): void {
+    $comuni = Comune::query()
+        ->where('nome', 'Milano')
+        ->where('regione', 'Lombardia')
+        ->get();
+
+    Assert::assertCount(1, $comuni);
+    $first = $comuni->first();
+    Assert::assertInstanceOf(Comune::class, $first);
+    Assert::assertSame('Milano', $first->nome);
+    Assert::assertSame('Lombardia', comuneAttrAsString($first->regione));
+});
+
+it('can filter comuni by name province and region', function (): void {
+    $comuni = Comune::query()
+        ->where('nome', 'Milano')
+        ->where('provincia', 'Milano')
+        ->where('regione', 'Lombardia')
+        ->get();
+
+    Assert::assertCount(1, $comuni);
+    $first = $comuni->first();
+    Assert::assertInstanceOf(Comune::class, $first);
+    Assert::assertSame('Milano', $first->nome);
+    Assert::assertSame('Milano', comuneAttrAsString($first->provincia));
+    Assert::assertSame('Lombardia', comuneAttrAsString($first->regione));
+});
+
+it('can filter comuni by name and cap', function (): void {
+    $comuni = Comune::query()
+        ->where('nome', 'Milano')
+        ->where('cap', 'like', '%20100%')
+        ->get();
+
+    Assert::assertCount(1, $comuni);
+    $first = $comuni->first();
+    Assert::assertInstanceOf(Comune::class, $first);
+    Assert::assertSame('Milano', $first->nome);
+    Assert::assertSame('20100', comuneAttrAsString($first->cap));
+});
+
+it('can create a new comune', function (): void {
+    $comune = Comune::query()->create([
+>>>>>>> laraxot/dev
         'regione' => 'Lombardia',
         'provincia' => 'Milano',
         'nome' => 'Bresso',
@@ -247,23 +402,38 @@ it('can create a new comune', function (): void {
         'lng' => 9.1900,
     ]);
 
+<<<<<<< HEAD
     Assert::assertNotNull($comune);
     Assert::assertSame('Bresso', $comune->nome);
     Assert::assertSame('Milano', $comune->provincia);
     Assert::assertSame('Lombardia', $comune->regione);
     Assert::assertSame('20091', $comune->cap);
+=======
+    Assert::assertInstanceOf(Comune::class, $comune);
+    Assert::assertSame('Bresso', $comune->nome);
+    Assert::assertSame('Milano', comuneAttrAsString($comune->provincia));
+    Assert::assertSame('Lombardia', comuneAttrAsString($comune->regione));
+    Assert::assertSame('20091', comuneAttrAsString($comune->cap));
+>>>>>>> laraxot/dev
     Assert::assertSame(45.5389, $comune->lat);
     Assert::assertSame(9.1900, $comune->lng);
 });
 
 it('can update an existing comune', function (): void {
+<<<<<<< HEAD
     $comune = Comune::first();
     /* @phpstan-ignore-next-line -- $comune may be null from first() */
+=======
+    $comune = Comune::query()->first();
+    Assert::assertInstanceOf(Comune::class, $comune);
+
+>>>>>>> laraxot/dev
     $comune->update([
         'nome' => 'Milano Centro',
         'cap' => '20121',
     ]);
 
+<<<<<<< HEAD
     /* @phpstan-ignore-next-line -- $comune may be null */
     Assert::assertSame('Milano Centro', $comune->nome);
     /* @phpstan-ignore-next-line -- $comune may be null */
@@ -279,4 +449,18 @@ it('can delete an existing comune', function (): void {
     $comune->delete();
 
     Assert::assertNull(Comune::find($id));
+=======
+    Assert::assertSame('Milano Centro', $comune->nome);
+    Assert::assertSame('20121', comuneAttrAsString($comune->cap));
+});
+
+it('can delete an existing comune', function (): void {
+    $comune = Comune::query()->first();
+    Assert::assertInstanceOf(Comune::class, $comune);
+    $id = $comune->id;
+
+    $comune->delete();
+
+    Assert::assertNull(Comune::query()->find($id));
+>>>>>>> laraxot/dev
 });

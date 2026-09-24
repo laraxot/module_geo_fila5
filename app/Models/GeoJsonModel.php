@@ -34,7 +34,10 @@ abstract class GeoJsonModel
     /**
      * Filtra la collection per chiave/valore.
      *
+<<<<<<< HEAD
      *
+=======
+>>>>>>> laraxot/dev
      * @return Collection<int, array<string, mixed>>
      */
     public static function where(string $key, string|int|bool|null $value): Collection
