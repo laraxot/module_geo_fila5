@@ -14,7 +14,8 @@ final class FixedPairDistanceStub implements CalculateDistanceActionContract
 {
     public function __construct(
         private int $meters,
-    ) {}
+    ) {
+    }
 
     public function execute(LocationData $origin, LocationData $destination): array
     {
