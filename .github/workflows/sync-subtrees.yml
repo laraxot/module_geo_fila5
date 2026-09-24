@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           token: ${{ secrets.BASHSCRIPTS_TOKEN || github.token }}
@@ -46,7 +46,7 @@ jobs:
           git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
 
       - name: Checkout bashscripts repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           repository: laraxot/bashscripts_fila5
           ref: dev
