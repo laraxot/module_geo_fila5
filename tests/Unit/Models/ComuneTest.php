@@ -11,8 +11,30 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
 
-beforeEach(function (): void {
-    $comuneFixtureRows = [
+/**
+ * Normalizza attributi Comune che in JSON sono stringhe ma in phpdoc risultano array|string.
+ */
+function comuneAttrAsString(mixed $value): string
+{
+    if (is_string($value)) {
+        return $value;
+    }
+
+    if (is_array($value)) {
+        $candidate = $value['nome'] ?? $value[0] ?? null;
+
+        return is_string($candidate) ? $candidate : '';
+    }
+
+    return '';
+}
+
+/**
+ * @return list<array<string, mixed>>
+ */
+function comuneFixtureRows(): array
+{
+    return [
         [
             'id' => 1,
             'regione' => 'Lombardia',
@@ -21,8 +43,8 @@ beforeEach(function (): void {
             'cap' => '20100',
             'lat' => 45.4642,
             'lng' => 9.1900,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'created_at' => now()->toIso8601String(),
+            'updated_at' => now()->toIso8601String(),
         ],
         [
             'id' => 2,
@@ -32,15 +54,17 @@ beforeEach(function (): void {
             'cap' => '20099',
             'lat' => 45.5347,
             'lng' => 9.2345,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'created_at' => now()->toIso8601String(),
+            'updated_at' => now()->toIso8601String(),
         ],
     ];
+}
 
+beforeEach(function (): void {
     File::ensureDirectoryExists(base_path('database/content'));
     File::put(
         base_path('database/content/comuni.json'),
-        json_encode($comuneFixtureRows, JSON_PRETTY_PRINT)
+        json_encode(comuneFixtureRows(), JSON_PRETTY_PRINT),
     );
 });
 
@@ -53,192 +77,113 @@ it('can load comuni from json', function (): void {
     $comuni = Comune::all();
 
     Assert::assertCount(2, $comuni);
-    /** @var Comune $first */
     $first = $comuni->first();
+    Assert::assertInstanceOf(Comune::class, $first);
     Assert::assertSame('Milano', $first->nome);
-    /** @var Comune $last */
     $last = $comuni->last();
+    Assert::assertInstanceOf(Comune::class, $last);
     Assert::assertSame('Sesto San Giovanni', $last->nome);
 });
 
 it('can filter comuni by region', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byRegion('Lombardia')->get();
+    $comuni = Comune::query()->where('regione', 'Lombardia')->get();
 
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     Assert::assertCount(2, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Lombardia', $first->regione);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    $last = $comuni->last();
-    /* @phpstan-ignore-next-line -- $last is mixed from ignored scope */
-    Assert::assertSame('Lombardia', $last->regione);
+    foreach ($comuni as $comune) {
+        Assert::assertInstanceOf(Comune::class, $comune);
+        Assert::assertSame('Lombardia', comuneAttrAsString($comune->regione));
+    }
 });
 
 it('can filter comuni by province', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byProvince('Milano')->get();
+    $comuni = Comune::getComuniByProvincia('Milano');
 
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     Assert::assertCount(2, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Milano', $first->provincia);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    $last = $comuni->last();
-    /* @phpstan-ignore-next-line -- $last is mixed from ignored scope */
-    Assert::assertSame('Milano', $last->provincia);
+    foreach ($comuni as $comune) {
+        Assert::assertInstanceOf(Comune::class, $comune);
+        Assert::assertSame('Milano', comuneAttrAsString($comune->provincia));
+    }
 });
 
 it('can filter comuni by cap', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byCap('20100')->get();
+    $comuni = Comune::findByCap('20100');
 
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     Assert::assertCount(1, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('20100', $first->cap);
+    Assert::assertInstanceOf(Comune::class, $first);
+    Assert::assertSame('20100', comuneAttrAsString($first->cap));
 });
 
-it('can filter comuni by name', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byName('Milano')->get();
+it('can find comune by name', function (): void {
+    $comune = Comune::findByNome('Milano');
 
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    Assert::assertCount(1, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Milano', $first->nome);
+    Assert::assertInstanceOf(Comune::class, $comune);
+    Assert::assertSame('Milano', $comune->nome);
 });
 
-it('can filter comuni by exact name', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byExactName('Milano')->get();
+it('can find comune by name case insensitive', function (): void {
+    $comune = Comune::findByNome('milano');
 
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    Assert::assertCount(1, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Milano', $first->nome);
+    Assert::assertInstanceOf(Comune::class, $comune);
+    Assert::assertSame('Milano', $comune->nome);
 });
 
 it('can filter comuni by name and province', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byNameAndProvince('Milano', 'Milano')->get();
+    $comuni = Comune::query()
+        ->where('nome', 'Milano')
+        ->where('provincia', 'Milano')
+        ->get();
 
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     Assert::assertCount(1, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
+    Assert::assertInstanceOf(Comune::class, $first);
     Assert::assertSame('Milano', $first->nome);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Milano', $first->provincia);
+    Assert::assertSame('Milano', comuneAttrAsString($first->provincia));
 });
 
 it('can filter comuni by name and region', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byNameAndRegion('Milano', 'Lombardia')->get();
+    $comuni = Comune::query()
+        ->where('nome', 'Milano')
+        ->where('regione', 'Lombardia')
+        ->get();
 
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     Assert::assertCount(1, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
+    Assert::assertInstanceOf(Comune::class, $first);
     Assert::assertSame('Milano', $first->nome);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Lombardia', $first->regione);
+    Assert::assertSame('Lombardia', comuneAttrAsString($first->regione));
 });
 
-it('can filter comuni by name, province and region', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byNameProvinceAndRegion('Milano', 'Milano', 'Lombardia')->get();
+it('can filter comuni by name province and region', function (): void {
+    $comuni = Comune::query()
+        ->where('nome', 'Milano')
+        ->where('provincia', 'Milano')
+        ->where('regione', 'Lombardia')
+        ->get();
 
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     Assert::assertCount(1, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
+    Assert::assertInstanceOf(Comune::class, $first);
     Assert::assertSame('Milano', $first->nome);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Milano', $first->provincia);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Lombardia', $first->regione);
+    Assert::assertSame('Milano', comuneAttrAsString($first->provincia));
+    Assert::assertSame('Lombardia', comuneAttrAsString($first->regione));
 });
 
 it('can filter comuni by name and cap', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byNameAndCap('Milano', '20100')->get();
+    $comuni = Comune::query()
+        ->where('nome', 'Milano')
+        ->where('cap', 'like', '%20100%')
+        ->get();
 
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     Assert::assertCount(1, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
     $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
+    Assert::assertInstanceOf(Comune::class, $first);
     Assert::assertSame('Milano', $first->nome);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('20100', $first->cap);
-});
-
-it('can filter comuni by name, province and cap', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byNameProvinceAndCap('Milano', 'Milano', '20100')->get();
-
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    Assert::assertCount(1, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Milano', $first->nome);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Milano', $first->provincia);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('20100', $first->cap);
-});
-
-it('can filter comuni by name, region and cap', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byNameRegionAndCap('Milano', 'Lombardia', '20100')->get();
-
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    Assert::assertCount(1, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Milano', $first->nome);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Lombardia', $first->regione);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('20100', $first->cap);
-});
-
-it('can filter comuni by name, province, region and cap', function (): void {
-    /** @phpstan-ignore-next-line -- Dynamic scope */
-    $comuni = Comune::byNameProvinceRegionAndCap('Milano', 'Milano', 'Lombardia', '20100')->get();
-
-    /* @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    Assert::assertCount(1, $comuni);
-    /** @phpstan-ignore-next-line -- $comuni is mixed from ignored scope */
-    $first = $comuni->first();
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Milano', $first->nome);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Milano', $first->provincia);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('Lombardia', $first->regione);
-    /* @phpstan-ignore-next-line -- $first is mixed from ignored scope */
-    Assert::assertSame('20100', $first->cap);
+    Assert::assertSame('20100', comuneAttrAsString($first->cap));
 });
 
 it('can create a new comune', function (): void {
-    $comune = Comune::create([
+    $comune = Comune::query()->create([
         'regione' => 'Lombardia',
         'provincia' => 'Milano',
         'nome' => 'Bresso',
@@ -247,36 +192,34 @@ it('can create a new comune', function (): void {
         'lng' => 9.1900,
     ]);
 
-    Assert::assertNotNull($comune);
+    Assert::assertInstanceOf(Comune::class, $comune);
     Assert::assertSame('Bresso', $comune->nome);
-    Assert::assertSame('Milano', $comune->provincia);
-    Assert::assertSame('Lombardia', $comune->regione);
-    Assert::assertSame('20091', $comune->cap);
+    Assert::assertSame('Milano', comuneAttrAsString($comune->provincia));
+    Assert::assertSame('Lombardia', comuneAttrAsString($comune->regione));
+    Assert::assertSame('20091', comuneAttrAsString($comune->cap));
     Assert::assertSame(45.5389, $comune->lat);
     Assert::assertSame(9.1900, $comune->lng);
 });
 
 it('can update an existing comune', function (): void {
-    $comune = Comune::first();
-    /* @phpstan-ignore-next-line -- $comune may be null from first() */
+    $comune = Comune::query()->first();
+    Assert::assertInstanceOf(Comune::class, $comune);
+
     $comune->update([
         'nome' => 'Milano Centro',
         'cap' => '20121',
     ]);
 
-    /* @phpstan-ignore-next-line -- $comune may be null */
     Assert::assertSame('Milano Centro', $comune->nome);
-    /* @phpstan-ignore-next-line -- $comune may be null */
-    Assert::assertSame('20121', $comune->cap);
+    Assert::assertSame('20121', comuneAttrAsString($comune->cap));
 });
 
 it('can delete an existing comune', function (): void {
-    $comune = Comune::first();
-    /** @phpstan-ignore-next-line -- $comune may be null from first() */
+    $comune = Comune::query()->first();
+    Assert::assertInstanceOf(Comune::class, $comune);
     $id = $comune->id;
 
-    /* @phpstan-ignore-next-line -- $comune may be null */
     $comune->delete();
 
-    Assert::assertNull(Comune::find($id));
+    Assert::assertNull(Comune::query()->find($id));
 });

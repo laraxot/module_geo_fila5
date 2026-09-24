@@ -2,14 +2,11 @@
 
 declare(strict_types=1);
 
-use Modules\Geo\Actions\Here\GetHereRouteDurationAndLengthAction;
 use Modules\Geo\Adapters\HereClient;
+use PHPUnit\Framework\Assert;
 
-test('here client can be instantiated', function (): void {
-    expect(new HereClient())->toBeInstanceOf(HereClient::class);
-});
+test('here client uses here router base url', function (): void {
+    $client = new HereClient();
 
-test('here client delegates to GetHereRouteDurationAndLengthAction', function (): void {
-    expect(method_exists(HereClient::class, 'getDurationAndLength'))->toBeTrue();
-    expect(method_exists(GetHereRouteDurationAndLengthAction::class, 'execute'))->toBeTrue();
+    Assert::assertSame('https://router.hereapi.com/v8/routes', $client->base_url);
 });
