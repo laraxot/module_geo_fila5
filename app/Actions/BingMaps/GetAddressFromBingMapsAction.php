@@ -8,6 +8,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\AddressData;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
 
 use function Safe\json_decode;
 
@@ -125,11 +127,11 @@ class GetAddressFromBingMapsAction
         $address = $resource['address'];
 
         return AddressData::from([
-            'latitude' => (float) ($coordinates[0] ?? 0),
-            'longitude' => (float) ($coordinates[1] ?? 0),
+            'latitude' => SafeFloatCastAction::cast($coordinates[0] ?? 0),
+            'longitude' => SafeFloatCastAction::cast($coordinates[1] ?? 0),
             'country' => $address['countryRegion'] ?? 'Italia',
             'city' => $address['locality'] ?? '',
-            'postal_code' => (int) ($address['postalCode'] ?? 0),
+            'postal_code' => SafeIntCastAction::cast($address['postalCode'] ?? 0),
             'street' => $address['addressLine'] ?? '',
             'street_number' => '', // Bing Maps non fornisce direttamente il numero civico
             'province' => $address['adminDistrict'] ?? '',
