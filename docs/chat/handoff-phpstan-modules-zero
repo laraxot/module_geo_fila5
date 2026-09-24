@@ -1,0 +1,37 @@
+# Handoff — PHPStan Geo app a zero
+
+## Stato
+
+```bash
+cd laravel && ./vendor/bin/phpstan analyse Modules --memory-limit=-1
+# [OK] No errors  (2026-09-24 ~15:50, 8085 file)
+```
+
+Precedente scope ristretto (ancora valido):
+
+```bash
+cd laravel && php -d memory_limit=2G ./vendor/bin/phpstan analyse \
+  Modules/Geo/app Modules/Geo/config Modules/Geo/database --no-progress
+# [OK] No errors
+```
+
+Path esclusi dal task Geo ristretto: `/tests/`, `/audit-coverage/`.
+
+## Cosa è stato fatto
+
+1. Rimosso `app/Phpstan/TraitProbes.php` (probe vietati).
+2. Cast mixed → `SafeFloatCastAction` / `SafeIntCastAction` / `SafeStringCastAction` (Bing, Photon, TravelTime, GeoTrait, Location, GetCoordinates…).
+3. Costanti tipizzate in `GeoDataService`, `GoogleMapsService`, `GeoDataValidator`.
+4. `nullCoalesce.unnecessary` rimossi dove lo shape garantisce le chiavi.
+5. `HasAddress`/`GeoTrait`: PHPDoc `@property` ripuliti, niente `@phpstan-ignore`; usage su `Location` / `Address`.
+6. Migration Geo con marker merge ripulite; `ViewLocation` con `getInfolistSchema`.
+
+## Verifica
+
+- `php -l` sui file toccati: OK
+- Errori rimasti su app/config/database Geo: **0**
+
+## Collegati
+
+- [phpstan_fixes.md](../phpstan_fixes.md)
+- [geo-tests-phpstan-zero.md](./geo-tests-phpstan-zero.md)
