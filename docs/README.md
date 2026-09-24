@@ -3,7 +3,7 @@ title: "Geo Module Documentation"
 type: documentation
 tags: [module, documentation, geospatial, mapping]
 created: 2026-07-14
-updated: 2026-09-17
+updated: 2026-07-14
 ---
 
 # Modulo Geo
@@ -43,12 +43,15 @@ Modules/Geo/
 │   │   ├── FilterCoordinatesInRadiusAction.php
 │   │   ├── OptimizeRouteAction.php
 │   │   └── ClusterLocationsAction.php
+│   ├── Services/
+│   │   ├── GeocodingService.php
+│   │   └── MapProviderService.php
 │   ├── DataTransferObjects/
 │   │   └── LocationDTO.php
 │   ├── Exceptions/
 │   │   └── InvalidLocationException.php
 │   └── Filament/
-│       ├── Forms/Components/
+│       ├── Fields/
 │       │   ├── AddressInput.php
 │       │   ├── LatitudeLongitudeInput.php
 │       │   └── LeafletMarkerMapInput.php
@@ -81,35 +84,33 @@ Modules/Geo/
 
 ### Scenario 1: Geocodare un Indirizzo
 
-`GetCoordinatesAction` usa lo Spatie `QueueableAction` trait (metodo di istanza
-`execute()`, non statico) e prende l'indirizzo già formattato come stringa:
-
 ```php
 use Modules\Geo\Actions\GetCoordinatesAction;
 
-$location = app(GetCoordinatesAction::class)->execute('Via Roma 1, Roma, Italia');
+$location = GetCoordinatesAction::execute([
+    'address' => 'Via Roma 1, Roma, Italia',
+    'provider' => 'google', // google, nominatim, bing, etc
+]);
 
-// Result: ?LocationData (null se non geocodificabile)
-echo $location?->latitude;
-echo $location?->longitude;
+// Result: LocationDTO con lat, lng, address, etc
+echo $location->latitude;
+echo $location->longitude;
 ```
-
-Per il dispatch multi-provider con fallback automatico (preferenza da
-`config('geo.driver')`), vedi `GetAddressDataFromFullAddressAction`.
 
 ### Scenario 2: Calcolare Distanza
 
-`CalculateDistanceAction::execute()` prende due `LocationData`, non un array
-di lat/lng:
-
 ```php
 use Modules\Geo\Actions\CalculateDistanceAction;
-use Modules\Geo\Datas\LocationData;
 
-$distance = app(CalculateDistanceAction::class)->execute(
-    LocationData::fromArray(['latitude' => 41.9028, 'longitude' => 12.4964]),
-    LocationData::fromArray(['latitude' => 45.4642, 'longitude' => 9.1900]),
-);
+$distance = CalculateDistanceAction::execute([
+    'lat1' => 41.9028,
+    'lng1' => 12.4964,
+    'lat2' => 45.4642,
+    'lng2' => 9.1900,
+    'unit' => 'km', // km, mi, nm
+]);
+
+echo $distance; // 470.2 km
 ```
 
 ### Scenario 3: Filtrare Coordinate entro Raggio
@@ -117,23 +118,27 @@ $distance = app(CalculateDistanceAction::class)->execute(
 ```php
 use Modules\Geo\Actions\FilterCoordinatesInRadiusAction;
 
-$nearby = app(FilterCoordinatesInRadiusAction::class)->execute(
-    centerLatitude: 41.9028,
-    centerLongitude: 12.4964,
-    coordinates: $locations, // array
-    radius: 10, // km
-);
+$nearby = FilterCoordinatesInRadiusAction::execute([
+    'center_lat' => 41.9028,
+    'center_lng' => 12.4964,
+    'radius' => 10, // km
+    'points' => $locations, // array di LocationDTO
+]);
+
+// Result: solo locations entro 10km
 ```
 
 ### Scenario 4: Form Input Geografico
 
 ```php
-use Modules\Geo\Filament\Forms\Components\AddressInput;
+use Modules\Geo\Filament\Fields\AddressInput;
 
 $schema = [
     AddressInput::make('address')
         ->label('Indirizzo')
-        ->required(),
+        ->required()
+        ->provider('google') // Google Maps Geocoding
+        ->storeCoordinates(true),
 ];
 ```
 
@@ -141,33 +146,31 @@ $schema = [
 
 ### Map Provider Configuration
 
-Configurazione del modulo in `Modules/Geo/config/config.php` (struttura reale,
-non un file separato per provider):
+Configurare provider in `laravel/config/local/geo/config.php`:
 
 ```php
 return [
-    'name' => 'Geo',
-    'api_keys' => [
-        'google_maps' => Env::get('GOOGLE_MAPS_API_KEY'),
-        'bing_maps' => Env::get('BING_MAPS_API_KEY'),
-        'mapbox' => Env::get('MAPBOX_API_KEY'),
+    'default_provider' => 'google',
+    
+    'providers' => [
+        'google' => [
+            'key' => env('GOOGLE_MAPS_KEY'),
+            'secret' => env('GOOGLE_MAPS_SECRET'),
+        ],
+        'nominatim' => [
+            'url' => 'https://nominatim.openstreetmap.org',
+        ],
+        'bing' => [
+            'key' => env('BING_MAPS_KEY'),
+        ],
     ],
-    // Provider preferito per GetAddressDataFromFullAddressAction, con
-    // fallback automatico sulla catena hardcoded nell'Action stessa.
-    'driver' => Env::get('GEO_DRIVER', 'google_maps'),
-    'rate_limits' => [
-        'google_maps' => ['requests_per_second' => 50, 'burst' => 100],
-        // ...
-    ],
+    
+    'distance_unit' => 'km', // km, mi, nm
+    'default_radius' => 10, // km
 ];
 ```
 
 ## Filament Form Fields
-
-Tutti e tre estendono `Modules\Xot\Filament\Forms\Components\XotBaseField` e vivono
-in `app/Filament/Forms/Components/`. Nessuno dei tre espone metodi fluent
-custom come `provider()`, `storeCoordinates()`, `showMap()` o `storeAs()` — solo
-le opzioni standard ereditate da Filament (`label()`, `required()`, ecc.).
 
 ### AddressInput
 
@@ -176,15 +179,17 @@ Campo input con auto-completo indirizzo e geolocalizzazione browser:
 ```php
 AddressInput::make('address')
     ->label('Location')
-    ->required()
+    ->provider('google')
+    ->storeCoordinates(true) // auto-popola lat/lng
+    ->showMap(true)
 ```
 
 ### LatitudeLongitudeInput
 
-Coppia di input lat/lng (un solo nome di campo, non due):
+Input lat/lng con validazione formato:
 
 ```php
-LatitudeLongitudeInput::make('coordinates')
+LatitudeLongitudeInput::make('latitude', 'longitude')
     ->label('Coordinates')
     ->required()
 ```
@@ -196,6 +201,7 @@ Map picker con marker interattivo:
 ```php
 LeafletMarkerMapInput::make('map')
     ->label('Seleziona posizione')
+    ->storeAs('latitude', 'longitude')
 ```
 
 ## Testing
@@ -255,12 +261,9 @@ Geo module possiede TUTTE le concern geospaziali:
 
 ## Documenti Correlati
 
-- [English overview](./readme-en.md)
-- [Detailed structured index (components/actions/models/enums)](./00-INDEX.md)
-- [Product Requirements Document](./prd.md)
 - [Geo Models Domain Analysis](./geo-models-domain-analysis.md)
-- [Map Component Architecture](./wiki/concepts/map-component-purpose-architecture.md)
-- [Geocoding Driver/Provider Consolidation (ADR)](./wiki/decisions/geo-geocoding-driver-consolidation.md)
+- [Map Component Architecture](./map-component-architecture.md)
+- [Geocoding Provider Integration](./geocoding-providers.md)
 - [Leaflet/Lit Map Reconstruction](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
 - [PHPStan Configuration](../../../phpstan.neon)
 
@@ -269,7 +272,7 @@ Geo module possiede TUTTE le concern geospaziali:
 1. **Always extend Xot base classes** — Never extend Laravel/Filament directly
 2. **Use namespace `Modules\Geo`** — Never `app\Geo`
 3. **Strict typing** — `declare(strict_types=1);` in all files
-4. **One geocoding entry point** — All geocoding via Actions (`app/Actions/**`, Spatie `QueueableAction`), not direct API calls and not `app/Services` (see `no-services-rule`)
+4. **One geocoding service** — All geocoding via service, not direct API calls
 5. **Type-safe LocationDTO** — Use DTO for coordinate transfer
 6. **No Log statements** — Let Laravel handle exceptions
 7. **Provider agnostic** — Code should work with any provider

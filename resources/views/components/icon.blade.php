@@ -1,3 +1,7 @@
+<?php
+
+declare(strict_types=1);
+?>
 @props(['name', 'class' => 'w-4 h-4'])
 
 @php
