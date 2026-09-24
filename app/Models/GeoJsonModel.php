@@ -55,7 +55,7 @@ abstract class GeoJsonModel
         $path = module_path('Geo', static::$jsonFile);
         $cacheKey = 'geo_comuni_json_'.md5($path);
 
-        /** @var array<int, array<string, mixed>>|mixed $data */
+        /** @var array<int, array<string, mixed>>|bool|float|int|string|null $data */
         $data = cache()->rememberForever($cacheKey, fn () => json_decode(file_get_contents($path), true));
 
         if (! is_array($data)) {

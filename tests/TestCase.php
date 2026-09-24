@@ -16,7 +16,6 @@ use Modules\Geo\Providers\GeoServiceProvider;
 use Modules\User\Providers\UserServiceProvider;
 use Modules\Xot\Datas\XotData;
 use Modules\Xot\Tests\XotBaseTestCase;
-use Modules\User\Models\User;
 
 /**
  * @property object|null $action
@@ -69,6 +68,8 @@ abstract class TestCase extends XotBaseTestCase
 
     protected function setUp(): void
     {
+        $this->prepareSharedSqliteForTesting();
+
         parent::setUp();
 
         config(['xra.pub_theme' => 'Meetup']);

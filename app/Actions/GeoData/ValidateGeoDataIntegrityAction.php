@@ -81,7 +81,7 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-     * @param  array<mixed, mixed>  $region
+     * @param  array<array-key, mixed>  $region
      * @param  list<string>  $regionCodes
      *
      * @param-out list<string> $regionCodes
@@ -114,7 +114,7 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-     * @param  array<mixed, mixed>  $province
+     * @param  array<array-key, mixed>  $province
      * @param  list<string>  $provinceCodes
      *
      * @param-out list<string> $provinceCodes
@@ -156,7 +156,7 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-     * @param  array<mixed, mixed>  $city
+     * @param  array<array-key, mixed>  $city
      * @param  list<string>  $cityCodes
      *
      * @param-out list<string> $cityCodes

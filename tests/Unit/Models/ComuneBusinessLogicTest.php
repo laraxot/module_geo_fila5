@@ -14,7 +14,7 @@ use function Safe\class_uses;
 
 describe('Comune Business Logic', function () {
     test('comune extends base model', function () {
-        Assert::assertInstanceOf(BaseModel::class, new Comune());
+        Assert::assertInstanceOf(BaseModel::class, new Comune);
     });
 
     test('comune can be created via factory', function () {
@@ -30,7 +30,7 @@ describe('Comune Business Logic', function () {
     });
 
     test('comune has expected fillable fields for italian municipalities', function () {
-        $comune = new Comune();
+        $comune = new Comune;
         $expectedFillable = [
             'id',
             'codice',
@@ -52,7 +52,7 @@ describe('Comune Business Logic', function () {
     });
 
     test('comune has schema definition for structured geographic data', function () {
-        $comune = new Comune();
+        $comune = new Comune;
         $reflection = new \ReflectionClass($comune);
         $schemaProperty = $reflection->getProperty('schema');
 
@@ -68,19 +68,19 @@ describe('Comune Business Logic', function () {
     });
 
     test('comune has json directory property for data source', function () {
-        $comune = new Comune();
+        $comune = new Comune;
 
         Assert::assertObjectHasProperty('jsonDirectory', $comune);
     });
 
     test('comune has translatable array configured', function () {
-        $comune = new Comune();
+        $comune = new Comune;
 
         Assert::assertIsArray($comune->translatable);
     });
 
     test('comune model can be instantiated without errors', function () {
-        $comune = new Comune();
+        $comune = new Comune;
 
         Assert::assertInstanceOf(Comune::class, $comune);
         Assert::assertInstanceOf(BaseModel::class, $comune);

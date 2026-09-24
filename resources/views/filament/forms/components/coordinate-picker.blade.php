@@ -1,3 +1,7 @@
+<?php
+
+declare(strict_types=1);
+?>
 @php
 /** @var \Modules\Geo\Filament\Forms\Components\CoordinatePicker $field */
 $statePath = $field->getStatePath();

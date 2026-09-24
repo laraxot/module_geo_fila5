@@ -35,7 +35,7 @@ class GetCitiesAction
                 : [])->firstWhere('code', $provinceCode);
 
             if (! $province || ! \is_array($province) || ! isset($province['cities']) || ! \is_array($province['cities'])) {
-                return new Collection();
+                return new Collection;
             }
 
             /** @var array<int, array<string, mixed>> $cities */

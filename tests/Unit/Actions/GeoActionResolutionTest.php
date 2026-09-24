@@ -15,7 +15,7 @@ test('CalculateGeoDistanceAction can be resolved', function (): void {
 });
 
 test('GoogleMapsAction can be instantiated', function (): void {
-    $service = new GoogleMapsAction();
+    $service = new GoogleMapsAction;
 
     Assert::assertInstanceOf(GoogleMapsAction::class, $service);
 });
