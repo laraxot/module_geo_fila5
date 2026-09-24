@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-use Filament\Widgets\Widget;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
 use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
+use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
 /**
  * @phpstan-type GeoDataset array{type: string, features: list<array{
@@ -25,10 +25,8 @@ use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
  *     stats: array{total: int, points: int, zones: int, categories: int}
  * }
  */
-final class GeoMapWidget extends Widget
+final class GeoMapWidget extends XotBaseWidget
 {
-    protected string $view = 'geo::filament.widgets.geo-map-widget';
-
     protected int|string|array $columnSpan = 'full';
 
     protected string $datasetRelativePath =
@@ -53,7 +51,7 @@ final class GeoMapWidget extends Widget
      */
     public function getCategories(): array
     {
-        return app(GetGeoMapDatasetCategoriesAction::class)->execute($this->getDataset()['features']);
+        return app(GetGeoMapDatasetCategoriesAction::class)->execute($this->getDatasetPath());
     }
 
     /**
@@ -90,7 +88,7 @@ final class GeoMapWidget extends Widget
      */
     public function getDatasetStats(): array
     {
-        return app(GetGeoMapDatasetStatsAction::class)->execute($this->getDataset()['features']);
+        return app(GetGeoMapDatasetStatsAction::class)->execute($this->getDatasetPath());
     }
 
     public function getDatasetJson(): string

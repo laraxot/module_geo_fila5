@@ -7,8 +7,8 @@ namespace Modules\Geo\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
-use Modules\Geo\Database\Factories\AddressFactory;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Xot\Contracts\ProfileContract;
 
@@ -17,45 +17,49 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * Implementazione di Schema.org PostalAddress
  *
- * @property int                          $id
- * @property string|null                  $model_type
- * @property string|null                  $model_id
- * @property string|null                  $name                        Nome identificativo dell'indirizzo
- * @property string|null                  $description                 Descrizione opzionale
- * @property string|null                  $route                       Via/Piazza
- * @property string|null                  $street_number               Numero civico
- * @property string|null                  $locality                    Comune/Città
- * @property string|null                  $administrative_area_level_3 Provincia
- * @property string|null                  $administrative_area_level_2 Regione
- * @property string|null                  $administrative_area_level_1 Stato/Paese
- * @property string|null                  $country                     Codice paese ISO
- * @property string|null                  $postal_code                 CAP
- * @property string|null                  $formatted_address
- * @property string|null                  $place_id                    ID Google Places
- * @property float|null                   $latitude
- * @property float|null                   $longitude
- * @property AddressTypeEnum|null         $type                        Tipo indirizzo (home, work, etc.)
- * @property bool                         $is_primary
- * @property array<array-key, mixed>|null $extra_data
- * @property Carbon|null                  $created_at
- * @property Carbon|null                  $updated_at
- * @property string|null                  $updated_by
- * @property string|null                  $created_by
- * @property string|null                  $deleted_at
- * @property string|null                  $deleted_by
- * @property Model|\Eloquent|null         $addressable
- * @property ProfileContract|null         $creator
- * @property string                       $full_address
- * @property string                       $street_address
- * @property Model|\Eloquent|null         $model
- * @property ProfileContract|null         $updater
+ * @property int                       $id
+ * @property Carbon|null               $deleted_at
+ * @property string|null               $model_type
+ * @property int|string|null           $model_id
+ * @property string|null               $name
+ * @property string|null               $description
+ * @property string|null               $phone
+ * @property string|null               $route
+ * @property string|null               $street_number
+ * @property string|null               $locality
+ * @property string|null               $administrative_area_level_3
+ * @property string|null               $administrative_area_level_2
+ * @property string|null               $administrative_area_level_1
+ * @property string|null               $country
+ * @property string|null               $postal_code
+ * @property string|null               $formatted_address
+ * @property string|null               $place_id
+ * @property float|null                $latitude
+ * @property float|null                $longitude
+ * @property AddressTypeEnum           $type
+ * @property bool                      $is_primary
+ * @property array<string, mixed>|null $extra_data
+ * @property Model                     $addressable
+ * @property ProfileContract|null      $creator
+ * @property string                    $full_address
+ * @property string                    $street_address
+ * @property Model                     $model
+ * @property ProfileContract|null      $updater
  *
  * @method static Builder<static>|Address nearby(float $latitude, float $longitude, float $radiusKm = 10)
  * @method static Builder<static>|Address newModelQuery()
  * @method static Builder<static>|Address newQuery()
- * @method static Builder<static>|Address ofType($type)
+ * @method static Builder<static>|Address ofType(\Modules\Geo\Enums\AddressTypeEnum|string $type)
  * @method static Builder<static>|Address primary()
  * @method static Builder<static>|Address query()
+ *
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null $updated_by
+ * @property string|null $created_by
+ * @property string|null $deleted_by
+ *
+ * @method static Builder<static>|Address onlyTrashed()
  * @method static Builder<static>|Address whereAdministrativeAreaLevel1($value)
  * @method static Builder<static>|Address whereAdministrativeAreaLevel2($value)
  * @method static Builder<static>|Address whereAdministrativeAreaLevel3($value)
@@ -75,6 +79,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Address whereModelId($value)
  * @method static Builder<static>|Address whereModelType($value)
  * @method static Builder<static>|Address whereName($value)
+ * @method static Builder<static>|Address wherePhone($value)
  * @method static Builder<static>|Address wherePlaceId($value)
  * @method static Builder<static>|Address wherePostalCode($value)
  * @method static Builder<static>|Address whereRoute($value)
@@ -82,19 +87,15 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Address whereType($value)
  * @method static Builder<static>|Address whereUpdatedAt($value)
  * @method static Builder<static>|Address whereUpdatedBy($value)
- *
- * @property ProfileContract|null $deleter
- *
- * @method static AddressFactory factory($count = null, $state = [])
- *
- * @property string|null $phone
- *
- * @method static Builder<static>|Address wherePhone($value)
+ * @method static Builder<static>|Address withTrashed(bool $withTrashed = true)
+ * @method static Builder<static>|Address withoutTrashed()
  *
  * @mixin \Eloquent
  */
 class Address extends BaseModel
 {
+    use SoftDeletes;
+
     /** @var list<string> */
     protected $fillable = [
         'model_type',
@@ -168,7 +169,9 @@ class Address extends BaseModel
      * return $this->belongsTo(Regione::class, 'administrative_area_level_1', 'name');
      * }
      */
-    /** @return array{codice: mixed, nome: mixed}|null */
+    /**
+     * @return array{codice: mixed, nome: mixed}|null
+     */
     public function getRegione(): ?array
     {
         $res = Comune::select('regione')
@@ -176,7 +179,7 @@ class Address extends BaseModel
             ->orderBy('regione->nome')
             ->where('regione->codice', $this->administrative_area_level_1)
             ->get()
-            ->map(function ($item) {
+            ->map(function (Comune $item) {
                 $regione = $item->regione;
                 if (! is_array($regione) || ! isset($regione['codice'], $regione['nome'])) {
                     return;
@@ -189,7 +192,9 @@ class Address extends BaseModel
         return $res->first();
     }
 
-    /** @return array{codice: mixed, nome: mixed}|null */
+    /**
+     * @return array{codice: string, nome: string}|null
+     */
     public function getProvincia(): ?array
     {
         $res = Comune::select('provincia')
@@ -197,23 +202,32 @@ class Address extends BaseModel
             ->orderBy('provincia->nome')
             ->where('provincia->codice', $this->administrative_area_level_2)
             ->get()
-            ->map(fn ($item) => [
-                /* @phpstan-ignore offsetAccess.notFound */
-                'codice' => $item->provincia['codice'],
-                /* @phpstan-ignore offsetAccess.notFound */
-                'nome' => $item->provincia['nome'],
-            ]);
+            ->map(function (Comune $item): array {
+                $provincia = is_array($item->provincia ?? null) ? $item->provincia : [];
+
+                return [
+                    'codice' => is_string($provincia['codice'] ?? null) ? $provincia['codice'] : '',
+                    'nome' => is_string($provincia['nome'] ?? null) ? $provincia['nome'] : '',
+                ];
+            });
 
         return $res->first();
     }
 
-    /** @return array<mixed>|null */
+    /**
+     * @return array<string, mixed>|null
+     */
     public function getLocality(): ?array
     {
-        return Comune::where('codice', $this->locality)
+        $comune = Comune::where('codice', $this->locality)
             ->distinct()
-            ->first()
-            ?->toArray();
+            ->first();
+
+        if (null === $comune) {
+            return null;
+        }
+
+        return $comune->attributesToArray();
     }
 
     /**
@@ -228,7 +242,7 @@ class Address extends BaseModel
             $this->administrative_area_level_2, // Regione
             $this->postal_code,
             $this->country,
-        ], function ($part): bool {
+        ], function (?string $part): bool {
             // PHPStan L10: verifica prima il tipo, poi se è vuoto
             if (! \is_string($part)) {
                 return false;
@@ -423,7 +437,6 @@ class Address extends BaseModel
      *
      * @return array<string, string>
      */
-    #[\Override]
     protected function casts(): array
     {
         return [

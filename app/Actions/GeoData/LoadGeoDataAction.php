@@ -18,12 +18,7 @@ class LoadGeoDataAction
 {
     use QueueableAction;
 
-    private const JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
-
-    public function __construct(
-        private readonly CheckGeoDataIntegrityAction $integrityAction = new CheckGeoDataIntegrityAction(),
-    ) {
-    }
+    private const string JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
 
     /**
      * @throws \RuntimeException
@@ -43,7 +38,7 @@ class LoadGeoDataAction
             throw new \RuntimeException('Il file JSON dei comuni non è valido');
         }
 
-        if (! $this->integrityAction->execute($data)) {
+        if (! app(CheckGeoDataIntegrityAction::class)->execute($data)) {
             throw new \RuntimeException('Il file JSON dei comuni non è valido');
         }
 

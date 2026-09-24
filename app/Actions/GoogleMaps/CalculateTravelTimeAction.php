@@ -9,10 +9,10 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\TravelTimeData;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 use function Safe\json_decode;
 
+use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
 /**
@@ -21,19 +21,22 @@ use Webmozart\Assert\Assert;
  * Questa classe utilizza l'API Google Maps Distance Matrix per calcolare
  * il tempo di percorrenza tra due località, considerando il traffico attuale.
  */
-readonly class CalculateTravelTimeAction
+class CalculateTravelTimeAction
 {
-    private const API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+    use QueueableAction;
+
+    private const string API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
 
     public function __construct(
-        private Client $client,
+        private readonly Client $client,
     ) {
     }
 
     /**
      * Calcola il tempo di percorrenza tra due punti.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
+     * @throws \InvalidArgumentException Se i dati di input non sono validi
+     * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(LocationData $origin, LocationData $destination): TravelTimeData
     {
@@ -57,7 +60,8 @@ readonly class CalculateTravelTimeAction
     /**
      * Valida i dati di input.
      *
-     * @throws \RuntimeException Se la chiave API non è configurata o i dati non sono validi
+     * @throws \InvalidArgumentException Se i dati di input non sono validi
+     * @throws \RuntimeException         Se la chiave API non è configurata o i dati non sono validi
      */
     private function validateInput(LocationData $origin, LocationData $destination): void
     {
@@ -98,56 +102,39 @@ readonly class CalculateTravelTimeAction
      */
     private function parseResponse(string $response): TravelTimeData
     {
-        $decoded = json_decode($response, true);
-        if (! \is_array($decoded)) {
-            return TravelTimeData::error('INVALID_RESPONSE');
+        /** @var array{
+         *     rows: array{
+         *         0: array{
+         *             elements: array{
+         *                 0: array{
+         *                     duration: array{value: int, text: string},
+         *                     duration_in_traffic?: array{value: int, text: string},
+         *                     distance: array{value: int, text: string},
+         *                     status: string
+         *                 }
+         *             }
+         *         }
+         *     },
+         *     status: string
+         * } $data */
+        $data = json_decode($response, true);
+
+        if ('OK' !== $data['status']) {
+            return TravelTimeData::error($data['status']);
         }
 
-        /** @var array<string, mixed> $data */
-        $data = $decoded;
-
-        $status = SafeStringCastAction::cast($data['status'] ?? 'INVALID_RESPONSE');
-        if ('OK' !== $status) {
-            return TravelTimeData::error($status);
+        $element = $data['rows'][0]['elements'][0];
+        if ('OK' !== $element['status']) {
+            return TravelTimeData::error($element['status']);
         }
-
-        $rows = $data['rows'] ?? null;
-        if (! \is_array($rows) || ! isset($rows[0]) || ! \is_array($rows[0])) {
-            return TravelTimeData::error('NO_ROUTE');
-        }
-
-        $elements = $rows[0]['elements'] ?? null;
-        if (! \is_array($elements) || ! isset($elements[0]) || ! \is_array($elements[0])) {
-            return TravelTimeData::error('NO_ROUTE');
-        }
-
-        /** @var array<string, mixed> $element */
-        $element = $elements[0];
-
-        $elementStatus = SafeStringCastAction::cast($element['status'] ?? 'NO_ROUTE');
-        if ('OK' !== $elementStatus) {
-            return TravelTimeData::error($elementStatus);
-        }
-
-        $duration = $element['duration'] ?? null;
-        $durationInTraffic = $element['duration_in_traffic'] ?? null;
-        $distance = $element['distance'] ?? null;
-
-        $durationValue = \is_array($duration) ? (int) ($duration['value'] ?? 0) : 0;
-        $durationInTrafficValue = \is_array($durationInTraffic)
-            ? (int) ($durationInTraffic['value'] ?? $durationValue)
-            : $durationValue;
-        $distanceValue = \is_array($distance) ? (int) ($distance['value'] ?? 0) : 0;
-        $durationText = \is_array($duration) ? SafeStringCastAction::cast($duration['text'] ?? '') : '';
-        $distanceText = \is_array($distance) ? SafeStringCastAction::cast($distance['text'] ?? '') : '';
 
         return new TravelTimeData(
-            duration_seconds: $durationValue,
-            duration_in_traffic_seconds: $durationInTrafficValue,
-            distance_meters: $distanceValue,
-            formatted_duration: $durationText,
-            formatted_distance: $distanceText,
-            status: $status,
+            duration_seconds: (int) ($element['duration']['value'] ?? 0),
+            duration_in_traffic_seconds: (int) ($element['duration_in_traffic']['value'] ?? $element['duration']['value'] ?? 0),
+            distance_meters: (int) ($element['distance']['value'] ?? 0),
+            formatted_duration: (string) ($element['duration']['text'] ?? ''),
+            formatted_distance: (string) ($element['distance']['text'] ?? ''),
+            status: (string) ($data['status'] ?? 'ERROR'),
         );
     }
 }

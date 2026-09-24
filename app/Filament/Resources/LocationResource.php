@@ -4,32 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Resources;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Resources\Pages\PageRegistration;
-use Filament\Resources\RelationManagers\RelationGroup;
-use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Resources\RelationManagers\RelationManagerConfiguration;
-use Filament\Support\Components\Component;
-use Modules\Geo\Filament\Resources\LocationResource\Pages\CreateLocation;
-use Modules\Geo\Filament\Resources\LocationResource\Pages\EditLocation;
-use Modules\Geo\Filament\Resources\LocationResource\Pages\ListLocations;
-use Modules\Geo\Filament\Resources\LocationResource\Pages\ViewLocation;
 use Modules\Geo\Models\Location;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
-/**
- * Resource per la gestione dei luoghi geografici.
- *
- * Fornisce un'interfaccia completa per:
- * - Creazione di nuovi luoghi con coordinate geografiche
- * - Modifica dei dati esistenti
- * - Visualizzazione delle informazioni su mappa
- * - Ricerca per raggio geografico
- * - Gestione delle relazioni con altri modelli
- */
 class LocationResource extends XotBaseResource
 {
     protected static ?string $model = Location::class;
+<<<<<<< .merge_file_nQOJsw
 
     // ✅ CORRETTO - NIENTE navigationGroup - La gestione è centralizzata in XotBaseResource
 
@@ -38,8 +19,7 @@ class LocationResource extends XotBaseResource
      *
      * @phpstan-return array<string, Component>
      */
-    #[\Override]
-    public static function getFormSchema(): array
+    public function getFormSchemaOld(): array
     {
         return [
             'name' => TextInput::make('name')->required()->maxLength(255),
@@ -126,4 +106,6 @@ class LocationResource extends XotBaseResource
         ];
     }
         */
+=======
+>>>>>>> .merge_file_sIGZK8
 }
