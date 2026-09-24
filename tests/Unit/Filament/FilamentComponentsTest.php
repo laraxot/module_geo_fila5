@@ -24,19 +24,12 @@ test('AddressField can be instantiated', function () {
 
 test('MapPicker can be instantiated', function () {
     $field = MapPicker::make('map_picker')
-<<<<<<< .merge_file_j3TM3e
         ->latitudeColumn('latitude')
         ->longitudeColumn('longitude');
 
     Assert::assertSame('latitude', $field->getLatitudeColumn());
     Assert::assertSame('longitude', $field->getLongitudeColumn());
     Assert::assertSame('geo::filament.forms.components.map-picker', $field->getView());
-=======
-        ->latitude('latitude')
-        ->longitude('longitude');
-
-    expect($field)->toBeObject();
->>>>>>> .merge_file_124a03
 });
 
 test('LocationWidget can be instantiated', function () {
