@@ -1,37 +1,12 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_BOjZPn
 
-=======
-<<<<<<< .merge_file_4jXI65
-
-=======
-<<<<<<< .merge_file_2Fg7nG
-
-=======
->>>>>>> .merge_file_dZusCw
->>>>>>> .merge_file_OBhS5K
->>>>>>> .merge_file_d88FHY
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Geo\Models\GeoNamesCap;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-<<<<<<< .merge_file_BOjZPn
-return new class() extends XotBaseMigration
-{
-=======
-<<<<<<< .merge_file_4jXI65
 return new class extends XotBaseMigration {
-=======
-<<<<<<< .merge_file_2Fg7nG
-return new class() extends XotBaseMigration
-{
-=======
-return new class extends XotBaseMigration {
->>>>>>> .merge_file_dZusCw
->>>>>>> .merge_file_OBhS5K
->>>>>>> .merge_file_d88FHY
     protected ?string $model_class = GeoNamesCap::class;
 
     public function up(): void
