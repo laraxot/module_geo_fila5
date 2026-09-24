@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Forms\Components;
 
 use Filament\Schemas\Components\Component;
-use Filament\Schemas\Components\Section;
-use Modules\Geo\Filament\Resources\AddressResource;
+use Modules\Geo\Filament\Resources\AddressResource\Schemas\AddressForm;
+use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
 
 // use Squire\Models\Country;
 
-class AddressField extends Section
+class AddressField extends XotBaseSection
 {
     // protected string $view = 'filament-forms::components.group';
 
@@ -38,18 +38,14 @@ class AddressField extends Section
      */
     protected function getAddressFormSchema(): array
     {
-        $baseSchema = [];
+        $baseSchema = app(AddressForm::class)->getFormSchema();
 
-        foreach (AddressResource::getFormSchema() as $key => $component) {
-            if (in_array($key, ['name', 'is_primary'], true) || ! $component instanceof Component) {
-                continue;
-            }
+        // Rimuovi campi non necessari per relazioni semplici
+        unset($baseSchema['name'], $baseSchema['is_primary']);
 
-            $baseSchema[$key] = $component;
-        }
-
+        // Se i live updates sono disabilitati, rimuovi la reattività
         if ($this->disableLiveUpdates) {
-            return $this->removeReactivityFromSchema($baseSchema);
+            $baseSchema = $this->removeReactivityFromSchema($baseSchema);
         }
 
         return $baseSchema;
@@ -65,21 +61,9 @@ class AddressField extends Section
     protected function removeReactivityFromSchema(array $schema): array
     {
         foreach ($schema as $key => $field) {
-            if (method_exists($field, 'live')) {
-                // Rimuovi reattività live
-                $field->live(false);
-            }
-
-            if (method_exists($field, 'afterStateUpdated')) {
-                // Rimuovi callback afterStateUpdated
-                $field->afterStateUpdated(null);
-            }
-
-            if (method_exists($field, 'disabled')) {
-                // Rimuovi condizioni disabled dinamiche
-                $field->disabled(false);
-            }
-
+            $field->live(false);
+            $field->afterStateUpdated(null);
+            $field->disabled(false);
             $schema[$key] = $field;
         }
 
