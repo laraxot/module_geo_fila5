@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Modules\Geo\Database\Factories\ProvinceFactory;
+use Illuminate\Support\Facades\File;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
@@ -24,22 +25,18 @@ use Sushi\Sushi;
  * @property Region|null               $region
  * @property ProfileContract|null      $updater
  *
- * @method static Builder<static>|Province newModelQuery()
- * @method static Builder<static>|Province newQuery()
- * @method static Builder<static>|Province query()
- * @method static Builder<static>|Province whereId($value)
- * @method static Builder<static>|Province whereName($value)
- * @method static Builder<static>|Province whereRegionId($value)
- *
- * @property ProfileContract|null $deleter
- *
- * @method static ProvinceFactory factory($count = null, $state = [])
+ * @method static \Modules\Geo\Database\Factories\ProvinceFactory factory($count = null, $state = [])
+ * @method static Builder<static>|Province                        newModelQuery()
+ * @method static Builder<static>|Province                        newQuery()
+ * @method static Builder<static>|Province                        query()
+ * @method static Builder<static>|Province                        whereId($value)
+ * @method static Builder<static>|Province                        whereName($value)
+ * @method static Builder<static>|Province                        whereRegionId($value)
  *
  * @mixin \Eloquent
  */
 class Province extends BaseModel
 {
-    /** @use HasXotFactory<\Illuminate\Database\Eloquent\Factories\Factory<static>> */
     use HasXotFactory;
     use Sushi;
 
@@ -50,38 +47,95 @@ class Province extends BaseModel
         'name' => 'string',
     ];
 
-    /** @return array<mixed> */
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function getRows(): array
     {
-        $rows = Comune::select('regione->codice as region_id', 'provincia->codice as id', 'provincia->nome as name')
-            ->distinct()
-            ->orderBy('provincia->nome')
-            ->get();
+        $path = module_path('Geo', 'resources/json/comuni.json');
+        if (! file_exists($path)) {
+            return [];
+        }
 
-        return $rows->toArray();
+        $items = File::json($path);
+        if (! is_array($items)) {
+            return [];
+        }
+
+        /** @var array<string, array{region_id: mixed, id: mixed, name: string}> $unique */
+        $unique = [];
+
+        foreach ($items as $item) {
+            if (! is_array($item)) {
+                continue;
+            }
+
+            $regione = $item['regione'] ?? null;
+            $provincia = $item['provincia'] ?? null;
+            if (! is_array($regione) || ! is_array($provincia)) {
+                continue;
+            }
+
+            $regionId = $regione['codice'] ?? null;
+            $id = $provincia['codice'] ?? null;
+            $name = $provincia['nome'] ?? null;
+            if (null === $regionId || null === $id || null === $name) {
+                continue;
+            }
+
+            $key = SafeStringCastAction::cast($id);
+            if (! isset($unique[$key])) {
+                $unique[$key] = [
+                    'region_id' => $regionId,
+                    'id' => $id,
+                    'name' => SafeStringCastAction::cast($name),
+                ];
+            }
+        }
+
+        $rows = array_values($unique);
+        usort(
+            $rows,
+            static fn (array $a, array $b): int => strcmp(
+                SafeStringCastAction::cast($a['name'] ?? ''),
+                SafeStringCastAction::cast($b['name'] ?? ''),
+            ),
+        );
+
+        return $rows;
     }
 
-    /** @return BelongsTo<Region, $this> */
+    /**
+     * @return BelongsTo<Region, $this>
+     */
     public function region(): BelongsTo
     {
         return $this->belongsTo(Region::class);
     }
 
-    /** @return HasMany<Locality, $this> */
+    /**
+     * @return HasMany<Locality, $this>
+     */
     public function localities(): HasMany
     {
         return $this->hasMany(Locality::class);
     }
 
-    /** @return array<mixed> */
+    /**
+     * @return array<string, string>
+     */
     public static function getOptions(Get $get): array
     {
         $region = $get('administrative_area_level_1') ?? $get('region');
 
-        return self::where('region_id', $region)
-            ->orderBy('name')
-            ->get()
-            ->pluck('name', 'id')
-            ->toArray();
+        $keys = [];
+        $values = [];
+
+        foreach (self::where('region_id', $region)->orderBy('name')->get() as $item) {
+            $keys[] = SafeStringCastAction::cast($item->id);
+            $values[] = SafeStringCastAction::cast($item->name ?? '');
+        }
+
+        return array_combine($keys, $values) ?: [];
     }
 }

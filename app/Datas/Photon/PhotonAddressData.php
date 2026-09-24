@@ -14,7 +14,7 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 class PhotonAddressData extends Data
 {
     /**
-     * @param array{latitude: float, longitude: float} $coordinates
+     * @param array<string, mixed> $coordinates
      */
     public function __construct(
         public ?string $country,
@@ -27,20 +27,19 @@ class PhotonAddressData extends Data
     }
 
     /**
-     * @param array<string, mixed> $feature
+     * @param array{properties: array<string, mixed>, geometry: array{coordinates: array<float>}} $feature
      */
     public static function fromPhotonFeature(array $feature): self
     {
         if (! isset($feature['properties']) || ! is_array($feature['properties'])) {
             throw new \InvalidArgumentException('Properties mancanti nel feature');
         }
-        $geometry = $feature['geometry'] ?? null;
-        if (! is_array($geometry) || ! isset($geometry['coordinates']) || ! is_array($geometry['coordinates'])) {
+        if (! isset($feature['geometry']['coordinates']) || ! is_array($feature['geometry']['coordinates'])) {
             throw new \InvalidArgumentException('Coordinate mancanti nel feature');
         }
 
         $properties = $feature['properties'];
-        $coordinates = $geometry['coordinates'];
+        $coordinates = $feature['geometry']['coordinates'];
 
         if (! isset($coordinates[0], $coordinates[1])) {
             throw new \InvalidArgumentException('Coordinate non valide');
