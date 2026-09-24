@@ -1,10 +1,7 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_fThix9
 
-=======
->>>>>>> .merge_file_KlpAI9
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
 use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
