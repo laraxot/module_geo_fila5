@@ -20,6 +20,7 @@ use Webmozart\Assert\Assert;
  * @property float|null $latitude
  * @property float|null $longitude
  *
+ * @template TModel of Model
  * @phpstan-require-extends Model
  */
 trait GeoTrait
@@ -64,8 +65,8 @@ trait GeoTrait
     /**
      * Ordina per distanza Haversine da un punto (colonna distance in select).
      *
-     * @param  Builder<static>  $query
-     * @return Builder<static>
+     * @param  Builder<TModel>  $query
+     * @return Builder<TModel>
      */
     public function scopeWithDistance(Builder $query, float $lat, float $lng): Builder
     {
@@ -84,8 +85,8 @@ trait GeoTrait
     /**
      * Filtra righe il cui poligono JSON (`zone_polygon`) contiene il punto.
      *
-     * @param  Builder<static>  $query
-     * @return Builder<static>
+     * @param  Builder<TModel>  $query
+     * @return Builder<TModel>
      */
     public function scopeOfInPolygon(Builder $query, string $polygon_field, float $lat, float $lng): Builder
     {
