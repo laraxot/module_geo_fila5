@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace Modules\Geo\Actions;
 
 use Modules\Geo\Models\Place;
-use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per aggiornare le coordinate di un luogo.
  */
-class UpdateCoordinatesAction
+readonly class UpdateCoordinatesAction
 {
-    use QueueableAction;
+    public function __construct(
+        private GetCoordinatesAction $getCoordinates,
+    ) {
+    }
 
     /**
      * Aggiorna le coordinate di un luogo usando il suo indirizzo.
@@ -25,7 +27,7 @@ class UpdateCoordinatesAction
             throw new \RuntimeException('Place address is required');
         }
 
-        $location = app(GetCoordinatesAction::class)->execute($place->address->formatted_address);
+        $location = $this->getCoordinates->execute($place->address->formatted_address);
 
         if (! $location) {
             throw new \RuntimeException('Could not get coordinates for address: '.$place->address->formatted_address);

@@ -17,10 +17,16 @@ class UpdateClientCoordinatesBulkAction
 {
     use QueueableAction;
 
+    public function __construct(
+        private readonly GetAddressDataFromFullAddressAction $getAddressDataFromFullAddressAction,
+    ) {
+    }
+
     /**
      * Execute the action to update coordinates for a collection of addresses.
      *
-     * @param  Collection<int, Address>  $addresses
+     * @param Collection<int, Address> $addresses
+     *
      * @return array{success_count: int, error_messages: array<string>}
      */
     public function execute(Collection $addresses): array
@@ -31,25 +37,25 @@ class UpdateClientCoordinatesBulkAction
         DB::transaction(function () use ($addresses, &$successCount, &$errorMessages) {
             foreach ($addresses as $address) {
                 $fullAddress = is_string($address->full_address) ? $address->full_address : '';
-                $addressData = app(GetAddressDataFromFullAddressAction::class)->execute($fullAddress);
+                $addressData = $this->getAddressDataFromFullAddressAction->execute($fullAddress);
 
-                if ($addressData !== null) {
+                if (null !== $addressData) {
                     $toArray = $addressData->toArray();
                     /** @var array<string, mixed> $up */
                     $up = Arr::only($toArray, ['latitude', 'longitude']);
                     /* @var array<string, mixed> $up */
                     $address->update($up);
-                    $successCount++;
+                    ++$successCount;
 
                     continue;
                 }
 
                 // PHPStan L10: $address->name è già string|null, non serve is_string()
                 $addressName = $address->name ?? 'Unknown';
-                $errors = app(GetAddressDataFromFullAddressAction::class)->getErrors();
+                $errors = $this->getAddressDataFromFullAddressAction->getErrors();
                 // PHPStan L10: Collection::implode() restituisce string, non serve ?:
                 $errorMsg = $errors->implode(', ');
-                if ($errorMsg === '') {
+                if ('' === $errorMsg) {
                     $errorMsg = 'Errore sconosciuto';
                 }
                 $errorMessages[] = "Errore per {$addressName}: {$errorMsg}";

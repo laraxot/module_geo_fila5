@@ -8,7 +8,6 @@ use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Actions\UpdateCoordinatesAction;
 use Modules\Geo\Models\Place;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Tables\Actions\XotBaseBulkAction;
 
 /**
@@ -64,7 +63,7 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
     /**
      * Invia le notifiche di risultato all'utente.
      *
-     * @param  \Illuminate\Support\Collection<int, string>  $errorMessages
+     * @param \Illuminate\Support\Collection<int, string> $errorMessages
      */
     protected function sendNotifications(
         int $successCount,
@@ -95,7 +94,7 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
     /**
      * Invia la notifica di errore.
      *
-     * @param  \Illuminate\Support\Collection<int, string>  $errorMessages
+     * @param \Illuminate\Support\Collection<int, string> $errorMessages
      */
     protected function notifyErrors(\Illuminate\Support\Collection $errorMessages): void
     {
@@ -119,7 +118,7 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
     /**
      * Elabora i record selezionati aggiornando le coordinate.
      *
-     * @param  Collection<int, Place>  $records
+     * @param Collection<int, Place> $records
      */
     private function processRecords(Collection $records): void
     {
@@ -131,9 +130,9 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
         foreach ($records as $record) {
             try {
                 $action->execute($record);
-                $successCount++;
+                ++$successCount;
             } catch (\Throwable $e) {
-                $errors->push(sprintf('Place #%s: %s', SafeStringCastAction::cast($record->getKey()), $e->getMessage()));
+                $errors->push(sprintf('Place #%s: %s', (string) $record->getKey(), $e->getMessage()));
             }
         }
 

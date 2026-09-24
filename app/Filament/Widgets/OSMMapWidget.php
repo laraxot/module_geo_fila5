@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
+use Filament\Widgets\Widget;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Models\Place;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
 // use Webbingbrasil\FilamentMaps\Widgets\MapWidget; // Disabilitato per compatibilità Filament 4
 
@@ -16,7 +16,7 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
  *
  * DISABILITATO per compatibilità con Filament 4
  */
-class OSMMapWidget extends XotBaseWidget
+class OSMMapWidget extends Widget
 {
     protected int|string|array $columnSpan = 'full';
 
@@ -34,7 +34,7 @@ class OSMMapWidget extends XotBaseWidget
         $places = Place::with(['address', 'placeType'])->get();
 
         return $places
-            ->filter(fn (Place $place) => $place->latitude !== null && $place->longitude !== null)
+            ->filter(fn (Place $place) => null !== $place->latitude && null !== $place->longitude)
             ->map(function (Place $place): array {
                 $marker = [
                     'position' => [
@@ -46,7 +46,7 @@ class OSMMapWidget extends XotBaseWidget
                 ];
 
                 $icon = $this->getMarkerIcon($place);
-                if ($icon !== null) {
+                if (null !== $icon) {
                     $marker['icon'] = $icon;
                 }
 
@@ -65,7 +65,12 @@ class OSMMapWidget extends XotBaseWidget
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array{markers: array<int, array{
+     *     position: array{lat: float, lng: float},
+     *     title: string,
+     *     content: string,
+     *     icon?: array{url: string, scaledSize: array{width: int, height: int}}
+     * }>, center: array{lat: float, lng: float}, zoom: int}
      */
     protected function getData(): array
     {
@@ -80,7 +85,8 @@ class OSMMapWidget extends XotBaseWidget
     }
 
     /**
-     * @param  Collection<int, Place>  $places
+     * @param Collection<int, Place> $places
+     *
      * @return array{lat: float, lng: float}
      */
     protected function getMapCenter(Collection $places): array
@@ -89,8 +95,8 @@ class OSMMapWidget extends XotBaseWidget
             return ['lat' => 41.9028, 'lng' => 12.4964]; // Rome, Italy
         }
 
-        $latitudes = $places->pluck('latitude')->filter(fn (mixed $lat) => is_float($lat));
-        $longitudes = $places->pluck('longitude')->filter(fn (mixed $lng) => is_float($lng));
+        $latitudes = $places->pluck('latitude')->filter(fn ($lat) => is_float($lat));
+        $longitudes = $places->pluck('longitude')->filter(fn ($lng) => is_float($lng));
 
         return [
             'lat' => $latitudes->average() ?? 0.0,
@@ -99,7 +105,7 @@ class OSMMapWidget extends XotBaseWidget
     }
 
     /**
-     * @param  Collection<int, Place>  $places
+     * @param Collection<int, Place> $places
      */
     protected function getMapZoom(Collection $places): int
     {

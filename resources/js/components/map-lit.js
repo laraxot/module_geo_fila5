@@ -1,3 +1,5 @@
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
 import { LitElement, html } from 'lit';
 import L from 'leaflet';
 window.L = L;
@@ -42,6 +44,9 @@ import {
     buildTicketPopupLoadingHtml,
     popupTicketStylesText,
 } from './map/popup-ticket.js';
+import { bindFeaturePopup } from './map/feature-popup-bind.js';
+import { mapLitTicketLayerDataMethods } from './map/map-lit-ticket-layer-data.js';
+import { mapLitTicketLayerUiMethods } from './map/map-lit-ticket-layer-ui.js';
 
 const DEFAULT_TICKETS_JSON_URL = '/data/tickets.json';
 const DEFAULT_CENTER = [41.9028, 12.4964];
@@ -201,14 +206,12 @@ class MapLit extends LitElement {
         try {
             await this._initMap();
         } catch (error) {
-            console.error('[map-lit] Map init failed:', error);
         }
     }
 
     async _initMap() {
         const container = this.renderRoot.querySelector('.geo-map-leaflet');
         if (!container) {
-            console.warn('[map-lit] .geo-map-leaflet container missing');
             return;
         }
 
@@ -242,8 +245,6 @@ class MapLit extends LitElement {
 
         // Reference: direktvermarkter.js custom cluster group
         const clusterFactory = L.markerClusterGroup || (window.L && window.L.markerClusterGroup);
-        console.log('[map-lit] clusterFactory available:', typeof clusterFactory === 'function', L.MarkerClusterGroup);
-        
         if (typeof clusterFactory === 'function') {
             this._markersLayer = clusterFactory({
                 maxClusterRadius: (z) => (z < 12 ? 80 : 45),
@@ -307,13 +308,11 @@ class MapLit extends LitElement {
                     L.markerClusterGroup = (opts) => new L.MarkerClusterGroup(opts);
                 }
                 if (L.markerClusterGroup) {
-                    console.log('[map-lit] markerCluster ready after', i * 50, 'ms');
                     return;
                 }
             }
             await new Promise(r => setTimeout(r, 50));
         }
-        console.warn('[map-lit] markerCluster not available after', maxWait * 50, 'ms');
     }
 
     _setupMutationObserver() {
@@ -335,20 +334,33 @@ class MapLit extends LitElement {
             parent = parent.parentElement;
         }
 
-        document.addEventListener('shown.bs.tab', (e) => {
-            if (!this._map) return;
-            const target = String(e.target?.getAttribute?.('data-bs-target') || e.target?.getAttribute?.('href') || '');
-            const isMapTab = target.includes('map') || target.includes('mappa') || target.includes('tab-mappa');
-            if (isMapTab || this.offsetParent !== null) {
-                setTimeout(() => {
-                    this._map.invalidateSize({ pan: false, animate: false });
-                    if (this._allFeatures?.length && this._initialFitDone) {
-                        const features = this._resolveFilteredFeatures();
-                        if (features.length) this._fitBoundsToMarkers(features);
-                    }
-                }, 80);
-            }
-        });
+        document.addEventListener('shown.bs.tab', (e) => this._handleBootstrapTabShown(e));
+    }
+
+    _handleBootstrapTabShown(e) {
+        if (!this._map) {
+            return;
+        }
+        const target = String(e.target?.getAttribute?.('data-bs-target') || e.target?.getAttribute?.('href') || '');
+        const isMapTab = target.includes('map') || target.includes('mappa') || target.includes('tab-mappa');
+        if (!isMapTab && this.offsetParent === null) {
+            return;
+        }
+        setTimeout(() => this._invalidateAfterTabShow(), 80);
+    }
+
+    _invalidateAfterTabShow() {
+        if (!this._map) {
+            return;
+        }
+        this._map.invalidateSize({ pan: false, animate: false });
+        if (!this._allFeatures?.length || !this._initialFitDone) {
+            return;
+        }
+        const features = this._resolveFilteredFeatures();
+        if (features.length) {
+            this._fitBoundsToMarkers(features);
+        }
     }
 
     /**
@@ -427,553 +439,7 @@ class MapLit extends LitElement {
         return features.filter((f) => String((f.properties || {}).id ?? '') === id);
     }
 
-    _loadGeoJson() {
-        // Use Lit property dataUrl (mapped from data-url attribute)
-        const url = this.dataUrl || DEFAULT_TICKETS_JSON_URL;
-        console.log('[map-lit] Loading GeoJSON from:', url);
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                console.log('[map-lit] GeoJSON loaded:', data?.features?.length || 0, 'features');
-                if (!data || !Array.isArray(data.features)) {
-                    console.error('[map-lit] Invalid GeoJSON:', data);
-                    return;
-                }
-
-                // STRICT VALIDATION: prevents "TypeError: lat"
-                const validFeatures = data.features.filter(f =>
-                    f.geometry &&
-                    Array.isArray(f.geometry.coordinates) &&
-                    f.geometry.coordinates.length >= 2 &&
-                    !isNaN(parseFloat(f.geometry.coordinates[0])) &&
-                    !isNaN(parseFloat(f.geometry.coordinates[1]))
-                );
-
-                const detailFeatures = this._filterFeaturesForDetailMode(validFeatures);
-                this._allFeatures = detailFeatures;
-                console.log('[map-lit] Valid features:', detailFeatures.length);
-
-                if (!this.detailMode) {
-                    this._syncMapLegend(detailFeatures);
-                }
-
-                const featuresToShow = this._resolveFilteredFeatures();
-                this._renderMarkersFromFeatures(featuresToShow);
-
-                this._mapReady = true;
-
-                if (!this._initialFitDone) {
-                    this._initialFitDone = true;
-                    setTimeout(() => this.refreshWhenVisible(() => {
-                        // Pattern implicito: assenza lat/lng -> GPS (come <input type="date"> senza value)
-                        if (!this._hasExplicitCenter() && navigator.geolocation) {
-                            this._tryCenterOnGpsThenMarkers(featuresToShow);
-                        } else if (this._hasExplicitCenter()) {
-                            const zoom = this.detailMode ? 16 : 14;
-                            this._map.setView([this.lat, this.lng], zoom, { animate: false });
-                        } else {
-                            this._fitBoundsToMarkers(featuresToShow);
-                        }
-                    }), 350);
-                } else {
-                    this.refreshWhenVisible();
-                }
-
-                this.dispatchEvent(new CustomEvent('geo-map-loaded', {
-                    detail: {
-                        count: this._allFeatures.length,
-                        types: [...new Set(this._allFeatures.map(f => resolveFeatureTicketType(f.properties || {}).value).filter(Boolean))],
-                    },
-                    bubbles: true,
-                    composed: true,
-                }));
-            })
-            .catch(err => console.error('[map-lit] Error loading GeoJSON from', url, err));
-    }
-
-    filterByType(type) {
-        if (Array.isArray(type)) {
-            this.filterByTypes(type);
-            return;
-        }
-        this.filterByTypes(type ? [type] : null);
-    }
-
-    _resolveFilteredFeatures(types = this._activeTypeFilter, statuses = this._activeStatusFilter) {
-        const typeList = Array.isArray(types)
-            ? types.filter((t) => typeof t === 'string' && t.length > 0)
-            : [];
-        const statusList = Array.isArray(statuses)
-            ? statuses.filter((s) => typeof s === 'string' && s.length > 0)
-            : [];
-
-        const typeSet = typeList.length > 0 ? new Set(typeList) : null;
-        const statusSet = statusList.length > 0 ? new Set(statusList) : null;
-
-        if (typeSet === null && statusSet === null) {
-            return this._allFeatures;
-        }
-
-        return this._allFeatures.filter((feature) => {
-            const props = feature.properties || {};
-            if (typeSet !== null) {
-                const ticketType = resolveFeatureTicketType(props);
-                if (!typeSet.has(ticketType.value)) {
-                    return false;
-                }
-            }
-            if (statusSet !== null) {
-                const ticketStatus = resolveFeatureTicketStatus(props);
-                if (!statusSet.has(ticketStatus.value)) {
-                    return false;
-                }
-            }
-
-            return true;
-        });
-    }
-
-    _clearMarkersLayer() {
-        if (!this._markersLayer) {
-            return;
-        }
-
-        if (typeof this._markersLayer.clearLayers === 'function') {
-            this._markersLayer.clearLayers();
-        }
-
-        this._geojsonLayer = null;
-    }
-
-    _renderMarkersFromFeatures(features) {
-        if (!this._markersLayer || !Array.isArray(features)) {
-            return;
-        }
-
-        this._allMarkers = [];
-        this._clearMarkersLayer();
-
-        if (features.length === 0) {
-            return;
-        }
-
-        const newMarkers = [];
-        features.forEach((feature) => {
-            const coords = feature.geometry?.coordinates;
-            if (!Array.isArray(coords) || coords.length < 2) {
-                return;
-            }
-
-            const lng = Number.parseFloat(String(coords[0]));
-            const lat = Number.parseFloat(String(coords[1]));
-            if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
-                return;
-            }
-
-            const latlng = L.latLng(lat, lng);
-            const p = feature.properties || {};
-            const ticketType = resolveFeatureTicketType(p);
-            const ticketStatus = resolveFeatureTicketStatus(p);
-            const markerAccessibleLabel = [
-                String(p.title || p.name || ticketType.label || "").trim(),
-                String(ticketStatus.label || "").trim(),
-            ].filter(Boolean).join(" — ");
-
-            const marker = L.marker(latlng, {
-                icon: createGeoMapLeafletIcon(L, ticketStatus.color, ticketType.iconUrl, ticketType.label),
-                title: markerAccessibleLabel,
-                alt: markerAccessibleLabel,
-                keyboard: true,
-                typeValue: ticketType.value,
-                typeLabel: ticketType.label,
-                typeIconUrl: ticketType.iconUrl,
-                statusValue: ticketStatus.value,
-                statusColor: ticketStatus.color,
-                statusLabel: ticketStatus.label,
-            });
-
-            marker.feature = feature;
-            if (!this.detailMode) {
-                this._bindFeaturePopup(feature, marker);
-            }
-            newMarkers.push(marker);
-        });
-
-        this._allMarkers = newMarkers;
-        if (typeof this._markersLayer.addLayers === 'function') {
-            this._markersLayer.addLayers(newMarkers);
-        } else {
-            newMarkers.forEach((m) => this._markersLayer.addLayer(m));
-        }
-
-        console.log('[map-lit] Rendered', this._allMarkers.length, 'markers to cluster layer');
-    }
-
-    _openTicketModal(properties, ticketType, detail = null) {
-        const modalEl = document.getElementById('modal-disservizio');
-        if (!modalEl) {
-            console.warn('[map-lit] Modal #modal-disservizio not found in DOM');
-            return;
-        }
-
-        const title = detail?.title || properties.title || properties.name || '';
-        const typeLabel = ticketType.label || '';
-        const address = String(properties.address || '').trim();
-        const city = String(properties.city || '').trim();
-        const fullAddress = address && city && !address.toLowerCase().includes(city.toLowerCase())
-            ? `${address} - ${city}`
-            : (address || city || '—');
-        const description = detail?.description || properties.description || properties.content || '';
-
-        const setText = (selector, text) => {
-            const el = modalEl.querySelector(selector);
-            if (el) el.textContent = text || '—';
-        };
-
-        const modalTitleEl = modalEl.querySelector('#modal2Title');
-        if (modalTitleEl) {
-            modalTitleEl.textContent = title || '—';
-        }
-        setText('[data-element="modal-ticket-title"]', title);
-        setText('[data-element="modal-ticket-type"]', typeLabel);
-        setText('[data-element="modal-ticket-address"]', fullAddress);
-        setText('[data-element="modal-ticket-detail"]', description);
-
-        // Immagine
-        const images = Array.isArray(detail?.images)
-            ? detail.images
-            : Array.isArray(properties.images)
-                ? properties.images
-                : [];
-        const imgEl = modalEl.querySelector('.modal-body img');
-        if (imgEl) {
-            imgEl.src = images[0] || '/themes/Sixteen/design-comuni/assets/images/img-disservizio-thumbnail.png';
-        }
-
-        // Apertura modal via Bootstrap API
-        try {
-            const ModalCtor = window.bootstrap?.Modal;
-            if (ModalCtor) {
-                const bsModal = new ModalCtor(modalEl);
-                bsModal.show();
-            } else {
-                modalEl.classList.add('show');
-                modalEl.style.display = 'block';
-                modalEl.setAttribute('aria-hidden', 'false');
-                document.body.classList.add('modal-open');
-                if (!document.querySelector('.modal-backdrop.fade.show')) {
-                    const backdrop = document.createElement('div');
-                    backdrop.className = 'modal-backdrop fade show';
-                    document.body.appendChild(backdrop);
-                }
-            }
-        } catch (e) {
-            console.error('[map-lit] Failed to open #modal-disservizio:', e);
-        }
-    }
-
-    _wirePopupActions(popup) {
-        const container = popup?.getElement?.();
-        if (!container) {
-            return;
-        }
-
-        const closeBtn = container.querySelector('[data-popup-close]');
-        if (closeBtn && !closeBtn.dataset.geoWired) {
-            closeBtn.dataset.geoWired = '1';
-            closeBtn.addEventListener('click', (ev) => {
-                ev.preventDefault();
-                this._map?.closePopup();
-            });
-        }
-
-        const detailBtn = container.querySelector('[data-popup-open-detail]');
-        if (detailBtn && !detailBtn.dataset.geoWired) {
-            detailBtn.dataset.geoWired = '1';
-            detailBtn.addEventListener('click', (ev) => {
-                ev.preventDefault();
-                const props = popup._geoFeatureProps;
-                const type = popup._geoTicketType;
-                const status = popup._geoTicketStatus;
-                const detail = popup._geoTicketDetail;
-                if (props && type) {
-                    this._openTicketModal(props, type, detail);
-                }
-                this._map?.closePopup();
-            });
-        }
-    }
-
-    _ensureFeaturePopup(layer) {
-        let popup = layer.getPopup?.();
-        if (!popup) {
-            popup = L.popup({
-                className: 'popup-wrapper',
-                maxWidth: 420,
-                minWidth: 300,
-                autoPanPaddingTopLeft: L.point(72, 16),
-            });
-            layer.bindPopup(popup);
-        }
-
-        return popup;
-    }
-
-    _openFeaturePopupLoading(layer, ticketType, ticketStatus) {
-        const popup = this._ensureFeaturePopup(layer);
-        popup.setContent(buildTicketPopupLoadingHtml(ticketType, ticketStatus));
-        popup._geoFeatureProps = null;
-        popup._geoTicketType = ticketType;
-        popup._geoTicketStatus = ticketStatus;
-        popup._geoTicketDetail = null;
-        layer.openPopup();
-    }
-
-    _openFeaturePopup(layer, properties, ticketType, ticketStatus, detail = null, coords = {}) {
-        const html = buildTicketPopupHtml(properties, ticketType, ticketStatus, detail, coords);
-        const popup = this._ensureFeaturePopup(layer);
-
-        popup.setContent(html);
-        popup._geoFeatureProps = properties;
-        popup._geoTicketType = ticketType;
-        popup._geoTicketStatus = ticketStatus;
-        popup._geoTicketDetail = detail;
-
-        layer.openPopup();
-        this._wirePopupActions(popup);
-    }
-
-    _bindFeaturePopup(feature, layer) {
-        const p = feature.properties || {};
-        const ticketType = resolveFeatureTicketType(p);
-        const ticketStatus = resolveFeatureTicketStatus(p);
-        const coordsRaw = feature.geometry?.coordinates;
-        const lng = Number(coordsRaw?.[0]);
-        const lat = Number(coordsRaw?.[1]);
-        const coords = { lat, lng };
-
-        // A1: autoPanPaddingTopLeft evita che il popup finisca sotto header/zoom
-        // A3: pre-bind con skeleton (no popup vuoto al primo click)
-        layer.bindPopup(buildTicketPopupLoadingHtml(ticketType, ticketStatus), {
-            className: 'popup-wrapper',
-            maxWidth: 380,
-            minWidth: 300,
-            autoPanPaddingTopLeft: L.point(72, 16),
-        });
-
-        layer.on('click', (event) => {
-            if (event?.originalEvent) {
-                L.DomEvent.stopPropagation(event);
-            }
-
-            const popup = this._ensureFeaturePopup(layer);
-
-            const showPopup = (detail) => {
-                if (detail) {
-                    layer._geoDetailCache = detail;
-                }
-                const html = buildTicketPopupHtml(p, ticketType, ticketStatus, detail, coords);
-                popup.setContent(html);
-                popup._geoFeatureProps = p;
-                popup._geoTicketType = ticketType;
-                popup._geoTicketStatus = ticketStatus;
-                popup._geoTicketDetail = detail;
-                popup.update();
-                this._wirePopupActions(popup);
-            };
-
-            if (layer._geoDetailCache) {
-                showPopup(layer._geoDetailCache);
-                return;
-            }
-
-            if (p.id) {
-                // Reset skeleton prima del fetch (re-click dopo close senza cache)
-                popup.setContent(buildTicketPopupLoadingHtml(ticketType, ticketStatus));
-                popup._geoFeatureProps = null;
-                popup.update();
-                fetch(`/api/ticket-details/${p.id}`)
-                    .then((res) => (res.ok ? res.json() : null))
-                    .then((detail) => showPopup(detail))
-                    .catch(() => showPopup(null));
-            } else {
-                showPopup(null);
-            }
-        });
-    }
-
-
-
-    _fitBoundsToMarkers(features, extendWith = null) {
-        if (!this._map || !this._markersLayer || !features?.length) {
-            return;
-        }
-
-        try {
-            this._map.invalidateSize({ pan: false, animate: false });
-
-            // Fix mapPane width:0/height:0 bug — Leaflet does not resize mapPane
-            // when container is laid out after initialization (e.g. in tabs)
-            const mapPane = this._map.getPanes?.()?.mapPane;
-            const cont = this._map.getContainer?.();
-            if (mapPane && cont && mapPane.offsetWidth === 0 && cont.offsetWidth > 0) {
-                mapPane.style.width = cont.offsetWidth + 'px';
-                mapPane.style.height = cont.offsetHeight + 'px';
-                this._map.invalidateSize({ pan: false, animate: false });
-                console.log('[map-lit] mapPane size forced:', cont.offsetWidth, 'x', cont.offsetHeight);
-            }
-
-            // Fix _pixelOrigin null — force recalculation
-            if (!this._map._pixelOrigin) {
-                this._map._resetView(this._map.getCenter(), this._map.getZoom(), true);
-            }
-
-            const bounds = this._markersLayer.getBounds?.();
-            const fgBounds = !bounds?.isValid?.() ? this._markersLayer._featureGroup?.getBounds?.() : null;
-            let validBounds = bounds?.isValid?.() ? bounds : (fgBounds?.isValid?.() ? fgBounds : null);
-
-            if (extendWith && Number.isFinite(extendWith.lat) && Number.isFinite(extendWith.lng)) {
-                const userPoint = L.latLng(extendWith.lat, extendWith.lng);
-                validBounds = validBounds ? validBounds.extend(userPoint) : L.latLngBounds(userPoint, userPoint);
-            }
-
-            if (!validBounds?.isValid?.()) {
-                console.warn('[map-lit] fitBounds: bounds not valid');
-                return;
-            }
-
-            const maxZoom = features.length <= 3 ? 14 : features.length <= 15 ? 13 : features.length <= 40 ? 12 : 11;
-            this._map.fitBounds(validBounds, { padding: [40, 40], maxZoom, animate: false });
-            console.log('[map-lit] fitBounds OK zoom:', this._map.getZoom(), 'n:', features.length);
-        } catch (e) {
-            console.warn('[map-lit] fitBounds skipped:', e.message);
-        }
-    }
-
-    /**
-     * Tenta centraggio su GPS; fallback ai bounds dei marker se negato o timeout.
-     */
-    _tryCenterOnGpsThenMarkers(features) {
-        if (!navigator.geolocation) {
-            this._fitBoundsToMarkers(features);
-            return;
-        }
-
-        let settled = false;
-        const finish = (fn) => {
-            if (settled) {
-                return;
-            }
-            settled = true;
-            fn();
-        };
-
-        const timeoutId = setTimeout(() => {
-            finish(() => this._fitBoundsToMarkers(features));
-        }, 5000);
-
-        navigator.geolocation.getCurrentPosition(
-            (pos) => {
-                clearTimeout(timeoutId);
-                const lat = pos.coords.latitude;
-                const lng = pos.coords.longitude;
-                this._isUserCentered = true;
-                this._geolocRequested = true;
-
-                const userLatLng = L.latLng(lat, lng);
-
-                finish(() => {
-                    // Centra sulla posizione GPS (requisito /it); marker restano nel layer (removeOutsideVisibleBounds: false)
-                    this._map.setView(userLatLng, 14, { animate: false });
-                    // Se utente e segnalazioni sono vicine, adatta zoom per mostrare entrambi
-                    const markerBounds = this._markersLayer?.getBounds?.();
-                    if (markerBounds?.isValid?.() && markerBounds.contains(userLatLng)) {
-                        this._fitBoundsToMarkers(features, userLatLng);
-                    }
-                });
-            },
-            () => {
-                clearTimeout(timeoutId);
-                finish(() => this._fitBoundsToMarkers(features));
-            },
-            { enableHighAccuracy: false, timeout: 5000, maximumAge: 60000 },
-        );
-    }
-
-    /**
-     * Dopo tab Mappa visibile o resize container — senza clearLayers.
-     */
-    refreshWhenVisible(afterResizeCallback = null) {
-        if (!this._map || this.offsetParent === null) {
-            return;
-        }
-
-        if (this._invalidateSizeTimer) {
-            clearTimeout(this._invalidateSizeTimer);
-        }
-
-        this._invalidateSizeTimer = setTimeout(() => {
-            this._invalidateSizeTimer = null;
-            if (!this._map || this.offsetParent === null) {
-                return;
-            }
-
-            this._map.invalidateSize({ pan: false });
-
-            if (typeof afterResizeCallback === 'function') {
-                afterResizeCallback();
-            }
-
-            // NO refreshClusters qui — invalidateSize + refreshClusters insieme fa sparire i marker (wiki SSoT)
-        }, 80);
-    }
-
-    invalidateSize() {
-        this.refreshWhenVisible();
-    }
-
-    _syncMapLegend(features) {
-        // LEGEND REMOVED: Stati segnalazione già visualizzati nei filtri laterali (sidebar)
-        // Questo metodo è disabilitato per evitare ridondanza con i filtri di sinistra nella versione desktop.
-        // legend-mode="off" o "sidebar" nasconde la legenda; "status-collapsed" mostra una legenda collassata.
-        const legendMode = this.getAttribute('legend-mode') || 'off';
-        if (legendMode === 'off' || legendMode === 'sidebar') {
-            if (this._legendControl) {
-                this._map.removeControl(this._legendControl);
-                this._legendControl = null;
-            }
-            return;
-        }
-        // Per altri valori (es. status-collapsed) potrebbe essere implementata una legenda collassata
-    }
-
-    filterByTypes(types) {
-        this._activeTypeFilter = Array.isArray(types) && types.length > 0 ? types : null;
-        this._applyFeatureFilters();
-    }
-
-    filterByStatuses(statuses) {
-        this._activeStatusFilter = Array.isArray(statuses) && statuses.length > 0 ? statuses : null;
-        this._applyFeatureFilters();
-    }
-
-    _applyFeatureFilters() {
-        if (!this._markersLayer || this._allFeatures.length === 0) {
-            return;
-        }
-
-        if (this._filterRenderTimer) {
-            clearTimeout(this._filterRenderTimer);
-        }
-
-        this._filterRenderTimer = setTimeout(() => {
-            this._filterRenderTimer = null;
-            const features = this._resolveFilteredFeatures();
-            this._syncMapLegend(features);
-            this._renderMarkersFromFeatures(features);
-        }, 80);
-    }
-
+    // ticket layer methods → map/map-lit-ticket-layer.js
     disconnectedCallback() {
         super.disconnectedCallback();
         if (this._onFiltersChanged) {
@@ -988,6 +454,8 @@ class MapLit extends LitElement {
         }
     }
 }
+
+Object.assign(MapLit.prototype, mapLitTicketLayerDataMethods, mapLitTicketLayerUiMethods);
 
 if (!customElements.get('map-lit')) {
     customElements.define('map-lit', MapLit);

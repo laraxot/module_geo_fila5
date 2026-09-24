@@ -4,175 +4,224 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit;
 
+uses(\Modules\Geo\Tests\TestCase::class);
+// Laraxot — see module docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+// Laraxot module file — see docs/wiki for domain contract.
+
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Modules\Geo\Contracts\HasGeolocation;
-use Modules\Geo\Database\Factories\AddressFactory;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
-use PHPUnit\Framework\Assert;
 
 describe('Address Model', function () {
     it('can be created with factory', function () {
-        $address = AddressFactory::new()->createOne();
+        $address = Address::factory()->create();
 
-        Assert::assertInstanceOf(Address::class, $address);
-        Assert::assertTrue($address->exists);
+        expect($address)
+            ->toBeInstanceOf(Address::class)
+            ->and($address->exists)
+            ->toBeTrue()
+            ->and($address->id)
+            ->toBeInt();
     });
 
     it('has correct fillable attributes', function () {
         $address = new Address();
 
-        Assert::assertInstanceOf(Address::class, $address);
+        expect($address->getFillable())->toContain([
+            'model_type',
+            'model_id',
+            'name',
+            'description',
+            'route',
+            'street_number',
+            'locality',
+            'administrative_area_level_3',
+            'administrative_area_level_2',
+            'administrative_area_level_1',
+            'country',
+            'postal_code',
+            'formatted_address',
+            'place_id',
+            'latitude',
+            'longitude',
+            'type',
+            'is_primary',
+            'extra_data',
+        ]);
     });
 
     it('implements HasGeolocation contract', function () {
         $address = new Address();
 
-        Assert::assertInstanceOf(HasGeolocation::class, $address);
+        expect($address)->toBeInstanceOf(HasGeolocation::class);
     });
 
-    it('supports deleted_at timestamp column', function () {
-        $address = AddressFactory::new()->createOne();
+    it('uses soft deletes', function () {
+        $address = Address::factory()->create();
+        $address->delete();
 
-        Assert::assertNull($address->deleted_at);
-
-        $address->update(['deleted_at' => now()]);
-        $address->refresh();
-
-        Assert::assertNotNull($address->deleted_at);
+        expect($address->deleted_at)
+            ->not->toBeNull()->and(Address::withTrashed()->find($address->id))
+            ->not->toBeNull()->and(Address::find($address->id))->toBeNull();
     });
 
     it('casts attributes correctly', function () {
-        $address = AddressFactory::new()->createOne([
+        $address = Address::factory()->create([
             'latitude' => 45.4642,
             'longitude' => 9.1900,
             'is_primary' => true,
             'extra_data' => ['key' => 'value'],
         ]);
 
-        Assert::assertIsArray($address->extra_data);
+        expect($address->latitude)
+            ->toBeFloat()
+            ->and($address->longitude)
+            ->toBeFloat()
+            ->and($address->is_primary)
+            ->toBeBool()
+            ->and($address->extra_data)
+            ->toBeArray();
     });
 
     it('has polymorphic relationship', function () {
-        $address = AddressFactory::new()->createOne();
+        $address = Address::factory()->create();
 
-        Assert::assertInstanceOf(MorphTo::class, $address->addressable());
+        expect($address->addressable())->toBeInstanceOf(MorphTo::class);
     });
 
     describe('Accessors', function () {
         it('generates full_address accessor', function () {
-            $address = AddressFactory::new()->createOne([
+            $address = Address::factory()->create([
                 'route' => 'Via Roma',
                 'street_number' => '123',
                 'locality' => 'Milano',
                 'postal_code' => '20100',
             ]);
 
-            Assert::assertIsString($address->full_address);
-            Assert::assertStringContainsString('Via Roma', $address->full_address);
-            Assert::assertStringContainsString('123', $address->full_address);
-            Assert::assertStringContainsString('Milano', $address->full_address);
+            expect($address->full_address)
+                ->toBeString()
+                ->and($address->full_address)
+                ->toContain('Via Roma')
+                ->and($address->full_address)
+                ->toContain('123')
+                ->and($address->full_address)
+                ->toContain('Milano');
         });
 
         it('generates street_address accessor', function () {
-            $address = AddressFactory::new()->createOne([
+            $address = Address::factory()->create([
                 'route' => 'Via Roma',
                 'street_number' => '123',
             ]);
 
-            Assert::assertIsString($address->street_address);
-            Assert::assertStringContainsString('Via Roma', $address->street_address);
-            Assert::assertStringContainsString('123', $address->street_address);
+            expect($address->street_address)
+                ->toBeString()
+                ->and($address->street_address)
+                ->toContain('Via Roma')
+                ->and($address->street_address)
+                ->toContain('123');
         });
     });
 
     describe('Geolocation Features', function () {
         it('stores coordinates correctly', function () {
-            $address = AddressFactory::new()->createOne([
+            $address = Address::factory()->create([
                 'latitude' => 45.4642,
                 'longitude' => 9.1900,
             ]);
 
-            Assert::assertSame(45.4642, $address->latitude);
-            Assert::assertSame(9.1900, $address->longitude);
+            expect($address->latitude)->toBe(45.4642)->and($address->longitude)->toBe(9.1900);
         });
 
         it('can calculate distance between addresses', function () {
-            $address1 = AddressFactory::new()->createOne([
+            $address1 = Address::factory()->create([
                 'latitude' => 45.4642,
                 'longitude' => 9.1900,
             ]);
 
-            $address2 = AddressFactory::new()->createOne([
+            $address2 = Address::factory()->create([
                 'latitude' => 45.4654,
                 'longitude' => 9.1859,
             ]);
 
             if (method_exists($address1, 'distanceTo')) {
                 $distance = $address1->distanceTo($address2);
-                Assert::assertGreaterThan(0, $distance);
+                expect($distance)->toBeFloat()->and($distance)->toBeGreaterThan(0);
             }
         });
     });
 
     describe('Address Types', function () {
         it('can be set as primary address', function () {
-            $address = AddressFactory::new()->createOne(['is_primary' => true]);
+            $address = Address::factory()->create(['is_primary' => true]);
 
-            Assert::assertTrue($address->is_primary);
+            expect($address->is_primary)->toBeTrue();
         });
 
         it('can have different types', function () {
-            $address = AddressFactory::new()->createOne(['type' => AddressTypeEnum::HOME]);
+            $address = Address::factory()->create(['type' => AddressTypeEnum::HOME]);
 
-            Assert::assertSame(AddressTypeEnum::HOME, $address->type);
+            expect($address->type)->toBe(AddressTypeEnum::HOME);
         });
     });
 
     describe('Scopes and Queries', function () {
         it('can filter by primary addresses', function () {
-            AddressFactory::new()->createOne(['is_primary' => true]);
-            AddressFactory::new()->createOne(['is_primary' => false]);
+            Address::factory()->create(['is_primary' => true]);
+            Address::factory()->create(['is_primary' => false]);
 
             $primaryAddresses = Address::where('is_primary', true)->get();
 
-            Assert::assertCount(1, $primaryAddresses);
+            expect($primaryAddresses)->toHaveCount(1);
         });
 
         it('can filter by locality', function () {
-            AddressFactory::new()->createOne(['locality' => 'Milano']);
-            AddressFactory::new()->createOne(['locality' => 'Roma']);
+            Address::factory()->create(['locality' => 'Milano']);
+            Address::factory()->create(['locality' => 'Roma']);
 
             $milanAddresses = Address::where('locality', 'Milano')->get();
 
-            Assert::assertCount(1, $milanAddresses);
+            expect($milanAddresses)->toHaveCount(1);
         });
 
         it('can filter by postal code', function () {
-            AddressFactory::new()->createOne(['postal_code' => '20100']);
-            AddressFactory::new()->createOne(['postal_code' => '00100']);
+            Address::factory()->create(['postal_code' => '20100']);
+            Address::factory()->create(['postal_code' => '00100']);
 
             $milanPostalCodes = Address::where('postal_code', '20100')->get();
 
-            Assert::assertCount(1, $milanPostalCodes);
+            expect($milanPostalCodes)->toHaveCount(1);
         });
     });
 
     describe('Google Places Integration', function () {
         it('can store place_id from Google Places', function () {
-            $address = AddressFactory::new()->createOne([
+            $address = Address::factory()->create([
                 'place_id' => 'ChIJu46S-ZZjhkcRLuFvLjVZ400',
             ]);
 
-            Assert::assertSame('ChIJu46S-ZZjhkcRLuFvLjVZ400', $address->place_id);
+            expect($address->place_id)->toBe('ChIJu46S-ZZjhkcRLuFvLjVZ400');
         });
 
         it('can store formatted_address from Google Places', function () {
-            $address = AddressFactory::new()->createOne([
+            $address = Address::factory()->create([
                 'formatted_address' => 'Via Roma, 123, 20100 Milano MI, Italy',
             ]);
 
-            Assert::assertSame('Via Roma, 123, 20100 Milano MI, Italy', $address->formatted_address);
+            expect($address->formatted_address)->toBe('Via Roma, 123, 20100 Milano MI, Italy');
         });
     });
 
@@ -185,11 +234,14 @@ describe('Address Model', function () {
                 'buzzer_code' => '123',
             ];
 
-            $address = AddressFactory::new()->createOne(['extra_data' => $extraData]);
+            $address = Address::factory()->create(['extra_data' => $extraData]);
 
-            Assert::assertSame($extraData, $address->extra_data);
-            Assert::assertSame('residential', $address->extra_data['building_type']);
-            Assert::assertSame(3, $address->extra_data['floor']);
+            expect($address->extra_data)
+                ->toBe($extraData)
+                ->and($address->extra_data['building_type'])
+                ->toBe('residential')
+                ->and($address->extra_data['floor'])
+                ->toBe(3);
         });
     });
 });

@@ -13,16 +13,13 @@ use Modules\Geo\Datas\GoogleMaps\GoogleMapResponseData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResultData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
 use Spatie\LaravelData\DataCollection;
-use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Gestisce le richieste e l'elaborazione delle risposte dell'API di geocodifica di Google Maps.
  */
 final class GetAddressFromGoogleMapsAction
 {
-    use QueueableAction;
-
-    private const string BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    private const BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
     /**
      * @throws GoogleMapsApiException Se la richiesta fallisce o i dati non sono validi
@@ -74,7 +71,7 @@ final class GetAddressFromGoogleMapsAction
         /** @var GoogleMapResponseData $responseData */
         $responseData = GoogleMapResponseData::from($response->json());
 
-        if ($responseData->results->count() === 0) {
+        if (0 === $responseData->results->count()) {
             throw GoogleMapsApiException::noResultsFound();
         }
 
@@ -86,7 +83,7 @@ final class GetAddressFromGoogleMapsAction
      */
     private function getFirstResult(GoogleMapResponseData $responseData): GoogleMapResultData
     {
-        $firstResult = $responseData->results->toCollection()->first();
+        $firstResult = $responseData->results->first();
 
         if (! $firstResult instanceof GoogleMapResultData) {
             throw GoogleMapsApiException::noResultsFound();
@@ -114,15 +111,15 @@ final class GetAddressFromGoogleMapsAction
     }
 
     /**
-     * @param  DataCollection<int, GoogleMapAddressComponentData>  $components
-     * @param  array<string>  $types
+     * @param DataCollection<int, GoogleMapAddressComponentData> $components
+     * @param array<string>                                      $types
      */
     private function getComponent(DataCollection $components, array $types, bool $short = false): ?string
     {
         /** @var GoogleMapAddressComponentData|null $component */
         $component = $components
             ->toCollection()
-            ->first(function (mixed $component) use ($types) {
+            ->first(function ($component) use ($types) {
                 if (! $component instanceof GoogleMapAddressComponentData) {
                     return false;
                 }

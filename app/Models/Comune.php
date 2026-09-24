@@ -7,6 +7,7 @@ namespace Modules\Geo\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Modules\Geo\Database\Factories\ComuneFactory;
+use Modules\Geo\Models\Traits\HasPlaceTrait;
 use Modules\Tenant\Models\Traits\SushiToJson;
 use Modules\Xot\Contracts\ProfileContract;
 
@@ -17,25 +18,25 @@ use Modules\Xot\Contracts\ProfileContract;
  * regioni, province, città, CAP, codici ISTAT, ecc.
  * Tutti i dati sono estratti da file JSON e gestiti tramite Sushi.
  *
- * @property string|null $nome
- * @property float|null $codice
+ * @property string|null                  $nome
+ * @property float|null                   $codice
  * @property array<array-key, mixed>|null $zona
  * @property array<array-key, mixed>|null $regione
  * @property array<array-key, mixed>|null $provincia
- * @property string|null $sigla
- * @property string|null $codiceCatastale
+ * @property string|null                  $sigla
+ * @property string|null                  $codiceCatastale
  * @property array<array-key, mixed>|null $cap
- * @property int|null $popolazione
- * @property int|null $id
- * @property string|null $title
- * @property string|null $slug
- * @property string|null $content
- * @property string|null $created_at
- * @property string|null $updated_at
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property ProfileContract|null $creator
- * @property ProfileContract|null $updater
+ * @property int|null                     $popolazione
+ * @property int|null                     $id
+ * @property string|null                  $title
+ * @property string|null                  $slug
+ * @property string|null                  $content
+ * @property string|null                  $created_at
+ * @property string|null                  $updated_at
+ * @property string|null                  $created_by
+ * @property string|null                  $updated_by
+ * @property ProfileContract|null         $creator
+ * @property ProfileContract|null         $updater
  *
  * @method static Builder<static>|Comune newModelQuery()
  * @method static Builder<static>|Comune newQuery()
@@ -62,12 +63,12 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * @method static ComuneFactory factory($count = null, $state = [])
  *
- * @property int|null $altitudine
+ * @property int|null    $altitudine
  * @property string|null $codice_catastale
- * @property float|null $lat
- * @property float|null $lng
+ * @property float|null  $lat
+ * @property float|null  $lng
  * @property string|null $sigla_provincia
- * @property float|null $superficie
+ * @property float|null  $superficie
  * @property string|null $zona_altimetrica
  *
  * @method static Builder<static>|Comune whereAltitudine($value)
@@ -81,6 +82,7 @@ use Modules\Xot\Contracts\ProfileContract;
  */
 class Comune extends BaseModel
 {
+    use HasPlaceTrait;
     use SushiToJson;
 
     public string $jsonDirectory = '';
@@ -109,23 +111,13 @@ class Comune extends BaseModel
     /** @var array<string, string> */
     protected array $schema = [
         'id' => 'integer',
-        'codice' => 'string',
-        'nome' => 'string',
-        'regione' => 'json',
-        'provincia' => 'json',
-        'sigla_provincia' => 'string',
-        'cap' => 'json',
-        'codice_catastale' => 'string',
-        'popolazione' => 'integer',
-        'zona_altimetrica' => 'string',
-        'altitudine' => 'integer',
-        'superficie' => 'float',
-        'lat' => 'float',
-        'lng' => 'float',
         'title' => 'json',
         'slug' => 'string',
         'content' => 'string',
         'zona' => 'json',
+        'provincia' => 'json',
+        'regione' => 'json',
+        'cap' => 'json',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'created_by' => 'string',
@@ -137,89 +129,40 @@ class Comune extends BaseModel
         return module_path('Geo', 'resources/json/comuni.json');
     }
 
-    /**
-     * @return array<int, array<string, mixed>>
-     */
+    /** @return array<int, array<string, mixed>> */
     public function getRows(): array
     {
-        $rows = $this->getSushiRows();
-
-        if ($rows === []) {
-            return [];
-        }
-
-        /** @var list<string> $columns */
-        $columns = array_keys($rows[0]);
-
-        /** @var array<int, array<string, mixed>> $uniform */
-        $uniform = [];
-
-        foreach ($rows as $row) {
-            /** @var array<string, mixed> $normalized */
-            $normalized = [];
-            foreach ($columns as $column) {
-                $normalized[$column] = $row[$column] ?? null;
-            }
-
-            ksort($normalized);
-            $uniform[] = $normalized;
-        }
-
-        return $uniform;
+        return $this->getSushiRows();
     }
 
     /**
      * Get all regions.
      *
-     * @return Collection<int, array<array-key, mixed>>
+     * @return Collection<int, string>
      */
     public static function getRegioni(): Collection
     {
-        $regioni = [];
-
-        foreach (static::all() as $comune) {
-            $regione = $comune->regione;
-            if (! is_array($regione)) {
-                continue;
-            }
-
-            $regioni[] = $regione;
-        }
-
-        /** @var Collection<int, array<array-key, mixed>> $result */
-        $result = collect($regioni)
+        /* @phpstan-ignore return.type */
+        return static::all()
+            ->pluck('regione')
             ->unique()
             ->sort()
             ->values();
-
-        return $result;
     }
 
     /**
      * Get all provinces for a region.
      *
-     * @return Collection<int, array<array-key, mixed>>
+     * @return Collection<int, string>
      */
     public static function getProvinceByRegione(string $regione): Collection
     {
-        $province = [];
-
-        foreach (static::where('regione', $regione)->get() as $comune) {
-            $provincia = $comune->provincia;
-            if (! is_array($provincia)) {
-                continue;
-            }
-
-            $province[] = $provincia;
-        }
-
-        /** @var Collection<int, array<array-key, mixed>> $result */
-        $result = collect($province)
+        /* @phpstan-ignore return.type */
+        return static::where('regione', $regione)
+            ->pluck('provincia')
             ->unique()
             ->sort()
             ->values();
-
-        return $result;
     }
 
     /**
@@ -229,65 +172,48 @@ class Comune extends BaseModel
      */
     public static function getComuniByProvincia(string $provincia): Collection
     {
-        /** @var Collection<int, static> $comuni */
-        $comuni = static::where('provincia', $provincia)->orderBy('nome')->get();
-
-        return $comuni;
+        /* @phpstan-ignore return.type */
+        return static::where('provincia', $provincia)->orderBy('nome')->get();
     }
 
     /**
      * Find a comune by name (case insensitive).
      *
-     * @param  string  $nome  The name of the comune to find (case insensitive)
+     * @param string $nome The name of the comune to find (case insensitive)
+     *
      * @return static|null The found comune or null if not found
      */
     public static function findByNome(string $nome): ?self
     {
-        /** @var static|null $comune */
-        $comune = static::all()
-            ->first(fn (self $item): bool => strtolower($item->nome ?? '') === strtolower($nome));
-
-        return $comune;
+        /* @phpstan-ignore return.type */
+        return static::all()
+            ->first(fn ($comune) => strtolower($comune->nome ?? '') === strtolower($nome));
     }
 
     /**
      * Find comuni by CAP code (partial match supported).
      *
-     * @param  string  $cap  The CAP code to search for
+     * @param string $cap The CAP code to search for
+     *
      * @return Collection<int, static> Collection of matching comuni
      */
     public static function findByCap(string $cap): Collection
     {
-        /** @var Collection<int, static> $comuni */
-        $comuni = static::where('cap', 'like', "%{$cap}%")->get();
-
-        return $comuni;
+        /* @phpstan-ignore return.type */
+        return static::where('cap', 'like', "%{$cap}%")->get();
     }
 
     /**
      * Find a city by ID.
      *
-     * @return array<string, mixed>|null
+     * @return array{id: int, nome: string, provincia: string, regione: string, cap: string, codice_catastale: string, popolazione: int, altitudine: int, superficie: float, lat: float, lng: float, zona_altimetrica: string}|null
      */
     public static function findComune(int $id): ?array
     {
         $comune = static::query()->where('id', $id)->first();
 
-        if (! $comune instanceof self) {
-            return null;
-        }
-
-        /** @var array<string, mixed> $data */
-        $data = [];
-        foreach ($comune->toArray() as $key => $value) {
-            if (! is_string($key)) {
-                continue;
-            }
-
-            $data[$key] = $value;
-        }
-
-        return $data;
+        /* @phpstan-ignore return.type */
+        return $comune ? $comune->toArray() : null;
     }
 
     /**
@@ -307,6 +233,7 @@ class Comune extends BaseModel
     }
 
     /** @return array<string, string>     */
+    #[\Override]
     protected function casts(): array
     {
         return [

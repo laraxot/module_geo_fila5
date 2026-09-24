@@ -6,7 +6,6 @@ namespace Modules\Geo\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Geo\Models\Location;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
  * Location Factory.
@@ -68,20 +67,23 @@ class LocationFactory extends Factory
             'Toscana',
         ];
 
-        $city = SafeStringCastAction::cast($this->faker->randomElement($italianCities));
-        $street = SafeStringCastAction::cast($this->faker->randomElement($italianStreets));
-        $state = SafeStringCastAction::cast($this->faker->randomElement($italianRegions));
+        /** @var string $city */
+        $city = (string) $this->faker->randomElement($italianCities);
+        /** @var string $street */
+        $street = (string) $this->faker->randomElement($italianStreets);
+        /** @var string $state */
+        $state = (string) $this->faker->randomElement($italianRegions);
 
         return [
-            'name' => $this->faker->optional()->words(2, true),
+            'name' => $this->faker->optional()->words(2, true) ?? null,
             'lat' => $this->faker->latitude(35.0, 47.0), // Italy bounds
             'lng' => $this->faker->longitude(6.0, 19.0),
-            'street' => $street.' '.SafeStringCastAction::cast($this->faker->numberBetween(1, 999)),
+            'street' => $street.' '.((string) $this->faker->numberBetween(1, 999)),
             'city' => $city,
             'state' => $state,
-            'zip' => SafeStringCastAction::cast($this->faker->regexify('[0-9]{5}')), // Italian ZIP code
+            'zip' => (string) $this->faker->regexify('[0-9]{5}'), // Italian ZIP code
             'formatted_address' => sprintf('%s, %s, %s, Italia', $street, $city, $state),
-            'description' => $this->faker->optional()->sentence(),
+            'description' => $this->faker->optional()->sentence() ?? null,
             'processed' => $this->faker->boolean(80), // 80% processed
         ];
     }
@@ -113,12 +115,12 @@ class LocationFactory extends Factory
     {
         return $this->state(fn (array $attributes): array => [
             'city' => $city,
-            'state' => $state ?? SafeStringCastAction::cast($attributes['state'] ?? 'Lazio'),
+            'state' => $state ?? ((string) ($attributes['state'] ?? 'Lazio')),
             'formatted_address' => sprintf(
                 '%s, %s, %s, Italia',
-                SafeStringCastAction::cast($attributes['street'] ?? 'Via Roma 1'),
+                (string) ($attributes['street'] ?? 'Via Roma 1'),
                 $city,
-                $state ?? SafeStringCastAction::cast($attributes['state'] ?? 'Lazio'),
+                $state ?? ((string) ($attributes['state'] ?? 'Lazio')),
             ),
         ]);
     }
