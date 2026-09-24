@@ -8,58 +8,7 @@ cd laravel && php -d memory_limit=2G ./vendor/bin/phpstan analyse \
 # [OK] No errors
 ```
 
-<<<<<<< .merge_file_KaVTQe
 Path esclusi dal task: `/tests/`, `/audit-coverage/`.
-=======
-## Cosa è stato fatto
-
-1. **Rimossi probe PHPStan vietati**
-   - `laravel/Modules/Job/app/Phpstan/FormatSecondsPhpstanProbe.php`
-   - `laravel/Modules/Lang/app/Phpstan/TraitProbes.php`
-   - Entrambe le cartelle `app/Phpstan` sono state eliminate.
-2. **Test riscritto senza probe**
-   - `laravel/Modules/Job/tests/Unit/Traits/FormatSecondsTest.php` ora usa una classe anonima.
-3. **Trait marcato come unused**
-   - `laravel/Modules/Lang/app/Models/Traits/HasStrictTranslations.php` ha `@phpstan-ignore trait.unused` nel docblock.
-4. **Altri fix già presenti dalla sessione precedente**
-   - Fix generics/covarianza in `HasRatingsTrait`, `SchedaRelationship`, `TquRelationship`, `HasCriteriValutazione`, `HasValutatore`, `HasMyLogs`.
-   - Tipizzazione array in Filament Xot, `SushiToCsv`, `SushiToPhpArray`, `SchedaTrait`, `ProgressioniFunctionTrait`, `HasExtraTrait`.
-<<<<<<< .merge_file_ZLjsot
-   - Path `require_once` in `Xot/app/helpers/Helper.php`.
-=======
-<<<<<<< .merge_file_6IUwhB
-=======
-<<<<<<< .merge_file_uqbgPi
-=======
-<<<<<<< .merge_file_rDVebx
->>>>>>> .merge_file_JUwsey
->>>>>>> .merge_file_uXR6Qc
-<<<<<<< HEAD
-   - Path `require_once` in `Xot/app/helpers/Helper.php`.
-=======
-   - Path `require_once` in `Xot/app/Helpers/Helper.php`.
->>>>>>> 12dc0c78b (.)
-<<<<<<< .merge_file_6IUwhB
-=======
-<<<<<<< .merge_file_uqbgPi
-=======
-=======
-   - Path `require_once` in `Xot/app/helpers/Helper.php`.
->>>>>>> .merge_file_LOcIlL
->>>>>>> .merge_file_JUwsey
->>>>>>> .merge_file_uXR6Qc
->>>>>>> .merge_file_AInwMi
-   - Rimozione `FilamentMemoryMonitorMiddleware` inesistente.
-   - Aggiunta `@phpstan-ignore trait.unused` in vari trait condivisi.
-5. **Installazione tool**
-   - `phive` installato in `~/.local/bin/phpive`.
-   - `php-cs-fixer` già presente in `/usr/local/bin/php-cs-fixer`.
-6. **Docs e second brain**
-   - Aggiornato `laravel/Modules/Xot/docs/phpstan-modules-fix-log.md`.
-   - Creata/aggiornata regola `.windsurf/rules/no-phpstan-probe-models.md`.
-   - Aggiornata memory `No PHPStan Probe Models / Probe Traits / Phpstan Folders`.
-   - Re-indicizzate collection QMD con `qmd update`.
->>>>>>> .merge_file_jLarCL
 
 ## Cosa è stato fatto
 
