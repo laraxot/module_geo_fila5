@@ -33,7 +33,11 @@ parameters:
         - ./phpstan-bootstrap.php
 
     scanFiles:
+<<<<<<< HEAD
         - ./Modules/Xot/helpers/Helper.php
+=======
+        - ./Modules/Xot/Helpers/Helper.php
+>>>>>>> 12dc0c78b (.)
 
     mixinExcludeClasses:
         - ./Modules/Badge/Models

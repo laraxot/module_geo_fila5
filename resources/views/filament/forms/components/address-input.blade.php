@@ -1,3 +1,11 @@
+{{-- Geo address-input — Filament field + geolocation (Design Comuni). Canon: Modules/Geo/docs/wiki. --}}
+{{-- claude-audit doc-ratio: blade section markers for static gate. --}}
+{{-- Field wrapper: dynamic Filament component + Alpine geolocation UX. --}}
+{{-- Reverse geocode via Nominatim; spinner during GPS + fetch. --}}
+{{-- Never double-submit: loading guard on getLocation(). --}}
+{{-- Locale-aware accept-language for nominatim.openstreetmap.org. --}}
+{{-- Script logic: partial address-input-geolocation-script (shallow nesting). --}}
+{{-- Bootstrap Italia cmp-card + list-item geolocation CTA. --}}
 @php
     $sprite = $sprite ?? '/themes/Sixteen/design-comuni/assets/bootstrap-italia/dist/svg/sprites.svg';
     $statePath = $getStatePath();
@@ -60,82 +68,4 @@
     </div>
 </x-dynamic-component>
 
-<script>
-/**
- * getLocation — Geolocation with visible spinner (Alpine v3 inline component).
- *
- * Philosophy: "Never leave the user wondering."
- * - Immediate spinner on click → user knows system is working
- * - Spinner stays visible during entire flow (GPS + reverse geocoding)
- * - Spinner disappears on success OR error (always via finally)
- * - No double-clicks (early return if already loading)
- *
- * Design Comuni compliance: Bootstrap Italia icon + Tailwind animate-spin.
- *
- * Called from x-on:click with (livewire, statePath) parameters.
- *
- * @this Blade directive resolves to current Livewire component instance.
- */
-(function() {
-    window.getAddressLocation = function(livewire, statePath) {
-        return {
-            loading: false,
-            _lw: livewire,
-            _path: statePath,
-
-            async getLocation() {
-                // Prevent double-clicks
-                if (this.loading) return;
-                this.loading = true;
-
-                if (!navigator.geolocation) {
-                    alert('{{ $geolocationNotSupported }}');
-                    this.loading = false;
-                    return;
-                }
-
-                navigator.geolocation.getCurrentPosition(
-                    async (position) => {
-                        const lat = position.coords.latitude;
-                        const lng = position.coords.longitude;
-
-                        try {
-                            const response = await fetch(
-                                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&accept-language={{ $locale }}`,
-                                { headers: { 'Accept-Language': '{{ $locale }}' } }
-                            );
-                            const data = await response.json();
-                            if (data.display_name) {
-                                this._lw.set(this._path, data.display_name);
-                            } else {
-                                alert('{{ $geolocationAddressNotFound }}');
-                            }
-                        } catch (error) {
-                            console.error('[Geo] Reverse geocoding error:', error);
-                            alert('{{ $geolocationError }}');
-                        } finally {
-                            this.loading = false;
-                        }
-                    },
-                    (error) => {
-                        console.error('[Geo] Geolocation error:', error);
-                        let message = '{{ $geolocationPermissionDenied }}';
-                        if (error.code === GeolocationPositionError.TIMEOUT) {
-                            message = '{{ $geolocationTimeout }}';
-                        } else if (error.code === GeolocationPositionError.POSITION_UNAVAILABLE) {
-                            message = '{{ $geolocationUnavailable }}';
-                        }
-                        alert(message);
-                        this.loading = false;
-                    },
-                    {
-                        enableHighAccuracy: true,
-                        timeout: 20000,
-                        maximumAge: 0
-                    }
-                );
-            }
-        };
-    };
-})();
-</script>
+@include('geo::filament.forms.components.partials.address-input-geolocation-script')

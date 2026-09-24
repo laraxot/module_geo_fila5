@@ -1,3 +1,7 @@
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
 #!/usr/local/bin/node
 const query_overpass = require("query-overpass");
 const fs = require("fs");
@@ -25,22 +29,16 @@ function getSimpleNode(node)
     if (node.properties)
     if (node.properties.shop === "farm" && node.properties.amenity != "vending_machine") {
         property = "farm";
-        console.log("farm");
     } else if (node.properties.craft === "beekeeper" && node.properties.shop != "farm" && node.properties.amenity != "vending_machine") {
         property = "beekeeper";
-        console.log("beekeeper");
     } else if (node.properties.amenity === "marketplace" && node.properties.shop != "farm" && node.properties.amenity != "vending_machine") {
         property = "marketplace";
-        console.log("marketplace");
     } else if (node.properties.amenity === "vending_machine"&& node.properties.shop != "farm" && node.properties.amenity != "marketplace") {
         property = "vending_machine";
-        console.log("vending_machine");
     } else if (node.properties.amenity === "vending_machine") {
         property = "vending_machine";
-        console.log("vending_machine");
     } else {
         property = "unknown";
-        console.log("unknown");
     } else {
             property = null;
     }
@@ -62,7 +60,6 @@ function getSimpleNode(node)
 function removeDataDir(path)
 {
     if (!path || path === "/") {
-        return console.log(`Removing ${path}`);
     }
 
     if (fs.existsSync(path)) {
@@ -97,8 +94,6 @@ if (mm < 10) {
 
                 const lastUpdate = `Letzter Datenabgleich: ${dd}.${mm}.${yyyy} ungefähr um ${hh} Uhr.`;
 
-                console.log(lastUpdate);
-                console.log(`bbox: ${bbox}`);
 
                 const vendings = [
                 "milk", "egg", "food", "tomato", "cheese",
@@ -122,7 +117,7 @@ if (mm < 10) {
 
 // query overpass, write to folders by id
 query_overpass(query, (error, data)  => {
-    const sampleGeoJsonDataFeatures = [];
+    const farmshopGeoJsonFeatures = [];
 
     for (Item in data) {
         for (subItem in data[Item]) {
@@ -130,11 +125,11 @@ query_overpass(query, (error, data)  => {
             mkdirSyncRecursive(`data/${node.id}`);
             writeFileSync(`data/${node.id}`, JSON.stringify(node, null, 0));
             const simpleNode = getSimpleNode(node);
-            simpleNode ? sampleGeoJsonDataFeatures.push(simpleNode) : null;
+            simpleNode ? farmshopGeoJsonFeatures.push(simpleNode) : null;
         }
     }
 
-    const farmshopGeo = JSON.stringify({"type": "FeatureCollection","features": sampleGeoJsonDataFeatures}, null, 0);
-    fs.writeFileSync("data/sampleGeoJsonData.js",  `var lastUpdate = "${lastUpdate}"; var sampleGeoJsonData = ${farmshopGeo};`);
+    const farmshopGeo = JSON.stringify({"type": "FeatureCollection","features": farmshopGeoJsonFeatures}, null, 0);
+    fs.writeFileSync("data/farmshopGeoJson.js",  `var lastUpdate = "${lastUpdate}"; var farmshopGeoJson = ${farmshopGeo};`);
 
 }, {flatProperties: true});

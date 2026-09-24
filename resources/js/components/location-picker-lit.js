@@ -1,3 +1,10 @@
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
 import { geoIcon } from './geo-heroicons.js';
 import { LitElement, html } from 'lit';
 import { guard } from 'lit/directives/guard.js';

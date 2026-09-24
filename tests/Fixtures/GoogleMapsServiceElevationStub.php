@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Fixtures;
 
-use Modules\Geo\Actions\GoogleMapsAction;
+use Modules\Geo\Services\GoogleMapsService;
 
 /**
  * @internal
  */
-final class GoogleMapsServiceElevationStub extends GoogleMapsAction
+final class GoogleMapsServiceElevationStub extends GoogleMapsService
 {
     /**
      * @param array<string, mixed> $elevationResponse

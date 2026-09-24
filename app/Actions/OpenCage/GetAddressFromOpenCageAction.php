@@ -8,24 +8,22 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
-use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere i dati dell'indirizzo dal servizio OpenCage.
  */
 class GetAddressFromOpenCageAction
 {
-    use QueueableAction;
-
-    private const string BASE_URL = 'https://api.opencagedata.com/geocode/v1';
+    private const BASE_URL = 'https://api.opencagedata.com/geocode/v1';
 
     /**
      * Esegue la ricerca dell'indirizzo su OpenCage.
      *
-     * @param  string  $address  L'indirizzo da cercare
-     * @return AddressData|null I dati dell'indirizzo trovato o null se non trovato
+     * @param string $address L'indirizzo da cercare
      *
      * @throws \Exception Se la chiave API non è configurata
+     *
+     * @return AddressData|null I dati dell'indirizzo trovato o null se non trovato
      */
     public function execute(string $address): ?AddressData
     {

@@ -6,14 +6,16 @@ namespace Modules\Geo\Actions\OpenStreetMap;
 
 use Modules\Geo\Actions\Nominatim\FetchCoordinatesAction;
 use Modules\Geo\Datas\LocationData;
-use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere le coordinate da OpenStreetMap.
  */
-class GetCoordinatesFromOpenStreetMapAction
+readonly class GetCoordinatesFromOpenStreetMapAction
 {
-    use QueueableAction;
+    public function __construct(
+        private FetchCoordinatesAction $fetchCoordinatesAction,
+    ) {
+    }
 
     /**
      * Ottiene le coordinate geografiche da un indirizzo usando OpenStreetMap.
@@ -28,6 +30,6 @@ class GetCoordinatesFromOpenStreetMapAction
             return null;
         }
 
-        return app(FetchCoordinatesAction::class)->execute($address);
+        return $this->fetchCoordinatesAction->execute($address);
     }
 }

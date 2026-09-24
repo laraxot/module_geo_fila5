@@ -8,10 +8,11 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
-use Spatie\QueueableAction\QueueableAction;
-use Webmozart\Assert\Assert;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 use function Safe\json_decode;
+
+use Webmozart\Assert\Assert;
 
 /**
  * Action per ottenere l'indirizzo da coordinate tramite Google Maps.
@@ -19,15 +20,14 @@ use function Safe\json_decode;
  * Questa classe utilizza l'API Google Maps Reverse Geocoding per convertire
  * coordinate geografiche in un indirizzo formattato.
  */
-class GetAddressByLatLngFromGoogleMapsAction
+readonly class GetAddressByLatLngFromGoogleMapsAction
 {
-    use QueueableAction;
-
-    private const string API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    private const API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
     public function __construct(
-        private readonly Client $client,
-    ) {}
+        private Client $client,
+    ) {
+    }
 
     /**
      * Ottiene l'indirizzo dalle coordinate.
@@ -89,28 +89,28 @@ class GetAddressByLatLngFromGoogleMapsAction
      */
     private function parseResponse(string $response, float $latitude, float $longitude): LocationData
     {
-        /** @var array{
-         *     results: array<array{
-         *         formatted_address: string,
-         *         geometry: array{
-         *             location: array{
-         *                 lat: float,
-         *                 lng: float
-         *             }
-         *         }
-         *     }>,
-         *     status: string
-         * } $data */
-        $data = json_decode($response, true);
-
-        if ($data['status'] !== 'OK' || empty($data['results'][0])) {
+        $decoded = json_decode($response, true);
+        if (! \is_array($decoded)) {
             throw new \RuntimeException('No address found for coordinates');
         }
 
-        $result = $data['results'][0];
+        /** @var array<string, mixed> $data */
+        $data = $decoded;
+
+        if ('OK' !== ($data['status'] ?? null)) {
+            throw new \RuntimeException('No address found for coordinates');
+        }
+
+        $results = $data['results'] ?? null;
+        if (! \is_array($results) || ! isset($results[0]) || ! \is_array($results[0])) {
+            throw new \RuntimeException('No address found for coordinates');
+        }
+
+        /** @var array<string, mixed> $result */
+        $result = $results[0];
 
         return new LocationData(
-            address: $result['formatted_address'],
+            address: SafeStringCastAction::cast($result['formatted_address'] ?? ''),
             latitude: $latitude,
             longitude: $longitude,
         );

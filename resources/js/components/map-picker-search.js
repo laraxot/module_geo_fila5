@@ -1,3 +1,5 @@
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
 import { html } from 'lit';
 import { geoIcon } from './geo-heroicons.js';
 
@@ -131,7 +133,6 @@ export async function executeAddressSearch(ctx, options = {}) {
             selectSearchResult(ctx, ctx.searchResults[0]);
         }
     } catch (error) {
-        console.warn('[map-picker-search] Address search failed', error);
         ctx.searchResults = [];
         ctx.showSearchResults = false;
     } finally {

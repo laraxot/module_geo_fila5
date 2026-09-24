@@ -5,99 +5,118 @@ declare(strict_types=1);
 namespace Modules\Geo\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use InvalidArgumentException;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
+use Webmozart\Assert\Assert;
 
 /**
  * Trait HasAddresses.
  *
- * Questo trait fornisce funzionalità per gestire indirizzi multipli su qualsiasi modello.
- *
- * @property int|string $id
- *
- * @phpstan-require-extends Model
- *
- * @phpstan-ignore trait.unused
+ * @property MorphMany<Address, $this> $addresses
+ * @property MorphOne<Address, $this>  $primaryAddress
+ * @property MorphOne<Address, $this>  $homeAddress
+ * @property MorphOne<Address, $this>  $workAddress
+ * @property MorphOne<Address, $this>  $billingAddress
+ * @property MorphOne<Address, $this>  $shippingAddress
  */
 trait HasAddresses
 {
-    /** @return MorphMany<Address, $this> */
+    /**
+     * Relazione a tutti gli indirizzi.
+     *
+     * @return MorphMany<Address, $this>
+     */
     public function addresses(): MorphMany
     {
-        return $this->morphMany(Address::class, 'model'); // @phpstan-ignore return.type
-    }
-
-    /** @return MorphOne<Address, $this> */
-    public function primaryAddress(): MorphOne
-    {
-        return $this->morphOne(Address::class, 'model')->where('is_primary', true); // @phpstan-ignore return.type
-    }
-
-    /** @return MorphOne<Address, $this> */
-    public function homeAddress(): MorphOne
-    {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::HOME->value); // @phpstan-ignore return.type
-    }
-
-    /** @return MorphOne<Address, $this> */
-    public function workAddress(): MorphOne
-    {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::WORK->value); // @phpstan-ignore return.type
-    }
-
-    /** @return MorphOne<Address, $this> */
-    public function billingAddress(): MorphOne
-    {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::BILLING->value); // @phpstan-ignore return.type
-    }
-
-    /** @return MorphOne<Address, $this> */
-    public function shippingAddress(): MorphOne
-    {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::SHIPPING->value); // @phpstan-ignore return.type
+        return $this->morphMany(Address::class, 'model');
     }
 
     /**
-     * Imposta un indirizzo come principale.
+     * Relazione all'indirizzo principale.
+     *
+     * @return MorphOne<Address, $this>
      */
+    public function primaryAddress(): MorphOne
+    {
+        return $this->morphOne(Address::class, 'model')->where('is_primary', true);
+    }
+
+    /**
+     * Relazione all'indirizzo di casa.
+     *
+     * @return MorphOne<Address, $this>
+     */
+    public function homeAddress(): MorphOne
+    {
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::HOME->value);
+    }
+
+    /**
+     * Relazione all'indirizzo di lavoro.
+     *
+     * @return MorphOne<Address, $this>
+     */
+    public function workAddress(): MorphOne
+    {
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::WORK->value);
+    }
+
+    /**
+     * Relazione all'indirizzo di fatturazione.
+     *
+     * @return MorphOne<Address, $this>
+     */
+    public function billingAddress(): MorphOne
+    {
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::BILLING->value);
+    }
+
+    /**
+     * Relazione all'indirizzo di spedizione.
+     *
+     * @return MorphOne<Address, $this>
+     */
+    public function shippingAddress(): MorphOne
+    {
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::SHIPPING->value);
+    }
+
     public function setPrimaryAddress(Address $address): void
     {
-        // Assicurati che l'indirizzo appartenga a questo modello
         if ($address->model_id !== $this->id || $address->model_type !== static::class) {
-            throw new InvalidArgumentException('L\'indirizzo non appartiene a questo modello.');
+            throw new \InvalidArgumentException('L\'indirizzo non appartiene a questo modello.');
         }
 
-        // Rimuovi lo stato primario da tutti gli altri indirizzi
         $this->addresses()->update(['is_primary' => false]);
 
-        // Imposta questo indirizzo come primario
         $address->is_primary = true;
         $address->save();
     }
 
     /**
-     * Aggiunge un nuovo indirizzo.
-     *
-     * @param  array<string, mixed>  $data
+     * @param array<string, mixed> $data
      */
     public function addAddress(array $data, bool $isPrimary = false): Address
     {
-        // Se l'indirizzo deve essere primario, rimuovi lo stato primario dagli altri
         if ($isPrimary) {
             $this->addresses()->update(['is_primary' => false]);
         }
 
-        // Crea il nuovo indirizzo
-        $data['is_primary'] = $isPrimary;
+        $payload = array_merge($data, ['is_primary' => $isPrimary]);
 
-        return $this->addresses()->create($data);
+        $address = $this->addresses()->create($payload);
+        Assert::isInstanceOf($address, Address::class);
+
+        return $address;
     }
 
-    /** @return Collection<int, Address> */
+    /**
+     * Ottiene gli indirizzi per tipo.
+     *
+     * @return Collection<int, Address>
+     */
     public function getAddressesByType(AddressTypeEnum|string $type): Collection
     {
         $typeValue = $type instanceof AddressTypeEnum ? $type->value : $type;

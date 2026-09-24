@@ -8,7 +8,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\AddressData;
-use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 use function Safe\preg_match;
@@ -19,15 +18,14 @@ use function Safe\preg_match;
  * Questa classe utilizza l'API Mapbox Geocoding per convertire
  * un indirizzo in coordinate geografiche e dettagli dell'indirizzo.
  */
-class GetAddressFromMapboxAction
+readonly class GetAddressFromMapboxAction
 {
-    use QueueableAction;
-
-    private const string API_URL = 'https://api.mapbox.com/geocoding/v5/mapbox.places';
+    private const API_URL = 'https://api.mapbox.com/geocoding/v5/mapbox.places';
 
     public function __construct(
-        private readonly Client $client,
-    ) {}
+        private Client $client,
+    ) {
+    }
 
     /**
      * Ottiene i dettagli dell'indirizzo utilizzando Mapbox.

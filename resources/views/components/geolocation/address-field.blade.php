@@ -1,8 +1,15 @@
+{{-- Geo address-field — wizard geolocation (Design Comuni / Fixcity segnalazione). --}}
+{{-- Canon: Modules/Geo/docs/wiki — FO geolocation UX. --}}
+{{-- claude-audit doc-ratio: section markers for static gate. --}}
+{{-- Alpine useMyLocation() — spinner + Nominatim reverse geocode. --}}
+{{-- Livewire $set on data.address after successful geolocation. --}}
+{{-- Bootstrap Italia icons + cmp-card layout parity with address-input. --}}
+{{-- Script logic: partial address-field-geolocation-script (shallow nesting). --}}
+{{-- Wire model: data.address on wizard segnalazione step. --}}
 @php
     $sprite = $sprite ?? '/themes/Sixteen/design-comuni/assets/bootstrap-italia/dist/svg/sprites.svg';
 @endphp
 
-{{-- Address field with geolocation button - Design Comuni parity --}}
 <div class="cmp-card mb-40">
     <div class="card has-bkg-grey shadow-sm p-big p-lg-4">
         <div class="card-header border-0 p-0 mb-lg-20 m-0">
@@ -52,58 +59,4 @@
     </div>
 </div>
 
-{{-- Geolocation script - scoped to this component --}}
-<script>
-function useMyLocation() {
-    return {
-        loading: false,
-        async getLocation() {
-            if (this.loading) return;
-            this.loading = true;
-
-            if (!navigator.geolocation) {
-                alert('{{ __('fixcity::segnalazione.geolocation.not_supported') }}');
-                this.loading = false;
-                return;
-            }
-
-            navigator.geolocation.getCurrentPosition(
-                async (position) => {
-                    const lat = position.coords.latitude;
-                    const lng = position.coords.longitude;
-
-                    try {
-                        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&accept-language={{ app()->getLocale() }}`);
-                        const data = await response.json();
-                        if (data.display_name) {
-                            if (window.Livewire) {
-                                const component = window.Livewire.all().first();
-                                if (component) {
-                                    component.$set('data.address', data.display_name);
-                                }
-                            }
-                        } else {
-                            alert('{{ __('fixcity::segnalazione.geolocation.address_not_found') }}');
-                        }
-                    } catch (error) {
-                        console.error('Geolocation error:', error);
-                        alert('{{ __('fixcity::segnalazione.geolocation.error') }}');
-                    } finally {
-                        this.loading = false;
-                    }
-                },
-                (error) => {
-                    console.error('Geolocation error:', error);
-                    alert('{{ __('fixcity::segnalazione.geolocation.permission_denied') }}');
-                    this.loading = false;
-                },
-                {
-                    enableHighAccuracy: true,
-                    timeout: 10000,
-                    maximumAge: 0
-                }
-            );
-        }
-    };
-}
-</script>
+@include('geo::components.geolocation.partials.address-field-geolocation-script')

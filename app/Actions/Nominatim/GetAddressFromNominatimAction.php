@@ -8,21 +8,19 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
-use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere i dati dell'indirizzo dal servizio Nominatim.
  */
 class GetAddressFromNominatimAction
 {
-    use QueueableAction;
-
-    private const string BASE_URL = 'https://nominatim.openstreetmap.org';
+    private const BASE_URL = 'https://nominatim.openstreetmap.org';
 
     /**
      * Esegue la ricerca dell'indirizzo su Nominatim.
      *
-     * @param  string  $address  L'indirizzo da cercare
+     * @param string $address L'indirizzo da cercare
+     *
      * @return AddressData|null I dati dell'indirizzo trovato o null se non trovato
      */
     public function execute(string $address): ?AddressData
