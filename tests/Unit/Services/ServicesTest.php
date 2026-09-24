@@ -4,26 +4,25 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Services;
 
-uses(\Modules\Geo\Tests\TestCase::class);
-
 use Modules\Geo\Services\GeoService;
 use Modules\Geo\Services\GoogleMapsService;
 use Modules\Geo\Services\HereService;
+use PHPUnit\Framework\Assert;
 
-test('GeoService can be instantiated', function () {
+test('GeoService can be resolved from container', function (): void {
     $service = app(GeoService::class);
 
-    expect($service)->toBeInstanceOf(GeoService::class);
+    Assert::assertTrue($service instanceof GeoService);
 });
 
-test('GoogleMapsService can be instantiated', function () {
+test('GoogleMapsService can be resolved from container', function (): void {
     $service = app(GoogleMapsService::class);
 
-    expect($service)->toBeInstanceOf(GoogleMapsService::class);
+    Assert::assertTrue($service instanceof GoogleMapsService);
 });
 
-test('HereService can be instantiated', function () {
+test('HereService can be resolved from container', function (): void {
     $service = app(HereService::class);
 
-    expect($service)->toBeInstanceOf(HereService::class);
+    Assert::assertTrue($service instanceof HereService);
 });
