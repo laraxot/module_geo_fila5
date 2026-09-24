@@ -74,7 +74,7 @@ final class GetAddressFromGoogleMapsAction
         /** @var GoogleMapResponseData $responseData */
         $responseData = GoogleMapResponseData::from($response->json());
 
-        if ($responseData->results->count() === 0) {
+        if (0 === $responseData->results->count()) {
             throw GoogleMapsApiException::noResultsFound();
         }
 
@@ -114,16 +114,20 @@ final class GetAddressFromGoogleMapsAction
     }
 
     /**
-     * @param  DataCollection<int, GoogleMapAddressComponentData>  $components
-     * @param  array<string>  $types
+     * @param DataCollection<int, GoogleMapAddressComponentData> $components
+     * @param array<string>                                      $types
      */
     private function getComponent(DataCollection $components, array $types, bool $short = false): ?string
     {
         /** @var GoogleMapAddressComponentData|null $component */
         $component = $components
             ->toCollection()
-            ->first(function (GoogleMapAddressComponentData $component) use ($types): bool {
-                return $component->types !== [] && count(array_intersect($component->types, $types)) > 0;
+            ->first(function (mixed $component) use ($types) {
+                if (! $component instanceof GoogleMapAddressComponentData) {
+                    return false;
+                }
+
+                return ! empty($component->types) && count(array_intersect($component->types, $types)) > 0;
             });
 
         if (! $component instanceof GoogleMapAddressComponentData) {
