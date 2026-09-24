@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
-use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
-use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
+use Filament\Widgets\Widget;
+use Modules\Geo\Support\GeoMapDataset;
 
 /**
  * @phpstan-type GeoDataset array{type: string, features: list<array{
@@ -25,8 +23,10 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
  *     stats: array{total: int, points: int, zones: int, categories: int}
  * }
  */
-final class GeoMapWidget extends XotBaseWidget
+final class GeoMapWidget extends Widget
 {
+    protected string $view = 'geo::filament.widgets.geo-map-widget';
+
     protected int|string|array $columnSpan = 'full';
 
     protected string $datasetRelativePath =
@@ -43,7 +43,7 @@ final class GeoMapWidget extends XotBaseWidget
      */
     public function getDataset(): array
     {
-        return app(LoadGeoMapDatasetAction::class)->execute($this->getDatasetPath());
+        return $this->getGeoMapDataset()->toArray();
     }
 
     /**
@@ -51,7 +51,7 @@ final class GeoMapWidget extends XotBaseWidget
      */
     public function getCategories(): array
     {
-        return app(GetGeoMapDatasetCategoriesAction::class)->execute($this->getDatasetPath());
+        return $this->getGeoMapDataset()->getCategories();
     }
 
     /**
@@ -88,7 +88,7 @@ final class GeoMapWidget extends XotBaseWidget
      */
     public function getDatasetStats(): array
     {
-        return app(GetGeoMapDatasetStatsAction::class)->execute($this->getDatasetPath());
+        return $this->getGeoMapDataset()->getStats();
     }
 
     public function getDatasetJson(): string
@@ -124,5 +124,10 @@ final class GeoMapWidget extends XotBaseWidget
         } catch (\JsonException $exception) {
             throw new \RuntimeException($message, 0, $exception);
         }
+    }
+
+    private function getGeoMapDataset(): GeoMapDataset
+    {
+        return new GeoMapDataset($this->getDatasetPath());
     }
 }

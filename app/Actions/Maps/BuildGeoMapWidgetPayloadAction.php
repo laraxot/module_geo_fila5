@@ -9,12 +9,9 @@ use Modules\Geo\Datas\Map\GeoMapWidgetData;
 use Modules\Geo\Models\Place;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
-use Spatie\QueueableAction\QueueableAction;
 
 class BuildGeoMapWidgetPayloadAction
 {
-    use QueueableAction;
-
     public function execute(): GeoMapWidgetData
     {
         $places = $this->getPlaces();
@@ -138,7 +135,8 @@ class BuildGeoMapWidgetPayloadAction
     }
 
     /**
-     * @param  Collection<int, Place>  $places
+     * @param Collection<int, Place> $places
+     *
      * @return array{lat: float, lng: float}
      */
     private function resolveCenter(Collection $places): array
@@ -147,8 +145,8 @@ class BuildGeoMapWidgetPayloadAction
             return ['lat' => 45.4642, 'lng' => 9.1900];
         }
 
-        $latitudes = $places->pluck('latitude')->filter(static fn (mixed $value): bool => \is_float($value) || \is_int($value));
-        $longitudes = $places->pluck('longitude')->filter(static fn (mixed $value): bool => \is_float($value) || \is_int($value));
+        $latitudes = $places->pluck('latitude')->filter(static fn ($value): bool => \is_float($value) || \is_int($value));
+        $longitudes = $places->pluck('longitude')->filter(static fn ($value): bool => \is_float($value) || \is_int($value));
 
         return [
             'lat' => SafeFloatCastAction::cast($latitudes->average() ?? 45.4642),
@@ -160,13 +158,13 @@ class BuildGeoMapWidgetPayloadAction
     {
         $title = $place->name;
 
-        if (\is_string($title) && trim($title) !== '') {
+        if (\is_string($title) && '' !== trim($title)) {
             return trim($title);
         }
 
         $formattedAddress = $place->getFormattedAddress();
 
-        if ($formattedAddress !== '') {
+        if ('' !== $formattedAddress) {
             return $formattedAddress;
         }
 

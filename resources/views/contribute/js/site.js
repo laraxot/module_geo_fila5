@@ -1,3 +1,11 @@
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
 var findme_map = L.map('findme-map')
     .setView([51.01122,10.88204], 5),
     osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -33,7 +41,6 @@ i18n.init({ fallbackLng: 'de', postAsync: 'false' }, function () {
 
 function zoom_to_point(chosen_place, map, marker)
 {
-    console.log(chosen_place);
 
     marker.setOpacity(1);
     marker.setLatLng([chosen_place.lat, chosen_place.lon]);

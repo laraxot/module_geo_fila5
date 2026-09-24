@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Elevation;
 
-use Modules\Geo\Actions\GoogleMapsAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\ElevationException;
-use Modules\Xot\Actions\Cast\SafeFloatCastAction;
-use Spatie\QueueableAction\QueueableAction;
+use Modules\Geo\Services\GoogleMapsService;
 
 /**
  * Classe per ottenere l'elevazione di un punto geografico.
@@ -19,9 +17,15 @@ use Spatie\QueueableAction\QueueableAction;
  *
  * @see https://developers.google.com/maps/documentation/elevation
  */
-class GetElevationAction
+readonly class GetElevationAction
 {
-    use QueueableAction;
+    /**
+     * @param GoogleMapsService $googleMapsService Servizio per le richieste a Google Maps
+     */
+    public function __construct(
+        private GoogleMapsService $googleMapsService,
+    ) {
+    }
 
     /**
      * Ottiene l'elevazione per una posizione geografica.
@@ -39,7 +43,7 @@ class GetElevationAction
 
         try {
             /** @var array<string, mixed> $response */
-            $response = app(GoogleMapsAction::class)->getElevation($location->latitude, $location->longitude);
+            $response = $this->googleMapsService->getElevation($location->latitude, $location->longitude);
 
             if (! isset($response['results']) || ! is_array($response['results']) || empty($response['results'])) {
                 throw ElevationException::invalidResponse();
@@ -50,7 +54,7 @@ class GetElevationAction
                 throw ElevationException::invalidResponse();
             }
 
-            return SafeFloatCastAction::cast($firstResult['elevation']);
+            return (float) $firstResult['elevation'];
         } catch (\Throwable $e) {
             if ($e instanceof ElevationException) {
                 throw $e;

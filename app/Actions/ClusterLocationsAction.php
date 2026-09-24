@@ -7,14 +7,11 @@ namespace Modules\Geo\Actions;
 use Modules\Geo\Contracts\CalculateDistanceActionContract;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\InvalidLocationException;
-use Spatie\QueueableAction\QueueableAction;
 
-class ClusterLocationsAction
+readonly class ClusterLocationsAction
 {
-    use QueueableAction;
-
     public function __construct(
-        private readonly CalculateDistanceActionContract $distanceCalculator,
+        private CalculateDistanceActionContract $distanceCalculator,
     ) {
     }
 

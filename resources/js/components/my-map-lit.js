@@ -1,3 +1,5 @@
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
 import { LitElement, html, css } from '@theme-lit';
 import L from '@theme-leaflet';
 

@@ -10,17 +10,13 @@ use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\MapPlatforms\BingMapData;
 use Modules\Geo\Exceptions\InvalidLocationException;
-use Modules\Xot\Actions\Cast\SafeFloatCastAction;
-use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere l'indirizzo da Bing Maps.
  */
 class GetAddressFromBingMapsAction
 {
-    use QueueableAction;
-
-    private const string BASE_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
+    private const BASE_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
 
     /**
      * Ottiene l'indirizzo da coordinate geografiche.
@@ -40,10 +36,9 @@ class GetAddressFromBingMapsAction
     /**
      * Get the Bing Maps API key from configuration.
      *
+     * @throws InvalidLocationException
      *
      * @return non-empty-string
-     *
-     * @throws InvalidLocationException
      */
     private function getApiKey(): string
     {
@@ -60,9 +55,9 @@ class GetAddressFromBingMapsAction
     }
 
     /**
-     * @return array<mixed>
-     *
      * @throws InvalidLocationException
+     *
+     * @return array<string, mixed>
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
     {
@@ -93,7 +88,7 @@ class GetAddressFromBingMapsAction
     }
 
     /**
-     * @param  array<string, mixed>  $response
+     * @param array<string, mixed> $response
      */
     private function parseResponse(array $response): BingMapData
     {
@@ -138,26 +133,27 @@ class GetAddressFromBingMapsAction
         return new AddressData(
             latitude: (float) ($res['point']['coordinates'][0] ?? 0),
             longitude: (float) ($res['point']['coordinates'][1] ?? 0),
-            country: $res['address']['countryRegion'],
-            city: $res['address']['locality'],
+            country: $res['address']['countryRegion'] ?? null,
+            city: $res['address']['locality'] ?? null,
             country_code: strtoupper($res['address']['countryRegionIso2'] ?? 'IT'),
             postal_code: (int) ($res['address']['postalCode'] ?? 0),
-            locality: $res['address']['locality'],
-            county: $res['address']['adminDistrict2'],
-            street: $res['address']['addressLine'],
-            street_number: $res['address']['houseNumber'],
-            district: $res['address']['neighborhood'],
-            state: $res['address']['adminDistrict'],
+            locality: $res['address']['locality'] ?? null,
+            county: $res['address']['adminDistrict2'] ?? null,
+            street: $res['address']['addressLine'] ?? null,
+            street_number: $res['address']['houseNumber'] ?? null,
+            district: $res['address']['neighborhood'] ?? null,
+            state: $res['address']['adminDistrict'] ?? null,
         );
     }
 
     /**
      * Extract location array from Bing Maps API response.
      *
-     * @param  array<string, mixed>  $response
-     * @return array<string, mixed>
+     * @param array<string, mixed> $response
      *
      * @throws InvalidLocationException
+     *
+     * @return array<string, mixed>
      */
     private function extractLocationFromResponse(array $response): array
     {
@@ -203,10 +199,11 @@ class GetAddressFromBingMapsAction
     /**
      * Extract coordinates from location array.
      *
-     * @param  array<string, mixed>  $location
-     * @return array{0: float, 1: float}
+     * @param array<string, mixed> $location
      *
      * @throws InvalidLocationException
+     *
+     * @return array{0: float, 1: float}
      */
     private function extractCoordinatesFromLocation(array $location): array
     {
@@ -220,8 +217,8 @@ class GetAddressFromBingMapsAction
         }
 
         return [
-            0 => SafeFloatCastAction::cast($coordinates[0]),
-            1 => SafeFloatCastAction::cast($coordinates[1]),
+            0 => (float) $coordinates[0],
+            1 => (float) $coordinates[1],
         ];
     }
 
@@ -231,8 +228,9 @@ class GetAddressFromBingMapsAction
      * Centralizes the repeated validation pattern: isset + is_string + default null.
      * This helper reduces cyclomatic complexity by applying DRY principle.
      *
-     * @param  array<string, mixed>  $data  Source array
-     * @param  string  $key  Field key to extract
+     * @param array<string, mixed> $data Source array
+     * @param string               $key  Field key to extract
+     *
      * @return string|null Validated string value or null if not found/not string
      */
     private function extractStringField(array $data, string $key): ?string

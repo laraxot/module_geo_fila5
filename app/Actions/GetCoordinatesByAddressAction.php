@@ -7,14 +7,10 @@ namespace Modules\Geo\Actions;
 use Filament\Notifications\Notification;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Datas\Location\CoordinatesData;
-use Modules\Xot\Actions\Cast\SafeFloatCastAction;
-use Spatie\QueueableAction\QueueableAction;
+use Modules\Geo\Datas\CoordinatesData;
 
 class GetCoordinatesByAddressAction
 {
-    use QueueableAction;
-
     public function execute(string $address): ?CoordinatesData
     {
         // Prova con Google Maps
@@ -117,7 +113,6 @@ class GetCoordinatesByAddressAction
      */
     private function makeHttpRequest(string $url, array $params): Response
     {
-        /* @var Response $response */
         return Http::get($url, $params);
     }
 
@@ -136,15 +131,17 @@ class GetCoordinatesByAddressAction
         }
 
         return new CoordinatesData(
-            latitude: SafeFloatCastAction::cast($coordinates[0] ?? 0),
-            longitude: SafeFloatCastAction::cast($coordinates[1] ?? 0),
+            latitude: (float) ($coordinates[0] ?? 0),
+            longitude: (float) ($coordinates[1] ?? 0),
         );
     }
 
     /**
-     * @param array<mixed> $data
+     * Extract coordinates from Bing response.
      *
-     * @return array<mixed>|null
+     * @param array<string, mixed> $data
+     *
+     * @return array<int, float>|null
      */
     private function extractBingCoordinates(array $data): ?array
     {
@@ -176,7 +173,7 @@ class GetCoordinatesByAddressAction
             return null;
         }
 
-        return $coordinates;
+        return [(float) $coordinates[0], (float) $coordinates[1]];
     }
 
     /**

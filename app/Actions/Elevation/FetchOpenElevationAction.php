@@ -7,22 +7,20 @@ namespace Modules\Geo\Actions\Elevation;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\Elevation\ElevationData;
-use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
 /**
  * Action per ottenere l'elevazione di un punto usando OpenElevation API.
  */
-class FetchOpenElevationAction
+readonly class FetchOpenElevationAction
 {
-    use QueueableAction;
-
-    private const string API_URL = 'https://api.open-elevation.com/api/v1/lookup';
+    private const API_URL = 'https://api.open-elevation.com/api/v1/lookup';
 
     public function __construct(
-        private readonly Client $client,
-    ) {}
+        private Client $client,
+    ) {
+    }
 
     /**
      * Ottiene l'elevazione per un punto.
