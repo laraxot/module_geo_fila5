@@ -1,3 +1,7 @@
+<?php
+
+declare(strict_types=1);
+?>
 @php
 $lat = $lat ?? null;
 $lng = $lng ?? null;
