@@ -368,6 +368,13 @@ trait HasCoordinatePicker
         return $data;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Normalizza un valore coordinata grezzo (float|int|string|null atteso;
+     * mixed perche' proviene da attributi Eloquent / state Filament / JSON).
+     */
+>>>>>>> laraxot/dev
     private static function normalizeCoordinate(mixed $value): ?float
     {
         if (null === $value || '' === $value) {

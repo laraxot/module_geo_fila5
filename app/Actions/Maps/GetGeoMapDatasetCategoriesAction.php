@@ -19,13 +19,21 @@ class GetGeoMapDatasetCategoriesAction
         $categories = [];
 
         foreach ($features as $feature) {
+<<<<<<< HEAD
             if ($feature['geometry']['type'] !== 'Point') {
+=======
+            if ('Point' !== $feature['geometry']['type']) {
+>>>>>>> laraxot/dev
                 continue;
             }
 
             $category = $feature['properties']['p'] ?? $feature['properties']['category'] ?? null;
 
+<<<<<<< HEAD
             if (is_string($category) && $category !== '') {
+=======
+            if (is_string($category) && '' !== $category) {
+>>>>>>> laraxot/dev
                 $categories[] = $category;
             }
         }

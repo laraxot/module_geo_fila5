@@ -9,10 +9,18 @@ use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Province;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use PHPUnit\Framework\Assert;
+<<<<<<< HEAD
 use Sushi\Sushi;
 
 use function Safe\class_uses;
 
+=======
+
+use function Safe\class_uses;
+
+use Sushi\Sushi;
+
+>>>>>>> laraxot/dev
 describe('Province Business Logic', function () {
     test('province extends base model', function () {
         Assert::assertInstanceOf(BaseModel::class, new Province());
