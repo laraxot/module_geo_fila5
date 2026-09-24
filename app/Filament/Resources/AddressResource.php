@@ -4,32 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Resources;
 
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
-use Filament\Schemas\Components\Component;
-use Filament\Schemas\Components\Utilities\Get;
-use Filament\Schemas\Components\Utilities\Set;
 use Modules\Geo\Models\Address;
-use Modules\Geo\Models\Locality;
-use Modules\Geo\Models\Province;
-use Modules\Geo\Models\Region;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
-/**
- * Resource per la gestione degli indirizzi geografici.
- *
- * Fornisce un'interfaccia completa per:
- * - Creazione di nuovi indirizzi con validazione geografica
- * - Modifica dei dati esistenti
- * - Visualizzazione delle informazioni su mappa
- * - Gestione delle relazioni con altri modelli
- * fornendo funzionalità per la creazione, modifica e visualizzazione
- * degli indirizzi su mappa.
- */
 class AddressResource extends XotBaseResource
 {
     protected static ?string $model = Address::class;
+<<<<<<< .merge_file_DxS9wg
 
     // ✅ CORRETTO - NIENTE navigationGroup - La gestione è centralizzata in XotBaseResource
 
@@ -38,8 +19,7 @@ class AddressResource extends XotBaseResource
      *
      * @phpstan-return array<string, Component>
      */
-    #[\Override]
-    public static function getFormSchema(): array
+    public function getFormSchemaOld(): array
     {
         return [
             'name' => TextInput::make('name')->maxLength(255),
@@ -148,4 +128,6 @@ class AddressResource extends XotBaseResource
                 ->placeholder(__('filament-forms::components.select.placeholder')),
         ];
     }
+=======
+>>>>>>> .merge_file_qt8ymY
 }

@@ -8,10 +8,18 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+<<<<<<< .merge_file_Hkz5t4
 use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
+=======
+
+use function Safe\json_decode;
+
+use Spatie\QueueableAction\QueueableAction;
+
+>>>>>>> .merge_file_gZz10w
 /**
  * Carica e espone gerarchia regioni/province/città da JSON comuni.
  *

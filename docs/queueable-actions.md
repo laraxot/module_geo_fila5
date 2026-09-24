@@ -2,7 +2,7 @@
 title: "Queueable Actions — Geo Module"
 type: concept
 created: 2026-07-12
-updated: 2026-07-13
+updated: 2026-07-12
 confidence: high
 tags: [queueable-action, spatie, architecture, laraxot, geo]
 related:
@@ -22,10 +22,6 @@ related:
 4. No inline `new ...Action` or `new ...Repository` in constructor default parameters.
 5. Retire files by renaming with `.old` suffix; do not `rm` and do not create `archive/` directories.
 6. YAGNI: reuse existing code, prefer stdlib/native Laravel, keep it minimal.
-
-## Support → Actions (2026-07-13)
-
-`GeoMapDataset` eliminato da `app/Support/`. Vedi [no-app-support-queueable-actions.md](wiki/concepts/no-app-support-queueable-actions.md).
 
 ## Example
 

@@ -10,17 +10,12 @@ class CheckGeoDataIntegrityAction
 {
     use QueueableAction;
 
-    public function __construct(
-        private readonly ValidateGeoDataAction $validateGeoDataAction = new ValidateGeoDataAction(),
-    ) {
-    }
-
     /**
      * @param array<string, mixed> $data
      */
     public function execute(array $data): bool
     {
-        if (! $this->validateGeoDataAction->execute($data)) {
+        if (! app(ValidateGeoDataAction::class)->execute($data)) {
             return false;
         }
 
@@ -43,8 +38,14 @@ class CheckGeoDataIntegrityAction
     }
 
     /**
-     * @param array<mixed, mixed> $region
-     * @param list<string>        $regionCodes
+     * <<<<<<< .merge_file_zK2cWC.
+     *
+     * @param array<mixed, mixed>     $region
+     * @param list<string>            $regionCodes
+     *                                             =======
+     * @param array<array-key, mixed> $region
+     * @param list<string>            $regionCodes
+     *                                             >>>>>>> .merge_file_XBVH5N
      *
      * @param-out list<string> $regionCodes
      */
@@ -76,8 +77,14 @@ class CheckGeoDataIntegrityAction
     }
 
     /**
-     * @param array<mixed, mixed> $province
-     * @param list<string>        $provinceCodes
+     * <<<<<<< .merge_file_zK2cWC.
+     *
+     * @param array<mixed, mixed>     $province
+     * @param list<string>            $provinceCodes
+     *                                               =======
+     * @param array<array-key, mixed> $province
+     * @param list<string>            $provinceCodes
+     *                                               >>>>>>> .merge_file_XBVH5N
      *
      * @param-out list<string> $provinceCodes
      */
@@ -118,8 +125,14 @@ class CheckGeoDataIntegrityAction
     }
 
     /**
-     * @param array<mixed, mixed> $city
-     * @param list<string>        $cityCodes
+     * <<<<<<< .merge_file_zK2cWC.
+     *
+     * @param array<mixed, mixed>     $city
+     * @param list<string>            $cityCodes
+     *                                           =======
+     * @param array<array-key, mixed> $city
+     * @param list<string>            $cityCodes
+     *                                           >>>>>>> .merge_file_XBVH5N
      *
      * @param-out list<string> $cityCodes
      */

@@ -1,1 +1,7 @@
-https://github.com/khsing/laravel-world
+---
+module: theme
+topic: databases
+canonical: ../../../Themes/docs/shared-components/databases-Modules.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/databases-Modules.md

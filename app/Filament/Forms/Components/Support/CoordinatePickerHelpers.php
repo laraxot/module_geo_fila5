@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Forms\Components\Support;
 
 use Illuminate\Support\Facades\Http;
+use Modules\Geo\Filament\Forms\Components\XotBaseCoordinateField;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
- * Typed helpers for {@see \Modules\Geo\Filament\Forms\Components\XotBaseCoordinateField}.
+ * Typed helpers for {@see XotBaseCoordinateField}.
  *
  * ponytail: extracted from trait so PHPStan L10 sees array generics on a concrete class.
  */
@@ -174,6 +175,10 @@ final class CoordinatePickerHelpers
         return $data;
     }
 
+    /**
+     * Normalizza un valore coordinata grezzo (float|int|string|null atteso;
+     * mixed perche' proviene da attributi Eloquent / state Filament / JSON).
+     */
     public static function normalizeCoordinate(mixed $value): ?float
     {
         if (null === $value || '' === $value) {
