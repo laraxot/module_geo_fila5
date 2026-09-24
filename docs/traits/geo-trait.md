@@ -1,0 +1,34 @@
+---
+title: GeoTrait — distanza Haversine su modelli geo
+type: concept
+tags: [geo, trait, distance, address, phpstan]
+updated_at: '2026-09-24'
+qmd: geotrait distance haversine address latitude longitude scope
+---
+
+# Trait GeoTrait
+
+## Perché
+
+`Address` (e consumer con colonne `latitude`/`longitude`) devono calcolare e ordinare per distanza senza duplicare Haversine. Il trait centralizza `distance()` (via `CalculateGeoDistanceAction`) e `scopeWithDistance` / `scopeOfInPolygon`.
+
+Non include più mutator/accessor JSON legacy (`setAddressAttribute`, `getLatitudeAttribute`, …): collidono con la logica già su `Address`/`Place` e non avevano consumer.
+
+## Dove si usa
+
+- `Modules\Geo\Models\Address` — `use GeoTrait`
+- Instance method: `$address->distance($lat, $lng)`
+- Scope: `Address::query()->withDistance($lat, $lng)`
+
+## Contratto
+
+- Colonne attese: `latitude`, `longitude` (float)
+- SQL scope: letterale + binding (stesso pattern di `Address::scopeNearby`) — niente stringhe dinamiche per PHPStan `literal-string`
+- Vietato `@phpstan-ignore` / probe fittizi: il trait deve avere un consumer reale
+
+## Collegamenti
+
+- [models/address.md](../models/address.md)
+- [has-address-trait.md](../has-address-trait.md)
+- [geo-models-domain-analysis.md](../geo-models-domain-analysis.md)
+- [no-phpstan-probe-policy.md](../no-phpstan-probe-policy.md)
