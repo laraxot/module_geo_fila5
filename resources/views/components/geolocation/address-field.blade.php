@@ -1,3 +1,7 @@
+<?php
+
+declare(strict_types=1);
+?>
 @php
     $sprite = $sprite ?? '/themes/Sixteen/design-comuni/assets/bootstrap-italia/dist/svg/sprites.svg';
 @endphp

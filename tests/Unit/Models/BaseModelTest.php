@@ -6,10 +6,8 @@ namespace Modules\Geo\Tests\Unit\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Geo\Models\BaseModel;
-use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-uses(TestCase::class);
 test('base model extends eloquent model', function () {
     $baseModel = new class extends BaseModel {
         protected $table = 'test_geo_table';

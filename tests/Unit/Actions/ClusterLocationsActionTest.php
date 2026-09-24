@@ -9,10 +9,7 @@ use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\InvalidLocationException;
 use Modules\Geo\Tests\Fixtures\ClusterDistanceStub;
 use Modules\Geo\Tests\Fixtures\FixedPairDistanceStub;
-use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 it('clusters locations that are close together', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
@@ -43,7 +40,14 @@ it('creates separate clusters for distant locations', function (): void {
     Assert::assertCount(1, $clusters[1]['points']);
 });
 
-function invokeClusterLocations(ClusterLocationsAction $action, mixed $locations, float $maxDistance = 1.0): mixed
+/**
+ * Helper che invoca execute() via reflection per testare input non validi.
+ *
+ * @param array<array-key, mixed> $locations
+ *
+ * @return mixed Valore di ritorno di ReflectionMethod::invoke (eterogeneo)
+ */
+function invokeClusterLocations(ClusterLocationsAction $action, array $locations, float $maxDistance = 1.0): mixed
 {
     $method = new \ReflectionMethod(ClusterLocationsAction::class, 'execute');
 
@@ -108,12 +112,10 @@ it('works with different max distance parameter', function (): void {
 it('updates cluster centers correctly', function (): void {
     $location1 = new LocationData(latitude: 45.0, longitude: 9.0);
     $location2 = new LocationData(latitude: 46.0, longitude: 10.0);
-
     $clusters = (new ClusterLocationsAction(new FixedPairDistanceStub(100)))->execute(
         [$location1, $location2],
         5.0,
     );
-
     Assert::assertCount(1, $clusters);
     $center = $clusters[0]['center'];
     Assert::assertInstanceOf(LocationData::class, $center);

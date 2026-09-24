@@ -1,13 +1,20 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_2Fg7nG
 
+=======
+>>>>>>> .merge_file_dZusCw
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Geo\Models\GeoNamesCap;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
+<<<<<<< .merge_file_2Fg7nG
 return new class() extends XotBaseMigration
 {
+=======
+return new class extends XotBaseMigration {
+>>>>>>> .merge_file_dZusCw
     protected ?string $model_class = GeoNamesCap::class;
 
     public function up(): void

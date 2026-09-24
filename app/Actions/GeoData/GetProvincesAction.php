@@ -6,6 +6,7 @@ namespace Modules\Geo\Actions\GeoData;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -15,9 +16,9 @@ class GetProvincesAction
 {
     use QueueableAction;
 
-    public const CACHE_KEY = 'geo.provinces.%s';
+    public const string CACHE_KEY = 'geo.provinces.%s';
 
-    public const CACHE_TTL = 86400;
+    public const int CACHE_TTL = 86400;
 
     /**
      * @param string $regionCode Codice della regione
@@ -53,8 +54,8 @@ class GetProvincesAction
                     $code = $province['code'] ?? '';
 
                     return [
-                        'name' => \is_string($name) ? $name : (string) $name,
-                        'code' => \is_string($code) ? $code : (string) $code,
+                        'name' => \is_string($name) ? $name : SafeStringCastAction::cast($name),
+                        'code' => \is_string($code) ? $code : SafeStringCastAction::cast($code),
                     ];
                 })
                 ->values();
