@@ -9,15 +9,15 @@ use Illuminate\Support\Carbon;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
- * @property-read ProfileContract|null $creator
- * @property-read ProfileContract|null $updater
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
  *
  * @method static Builder<static>|State newModelQuery()
  * @method static Builder<static>|State newQuery()
  * @method static Builder<static>|State query()
  *
- * @property int $id
- * @property string $state Nome dello stato/regione
+ * @property int         $id
+ * @property string      $state      Nome dello stato/regione
  * @property string|null $state_code Codice dello stato/regione
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
