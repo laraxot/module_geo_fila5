@@ -36,12 +36,11 @@ class GoogleMapsClient extends GeoHttpClientBase
     }
 
     /**
-     * @param array<string> $origins
-     * @param array<string> $destinations
+     * @param  array<string>  $origins
+     * @param  array<string>  $destinations
+     * @return array<string, mixed>
      *
      * @throws GoogleMapsApiException
-     *
-     * @return array<string, mixed>
      */
     public function getDistanceMatrix(array $origins, array $destinations): array
     {

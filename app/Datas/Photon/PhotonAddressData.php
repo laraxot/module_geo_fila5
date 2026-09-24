@@ -52,8 +52,8 @@ class PhotonAddressData extends Data
             street: isset($properties['street']) && is_string($properties['street']) ? $properties['street'] : null,
             housenumber: isset($properties['housenumber']) && is_string($properties['housenumber']) ? $properties['housenumber'] : null,
             coordinates: [
-                'latitude' => SafeFloatCastAction::cast($coordinates[1]),
-                'longitude' => SafeFloatCastAction::cast($coordinates[0]),
+                'latitude' => (float) $coordinates[1],
+                'longitude' => (float) $coordinates[0],
             ],
         );
     }

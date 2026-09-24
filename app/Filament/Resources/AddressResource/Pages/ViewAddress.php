@@ -11,10 +11,5 @@ class ViewAddress extends XotBaseViewRecord
 {
     protected static string $resource = AddressResource::class;
 
-    /**
-     * @return array<string, \Filament\Schemas\Components\Component>
-     */
-    {
-        return app(AddressInfolist::class)->getInfolistSchema();
-    }
+    
 }
