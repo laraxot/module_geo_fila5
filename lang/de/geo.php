@@ -2,18 +2,7 @@
 
 declare(strict_types=1);
 
-// Geo translations — LangServiceProvider SSoT (never ->label() in Filament PHP).
-// claude-audit static: ≥5% comment lines on files >100 LOC.
-// Canon: Modules/Geo/docs/wiki — domain i18n only.
-// File: lang/de/geo.php
 return [
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
-    // Laraxot module file — see docs/wiki for domain contract.
     'navigation' => [
         'name' => 'Geo',
         'group' => 'Mappe',
@@ -118,5 +107,34 @@ return [
     'fields' => [
     ],
     'actions' => [
+    ],
+
+    // Coordinate Picker - Map Controls
+    'coordinate-picker' => [
+        'search_placeholder' => 'Nach einem Ort suchen...',
+        'use_my_location' => 'Meinen Standort verwenden',
+        'locating' => 'Wird lokalisiert...',
+        'no_position' => 'Klicken Sie auf die Karte, um die Position anzugeben',
+        'latitude' => 'Breitengrad',
+        'longitude' => 'Längengrad',
+        'city' => 'Stadt',
+        'fullscreen' => 'Vollbild',
+        'close_fullscreen' => 'Vollbild beenden',
+        'zoom_in' => 'Vergrößern',
+        'zoom_out' => 'Verkleinern',
+        'layers' => [
+            'street' => 'Straße (OSM)',
+            'humanitarian' => 'Humanitär (OSM)',
+            'satellite' => 'Satellit (Esri)',
+            'terrain' => 'Gebiet (Topo)',
+            'topographic' => 'Topografisch (Esri)',
+        ],
+        'address_found' => 'Adresse gefunden',
+        'location_error' => 'Standort nicht ermittelbar',
+        'location_denied' => 'Standortberechtigung verweigert',
+        'geocode_error' => 'Adresse nicht gefunden',
+        'search_results' => 'Suchergebnisse',
+        'no_results' => 'Keine Ergebnisse',
+        'coordinates_set' => 'Koordinaten gesetzt',
     ],
 ];

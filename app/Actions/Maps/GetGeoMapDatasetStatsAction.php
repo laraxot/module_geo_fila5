@@ -6,27 +6,27 @@ namespace Modules\Geo\Actions\Maps;
 
 use Spatie\QueueableAction\QueueableAction;
 
-final class GetGeoMapDatasetStatsAction
+class GetGeoMapDatasetStatsAction
 {
     use QueueableAction;
 
     /**
-     * @param  list<array{type: string, properties: array<string, scalar|null>, geometry: array{type: string, coordinates: array<mixed>}}>  $features
      * @return array{total: int, points: int, zones: int, categories: int}
      */
-    public function execute(array $features): array
+    public function execute(string $path): array
     {
+        $features = app(LoadGeoMapDatasetAction::class)->loadFeatures($path);
         $points = 0;
         $zones = 0;
 
         foreach ($features as $feature) {
-            $geometryType = $feature['geometry']['type'] ?? null;
+            $geometryType = $feature['geometry']['type'];
 
-            if ($geometryType === 'Point') {
+            if ('Point' === $geometryType) {
                 ++$points;
             }
 
-            if ($geometryType === 'Polygon' || $geometryType === 'MultiPolygon') {
+            if ('Polygon' === $geometryType || 'MultiPolygon' === $geometryType) {
                 ++$zones;
             }
         }
@@ -35,7 +35,7 @@ final class GetGeoMapDatasetStatsAction
             'total' => count($features),
             'points' => $points,
             'zones' => $zones,
-            'categories' => count(app(GetGeoMapDatasetCategoriesAction::class)->execute($features)),
+            'categories' => count(app(GetGeoMapDatasetCategoriesAction::class)->execute($path)),
         ];
     }
 }

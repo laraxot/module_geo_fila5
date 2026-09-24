@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Elevation;
 
-use Modules\Geo\Actions\GoogleMaps\FetchGoogleMapsElevationAction;
+use Modules\Geo\Actions\GoogleMapsAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\ElevationException;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
- * Ottiene l'elevazione di un punto geografico tramite Google Maps Elevation API.
+ * Classe per ottenere l'elevazione di un punto geografico.
+ *
+ * Questa classe utilizza il servizio Google Maps Elevation per ottenere:
+ * - L'elevazione in metri sul livello del mare
+ * - La risoluzione dell'elevazione
  *
  * @see https://developers.google.com/maps/documentation/elevation
  */
@@ -19,8 +24,14 @@ class GetElevationAction
     use QueueableAction;
 
     /**
-     * @throws ElevationException
-     * @throws \InvalidArgumentException
+     * Ottiene l'elevazione per una posizione geografica.
+     *
+     * @param LocationData $location La posizione di cui ottenere l'elevazione
+     *
+     * @throws ElevationException        Se il recupero dell'elevazione fallisce
+     * @throws \InvalidArgumentException Se le coordinate non sono valide
+     *
+     * @return float L'elevazione in metri sul livello del mare
      */
     public function execute(LocationData $location): float
     {
@@ -28,12 +39,9 @@ class GetElevationAction
 
         try {
             /** @var array<string, mixed> $response */
-            $response = app(FetchGoogleMapsElevationAction::class)->execute(
-                $location->latitude,
-                $location->longitude,
-            );
+            $response = app(GoogleMapsAction::class)->getElevation($location->latitude, $location->longitude);
 
-            if (! isset($response['results']) || ! is_array($response['results']) || [] === $response['results']) {
+            if (! isset($response['results']) || ! is_array($response['results']) || empty($response['results'])) {
                 throw ElevationException::invalidResponse();
             }
 
@@ -42,7 +50,7 @@ class GetElevationAction
                 throw ElevationException::invalidResponse();
             }
 
-            return (float) $firstResult['elevation'];
+            return SafeFloatCastAction::cast($firstResult['elevation']);
         } catch (\Throwable $e) {
             if ($e instanceof ElevationException) {
                 throw $e;
@@ -52,13 +60,24 @@ class GetElevationAction
         }
     }
 
+    /**
+     * Formatta l'elevazione in una stringa leggibile.
+     *
+     * @param float $meters Elevazione in metri
+     *
+     * @return string Elevazione formattata con unità di misura
+     */
     public function formatElevation(float $meters): string
     {
         return sprintf('%.1f m s.l.m.', $meters);
     }
 
     /**
-     * @throws \InvalidArgumentException
+     * Valida le coordinate di una posizione.
+     *
+     * @param LocationData $location Posizione da validare
+     *
+     * @throws \InvalidArgumentException Se le coordinate non sono valide
      */
     private function validateCoordinates(LocationData $location): void
     {
