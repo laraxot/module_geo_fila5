@@ -1,3 +1,7 @@
+<?php
+
+declare(strict_types=1);
+?>
 {{-- Geo wizard address-field geolocation — Alpine factory + Nominatim. --}}
 {{-- Extracted partial: shallow nesting for claude-audit static gate. --}}
 {{-- Canon: Modules/Geo/docs/wiki — Fixcity segnalazione wizard address UX. --}}

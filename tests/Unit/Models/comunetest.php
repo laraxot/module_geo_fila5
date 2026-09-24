@@ -7,8 +7,14 @@ namespace Modules\Geo\Tests\Unit\Models;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Models\Comune;
+<<<<<<< .merge_file_b1Q2aW
 
 uses(\Modules\Geo\Tests\TestCase::class);
+=======
+use Tests\TestCase;
+
+uses(TestCase::class);
+>>>>>>> .merge_file_gQPYW9
 // Laraxot — see module docs/wiki for domain contract.
 // Laraxot module file — see docs/wiki for domain contract.
 // Laraxot module file — see docs/wiki for domain contract.

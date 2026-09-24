@@ -255,4 +255,8 @@ Includere controlli PHPStan nella pipeline:
 
 - [Root PHPStan Rules](../../../../docs/project/phpstan_rules.md)
 - [Geo Module Structure](./structure.md)
+<<<<<<< .merge_file_c0BZjI
 - [Employee PHPStan Covariance](../../employee/project_docs/phpstan_covariance_issues.md)
+=======
+- [Employee PHPStan Covariance](../../employee/project_docs/phpstan_covariance_issues.md)
+>>>>>>> .merge_file_KZFgAx
