@@ -142,9 +142,9 @@ class GetCoordinatesByAddressAction
     }
 
     /**
-     * @param array<array-key, mixed> $data
+     * @param array<mixed> $data
      *
-     * @return array<int, mixed>|null
+     * @return array<mixed>|null
      */
     private function extractBingCoordinates(array $data): ?array
     {
@@ -176,7 +176,7 @@ class GetCoordinatesByAddressAction
             return null;
         }
 
-        return array_values($coordinates);
+        return $coordinates;
     }
 
     /**

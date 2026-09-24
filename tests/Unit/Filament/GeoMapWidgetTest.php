@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 use Modules\Geo\Filament\Pages\Dashboard;
 use Modules\Geo\Filament\Widgets\GeoMapWidget;
 use PHPUnit\Framework\Assert;
