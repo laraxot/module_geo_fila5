@@ -38,8 +38,7 @@ class LocationResource extends XotBaseResource
      *
      * @phpstan-return array<string, Component>
      */
-    #[\Override]
-    public static function getFormSchema(): array
+    public function getFormSchemaOld(): array
     {
         return [
             'name' => TextInput::make('name')->required()->maxLength(255),
