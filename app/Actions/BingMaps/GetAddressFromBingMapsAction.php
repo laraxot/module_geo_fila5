@@ -23,7 +23,7 @@ class GetAddressFromBingMapsAction
 {
     use QueueableAction;
 
-    private const API_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
+    private const string API_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
 
     public function __construct(
         private readonly Client $client,

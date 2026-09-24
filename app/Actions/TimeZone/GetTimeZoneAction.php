@@ -19,7 +19,7 @@ class GetTimeZoneAction
 {
     use QueueableAction;
 
-    private const API_URL = 'https://maps.googleapis.com/maps/api/timezone/json';
+    private const string API_URL = 'https://maps.googleapis.com/maps/api/timezone/json';
 
     private Client $client;
 

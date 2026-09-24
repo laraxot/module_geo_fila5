@@ -1,3 +1,10 @@
+<<<<<<< .merge_file_mQJfbg
+=======
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+>>>>>>> .merge_file_Xsj6wO
 import { test, expect } from '@playwright/test';
 
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL ?? 'http://127.0.0.1:8000';
