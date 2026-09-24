@@ -7,17 +7,11 @@ namespace Modules\Geo\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Carbon;
-<<<<<<< HEAD
-=======
-use Modules\Geo\Models\Traits\HasAddress;
-use Modules\Xot\Actions\Cast\SafeFloatCastAction;
->>>>>>> laraxot/dev
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * Class Location.
  *
-<<<<<<< HEAD
  * @property int $id
  * @property string|null $name
  * @property float|null $lat
@@ -32,22 +26,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property-read ProfileContract|null $creator
  * @property-read array<string, mixed> $location
  * @property-read ProfileContract|null $updater
-=======
- * @property int                  $id
- * @property string|null          $name
- * @property float|null           $lat
- * @property float|null           $lng
- * @property string|null          $street
- * @property string|null          $city
- * @property string|null          $state
- * @property string|null          $zip
- * @property string|null          $formatted_address
- * @property bool                 $processed
- * @property string|null          $description
- * @property ProfileContract|null $creator
- * @property array<string, mixed> $location
- * @property ProfileContract|null $updater
->>>>>>> laraxot/dev
  *
  * @method static Builder<static>|Location newModelQuery()
  * @method static Builder<static>|Location newQuery()
@@ -87,19 +65,6 @@ use Modules\Xot\Contracts\ProfileContract;
  */
 class Location extends BaseModel
 {
-<<<<<<< HEAD
-=======
-    /**
-     * Location può avere più Address morfici (sede, fatturazione, ecc.).
-     * Non merge-iamo i fillable AddressItemEnum sulla tabella locations.
-     *
-     * @use HasAddress<Location>
-     */
-    use HasAddress {
-        initializeHasAddress as private initializeHasAddressFromTrait;
-    }
-
->>>>>>> laraxot/dev
     protected $fillable = [
         'name',
         'lat',
@@ -143,12 +108,7 @@ class Location extends BaseModel
      * Scope to filter by a specific distance from a given point.
      */
     /**
-<<<<<<< HEAD
      * @param  Builder<static>  $query
-=======
-     * @param Builder<static> $query
-     *
->>>>>>> laraxot/dev
      * @return Builder<static>
      */
     public function scopeWithinDistance(Builder $query, float $latitude, float $longitude, float $distanceInKm): Builder
@@ -173,17 +133,6 @@ class Location extends BaseModel
     }
 
     /**
-<<<<<<< HEAD
-=======
-     * Location tiene lat/lng propri; i campi AddressItemEnum non vanno sul fillable.
-     */
-    protected function initializeHasAddress(): void
-    {
-        // no-op: non mergeFillable dei campi address sulla tabella locations
-    }
-
-    /**
->>>>>>> laraxot/dev
      * Accessor for the "location" attribute.
      */
     /**
@@ -193,13 +142,8 @@ class Location extends BaseModel
     {
         return Attribute::make(
             get: fn (): array => [
-<<<<<<< HEAD
                 'lat' => (float) $this->lat,
                 'lng' => (float) $this->lng,
-=======
-                'lat' => SafeFloatCastAction::cast($this->lat),
-                'lng' => SafeFloatCastAction::cast($this->lng),
->>>>>>> laraxot/dev
             ],
             set: function (?array $value): void {
                 if (is_array($value)) {

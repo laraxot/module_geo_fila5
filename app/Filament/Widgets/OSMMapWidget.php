@@ -34,11 +34,7 @@ class OSMMapWidget extends XotBaseWidget
         $places = Place::with(['address', 'placeType'])->get();
 
         return $places
-<<<<<<< HEAD
             ->filter(fn (Place $place) => $place->latitude !== null && $place->longitude !== null)
-=======
-            ->filter(fn (Place $place) => null !== $place->latitude && null !== $place->longitude)
->>>>>>> laraxot/dev
             ->map(function (Place $place): array {
                 $marker = [
                     'position' => [
@@ -50,11 +46,7 @@ class OSMMapWidget extends XotBaseWidget
                 ];
 
                 $icon = $this->getMarkerIcon($place);
-<<<<<<< HEAD
                 if ($icon !== null) {
-=======
-                if (null !== $icon) {
->>>>>>> laraxot/dev
                     $marker['icon'] = $icon;
                 }
 
@@ -88,12 +80,7 @@ class OSMMapWidget extends XotBaseWidget
     }
 
     /**
-<<<<<<< HEAD
      * @param  Collection<int, Place>  $places
-=======
-     * @param Collection<int, Place> $places
-     *
->>>>>>> laraxot/dev
      * @return array{lat: float, lng: float}
      */
     protected function getMapCenter(Collection $places): array
@@ -112,11 +99,7 @@ class OSMMapWidget extends XotBaseWidget
     }
 
     /**
-<<<<<<< HEAD
      * @param  Collection<int, Place>  $places
-=======
-     * @param Collection<int, Place> $places
->>>>>>> laraxot/dev
      */
     protected function getMapZoom(Collection $places): int
     {

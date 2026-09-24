@@ -30,12 +30,7 @@ final class ValidateGeoDataIntegrityAction
     ];
 
     /**
-<<<<<<< HEAD
      * @param  array<string, mixed>  $data
-=======
-     *
-     * @param array<string, mixed> $data
->>>>>>> laraxot/dev
      */
     public function execute(array $data): bool
     {
@@ -62,13 +57,7 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-<<<<<<< HEAD
      * @param  array<string, mixed>  $data
-=======
-     *
-     * @param array<string, mixed> $data
-     *
->>>>>>> laraxot/dev
      * @return array<string, array<int, string>>
      */
     public function getErrors(array $data): array
@@ -82,12 +71,7 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-<<<<<<< HEAD
      * @param  array<string, mixed>  $data
-=======
-     *
-     * @param array<string, mixed> $data
->>>>>>> laraxot/dev
      */
     private function validate(array $data): bool
     {
@@ -97,14 +81,8 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-<<<<<<< HEAD
      * @param  array<mixed, mixed>  $region
      * @param  list<string>  $regionCodes
-=======
-     *
-     * @param array<mixed, mixed>     $region
-     * @param list<string>            $regionCodes
->>>>>>> laraxot/dev
      *
      * @param-out list<string> $regionCodes
      */
@@ -136,14 +114,8 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-<<<<<<< HEAD
      * @param  array<mixed, mixed>  $province
      * @param  list<string>  $provinceCodes
-=======
-     *
-     * @param array<mixed, mixed>     $province
-     * @param list<string>            $provinceCodes
->>>>>>> laraxot/dev
      *
      * @param-out list<string> $provinceCodes
      */
@@ -184,14 +156,8 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-<<<<<<< HEAD
      * @param  array<mixed, mixed>  $city
      * @param  list<string>  $cityCodes
-=======
-     *
-     * @param array<mixed, mixed>     $city
-     * @param list<string>            $cityCodes
->>>>>>> laraxot/dev
      *
      * @param-out list<string> $cityCodes
      */

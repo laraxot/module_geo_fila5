@@ -61,11 +61,7 @@ class LocationMapWidget extends XotBaseWidget
     public function getMarkers(): array
     {
         return $this->getPlaces()
-<<<<<<< HEAD
             ->filter(fn (Place $place) => $place->latitude !== null && $place->longitude !== null)
-=======
-            ->filter(fn (Place $place) => null !== $place->latitude && null !== $place->longitude)
->>>>>>> laraxot/dev
             ->map(function (Place $place): array {
                 $marker = [
                     'position' => [
@@ -76,11 +72,7 @@ class LocationMapWidget extends XotBaseWidget
                 ];
 
                 $icon = $this->getMarkerIcon($place);
-<<<<<<< HEAD
                 if ($icon !== null) {
-=======
-                if (null !== $icon) {
->>>>>>> laraxot/dev
                     $marker['icon'] = $icon;
                 }
 
