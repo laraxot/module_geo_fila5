@@ -10,7 +10,7 @@ use Modules\Xot\Filament\Pages\XotBaseDashboard;
 final class Dashboard extends XotBaseDashboard
 {
     /**
-     * @return list<class-string>
+     * @return array<class-string>
      */
     public function getWidgets(): array
     {

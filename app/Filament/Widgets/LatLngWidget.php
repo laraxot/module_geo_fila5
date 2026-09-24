@@ -14,7 +14,6 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
 class LatLngWidget extends XotBaseWidget
 {
     /** @var view-string */
-    /** @phpstan-ignore property.defaultValue */
     protected string $view = 'geo::filament.widgets.lat-lng';
 
     public float $lat = 0;

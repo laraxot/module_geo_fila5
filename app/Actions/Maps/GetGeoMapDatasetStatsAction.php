@@ -20,7 +20,7 @@ class GetGeoMapDatasetStatsAction
         $zones = 0;
 
         foreach ($features as $feature) {
-            $geometryType = $feature['geometry']['type'] ?? null;
+            $geometryType = $feature['geometry']['type'];
 
             if ('Point' === $geometryType) {
                 ++$points;

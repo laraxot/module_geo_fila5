@@ -36,6 +36,7 @@ use Modules\Geo\Datas\GeoData;
  * @property string $administrative_area_level_3.
  * @property string $administrative_area_level_2_short.
  */
+/** @phpstan-ignore trait.unused */
 trait GeoTrait
 {
     /*
@@ -64,7 +65,7 @@ trait GeoTrait
             '',
         );
 
-        return $distance !== null ? (float) $distance : null;
+        return null !== $distance ? (float) $distance : null;
     }
 
     public function distanceCustomField(
@@ -74,15 +75,24 @@ trait GeoTrait
         ?float $lng = null,
         ?string $unit = '',
     ): ?float {
+        $latFieldValue = $this->{$lat_field};
+        $lngFieldValue = $this->{$lng_field};
+        $latFromField = is_float($latFieldValue) || is_int($latFieldValue)
+            ? (float) $latFieldValue
+            : (is_string($latFieldValue) && is_numeric($latFieldValue) ? (float) $latFieldValue : 0.0);
+        $lngFromField = is_float($lngFieldValue) || is_int($lngFieldValue)
+            ? (float) $lngFieldValue
+            : (is_string($lngFieldValue) && is_numeric($lngFieldValue) ? (float) $lngFieldValue : 0.0);
+
         $distance = app(CalculateGeoDistanceAction::class)->execute(
-            (float) $this->{$lat_field},
-            (float) $this->{$lng_field},
+            $latFromField,
+            $lngFromField,
             $lat,
             $lng,
             $unit,
         );
 
-        return $distance !== null ? (float) $distance : null;
+        return null !== $distance ? (float) $distance : null;
     }
 
     // ---- Scopes ----
@@ -241,7 +251,8 @@ trait GeoTrait
                 $this->attributes['full_address'] = ',,';
             }
 
-            $fullAddress = (string) ($this->attributes['full_address'] ?? '');
+            $rawFullAddress = $this->attributes['full_address'] ?? '';
+            $fullAddress = is_string($rawFullAddress) ? $rawFullAddress : '';
             if (strlen($fullAddress) < 10) {
                 $tmp = [];
                 $tmp[] = $geo->route ?? '';

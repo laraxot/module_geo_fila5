@@ -17,7 +17,7 @@ class GetAddressFromLocationIQAction
 {
     use QueueableAction;
 
-    private const BASE_URL = 'https://eu1.locationiq.com/v1';
+    private const string BASE_URL = 'https://eu1.locationiq.com/v1';
 
     /**
      * Esegue la ricerca dell'indirizzo su LocationIQ.
