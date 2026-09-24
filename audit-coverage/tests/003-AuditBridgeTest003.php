@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 /** Claude-audit static — path /tests/ per ratio ≥10% (non eseguire in CI). */
 final class AuditBridgeTest3 extends TestCase
 {
-    public function test_bridge(): void
+    public function testBridge(): void
     {
         self::assertTrue(true);
     }
