@@ -1,0 +1,22 @@
+<<<<<<< HEAD
+version https://git-lfs.github.com/spec/v1
+oid sha256:445a2b0061013d7d44228bc9de92cbf624689e04a3cb7f39fca9055bacd47ca6
+size 441
+=======
+<svg width="44" height="56" viewBox="0 0 44 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="fallbackGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5c6f82"/>
+      <stop offset="100%" stop-color="#17324d"/>
+    </linearGradient>
+    <filter id="fallbackDrop" x="-35%" y="-25%" width="170%" height="190%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#111827" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <g filter="url(#fallbackDrop)">
+    <path d="M22 2C11.7 2 3.5 10.2 3.5 20.5 3.5 33.9 19.7 49.5 20.6 50.3c.8.7 2 .7 2.8 0C24.3 49.5 40.5 33.9 40.5 20.5 40.5 10.2 32.3 2 22 2z" fill="url(#fallbackGrad)"/>
+    <circle cx="22" cy="20.5" r="9.2" fill="#fff"/>
+    <circle cx="22" cy="20.5" r="5.2" fill="#5c6f82"/>
+  </g>
+</svg>
+>>>>>>> 12dc0c78b (.)
