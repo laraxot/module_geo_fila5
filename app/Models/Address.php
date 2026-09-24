@@ -95,6 +95,7 @@ use Modules\Xot\Contracts\ProfileContract;
  */
 class Address extends BaseModel
 {
+    /** @use GeoTrait<Address> */
     use GeoTrait;
     use SoftDeletes;
 
