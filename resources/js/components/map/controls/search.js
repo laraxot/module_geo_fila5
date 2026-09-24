@@ -117,6 +117,7 @@ export async function executeAddressSearch(ctx, options = {}) {
             selectSearchResult(ctx, ctx.searchResults[0]);
         }
     } catch (error) {
+        console.warn('[map-search] Address search failed', error);
         ctx.searchResults = [];
         ctx.showSearchResults = false;
     } finally {
