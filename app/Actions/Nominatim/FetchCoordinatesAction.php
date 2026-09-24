@@ -10,12 +10,16 @@ use Modules\Geo\Datas\LocationData;
 
 use function Safe\json_decode;
 
+use Spatie\QueueableAction\QueueableAction;
+
 /**
  * Action per ottenere le coordinate geografiche da un indirizzo usando Nominatim.
  */
 class FetchCoordinatesAction
 {
-    private const API_URL = 'https://nominatim.openstreetmap.org/search';
+    use QueueableAction;
+
+    private const string API_URL = 'https://nominatim.openstreetmap.org/search';
 
     private Client $client;
 
