@@ -34,7 +34,11 @@ Rimossi in questo modulo:
 
 Storico 2026-07-27: era stato aggiunto `@phpstan-ignore trait.unused` su trait
 senza consumer. **2026-09-24**: `GeoTrait` wired su `Address` (solo distanza/scope);
-`HasAddress` resta usato dalla fixture `HasAddressTestModel` — ignore rimossi.
+`HasAddress` resta usato dalla fixture `HasAddressTestModel` — ignore sullo
+`scopeInCity` rimosso (`Builder<TModel>`). Trait dead eliminati (niente probe):
+`GeographicalScopes` (superseded da `GeoTrait`), `HasAddresses` (duplicato di
+`HasAddress`), `Models\Traits\SushiToJsons` (nessun consumer Geo; Tenant ha il
+suo).
 
 `tests/Fixtures/Traits/HasAddressTestModel.php` **non** è un probe: è la fixture reale
 usata da `tests/Unit/Traits/HasAddressTest.php` ed è stata mantenuta.

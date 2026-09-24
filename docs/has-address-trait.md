@@ -14,12 +14,12 @@ Un solo punto per relazioni polimorfiche verso `Address` (Geo), riusabile sui mo
 
 ## Contratto PHPStan (obbligatorio)
 
-1. **Un solo PHPDoc sul trait** — `@property`, `@phpstan-require-extends`, `@template` nello **stesso** blocco. Un docblock separato **cancella** le annotazioni e genera cascate `property.notFound` / `argument.type`.
+1. **Un solo PHPDoc sul trait** — `@template` **prima**, poi `@property`, poi `@phpstan-require-extends` (FQCN). Ordine sbagliato → `generics.notGeneric` su `@use`.
 2. **Consumer obbligatorio** — niente `@phpstan-ignore trait.unused` né probe: fixture `HasAddressTestModel` (o modello dominio) deve `use` il trait.
-3. **`@template TModel of Model`** resta sul trait; gli **scope locali** tipizzano `Builder<static>` di ritorno — **non** `Builder<TModel>`. Closure `whereHas`: `@param Builder<\Modules\Geo\Models\Address> $q`.
+3. **`@template TModel of \Illuminate\Database\Eloquent\Model`** sul trait; scope tipizzati `Builder<TModel>` (stesso pattern di [`GeoTrait`](./traits/geo-trait.md)). Closure `whereHas`: `@param Builder<\Modules\Geo\Models\Address> $q`.
 4. **Sul modello concreto**: `/** @use HasAddress<SelfClass> */`.
-5. **`setAsPrimaryAddress`**: ritorno `void` + `InvalidArgumentException` se l'indirizzo non appartiene al modello (niente `bool` — `symplify.noReturnSetterMethod`).
-6. **Vietato** `@phpstan-ignore`, baseline, neon temp — solo `laravel/phpstan.neon` (immutabile per agenti).
+5. **`setAsPrimaryAddress`**: ritorno `void` + `InvalidArgumentException` se l'indirizzo non appartiene al modello (niente `bool`).
+6. **Vietato** `@phpstan-ignore` di evasione, baseline, neon temp — solo `laravel/phpstan.neon` (immutabile per agenti).
 
 ```php
 use Modules\Geo\Models\Traits\HasAddress;
@@ -35,7 +35,8 @@ class Studio extends BaseModel
 }
 ```
 
-Anti-pattern: `extends Model` diretto; inventare modelli di altri moduli nei test Geo — i test riflettono API reali (`trait_exists` + fixture in `tests/Fixtures/`).
+Anti-pattern: `extends Model` diretto; inventare modelli di altri moduli nei test Geo — i test riflettono API reali (`trait_exists` + fixture in `tests/Fixtures/`).  
+Anti-pattern: secondo trait `HasAddresses` in `app/Traits` — **rimosso** (dead); vedi [traits/has-addresses.md](./traits/has-addresses.md).
 
 ## Dove si usa
 

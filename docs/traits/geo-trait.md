@@ -25,7 +25,7 @@ Non include più mutator/accessor JSON legacy (`setAddressAttribute`, `getLatitu
 - Colonne attese: `latitude`, `longitude` (float)
 - SQL scope: letterale + binding (stesso pattern di `Address::scopeNearby`) — niente stringhe dinamiche per PHPStan `literal-string`
 - Vietato `@phpstan-ignore` / probe fittizi: il trait deve avere un consumer reale
-- Generics: `@template TModel of Model` sul trait + `@use GeoTrait<\Modules\Geo\Models\Address>` sul consumer; scope tipizzati `Builder<TModel>` (non `Builder<static>` nudo — in contesto Address PHPStan segnala `missingType.generics`)
+- Generics: `@template TModel of \Illuminate\Database\Eloquent\Model` **prima** delle `@property` (come `HasAddress`); consumer `@use GeoTrait<\Modules\Geo\Models\Address>`; scope `Builder<TModel>`. Ordine PHPDoc importante: altrimenti PHPStan può segnalare `generics.notGeneric` su `@use`.
 
 ## Collegamenti
 

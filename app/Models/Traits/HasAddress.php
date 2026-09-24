@@ -22,7 +22,7 @@ use function Safe\preg_replace;
  * Questo trait implementa la relazione polimorfica con il modello Address
  * e offre metodi di utilità per la gestione degli indirizzi.
  *
- * @template TModel of Model
+ * @template TModel of \Illuminate\Database\Eloquent\Model
  *
  * @property Collection<int, Address> $addresses
  * @property string|null $route
@@ -32,7 +32,7 @@ use function Safe\preg_replace;
  * @property string|null $province
  * @property string|int $id
  *
- * @phpstan-require-extends Model
+ * @phpstan-require-extends \Illuminate\Database\Eloquent\Model
  */
 trait HasAddress
 {
@@ -257,10 +257,9 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella città indicata (`locality`).
      *
-     * @param  Builder<static>  $query
-     * @return Builder<static>
+     * @param  Builder<TModel>  $query
+     * @return Builder<TModel>
      */
-    // @phpstan-ignore-next-line missingType.generics
     public function scopeInCity(Builder $query, string $city): Builder
     {
         return $query->whereHas(
