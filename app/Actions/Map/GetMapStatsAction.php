@@ -7,9 +7,11 @@ namespace Modules\Geo\Actions\Map;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
- * Ottiene le statistiche della mappa in base ai filtri.
+ * Statistiche mappa interattiva (stub).
+ *
+ * Sostituisce MapService::getMapStats().
  */
-class GetMapStatsAction
+final class GetMapStatsAction
 {
     use QueueableAction;
 

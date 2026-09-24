@@ -98,6 +98,7 @@ L.Control.Sidebar = L.Control.extend(/** @lends L.Control.Sidebar.prototype */ {
      * @returns {Sidebar}
      */
     removeFrom: function (map) {
+        console.log('removeFrom() has been deprecated, please use remove() instead as support for this function will be ending soon.');
         this.remove(map);
     },
 
