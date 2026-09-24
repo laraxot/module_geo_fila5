@@ -16,7 +16,7 @@ it('clusters locations that are close together', function (): void {
     $location2 = new LocationData(latitude: 45.4643, longitude: 9.1901);
     $location3 = new LocationData(latitude: 46.4642, longitude: 10.1900);
 
-    $clusters = (new ClusterLocationsAction(new ClusterDistanceStub))->execute(
+    $clusters = (new ClusterLocationsAction(new ClusterDistanceStub()))->execute(
         [$location1, $location2, $location3],
         1.0,
     );
@@ -43,7 +43,8 @@ it('creates separate clusters for distant locations', function (): void {
 /**
  * Helper che invoca execute() via reflection per testare input non validi.
  *
- * @param  array<array-key, mixed>  $locations
+ * @param array<array-key, mixed> $locations
+ *
  * @return mixed Valore di ritorno di ReflectionMethod::invoke (eterogeneo)
  */
 function invokeClusterLocations(ClusterLocationsAction $action, array $locations, float $maxDistance = 1.0): mixed
