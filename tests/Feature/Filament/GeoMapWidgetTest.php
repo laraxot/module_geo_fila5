@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 use Modules\Geo\Filament\Widgets\GeoMapWidget;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
@@ -20,7 +21,7 @@ test('geo map widget blade renders dataset powered custom element without inline
 });
 
 test('geo map widget uses the expected blade view', function (): void {
-    $widget = new GeoMapWidget;
+    $widget = new GeoMapWidget();
     $reflection = new ReflectionClass($widget);
     $property = $reflection->getProperty('view');
     $property->setAccessible(true);

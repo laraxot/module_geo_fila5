@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 $geoMapWidget = app(\Modules\Geo\Filament\Widgets\GeoMapWidget::class);
 $componentId = 'geo-farmshops-map-'.spl_object_id($geoMapWidget);
 ?>
