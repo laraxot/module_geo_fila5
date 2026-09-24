@@ -15,7 +15,11 @@ use Modules\Geo\Tests\TestCase;
  */
 
 /**
+<<<<<<< HEAD
  * @param  array<string, mixed>  $attributes
+=======
+ * @param array<string, mixed> $attributes
+>>>>>>> laraxot/dev
  */
 function createRegion(array $attributes = []): Region
 {
@@ -23,7 +27,11 @@ function createRegion(array $attributes = []): Region
 }
 
 /**
+<<<<<<< HEAD
  * @param  array<string, mixed>  $attributes
+=======
+ * @param array<string, mixed> $attributes
+>>>>>>> laraxot/dev
  */
 function createComune(array $attributes = []): Comune
 {

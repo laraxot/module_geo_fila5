@@ -7,10 +7,18 @@ namespace Modules\Geo\Actions\IPGeolocation;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\Location\IPLocationData;
+<<<<<<< HEAD
 use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
+=======
+
+use function Safe\json_decode;
+
+use Spatie\QueueableAction\QueueableAction;
+
+>>>>>>> laraxot/dev
 /**
  * Action per ottenere informazioni di geolocalizzazione da un indirizzo IP.
  */
@@ -30,7 +38,11 @@ class FetchIPLocationAction
     /**
      * Ottiene le informazioni di geolocalizzazione per un indirizzo IP.
      *
+<<<<<<< HEAD
      * @param  string  $ip  Indirizzo IP da geolocalizzare
+=======
+     * @param string $ip Indirizzo IP da geolocalizzare
+>>>>>>> laraxot/dev
      *
      * @throws GuzzleException
      * @throws \RuntimeException
@@ -71,7 +83,11 @@ class FetchIPLocationAction
          */
         $data = json_decode($response->getBody()->getContents(), true);
 
+<<<<<<< HEAD
         if ($data['status'] !== 'success') {
+=======
+        if ('success' !== $data['status']) {
+>>>>>>> laraxot/dev
             throw new \RuntimeException('Failed to get IP location: '.($data['message'] ?? 'Unknown error'));
         }
 
