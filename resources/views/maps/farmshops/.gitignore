@@ -1,0 +1,7 @@
+/node_modules
+CNAME
+-e 
+# PHPStan documentation
+docs/phpstan/
+_docs/
+agentdb.rvf
