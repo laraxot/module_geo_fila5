@@ -38,14 +38,8 @@ class CheckGeoDataIntegrityAction
     }
 
     /**
-<<<<<<< HEAD
      * @param array<mixed, mixed> $region
      * @param list<string>        $regionCodes
-=======
-     *
-     * @param array<mixed, mixed>     $region
-     * @param list<string>            $regionCodes
->>>>>>> laraxot/dev
      *
      * @param-out list<string> $regionCodes
      */
@@ -77,14 +71,8 @@ class CheckGeoDataIntegrityAction
     }
 
     /**
-<<<<<<< HEAD
      * @param array<mixed, mixed> $province
      * @param list<string>        $provinceCodes
-=======
-     *
-     * @param array<mixed, mixed>     $province
-     * @param list<string>            $provinceCodes
->>>>>>> laraxot/dev
      *
      * @param-out list<string> $provinceCodes
      */
@@ -125,14 +113,8 @@ class CheckGeoDataIntegrityAction
     }
 
     /**
-<<<<<<< HEAD
      * @param array<mixed, mixed> $city
      * @param list<string>        $cityCodes
-=======
-     *
-     * @param array<mixed, mixed>     $city
-     * @param list<string>            $cityCodes
->>>>>>> laraxot/dev
      *
      * @param-out list<string> $cityCodes
      */

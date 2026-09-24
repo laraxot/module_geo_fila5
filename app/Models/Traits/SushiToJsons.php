@@ -6,20 +6,12 @@ namespace Modules\Geo\Models\Traits;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
-<<<<<<< HEAD
 use RuntimeException;
 use Sushi\Sushi;
-=======
->>>>>>> laraxot/dev
 
 use function Safe\json_decode;
 use function Safe\json_encode;
 
-<<<<<<< HEAD
-=======
-use Sushi\Sushi;
-
->>>>>>> laraxot/dev
 /** @phpstan-ignore trait.unused */
 trait SushiToJsons
 {
@@ -46,11 +38,7 @@ trait SushiToJsons
     /**
      * Salva i dati nel file JSON.
      *
-<<<<<<< HEAD
      * @param  array<int, array<string, mixed>>  $data
-=======
-     * @param array<int, array<string, mixed>> $data
->>>>>>> laraxot/dev
      */
     public function saveToJson(array $data): bool
     {
@@ -71,11 +59,7 @@ trait SushiToJsons
     /**
      * Crea un nuovo record.
      *
-<<<<<<< HEAD
      * @param  array<string, mixed>  $attributes
-=======
-     * @param array<string, mixed> $attributes
->>>>>>> laraxot/dev
      */
     public function create(array $attributes = []): static
     {
@@ -90,32 +74,20 @@ trait SushiToJsons
             return $this->newInstance($attributes);
         }
 
-<<<<<<< HEAD
         throw new RuntimeException('Impossibile salvare il record');
-=======
-        throw new \RuntimeException('Impossibile salvare il record');
->>>>>>> laraxot/dev
     }
 
     /**
      * Aggiorna un record esistente.
      *
-<<<<<<< HEAD
      * @param  array<string, mixed>  $attributes
-=======
-     * @param array<string, mixed> $attributes
->>>>>>> laraxot/dev
      */
     public function update(array $attributes = [], array $options = []): bool
     {
         $data = $this->loadFromJson();
         $index = $this->findIndex($this->getKey());
 
-<<<<<<< HEAD
         if ($index === null) {
-=======
-        if (null === $index) {
->>>>>>> laraxot/dev
             return false;
         }
 
@@ -138,11 +110,7 @@ trait SushiToJsons
         $data = $this->loadFromJson();
         $index = $this->findIndex($this->getKey());
 
-<<<<<<< HEAD
         if ($index === null) {
-=======
-        if (null === $index) {
->>>>>>> laraxot/dev
             return false;
         }
 

@@ -9,22 +9,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\TravelTimeData;
-<<<<<<< HEAD
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
 
 use function Safe\json_decode;
 
-=======
-
-use function Safe\json_decode;
-
-use Modules\Xot\Actions\Cast\SafeIntCastAction;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
-use Spatie\QueueableAction\QueueableAction;
-use Webmozart\Assert\Assert;
-
->>>>>>> laraxot/dev
 /**
  * Action per calcolare il tempo di percorrenza tra due punti tramite Google Maps.
  *
@@ -39,22 +28,13 @@ class CalculateTravelTimeAction
 
     public function __construct(
         private readonly Client $client,
-<<<<<<< HEAD
     ) {}
-=======
-    ) {
-    }
->>>>>>> laraxot/dev
 
     /**
      * Calcola il tempo di percorrenza tra due punti.
      *
      * @throws \InvalidArgumentException Se i dati di input non sono validi
-<<<<<<< HEAD
      * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
-=======
-     * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
->>>>>>> laraxot/dev
      */
     public function execute(LocationData $origin, LocationData $destination): TravelTimeData
     {
@@ -79,11 +59,7 @@ class CalculateTravelTimeAction
      * Valida i dati di input.
      *
      * @throws \InvalidArgumentException Se i dati di input non sono validi
-<<<<<<< HEAD
      * @throws \RuntimeException Se la chiave API non è configurata o i dati non sono validi
-=======
-     * @throws \RuntimeException         Se la chiave API non è configurata o i dati non sono validi
->>>>>>> laraxot/dev
      */
     private function validateInput(LocationData $origin, LocationData $destination): void
     {
@@ -141,39 +117,22 @@ class CalculateTravelTimeAction
          * } $data */
         $data = json_decode($response, true);
 
-<<<<<<< HEAD
         if ($data['status'] !== 'OK') {
-=======
-        if ('OK' !== $data['status']) {
->>>>>>> laraxot/dev
             return TravelTimeData::error($data['status']);
         }
 
         $element = $data['rows'][0]['elements'][0];
-<<<<<<< HEAD
         if ($element['status'] !== 'OK') {
-=======
-        if ('OK' !== $element['status']) {
->>>>>>> laraxot/dev
             return TravelTimeData::error($element['status']);
         }
 
         return new TravelTimeData(
-<<<<<<< HEAD
             duration_seconds: (int) ($element['duration']['value'] ?? 0),
             duration_in_traffic_seconds: (int) ($element['duration_in_traffic']['value'] ?? $element['duration']['value'] ?? 0),
             distance_meters: (int) ($element['distance']['value'] ?? 0),
             formatted_duration: (string) ($element['duration']['text'] ?? ''),
             formatted_distance: (string) ($element['distance']['text'] ?? ''),
             status: (string) ($data['status'] ?? 'ERROR'),
-=======
-            duration_seconds: SafeIntCastAction::cast($element['duration']['value'] ?? 0),
-            duration_in_traffic_seconds: SafeIntCastAction::cast($element['duration_in_traffic']['value'] ?? $element['duration']['value'] ?? 0),
-            distance_meters: SafeIntCastAction::cast($element['distance']['value'] ?? 0),
-            formatted_duration: SafeStringCastAction::cast($element['duration']['text'] ?? ''),
-            formatted_distance: SafeStringCastAction::cast($element['distance']['text'] ?? ''),
-            status: SafeStringCastAction::cast($data['status'] ?? 'ERROR'),
->>>>>>> laraxot/dev
         );
     }
 }

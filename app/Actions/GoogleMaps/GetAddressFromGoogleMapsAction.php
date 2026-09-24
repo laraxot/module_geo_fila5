@@ -74,11 +74,7 @@ final class GetAddressFromGoogleMapsAction
         /** @var GoogleMapResponseData $responseData */
         $responseData = GoogleMapResponseData::from($response->json());
 
-<<<<<<< HEAD
         if ($responseData->results->count() === 0) {
-=======
-        if (0 === $responseData->results->count()) {
->>>>>>> laraxot/dev
             throw GoogleMapsApiException::noResultsFound();
         }
 
@@ -118,13 +114,8 @@ final class GetAddressFromGoogleMapsAction
     }
 
     /**
-<<<<<<< HEAD
      * @param  DataCollection<int, GoogleMapAddressComponentData>  $components
      * @param  array<string>  $types
-=======
-     * @param DataCollection<int, GoogleMapAddressComponentData> $components
-     * @param array<string>                                      $types
->>>>>>> laraxot/dev
      */
     private function getComponent(DataCollection $components, array $types, bool $short = false): ?string
     {

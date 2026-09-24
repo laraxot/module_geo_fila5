@@ -11,31 +11,18 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Suddivisione tipo “county” (contesto USA / geonames), non il comune italiano.
  *
-<<<<<<< HEAD
  * @property-read ProfileContract|null $creator
  * @property-read ProfileContract|null $updater
-=======
- * @property ProfileContract|null $creator
- * @property ProfileContract|null $updater
->>>>>>> laraxot/dev
  *
  * @method static Builder<static>|County newModelQuery()
  * @method static Builder<static>|County newQuery()
  * @method static Builder<static>|County query()
  *
-<<<<<<< HEAD
  * @property int $id
  * @property int|null $state_id Stato/regione di appartenenza
  * @property string $county Nome della suddivisione (county/provincia)
  * @property string|null $county_code Codice della suddivisione
  * @property int|null $state_index Indice progressivo entro lo stato
-=======
- * @property int         $id
- * @property int|null    $state_id    Stato/regione di appartenenza
- * @property string      $county      Nome della suddivisione (county/provincia)
- * @property string|null $county_code Codice della suddivisione
- * @property int|null    $state_index Indice progressivo entro lo stato
->>>>>>> laraxot/dev
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $updated_by
