@@ -368,13 +368,10 @@ trait HasCoordinatePicker
         return $data;
     }
 
-<<<<<<< .merge_file_6tZCha
     /**
      * Normalizza un valore coordinata grezzo (float|int|string|null atteso;
      * mixed perche' proviene da attributi Eloquent / state Filament / JSON).
      */
-=======
->>>>>>> .merge_file_WbMVjc
     private static function normalizeCoordinate(mixed $value): ?float
     {
         if (null === $value || '' === $value) {

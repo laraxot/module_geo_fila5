@@ -3,12 +3,19 @@
 ## Stato
 
 ```bash
+cd laravel && ./vendor/bin/phpstan analyse Modules --memory-limit=-1
+# [OK] No errors  (2026-09-24 ~15:50, 8085 file)
+```
+
+Precedente scope ristretto (ancora valido):
+
+```bash
 cd laravel && php -d memory_limit=2G ./vendor/bin/phpstan analyse \
   Modules/Geo/app Modules/Geo/config Modules/Geo/database --no-progress
 # [OK] No errors
 ```
 
-Path esclusi dal task: `/tests/`, `/audit-coverage/`.
+Path esclusi dal task Geo ristretto: `/tests/`, `/audit-coverage/`.
 
 ## Cosa è stato fatto
 
