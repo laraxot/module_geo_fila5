@@ -15,6 +15,7 @@ uses(UnitTestCase::class);
 test('MapPicker can be instantiated', function (): void {
     $field = MapPicker::make('location');
 
+    Assert::assertSame('location', $field->getName());
 });
 
 test('MapPicker extends XotBaseField', function (): void {
@@ -65,14 +66,17 @@ test('MapPicker getZoom defaults to 13 when zoom not configured', function (): v
     Assert::assertSame(13, $field->getZoom());
 });
 
-test('LocationPicker is a MapPicker subclass', function (): void {
-    Assert::assertInstanceOf(MapPicker::class, LocationPicker::make('location'));
-});
-
-test('LocationPicker uses map-picker blade view (inherited)', function (): void {
+test('LocationPicker exposes the coordinate picker defaults', function (): void {
     $field = LocationPicker::make('location');
 
-    Assert::assertSame('geo::filament.forms.components.map-picker', $field->getView());
+    Assert::assertSame('latitude', $field->getLatitudeColumn());
+    Assert::assertSame('longitude', $field->getLongitudeColumn());
+});
+
+test('LocationPicker uses its dedicated blade view', function (): void {
+    $field = LocationPicker::make('location');
+
+    Assert::assertSame('geo::filament.forms.components.location-picker', $field->getView());
 });
 
 test('MapPicker latitudeColumn and longitudeColumn default to standard names', function (): void {

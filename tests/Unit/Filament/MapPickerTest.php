@@ -13,7 +13,13 @@ test('map picker resolves explicit coordinate fields', function (): void {
         ->zoom(12);
 
     Assert::assertSame('latitude', $field->getLatitudeColumn());
+
     Assert::assertSame('longitude', $field->getLongitudeColumn());
+
+    Assert::assertSame('data.latitude', $field->getLatitudeColumn());
+
+    Assert::assertSame('data.longitude', $field->getLongitudeColumn());
+
     Assert::assertSame(12, $field->getZoom());
 });
 
@@ -26,8 +32,11 @@ test('map picker accepts absolute coordinate paths', function (): void {
         ->reverseGeocoding(false);
 
     Assert::assertSame('filters.latitude', $field->getLatitudeColumn());
+
     Assert::assertSame('filters.longitude', $field->getLongitudeColumn());
+
     Assert::assertFalse($field->getGeolocateWhenEmpty());
+
     Assert::assertFalse($field->hasReverseGeocoding());
 });
 
@@ -38,5 +47,6 @@ test('map picker keeps bare coordinate paths at root level', function (): void {
         ->longitudeColumn('longitude');
 
     Assert::assertSame('latitude', $field->getLatitudeColumn());
+
     Assert::assertSame('longitude', $field->getLongitudeColumn());
 });
