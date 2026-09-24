@@ -8,20 +8,10 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\AddressData;
-<<<<<<< HEAD
 use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
-=======
-use Modules\Xot\Actions\Cast\SafeFloatCastAction;
-use Modules\Xot\Actions\Cast\SafeIntCastAction;
-
-use function Safe\json_decode;
-
-use Spatie\QueueableAction\QueueableAction;
-
->>>>>>> laraxot/dev
 /**
  * Action per ottenere l'indirizzo da coordinate tramite Bing Maps.
  *
@@ -36,12 +26,7 @@ class GetAddressFromBingMapsAction
 
     public function __construct(
         private readonly Client $client,
-<<<<<<< HEAD
     ) {}
-=======
-    ) {
-    }
->>>>>>> laraxot/dev
 
     /**
      * Ottiene i dettagli dell'indirizzo utilizzando Bing Maps.
@@ -129,11 +114,7 @@ class GetAddressFromBingMapsAction
          * } $data */
         $data = json_decode($response, true);
 
-<<<<<<< HEAD
         if ($data['statusCode'] !== 200 || empty($data['resourceSets'][0]['resources'])) {
-=======
-        if (200 !== $data['statusCode'] || empty($data['resourceSets'][0]['resources'])) {
->>>>>>> laraxot/dev
             return null;
         }
 
@@ -142,19 +123,11 @@ class GetAddressFromBingMapsAction
         $address = $resource['address'];
 
         return AddressData::from([
-<<<<<<< HEAD
             'latitude' => (float) ($coordinates[0] ?? 0),
             'longitude' => (float) ($coordinates[1] ?? 0),
             'country' => $address['countryRegion'] ?? 'Italia',
             'city' => $address['locality'] ?? '',
             'postal_code' => (int) ($address['postalCode'] ?? 0),
-=======
-            'latitude' => SafeFloatCastAction::cast($coordinates[0] ?? 0),
-            'longitude' => SafeFloatCastAction::cast($coordinates[1] ?? 0),
-            'country' => $address['countryRegion'] ?? 'Italia',
-            'city' => $address['locality'] ?? '',
-            'postal_code' => SafeIntCastAction::cast($address['postalCode'] ?? 0),
->>>>>>> laraxot/dev
             'street' => $address['addressLine'] ?? '',
             'street_number' => '', // Bing Maps non fornisce direttamente il numero civico
             'province' => $address['adminDistrict'] ?? '',

@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Rules;
 
-<<<<<<< HEAD
 use Closure;
-=======
->>>>>>> laraxot/dev
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Translation\PotentiallyTranslatedString;
 use Modules\Geo\Actions\FilterCoordinatesInRadiusAction;
@@ -22,29 +19,16 @@ class FilterCoordinatesInRadius implements ValidationRule
         private readonly float $centerLatitude,
         private readonly float $centerLongitude,
         private readonly int $radius,
-<<<<<<< HEAD
     ) {}
-=======
-    ) {
-    }
->>>>>>> laraxot/dev
 
     /**
      * Determina se le coordinate passate sono all'interno del raggio specificato.
      *
-<<<<<<< HEAD
      * @param  string  $attribute  Nome dell'attributo
      * @param  mixed  $value  Valore da validare
      * @param  Closure(string, ?string=): PotentiallyTranslatedString  $fail
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
-=======
-     * @param string                                                  $attribute Nome dell'attributo
-     * @param mixed                                                   $value     Valore da validare
-     * @param \Closure(string, ?string=): PotentiallyTranslatedString $fail
-     */
-    public function validate(string $attribute, mixed $value, \Closure $fail): void
->>>>>>> laraxot/dev
     {
         if (! \is_array($value)) {
             $fail('Il valore deve essere un array di coordinate');
@@ -74,11 +58,7 @@ class FilterCoordinatesInRadius implements ValidationRule
             $this->radius,
         );
 
-<<<<<<< HEAD
         if ($filteredCoordinates === []) {
-=======
-        if ([] === $filteredCoordinates) {
->>>>>>> laraxot/dev
             $fail($this->message());
         }
     }
