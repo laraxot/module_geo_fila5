@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Resources\Pages;
 
-use Filament\Infolists\Components\TextEntry;
-use Filament\Schemas\Components\Component;
-use Filament\Schemas\Components\Section;
+use Filament\Actions\EditAction;
 use Modules\Geo\Filament\Resources\LocationResource;
+use Modules\Geo\Filament\Resources\LocationResource\Schemas\LocationInfolist;
 use Modules\Xot\Filament\Resources\Pages\XotBaseViewRecord;
 
 class ViewLocation extends XotBaseViewRecord
@@ -17,6 +16,7 @@ class ViewLocation extends XotBaseViewRecord
     /**
      * @return array<string, EditAction>
      */
+    protected function getHeaderActions(): array
     {
         return [
             'edit' => EditAction::make(),
@@ -26,6 +26,8 @@ class ViewLocation extends XotBaseViewRecord
     /**
      * @return array<string, \Filament\Schemas\Components\Component>
      */
+    #[\Override]
+    protected function getInfolistSchema(): array
     {
         return app(LocationInfolist::class)->getInfolistSchema();
     }
