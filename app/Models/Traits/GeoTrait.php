@@ -7,8 +7,8 @@ namespace Modules\Geo\Models\Traits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 // --- models ---
-use Modules\Geo\Actions\Math\CalculateGeoDistanceAction;
-use Modules\Geo\Actions\Math\GenerateHaversineSqlAction;
+use Modules\Geo\Actions\Distance\BuildHaversineSqlAction;
+use Modules\Geo\Actions\Distance\CalculateGeoDistanceAction;
 use Modules\Geo\Datas\GeoData;
 
 /**
@@ -36,6 +36,7 @@ use Modules\Geo\Datas\GeoData;
  * @property string $administrative_area_level_3.
  * @property string $administrative_area_level_2_short.
  */
+/** @phpstan-ignore trait.unused */
 trait GeoTrait
 {
     /*
@@ -56,13 +57,15 @@ trait GeoTrait
 
     public function distance(?float $lat = null, ?float $lng = null): ?float
     {
-        return (float) app(CalculateGeoDistanceAction::class)->execute(
+        $distance = app(CalculateGeoDistanceAction::class)->execute(
             (float) $this->latitude,
             (float) $this->longitude,
             $lat,
             $lng,
             '',
         );
+
+        return null !== $distance ? (float) $distance : null;
     }
 
     public function distanceCustomField(
@@ -72,13 +75,24 @@ trait GeoTrait
         ?float $lng = null,
         ?string $unit = '',
     ): ?float {
-        return (float) app(CalculateGeoDistanceAction::class)->execute(
-            (float) $this->{$lat_field},
-            (float) $this->{$lng_field},
+        $latFieldValue = $this->{$lat_field};
+        $lngFieldValue = $this->{$lng_field};
+        $latFromField = is_float($latFieldValue) || is_int($latFieldValue)
+            ? (float) $latFieldValue
+            : (is_string($latFieldValue) && is_numeric($latFieldValue) ? (float) $latFieldValue : 0.0);
+        $lngFromField = is_float($lngFieldValue) || is_int($lngFieldValue)
+            ? (float) $lngFieldValue
+            : (is_string($lngFieldValue) && is_numeric($lngFieldValue) ? (float) $lngFieldValue : 0.0);
+
+        $distance = app(CalculateGeoDistanceAction::class)->execute(
+            $latFromField,
+            $lngFromField,
             $lat,
             $lng,
             $unit,
         );
+
+        return null !== $distance ? (float) $distance : null;
     }
 
     // ---- Scopes ----
@@ -87,7 +101,7 @@ trait GeoTrait
     {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
-            $haversine = app(GenerateHaversineSqlAction::class)->execute($lat, $lng);
+            $haversine = app(BuildHaversineSqlAction::class)->execute($lat, $lng);
 
             // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');
@@ -106,7 +120,7 @@ trait GeoTrait
     ): Builder {
         $q = $query;
         if ($lat > 0 && $lng > 0) {
-            $haversine = app(GenerateHaversineSqlAction::class)->execute($lat, $lng, $lat_field, $lng_field);
+            $haversine = app(BuildHaversineSqlAction::class)->execute($lat, $lng, $lat_field, $lng_field);
 
             // @phpstan-ignore-next-line
             return $query->selectRaw("*,{$haversine} AS distance")->orderBy('distance');
@@ -237,7 +251,8 @@ trait GeoTrait
                 $this->attributes['full_address'] = ',,';
             }
 
-            $fullAddress = (string) ($this->attributes['full_address'] ?? '');
+            $rawFullAddress = $this->attributes['full_address'] ?? '';
+            $fullAddress = is_string($rawFullAddress) ? $rawFullAddress : '';
             if (strlen($fullAddress) < 10) {
                 $tmp = [];
                 $tmp[] = $geo->route ?? '';

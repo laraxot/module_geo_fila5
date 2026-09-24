@@ -15,14 +15,9 @@ class GetCitiesAction
 {
     use QueueableAction;
 
-    public const CACHE_KEY = 'geo.cities.%s';
+    public const string CACHE_KEY = 'geo.cities.%s';
 
-    public const CACHE_TTL = 86400;
-
-    public function __construct(
-        private readonly LoadGeoDataAction $loader = new LoadGeoDataAction(),
-    ) {
-    }
+    public const int CACHE_TTL = 86400;
 
     /**
      * @param string $provinceCode Codice della provincia
@@ -36,7 +31,7 @@ class GetCitiesAction
         /** @var Collection<int, array{name: string, code: string}> $result */
         $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode): Collection {
             /** @var array<string, mixed>|null $province */
-            $province = $this->loader->execute()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
+            $province = app(LoadGeoDataAction::class)->execute()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
                 ? $region['provinces']
                 : [])->firstWhere('code', $provinceCode);
 

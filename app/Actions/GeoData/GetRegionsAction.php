@@ -15,14 +15,9 @@ class GetRegionsAction
 {
     use QueueableAction;
 
-    public const CACHE_KEY = 'geo.regions';
+    public const string CACHE_KEY = 'geo.regions';
 
-    public const CACHE_TTL = 86400;
-
-    public function __construct(
-        private readonly LoadGeoDataAction $loader = new LoadGeoDataAction(),
-    ) {
-    }
+    public const int CACHE_TTL = 86400;
 
     /**
      * @return Collection<int, array{name: string, code: string}>
@@ -33,7 +28,7 @@ class GetRegionsAction
         $result = Cache::remember(
             self::CACHE_KEY,
             self::CACHE_TTL,
-            fn (): Collection => $this->loader->execute()->pluck('name', 'code'),
+            fn (): Collection => app(LoadGeoDataAction::class)->execute()->pluck('name', 'code'),
         );
 
         return $result;
