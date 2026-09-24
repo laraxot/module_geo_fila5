@@ -7,7 +7,7 @@ jobs:
   commit-msg:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Verify commits reference an issue
         uses: actions/github-script@v9
         with:

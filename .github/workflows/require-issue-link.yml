@@ -7,7 +7,7 @@ jobs:
   require-issue:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Check PR for linked issue and commits
         uses: actions/github-script@v9
         with:
