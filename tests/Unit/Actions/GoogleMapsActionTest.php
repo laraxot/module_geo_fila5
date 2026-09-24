@@ -8,7 +8,7 @@ use Modules\Geo\Actions\GoogleMapsAction;
 use PHPUnit\Framework\Assert;
 
 it('can be instantiated', function (): void {
-    $service = new GoogleMapsAction;
+    $service = new GoogleMapsAction();
     Assert::assertInstanceOf(GoogleMapsAction::class, $service);
 });
 
@@ -25,5 +25,5 @@ it('has correct constants defined', function (): void {
 });
 
 it('has required methods', function (): void {
-    $service = new GoogleMapsAction;
+    $service = new GoogleMapsAction();
 });

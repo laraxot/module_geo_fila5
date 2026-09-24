@@ -92,7 +92,7 @@ trait HasCoordinatePicker
      * Set the initial map center.
      * Supports both center(lat, lng) and center(['lat' => ..., 'lng' => ...]).
      *
-     * @param  float|array<string, float>  $latitude
+     * @param float|array<string, float> $latitude
      */
     public function center(float|array $latitude, ?float $longitude = null): static
     {
@@ -337,14 +337,14 @@ trait HasCoordinatePicker
     }
 
     /**
-     * @param  array<string, mixed>  $data
-     * @param  array<int, string>  $keys
+     * @param array<string, mixed> $data
+     * @param array<int, string>   $keys
      */
     private static function firstString(array $data, array $keys): string
     {
         foreach ($keys as $key) {
             $value = $data[$key] ?? null;
-            if (\is_string($value) && trim($value) !== '') {
+            if (\is_string($value) && '' !== trim($value)) {
                 return $value;
             }
         }
@@ -353,7 +353,8 @@ trait HasCoordinatePicker
     }
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param array<string, mixed> $data
+     *
      * @return array<string, mixed>
      */
     public static function extractCoordinates(array $data, string $field = 'coordinates', string $latColumn = 'latitude', string $lngColumn = 'longitude'): array
@@ -367,13 +368,9 @@ trait HasCoordinatePicker
         return $data;
     }
 
-    /**
-     * Normalizza un valore coordinata grezzo (float|int|string|null atteso;
-     * mixed perche' proviene da attributi Eloquent / state Filament / JSON).
-     */
     private static function normalizeCoordinate(mixed $value): ?float
     {
-        if ($value === null || $value === '') {
+        if (null === $value || '' === $value) {
             return null;
         }
 

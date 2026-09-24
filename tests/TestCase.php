@@ -18,16 +18,16 @@ use Modules\Xot\Datas\XotData;
 use Modules\Xot\Tests\XotBaseTestCase;
 
 /**
- * @property object|null $action
- * @property MockHandler|null $mockHandler
+ * @property object|null           $action
+ * @property MockHandler|null      $mockHandler
  * @property GoogleMapsAction|null $service
- * @property Address|null $address
- * @property BaseModel|null $baseModel
- * @property array<string, mixed> $testData
- * @property array<string, mixed> $italianAddress
- * @property array<string, mixed> $geocodingResult
- * @property array<string, mixed> $weatherData
- * @property array<string, mixed> $place
+ * @property Address|null          $address
+ * @property BaseModel|null        $baseModel
+ * @property array<string, mixed>  $testData
+ * @property array<string, mixed>  $italianAddress
+ * @property array<string, mixed>  $geocodingResult
+ * @property array<string, mixed>  $weatherData
+ * @property array<string, mixed>  $place
  */
 abstract class TestCase extends XotBaseTestCase
 {

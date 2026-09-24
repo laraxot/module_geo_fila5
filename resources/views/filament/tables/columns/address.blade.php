@@ -1,7 +1,3 @@
-<?php
-
-declare(strict_types=1);
-?>
 @php
     /** @var \Illuminate\Database\Eloquent\Model|array<string, mixed> $record */
     $record = $getRecord();

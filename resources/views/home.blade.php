@@ -1,7 +1,3 @@
-<?php
-
-declare(strict_types=1);
-?>
 {{--
     Homepage /it civic content blocks
     Civic portal content blocks parity with Design Comuni

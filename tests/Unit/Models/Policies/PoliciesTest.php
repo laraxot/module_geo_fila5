@@ -13,37 +13,37 @@ use Modules\Geo\Models\Policies\StatePolicy;
 use PHPUnit\Framework\Assert;
 
 test('StatePolicy can be instantiated', function () {
-    $policy = new StatePolicy;
+    $policy = new StatePolicy();
 
     Assert::assertInstanceOf(StatePolicy::class, $policy);
 });
 
 test('CountyPolicy can be instantiated', function () {
-    $policy = new CountyPolicy;
+    $policy = new CountyPolicy();
 
     Assert::assertInstanceOf(CountyPolicy::class, $policy);
 });
 
 test('LocalityPolicy can be instantiated', function () {
-    $policy = new LocalityPolicy;
+    $policy = new LocalityPolicy();
 
     Assert::assertInstanceOf(LocalityPolicy::class, $policy);
 });
 
 test('PlacePolicy can be instantiated', function () {
-    $policy = new PlacePolicy;
+    $policy = new PlacePolicy();
 
     Assert::assertInstanceOf(PlacePolicy::class, $policy);
 });
 
 test('PlaceTypePolicy can be instantiated', function () {
-    $policy = new PlaceTypePolicy;
+    $policy = new PlaceTypePolicy();
 
     Assert::assertInstanceOf(PlaceTypePolicy::class, $policy);
 });
 
 test('GeoNamesCapPolicy can be instantiated', function () {
-    $policy = new GeoNamesCapPolicy;
+    $policy = new GeoNamesCapPolicy();
 
     Assert::assertInstanceOf(GeoNamesCapPolicy::class, $policy);
 });

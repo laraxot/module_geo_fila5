@@ -1,5 +1,13 @@
+<<<<<<< .merge_file_PFGDvV
 // Geo — frontend asset (claude-audit doc ratio).
 // Geo — frontend asset (claude-audit doc ratio).
+=======
+<<<<<<< .merge_file_6jiLwN
+=======
+// Geo — frontend asset (claude-audit doc ratio).
+// Geo — frontend asset (claude-audit doc ratio).
+>>>>>>> .merge_file_TtM9jW
+>>>>>>> .merge_file_ludqV8
 import { test, expect } from '@playwright/test';
 
 test.describe('Segnalazioni Elenco Map Tests', () => {
@@ -165,4 +173,12 @@ test.describe('Segnalazioni Elenco Map Tests', () => {
     await page.waitForTimeout(800);
     await expect(page.locator('.leaflet-container')).toBeVisible();
   });
+<<<<<<< .merge_file_PFGDvV
 });
+=======
+<<<<<<< .merge_file_6jiLwN
+});
+=======
+});
+>>>>>>> .merge_file_TtM9jW
+>>>>>>> .merge_file_ludqV8
