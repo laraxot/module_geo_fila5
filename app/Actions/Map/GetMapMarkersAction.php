@@ -16,7 +16,8 @@ final class GetMapMarkersAction
     use QueueableAction;
 
     /**
-     * @param  array<string, mixed>  $filters
+     * @param array<string, mixed> $filters
+     *
      * @return list<array<string, mixed>>
      */
     public function execute(array $filters = []): array

@@ -17,7 +17,8 @@ use PHPUnit\Framework\Assert;
 /**
  * Build an in-memory address array with sane defaults.
  *
- * @param  array<string, mixed>  $overrides
+ * @param array<string, mixed> $overrides
+ *
  * @return array<string, mixed>
  */
 function makeAddress(array $overrides = []): array
@@ -51,7 +52,7 @@ function makeAddress(array $overrides = []): array
 /**
  * Compose a displayable full address from array parts.
  *
- * @param  array<string, mixed>  $address
+ * @param array<string, mixed> $address
  */
 function formatFullAddress(array $address): string
 {
@@ -66,7 +67,7 @@ function formatFullAddress(array $address): string
 
     $parts = array_filter(
         $rawParts,
-        static fn (string|int|float|bool|null $value): bool => (SafeStringCastAction::cast($value)) !== '',
+        static fn (string|int|float|bool|null $value): bool => '' !== SafeStringCastAction::cast($value),
     );
 
     return implode(', ', array_map(static fn (string|int|float|bool|null $part): string => SafeStringCastAction::cast($part), $parts));
@@ -162,7 +163,7 @@ describe('Address Integration', function () {
 
         $primary = null;
         foreach ($patientAddresses as $addr) {
-            if ($addr['is_primary'] === true) {
+            if (true === $addr['is_primary']) {
                 $primary = $addr;
                 break;
             }

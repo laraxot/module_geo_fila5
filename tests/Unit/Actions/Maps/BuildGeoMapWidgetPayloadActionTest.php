@@ -12,10 +12,10 @@ use PHPUnit\Framework\Assert;
 uses(LightTestCase::class);
 
 test('build geo map widget payload action returns widget data contract', function () {
-    $placeType = new PlaceType;
+    $placeType = new PlaceType();
     $placeType->setAttribute('slug', 'farm');
 
-    $place = new Place;
+    $place = new Place();
     $place->id = 42;
     $place->name = 'Cascina Demo';
     $place->description = 'Vendita diretta';
@@ -24,12 +24,13 @@ test('build geo map widget payload action returns widget data contract', functio
     $place->setRelation('placeType', $placeType);
     $place->formatted_address = 'Via Roma 1, Milano';
 
-    $action = new class(new Collection([$place])) extends BuildGeoMapWidgetPayloadAction
-    {
+    $action = new class(new Collection([$place])) extends BuildGeoMapWidgetPayloadAction {
         /**
-         * @param  Collection<int, Place>  $places
+         * @param Collection<int, Place> $places
          */
-        public function __construct(private readonly Collection $places) {}
+        public function __construct(private readonly Collection $places)
+        {
+        }
 
         /**
          * @return Collection<int, Place>
