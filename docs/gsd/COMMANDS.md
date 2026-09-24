@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_d3k0aU
 # GSD (Get Shit Done) - Command Reference
 
 **Version**: 1.0.0  
@@ -393,3 +394,15 @@ git bisect start
 
 *GSD Command Reference v1.0.0*  
 *Last Updated: 2026-03-18*
+=======
+---
+title: "Rimando a commands.md"
+description: "Documento unificato: il contenuto canonico vive in commands.md."
+status: merged
+tags: [merge, duplicato, case-only]
+---
+
+# Documento unificato
+
+Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [commands.md](./commands.md).
+>>>>>>> .merge_file_j8WK8X

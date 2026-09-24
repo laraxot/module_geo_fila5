@@ -19,10 +19,6 @@ use Modules\Xot\Tests\XotBaseTestCase;
 
 /**
  * @property object|null           $action
- * @property MockInterface|null    $mockDistanceMatrixAction
- * @property MockInterface|null    $fetchAction
- * @property MockInterface|null    $mockClient
- * @property MockInterface|null    $getCoordinatesAction
  * @property MockHandler|null      $mockHandler
  * @property GoogleMapsAction|null $service
  * @property Address|null          $address
@@ -72,6 +68,8 @@ abstract class TestCase extends XotBaseTestCase
 
     protected function setUp(): void
     {
+        $this->prepareSharedSqliteForTesting();
+
         parent::setUp();
 
         config(['xra.pub_theme' => 'Meetup']);

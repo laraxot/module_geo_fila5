@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Feature;
 
 use Modules\Geo\Enums\AddressTypeEnum;
-use Modules\Geo\Tests\TestCase;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 /**
  * In-memory Address tests (no factories / DB / container).
@@ -25,7 +24,7 @@ uses(TestCase::class);
 function makeAddress(array $overrides = []): array
 {
     static $autoId = 0;
-    $autoId = (int) $autoId + 1;
+    $autoId = SafeIntCastAction::cast($autoId) + 1;
 
     $defaults = [
         'id' => $autoId,
@@ -57,18 +56,21 @@ function makeAddress(array $overrides = []): array
  */
 function formatFullAddress(array $address): string
 {
+    /** @var list<string|int|float|bool|null> $rawParts */
+    $rawParts = [
+        $address['route'] ?? null,
+        $address['street_number'] ?? null,
+        $address['locality'] ?? null,
+        $address['postal_code'] ?? null,
+        $address['country'] ?? null,
+    ];
+
     $parts = array_filter(
-        [
-            $address['route'] ?? null,
-            $address['street_number'] ?? null,
-            $address['locality'] ?? null,
-            $address['postal_code'] ?? null,
-            $address['country'] ?? null,
-        ],
-        static fn (mixed $value): bool => ((string) $value) !== '',
+        $rawParts,
+        static fn (string|int|float|bool|null $value): bool => '' !== SafeStringCastAction::cast($value),
     );
 
-    return implode(', ', array_map(static fn (mixed $part): string => (string) $part, $parts));
+    return implode(', ', array_map(static fn (string|int|float|bool|null $part): string => SafeStringCastAction::cast($part), $parts));
 }
 
 describe('Address Integration', function () {
@@ -133,7 +135,7 @@ describe('Address Integration', function () {
         $extraData = $address['extra_data'];
         Assert::assertIsArray($extraData);
         Assert::assertIsArray($extraData['google_types'] ?? null);
-        Assert::assertStringContainsString('Piazza del Duomo', (string) $address['formatted_address']);
+        Assert::assertStringContainsString('Piazza del Duomo', SafeStringCastAction::cast($address['formatted_address']));
         Assert::assertContains('establishment', $extraData['google_types']);
         Assert::assertSame(4.5, $extraData['rating']);
     });

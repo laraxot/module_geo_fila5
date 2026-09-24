@@ -9,34 +9,30 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\File;
-use Modules\Geo\Database\Factories\RegionFactory;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
 
 /**
- * @property int                       $id
+ * @property int|null                  $id
  * @property string|null               $name
  * @property ProfileContract|null      $creator
  * @property Collection<int, Province> $provinces
  * @property int|null                  $provinces_count
  * @property ProfileContract|null      $updater
  *
- * @method static RegionFactory          factory($count = null, $state = [])
- * @method static Builder<static>|Region newModelQuery()
- * @method static Builder<static>|Region newQuery()
- * @method static Builder<static>|Region query()
- * @method static Builder<static>|Region whereId($value)
- * @method static Builder<static>|Region whereName($value)
- *
- * @property ProfileContract|null $deleter
+ * @method static \Modules\Geo\Database\Factories\RegionFactory factory($count = null, $state = [])
+ * @method static Builder<static>|Region                        newModelQuery()
+ * @method static Builder<static>|Region                        newQuery()
+ * @method static Builder<static>|Region                        query()
+ * @method static Builder<static>|Region                        whereId($value)
+ * @method static Builder<static>|Region                        whereName($value)
  *
  * @mixin \Eloquent
  */
 class Region extends BaseModel
 {
-    /** @phpstan-use HasXotFactory<\Modules\Geo\Database\Factories\RegionFactory> */
     use HasXotFactory;
     use Sushi;
 

@@ -17,7 +17,7 @@ class GetAddressFromNominatimAction
 {
     use QueueableAction;
 
-    private const BASE_URL = 'https://nominatim.openstreetmap.org';
+    private const string BASE_URL = 'https://nominatim.openstreetmap.org';
 
     /**
      * Esegue la ricerca dell'indirizzo su Nominatim.

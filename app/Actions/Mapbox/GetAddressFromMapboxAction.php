@@ -24,7 +24,7 @@ class GetAddressFromMapboxAction
 {
     use QueueableAction;
 
-    private const API_URL = 'https://api.mapbox.com/geocoding/v5/mapbox.places';
+    private const string API_URL = 'https://api.mapbox.com/geocoding/v5/mapbox.places';
 
     public function __construct(
         private readonly Client $client,
