@@ -115,7 +115,11 @@ namespace Modules\User\Actions;
 
 use Illuminate\Validation\ValidationException;
 use Modules\User\Datas\UserData;
+<<<<<<< HEAD
 use Modules\Xot\Contracts\UserContract;
+=======
+use Modules\User\Models\User;
+>>>>>>> laraxot/dev
 
 class UpdateUserAction
 {

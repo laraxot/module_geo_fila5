@@ -17,6 +17,29 @@
     "require": {},
     "require-dev": {
         "larastan/larastan": "*"
+<<<<<<< HEAD
+=======
+        "larastan/larastan": "^3.0"
+        "larastan/larastan": "*"
+
+
+        "larastan/larastan": "^3.0"
+
+        "larastan/larastan": "^3.0"
+        "larastan/larastan": "*"
+
+        "larastan/larastan": "*"
+
+        "larastan/larastan": "^3.0"
+        "larastan/larastan": "*"
+        "larastan/larastan": "*"
+        "larastan/larastan": "^3.0"
+        "larastan/larastan": "*"
+        "larastan/larastan": "^3.0"
+        "larastan/larastan": "^3.0"
+        "larastan/larastan": "*"
+        "larastan/larastan": "*"
+>>>>>>> laraxot/dev
     },
     "config": {
         "sort-packages": true,

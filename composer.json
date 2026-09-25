@@ -12,10 +12,18 @@
     ],
     "extra": {
         "laravel": {
+<<<<<<< HEAD
       "providers": [
         "Modules\\Geo\\Providers\\GeoServiceProvider",
         "Modules\\Geo\\Providers\\Filament\\AdminPanelProvider"
       ],
+=======
+            "providers": [
+                "Livewire\\LivewireServiceProvider",
+                "Modules\\Geo\\Providers\\GeoServiceProvider",
+                "Modules\\Geo\\Providers\\Filament\\AdminPanelProvider"
+            ],
+>>>>>>> laraxot/dev
             "aliases": {}
         }
     },

@@ -7,6 +7,16 @@ namespace Modules\Geo\Filament\Forms\Components;
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
+<<<<<<< HEAD
+=======
+/**
+ * CoordinatePicker - Senior Architectural Core for geographic selection.
+ *
+ * Rule: Extends XotBaseField.
+ * Rule: No "Default" prefixes.
+ * Rule: Unified state.
+ */
+>>>>>>> laraxot/dev
 class CoordinatePicker extends XotBaseField
 {
     use HasCoordinatePicker;

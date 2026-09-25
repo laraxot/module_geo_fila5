@@ -277,4 +277,8 @@ function refreshMapSize(ctx, delays = [0]) {
     delays.forEach((delay) => {
         setTimeout(() => ctx._map?.invalidateSize(), delay);
     });
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> laraxot/dev

@@ -7,10 +7,18 @@ namespace Modules\Geo\Actions\Nominatim;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\LocationData;
+<<<<<<< HEAD
 use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
+=======
+
+use function Safe\json_decode;
+
+use Spatie\QueueableAction\QueueableAction;
+
+>>>>>>> laraxot/dev
 /**
  * Action per ottenere l'indirizzo da coordinate geografiche usando Nominatim.
  */
@@ -30,8 +38,13 @@ class ReverseGeocodeAction
     /**
      * Ottiene l'indirizzo da coordinate geografiche.
      *
+<<<<<<< HEAD
      * @param  float  $latitude  Latitudine
      * @param  float  $longitude  Longitudine
+=======
+     * @param float $latitude  Latitudine
+     * @param float $longitude Longitudine
+>>>>>>> laraxot/dev
      *
      * @throws GuzzleException
      * @throws \RuntimeException

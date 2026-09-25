@@ -11,8 +11,16 @@ use Modules\Geo\Datas\GoogleMaps\GoogleMapGeometryData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapLocationData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResponseData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResultData;
+<<<<<<< HEAD
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> laraxot/dev
 test('GoogleMapGeometryData can be instantiated', function () {
     $geometry = GoogleMapGeometryData::from([
         'location' => [

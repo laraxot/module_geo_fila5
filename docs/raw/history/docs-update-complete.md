@@ -168,6 +168,10 @@
 **Perché**: Convenience + Type Safety + DRY
 
 **Dove**: `Xot/helpers/Helper.php` (10 funzioni)
+<<<<<<< HEAD
+=======
+**Dove**: `Xot/Helpers/Helper.php` (10 funzioni)
+>>>>>>> laraxot/dev
 
 **Docs**:
 - `helper-functions-complete-list.md` - Lista completa

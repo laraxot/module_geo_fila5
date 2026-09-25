@@ -8,7 +8,10 @@ use Modules\Geo\Filament\Forms\Components\CoordinatePicker;
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
+<<<<<<< HEAD
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+=======
+>>>>>>> laraxot/dev
 use PHPUnit\Framework\Assert;
 
 use function Safe\file;
@@ -25,8 +28,15 @@ function geoReadMethodBody(\ReflectionMethod $ref): string
     $end = $ref->getEndLine();
 
     $body = '';
+<<<<<<< HEAD
     foreach (array_slice($lines, $start - 1, $end - $start + 1) as $line) {
         $body .= SafeStringCastAction::cast($line);
+=======
+    /** @var list<string> $methodLines */
+    $methodLines = array_slice($lines, $start - 1, $end - $start + 1);
+    foreach ($methodLines as $line) {
+        $body .= $line;
+>>>>>>> laraxot/dev
     }
 
     Assert::assertNotSame('', $body);

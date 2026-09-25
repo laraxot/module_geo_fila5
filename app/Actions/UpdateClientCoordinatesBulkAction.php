@@ -20,7 +20,12 @@ class UpdateClientCoordinatesBulkAction
     /**
      * Execute the action to update coordinates for a collection of addresses.
      *
+<<<<<<< HEAD
      * @param  Collection<int, Address>  $addresses
+=======
+     * @param Collection<int, Address> $addresses
+     *
+>>>>>>> laraxot/dev
      * @return array{success_count: int, error_messages: array<string>}
      */
     public function execute(Collection $addresses): array
@@ -33,13 +38,21 @@ class UpdateClientCoordinatesBulkAction
                 $fullAddress = is_string($address->full_address) ? $address->full_address : '';
                 $addressData = app(GetAddressDataFromFullAddressAction::class)->execute($fullAddress);
 
+<<<<<<< HEAD
                 if ($addressData !== null) {
+=======
+                if (null !== $addressData) {
+>>>>>>> laraxot/dev
                     $toArray = $addressData->toArray();
                     /** @var array<string, mixed> $up */
                     $up = Arr::only($toArray, ['latitude', 'longitude']);
                     /* @var array<string, mixed> $up */
                     $address->update($up);
+<<<<<<< HEAD
                     $successCount++;
+=======
+                    ++$successCount;
+>>>>>>> laraxot/dev
 
                     continue;
                 }
@@ -49,7 +62,11 @@ class UpdateClientCoordinatesBulkAction
                 $errors = app(GetAddressDataFromFullAddressAction::class)->getErrors();
                 // PHPStan L10: Collection::implode() restituisce string, non serve ?:
                 $errorMsg = $errors->implode(', ');
+<<<<<<< HEAD
                 if ($errorMsg === '') {
+=======
+                if ('' === $errorMsg) {
+>>>>>>> laraxot/dev
                     $errorMsg = 'Errore sconosciuto';
                 }
                 $errorMessages[] = "Errore per {$addressName}: {$errorMsg}";

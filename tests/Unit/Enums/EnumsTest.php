@@ -6,8 +6,16 @@ namespace Modules\Geo\Tests\Unit\Enums;
 
 use Modules\Geo\Enums\AddressItemEnum;
 use Modules\Geo\Enums\AddressTypeEnum;
+<<<<<<< HEAD
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> laraxot/dev
 test('AddressItemEnum has expected cases', function () {
     $cases = AddressItemEnum::cases();
     $values = array_map(static fn (AddressItemEnum $case): string => $case->value, $cases);

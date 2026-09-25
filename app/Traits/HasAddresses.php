@@ -8,9 +8,12 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use InvalidArgumentException;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
+<<<<<<< HEAD
+=======
+use Webmozart\Assert\Assert;
+>>>>>>> laraxot/dev
 
 /**
  * Trait HasAddresses.
@@ -18,16 +21,23 @@ use Modules\Geo\Models\Address;
  * Questo trait fornisce funzionalità per gestire indirizzi multipli su qualsiasi modello.
  *
  * @property int|string $id
+ * @property Collection<int, Address> $addresses
  *
  * @phpstan-require-extends Model
+<<<<<<< HEAD
  *
  * @phpstan-ignore trait.unused
+=======
+>>>>>>> laraxot/dev
  */
 trait HasAddresses
 {
     /**
      * @return MorphMany<Address, $this>
+<<<<<<< HEAD
      * @phpstan-ignore return.type
+=======
+>>>>>>> laraxot/dev
      */
     public function addresses(): MorphMany
     {
@@ -36,7 +46,10 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
+<<<<<<< HEAD
      * @phpstan-ignore return.type
+=======
+>>>>>>> laraxot/dev
      */
     public function primaryAddress(): MorphOne
     {
@@ -45,7 +58,10 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
+<<<<<<< HEAD
      * @phpstan-ignore return.type
+=======
+>>>>>>> laraxot/dev
      */
     public function homeAddress(): MorphOne
     {
@@ -54,7 +70,10 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
+<<<<<<< HEAD
      * @phpstan-ignore return.type
+=======
+>>>>>>> laraxot/dev
      */
     public function workAddress(): MorphOne
     {
@@ -63,7 +82,10 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
+<<<<<<< HEAD
      * @phpstan-ignore return.type
+=======
+>>>>>>> laraxot/dev
      */
     public function billingAddress(): MorphOne
     {
@@ -72,7 +94,10 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
+<<<<<<< HEAD
      * @phpstan-ignore return.type
+=======
+>>>>>>> laraxot/dev
      */
     public function shippingAddress(): MorphOne
     {
@@ -86,7 +111,11 @@ trait HasAddresses
     {
         // Assicurati che l'indirizzo appartenga a questo modello
         if ($address->model_id !== $this->id || $address->model_type !== static::class) {
+<<<<<<< HEAD
             throw new InvalidArgumentException('L\'indirizzo non appartiene a questo modello.');
+=======
+            throw new \InvalidArgumentException('L\'indirizzo non appartiene a questo modello.');
+>>>>>>> laraxot/dev
         }
 
         // Rimuovi lo stato primario da tutti gli altri indirizzi
@@ -112,7 +141,14 @@ trait HasAddresses
         // Crea il nuovo indirizzo
         $data['is_primary'] = $isPrimary;
 
+<<<<<<< HEAD
         return $this->addresses()->create($data);
+=======
+        $address = $this->addresses()->create($data);
+        Assert::isInstanceOf($address, Address::class);
+
+        return $address;
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -124,4 +160,8 @@ trait HasAddresses
 
         return $this->addresses()->where('type', $typeValue)->get();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> laraxot/dev

@@ -95,9 +95,14 @@ related:
 
 **Insight collegato:** durante il rilancio una classe nuova (`GdprConsentForm`) ha richiesto `XotBaseSchemaWidget`, gia referenziata anche da Lang ma assente in Xot. La base vuota sopra `XotBaseWidget` mantiene DRY il contratto per widget schema-based.
 
+## 2026-09-25 — Generics Eloquent nei trait riusabili
 
+<<<<<<< HEAD
 ## 2026-07-16 — PSR-4 e case-sensitive
 
 **Root cause:** copie `Fixtures/fixtures` e classi multi-file `*PhpstanProbe*` venivano indicizzate due volte su Linux.
 
 **Regola:** una sola capitalizzazione conforme al namespace; i probe PHPStan senza consumer vanno rimossi, non rinominati o soppressi. Verificare con `composer dump-autoload -o` e PHPStan del modulo.
+=======
+Per le relazioni Eloquent dichiarate da un trait riusabile, annotare il declaring model come `$this` (`MorphMany<Address, $this>` / `MorphOne<Address, $this>`). `self::class` è una stringa e non soddisfa il template model; `static` non corrisponde al tipo `$this` inferito, non covariante.
+>>>>>>> laraxot/dev
