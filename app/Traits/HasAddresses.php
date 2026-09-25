@@ -25,7 +25,8 @@ use Webmozart\Assert\Assert;
 trait HasAddresses
 {
     /**
-     * @phpstan-return MorphMany<Address, self::class>
+     * @return MorphMany<Address, $this>
+     * @phpstan-return MorphMany<Address, $this>
      */
     public function addresses(): MorphMany
     {
@@ -33,7 +34,8 @@ trait HasAddresses
     }
 
     /**
-     * @phpstan-return MorphOne<Address, self::class>
+     * @return MorphOne<Address, $this>
+     * @phpstan-return MorphOne<Address, $this>
      */
     public function primaryAddress(): MorphOne
     {
@@ -41,7 +43,8 @@ trait HasAddresses
     }
 
     /**
-     * @phpstan-return MorphOne<Address, self::class>
+     * @return MorphOne<Address, $this>
+     * @phpstan-return MorphOne<Address, $this>
      */
     public function homeAddress(): MorphOne
     {
@@ -49,7 +52,8 @@ trait HasAddresses
     }
 
     /**
-     * @phpstan-return MorphOne<Address, static>
+     * @return MorphOne<Address, $this>
+     * @phpstan-return MorphOne<Address, $this>
      */
     public function workAddress(): MorphOne
     {
@@ -57,7 +61,8 @@ trait HasAddresses
     }
 
     /**
-     * @phpstan-return MorphOne<Address, static>
+     * @return MorphOne<Address, $this>
+     * @phpstan-return MorphOne<Address, $this>
      */
     public function billingAddress(): MorphOne
     {
@@ -65,7 +70,8 @@ trait HasAddresses
     }
 
     /**
-     * @phpstan-return MorphOne<Address, static>
+     * @return MorphOne<Address, $this>
+     * @phpstan-return MorphOne<Address, $this>
      */
     public function shippingAddress(): MorphOne
     {
@@ -94,6 +100,7 @@ trait HasAddresses
      * Aggiunge un nuovo indirizzo.
      *
      * @param array<string, mixed> $data
+     * @phpstan-param array<string, mixed> $data
      * @phpstan-return Address
      */
     public function addAddress(array $data, bool $isPrimary = false): Address
@@ -113,6 +120,7 @@ trait HasAddresses
     }
 
     /**
+     * @return Collection<int, Address>
      * @phpstan-return Collection<int, Address>
      */
     public function getAddressesByType(AddressTypeEnum|string $type): Collection
