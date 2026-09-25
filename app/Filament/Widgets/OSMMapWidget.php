@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Models\Place;
+use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
 // use Webbingbrasil\FilamentMaps\Widgets\MapWidget; // Disabilitato per compatibilità Filament 4
 
@@ -65,7 +65,6 @@ class OSMMapWidget extends XotBaseWidget
     }
 
     /**
-     *
      * @return array<string, mixed>
      */
     protected function getData(): array

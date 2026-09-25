@@ -26,7 +26,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|County newModelQuery()
  * @method static Builder<static>|County newQuery()
  * @method static Builder<static>|County query()
- *
  * @method static Builder<static>|County whereCounty($value)
  * @method static Builder<static>|County whereCountyCode($value)
  * @method static Builder<static>|County whereCreatedAt($value)

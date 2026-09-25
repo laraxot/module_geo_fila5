@@ -41,7 +41,6 @@ use Sushi\Sushi;
  */
 class Province extends BaseModel
 {
-    /**  */
     use HasXotFactory;
     use Sushi;
 
