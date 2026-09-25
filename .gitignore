@@ -130,6 +130,9 @@ database/Seeders_old/
 database/Factories_old/
 database_old/
 
+# Test artifacts
+/tests/AuditCoverage/
+
 # ==============================================
 # MODULE SPECIFIC - GEO
 # ==============================================
