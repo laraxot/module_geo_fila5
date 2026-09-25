@@ -56,7 +56,11 @@ final class GeoMapDatasetAction
         $categories = [];
 
         foreach ($this->getFeatures() as $feature) {
+<<<<<<< HEAD
             if ($feature['geometry']['type'] !== 'Point') {
+=======
+            if ('Point' !== $feature['geometry']['type']) {
+>>>>>>> laraxot/dev
                 continue;
             }
 

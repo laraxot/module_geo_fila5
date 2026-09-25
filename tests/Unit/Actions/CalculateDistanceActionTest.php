@@ -14,9 +14,12 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
+<<<<<<< HEAD
 /**
  * @param CalculateDistanceMatrixAction $matrixAction
  */
+=======
+>>>>>>> laraxot/dev
 function makeCalculateDistanceAction(CalculateDistanceMatrixAction $matrixAction): CalculateDistanceAction
 {
     app()->instance(CalculateDistanceMatrixAction::class, $matrixAction);

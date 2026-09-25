@@ -41,7 +41,10 @@ use Sushi\Sushi;
  */
 class Province extends BaseModel
 {
+<<<<<<< HEAD
     /**  */
+=======
+>>>>>>> laraxot/dev
     use HasXotFactory;
     use Sushi;
 

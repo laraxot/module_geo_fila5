@@ -41,6 +41,10 @@ uses(TestCase::class);
  *     },
  *     deleted_at?: string|null
  * } $overrides
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> laraxot/dev
  * @return array{
  *     id: int,
  *     model_type: string|null,
@@ -68,8 +72,13 @@ uses(TestCase::class);
 function makeAddress(array $overrides = []): array
 {
     static $autoId = 0;
+<<<<<<< HEAD
     /** @var int $autoId */
     $autoId++;
+=======
+    /* @var int $autoId */
+    ++$autoId;
+>>>>>>> laraxot/dev
 
     $defaults = [
         'id' => $autoId,
@@ -157,7 +166,11 @@ function formatFullAddress(array $address): string
         $address['postal_code'],
         $address['country'],
     ] as $value) {
+<<<<<<< HEAD
         if ($value !== null && $value !== '') {
+=======
+        if (null !== $value && '' !== $value) {
+>>>>>>> laraxot/dev
             $parts[] = $value;
         }
     }
@@ -257,7 +270,11 @@ describe('Address Integration', function () {
 
         $primary = null;
         foreach ($patientAddresses as $addr) {
+<<<<<<< HEAD
             if ($addr['is_primary'] === true) {
+=======
+            if (true === $addr['is_primary']) {
+>>>>>>> laraxot/dev
                 $primary = $addr;
                 break;
             }

@@ -19,7 +19,11 @@ class GeoDataValidator
     /**
      * Regole di validazione per i dati geografici.
      */
+<<<<<<< HEAD
     private const array VALIDATION_RULES = [
+=======
+    private const VALIDATION_RULES = [
+>>>>>>> laraxot/dev
         'regions' => 'required|array',
         'regions.*.name' => 'required|string',
         'regions.*.code' => 'required|string|size:2',
@@ -35,7 +39,11 @@ class GeoDataValidator
     /**
      * Messaggi di errore personalizzati.
      */
+<<<<<<< HEAD
     private const array CUSTOM_MESSAGES = [
+=======
+    private const CUSTOM_MESSAGES = [
+>>>>>>> laraxot/dev
         'regions.required' => 'Il file JSON deve contenere un array di regioni',
         'regions.array' => 'Le regioni devono essere un array',
         'regions.*.name.required' => 'Ogni regione deve avere un nome',

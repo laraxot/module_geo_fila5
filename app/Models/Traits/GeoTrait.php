@@ -14,9 +14,14 @@ use Modules\Geo\Datas\GeoData;
 /**
  * Modules\Geo\Models\Traits\GeoTrait.
  *
+<<<<<<< HEAD
  * @property float $latitude
  * @property float $longitude
  * @property string|null $address
+=======
+ * @property float  $latitude
+ * @property float  $longitude
+>>>>>>> laraxot/dev
  * @property string $country.
  * @property string $country.
  * @property string $administrative_area_level_2.
@@ -65,7 +70,11 @@ trait GeoTrait
             '',
         );
 
+<<<<<<< HEAD
         return $distance !== null ? (float) $distance : null;
+=======
+        return null !== $distance ? (float) $distance : null;
+>>>>>>> laraxot/dev
     }
 
     public function distanceCustomField(
@@ -85,7 +94,11 @@ trait GeoTrait
             $unit,
         );
 
+<<<<<<< HEAD
         return $distance !== null ? (float) $distance : null;
+=======
+        return null !== $distance ? (float) $distance : null;
+>>>>>>> laraxot/dev
     }
 
     // ---- Scopes ----
@@ -152,7 +165,11 @@ trait GeoTrait
 
     public function getAddress(): string
     {
+<<<<<<< HEAD
         if ($this->country === '') {
+=======
+        if ('' === $this->country) {
+>>>>>>> laraxot/dev
             $this->country = 'Italia';
         }
 
@@ -176,7 +193,11 @@ trait GeoTrait
             return (float) $value;
         }
         $address = $this->address;
+<<<<<<< HEAD
         if ($address === null) {
+=======
+        if (null === $address) {
+>>>>>>> laraxot/dev
             return null;
         }
         if (is_string($address) && isJson($address)) {
@@ -184,7 +205,11 @@ trait GeoTrait
             $latlng = $geo->latlng;
             $lat = is_float($latlng['lat'] ?? null) || is_int($latlng['lat'] ?? null) ? (float) ($latlng['lat']) : null;
             $lng = is_float($latlng['lng'] ?? null) || is_int($latlng['lng'] ?? null) ? (float) ($latlng['lng']) : null;
+<<<<<<< HEAD
             if ($lat !== null && $lng !== null) {
+=======
+            if (null !== $lat && null !== $lng) {
+>>>>>>> laraxot/dev
                 $this->update([
                     'latitude' => $lat,
                     'longitude' => $lng,
@@ -266,7 +291,12 @@ trait GeoTrait
     }
 
     /**
+<<<<<<< HEAD
      * @param  mixed  $value
+=======
+     * @param mixed $value
+     *
+>>>>>>> laraxot/dev
      * @return bool|mixed|string
      */
     /*
@@ -300,7 +330,11 @@ trait GeoTrait
      */
     public function getFullAddressAttribute(?string $value): ?string
     {
+<<<<<<< HEAD
         if ($this->address === null) {
+=======
+        if (null === $this->address) {
+>>>>>>> laraxot/dev
             return null;
         }
         if (is_string($this->address) && isJson($this->address)) {

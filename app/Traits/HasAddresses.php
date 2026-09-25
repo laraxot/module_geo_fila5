@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Modules\Geo\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Model;
+=======
+>>>>>>> laraxot/dev
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Modules\Geo\Enums\AddressTypeEnum;
@@ -15,47 +18,74 @@ use Modules\Geo\Models\Address;
  * Trait HasAddresses.
  *
  * Questo trait fornisce funzionalità per gestire indirizzi multipli su qualsiasi modello.
+<<<<<<< HEAD
  *
  * @property int|string $id
  *
  * @phpstan-require-extends Model
+=======
+>>>>>>> laraxot/dev
  */
 trait HasAddresses
 {
     /** @return MorphMany<Address, $this> */
     public function addresses(): MorphMany
     {
+<<<<<<< HEAD
         return $this->morphMany(Address::class, 'model');
+=======
+        return $this->morphMany(Address::class, 'model'); // @phpstan-ignore return.type
+>>>>>>> laraxot/dev
     }
 
     /** @return MorphOne<Address, $this> */
     public function primaryAddress(): MorphOne
     {
+<<<<<<< HEAD
         return $this->morphOne(Address::class, 'model')->where('is_primary', true);
+=======
+        return $this->morphOne(Address::class, 'model')->where('is_primary', true); // @phpstan-ignore return.type
+>>>>>>> laraxot/dev
     }
 
     /** @return MorphOne<Address, $this> */
     public function homeAddress(): MorphOne
     {
+<<<<<<< HEAD
         return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::HOME->value);
+=======
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::HOME->value); // @phpstan-ignore return.type
+>>>>>>> laraxot/dev
     }
 
     /** @return MorphOne<Address, $this> */
     public function workAddress(): MorphOne
     {
+<<<<<<< HEAD
         return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::WORK->value);
+=======
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::WORK->value); // @phpstan-ignore return.type
+>>>>>>> laraxot/dev
     }
 
     /** @return MorphOne<Address, $this> */
     public function billingAddress(): MorphOne
     {
+<<<<<<< HEAD
         return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::BILLING->value);
+=======
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::BILLING->value); // @phpstan-ignore return.type
+>>>>>>> laraxot/dev
     }
 
     /** @return MorphOne<Address, $this> */
     public function shippingAddress(): MorphOne
     {
+<<<<<<< HEAD
         return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::SHIPPING->value);
+=======
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::SHIPPING->value); // @phpstan-ignore return.type
+>>>>>>> laraxot/dev
     }
 
     /**
