@@ -28,18 +28,6 @@
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
-<<<<<<< HEAD
- */class Ti extends fo{constructor(r){if(super(r),this.it=U,r.type!==rr.CHILD)throw Error(this.constructor.directiveName+"() can only be used in child bindings")}render(r){if(r===U||r==null)return this._t=void 0,this.it=r;if(r===vt)return r;if(typeof r!="string")throw Error(this.constructor.directiveName+"() called with a non-string value");if(r===this.it)return this._t;this.it=r;const a=[r];return a.raw=a,this._t={_$litType$:this.constructor.resultType,strings:a,values:[]}}}Ti.directiveName="unsafeHTML",Ti.resultType=1;const wr=co(Ti),xr=`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-`,Pr=`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-`,Lr=`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7"/></svg>
-`,br=`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
-`,Tr=`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-`,Sr=`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-`,Mr=`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="12" x2="19" y2="12"/></svg>
-`,Cr=`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
-</svg>
-=======
  */class Ti extends fo{constructor(r){if(super(r),this.it=U,r.type!==rr.CHILD)throw Error(this.constructor.directiveName+"() can only be used in child bindings")}render(r){if(r===U||r==null)return this._t=void 0,this.it=r;if(r===vt)return r;if(typeof r!="string")throw Error(this.constructor.directiveName+"() called with a non-string value");if(r===this.it)return this._t;this.it=r;const a=[r];return a.raw=a,this._t={_$litType$:this.constructor.resultType,strings:a,values:[]}}}Ti.directiveName="unsafeHTML",Ti.resultType=1;const wr=co(Ti),xr=`version https://git-lfs.github.com/spec/v1
 oid sha256:82960af0b7c22c75965af3edfcef7ea93db3c3b9850e90db60460961fa05a20a
 size 264
@@ -64,7 +52,6 @@ size 228
 `,Cr=`version https://git-lfs.github.com/spec/v1
 oid sha256:93c20b9ae77b7546cf0bd28c8dd29cc1636d31c116556190b0d072eaf3862bfc
 size 222
->>>>>>> laraxot/dev
 `;function hr(p){return p&&p.__esModule&&Object.prototype.hasOwnProperty.call(p,"default")?p.default:p}var re={exports:{}};/* @preserve
  * Leaflet 1.9.4, a JS library for interactive maps. https://leafletjs.com
  * (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade

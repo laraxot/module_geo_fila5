@@ -14,10 +14,6 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
 class LatLngWidget extends XotBaseWidget
 {
     /** @var view-string */
-<<<<<<< HEAD
-    protected string $view = 'geo::filament.widgets.lat-lng';
-
-=======
     protected string $view;
 
     public function __construct()
@@ -29,7 +25,6 @@ class LatLngWidget extends XotBaseWidget
         parent::__construct();
     }
 
->>>>>>> laraxot/dev
     public float $lat = 0;
 
     public float $lng = 0;

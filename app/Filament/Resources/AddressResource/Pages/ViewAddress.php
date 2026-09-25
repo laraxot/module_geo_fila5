@@ -11,13 +11,9 @@ class ViewAddress extends XotBaseViewRecord
 {
     protected static string $resource = AddressResource::class;
 
-<<<<<<< HEAD
-    
-=======
     #[\Override]
     public function getInfolistSchema(): array
     {
         return [];
     }
->>>>>>> laraxot/dev
 }

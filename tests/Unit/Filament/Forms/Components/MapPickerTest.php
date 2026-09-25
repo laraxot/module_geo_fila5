@@ -15,10 +15,7 @@ uses(UnitTestCase::class);
 test('MapPicker can be instantiated', function (): void {
     $field = MapPicker::make('location');
 
-<<<<<<< HEAD
-=======
     Assert::assertSame('location', $field->getName());
->>>>>>> laraxot/dev
 });
 
 test('MapPicker extends XotBaseField', function (): void {

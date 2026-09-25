@@ -4,24 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Traits;
 
-<<<<<<< HEAD
-use Modules\Geo\Models\Traits\HasPlaceTrait;
-=======
 use Modules\Geo\Tests\TestCase;
->>>>>>> laraxot/dev
 use Modules\Geo\Traits\HandlesCoordinates;
 use Modules\Geo\Traits\HasAddresses;
 use PHPUnit\Framework\Assert;
 
-<<<<<<< HEAD
-test('HasAddresses trait exists with expected API', function (): void {
-    Assert::assertTrue(trait_exists(HasAddresses::class));
-    Assert::assertTrue(trait_exists(HasPlaceTrait::class));
-=======
 uses(TestCase::class);
 test('HasAddresses trait can be used', function (): void {
     Assert::assertTrue(trait_exists(HasAddresses::class));
->>>>>>> laraxot/dev
 
     $reflection = new \ReflectionClass(HasAddresses::class);
     Assert::assertTrue($reflection->hasMethod('addresses'));

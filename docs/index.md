@@ -1,21 +1,3 @@
-<<<<<<< HEAD
----
-title: "Geo — indice della documentazione"
-description: "Documentazione del modulo Geo: dati geografici e mappe."
-module: Geo
-tags: [geo, documentazione, modulo, laraxot]
-status: active
-repository: https://github.com/laraxot/module_geo_fila5
-related:
-  - ./00-index.md
-  - ./index.md
-  - ../../../../docs/wiki/audits/docs-redundancy-audit.md
-issues: https://github.com/laraxot/module_geo_fila5/issues
-discussions: https://github.com/laraxot/module_geo_fila5/discussions
----
-
-=======
->>>>>>> laraxot/dev
 # PTVX - Documentazione Completa
 
 > Sistema Modulare per la Gestione della Pubblica Amministrazione
@@ -109,8 +91,6 @@ discussions: https://github.com/laraxot/module_geo_fila5/discussions
 - **[Testing Guidelines](./testing/guidelines.md)** - Linee guida testing
 
 ## 📊 Performance
-<<<<<<< HEAD
-=======
 ## 🗺️ Geo Filament Components
 
 ### Filosofia e Regole
@@ -128,7 +108,6 @@ discussions: https://github.com/laraxot/module_geo_fila5/discussions
 - GeopointPicker - Il punto geografico puro
 
 ## 📋 Convenzioni e Standard
->>>>>>> laraxot/dev
 
 ### Ottimizzazione
 - **[Performance Optimization](./performance-optimization.md)** - Ottimizzazione generale
@@ -221,8 +200,6 @@ discussions: https://github.com/laraxot/module_geo_fila5/discussions
 
 ---
 
-<<<<<<< HEAD
-=======
 ## 🔍 Cerca nella Documentazione
 
 Usa Ctrl/Cmd + F per cercare in questa pagina, oppure:
@@ -242,7 +219,6 @@ Usa Ctrl/Cmd + F per cercare in questa pagina, oppure:
 **Versione Documentazione**: 1.0.0  
 **Responsabile Documentazione**: AI Assistant
 
->>>>>>> laraxot/dev
 **Versione**: 3.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Aggiornata

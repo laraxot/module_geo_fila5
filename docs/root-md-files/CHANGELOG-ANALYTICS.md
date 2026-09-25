@@ -1,15 +1,4 @@
 ---
-<<<<<<< HEAD
-title: "Rimando a changelog-analytics.md"
-description: "Documento unificato: il contenuto canonico vive in changelog-analytics.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [changelog-analytics.md](./changelog-analytics.md).
-=======
 title: changelog analytics report
 type: report
 tags: [changelog, contributors, ci, analytics]
@@ -80,4 +69,3 @@ xychart-beta
 | `298ed1c` | marco76tv | other | Add push trigger for all branches in semantic versioning workflow |
 
 _Report generato da `bashscripts/ci/generate-changelog-report.mjs`._
->>>>>>> laraxot/dev

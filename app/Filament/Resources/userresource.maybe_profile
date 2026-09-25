@@ -3,10 +3,6 @@
 declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Resources;
-<<<<<<< HEAD
-use Modules\User\Models\User;
-=======
->>>>>>> laraxot/dev
 
 use Cheesegrits\FilamentGoogleMaps\Filters\RadiusFilter;
 use Filament\Forms;
