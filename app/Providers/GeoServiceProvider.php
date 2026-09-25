@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Providers;
 
-<<<<<<< HEAD
-use Modules\Xot\Providers\XotBaseServiceProvider;
-
-=======
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
@@ -16,7 +12,6 @@ use Modules\Xot\Providers\XotBaseServiceProvider;
 use function Safe\file_get_contents;
 use function Safe\json_decode;
 
->>>>>>> laraxot/dev
 class GeoServiceProvider extends XotBaseServiceProvider
 {
     public string $name = 'Geo';
@@ -29,8 +24,6 @@ class GeoServiceProvider extends XotBaseServiceProvider
 
         // $this->registerMapAssets();
     }
-<<<<<<< HEAD
-=======
 
     protected function registerMapAssets(): void
     {
@@ -78,5 +71,4 @@ class GeoServiceProvider extends XotBaseServiceProvider
     // REMOVED: public function register(): void
     // XotBaseServiceProvider gia' gestisce register() con registerBladeIcons().
     // Non sovrascrivere: causa doppia registrazione del prefix "geo" nei BladeIcons.
->>>>>>> laraxot/dev
 }

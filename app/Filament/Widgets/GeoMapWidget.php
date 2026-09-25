@@ -4,17 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-<<<<<<< HEAD
-use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
-use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
-use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
-=======
 use Modules\Xot\Filament\Widgets\XotBaseWidget;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
 use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
->>>>>>> laraxot/dev
 
 /**
  * @phpstan-type GeoDataset array{type: string, features: list<array{
@@ -34,10 +27,7 @@ use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
  */
 final class GeoMapWidget extends XotBaseWidget
 {
-<<<<<<< HEAD
-=======
 
->>>>>>> laraxot/dev
     protected int|string|array $columnSpan = 'full';
 
     protected string $datasetRelativePath =

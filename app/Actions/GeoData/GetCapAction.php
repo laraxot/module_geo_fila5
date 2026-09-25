@@ -20,13 +20,8 @@ class GetCapAction
     public const int CACHE_TTL = 86400;
 
     /**
-<<<<<<< HEAD
-     * @param  string  $provinceCode  Codice della provincia
-     * @param  string  $cityCode  Codice della città
-=======
      * @param string $provinceCode Codice della provincia
      * @param string $cityCode     Codice della città
->>>>>>> laraxot/dev
      */
     public function execute(string $provinceCode, string $cityCode): ?string
     {

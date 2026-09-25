@@ -5,13 +5,8 @@ const mapLit = (page) => page.locator('#segnalazioni-elenco-root map-lit#ticket-
 
 test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () => {
   test.beforeEach(async ({ page }) => {
-<<<<<<< HEAD
-    const response = await page.goto('http://127.0.0.1:8000/it', {
-      waitUntil: 'networkidle',
-=======
     const response = await page.goto('http://127.0.0.1:8000/it/tests/ticket-list', {
       waitUntil: 'domcontentloaded',
->>>>>>> laraxot/dev
       timeout: 30000,
     });
 
@@ -49,10 +44,6 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
     expect(status.withIconUrl).toBeGreaterThan(0);
 
     for (const sample of status.samples) {
-<<<<<<< HEAD
-      expect(sample.iconHtml).toContain('geo-map-marker-glyph');
-      expect(sample.iconHtml).toContain(sample.typeIconUrl);
-=======
       const imgGlyph = page.locator(
         `.geo-map-marker-glyph--img[src="${sample.typeIconUrl}"]`
       ).first();
@@ -65,7 +56,6 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
       expect(box?.width ?? 0).toBeLessThanOrEqual(36);
       expect(box?.height ?? 0).toBeGreaterThanOrEqual(20);
       expect(box?.height ?? 0).toBeLessThanOrEqual(36);
->>>>>>> laraxot/dev
     }
   });
 

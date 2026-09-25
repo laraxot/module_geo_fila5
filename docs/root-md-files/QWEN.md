@@ -1,15 +1,3 @@
-<<<<<<< HEAD
----
-title: "Rimando a qwen.md"
-description: "Documento unificato: il contenuto canonico vive in qwen.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [qwen.md](./qwen.md).
-=======
 # Qwen — On-Demand Stub
 
 Rules, skills, memories live only in wiki. Load on-demand.
@@ -23,4 +11,3 @@ Rules, skills, memories live only in wiki. Load on-demand.
 - [QMD] `qmd search "<topic>"`
 
 *Updated: 2026*
->>>>>>> laraxot/dev

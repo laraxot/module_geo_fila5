@@ -44,11 +44,7 @@ class LocationWidget extends XotBaseSchemaWidget
     protected int|string|array $columnSpan = 'full';
 
     /** @var view-string */
-<<<<<<< HEAD
-    protected string $view = 'geo::filament.widgets.location';
-=======
     protected string $view;
->>>>>>> laraxot/dev
 
     /**
      * Form per la selezione della località.
@@ -60,9 +56,6 @@ class LocationWidget extends XotBaseSchemaWidget
      */
     public function __construct()
     {
-<<<<<<< HEAD
-        $this->locationForm = new LocationForm();
-=======
         /** @var view-string $view */
         $view = 'geo::filament.widgets.location';
         $this->view = $view;
@@ -70,7 +63,6 @@ class LocationWidget extends XotBaseSchemaWidget
         $this->locationForm = new LocationForm;
 
         parent::__construct();
->>>>>>> laraxot/dev
     }
 
     /**

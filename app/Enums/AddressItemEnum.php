@@ -20,14 +20,10 @@ use Modules\Xot\Traits\EnumTrait;
 enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
 {
     use EnumTrait;
-<<<<<<< HEAD
-    case NAME = 'name';
-=======
 
     case PHONE = 'phone';
     case NAME = 'name';
     case DESCRIPTION = 'description';
->>>>>>> laraxot/dev
     case ROUTE = 'route';
     case STREET_NUMBER = 'street_number';
     case POSTAL_CODE = 'postal_code';
@@ -36,10 +32,6 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
     case ADMINISTRATIVE_AREA_LEVEL_2 = 'administrative_area_level_2'; // provincia
     case ADMINISTRATIVE_AREA_LEVEL_1 = 'administrative_area_level_1'; // regione
     case COUNTRY = 'country'; // Stato/Paese
-<<<<<<< HEAD
-    case LATITUDE = 'latitude';
-    case LONGITUDE = 'longitude';
-=======
     case FORMATTED_ADDRESS = 'formatted_address';
     case PLACE_ID = 'place_id';
     case LATITUDE = 'latitude';
@@ -49,7 +41,6 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
     case PEC = 'pec';
     case WHATSAPP = 'whatsapp';
     case EMAIL = 'email';
->>>>>>> laraxot/dev
     case NOTES = 'notes';
 
     /**
@@ -60,27 +51,21 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
     public static function getColumnDefinitions(): array
     {
         return [
-<<<<<<< HEAD
-=======
             self::PHONE->value => static function (Blueprint $table): void {
                 $table->string(self::PHONE->value)
                     ->nullable()
                     ->comment('Phone number');
             },
->>>>>>> laraxot/dev
             self::NAME->value => static function (Blueprint $table): void {
                 $table->string(self::NAME->value)
                     ->nullable()
                     ->comment('Location name');
             },
-<<<<<<< HEAD
-=======
             self::DESCRIPTION->value => static function (Blueprint $table): void {
                 $table->text(self::DESCRIPTION->value)
                     ->nullable()
                     ->comment('Address description');
             },
->>>>>>> laraxot/dev
             self::ROUTE->value => static function (Blueprint $table): void {
                 $table->string(self::ROUTE->value)
                     ->nullable()
@@ -121,8 +106,6 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
                     ->nullable()
                     ->comment('CAP/Postal Code');
             },
-<<<<<<< HEAD
-=======
             self::FORMATTED_ADDRESS->value => static function (Blueprint $table): void {
                 $table->text(self::FORMATTED_ADDRESS->value)
                     ->nullable()
@@ -133,7 +116,6 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
                     ->nullable()
                     ->comment('Google Place ID');
             },
->>>>>>> laraxot/dev
             self::LATITUDE->value => static function (Blueprint $table): void {
                 $table->decimal(self::LATITUDE->value, 10, 8)
                     ->nullable()
@@ -144,8 +126,6 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
                     ->nullable()
                     ->comment('Longitude coordinate');
             },
-<<<<<<< HEAD
-=======
             self::FAX->value => static function (Blueprint $table): void {
                 $table->string(self::FAX->value)
                     ->nullable()
@@ -171,7 +151,6 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
                     ->nullable()
                     ->comment('Email address');
             },
->>>>>>> laraxot/dev
             self::NOTES->value => static function (Blueprint $table): void {
                 $table->text(self::NOTES->value)
                     ->nullable()
@@ -185,13 +164,8 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
      */
     public static function columnsWithLegacy(Blueprint $table, ?XotBaseMigration $migration = null): void
     {
-<<<<<<< HEAD
-        self::columns($table, $migration);
-        self::addLegacyColumns($table, $migration);
-=======
         static::columns($table, $migration);
         static::addLegacyColumns($table, $migration);
->>>>>>> laraxot/dev
     }
 
     /**
@@ -199,11 +173,7 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
      */
     public static function updateColumnsWithLegacy(Blueprint $table, XotBaseMigration $migration): void
     {
-<<<<<<< HEAD
-        self::columnsWithLegacy($table, $migration);
-=======
         static::columnsWithLegacy($table, $migration);
->>>>>>> laraxot/dev
     }
 
     /**

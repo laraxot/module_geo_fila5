@@ -22,11 +22,6 @@ use function Safe\preg_replace;
  * Questo trait implementa la relazione polimorfica con il modello Address
  * e offre metodi di utilità per la gestione degli indirizzi.
  *
-<<<<<<< HEAD
- * @template TModel of Model
- *
-=======
->>>>>>> laraxot/dev
  * @property Collection<int, Address> $addresses
  * @property string|null $route
  * @property string|null $street_number
@@ -36,11 +31,6 @@ use function Safe\preg_replace;
  * @property string|int $id
  *
  * @phpstan-require-extends Model
-<<<<<<< HEAD
- *
- * @phpstan-ignore trait.unused
-=======
->>>>>>> laraxot/dev
  */
 trait HasAddress
 {
@@ -48,13 +38,8 @@ trait HasAddress
      * Ottiene gli indirizzi associati al modello.
      *
      * @return MorphMany<Address, $this>
-     * @phpstan-return MorphMany<Address, $this>
      */
-<<<<<<< HEAD
-    public function addresses(): MorphMany // @phpstan-ignore missingType.generics
-=======
     public function addresses(): MorphMany
->>>>>>> laraxot/dev
     {
         return $this->morphMany(Address::class, 'model');
     }
@@ -63,13 +48,8 @@ trait HasAddress
      * Ottiene indirizzo associato al modello.
      *
      * @return MorphOne<Address, $this>
-     * @phpstan-return MorphOne<Address, $this>
      */
-<<<<<<< HEAD
-    public function address(): MorphOne // @phpstan-ignore missingType.generics
-=======
     public function address(): MorphOne
->>>>>>> laraxot/dev
     {
         return $this->morphOne(Address::class, 'model');
     }
@@ -105,19 +85,11 @@ trait HasAddress
         }
         $address = sprintf(
             '%s, %s - %s, %s (%s)',
-<<<<<<< HEAD
-            $this->route ?? '',
-            $this->street_number ?? '',
-            $this->postal_code ?? '',
-            $this->city ?? '',
-            $this->province ?? '',
-=======
             $this->route,
             $this->street_number,
             $this->postal_code,
             $this->city,
             $this->province,
->>>>>>> laraxot/dev
         );
 
         return trim(preg_replace('/[,\s]+/', ' ', $address));
@@ -232,81 +204,50 @@ trait HasAddress
      * Ottiene gli indirizzi di un determinato tipo.
      *
      * @return Collection<int, Address>
-<<<<<<< HEAD
-     */
-    public function getAddressesByType(string $type): Collection // @phpstan-ignore missingType.generics
-=======
+     *
      * @phpstan-return Collection<int, Address>
      */
     public function getAddressesByType(string $type): Collection
->>>>>>> laraxot/dev
     {
-        /** @var Collection<int, Address> $addresses */
-        $addresses = $this->addresses()->where('type', $type)->get();
-
-        return $addresses;
+        return $this->addresses()->where('type', $type)->get();
     }
 
     /**
      * Aggiunge un nuovo indirizzo al modello.
      *
      * @param  array<string, mixed>  $data
-     * @phpstan-param array<string, mixed> $data
      * @param  bool  $setPrimary  Se impostare questo indirizzo come principale
+     *
+     * @phpstan-param array<string, mixed> $data
      */
-<<<<<<< HEAD
-    public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue
-    {// Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
-        if ($setPrimary || $this->addresses()->count() === 0) {
-            $data['is_primary'] = true;
-
-            // Rimuovi il flag is_primary da tutti gli altri indirizzi
-=======
     public function addAddress(array $data, bool $setPrimary = false): Address
     {
         if ($setPrimary || $this->addresses()->count() === 0) {
             $data['is_primary'] = true;
 
->>>>>>> laraxot/dev
             if ($this->addresses()->count() > 0) {
                 $this->addresses()->update(['is_primary' => false]);
             }
         }
 
-<<<<<<< HEAD
-        $address = $this->addresses()->create($data); // @phpstan-ignore argument.type
-        Assert::isInstanceOf($address, Address::class);
-=======
-        /** @var Address $address */
-        $address = $this->addresses()->create($data);
->>>>>>> laraxot/dev
-
-        return $address;
+        return $this->addresses()->create($data);
     }
 
     /**
      * Aggiorna l'indirizzo principale.
      *
      * @param  array<string, mixed>  $data
-<<<<<<< HEAD
-     */
-    public function updatePrimaryAddress(array $data): ?Address // @phpstan-ignore missingType.iterableValue
-=======
+     *
      * @phpstan-param array<string, mixed> $data
      */
     public function updatePrimaryAddress(array $data): ?Address
->>>>>>> laraxot/dev
     {
         $primaryAddress = $this->primaryAddress();
         if (! $primaryAddress) {
             return $this->addAddress($data, true);
         }
 
-<<<<<<< HEAD
-        $primaryAddress->update($data); // @phpstan-ignore argument.type
-=======
         $primaryAddress->update($data);
->>>>>>> laraxot/dev
 
         return $primaryAddress;
     }
@@ -315,8 +256,11 @@ trait HasAddress
      * Scope: modelli con almeno un indirizzo nella città indicata (`locality`).
      *
      * @param  Builder<static>  $query
-     * @return Builder<static>
+     *
      * @phpstan-param Builder<static> $query
+     *
+     * @return Builder<static>
+     *
      * @phpstan-return Builder<static>
      */
     public function scopeInCity(Builder $query, string $city): Builder
@@ -336,8 +280,11 @@ trait HasAddress
      * Scope: modelli con almeno un indirizzo nella provincia (`administrative_area_level_3`).
      *
      * @param  Builder<static>  $query
-     * @return Builder<static>
+     *
      * @phpstan-param Builder<static> $query
+     *
+     * @return Builder<static>
+     *
      * @phpstan-return Builder<static>
      */
     public function scopeInProvince(Builder $query, string $province): Builder
@@ -357,8 +304,11 @@ trait HasAddress
      * Scope: modelli con almeno un indirizzo nella regione (`administrative_area_level_2`).
      *
      * @param  Builder<static>  $query
-     * @return Builder<static>
+     *
      * @phpstan-param Builder<static> $query
+     *
+     * @return Builder<static>
+     *
      * @phpstan-return Builder<static>
      */
     public function scopeInRegion(Builder $query, string $region): Builder
@@ -378,8 +328,11 @@ trait HasAddress
      * Scope: modelli con almeno un indirizzo con il CAP indicato.
      *
      * @param  Builder<static>  $query
-     * @return Builder<static>
+     *
      * @phpstan-param Builder<static> $query
+     *
+     * @return Builder<static>
+     *
      * @phpstan-return Builder<static>
      */
     public function scopeInPostalCode(Builder $query, string $postalCode): Builder

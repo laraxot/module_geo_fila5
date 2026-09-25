@@ -7,18 +7,11 @@ namespace Modules\Geo\Actions\Nominatim;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\LocationData;
-<<<<<<< HEAD
-use Spatie\QueueableAction\QueueableAction;
-
-use function Safe\json_decode;
-
-=======
 
 use function Safe\json_decode;
 
 use Spatie\QueueableAction\QueueableAction;
 
->>>>>>> laraxot/dev
 /**
  * Action per ottenere le coordinate geografiche da un indirizzo usando Nominatim.
  */
@@ -38,11 +31,7 @@ class FetchCoordinatesAction
     /**
      * Ottiene le coordinate geografiche da un indirizzo.
      *
-<<<<<<< HEAD
-     * @param  string  $address  Indirizzo da geocodificare
-=======
      * @param string $address Indirizzo da geocodificare
->>>>>>> laraxot/dev
      *
      * @throws GuzzleException
      * @throws \RuntimeException

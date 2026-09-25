@@ -105,11 +105,7 @@ class LocationMapWidget extends XotBaseWidget
     {
         $height = $this->maxHeight ?? '50vh';
 
-<<<<<<< HEAD
-        return is_string($height) ? $height : SafeStringCastAction::cast($height);
-=======
         return SafeStringCastAction::cast($height);
->>>>>>> laraxot/dev
     }
 
     /**

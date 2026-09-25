@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Pages;
 
-<<<<<<< HEAD
-use Illuminate\Support\Collection;
-=======
->>>>>>> laraxot/dev
 // use Dotswan\MapPicker\Fields\Map; // Pacchetto non installato
 use Illuminate\Support\Collection;
 use Modules\Geo\Models\Place;

@@ -5,16 +5,10 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Feature;
 
 use Modules\Geo\Enums\AddressTypeEnum;
-<<<<<<< HEAD
-use Modules\Xot\Actions\Cast\SafeIntCastAction;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
-use PHPUnit\Framework\Assert;
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
->>>>>>> laraxot/dev
 
 /**
  * In-memory Address tests (no factories / DB / container).
@@ -24,10 +18,6 @@ uses(TestCase::class);
 /**
  * Build an in-memory address array with sane defaults.
  *
-<<<<<<< HEAD
- * @param  array<string, mixed>  $overrides
- * @return array<string, mixed>
-=======
  * @param array{
  *     id?: int,
  *     model_type?: string|null,
@@ -74,17 +64,12 @@ uses(TestCase::class);
  *     },
  *     deleted_at: string|null
  * }
->>>>>>> laraxot/dev
  */
 function makeAddress(array $overrides = []): array
 {
     static $autoId = 0;
-<<<<<<< HEAD
-    $autoId = SafeIntCastAction::cast($autoId) + 1;
-=======
     /** @var int $autoId */
     $autoId++;
->>>>>>> laraxot/dev
 
     $defaults = [
         'id' => $autoId,
@@ -106,9 +91,6 @@ function makeAddress(array $overrides = []): array
         'deleted_at' => null,
     ];
 
-<<<<<<< HEAD
-    return array_replace($defaults, $overrides);
-=======
     /** @var array{
      *     id: int,
      *     model_type: string|null,
@@ -136,30 +118,11 @@ function makeAddress(array $overrides = []): array
     $address = array_replace($defaults, $overrides);
 
     return $address;
->>>>>>> laraxot/dev
 }
 
 /**
  * Compose a displayable full address from array parts.
  *
-<<<<<<< HEAD
- * @param  array<string, mixed>  $address
- */
-function formatFullAddress(array $address): string
-{
-    $parts = array_filter(
-        [
-            $address['route'] ?? null,
-            $address['street_number'] ?? null,
-            $address['locality'] ?? null,
-            $address['postal_code'] ?? null,
-            $address['country'] ?? null,
-        ],
-        static fn (mixed $value): bool => (SafeStringCastAction::cast($value)) !== '',
-    );
-
-    return implode(', ', array_map(static fn (mixed $part): string => SafeStringCastAction::cast($part), $parts));
-=======
  * @param array{
  *     id: int,
  *     model_type: string|null,
@@ -200,7 +163,6 @@ function formatFullAddress(array $address): string
     }
 
     return implode(', ', $parts);
->>>>>>> laraxot/dev
 }
 
 describe('Address Integration', function () {
@@ -263,13 +225,6 @@ describe('Address Integration', function () {
 
         Assert::assertSame('ChIJu46S-ZZjhkcRLuFvLjVZ400', $address['place_id']);
         $extraData = $address['extra_data'];
-<<<<<<< HEAD
-        Assert::assertIsArray($extraData);
-        Assert::assertIsArray($extraData['google_types'] ?? null);
-        Assert::assertStringContainsString('Piazza del Duomo', SafeStringCastAction::cast($address['formatted_address']));
-        Assert::assertContains('establishment', $extraData['google_types']);
-        Assert::assertSame(4.5, $extraData['rating']);
-=======
         $googleTypes = $extraData['google_types'] ?? [];
         $formattedAddress = $address['formatted_address'];
 
@@ -277,7 +232,6 @@ describe('Address Integration', function () {
         Assert::assertSame(4.5, $extraData['rating'] ?? null);
         Assert::assertNotNull($formattedAddress);
         Assert::assertStringContainsString('Piazza del Duomo', $formattedAddress);
->>>>>>> laraxot/dev
     });
 
     it('supports multiple addresses per entity', function () {

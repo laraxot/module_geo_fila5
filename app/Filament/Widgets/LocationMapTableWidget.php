@@ -6,10 +6,6 @@ namespace Modules\Geo\Filament\Widgets;
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-<<<<<<< HEAD
-use Illuminate\Database\Eloquent\Builder;
-=======
->>>>>>> laraxot/dev
 use Modules\Geo\Models\Location;
 use Modules\Xot\Filament\Widgets\XotBaseTableWidget as BaseWidget;
 
@@ -24,11 +20,7 @@ class LocationMapTableWidget extends BaseWidget
     public function table(Table $table): Table
     {
         return $table
-<<<<<<< HEAD
-            ->query(fn (): Builder => Location::query()->latest())
-=======
             ->query(Location::query()->latest())
->>>>>>> laraxot/dev
             ->columns([
                 TextColumn::make('name')
                     ->searchable()

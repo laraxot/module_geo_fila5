@@ -28,15 +28,9 @@ class GoogleMapsHttpAction
     private const string ELEVATION_URL = 'https://maps.googleapis.com/maps/api/elevation/json';
 
     /**
-<<<<<<< HEAD
-     * @return array<string, mixed>
-     *
-     * @throws GoogleMapsApiException
-=======
      * @throws GoogleMapsApiException
      *
      * @return array<string, mixed>
->>>>>>> laraxot/dev
      */
     public function executeReverseGeocode(float $latitude, float $longitude): array
     {
@@ -52,20 +46,12 @@ class GoogleMapsHttpAction
     }
 
     /**
-<<<<<<< HEAD
-     * @param  array<string>  $origins
-     * @param  array<string>  $destinations
-     * @return array<string, mixed>
-     *
-     * @throws GoogleMapsApiException
-=======
      * @param array<string> $origins
      * @param array<string> $destinations
      *
      * @throws GoogleMapsApiException
      *
      * @return array<string, mixed>
->>>>>>> laraxot/dev
      */
     public function executeDistanceMatrix(array $origins, array $destinations): array
     {
@@ -83,15 +69,9 @@ class GoogleMapsHttpAction
     }
 
     /**
-<<<<<<< HEAD
-     * @return array<string, mixed>
-     *
-     * @throws GoogleMapsApiException
-=======
      * @throws GoogleMapsApiException
      *
      * @return array<string, mixed>
->>>>>>> laraxot/dev
      */
     public function executeElevation(float $latitude, float $longitude): array
     {
@@ -118,12 +98,8 @@ class GoogleMapsHttpAction
     }
 
     /**
-<<<<<<< HEAD
-     * @param  array<string, mixed>  $params
-=======
      * @param array<string, mixed> $params
      *
->>>>>>> laraxot/dev
      * @return array<string, mixed>
      */
     private function makeRequest(string $method, string $url, array $params = [], bool $useCache = true): array
@@ -133,11 +109,7 @@ class GoogleMapsHttpAction
         if ($useCache && config('geo.cache.enabled')) {
             /** @var array<string, mixed>|null $cached */
             $cached = Cache::get($cacheKey);
-<<<<<<< HEAD
-            if ($cached !== null) {
-=======
             if (null !== $cached) {
->>>>>>> laraxot/dev
                 return $cached;
             }
         }
@@ -196,11 +168,7 @@ class GoogleMapsHttpAction
     }
 
     /**
-<<<<<<< HEAD
-     * @param  array<string, mixed>  $params
-=======
      * @param array<string, mixed> $params
->>>>>>> laraxot/dev
      */
     private function getCacheKey(string $method, string $url, array $params): string
     {

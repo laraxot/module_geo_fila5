@@ -8,15 +8,10 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Modules\Geo\Database\Factories\AddressFactory;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
-<<<<<<< HEAD
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
->>>>>>> laraxot/dev
 test('address can be created', function (): void {
     $address = AddressFactory::new()->createOne();
 

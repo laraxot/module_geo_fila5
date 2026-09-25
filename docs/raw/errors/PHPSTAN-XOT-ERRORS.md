@@ -1,15 +1,3 @@
-<<<<<<< HEAD
----
-title: "Rimando a phpstan-xot-errors.md"
-description: "Documento unificato: il contenuto canonico vive in phpstan-xot-errors.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [phpstan-xot-errors.md](./phpstan-xot-errors.md).
-=======
 # Errori PHPStan nel Modulo Xot
 
 ## Introduzione
@@ -203,4 +191,3 @@ Abbiamo corretto i seguenti file:
 ## Conclusione
 
 La correzione di questi errori migliorerà significativamente la qualità del codice nel modulo Xot, riducendo il rischio di bug e facilitando la manutenzione futura. È importante seguire le linee guida di tipizzazione e gestione degli errori per evitare che questi problemi si ripresentino in futuro. 
->>>>>>> laraxot/dev

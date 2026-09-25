@@ -1,15 +1,4 @@
 ---
-<<<<<<< HEAD
-title: "Rimando a projecthome.md"
-description: "Documento unificato: il contenuto canonico vive in projecthome.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [projecthome.md](./projecthome.md).
-=======
 concept: Project Home
 last_updated: 2026-05-20
 qmd: "project home, ptvx-project, getting started, overview, module structure"
@@ -50,4 +39,3 @@ Welcome to the central knowledge base for the **PTVX** project. This wiki is aut
 ---
 
 *This wiki is a living document. Every interaction with an AI agent helps it grow and interlink.*
->>>>>>> laraxot/dev

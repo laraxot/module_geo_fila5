@@ -1,15 +1,3 @@
-<<<<<<< HEAD
----
-title: "Rimando a plan.md"
-description: "Documento unificato: il contenuto canonico vive in plan.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [plan.md](./plan.md).
-=======
 # Plan: Laravel 13 Upgrade
 
 ## Phase 1: Global Documentation
@@ -38,4 +26,3 @@ For each module in `laravel/Modules/` and theme in `laravel/Themes/`:
 1.  **Preparation:** Research & Global Docs (Completed)
 2.  **Execution:** Batch update of 35 modules + 3 themes.
 3.  **Finalization:** Verification & Bug fixing.
->>>>>>> laraxot/dev

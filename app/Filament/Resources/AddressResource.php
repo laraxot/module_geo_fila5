@@ -4,14 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Resources;
 
-<<<<<<< HEAD
-use Modules\Xot\Filament\Resources\XotBaseResource;
-use Modules\Geo\Models\Address;
-
-class AddressResource extends XotBaseResource
-{
-    protected static ?string $model = Address::class;
-=======
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -153,5 +145,4 @@ class AddressResource extends XotBaseResource
                 ->placeholder(__('filament-forms::components.select.placeholder')),
         ];
     }
->>>>>>> laraxot/dev
 }

@@ -4,23 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-<<<<<<< HEAD
-=======
 use Filament\Forms\Components\Repeater;
->>>>>>> laraxot/dev
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
-<<<<<<< HEAD
-use Modules\Geo\Filament\Resources\AddressResource\Schemas\AddressForm;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
-use Modules\Xot\Filament\Forms\Components\XotBaseRepeater;
-=======
 use Modules\Geo\Filament\Resources\AddressResource;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
->>>>>>> laraxot/dev
 
 use function Safe\preg_match;
 
@@ -39,11 +30,7 @@ use function Safe\preg_match;
  *     ->minItems(1)
  *     ->addActionLabel('Aggiungi Indirizzo')
  */
-<<<<<<< HEAD
-class AddressesField extends XotBaseRepeater
-=======
 class AddressesField extends Repeater
->>>>>>> laraxot/dev
 {
     // protected string $view = 'geo::filament.forms.components.addresses-field';
 
@@ -73,12 +60,8 @@ class AddressesField extends Repeater
     }
 
     /**
-<<<<<<< HEAD
-     * @param  array<mixed>  $address
-=======
      * @param array<mixed> $address
      *
->>>>>>> laraxot/dev
      * @return array<string, mixed>
      */
     private static function normalizeAddressRow(array $address): array
@@ -115,11 +98,7 @@ class AddressesField extends Repeater
      */
     protected function getAddressFormSchema(): array
     {
-<<<<<<< HEAD
-        $baseSchema = app(AddressForm::class)->getFormSchema();
-=======
         $baseSchema = app(AddressResource::class)->getFormSchema();
->>>>>>> laraxot/dev
 
         // Campo name: visibile solo con più di 1 elemento
         $baseSchema['name'] = TextInput::make('name')
@@ -131,15 +110,9 @@ class AddressesField extends Repeater
         $baseSchema['is_primary'] = Toggle::make('is_primary')
             ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
             ->default(fn (Get $get): bool => count(self::repeaterAddresses($get)) <= 1)
-<<<<<<< HEAD
-            ->afterStateUpdated(function (mixed $state, Set $set, Get $get, Component $component): void {
-                // Se questo diventa primary, disattiva tutti gli altri
-                if ($state === true) {
-=======
             ->afterStateUpdated(function ($state, Set $set, Get $get, Component $component): void {
                 // Se questo diventa primary, disattiva tutti gli altri
                 if (true === $state) {
->>>>>>> laraxot/dev
                     $addresses = self::repeaterAddresses($get);
 
                     // Estrae l'indice dal path del componente (es. "addresses.0.is_primary")
@@ -147,11 +120,7 @@ class AddressesField extends Repeater
                     preg_match('/addresses\.(\d+)\.is_primary/', $path ?? '', $matches);
                     $currentIndex = $matches[1] ?? null;
 
-<<<<<<< HEAD
-                    if ($currentIndex !== null) {
-=======
                     if (null !== $currentIndex) {
->>>>>>> laraxot/dev
                         // Disattiva is_primary negli altri elementi
                         foreach ($addresses as $index => $address) {
                             $indexStr = app(SafeStringCastAction::class)->execute($index);
@@ -165,11 +134,7 @@ class AddressesField extends Repeater
                 }
             })
             ->live()
-<<<<<<< HEAD
-            ->dehydrateStateUsing(function (mixed $state, Get $get): bool {
-=======
             ->dehydrateStateUsing(function ($state, Get $get): bool {
->>>>>>> laraxot/dev
                 // Se c'è un solo elemento, forza sempre true
                 if (count(self::repeaterAddresses($get)) <= 1) {
                     return true;

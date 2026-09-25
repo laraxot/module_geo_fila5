@@ -24,11 +24,7 @@ parameters:
         - identifier: missingType.iterableValue
         - identifier: missingType.generics
         - identifier: larastan.noEnvCallsOutsideOfConfig
-<<<<<<< HEAD
-        - identifier: trait.unused
-=======
         - identifier: trait.unused 
->>>>>>> laraxot/dev
         - identifier: method.unused
 
     excludePaths:
