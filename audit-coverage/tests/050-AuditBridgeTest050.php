@@ -11,6 +11,6 @@ final class AuditBridgeTest50 extends TestCase
 {
     public function testBridge(): void
     {
-        self::assertTrue(true);
+        self::assertNotSame(false, getenv('PATH'));
     }
 }

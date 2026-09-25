@@ -107,8 +107,8 @@ class GeoDataService
                     $code = $province['code'] ?? '';
 
                     return [
-                        'name' => \is_string($name) ? $name : (string) $name,
-                        'code' => \is_string($code) ? $code : (string) $code,
+                        'name' => \is_scalar($name) ? (string) $name : '',
+                        'code' => \is_scalar($code) ? (string) $code : '',
                     ];
                 })
                 ->values();
