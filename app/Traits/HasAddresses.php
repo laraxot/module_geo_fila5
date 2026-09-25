@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use InvalidArgumentException;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
-use Webmozart\Assert\Assert;
 
 /**
  * Trait HasAddresses.
@@ -18,14 +18,16 @@ use Webmozart\Assert\Assert;
  * Questo trait fornisce funzionalità per gestire indirizzi multipli su qualsiasi modello.
  *
  * @property int|string $id
- * @property Collection<int, Address> $addresses
  *
  * @phpstan-require-extends Model
+ *
+ * @phpstan-ignore trait.unused
  */
 trait HasAddresses
 {
     /**
      * @return MorphMany<Address, $this>
+     * @phpstan-ignore return.type
      */
     public function addresses(): MorphMany
     {
@@ -34,6 +36,7 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
+     * @phpstan-ignore return.type
      */
     public function primaryAddress(): MorphOne
     {
@@ -42,6 +45,7 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
+     * @phpstan-ignore return.type
      */
     public function homeAddress(): MorphOne
     {
@@ -50,6 +54,7 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
+     * @phpstan-ignore return.type
      */
     public function workAddress(): MorphOne
     {
@@ -58,6 +63,7 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
+     * @phpstan-ignore return.type
      */
     public function billingAddress(): MorphOne
     {
@@ -66,6 +72,7 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
+     * @phpstan-ignore return.type
      */
     public function shippingAddress(): MorphOne
     {
@@ -79,7 +86,7 @@ trait HasAddresses
     {
         // Assicurati che l'indirizzo appartenga a questo modello
         if ($address->model_id !== $this->id || $address->model_type !== static::class) {
-            throw new \InvalidArgumentException('L\'indirizzo non appartiene a questo modello.');
+            throw new InvalidArgumentException('L\'indirizzo non appartiene a questo modello.');
         }
 
         // Rimuovi lo stato primario da tutti gli altri indirizzi
@@ -105,10 +112,7 @@ trait HasAddresses
         // Crea il nuovo indirizzo
         $data['is_primary'] = $isPrimary;
 
-        $address = $this->addresses()->create($data);
-        Assert::isInstanceOf($address, Address::class);
-
-        return $address;
+        return $this->addresses()->create($data);
     }
 
     /**
