@@ -41,6 +41,7 @@ uses(TestCase::class);
  *     },
  *     deleted_at?: string|null
  * } $overrides
+ *
  * @return array{
  *     id: int,
  *     model_type: string|null,
@@ -68,8 +69,8 @@ uses(TestCase::class);
 function makeAddress(array $overrides = []): array
 {
     static $autoId = 0;
-    /** @var int $autoId */
-    $autoId++;
+    /* @var int $autoId */
+    ++$autoId;
 
     $defaults = [
         'id' => $autoId,
@@ -157,7 +158,7 @@ function formatFullAddress(array $address): string
         $address['postal_code'],
         $address['country'],
     ] as $value) {
-        if ($value !== null && $value !== '') {
+        if (null !== $value && '' !== $value) {
             $parts[] = $value;
         }
     }
@@ -257,7 +258,7 @@ describe('Address Integration', function () {
 
         $primary = null;
         foreach ($patientAddresses as $addr) {
-            if ($addr['is_primary'] === true) {
+            if (true === $addr['is_primary']) {
                 $primary = $addr;
                 break;
             }
