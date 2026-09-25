@@ -91,8 +91,3 @@ module: "Geo"
 - Created INDEX.md for each section
 - Created module index.md
 - Ready for on-demand loading via QMD
-## [2026-09-25] phpstan | generic declaring model per HasAddresses
-
-- Relazioni `MorphMany`/`MorphOne` annotate sul declaring model `$this`, così i generic invarianti corrispondono al model host concreto.
-- PHPStan full-tree completato: **11172 file, [OK] No errors**.
-

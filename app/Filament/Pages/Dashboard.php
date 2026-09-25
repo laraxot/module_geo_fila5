@@ -10,12 +10,12 @@ use Modules\Xot\Filament\Pages\XotBaseDashboard;
 final class Dashboard extends XotBaseDashboard
 {
     /**
-     * @return array<string, mixed>
+     * @return array<class-string>
      */
     public function getWidgets(): array
     {
         return [
-            'geo_map' => GeoMapWidget::class,
+            GeoMapWidget::class,
         ];
     }
 
