@@ -178,11 +178,7 @@ class Address extends BaseModel
             ->orderBy('regione->nome')
             ->where('regione->codice', $this->administrative_area_level_1)
             ->get()
-<<<<<<< HEAD
             ->map(function (Comune $item) {
-=======
-            ->map(function ($item) {
->>>>>>> laraxot/dev
                 $regione = $item->regione;
                 if (! is_array($regione) || ! isset($regione['codice'], $regione['nome'])) {
                     return;
@@ -205,11 +201,7 @@ class Address extends BaseModel
             ->orderBy('provincia->nome')
             ->where('provincia->codice', $this->administrative_area_level_2)
             ->get()
-<<<<<<< HEAD
             ->map(function (Comune $item): array {
-=======
-            ->map(function ($item): array {
->>>>>>> laraxot/dev
                 $provincia = is_array($item->provincia ?? null) ? $item->provincia : [];
 
                 return [
@@ -249,11 +241,7 @@ class Address extends BaseModel
             $this->administrative_area_level_2, // Regione
             $this->postal_code,
             $this->country,
-<<<<<<< HEAD
         ], function (?string $part): bool {
-=======
-        ], function ($part): bool {
->>>>>>> laraxot/dev
             // PHPStan L10: verifica prima il tipo, poi se è vuoto
             if (! \is_string($part)) {
                 return false;

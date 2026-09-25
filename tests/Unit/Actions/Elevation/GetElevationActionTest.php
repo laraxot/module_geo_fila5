@@ -14,12 +14,9 @@ use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
 
-<<<<<<< HEAD
 /**
  * @param GoogleMapsAction $mapsService
  */
-=======
->>>>>>> laraxot/dev
 function makeGetElevationAction(GoogleMapsAction $mapsService): GetElevationAction
 {
     app()->instance(GoogleMapsAction::class, $mapsService);

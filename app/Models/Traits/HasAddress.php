@@ -11,18 +11,10 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Modules\Geo\Enums\AddressItemEnum;
 use Modules\Geo\Models\Address;
-<<<<<<< HEAD
 use Webmozart\Assert\Assert;
 
 use function Safe\preg_replace;
 
-=======
-
-use function Safe\preg_replace;
-
-use Webmozart\Assert\Assert;
-
->>>>>>> laraxot/dev
 /**
  * Trait HasAddress.
  *
@@ -31,21 +23,12 @@ use Webmozart\Assert\Assert;
  * e offre metodi di utilità per la gestione degli indirizzi.
  *
  * @property Collection<int, Address> $addresses
-<<<<<<< HEAD
  * @property string|null $route
  * @property string|null $street_number
  * @property string|null $postal_code
  * @property string|null $city
  * @property string|null $province
  * @property string|int $id
-=======
- * @property string|null              $route
- * @property string|null              $street_number
- * @property string|null              $postal_code
- * @property string|null              $city
- * @property string|null              $province
- * @property string|int               $id
->>>>>>> laraxot/dev
  *
  * @phpstan-require-extends Model
  */
@@ -77,11 +60,7 @@ trait HasAddress
     public function primaryAddress(): ?Address
     {
         $res = $this->addresses()->where('is_primary', true)->first();
-<<<<<<< HEAD
         if ($res === null) {
-=======
-        if (null === $res) {
->>>>>>> laraxot/dev
             return $res;
         }
         Assert::isInstanceOf($res, Address::class);
@@ -101,11 +80,7 @@ trait HasAddress
 
     public function getFullAddressAttribute(?string $value): string
     {
-<<<<<<< HEAD
         if ($value !== null) {
-=======
-        if (null !== $value) {
->>>>>>> laraxot/dev
             return $value;
         }
         $address = sprintf(
@@ -126,21 +101,13 @@ trait HasAddress
             return $value;
         }
         $address = $this->address()->first();
-<<<<<<< HEAD
         if ($address === null) {
-=======
-        if (null === $address) {
->>>>>>> laraxot/dev
             return null;
         }
         Assert::isInstanceOf($address, Address::class);
 
         $locality = $address->getLocality();
-<<<<<<< HEAD
         if ($locality === null) {
-=======
-        if (null === $locality) {
->>>>>>> laraxot/dev
             return null;
         }
 
@@ -248,23 +215,14 @@ trait HasAddress
     /**
      * Aggiunge un nuovo indirizzo al modello.
      *
-<<<<<<< HEAD
      * @param  array<string, mixed>  $data
      * @param  bool  $setPrimary  Se impostare questo indirizzo come principale
-=======
-     * @param array<string, mixed> $data
-     * @param bool                 $setPrimary Se impostare questo indirizzo come principale
->>>>>>> laraxot/dev
      *
      * @phpstan-param array<string, mixed> $data
      */
     public function addAddress(array $data, bool $setPrimary = false): Address
     {
-<<<<<<< HEAD
         if ($setPrimary || $this->addresses()->count() === 0) {
-=======
-        if ($setPrimary || 0 === $this->addresses()->count()) {
->>>>>>> laraxot/dev
             $data['is_primary'] = true;
 
             if ($this->addresses()->count() > 0) {
@@ -278,11 +236,7 @@ trait HasAddress
     /**
      * Aggiorna l'indirizzo principale.
      *
-<<<<<<< HEAD
      * @param  array<string, mixed>  $data
-=======
-     * @param array<string, mixed> $data
->>>>>>> laraxot/dev
      *
      * @phpstan-param array<string, mixed> $data
      */
@@ -301,11 +255,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella città indicata (`locality`).
      *
-<<<<<<< HEAD
      * @param  Builder<static>  $query
-=======
-     * @param Builder<static> $query
->>>>>>> laraxot/dev
      *
      * @phpstan-param Builder<static> $query
      *
@@ -318,11 +268,7 @@ trait HasAddress
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< HEAD
              * @param  Builder<Address>  $q
-=======
-             * @param Builder<Address> $q
->>>>>>> laraxot/dev
              */
             function (Builder $q) use ($city): void {
                 $q->where('locality', $city);
@@ -333,11 +279,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella provincia (`administrative_area_level_3`).
      *
-<<<<<<< HEAD
      * @param  Builder<static>  $query
-=======
-     * @param Builder<static> $query
->>>>>>> laraxot/dev
      *
      * @phpstan-param Builder<static> $query
      *
@@ -350,11 +292,7 @@ trait HasAddress
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< HEAD
              * @param  Builder<Address>  $q
-=======
-             * @param Builder<Address> $q
->>>>>>> laraxot/dev
              */
             function (Builder $q) use ($province): void {
                 $q->where('administrative_area_level_3', $province);
@@ -365,11 +303,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella regione (`administrative_area_level_2`).
      *
-<<<<<<< HEAD
      * @param  Builder<static>  $query
-=======
-     * @param Builder<static> $query
->>>>>>> laraxot/dev
      *
      * @phpstan-param Builder<static> $query
      *
@@ -382,11 +316,7 @@ trait HasAddress
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< HEAD
              * @param  Builder<Address>  $q
-=======
-             * @param Builder<Address> $q
->>>>>>> laraxot/dev
              */
             function (Builder $q) use ($region): void {
                 $q->where('administrative_area_level_2', $region);
@@ -397,11 +327,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo con il CAP indicato.
      *
-<<<<<<< HEAD
      * @param  Builder<static>  $query
-=======
-     * @param Builder<static> $query
->>>>>>> laraxot/dev
      *
      * @phpstan-param Builder<static> $query
      *
@@ -414,11 +340,7 @@ trait HasAddress
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< HEAD
              * @param  Builder<Address>  $q
-=======
-             * @param Builder<Address> $q
->>>>>>> laraxot/dev
              */
             function (Builder $q) use ($postalCode): void {
                 $q->where('postal_code', $postalCode);
