@@ -13,6 +13,10 @@ uses(LightTestCase::class);
 it('can instantiate map picker', function () {
     $field = MapPicker::make('location');
 
+<<<<<<< HEAD
+=======
+    Assert::assertSame('location', $field->getName());
+>>>>>>> laraxot/dev
 });
 
 it('can set and get latitude and longitude field names', function () {

@@ -10,16 +10,34 @@ use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Filament\Widgets\GeoMapWidget;
 use Modules\Geo\Filament\Widgets\LatLngWidget;
 use Modules\Geo\Filament\Widgets\LocationWidget;
+<<<<<<< HEAD
 use PHPUnit\Framework\Assert;
 
 test('AddressField can be instantiated', function () {
     $field = AddressField::make('address');
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+test('AddressField can be instantiated', function () {
+    $field = AddressField::make('address');
+
+    Assert::assertSame(AddressField::class, (new \ReflectionClass($field))->getName());
+>>>>>>> laraxot/dev
 });
 
 test('MapPicker can be instantiated', function () {
     $field = MapPicker::make('map_picker')
         ->latitudeColumn('latitude')
         ->longitudeColumn('longitude');
+<<<<<<< HEAD
+=======
+
+    Assert::assertSame('map_picker', $field->getName());
+    Assert::assertSame('latitude', $field->getLatitudeColumn());
+    Assert::assertSame('longitude', $field->getLongitudeColumn());
+>>>>>>> laraxot/dev
 });
 
 test('LocationWidget can be instantiated', function () {
@@ -36,4 +54,9 @@ test('GeoMapWidget can be instantiated', function () {
 
 test('UpdateCoordinatesBulkAction can be instantiated', function () {
     $action = UpdateCoordinatesBulkAction::make('update_coordinates');
+<<<<<<< HEAD
+=======
+
+    Assert::assertSame('update_coordinates', $action->getName());
+>>>>>>> laraxot/dev
 });

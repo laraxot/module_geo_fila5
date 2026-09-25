@@ -17,6 +17,7 @@ class GeoNamesCapFactory extends Factory
 
     /**
      * Define the model's default state.
+<<<<<<< HEAD
      *
      * @return array<string, mixed>
      */
@@ -36,5 +37,11 @@ class GeoNamesCapFactory extends Factory
             'longitude' => $this->faker->longitude(6, 18),
             'accuracy' => $this->faker->numberBetween(1, 6),
         ];
+=======
+     */
+    public function definition(): array
+    {
+        return [];
+>>>>>>> laraxot/dev
     }
 }

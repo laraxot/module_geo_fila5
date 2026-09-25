@@ -25,7 +25,11 @@ class GetGeoMapDatasetCategoriesAction
 
             $category = $feature['properties']['p'] ?? $feature['properties']['category'] ?? null;
 
+<<<<<<< HEAD
             if (is_string($category) && $category !== '') {
+=======
+            if (is_string($category) && '' !== $category) {
+>>>>>>> laraxot/dev
                 $categories[] = $category;
             }
         }

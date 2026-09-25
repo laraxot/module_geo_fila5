@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Rules;
 
+<<<<<<< HEAD
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Translation\PotentiallyTranslatedString;
+=======
+use Illuminate\Contracts\Validation\ValidationRule;
+>>>>>>> laraxot/dev
 use Modules\Geo\Actions\FilterCoordinatesInRadiusAction;
 
 /**
@@ -14,16 +18,32 @@ use Modules\Geo\Actions\FilterCoordinatesInRadiusAction;
  */
 class FilterCoordinatesInRadius implements ValidationRule
 {
+<<<<<<< HEAD
+=======
+    private string $message = '';
+
+>>>>>>> laraxot/dev
     public function __construct(
         private readonly FilterCoordinatesInRadiusAction $filterAction,
         private readonly float $centerLatitude,
         private readonly float $centerLongitude,
         private readonly int $radius,
     ) {}
+<<<<<<< HEAD
+=======
+
+    public function validate(string $attribute, mixed $value, \Closure $fail): void
+    {
+        if (! $this->passes($attribute, $value)) {
+            $fail($this->message());
+        }
+    }
+>>>>>>> laraxot/dev
 
     /**
      * Determina se le coordinate passate sono all'interno del raggio specificato.
      *
+<<<<<<< HEAD
      * @param  string  $attribute  Nome dell'attributo
      * @param  mixed  $value  Valore da validare
      * @param  Closure(string, ?string=): PotentiallyTranslatedString  $fail
@@ -38,6 +58,21 @@ class FilterCoordinatesInRadius implements ValidationRule
 
         /** @var array<array{latitude: string, longitude: string}> $coordinates */
         $coordinates = array_map(static function (mixed $coordinate): array {
+=======
+     * @param  mixed  $_attribute  Nome dell'attributo
+     * @param  mixed  $value  Valore da validare
+     */
+    public function passes(mixed $_attribute, mixed $value): bool
+    {
+        if (! \is_array($value)) {
+            $this->message = 'Il valore deve essere un array di coordinate';
+
+            return false;
+        }
+
+        /** @var array<array{latitude: string, longitude: string}> $coordinates */
+        $coordinates = array_map(static function ($coordinate): array {
+>>>>>>> laraxot/dev
             if (! \is_array($coordinate)) {
                 return ['latitude' => '', 'longitude' => ''];
             }
@@ -58,9 +93,13 @@ class FilterCoordinatesInRadius implements ValidationRule
             $this->radius,
         );
 
+<<<<<<< HEAD
         if ($filteredCoordinates === []) {
             $fail($this->message());
         }
+=======
+        return \count($filteredCoordinates) > 0;
+>>>>>>> laraxot/dev
     }
 
     /**
@@ -68,6 +107,10 @@ class FilterCoordinatesInRadius implements ValidationRule
      */
     public function message(): string
     {
+<<<<<<< HEAD
         return 'Nessuna coordinata trovata nel raggio specificato';
+=======
+        return $this->message ?: 'Nessuna coordinata trovata nel raggio specificato';
+>>>>>>> laraxot/dev
     }
 }

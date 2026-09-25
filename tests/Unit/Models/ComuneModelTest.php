@@ -42,6 +42,11 @@ function comuneModelFixtures(): array
     ];
 }
 
+<<<<<<< HEAD
+=======
+uses(\Modules\Geo\Tests\TestCase::class);
+
+>>>>>>> laraxot/dev
 beforeEach(function (): void {
     /* @var \Modules\Geo\Tests\TestCase $this */
     File::put(

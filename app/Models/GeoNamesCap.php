@@ -5,19 +5,29 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+<<<<<<< HEAD
 use Illuminate\Support\Carbon;
+=======
+use Modules\Geo\Database\Factories\GeoNamesCapFactory;
+>>>>>>> laraxot/dev
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * Modules\Geo\Models\GeoNamesCap.
  *
+<<<<<<< HEAD
  * @property-read ProfileContract|null $creator
  * @property-read ProfileContract|null $updater
+=======
+ * @property ProfileContract|null $creator
+ * @property ProfileContract|null $updater
+>>>>>>> laraxot/dev
  *
  * @method static Builder<static>|GeoNamesCap newModelQuery()
  * @method static Builder<static>|GeoNamesCap newQuery()
  * @method static Builder<static>|GeoNamesCap query()
  *
+<<<<<<< HEAD
  * @property int $id
  * @property string|null $country_code Codice paese ISO (es. IT)
  * @property string|null $postal_code CAP / codice postale
@@ -57,6 +67,11 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|GeoNamesCap wherePostalCode($value)
  * @method static Builder<static>|GeoNamesCap whereUpdatedAt($value)
  * @method static Builder<static>|GeoNamesCap whereUpdatedBy($value)
+=======
+ * @property ProfileContract|null $deleter
+ *
+ * @method static GeoNamesCapFactory factory($count = null, $state = [])
+>>>>>>> laraxot/dev
  *
  * @mixin \Eloquent
  */

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Rimando a scrutinizer.md"
 description: "Documento unificato: il contenuto canonico vive in scrutinizer.md."
@@ -8,3 +9,7 @@ tags: [merge, duplicato, case-only]
 # Documento unificato
 
 Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [scrutinizer.md](./scrutinizer.md).
+=======
+https://scrutinizer-ci.com/
+
+>>>>>>> laraxot/dev

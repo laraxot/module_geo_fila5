@@ -72,6 +72,7 @@ https://www.igismap.com/top-10-map-direction-api-routing-libraries-navigation-fr
 
 
 
+<<<<<<< HEAD
 
 
 ## Contenuto originale (txt)
@@ -83,3 +84,5 @@ canonical: ../../../Themes/docs/shared-components/tips_and_links.txt
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/tips_and_links.txt
+=======
+>>>>>>> laraxot/dev

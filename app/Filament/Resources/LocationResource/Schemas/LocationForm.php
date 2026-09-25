@@ -6,6 +6,7 @@ namespace Modules\Geo\Filament\Resources\LocationResource\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
+<<<<<<< HEAD
 use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
 
 /**
@@ -19,10 +20,20 @@ class LocationForm extends XotBaseResourceForm
 {
     /**
      * @return array<string, Component>
+=======
+use Filament\Schemas\Components\Section;
+use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
+
+class LocationForm extends XotBaseResourceForm
+{
+    /**
+     * @return array<int|string, Component>
+>>>>>>> laraxot/dev
      */
     public function getFormSchema(): array
     {
         return [
+<<<<<<< HEAD
             'name' => TextInput::make('name')->required()->maxLength(255),
             'latitude' => TextInput::make('latitude')->required()->numeric(),
             'longitude' => TextInput::make('longitude')->required()->numeric(),
@@ -31,6 +42,12 @@ class LocationForm extends XotBaseResourceForm
             'state' => TextInput::make('state')->maxLength(255),
             'zip' => TextInput::make('zip')->maxLength(255),
             'formatted_address' => TextInput::make('formatted_address')->maxLength(1024),
+=======
+            'main' => Section::make()
+                ->schema([
+                    TextInput::make('name'),
+                ]),
+>>>>>>> laraxot/dev
         ];
     }
 }

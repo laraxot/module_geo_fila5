@@ -6,8 +6,16 @@ namespace Modules\Geo\Tests\Unit\Actions;
 
 use Modules\Geo\Actions\Distance\CalculateGeoDistanceAction;
 use Modules\Geo\Actions\GoogleMaps\GoogleMapsHttpAction;
+<<<<<<< HEAD
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> laraxot/dev
 test('CalculateGeoDistanceAction can be resolved', function (): void {
     $action = app(CalculateGeoDistanceAction::class);
 

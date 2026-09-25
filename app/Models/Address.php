@@ -7,9 +7,15 @@ namespace Modules\Geo\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+=======
+use Illuminate\Support\Carbon;
+use Modules\Geo\Database\Factories\AddressFactory;
+>>>>>>> laraxot/dev
 use Modules\Geo\Enums\AddressTypeEnum;
+use Modules\Geo\Models\Traits\HasPlaceTrait;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
@@ -17,6 +23,7 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * Implementazione di Schema.org PostalAddress
  *
+<<<<<<< HEAD
  * @property int $id
  * @property Carbon|null $deleted_at
  * @property string|null $model_type
@@ -45,10 +52,45 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property-read string $street_address
  * @property-read Model $model
  * @property-read ProfileContract|null $updater
+=======
+ * @property int                          $id
+ * @property string|null                  $model_type
+ * @property string|null                  $model_id
+ * @property string|null                  $name                        Nome identificativo dell'indirizzo
+ * @property string|null                  $description                 Descrizione opzionale
+ * @property string|null                  $route                       Via/Piazza
+ * @property string|null                  $street_number               Numero civico
+ * @property string|null                  $locality                    Comune/Città
+ * @property string|null                  $administrative_area_level_3 Provincia
+ * @property string|null                  $administrative_area_level_2 Regione
+ * @property string|null                  $administrative_area_level_1 Stato/Paese
+ * @property string|null                  $country                     Codice paese ISO
+ * @property string|null                  $postal_code                 CAP
+ * @property string|null                  $formatted_address
+ * @property string|null                  $place_id                    ID Google Places
+ * @property float|null                   $latitude
+ * @property float|null                   $longitude
+ * @property AddressTypeEnum|null         $type                        Tipo indirizzo (home, work, etc.)
+ * @property bool                         $is_primary
+ * @property array<array-key, mixed>|null $extra_data
+ * @property Carbon|null                  $created_at
+ * @property Carbon|null                  $updated_at
+ * @property string|null                  $updated_by
+ * @property string|null                  $created_by
+ * @property string|null                  $deleted_at
+ * @property string|null                  $deleted_by
+ * @property Model|\Eloquent|null         $addressable
+ * @property ProfileContract|null         $creator
+ * @property string                       $full_address
+ * @property string                       $street_address
+ * @property Model|\Eloquent|null         $model
+ * @property ProfileContract|null         $updater
+>>>>>>> laraxot/dev
  *
  * @method static Builder<static>|Address nearby(float $latitude, float $longitude, float $radiusKm = 10)
  * @method static Builder<static>|Address newModelQuery()
  * @method static Builder<static>|Address newQuery()
+<<<<<<< HEAD
  * @method static Builder<static>|Address ofType(\Modules\Geo\Enums\AddressTypeEnum|string $type)
  * @method static Builder<static>|Address primary()
  * @method static Builder<static>|Address query()
@@ -60,6 +102,11 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string|null $deleted_by
  *
  * @method static Builder<static>|Address onlyTrashed()
+=======
+ * @method static Builder<static>|Address ofType($type)
+ * @method static Builder<static>|Address primary()
+ * @method static Builder<static>|Address query()
+>>>>>>> laraxot/dev
  * @method static Builder<static>|Address whereAdministrativeAreaLevel1($value)
  * @method static Builder<static>|Address whereAdministrativeAreaLevel2($value)
  * @method static Builder<static>|Address whereAdministrativeAreaLevel3($value)
@@ -79,7 +126,10 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Address whereModelId($value)
  * @method static Builder<static>|Address whereModelType($value)
  * @method static Builder<static>|Address whereName($value)
+<<<<<<< HEAD
  * @method static Builder<static>|Address wherePhone($value)
+=======
+>>>>>>> laraxot/dev
  * @method static Builder<static>|Address wherePlaceId($value)
  * @method static Builder<static>|Address wherePostalCode($value)
  * @method static Builder<static>|Address whereRoute($value)
@@ -87,14 +137,29 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Address whereType($value)
  * @method static Builder<static>|Address whereUpdatedAt($value)
  * @method static Builder<static>|Address whereUpdatedBy($value)
+<<<<<<< HEAD
  * @method static Builder<static>|Address withTrashed(bool $withTrashed = true)
  * @method static Builder<static>|Address withoutTrashed()
+=======
+ *
+ * @property ProfileContract|null $deleter
+ *
+ * @method static AddressFactory factory($count = null, $state = [])
+ *
+ * @property string|null $phone
+ *
+ * @method static Builder<static>|Address wherePhone($value)
+>>>>>>> laraxot/dev
  *
  * @mixin \Eloquent
  */
 class Address extends BaseModel
 {
+<<<<<<< HEAD
     use SoftDeletes;
+=======
+    use HasPlaceTrait;
+>>>>>>> laraxot/dev
 
     /** @var list<string> */
     protected $fillable = [
@@ -179,7 +244,11 @@ class Address extends BaseModel
             ->orderBy('regione->nome')
             ->where('regione->codice', $this->administrative_area_level_1)
             ->get()
+<<<<<<< HEAD
             ->map(function (mixed $item) {
+=======
+            ->map(function ($item) {
+>>>>>>> laraxot/dev
                 $regione = $item->regione;
                 if (! is_array($regione) || ! isset($regione['codice'], $regione['nome'])) {
                     return;
@@ -202,7 +271,11 @@ class Address extends BaseModel
             ->orderBy('provincia->nome')
             ->where('provincia->codice', $this->administrative_area_level_2)
             ->get()
+<<<<<<< HEAD
             ->map(function (mixed $item): array {
+=======
+            ->map(function ($item): array {
+>>>>>>> laraxot/dev
                 $provincia = is_array($item->provincia ?? null) ? $item->provincia : [];
 
                 return [
@@ -223,7 +296,11 @@ class Address extends BaseModel
             ->distinct()
             ->first();
 
+<<<<<<< HEAD
         if ($comune === null) {
+=======
+        if (null === $comune) {
+>>>>>>> laraxot/dev
             return null;
         }
 
@@ -236,20 +313,32 @@ class Address extends BaseModel
     public function getFullAddressAttribute(): string
     {
         $parts = array_filter([
+<<<<<<< HEAD
             is_string($this->route) && is_string($this->street_number) ? $this->route.($this->street_number !== '' ? ' '.$this->street_number : '') : null,
+=======
+            is_string($this->route) && is_string($this->street_number) ? $this->route.('' !== $this->street_number ? ' '.$this->street_number : '') : null,
+>>>>>>> laraxot/dev
             $this->locality,
             $this->administrative_area_level_3, // Provincia
             $this->administrative_area_level_2, // Regione
             $this->postal_code,
             $this->country,
+<<<<<<< HEAD
         ], function (mixed $part): bool {
+=======
+        ], function ($part): bool {
+>>>>>>> laraxot/dev
             // PHPStan L10: verifica prima il tipo, poi se è vuoto
             if (! \is_string($part)) {
                 return false;
             }
 
             // Dopo is_string(), $part è string, quindi verifica se è vuoto
+<<<<<<< HEAD
             return $part !== '';
+=======
+            return '' !== $part;
+>>>>>>> laraxot/dev
         });
 
         return implode(', ', $parts);
@@ -289,7 +378,11 @@ class Address extends BaseModel
     public function getFormattedAddressAttribute(?string $value): ?string
     {
         // PHPStan L10: $value è già ?string, dopo !== null è string
+<<<<<<< HEAD
         if ($value !== null) {
+=======
+        if (null !== $value) {
+>>>>>>> laraxot/dev
             return $value;
         }
 
@@ -300,7 +393,11 @@ class Address extends BaseModel
             $route = $this->route;
             $streetNumber = $this->street_number;
             $streetAddress = is_string($route) && is_string($streetNumber) ? trim($route.' '.$streetNumber) : '';
+<<<<<<< HEAD
             if ($streetAddress !== '') {
+=======
+            if ('' !== $streetAddress) {
+>>>>>>> laraxot/dev
                 $parts[] = $streetAddress;
             }
         }
@@ -391,7 +488,12 @@ class Address extends BaseModel
      * Scope per cercare indirizzi nelle vicinanze.
      */
     /**
+<<<<<<< HEAD
      * @param  Builder<static>  $query
+=======
+     * @param Builder<static> $query
+     *
+>>>>>>> laraxot/dev
      * @return Builder<static>
      */
     public function scopeNearby(Builder $query, float $latitude, float $longitude, float $radiusKm = 10): Builder
@@ -409,7 +511,12 @@ class Address extends BaseModel
      * Scope a query to only include primary addresses.
      */
     /**
+<<<<<<< HEAD
      * @param  Builder<static>  $query
+=======
+     * @param Builder<static> $query
+     *
+>>>>>>> laraxot/dev
      * @return Builder<static>
      */
     public function scopePrimary(Builder $query): Builder
@@ -421,7 +528,12 @@ class Address extends BaseModel
      * Scope a query to filter by address type.
      */
     /**
+<<<<<<< HEAD
      * @param  Builder<static>  $query
+=======
+     * @param Builder<static> $query
+     *
+>>>>>>> laraxot/dev
      * @return Builder<static>
      */
     public function scopeOfType(Builder $query, string|AddressTypeEnum $type): Builder
@@ -434,6 +546,10 @@ class Address extends BaseModel
      *
      * @return array<string, string>
      */
+<<<<<<< HEAD
+=======
+    #[\Override]
+>>>>>>> laraxot/dev
     protected function casts(): array
     {
         return [

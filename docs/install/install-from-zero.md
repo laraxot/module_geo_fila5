@@ -111,6 +111,10 @@ edit file composer.json
         },
         "files": [
             "Modules/Xot/helpers/Helper.php"
+<<<<<<< HEAD
+=======
+            "Modules/Xot/Helpers/Helper.php"
+>>>>>>> laraxot/dev
         ]
     },
     "autoload-dev": {

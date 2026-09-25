@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Auto-generated forbidden paths — do not edit manually
 # Reason: root cleanup policy (see docs/wiki/rules/root-cleanup-policy.md)
 
@@ -26,11 +27,18 @@ tests/.claude-audit
 /vendor
 /node_modules/
 /node_modules
+=======
+# Laraxot Geo module ignore rules
+
+# Dependencies and package manager artifacts
+vendor/
+node_modules/
+composer.lock
+>>>>>>> laraxot/dev
 package-lock.json
 yarn.lock
-composer.lock
-yarn-error.log
 npm-debug.log
+<<<<<<< HEAD
 # BUILD & COMPILED FILES
 /build
 /build/
@@ -38,8 +46,16 @@ build/
 dist/
 cache/
 # CACHE & TEMPORARY FILES
+=======
+yarn-error.log
+
+# Build output and caches
+build/
+dist/
+cache/
+docs/cache/
+>>>>>>> laraxot/dev
 *.cache
-*.lock
 *.phar
 *.jar
 *.tmp
@@ -50,13 +66,23 @@ cache/
 v8-compile-cache-*
 .php-cs-fixer.cache
 .phpunit.result.cache
+<<<<<<< HEAD
 # LOG FILES
+=======
+
+# Logs
+>>>>>>> laraxot/dev
 *.log
 error_log
 npm-debug.log*
 yarn-error.log*
 lerna-debug.log*
+<<<<<<< HEAD
 # LARAVEL SPECIFIC
+=======
+
+# Laravel runtime and local environment
+>>>>>>> laraxot/dev
 bootstrap/compiled.php
 app/storage/
 public/storage
@@ -67,16 +93,24 @@ storage/*.key
 .env
 .env.*
 !.env.example
+<<<<<<< HEAD
 # ENVIRONMENT & CONFIGURATION
+=======
+>>>>>>> laraxot/dev
 Homestead.yaml
 Homestead.json
 /.vagrant
 /.idea
 .phpintel
+<<<<<<< HEAD
 # GIT SPECIFIC
+=======
+
+# Git, merge and backup artifacts
+>>>>>>> laraxot/dev
 .git-rewrite/
-.git-rewrite
 .git-blame-ignore-revs
+<<<<<<< HEAD
 # SYSTEM FILES
 .DS_Store
 .DS_Store?
@@ -86,6 +120,15 @@ Homestead.json
 ehthumbs.db
 Thumbs.db
 # BACKUP FILES
+=======
+*~HEAD
+*~BASE
+*~LOCAL
+*~REMOTE
+*~head
+*.orig
+*.rej
+>>>>>>> laraxot/dev
 *.old
 *.old1
 *.old2
@@ -94,19 +137,45 @@ Thumbs.db
 *.bak
 *.bakcup
 *.new
+<<<<<<< HEAD
 # DEVELOPMENT TOOLS
+=======
+
+# Operating system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor and assistant tooling
+>>>>>>> laraxot/dev
 .windsurf/
-.cursor/
-.phpstorm.meta.php
-# DOCUMENTATION CACHE
-# LANGUAGE FILES
+.vscode/
+.devcontainer/
+.claude-flow/
+agentdb.rvf
+
+# Documentation, generated language files and legacy directories
 resources/lang/
+<<<<<<< HEAD
 # OLD DIRECTORIES (LEGACY CLEANUP)
+=======
+lang/lang/
+_docs/
+docs/phpstan/
+docs/cache/
+docs/archive/
+**/docs/archive/
+>>>>>>> laraxot/dev
 resources/views/Components_old/
 database/Migrations_old/
 database/Seeders_old/
 database/Factories_old/
 database_old/
+<<<<<<< HEAD
 # MODULE SPECIFIC - GEO
 # File di configurazione locale
 config/local.php
@@ -154,3 +223,44 @@ tests/AuditCoverage/
 phpinsights.php
 rector.php
 test-results/
+=======
+
+# Geo module temporary data and local configuration
+config/local.php
+config/development.php
+geo/temp/
+geo/maps/temp/
+geo/data/temp/
+storage/geo/
+storage/maps/
+geo_test_data.json
+test_geo_data.sql
+
+# Generated test artifacts
+/tests/AuditCoverage/
+test-results
+
+# Project-specific files
+*.fila2
+laravel
+public_html
+.rector.php
+.phpinsights.php
+
+# Laraxot — root quality tool configs
+
+# Root agent tooling and PHP quality configuration
+/.agents/
+/.codex/
+/.cursor/
+/.opencode/
+/.qwen/
+/rector.php
+/phpinsights.php
+/.php-cs-fixer.php
+/.php-cs-fixer.dist.php
+
+# Generated Claude audit coverage scaffold (never commit)
+/audit-coverage/
+*.lock
+>>>>>>> laraxot/dev
