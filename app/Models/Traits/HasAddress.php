@@ -11,9 +11,10 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Modules\Geo\Enums\AddressItemEnum;
 use Modules\Geo\Models\Address;
-use Webmozart\Assert\Assert;
 
 use function Safe\preg_replace;
+
+use Webmozart\Assert\Assert;
 
 /**
  * Trait HasAddress.
@@ -23,12 +24,12 @@ use function Safe\preg_replace;
  * e offre metodi di utilità per la gestione degli indirizzi.
  *
  * @property Collection<int, Address> $addresses
- * @property string|null $route
- * @property string|null $street_number
- * @property string|null $postal_code
- * @property string|null $city
- * @property string|null $province
- * @property string|int $id
+ * @property string|null              $route
+ * @property string|null              $street_number
+ * @property string|null              $postal_code
+ * @property string|null              $city
+ * @property string|null              $province
+ * @property string|int               $id
  *
  * @phpstan-require-extends Model
  */
@@ -60,7 +61,7 @@ trait HasAddress
     public function primaryAddress(): ?Address
     {
         $res = $this->addresses()->where('is_primary', true)->first();
-        if ($res === null) {
+        if (null === $res) {
             return $res;
         }
         Assert::isInstanceOf($res, Address::class);
@@ -80,7 +81,7 @@ trait HasAddress
 
     public function getFullAddressAttribute(?string $value): string
     {
-        if ($value !== null) {
+        if (null !== $value) {
             return $value;
         }
         $address = sprintf(
@@ -101,13 +102,13 @@ trait HasAddress
             return $value;
         }
         $address = $this->address()->first();
-        if ($address === null) {
+        if (null === $address) {
             return null;
         }
         Assert::isInstanceOf($address, Address::class);
 
         $locality = $address->getLocality();
-        if ($locality === null) {
+        if (null === $locality) {
             return null;
         }
 
@@ -215,14 +216,14 @@ trait HasAddress
     /**
      * Aggiunge un nuovo indirizzo al modello.
      *
-     * @param  array<string, mixed>  $data
-     * @param  bool  $setPrimary  Se impostare questo indirizzo come principale
+     * @param array<string, mixed> $data
+     * @param bool                 $setPrimary Se impostare questo indirizzo come principale
      *
      * @phpstan-param array<string, mixed> $data
      */
     public function addAddress(array $data, bool $setPrimary = false): Address
     {
-        if ($setPrimary || $this->addresses()->count() === 0) {
+        if ($setPrimary || 0 === $this->addresses()->count()) {
             $data['is_primary'] = true;
 
             if ($this->addresses()->count() > 0) {
@@ -236,7 +237,7 @@ trait HasAddress
     /**
      * Aggiorna l'indirizzo principale.
      *
-     * @param  array<string, mixed>  $data
+     * @param array<string, mixed> $data
      *
      * @phpstan-param array<string, mixed> $data
      */
@@ -255,7 +256,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella città indicata (`locality`).
      *
-     * @param  Builder<static>  $query
+     * @param Builder<static> $query
      *
      * @phpstan-param Builder<static> $query
      *
@@ -268,7 +269,7 @@ trait HasAddress
         return $query->whereHas(
             'addresses',
             /**
-             * @param  Builder<Address>  $q
+             * @param Builder<Address> $q
              */
             function (Builder $q) use ($city): void {
                 $q->where('locality', $city);
@@ -279,7 +280,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella provincia (`administrative_area_level_3`).
      *
-     * @param  Builder<static>  $query
+     * @param Builder<static> $query
      *
      * @phpstan-param Builder<static> $query
      *
@@ -292,7 +293,7 @@ trait HasAddress
         return $query->whereHas(
             'addresses',
             /**
-             * @param  Builder<Address>  $q
+             * @param Builder<Address> $q
              */
             function (Builder $q) use ($province): void {
                 $q->where('administrative_area_level_3', $province);
@@ -303,7 +304,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella regione (`administrative_area_level_2`).
      *
-     * @param  Builder<static>  $query
+     * @param Builder<static> $query
      *
      * @phpstan-param Builder<static> $query
      *
@@ -316,7 +317,7 @@ trait HasAddress
         return $query->whereHas(
             'addresses',
             /**
-             * @param  Builder<Address>  $q
+             * @param Builder<Address> $q
              */
             function (Builder $q) use ($region): void {
                 $q->where('administrative_area_level_2', $region);
@@ -327,7 +328,7 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo con il CAP indicato.
      *
-     * @param  Builder<static>  $query
+     * @param Builder<static> $query
      *
      * @phpstan-param Builder<static> $query
      *
@@ -340,7 +341,7 @@ trait HasAddress
         return $query->whereHas(
             'addresses',
             /**
-             * @param  Builder<Address>  $q
+             * @param Builder<Address> $q
              */
             function (Builder $q) use ($postalCode): void {
                 $q->where('postal_code', $postalCode);

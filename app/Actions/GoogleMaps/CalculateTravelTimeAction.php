@@ -119,12 +119,12 @@ class CalculateTravelTimeAction
          * } $data */
         $data = json_decode($response, true);
 
-        if (($data['status']) !== 'OK') {
+        if ('OK' !== $data['status']) {
             return TravelTimeData::error($data['status']);
         }
 
         $element = $data['rows'][0]['elements'][0];
-        if (! $element || ($element['status']) !== 'OK') {
+        if (! $element || 'OK' !== $element['status']) {
             return TravelTimeData::error($element['status']);
         }
 

@@ -65,7 +65,7 @@ class TravelTimeData extends Data
         }
 
         $element = $response['rows'][0]['elements'][0];
-        if (! $element || $element['status'] !== 'OK') {
+        if (! $element || 'OK' !== $element['status']) {
             return self::error($element['status']);
         }
 

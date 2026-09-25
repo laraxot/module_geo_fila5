@@ -13,9 +13,6 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
-/**
- * @param CalculateDistanceMatrixQueueStub $matrixStub
- */
 function makeFilterCoordinatesInRadiusAction(CalculateDistanceMatrixQueueStub $matrixStub): FilterCoordinatesInRadiusAction
 {
     app()->instance(CalculateDistanceMatrixAction::class, $matrixStub);
