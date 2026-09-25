@@ -1,37 +1,20 @@
-# ==============================================
-# LARAXOT MODULE GEO - .GITIGNORE
-# ==============================================
-# Modulo Geo Laraxot - Template standardizzato
-# Ultimo aggiornamento: 2025-01-31
-# ==============================================
+# Laraxot Geo module ignore rules
 
-# ==============================================
-# DEPENDENCIES & PACKAGES
-# ==============================================
-/vendor/
-/vendor
-/node_modules/
-/node_modules
+# Dependencies and package manager artifacts
+vendor/
+node_modules/
+composer.lock
 package-lock.json
 yarn.lock
-composer.lock
-yarn-error.log
 npm-debug.log
+yarn-error.log
 
-# ==============================================
-# BUILD & COMPILED FILES
-# ==============================================
-/build
-/build/
+# Build output and caches
 build/
 dist/
 cache/
-
-# ==============================================
-# CACHE & TEMPORARY FILES
-# ==============================================
+docs/cache/
 *.cache
-*.lock
 *.phar
 *.jar
 *.tmp
@@ -43,18 +26,14 @@ v8-compile-cache-*
 .php-cs-fixer.cache
 .phpunit.result.cache
 
-# ==============================================
-# LOG FILES
-# ==============================================
+# Logs
 *.log
 error_log
 npm-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# ==============================================
-# LARAVEL SPECIFIC
-# ==============================================
+# Laravel runtime and local environment
 bootstrap/compiled.php
 app/storage/
 public/storage
@@ -65,37 +44,22 @@ storage/*.key
 .env
 .env.*
 !.env.example
-
-# ==============================================
-# ENVIRONMENT & CONFIGURATION
-# ==============================================
 Homestead.yaml
 Homestead.json
 /.vagrant
 /.idea
 .phpintel
 
-# ==============================================
-# GIT SPECIFIC
-# ==============================================
+# Git, merge and backup artifacts
 .git-rewrite/
-.git-rewrite
 .git-blame-ignore-revs
-
-# ==============================================
-# SYSTEM FILES
-# ==============================================
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# ==============================================
-# BACKUP FILES
-# ==============================================
+*~HEAD
+*~BASE
+*~LOCAL
+*~REMOTE
+*~head
+*.orig
+*.rej
 *.old
 *.old1
 *.old2
@@ -105,79 +69,71 @@ Thumbs.db
 *.bakcup
 *.new
 
-# ==============================================
-# DEVELOPMENT TOOLS
-# ==============================================
+# Operating system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor and assistant tooling
 .windsurf/
-.cursor/
-.phpstorm.meta.php
+.vscode/
+.devcontainer/
+.claude-flow/
+agentdb.rvf
 
-# ==============================================
-# DOCUMENTATION CACHE
-# ==============================================
-
-# ==============================================
-# LANGUAGE FILES
-# ==============================================
+# Documentation, generated language files and legacy directories
 resources/lang/
-
-# ==============================================
-# OLD DIRECTORIES (LEGACY CLEANUP)
-# ==============================================
+lang/lang/
+_docs/
+docs/phpstan/
+docs/cache/
+docs/archive/
+**/docs/archive/
 resources/views/Components_old/
 database/Migrations_old/
 database/Seeders_old/
 database/Factories_old/
 database_old/
 
-# Test artifacts
-/tests/AuditCoverage/
-
-# ==============================================
-# MODULE SPECIFIC - GEO
-# ==============================================
-# File di configurazione locale
+# Geo module temporary data and local configuration
 config/local.php
 config/development.php
-
-# Dati geografici temporanei
 geo/temp/
 geo/maps/temp/
 geo/data/temp/
-
-# Cache geografica
 storage/geo/
 storage/maps/
-
-# File di test geografici
 geo_test_data.json
 test_geo_data.sql
 
-# ==============================================
-# END OF GEO .GITIGNORE
-# ==============================================
+# Generated test artifacts
+/tests/AuditCoverage/
+test-results
 
-# 🚫 File specifici del progetto
+# Project-specific files
 *.fila2
 laravel
 public_html
-lang/lang/
-_docs/
-_docs/
+.rector.php
+.phpinsights.php
 
-# Second brain: no-docs-archive (wiki) — non tracciare albero legacy docs/archive/
-**/docs/archive/
-# Copie residue da merge/rebase o editor (mai committare — es. `.agent~HEAD`, `*.md~head`)
-*~HEAD
-*~BASE
-*~LOCAL
-*~REMOTE
-*.orig
-*.rej
-*~head
+# Laraxot — root quality tool configs
 
-agentdb.rvf
-.claude-flow/
-test-results
-.vscode/
-.devcontainer/
+# Root agent tooling and PHP quality configuration
+/.agents/
+/.codex/
+/.cursor/
+/.opencode/
+/.qwen/
+/rector.php
+/phpinsights.php
+/.php-cs-fixer.php
+/.php-cs-fixer.dist.php
+
+# Generated Claude audit coverage scaffold (never commit)
+/audit-coverage/
+*.lock
