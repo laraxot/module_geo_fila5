@@ -94,3 +94,7 @@ related:
 **Prova:** `cd laravel && ./vendor/bin/phpstan analyse Modules` -> 0 errori su 892 file con `phpstan.neon` corrente.
 
 **Insight collegato:** durante il rilancio una classe nuova (`GdprConsentForm`) ha richiesto `XotBaseSchemaWidget`, gia referenziata anche da Lang ma assente in Xot. La base vuota sopra `XotBaseWidget` mantiene DRY il contratto per widget schema-based.
+
+## 2026-09-25 — Generics Eloquent nei trait riusabili
+
+Per le relazioni Eloquent dichiarate da un trait riusabile, annotare il declaring model come `$this` (`MorphMany<Address, $this>` / `MorphOne<Address, $this>`). `self::class` è una stringa e non soddisfa il template model; `static` non corrisponde al tipo `$this` inferito, non covariante.
