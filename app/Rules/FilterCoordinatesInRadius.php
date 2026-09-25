@@ -43,23 +43,19 @@ class FilterCoordinatesInRadius implements ValidationRule
         }
 
         /** @var array<array{latitude: string, longitude: string}> $coordinates */
-        $coordinates = [];
-
-        foreach ($value as $key => $coordinate) {
+        $coordinates = array_map(static function ($coordinate): array {
             if (! \is_array($coordinate)) {
-                $coordinates[$key] = ['latitude' => '', 'longitude' => ''];
-
-                continue;
+                return ['latitude' => '', 'longitude' => ''];
             }
 
             $latitude = $coordinate['latitude'] ?? null;
             $longitude = $coordinate['longitude'] ?? null;
 
-            $coordinates[$key] = [
+            return [
                 'latitude' => \is_scalar($latitude) ? ((string) $latitude) : '',
                 'longitude' => \is_scalar($longitude) ? ((string) $longitude) : '',
             ];
-        }
+        }, $value);
 
         $filteredCoordinates = $this->filterAction->execute(
             $this->centerLatitude,

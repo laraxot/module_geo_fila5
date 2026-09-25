@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
 use Modules\Geo\Contracts\HasGeolocation;
 use Modules\Geo\Database\Factories\PlaceFactory;
+use Modules\Geo\Models\Traits\GeoTrait;
 use Modules\Xot\Contracts\ProfileContract;
 
 use function Safe\json_encode;
@@ -127,6 +128,8 @@ use function Safe\json_encode;
  */
 class Place extends BaseModel implements HasGeolocation
 {
+    use GeoTrait;
+
     /**
      * List of address components used in the application.
      *
@@ -183,10 +186,6 @@ class Place extends BaseModel implements HasGeolocation
      * Get the linked model.
      */
     /**
-
-     *
-
-
      *
      * @return MorphTo<Model, $this>
      */
@@ -199,10 +198,6 @@ class Place extends BaseModel implements HasGeolocation
      * Get the place type.
      */
     /**
-
-     *
-
-
      *
      * @return BelongsTo<PlaceType, $this>
      */
@@ -215,10 +210,6 @@ class Place extends BaseModel implements HasGeolocation
      * Get the address.
      */
     /**
-
-     *
-
-
      *
      * @return BelongsTo<Address, $this>
      */

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
+use Webmozart\Assert\Assert;
 
 /**
  * Trait HasAddresses.
@@ -17,42 +18,55 @@ use Modules\Geo\Models\Address;
  * Questo trait fornisce funzionalità per gestire indirizzi multipli su qualsiasi modello.
  *
  * @property int|string $id
+ * @property Collection<int, Address> $addresses
  *
  * @phpstan-require-extends Model
  */
 trait HasAddresses
 {
-    /** @return MorphMany<Address, $this> */
+    /**
+     * @phpstan-return MorphMany<Address, self::class>
+     */
     public function addresses(): MorphMany
     {
         return $this->morphMany(Address::class, 'model');
     }
 
-    /** @return MorphOne<Address, $this> */
+    /**
+     * @phpstan-return MorphOne<Address, self::class>
+     */
     public function primaryAddress(): MorphOne
     {
         return $this->morphOne(Address::class, 'model')->where('is_primary', true);
     }
 
-    /** @return MorphOne<Address, $this> */
+    /**
+     * @phpstan-return MorphOne<Address, self::class>
+     */
     public function homeAddress(): MorphOne
     {
         return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::HOME->value);
     }
 
-    /** @return MorphOne<Address, $this> */
+    /**
+     * @phpstan-return MorphOne<Address, static>
+     */
     public function workAddress(): MorphOne
     {
         return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::WORK->value);
     }
 
-    /** @return MorphOne<Address, $this> */
+    /**
+     * @phpstan-return MorphOne<Address, static>
+     */
     public function billingAddress(): MorphOne
     {
         return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::BILLING->value);
     }
 
-    /** @return MorphOne<Address, $this> */
+    /**
+     * @phpstan-return MorphOne<Address, static>
+     */
     public function shippingAddress(): MorphOne
     {
         return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::SHIPPING->value);
@@ -80,6 +94,7 @@ trait HasAddresses
      * Aggiunge un nuovo indirizzo.
      *
      * @param array<string, mixed> $data
+     * @phpstan-return Address
      */
     public function addAddress(array $data, bool $isPrimary = false): Address
     {
@@ -91,10 +106,15 @@ trait HasAddresses
         // Crea il nuovo indirizzo
         $data['is_primary'] = $isPrimary;
 
-        return $this->addresses()->create($data);
+        $address = $this->addresses()->create($data);
+        Assert::isInstanceOf($address, Address::class);
+
+        return $address;
     }
 
-    /** @return Collection<int, Address> */
+    /**
+     * @phpstan-return Collection<int, Address>
+     */
     public function getAddressesByType(AddressTypeEnum|string $type): Collection
     {
         $typeValue = $type instanceof AddressTypeEnum ? $type->value : $type;

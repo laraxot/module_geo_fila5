@@ -38,6 +38,7 @@ trait HasAddress
      * Ottiene gli indirizzi associati al modello.
      *
      * @return MorphMany<Address, $this>
+     * @phpstan-return MorphMany<Address, $this>
      */
     public function addresses(): MorphMany
     {
@@ -48,6 +49,7 @@ trait HasAddress
      * Ottiene indirizzo associato al modello.
      *
      * @return MorphOne<Address, $this>
+     * @phpstan-return MorphOne<Address, $this>
      */
     public function address(): MorphOne
     {
@@ -204,21 +206,22 @@ trait HasAddress
      * Ottiene gli indirizzi di un determinato tipo.
      *
      * @return Collection<int, Address>
-     *
      * @phpstan-return Collection<int, Address>
      */
     public function getAddressesByType(string $type): Collection
     {
-        return $this->addresses()->where('type', $type)->get();
+        /** @var Collection<int, Address> $addresses */
+        $addresses = $this->addresses()->where('type', $type)->get();
+
+        return $addresses;
     }
 
     /**
      * Aggiunge un nuovo indirizzo al modello.
      *
      * @param  array<string, mixed>  $data
-     * @param  bool  $setPrimary  Se impostare questo indirizzo come principale
-     *
      * @phpstan-param array<string, mixed> $data
+     * @param  bool  $setPrimary  Se impostare questo indirizzo come principale
      */
     public function addAddress(array $data, bool $setPrimary = false): Address
     {
@@ -230,14 +233,16 @@ trait HasAddress
             }
         }
 
-        return $this->addresses()->create($data);
+        /** @var Address $address */
+        $address = $this->addresses()->create($data);
+
+        return $address;
     }
 
     /**
      * Aggiorna l'indirizzo principale.
      *
      * @param  array<string, mixed>  $data
-     *
      * @phpstan-param array<string, mixed> $data
      */
     public function updatePrimaryAddress(array $data): ?Address
@@ -256,11 +261,8 @@ trait HasAddress
      * Scope: modelli con almeno un indirizzo nella città indicata (`locality`).
      *
      * @param  Builder<static>  $query
-     *
-     * @phpstan-param Builder<static> $query
-     *
      * @return Builder<static>
-     *
+     * @phpstan-param Builder<static> $query
      * @phpstan-return Builder<static>
      */
     public function scopeInCity(Builder $query, string $city): Builder
@@ -280,11 +282,8 @@ trait HasAddress
      * Scope: modelli con almeno un indirizzo nella provincia (`administrative_area_level_3`).
      *
      * @param  Builder<static>  $query
-     *
-     * @phpstan-param Builder<static> $query
-     *
      * @return Builder<static>
-     *
+     * @phpstan-param Builder<static> $query
      * @phpstan-return Builder<static>
      */
     public function scopeInProvince(Builder $query, string $province): Builder
@@ -304,11 +303,8 @@ trait HasAddress
      * Scope: modelli con almeno un indirizzo nella regione (`administrative_area_level_2`).
      *
      * @param  Builder<static>  $query
-     *
-     * @phpstan-param Builder<static> $query
-     *
      * @return Builder<static>
-     *
+     * @phpstan-param Builder<static> $query
      * @phpstan-return Builder<static>
      */
     public function scopeInRegion(Builder $query, string $region): Builder
@@ -328,11 +324,8 @@ trait HasAddress
      * Scope: modelli con almeno un indirizzo con il CAP indicato.
      *
      * @param  Builder<static>  $query
-     *
-     * @phpstan-param Builder<static> $query
-     *
      * @return Builder<static>
-     *
+     * @phpstan-param Builder<static> $query
      * @phpstan-return Builder<static>
      */
     public function scopeInPostalCode(Builder $query, string $postalCode): Builder
