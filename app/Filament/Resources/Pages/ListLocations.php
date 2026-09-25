@@ -13,10 +13,6 @@ class ListLocations extends XotBaseListRecords
     protected static string $resource = LocationResource::class;
 
     /**
-
-     *
-
-
      *
      * @return array<int, mixed>
      */

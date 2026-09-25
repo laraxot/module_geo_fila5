@@ -16,7 +16,6 @@ use Modules\Geo\Datas\GeoData;
  *
  * @property float $latitude
  * @property float $longitude
- * @property string|null $address
  * @property string $country.
  * @property string $country.
  * @property string $administrative_area_level_2.
