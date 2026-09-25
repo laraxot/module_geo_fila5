@@ -10,12 +10,17 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\File;
+<<<<<<< HEAD
+=======
+use Modules\Geo\Database\Factories\ProvinceFactory;
+>>>>>>> laraxot/dev
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
 
 /**
+<<<<<<< HEAD
  * @property int|null $region_id
  * @property int $id
  * @property string|null $name
@@ -26,6 +31,17 @@ use Sushi\Sushi;
  * @property-read ProfileContract|null $updater
  *
  * @method static \Modules\Geo\Database\Factories\ProvinceFactory factory($count = null, $state = [])
+=======
+ * @property int|null                  $region_id
+ * @property int                       $id
+ * @property string|null               $name
+ * @property ProfileContract|null      $creator
+ * @property Collection<int, Locality> $localities
+ * @property int|null                  $localities_count
+ * @property Region|null               $region
+ * @property ProfileContract|null      $updater
+ *
+>>>>>>> laraxot/dev
  * @method static Builder<static>|Province newModelQuery()
  * @method static Builder<static>|Province newQuery()
  * @method static Builder<static>|Province query()
@@ -33,10 +49,21 @@ use Sushi\Sushi;
  * @method static Builder<static>|Province whereName($value)
  * @method static Builder<static>|Province whereRegionId($value)
  *
+<<<<<<< HEAD
+=======
+ * @property ProfileContract|null $deleter
+ *
+ * @method static ProvinceFactory factory($count = null, $state = [])
+ *
+>>>>>>> laraxot/dev
  * @mixin \Eloquent
  */
 class Province extends BaseModel
 {
+<<<<<<< HEAD
+=======
+    /**  */
+>>>>>>> laraxot/dev
     use HasXotFactory;
     use Sushi;
 
@@ -79,7 +106,11 @@ class Province extends BaseModel
             $regionId = $regione['codice'] ?? null;
             $id = $provincia['codice'] ?? null;
             $name = $provincia['nome'] ?? null;
+<<<<<<< HEAD
             if ($regionId === null || $id === null || $name === null) {
+=======
+            if (null === $regionId || null === $id || null === $name) {
+>>>>>>> laraxot/dev
                 continue;
             }
 

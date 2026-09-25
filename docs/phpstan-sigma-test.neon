@@ -48,4 +48,8 @@ parameters:
     checkModelProperties: true  # Enable model property checking
     treatPhpDocTypesAsCertain: true
     reportUnmatchedIgnoredErrors: true
+<<<<<<< HEAD
     checkOctaneCompatibility: false
+=======
+    checkOctaneCompatibility: false
+>>>>>>> laraxot/dev

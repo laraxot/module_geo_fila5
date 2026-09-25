@@ -122,7 +122,11 @@ final class GetAddressFromGoogleMapsAction
         /** @var GoogleMapAddressComponentData|null $component */
         $component = $components
             ->toCollection()
+<<<<<<< HEAD
             ->first(function (mixed $component) use ($types) {
+=======
+            ->first(function ($component) use ($types) {
+>>>>>>> laraxot/dev
                 if (! $component instanceof GoogleMapAddressComponentData) {
                     return false;
                 }

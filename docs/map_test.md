@@ -8,6 +8,7 @@ https://github.com/sfneal/google-places
 
 
 
+<<<<<<< HEAD
 
 
 ## Contenuto originale (txt)
@@ -19,3 +20,5 @@ canonical: ../../../Themes/docs/shared-components/map_test.txt
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/map_test.txt
+=======
+>>>>>>> laraxot/dev

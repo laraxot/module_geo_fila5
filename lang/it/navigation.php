@@ -76,7 +76,11 @@ return [
             'name' => 'Comuni',
             'plural' => 'Comuni',
             'description' => 'Gestione dei comuni',
+<<<<<<< HEAD
             'icon' => 'heroicon-o-building-office',
+=======
+            'icon' => 'heroicon-o-building',
+>>>>>>> laraxot/dev
         ],
         'postal_codes' => [
             'name' => 'CAP',
@@ -88,7 +92,11 @@ return [
             'name' => 'Confini',
             'plural' => 'Confini',
             'description' => 'Gestione dei confini amministrativi',
+<<<<<<< HEAD
             'icon' => 'geo-icon',
+=======
+            'icon' => 'heroicon-o-square-3-stack-3d',
+>>>>>>> laraxot/dev
         ],
         'areas' => [
             'name' => 'Aree',

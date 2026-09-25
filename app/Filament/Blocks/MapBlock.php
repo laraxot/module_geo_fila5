@@ -9,6 +9,11 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Modules\Xot\Actions\View\GetViewsSiblingsAndSelfAction;
 
+<<<<<<< HEAD
+=======
+// use Modules\Blog\Models\Article;
+
+>>>>>>> laraxot/dev
 class MapBlock
 {
     public static function make(string $name = 'map', string $context = 'form'): Block
@@ -32,6 +37,10 @@ class MapBlock
                     ->required(),
             ])
             ->label('Map')
+<<<<<<< HEAD
             ->columns($context === 'form' ? 2 : 1);
+=======
+            ->columns('form' === $context ? 2 : 1);
+>>>>>>> laraxot/dev
     }
 }

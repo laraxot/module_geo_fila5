@@ -83,6 +83,7 @@ https://ourcodeworld.com/articles/read/1019/how-to-find-nearest-locations-from-a
 -----------------------------------------------
 -----------------------------------------------
 -----------------------------------------------
+<<<<<<< HEAD
 
 
 ## Contenuto originale (txt)
@@ -94,3 +95,5 @@ canonical: ../../../Themes/docs/shared-components/laravel-packages-Modules.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/laravel-packages-Modules.md
+=======
+>>>>>>> laraxot/dev

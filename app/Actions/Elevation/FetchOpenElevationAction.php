@@ -7,10 +7,18 @@ namespace Modules\Geo\Actions\Elevation;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\Elevation\ElevationData;
+<<<<<<< HEAD
 use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
+=======
+
+use function Safe\json_decode;
+
+use Spatie\QueueableAction\QueueableAction;
+
+>>>>>>> laraxot/dev
 /**
  * Action per ottenere l'elevazione di un punto usando OpenElevation API.
  */
@@ -22,7 +30,12 @@ class FetchOpenElevationAction
 
     public function __construct(
         private readonly Client $client,
+<<<<<<< HEAD
     ) {}
+=======
+    ) {
+    }
+>>>>>>> laraxot/dev
 
     /**
      * Ottiene l'elevazione per un punto.
