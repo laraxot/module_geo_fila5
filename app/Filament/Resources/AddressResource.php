@@ -94,10 +94,11 @@ class AddressResource extends XotBaseResource
     }
 
     /**
-<<<<<<< HEAD
+     * <<<<<<< HEAD.
      *
-=======
->>>>>>> laraxot/dev
+     * =======
+     * >>>>>>> laraxot/dev
+     *
      * @return array<string, mixed>
      */
     public static function getSearchStep(): array
