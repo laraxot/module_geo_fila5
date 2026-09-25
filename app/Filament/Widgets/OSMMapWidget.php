@@ -4,10 +4,17 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
+<<<<<<< HEAD
 use Modules\Xot\Filament\Widgets\XotBaseWidget;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Models\Place;
+=======
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
+use Modules\Geo\Models\Place;
+use Modules\Xot\Filament\Widgets\XotBaseWidget;
+>>>>>>> laraxot/dev
 
 // use Webbingbrasil\FilamentMaps\Widgets\MapWidget; // Disabilitato per compatibilità Filament 4
 
@@ -65,7 +72,10 @@ class OSMMapWidget extends XotBaseWidget
     }
 
     /**
+<<<<<<< HEAD
      *
+=======
+>>>>>>> laraxot/dev
      * @return array<string, mixed>
      */
     protected function getData(): array
@@ -91,12 +101,17 @@ class OSMMapWidget extends XotBaseWidget
             return ['lat' => 41.9028, 'lng' => 12.4964]; // Rome, Italy
         }
 
+<<<<<<< HEAD
         $latitudes = $places
             ->map(static fn (Place $place): ?float => $place->latitude)
             ->filter(static fn (?float $value): bool => is_float($value));
         $longitudes = $places
             ->map(static fn (Place $place): ?float => $place->longitude)
             ->filter(static fn (?float $value): bool => is_float($value));
+=======
+        $latitudes = $places->pluck('latitude')->filter(fn ($lat) => is_float($lat));
+        $longitudes = $places->pluck('longitude')->filter(fn ($lng) => is_float($lng));
+>>>>>>> laraxot/dev
 
         return [
             'lat' => $latitudes->average() ?? 0.0,
