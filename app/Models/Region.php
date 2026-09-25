@@ -36,7 +36,10 @@ use Sushi\Sushi;
  */
 class Region extends BaseModel
 {
+<<<<<<< HEAD
     /**  */
+=======
+>>>>>>> laraxot/dev
     use HasXotFactory;
     use Sushi;
 

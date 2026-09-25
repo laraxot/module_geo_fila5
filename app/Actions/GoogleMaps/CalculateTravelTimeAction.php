@@ -119,12 +119,20 @@ class CalculateTravelTimeAction
          * } $data */
         $data = json_decode($response, true);
 
+<<<<<<< HEAD
         if (($data['status']) !== 'OK') {
+=======
+        if ('OK' !== $data['status']) {
+>>>>>>> laraxot/dev
             return TravelTimeData::error($data['status']);
         }
 
         $element = $data['rows'][0]['elements'][0];
+<<<<<<< HEAD
         if (! $element || ($element['status']) !== 'OK') {
+=======
+        if (! $element || 'OK' !== $element['status']) {
+>>>>>>> laraxot/dev
             return TravelTimeData::error($element['status']);
         }
 

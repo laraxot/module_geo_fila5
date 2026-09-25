@@ -148,12 +148,17 @@ class BuildGeoMapWidgetPayloadAction
             return ['lat' => 45.4642, 'lng' => 9.1900];
         }
 
+<<<<<<< HEAD
         $latitudes = $places
             ->map(static fn (Place $place): ?float => $place->latitude)
             ->filter(static fn (?float $value): bool => is_float($value));
         $longitudes = $places
             ->map(static fn (Place $place): ?float => $place->longitude)
             ->filter(static fn (?float $value): bool => is_float($value));
+=======
+        $latitudes = $places->pluck('latitude')->filter(static fn ($value): bool => \is_float($value) || \is_int($value));
+        $longitudes = $places->pluck('longitude')->filter(static fn ($value): bool => \is_float($value) || \is_int($value));
+>>>>>>> laraxot/dev
 
         return [
             'lat' => SafeFloatCastAction::cast($latitudes->average() ?? 45.4642),
