@@ -7,10 +7,6 @@ namespace Modules\Geo\Actions;
 class GetBoundingBoxAction
 {
     /**
-
-     *
-
-
      *
      * @return array<string, float>
      */

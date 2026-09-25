@@ -14,9 +14,6 @@ use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
 
-/**
- * @param GoogleMapsAction $mapsService
- */
 function makeGetElevationAction(GoogleMapsAction $mapsService): GetElevationAction
 {
     app()->instance(GoogleMapsAction::class, $mapsService);

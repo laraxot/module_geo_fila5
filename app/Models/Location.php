@@ -13,10 +13,6 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Class Location.
  *
-
- *
-
-
  *
  * @property int                                     $id
  * @property string|null                             $model_type
@@ -94,10 +90,6 @@ class Location extends BaseModel
      * Get the latitude and longitude attributes.
      */
     /**
-
-     *
-
-
      *
      * @return array<string, string>
      */
