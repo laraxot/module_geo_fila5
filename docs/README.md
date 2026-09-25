@@ -254,17 +254,10 @@ Geo module possiede TUTTE le concern geospaziali:
 
 ## Dipendenze / Moduli Correlati
 
-<<<<<<< HEAD
-- [Xot - Framework Base](../../Xot/docs/README.md) — Always dependency
-- [User - Authentication](../../User/docs/README.md) — For user locations
-- [Tenant - Multi-tenancy](../../Tenant/docs/README.md) — For tenant-scoped geo data
-- [Cms - Content](../../Cms/docs/README.md) — For location-based content
-=======
 - [Xot - Framework Base](../Xot/docs/README.md) — Always dependency
 - [User - Authentication](../User/docs/README.md) — For user locations
 - [Tenant - Multi-tenancy](../Tenant/docs/README.md) — For tenant-scoped geo data
 - [Cms - Content](../Cms/docs/README.md) — For location-based content
->>>>>>> laraxot/dev
 
 ## Documenti Correlati
 
@@ -286,15 +279,9 @@ Geo module possiede TUTTE le concern geospaziali:
 
 ## Standard Rules & Workflow
 
-<<<<<<< HEAD
-- [[BMAD Method](../../../../docs/wiki/concepts/bmad-method.md)]
-- [[Context Engineering](../../../../docs/wiki/concepts/context-engineering.md)]
-- [[LLM Wiki Governance](../../../../docs/wiki/concepts/llm-wiki-governance.md)]
-=======
 - [[BMAD Method](../../../docs/wiki/concepts/bmad-method.md)]
 - [[Context Engineering](../../../docs/wiki/concepts/context-engineering.md)]
 - [[LLM Wiki Governance](../../../docs/wiki/concepts/llm-wiki-governance.md)]
->>>>>>> laraxot/dev
 
 ---
 

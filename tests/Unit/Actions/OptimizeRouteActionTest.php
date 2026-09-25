@@ -8,14 +8,10 @@ use Illuminate\Support\Collection;
 use Modules\Geo\Actions\OptimizeRouteAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Tests\Fixtures\RouteDistanceStub;
-<<<<<<< HEAD
-use PHPUnit\Framework\Assert;
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
->>>>>>> laraxot/dev
 
 it('returns same locations when count is 2 or less', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);

@@ -10,28 +10,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
 use Modules\Geo\Contracts\HasGeolocation;
-<<<<<<< HEAD
-=======
 use Modules\Geo\Database\Factories\PlaceFactory;
-use Modules\Geo\Models\Traits\GeoTrait;
->>>>>>> laraxot/dev
 use Modules\Xot\Contracts\ProfileContract;
 
 use function Safe\json_encode;
 
 /**
-<<<<<<< HEAD
- * @property-read Address|null $address
- * @property-read ProfileContract|null $creator
- * @property-read string $formatted_address
- * @property-read float|null $latitude
- * @property-read float|null $longitude
- * @property-read Model $linked
- * @property string|null $name
- * @property string|null $description
- * @property-read PlaceType|null $placeType
- * @property-read ProfileContract|null $updater
-=======
  * @property Address|null         $address
  * @property ProfileContract|null $creator
  * @property string               $formatted_address
@@ -40,26 +24,11 @@ use function Safe\json_encode;
  * @property Model|\Eloquent      $linked
  * @property PlaceType|null       $placeType
  * @property ProfileContract|null $updater
->>>>>>> laraxot/dev
  *
  * @method static Builder<static>|Place newModelQuery()
  * @method static Builder<static>|Place newQuery()
  * @method static Builder<static>|Place query()
  *
-<<<<<<< HEAD
- * @property int $id
- * @property string|null $model_type
- * @property int|null $model_id
- * @property string|null $nearest_street
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property string|null $deleted_by
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $post_type
- *
- * @method static Builder<static>|Place whereAddress($value)
-=======
  * @property int                  $id
  * @property string|null          $model_type
  * @property int|null             $model_id
@@ -112,32 +81,20 @@ use function Safe\json_encode;
  * @method static Builder<static>|Place whereCampgroundShort($value)
  * @method static Builder<static>|Place whereCountry($value)
  * @method static Builder<static>|Place whereCountryShort($value)
->>>>>>> laraxot/dev
  * @method static Builder<static>|Place whereCreatedAt($value)
  * @method static Builder<static>|Place whereCreatedBy($value)
  * @method static Builder<static>|Place whereDeletedBy($value)
  * @method static Builder<static>|Place whereFormattedAddress($value)
-<<<<<<< HEAD
- * @method static Builder<static>|Place whereId($value)
- * @method static Builder<static>|Place whereLatitude($value)
-=======
  * @method static Builder<static>|Place whereGoogleplaceUrl($value)
  * @method static Builder<static>|Place whereGoogleplaceUrlShort($value)
  * @method static Builder<static>|Place whereId($value)
  * @method static Builder<static>|Place whereLatitude($value)
  * @method static Builder<static>|Place whereLocality($value)
  * @method static Builder<static>|Place whereLocalityShort($value)
->>>>>>> laraxot/dev
  * @method static Builder<static>|Place whereLongitude($value)
  * @method static Builder<static>|Place whereModelId($value)
  * @method static Builder<static>|Place whereModelType($value)
  * @method static Builder<static>|Place whereNearestStreet($value)
-<<<<<<< HEAD
- * @method static Builder<static>|Place wherePostType($value)
- * @method static Builder<static>|Place whereUpdatedAt($value)
- * @method static Builder<static>|Place whereUpdatedBy($value)
- *
-=======
  * @method static Builder<static>|Place wherePointOfInterest($value)
  * @method static Builder<static>|Place wherePointOfInterestShort($value)
  * @method static Builder<static>|Place wherePolitical($value)
@@ -166,13 +123,10 @@ use function Safe\json_encode;
  * @method static Builder<static>|Place wherePlaceTypeId($value)
  * @method static Builder<static>|Place whereSlug($value)
  *
->>>>>>> laraxot/dev
  * @mixin \Eloquent
  */
 class Place extends BaseModel implements HasGeolocation
 {
-    use GeoTrait;
-
     /**
      * List of address components used in the application.
      *
@@ -229,10 +183,7 @@ class Place extends BaseModel implements HasGeolocation
      * Get the linked model.
      */
     /**
-<<<<<<< HEAD
-=======
      *
->>>>>>> laraxot/dev
      * @return MorphTo<Model, $this>
      */
     public function linked(): MorphTo
@@ -244,10 +195,7 @@ class Place extends BaseModel implements HasGeolocation
      * Get the place type.
      */
     /**
-<<<<<<< HEAD
-=======
      *
->>>>>>> laraxot/dev
      * @return BelongsTo<PlaceType, $this>
      */
     public function placeType(): BelongsTo
@@ -259,39 +207,27 @@ class Place extends BaseModel implements HasGeolocation
      * Get the address.
      */
     /**
-<<<<<<< HEAD
-=======
      *
->>>>>>> laraxot/dev
      * @return BelongsTo<Address, $this>
      */
     public function address(): BelongsTo
     {
         return $this->belongsTo(Address::class);
     }
-<<<<<<< HEAD
-=======
 
     #[\Override]
->>>>>>> laraxot/dev
     public function getLatitude(): ?float
     {
         return $this->latitude;
     }
-<<<<<<< HEAD
-=======
 
     #[\Override]
->>>>>>> laraxot/dev
     public function getLongitude(): ?float
     {
         return $this->longitude;
     }
-<<<<<<< HEAD
-=======
 
     #[\Override]
->>>>>>> laraxot/dev
     public function getFormattedAddress(): string
     {
         return (string) ($this->formatted_address ?? $this->address->formatted_address ?? '');
@@ -336,51 +272,18 @@ class Place extends BaseModel implements HasGeolocation
         return is_string($address) ? $address : '';
     }
 
-<<<<<<< HEAD
-    /**
-     * Display name of the place.
-     *
-     * There is no dedicated "name" column in the base schema: fall back to
-     * the "premise" component (Google Places building/place name) when a
-     * "name" value has not been explicitly set on the model.
-     */
-    public function getNameAttribute(): ?string
-    {
-        return $this->getName();
-    }
-
-    public function getName(): ?string
-    {
-        $name = $this->attributes['name'] ?? null;
-        if (is_string($name) && trim($name) !== '') {
-            return $name;
-        }
-
-        $premise = $this->attributes['premise'] ?? null;
-
-        return is_string($premise) && trim($premise) !== '' ? $premise : null;
-    }
-    public function hasValidCoordinates(): bool
-    {
-        return $this->latitude !== null
-            && $this->longitude !== null
-=======
     #[\Override]
     public function hasValidCoordinates(): bool
     {
         return null !== $this->latitude
             && null !== $this->longitude
->>>>>>> laraxot/dev
             && $this->latitude >= -90
             && $this->latitude <= 90
             && $this->longitude >= -180
             && $this->longitude <= 180;
     }
-<<<<<<< HEAD
-=======
 
     #[\Override]
->>>>>>> laraxot/dev
     public function getMapIcon(): ?string
     {
         $slug = $this->placeType->slug ?? null;
@@ -403,11 +306,8 @@ class Place extends BaseModel implements HasGeolocation
 
         return is_string($icon) ? $icon : null;
     }
-<<<<<<< HEAD
-=======
 
     #[\Override]
->>>>>>> laraxot/dev
     public function getLocationType(): ?string
     {
         $name = $this->placeType->name ?? null;
@@ -420,10 +320,7 @@ class Place extends BaseModel implements HasGeolocation
      *
      * @return array<string, string>
      */
-<<<<<<< HEAD
-=======
     #[\Override]
->>>>>>> laraxot/dev
     protected function casts(): array
     {
         return [

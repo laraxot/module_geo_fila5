@@ -1,15 +1,3 @@
-<<<<<<< HEAD
----
-title: "Rimando a claude.md"
-description: "Documento unificato: il contenuto canonico vive in claude.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [claude.md](./claude.md).
-=======
 # Claude — On-Demand Stub
 
 **Risposte:** sempre **italiano**, **sintetico**, **conciso** → [response-style](docs/wiki/memories/response-style-sintetico-conciso-italiano.md)
@@ -30,4 +18,3 @@ Rules, skills, memories live only in wiki. Load on-demand.
 - [QMD] `qmd search "<topic>"`
 
 *Updated: 2026*
->>>>>>> laraxot/dev

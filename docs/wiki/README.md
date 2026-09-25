@@ -7,8 +7,4 @@ Structure:
 - wiki/: distilled summaries and canonical pages for LLM
 - archived/: historical/obsolete docs
 
-<<<<<<< HEAD
 Use qmd to serve or convert these documents (https://github.com/tobi/qmd).
-=======
-Use qmd to serve or convert these documents (https://github.com/tobi/qmd).
->>>>>>> laraxot/dev

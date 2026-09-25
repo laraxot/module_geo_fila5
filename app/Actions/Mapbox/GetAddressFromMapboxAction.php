@@ -8,19 +8,12 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\AddressData;
-<<<<<<< HEAD
-use Spatie\QueueableAction\QueueableAction;
-=======
->>>>>>> laraxot/dev
 
 use function Safe\json_decode;
 use function Safe\preg_match;
 
-<<<<<<< HEAD
-=======
 use Spatie\QueueableAction\QueueableAction;
 
->>>>>>> laraxot/dev
 /**
  * Action per ottenere l'indirizzo e le coordinate tramite Mapbox.
  *
@@ -35,12 +28,8 @@ class GetAddressFromMapboxAction
 
     public function __construct(
         private readonly Client $client,
-<<<<<<< HEAD
-    ) {}
-=======
     ) {
     }
->>>>>>> laraxot/dev
 
     /**
      * Ottiene i dettagli dell'indirizzo utilizzando Mapbox.

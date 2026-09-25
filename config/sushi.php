@@ -1,10 +1,6 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< HEAD
-use Illuminate\Support\Env;
-=======
->>>>>>> laraxot/dev
 
 return [
     /*
@@ -25,38 +21,20 @@ return [
      * |
      */
     'cache' => [
-<<<<<<< HEAD
-        'enabled' => Env::get('SUSHI_CACHE_ENABLED', true),
-        'duration' => Env::get('SUSHI_CACHE_DURATION', 60 * 24 * 7), // 7 giorni
-=======
         'enabled' => Illuminate\Support\Env::get('SUSHI_CACHE_ENABLED', true),
         'duration' => Illuminate\Support\Env::get('SUSHI_CACHE_DURATION', 60 * 24 * 7), // 7 giorni
->>>>>>> laraxot/dev
     ],
     /*
      * |--------------------------------------------------------------------------
      * | Database Configuration
      * |--------------------------------------------------------------------------
      * |
-<<<<<<< HEAD
-     * | Configurazione del database per i modelli Sushi.
-     * |
-     * | Il default eredita dalla connessione applicativa: un modulo riusabile non
-     * | puo' contenere il nome di un database di progetto, tanto meno quello di
-     * | test, altrimenti in sviluppo legge dalla replica sbagliata.
-     * |
-     */
-    'database' => [
-        'connection' => Env::get('SUSHI_DB_CONNECTION', 'mysql'),
-        'database' => Env::get('SUSHI_DB_DATABASE', Env::get('DB_DATABASE')),
-=======
      * | Configurazione del database SQLite per i modelli Sushi.
      * |
      */
     'database' => [
         'connection' => Illuminate\Support\Env::get('SUSHI_DB_CONNECTION', 'mysql'),
         'database' => Illuminate\Support\Env::get('SUSHI_DB_DATABASE', 'quaeris_data_test'),
->>>>>>> laraxot/dev
     ],
     /*
      * |--------------------------------------------------------------------------

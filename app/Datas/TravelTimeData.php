@@ -21,12 +21,8 @@ class TravelTimeData extends Data
         public readonly string $formatted_duration,
         public readonly string $formatted_distance,
         public readonly string $status = 'OK',
-<<<<<<< HEAD
-    ) {}
-=======
     ) {
     }
->>>>>>> laraxot/dev
 
     /**
      * Crea un'istanza di errore.
@@ -64,20 +60,12 @@ class TravelTimeData extends Data
      */
     public static function fromGoogleResponse(array $response): self
     {
-<<<<<<< HEAD
-        if ($response['status'] !== 'OK') {
-=======
         if ('OK' !== $response['status']) {
->>>>>>> laraxot/dev
             return self::error($response['status']);
         }
 
         $element = $response['rows'][0]['elements'][0];
-<<<<<<< HEAD
-        if ($element['status'] !== 'OK') {
-=======
         if (! $element || $element['status'] !== 'OK') {
->>>>>>> laraxot/dev
             return self::error($element['status']);
         }
 

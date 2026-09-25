@@ -14,9 +14,6 @@ class ViewLocation extends XotBaseViewRecord
 {
     protected static string $resource = LocationResource::class;
 
-<<<<<<< HEAD
-    
-=======
     /**
      * @return array<string, Component>
      */
@@ -35,5 +32,4 @@ class ViewLocation extends XotBaseViewRecord
                 ->columns(2),
         ];
     }
->>>>>>> laraxot/dev
 }

@@ -10,14 +10,8 @@ use Modules\Geo\Models\Traits\HasAddress;
 /**
  * Modello di test per il trait HasAddress (solo fixture — i test Pest stanno in HasAddressTest.php).
  */
-<<<<<<< HEAD
-class HasAddressTestModel extends BaseModel
-{
-    /** @use HasAddress<HasAddressTestModel> */
-=======
 final class HasAddressTestModel extends BaseModel
 {
->>>>>>> laraxot/dev
     use HasAddress;
 
     /** @var list<string> */
@@ -31,11 +25,7 @@ final class HasAddressTestModel extends BaseModel
     {
         parent::boot();
 
-<<<<<<< HEAD
-        self::creating(static function (): void {
-=======
         static::creating(static function (): void {
->>>>>>> laraxot/dev
             if (! app()->environment('testing')) {
                 throw new \Exception('HasAddressTestModel should only be used in tests.');
             }

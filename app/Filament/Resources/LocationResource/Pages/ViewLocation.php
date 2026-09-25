@@ -23,9 +23,6 @@ class ViewLocation extends XotBaseViewRecord
         ];
     }
 
-<<<<<<< HEAD
-    
-=======
     /**
      * @return array<string, Component>
      */
@@ -47,5 +44,4 @@ class ViewLocation extends XotBaseViewRecord
             ]),
         ];
     }
->>>>>>> laraxot/dev
 }

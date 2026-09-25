@@ -2,8 +2,6 @@
 /** @var \Modules\Geo\Filament\Forms\Components\MapPicker $field */
 $statePath = $field->getStatePath();
 $id = $field->getId();
-<<<<<<< HEAD
-=======
 
 $labels = [
     'zoom_in' => __('geo::coordinate-picker.zoom_in'),
@@ -24,7 +22,6 @@ $labels = [
 
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
     <div x-data="{
->>>>>>> laraxot/dev
             state: $wire.{{ $applyStateBindingModifiers("\$entangle('{$statePath}')") }},
             isFullscreen: false,
             labels: @js($labels),
