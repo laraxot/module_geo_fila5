@@ -13,12 +13,9 @@ use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
-<<<<<<< HEAD
 /**
  * @param CalculateDistanceMatrixQueueStub $matrixStub
  */
-=======
->>>>>>> laraxot/dev
 function makeFilterCoordinatesInRadiusAction(CalculateDistanceMatrixQueueStub $matrixStub): FilterCoordinatesInRadiusAction
 {
     app()->instance(CalculateDistanceMatrixAction::class, $matrixStub);

@@ -60,11 +60,7 @@ class LocationWidget extends XotBaseSchemaWidget
         $view = 'geo::filament.widgets.location';
         $this->view = $view;
 
-<<<<<<< HEAD
         $this->locationForm = new LocationForm;
-=======
-        $this->locationForm = new LocationForm();
->>>>>>> laraxot/dev
 
         parent::__construct();
     }

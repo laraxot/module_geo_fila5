@@ -7,10 +7,10 @@ namespace Modules\Geo\Actions;
 class GetBoundingBoxAction
 {
     /**
-     * <<<<<<< HEAD.
+
      *
-     * =======
-     * >>>>>>> laraxot/dev
+
+
      *
      * @return array<string, float>
      */

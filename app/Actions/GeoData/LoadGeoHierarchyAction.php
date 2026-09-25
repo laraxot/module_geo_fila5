@@ -8,18 +8,10 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
-<<<<<<< HEAD
 use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
-=======
-
-use function Safe\json_decode;
-
-use Spatie\QueueableAction\QueueableAction;
-
->>>>>>> laraxot/dev
 /**
  * Carica e espone gerarchia regioni/province/città da JSON comuni.
  *
@@ -69,11 +61,7 @@ final class LoadGeoHierarchyAction
             $region = $this->loadData()->firstWhere('code', $regionCode);
 
             if (! $region || ! is_array($region) || ! isset($region['provinces']) || ! is_array($region['provinces'])) {
-<<<<<<< HEAD
                 return new Collection;
-=======
-                return new Collection();
->>>>>>> laraxot/dev
             }
 
             /** @var array<int, array<string, mixed>> $provinces */
@@ -110,11 +98,7 @@ final class LoadGeoHierarchyAction
                 : [])->firstWhere('code', $provinceCode);
 
             if (! $province || ! is_array($province) || ! isset($province['cities']) || ! is_array($province['cities'])) {
-<<<<<<< HEAD
                 return new Collection;
-=======
-                return new Collection();
->>>>>>> laraxot/dev
             }
 
             /** @var array<int, array<string, mixed>> $cities */

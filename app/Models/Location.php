@@ -13,10 +13,10 @@ use Modules\Xot\Contracts\ProfileContract;
 /**
  * Class Location.
  *
- * <<<<<<< HEAD
+
  *
- * =======
- * >>>>>>> laraxot/dev
+
+
  *
  * @property int                                     $id
  * @property string|null                             $model_type
@@ -94,10 +94,10 @@ class Location extends BaseModel
      * Get the latitude and longitude attributes.
      */
     /**
-     * <<<<<<< HEAD.
+
      *
-     * =======
-     * >>>>>>> laraxot/dev
+
+
      *
      * @return array<string, string>
      */

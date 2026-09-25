@@ -17,12 +17,6 @@ class GeocodeResultData extends Data
         public string $formattedAddress,
         public ?string $countryCode = null,
         /** @var array<string, mixed> */
-<<<<<<< HEAD
         public array $components = [] // e.g., ['city' => 'New York', 'state' => 'NY']
     ) {}
-=======
-        public array $components = [], // e.g., ['city' => 'New York', 'state' => 'NY']
-    ) {
-    }
->>>>>>> laraxot/dev
 }
