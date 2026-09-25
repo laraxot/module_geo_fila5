@@ -25,11 +25,8 @@ abstract class BaseModel extends XotBaseModel
 
     /**
      * Get the attributes that should be cast.
-<<<<<<< HEAD
-=======
      *
      * @return array<string, string>
->>>>>>> laraxot/dev
      */
     protected function casts(): array
     {

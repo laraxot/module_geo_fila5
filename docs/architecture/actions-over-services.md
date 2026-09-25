@@ -81,11 +81,7 @@ class UserService
 namespace Modules\User\Actions;
 
 use Modules\User\Datas\UserData;
-<<<<<<< HEAD
-use Modules\Xot\Contracts\UserContract;
-=======
 use Modules\User\Models\User;
->>>>>>> laraxot/dev
 use Spatie\QueueableAction\QueueableAction;
 
 class CreateUserAction

@@ -8,15 +8,10 @@ use Modules\Geo\Datas\Photon\PhotonAddressData;
 use Modules\Geo\Datas\Photon\PhotonFeatureData;
 use Modules\Geo\Datas\Photon\PhotonPropertiesData;
 use Modules\Geo\Datas\Photon\PhotonResponseData;
-<<<<<<< HEAD
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
->>>>>>> laraxot/dev
 test('PhotonAddressData can be instantiated', function (): void {
     $address = PhotonAddressData::from([
         'city' => 'Rome',

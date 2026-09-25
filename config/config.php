@@ -1,21 +1,8 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< HEAD
-use Illuminate\Support\Env;
 
 return [
-    'name' => 'Geo',
-    'description' => 'Geocoding, mappe e indirizzi',
-    'icon' => 'geo-icon',
-    'navigation' => [
-        'enabled' => true,
-        'sort' => 60,
-    ],
-=======
-
-return [
->>>>>>> laraxot/dev
     /*
      * |--------------------------------------------------------------------------
      * | API Keys
@@ -25,15 +12,9 @@ return [
      * |
      */
     'api_keys' => [
-<<<<<<< HEAD
-        'google_maps' => Env::get('GOOGLE_MAPS_API_KEY'),
-        'bing_maps' => Env::get('BING_MAPS_API_KEY'),
-        'mapbox' => Env::get('MAPBOX_API_KEY'),
-=======
         'google_maps' => Illuminate\Support\Env::get('GOOGLE_MAPS_API_KEY'),
         'bing_maps' => Illuminate\Support\Env::get('BING_MAPS_API_KEY'),
         'mapbox' => Illuminate\Support\Env::get('MAPBOX_API_KEY'),
->>>>>>> laraxot/dev
     ],
     /*
      * |--------------------------------------------------------------------------
@@ -58,11 +39,7 @@ return [
      * | posti (qui per documentare i driver disponibili, nell'Action per il dispatch).
      * |
      */
-<<<<<<< HEAD
-    'driver' => Env::get('GEO_DRIVER', 'google_maps'),
-=======
     'driver' => Illuminate\Support\Env::get('GEO_DRIVER', 'google_maps'),
->>>>>>> laraxot/dev
     /*
      * |--------------------------------------------------------------------------
      * | Rate Limiting

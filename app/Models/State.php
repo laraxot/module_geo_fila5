@@ -6,41 +6,17 @@ namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
-<<<<<<< HEAD
-use Modules\Xot\Contracts\ProfileContract;
-
-/**
- * @property-read ProfileContract|null $creator
- * @property-read ProfileContract|null $updater
-=======
 use Modules\Geo\Database\Factories\StateFactory;
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
->>>>>>> laraxot/dev
  *
  * @method static Builder<static>|State newModelQuery()
  * @method static Builder<static>|State newQuery()
  * @method static Builder<static>|State query()
  *
-<<<<<<< HEAD
- * @property int $id
- * @property string $state Nome dello stato/regione
- * @property string|null $state_code Codice dello stato/regione
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
- * @property string|null $deleted_at
- * @property string|null $deleted_by
- *
- * @method static Builder<static>|State whereCreatedAt($value)
- * @method static Builder<static>|State whereCreatedBy($value)
- * @method static Builder<static>|State whereDeletedAt($value)
- * @method static Builder<static>|State whereDeletedBy($value)
-=======
  * @property ProfileContract|null $deleter
  *
  * @method static StateFactory factory($count = null, $state = [])
@@ -52,15 +28,10 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property Carbon|null $updated_at
  *
  * @method static Builder<static>|State whereCreatedAt($value)
->>>>>>> laraxot/dev
  * @method static Builder<static>|State whereId($value)
  * @method static Builder<static>|State whereState($value)
  * @method static Builder<static>|State whereStateCode($value)
  * @method static Builder<static>|State whereUpdatedAt($value)
-<<<<<<< HEAD
- * @method static Builder<static>|State whereUpdatedBy($value)
-=======
->>>>>>> laraxot/dev
  *
  * @mixin \Eloquent
  */

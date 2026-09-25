@@ -4,14 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Resources;
 
-<<<<<<< HEAD
-use Modules\Xot\Filament\Resources\XotBaseResource;
-use Modules\Geo\Models\Location;
-
-class LocationResource extends XotBaseResource
-{
-    protected static ?string $model = Location::class;
-=======
 use Filament\Forms\Components\TextInput;
 use Filament\Support\Components\Component;
 use Modules\Geo\Filament\Resources\LocationResource\Pages\CreateLocation;
@@ -128,5 +120,4 @@ class LocationResource extends XotBaseResource
         ];
     }
         */
->>>>>>> laraxot/dev
 }

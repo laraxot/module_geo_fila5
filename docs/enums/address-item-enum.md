@@ -406,33 +406,6 @@ Le traduzioni per l'enum sono definite in:
 - `Modules/Geo/lang/it/address_item_enum.php`
 - `Modules/Geo/lang/de/address_item_enum.php`
 
-<<<<<<< HEAD
-Struttura di ogni traduzione (**obbligatorio** l'incapsulamento in `values`, richiesto da `EnumTrait::getIcon()`/`getLabel()`/`getColor()`/`getDescription()` che risolvono la chiave `values.{case}.{campo}`):
-
-```php
-return [
-    'values' => [
-        'phone' => [
-            'label' => 'Phone',
-            'description' => 'Phone number',
-            'icon' => 'heroicon-o-phone',
-            'color' => 'primary',
-        ],
-        'route' => [
-            'label' => 'Street',
-            'description' => 'Street or road name',
-            'icon' => 'heroicon-o-map',
-            'color' => 'success',
-        ],
-        // ... tutti i case dell'enum
-    ],
-    // 'navigation', 'label', 'plural_label', 'fields', 'actions' restano a livello root, fuori da 'values'
-];
-```
-
-> **Errore comune**: se `values` manca, `EnumTrait::transClass()` non trova la chiave e ritorna `fix:{module}::{file}.values.{case}.{campo}` invece del valore reale — causa nota di `BladeUI\Icons\Exceptions\SvgNotFound` quando il campo mancante è `icon`.
-
-=======
 Struttura di ogni traduzione:
 
 ```php
@@ -453,7 +426,6 @@ return [
 ];
 ```
 
->>>>>>> laraxot/dev
 ### Aggiungere una Nuova Lingua
 
 1. Creare il file `Modules/Geo/lang/{locale}/address_item_enum.php`
@@ -497,11 +469,3 @@ return [
 
 > **Nota**: Questo documento segue la filosofia del progetto: Scopo, Logica, Filosofia, Politica, Religione, Zen.
 > Ogni modifica all'enum DEVE essere documentata e tradotta.
-<<<<<<< HEAD
-
-
-## Nota di coerenza dello schema — 2026-07-16
-
-La fonte eseguibile è l’elenco dei casi attivi. `getColumnDefinitions()` deve avere esattamente una definizione per ogni caso attivo e non deve conservare rami per casi rimossi. I campi di contatto (`phone`, `fax`, `mobile`, `pec`, `whatsapp`, `email`) sono esclusi da questo enum e appartengono a Notify; `description`, `formatted_address` e `place_id` non fanno parte dello schema Geo corrente.
-=======
->>>>>>> laraxot/dev

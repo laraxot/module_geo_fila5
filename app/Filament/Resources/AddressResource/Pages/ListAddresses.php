@@ -16,10 +16,7 @@ class ListAddresses extends XotBaseListRecords
     /**
      * @return array<string, Action>
      */
-<<<<<<< HEAD
-=======
     #[\Override]
->>>>>>> laraxot/dev
     protected function getHeaderActions(): array
     {
         return [

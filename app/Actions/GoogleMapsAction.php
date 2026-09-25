@@ -38,12 +38,8 @@ class GoogleMapsAction
     }
 
     /**
-<<<<<<< HEAD
-     * @param  array<string, mixed>  $params
-=======
      * @param array<string, mixed> $params
      *
->>>>>>> laraxot/dev
      * @return array<string, mixed>
      */
     private function makeRequest(string $method, string $url, array $params = [], bool $useCache = true): array
@@ -53,11 +49,7 @@ class GoogleMapsAction
         if ($useCache && config('geo.cache.enabled')) {
             /** @var array<string, mixed>|null $cached */
             $cached = Cache::get($cacheKey);
-<<<<<<< HEAD
-            if ($cached !== null) {
-=======
             if (null !== $cached) {
->>>>>>> laraxot/dev
                 return $cached;
             }
         }
@@ -131,15 +123,9 @@ class GoogleMapsAction
     }
 
     /**
-<<<<<<< HEAD
-     * @return array<string, mixed>
-     *
-     * @throws GoogleMapsApiException Se la richiesta fallisce
-=======
      * @throws GoogleMapsApiException Se la richiesta fallisce
      *
      * @return array<string, mixed>
->>>>>>> laraxot/dev
      */
     public function reverseGeocode(float $latitude, float $longitude): array
     {
@@ -155,20 +141,12 @@ class GoogleMapsAction
     }
 
     /**
-<<<<<<< HEAD
-     * @param  array<string>  $origins  Punti di origine (formato: "lat,lng|lat,lng|...")
-     * @param  array<string>  $destinations  Punti di destinazione (formato: "lat,lng|lat,lng|...")
-     * @return array<string, mixed>
-     *
-     * @throws GoogleMapsApiException Se la richiesta fallisce
-=======
      * @param array<string> $origins      Punti di origine (formato: "lat,lng|lat,lng|...")
      * @param array<string> $destinations Punti di destinazione (formato: "lat,lng|lat,lng|...")
      *
      * @throws GoogleMapsApiException Se la richiesta fallisce
      *
      * @return array<string, mixed>
->>>>>>> laraxot/dev
      */
     public function getDistanceMatrix(array $origins, array $destinations): array
     {
@@ -186,15 +164,9 @@ class GoogleMapsAction
     }
 
     /**
-<<<<<<< HEAD
-     * @return array<string, mixed>
-     *
-     * @throws GoogleMapsApiException Se la richiesta fallisce
-=======
      * @throws GoogleMapsApiException Se la richiesta fallisce
      *
      * @return array<string, mixed>
->>>>>>> laraxot/dev
      */
     public function getElevation(float $latitude, float $longitude): array
     {
@@ -213,11 +185,7 @@ class GoogleMapsAction
         return 'google_maps';
     }
 
-<<<<<<< HEAD
-    public function execute(): void {}
-=======
     public function execute(): void
     {
     }
->>>>>>> laraxot/dev
 }

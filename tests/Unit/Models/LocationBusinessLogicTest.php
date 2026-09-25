@@ -8,19 +8,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Location;
-<<<<<<< HEAD
-=======
 use Modules\Geo\Tests\TestCase;
->>>>>>> laraxot/dev
 use PHPUnit\Framework\Assert;
 
 use function Safe\class_uses;
 
-<<<<<<< HEAD
-=======
 uses(TestCase::class);
 
->>>>>>> laraxot/dev
 describe('Location Business Logic', function () {
     test('location extends base model', function () {
         $parent = (new \ReflectionClass(Location::class))->getParentClass();

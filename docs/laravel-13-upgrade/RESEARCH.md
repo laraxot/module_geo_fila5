@@ -1,15 +1,3 @@
-<<<<<<< HEAD
----
-title: "Rimando a research.md"
-description: "Documento unificato: il contenuto canonico vive in research.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [research.md](./research.md).
-=======
 # Research: Laravel 13 Upgrade for Modular Project
 
 ## Overview
@@ -51,4 +39,3 @@ This document outlines the research findings for upgrading a modular Laravel pro
 3. Update all Theme `composer.json` files.
 4. Update `docs/` in each module/theme with upgrade documentation.
 5. Verify structural integrity with PHPStan and Tests.
->>>>>>> laraxot/dev
