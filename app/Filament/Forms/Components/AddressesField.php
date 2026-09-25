@@ -110,11 +110,7 @@ class AddressesField extends Repeater
         $baseSchema['is_primary'] = Toggle::make('is_primary')
             ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
             ->default(fn (Get $get): bool => count(self::repeaterAddresses($get)) <= 1)
-<<<<<<< HEAD
             ->afterStateUpdated(function (bool $state, Set $set, Get $get, Component $component): void {
-=======
-            ->afterStateUpdated(function ($state, Set $set, Get $get, Component $component): void {
->>>>>>> laraxot/dev
                 // Se questo diventa primary, disattiva tutti gli altri
                 if (true === $state) {
                     $addresses = self::repeaterAddresses($get);
@@ -138,11 +134,7 @@ class AddressesField extends Repeater
                 }
             })
             ->live()
-<<<<<<< HEAD
             ->dehydrateStateUsing(function (bool $state, Get $get): bool {
-=======
-            ->dehydrateStateUsing(function ($state, Get $get): bool {
->>>>>>> laraxot/dev
                 // Se c'è un solo elemento, forza sempre true
                 if (count(self::repeaterAddresses($get)) <= 1) {
                     return true;

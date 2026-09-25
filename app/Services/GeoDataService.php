@@ -23,7 +23,6 @@ class GeoDataService
     /**
      * Chiavi di cache.
      */
-<<<<<<< HEAD
     private const string CACHE_KEY_REGIONS = 'geo.regions';
 
     private const string CACHE_KEY_PROVINCES = 'geo.provinces.%s';
@@ -31,33 +30,16 @@ class GeoDataService
     private const string CACHE_KEY_CITIES = 'geo.cities.%s';
 
     private const string CACHE_KEY_CAP = 'geo.cap.%s.%s';
-=======
-    private const CACHE_KEY_REGIONS = 'geo.regions';
-
-    private const CACHE_KEY_PROVINCES = 'geo.provinces.%s';
-
-    private const CACHE_KEY_CITIES = 'geo.cities.%s';
-
-    private const CACHE_KEY_CAP = 'geo.cap.%s.%s';
->>>>>>> laraxot/dev
 
     /**
      * Tempo di cache in secondi (24 ore).
      */
-<<<<<<< HEAD
     private const int CACHE_TTL = 86400;
-=======
-    private const CACHE_TTL = 86400;
->>>>>>> laraxot/dev
 
     /**
      * Percorso del file JSON.
      */
-<<<<<<< HEAD
     private const string JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
-=======
-    private const JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
->>>>>>> laraxot/dev
 
     /**
      * Validatore dei dati.

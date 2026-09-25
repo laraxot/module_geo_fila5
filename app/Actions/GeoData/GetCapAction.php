@@ -28,11 +28,7 @@ class GetCapAction
         $cacheKey = \sprintf(self::CACHE_KEY, $provinceCode, $cityCode);
 
         /** @var string|null $result */
-<<<<<<< HEAD
         $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode, $cityCode): null|string {
-=======
-        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode, $cityCode): ?string {
->>>>>>> laraxot/dev
             /** @var array<string, mixed>|null $province */
             $province = app(LoadGeoDataAction::class)->execute()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
                 ? $region['provinces']

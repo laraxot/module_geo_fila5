@@ -14,12 +14,9 @@ use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
 
-<<<<<<< HEAD
 /**
  * @param FetchIPLocationAction $fetchAction
  */
-=======
->>>>>>> laraxot/dev
 function makeGetLocationFromIPAction(FetchIPLocationAction $fetchAction): GetLocationFromIPAction
 {
     app()->instance(FetchIPLocationAction::class, $fetchAction);
