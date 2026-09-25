@@ -26,7 +26,6 @@ trait HasAddresses
 {
     /**
      * @return MorphMany<Address, $this>
-     * @phpstan-return MorphMany<Address, $this>
      */
     public function addresses(): MorphMany
     {
@@ -35,7 +34,6 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
-     * @phpstan-return MorphOne<Address, $this>
      */
     public function primaryAddress(): MorphOne
     {
@@ -44,7 +42,6 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
-     * @phpstan-return MorphOne<Address, $this>
      */
     public function homeAddress(): MorphOne
     {
@@ -53,7 +50,6 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
-     * @phpstan-return MorphOne<Address, $this>
      */
     public function workAddress(): MorphOne
     {
@@ -62,7 +58,6 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
-     * @phpstan-return MorphOne<Address, $this>
      */
     public function billingAddress(): MorphOne
     {
@@ -71,7 +66,6 @@ trait HasAddresses
 
     /**
      * @return MorphOne<Address, $this>
-     * @phpstan-return MorphOne<Address, $this>
      */
     public function shippingAddress(): MorphOne
     {
@@ -99,9 +93,7 @@ trait HasAddresses
     /**
      * Aggiunge un nuovo indirizzo.
      *
-     * @param array<string, mixed> $data
-     * @phpstan-param array<string, mixed> $data
-     * @phpstan-return Address
+     * @param  array<string, mixed>  $data
      */
     public function addAddress(array $data, bool $isPrimary = false): Address
     {
@@ -121,7 +113,6 @@ trait HasAddresses
 
     /**
      * @return Collection<int, Address>
-     * @phpstan-return Collection<int, Address>
      */
     public function getAddressesByType(AddressTypeEnum|string $type): Collection
     {
