@@ -322,11 +322,7 @@ class ComuneJson extends GeoJsonModel
 
         // Chiavi specifiche per regione
         static::allRegions()
-<<<<<<< HEAD
             ->each(static function (string $_nome, string $code) use (&$clearedKeys): void {
-=======
-            ->each(static function ($_nome, $code) use (&$clearedKeys): void {
->>>>>>> laraxot/dev
                 $keys = ["geo_region_{$code}", "geo_region_{$code}_provinces"];
                 foreach ($keys as $key) {
                     Cache::forget($key);
@@ -336,11 +332,7 @@ class ComuneJson extends GeoJsonModel
 
         // Chiavi specifiche per provincia
         static::allProvinces()
-<<<<<<< HEAD
             ->each(static function (string $_nome, string $code) use (&$clearedKeys): void {
-=======
-            ->each(static function ($_nome, $code) use (&$clearedKeys): void {
->>>>>>> laraxot/dev
                 $key = "geo_province_{$code}";
                 Cache::forget($key);
                 $clearedKeys[] = $key;

@@ -94,10 +94,10 @@ class AddressResource extends XotBaseResource
     }
 
     /**
-     * <<<<<<< HEAD.
+
      *
-     * =======
-     * >>>>>>> laraxot/dev
+
+
      *
      * @return array<string, mixed>
      */

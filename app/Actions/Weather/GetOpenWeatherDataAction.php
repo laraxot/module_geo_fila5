@@ -15,10 +15,10 @@ class GetOpenWeatherDataAction
     private const string ENDPOINT = 'https://api.openweathermap.org/data/2.5/weather';
 
     /**
-     * <<<<<<< HEAD.
+
      *
-     * =======
-     * >>>>>>> laraxot/dev
+
+
      *
      * @return array<string, mixed>|null
      */

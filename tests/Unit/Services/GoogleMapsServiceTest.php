@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Services;
 
-<<<<<<< HEAD
 use ReflectionClass;
-=======
->>>>>>> laraxot/dev
 use Modules\Geo\Services\GoogleMapsService;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
@@ -19,11 +16,7 @@ it('can be instantiated', function (): void {
 });
 
 it('has correct constants defined', function (): void {
-<<<<<<< HEAD
     $reflection = new ReflectionClass(GoogleMapsService::class);
-=======
-    $reflection = new \ReflectionClass(GoogleMapsService::class);
->>>>>>> laraxot/dev
     Assert::assertTrue($reflection->hasConstant('GEOCODING_URL'));
     Assert::assertTrue($reflection->hasConstant('DISTANCE_MATRIX_URL'));
     Assert::assertTrue($reflection->hasConstant('ELEVATION_URL'));
