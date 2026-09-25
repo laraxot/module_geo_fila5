@@ -7,7 +7,11 @@ Tests use **Pest** (BDD-style) for better readability.
 ```php
 <?php
 
+<<<<<<< HEAD
 use Modules\Xot\Contracts\UserContract;
+=======
+use Modules\User\Models\User;
+>>>>>>> laraxot/dev
 
 test('can create user', function () {
     $user = User::factory()->create([

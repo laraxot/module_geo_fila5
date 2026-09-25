@@ -13,6 +13,7 @@ public static function getFormSchema(): array
 
 
 public static function table\(Table \$table\): Table\s*\{[\s\S]*?\n\s*\}
+<<<<<<< HEAD
 
 
 ## Contenuto originale (txt)
@@ -68,3 +69,5 @@ relatedUrl('$1','$2')
 --------------------------
 --------------------------
 --------------------------
+=======
+>>>>>>> laraxot/dev

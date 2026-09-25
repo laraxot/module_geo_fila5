@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Modules\Geo\Facades;
 
 use Illuminate\Support\Facades\Facade;
+<<<<<<< HEAD
 use Modules\Geo\Actions\Distance\CalculateGeoDistanceAction;
+=======
+>>>>>>> laraxot/dev
 
 /**
  * Facade for Geo module services.
@@ -16,7 +19,11 @@ use Modules\Geo\Actions\Distance\CalculateGeoDistanceAction;
  * @method static float                calculateDistance(float $lat1, float $lon1, float $lat2, float $lon2)
  * @method static string               getCountryCode(float $lat, float $lon)
  *
+<<<<<<< HEAD
  * @see CalculateGeoDistanceAction
+=======
+ * @see \Modules\Geo\Actions\Distance\CalculateGeoDistanceAction
+>>>>>>> laraxot/dev
  */
 class GeoServiceFacade extends Facade
 {

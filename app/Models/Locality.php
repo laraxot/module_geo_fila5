@@ -7,11 +7,16 @@ namespace Modules\Geo\Models;
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\File;
+<<<<<<< HEAD
+=======
+use Modules\Geo\Database\Factories\LocalityFactory;
+>>>>>>> laraxot/dev
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Sushi\Sushi;
 
 /**
+<<<<<<< HEAD
  * @property int|null $region_id
  * @property int|null $province_id
  * @property int $id
@@ -19,6 +24,15 @@ use Sushi\Sushi;
  * @property array<array-key, mixed>|null $postal_code
  * @property-read ProfileContract|null $creator
  * @property-read ProfileContract|null $updater
+=======
+ * @property int|null                     $region_id
+ * @property int|null                     $province_id
+ * @property string|null                  $name
+ * @property int                          $id
+ * @property array<array-key, mixed>|null $postal_code
+ * @property ProfileContract|null         $creator
+ * @property ProfileContract|null         $updater
+>>>>>>> laraxot/dev
  *
  * @method static Builder<static>|Locality newModelQuery()
  * @method static Builder<static>|Locality newQuery()
@@ -29,6 +43,13 @@ use Sushi\Sushi;
  * @method static Builder<static>|Locality whereProvinceId($value)
  * @method static Builder<static>|Locality whereRegionId($value)
  *
+<<<<<<< HEAD
+=======
+ * @property ProfileContract|null $deleter
+ *
+ * @method static LocalityFactory factory($count = null, $state = [])
+ *
+>>>>>>> laraxot/dev
  * @mixin \Eloquent
  */
 class Locality extends BaseModel
@@ -77,7 +98,11 @@ class Locality extends BaseModel
             $provinceId = $provincia['codice'] ?? null;
             $id = $item['codice'] ?? $item['id'] ?? null;
             $name = $item['nome'] ?? null;
+<<<<<<< HEAD
             if ($regionId === null || $provinceId === null || $id === null || $name === null) {
+=======
+            if (null === $regionId || null === $provinceId || null === $id || null === $name) {
+>>>>>>> laraxot/dev
                 continue;
             }
 
@@ -153,7 +178,11 @@ class Locality extends BaseModel
         $city = $get('locality');
         $res = self::where('region_id', $region)
             ->where('province_id', $province)
+<<<<<<< HEAD
             ->when($city !== null, static fn (Builder $query) => $query->where('id', $city))
+=======
+            ->when(null !== $city, static fn ($query) => $query->where('id', $city))
+>>>>>>> laraxot/dev
             ->select('postal_code')
             ->distinct()
             ->orderBy('postal_code')
@@ -184,6 +213,10 @@ class Locality extends BaseModel
      *
      * @return array<string, string>
      */
+<<<<<<< HEAD
+=======
+    #[\Override]
+>>>>>>> laraxot/dev
     protected function casts(): array
     {
         return [

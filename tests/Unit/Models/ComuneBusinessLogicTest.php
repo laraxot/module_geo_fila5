@@ -12,6 +12,10 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\class_uses;
 
+<<<<<<< HEAD
+=======
+uses(\Modules\Geo\Tests\TestCase::class);
+>>>>>>> laraxot/dev
 describe('Comune Business Logic', function () {
     test('comune extends base model', function () {
         Assert::assertInstanceOf(BaseModel::class, new Comune());

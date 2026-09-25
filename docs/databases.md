@@ -1,4 +1,5 @@
 https://github.com/khsing/laravel-world
+<<<<<<< HEAD
 
 
 ## Contenuto originale (txt)
@@ -10,3 +11,5 @@ canonical: ../../../Themes/docs/shared-components/databases-Modules.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/databases-Modules.md
+=======
+>>>>>>> laraxot/dev

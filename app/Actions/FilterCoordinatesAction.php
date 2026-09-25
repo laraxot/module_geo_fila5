@@ -12,8 +12,14 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class FilterCoordinatesAction
 {
+<<<<<<< HEAD
     use HandlesCoordinates;
     use QueueableAction;
+=======
+    use QueueableAction;
+
+    use HandlesCoordinates;
+>>>>>>> laraxot/dev
 
     /**
      * Filtra le coordinate che si trovano entro un certo raggio da un punto.

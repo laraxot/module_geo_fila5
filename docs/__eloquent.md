@@ -26,6 +26,7 @@ composer require matanyadaev/laravel-eloquent-spatial
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
+<<<<<<< HEAD
 
 
 ## Contenuto originale (txt)
@@ -37,3 +38,5 @@ canonical: ../../../Themes/docs/shared-components/--eloquent.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/--eloquent.md
+=======
+>>>>>>> laraxot/dev

@@ -5,9 +5,15 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Fields;
 
 use Filament\Forms\Components\TextInput;
+<<<<<<< HEAD
 use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
 
 class AddressField extends XotBaseSection
+=======
+use Filament\Schemas\Components\Section;
+
+class AddressField extends Section
+>>>>>>> laraxot/dev
 {
     // protected string $optionValueProperty = 'id';
 

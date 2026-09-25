@@ -4,13 +4,22 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Forms\Components;
 
+<<<<<<< HEAD
+=======
+use Filament\Forms\Components\Field;
+>>>>>>> laraxot/dev
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\On;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+<<<<<<< HEAD
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
 class CoordinatePicker extends XotBaseField
+=======
+
+class CoordinatePicker extends Field
+>>>>>>> laraxot/dev
 {
     public ?string $latitudeColumn = 'latitude';
 

@@ -90,7 +90,11 @@ class GetAddressFromMapboxLatLngAction
     }
 
     /**
+<<<<<<< HEAD
      * @param  array<mixed>  $response
+=======
+     * @param array<mixed> $response
+>>>>>>> laraxot/dev
      */
     private function parseResponse(array $response): MapboxMapData
     {
