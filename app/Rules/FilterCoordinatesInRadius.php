@@ -19,7 +19,12 @@ class FilterCoordinatesInRadius implements ValidationRule
         private readonly float $centerLatitude,
         private readonly float $centerLongitude,
         private readonly int $radius,
+<<<<<<< HEAD
     ) {}
+=======
+    ) {
+    }
+>>>>>>> laraxot/dev
 
     public function validate(string $attribute, mixed $value, \Closure $fail): void
     {
@@ -31,8 +36,13 @@ class FilterCoordinatesInRadius implements ValidationRule
     /**
      * Determina se le coordinate passate sono all'interno del raggio specificato.
      *
+<<<<<<< HEAD
      * @param  mixed  $_attribute  Nome dell'attributo
      * @param  mixed  $value  Valore da validare
+=======
+     * @param mixed $_attribute Nome dell'attributo
+     * @param mixed $value      Valore da validare
+>>>>>>> laraxot/dev
      */
     public function passes(mixed $_attribute, mixed $value): bool
     {
@@ -43,6 +53,7 @@ class FilterCoordinatesInRadius implements ValidationRule
         }
 
         /** @var array<array{latitude: string, longitude: string}> $coordinates */
+<<<<<<< HEAD
         $coordinates = [];
 
         foreach ($value as $key => $coordinate) {
@@ -50,16 +61,29 @@ class FilterCoordinatesInRadius implements ValidationRule
                 $coordinates[$key] = ['latitude' => '', 'longitude' => ''];
 
                 continue;
+=======
+        $coordinates = array_map(static function ($coordinate): array {
+            if (! \is_array($coordinate)) {
+                return ['latitude' => '', 'longitude' => ''];
+>>>>>>> laraxot/dev
             }
 
             $latitude = $coordinate['latitude'] ?? null;
             $longitude = $coordinate['longitude'] ?? null;
 
+<<<<<<< HEAD
             $coordinates[$key] = [
                 'latitude' => \is_scalar($latitude) ? ((string) $latitude) : '',
                 'longitude' => \is_scalar($longitude) ? ((string) $longitude) : '',
             ];
         }
+=======
+            return [
+                'latitude' => \is_scalar($latitude) ? ((string) $latitude) : '',
+                'longitude' => \is_scalar($longitude) ? ((string) $longitude) : '',
+            ];
+        }, $value);
+>>>>>>> laraxot/dev
 
         $filteredCoordinates = $this->filterAction->execute(
             $this->centerLatitude,
