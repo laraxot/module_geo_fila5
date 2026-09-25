@@ -111,7 +111,6 @@ edit file composer.json
         },
         "files": [
             "Modules/Xot/helpers/Helper.php"
-            "Modules/Xot/Helpers/Helper.php"
         ]
     },
     "autoload-dev": {

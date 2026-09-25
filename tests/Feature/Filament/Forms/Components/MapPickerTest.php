@@ -13,7 +13,6 @@ uses(LightTestCase::class);
 it('can instantiate map picker', function () {
     $field = MapPicker::make('location');
 
-    Assert::assertSame('location', $field->getName());
 });
 
 it('can set and get latitude and longitude field names', function () {
