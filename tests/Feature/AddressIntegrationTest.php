@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Feature;
 
 use Modules\Geo\Enums\AddressTypeEnum;
-use Modules\Geo\Tests\TestCase;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use PHPUnit\Framework\Assert;
-
-uses(TestCase::class);
 
 /**
  * In-memory Address tests (no factories / DB / container).
@@ -18,58 +17,13 @@ uses(TestCase::class);
 /**
  * Build an in-memory address array with sane defaults.
  *
- * @param array{
- *     id?: int,
- *     model_type?: string|null,
- *     model_id?: int|null,
- *     route?: string|null,
- *     street_number?: string|null,
- *     locality?: string|null,
- *     administrative_area_level_2?: string|null,
- *     postal_code?: string|null,
- *     country?: string|null,
- *     is_primary?: bool,
- *     type?: string,
- *     latitude?: float|null,
- *     longitude?: float|null,
- *     place_id?: string|null,
- *     formatted_address?: string|null,
- *     extra_data?: array{
- *         google_types?: list<string>,
- *         rating?: float,
- *         business_status?: string
- *     },
- *     deleted_at?: string|null
- * } $overrides
- * @return array{
- *     id: int,
- *     model_type: string|null,
- *     model_id: int|null,
- *     route: string|null,
- *     street_number: string|null,
- *     locality: string|null,
- *     administrative_area_level_2: string|null,
- *     postal_code: string|null,
- *     country: string|null,
- *     is_primary: bool,
- *     type: string,
- *     latitude: float|null,
- *     longitude: float|null,
- *     place_id: string|null,
- *     formatted_address: string|null,
- *     extra_data: array{
- *         google_types?: list<string>,
- *         rating?: float,
- *         business_status?: string
- *     },
- *     deleted_at: string|null
- * }
+ * @param  array<string, mixed>  $overrides
+ * @return array<string, mixed>
  */
 function makeAddress(array $overrides = []): array
 {
     static $autoId = 0;
-    /** @var int $autoId */
-    $autoId++;
+    $autoId = SafeIntCastAction::cast($autoId) + 1;
 
     $defaults = [
         'id' => $autoId,
@@ -91,78 +45,28 @@ function makeAddress(array $overrides = []): array
         'deleted_at' => null,
     ];
 
-    /** @var array{
-     *     id: int,
-     *     model_type: string|null,
-     *     model_id: int|null,
-     *     route: string|null,
-     *     street_number: string|null,
-     *     locality: string|null,
-     *     administrative_area_level_2: string|null,
-     *     postal_code: string|null,
-     *     country: string|null,
-     *     is_primary: bool,
-     *     type: string,
-     *     latitude: float|null,
-     *     longitude: float|null,
-     *     place_id: string|null,
-     *     formatted_address: string|null,
-     *     extra_data: array{
-     *         google_types?: list<string>,
-     *         rating?: float,
-     *         business_status?: string
-     *     },
-     *     deleted_at: string|null
-     * } $address
-     */
-    $address = array_replace($defaults, $overrides);
-
-    return $address;
+    return array_replace($defaults, $overrides);
 }
 
 /**
  * Compose a displayable full address from array parts.
  *
- * @param array{
- *     id: int,
- *     model_type: string|null,
- *     model_id: int|null,
- *     route: string|null,
- *     street_number: string|null,
- *     locality: string|null,
- *     administrative_area_level_2: string|null,
- *     postal_code: string|null,
- *     country: string|null,
- *     is_primary: bool,
- *     type: string,
- *     latitude: float|null,
- *     longitude: float|null,
- *     place_id: string|null,
- *     formatted_address: string|null,
- *     extra_data: array{
- *         google_types?: list<string>,
- *         rating?: float,
- *         business_status?: string
- *     },
- *     deleted_at: string|null
- * } $address
+ * @param  array<string, mixed>  $address
  */
 function formatFullAddress(array $address): string
 {
-    $parts = [];
-    foreach ([
-        $address['route'],
-        $address['street_number'],
-        $address['locality'],
-        $address['postal_code'],
-        $address['country'],
-    ] as $value) {
-        if ($value !== null && $value !== '') {
-            $parts[] = $value;
-        }
-    }
+    $parts = array_filter(
+        [
+            $address['route'] ?? null,
+            $address['street_number'] ?? null,
+            $address['locality'] ?? null,
+            $address['postal_code'] ?? null,
+            $address['country'] ?? null,
+        ],
+        static fn (mixed $value): bool => (SafeStringCastAction::cast($value)) !== '',
+    );
 
-    return implode(', ', $parts);
+    return implode(', ', array_map(static fn (mixed $part): string => SafeStringCastAction::cast($part), $parts));
 }
 
 describe('Address Integration', function () {
@@ -225,13 +129,11 @@ describe('Address Integration', function () {
 
         Assert::assertSame('ChIJu46S-ZZjhkcRLuFvLjVZ400', $address['place_id']);
         $extraData = $address['extra_data'];
-        $googleTypes = $extraData['google_types'] ?? [];
-        $formattedAddress = $address['formatted_address'];
-
-        Assert::assertContains('establishment', $googleTypes);
-        Assert::assertSame(4.5, $extraData['rating'] ?? null);
-        Assert::assertNotNull($formattedAddress);
-        Assert::assertStringContainsString('Piazza del Duomo', $formattedAddress);
+        Assert::assertIsArray($extraData);
+        Assert::assertIsArray($extraData['google_types'] ?? null);
+        Assert::assertStringContainsString('Piazza del Duomo', SafeStringCastAction::cast($address['formatted_address']));
+        Assert::assertContains('establishment', $extraData['google_types']);
+        Assert::assertSame(4.5, $extraData['rating']);
     });
 
     it('supports multiple addresses per entity', function () {

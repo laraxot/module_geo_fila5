@@ -37,7 +37,6 @@
 **Problema**: `Call to undefined function inAdmin()` durante composer autoload
 
 **Root Cause**: Funzioni helper mancanti in `Xot/helpers/Helper.php`
-**Root Cause**: Funzioni helper mancanti in `Xot/Helpers/Helper.php`
 
 **Soluzione**:
 - Aggiunte funzioni `inAdmin()` e `getModuleModels()`

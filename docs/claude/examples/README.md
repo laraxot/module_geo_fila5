@@ -115,7 +115,7 @@ namespace Modules\User\Actions;
 
 use Illuminate\Validation\ValidationException;
 use Modules\User\Datas\UserData;
-use Modules\User\Models\User;
+use Modules\Xot\Contracts\UserContract;
 
 class UpdateUserAction
 {

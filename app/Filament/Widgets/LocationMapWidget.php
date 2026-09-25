@@ -105,7 +105,7 @@ class LocationMapWidget extends XotBaseWidget
     {
         $height = $this->maxHeight ?? '50vh';
 
-        return SafeStringCastAction::cast($height);
+        return is_string($height) ? $height : SafeStringCastAction::cast($height);
     }
 
     /**
