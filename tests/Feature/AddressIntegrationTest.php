@@ -5,18 +5,11 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Feature;
 
 use Modules\Geo\Enums\AddressTypeEnum;
-<<<<<<< .merge_file_UvzIl3
-use Modules\Xot\Actions\Cast\SafeIntCastAction;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
->>>>>>> .merge_file_ZheE39
 /**
  * In-memory Address tests (no factories / DB / container).
  * Keep business rules verifiable without touching app code.
@@ -25,11 +18,6 @@ uses(TestCase::class);
 /**
  * Build an in-memory address array with sane defaults.
  *
-<<<<<<< .merge_file_UvzIl3
- * @param array<string, mixed> $overrides
- *
- * @return array<string, mixed>
-=======
  * @param array{
  *     id?: int,
  *     model_type?: string|null,
@@ -76,17 +64,12 @@ uses(TestCase::class);
  *     },
  *     deleted_at: string|null
  * }
->>>>>>> .merge_file_ZheE39
  */
 function makeAddress(array $overrides = []): array
 {
     static $autoId = 0;
-<<<<<<< .merge_file_UvzIl3
-    $autoId = SafeIntCastAction::cast($autoId) + 1;
-=======
     /** @var int $autoId */
     $autoId++;
->>>>>>> .merge_file_ZheE39
 
     $defaults = [
         'id' => $autoId,
@@ -108,9 +91,6 @@ function makeAddress(array $overrides = []): array
         'deleted_at' => null,
     ];
 
-<<<<<<< .merge_file_UvzIl3
-    return array_replace($defaults, $overrides);
-=======
     /** @var array{
      *     id: int,
      *     model_type: string|null,
@@ -138,33 +118,11 @@ function makeAddress(array $overrides = []): array
     $address = array_replace($defaults, $overrides);
 
     return $address;
->>>>>>> .merge_file_ZheE39
 }
 
 /**
  * Compose a displayable full address from array parts.
  *
-<<<<<<< .merge_file_UvzIl3
- * @param array<string, mixed> $address
- */
-function formatFullAddress(array $address): string
-{
-    /** @var list<string|int|float|bool|null> $rawParts */
-    $rawParts = [
-        $address['route'] ?? null,
-        $address['street_number'] ?? null,
-        $address['locality'] ?? null,
-        $address['postal_code'] ?? null,
-        $address['country'] ?? null,
-    ];
-
-    $parts = array_filter(
-        $rawParts,
-        static fn (string|int|float|bool|null $value): bool => '' !== SafeStringCastAction::cast($value),
-    );
-
-    return implode(', ', array_map(static fn (string|int|float|bool|null $part): string => SafeStringCastAction::cast($part), $parts));
-=======
  * @param array{
  *     id: int,
  *     model_type: string|null,
@@ -205,7 +163,6 @@ function formatFullAddress(array $address): string
     }
 
     return implode(', ', $parts);
->>>>>>> .merge_file_ZheE39
 }
 
 describe('Address Integration', function () {
@@ -268,13 +225,6 @@ describe('Address Integration', function () {
 
         Assert::assertSame('ChIJu46S-ZZjhkcRLuFvLjVZ400', $address['place_id']);
         $extraData = $address['extra_data'];
-<<<<<<< .merge_file_UvzIl3
-        Assert::assertIsArray($extraData);
-        Assert::assertIsArray($extraData['google_types'] ?? null);
-        Assert::assertStringContainsString('Piazza del Duomo', SafeStringCastAction::cast($address['formatted_address']));
-        Assert::assertContains('establishment', $extraData['google_types']);
-        Assert::assertSame(4.5, $extraData['rating']);
-=======
         $googleTypes = $extraData['google_types'] ?? [];
         $formattedAddress = $address['formatted_address'];
 
@@ -282,7 +232,6 @@ describe('Address Integration', function () {
         Assert::assertSame(4.5, $extraData['rating'] ?? null);
         Assert::assertNotNull($formattedAddress);
         Assert::assertStringContainsString('Piazza del Duomo', $formattedAddress);
->>>>>>> .merge_file_ZheE39
     });
 
     it('supports multiple addresses per entity', function () {
@@ -308,11 +257,7 @@ describe('Address Integration', function () {
 
         $primary = null;
         foreach ($patientAddresses as $addr) {
-<<<<<<< .merge_file_UvzIl3
-            if (true === $addr['is_primary']) {
-=======
             if ($addr['is_primary'] === true) {
->>>>>>> .merge_file_ZheE39
                 $primary = $addr;
                 break;
             }

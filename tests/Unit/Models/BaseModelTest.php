@@ -6,15 +6,10 @@ namespace Modules\Geo\Tests\Unit\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Modules\Geo\Models\BaseModel;
-<<<<<<< .merge_file_BMXJPE
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
->>>>>>> .merge_file_4RMxoY
 test('base model extends eloquent model', function () {
     $baseModel = new class extends BaseModel {
         protected $table = 'test_geo_table';

@@ -6,16 +6,11 @@ namespace Modules\Geo\Tests\Unit\Enums;
 
 use Modules\Geo\Enums\AddressItemEnum;
 use Modules\Geo\Enums\AddressTypeEnum;
-<<<<<<< .merge_file_Ld71kR
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
->>>>>>> .merge_file_vuiuHX
 test('AddressItemEnum has expected cases', function () {
     $cases = AddressItemEnum::cases();
     $values = array_map(static fn (AddressItemEnum $case): string => $case->value, $cases);

@@ -1,15 +1,3 @@
-<<<<<<< .merge_file_i0fmQF
----
-title: "Rimando a agents.md"
-description: "Documento unificato: il contenuto canonico vive in agents.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [agents.md](./agents.md).
-=======
 # AI Agent Instructions for LLM Wiki Management
 
 You are an expert documentation agent responsible for maintaining the PTVX LLM Wiki. Follow these rules to ensure the wiki remains accurate, interlinked, and non-redundant.
@@ -45,4 +33,3 @@ If new information contradicts existing wiki pages:
 ## 5. Maintenance
 - Run `qmd update` after significant changes to ensure the index is fresh.
 - Periodically review the `wiki/` folder for orphaned pages (pages with no incoming links).
->>>>>>> .merge_file_4shD9H

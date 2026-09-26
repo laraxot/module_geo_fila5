@@ -361,11 +361,7 @@ declare(strict_types=1);
 namespace Modules\User\Filament\Resources;
 
 use Modules\Xot\Filament\Resources\XotBaseResource;
-<<<<<<< .merge_file_90UIlP
-use Modules\Xot\Contracts\UserContract;
-=======
 use Modules\User\Models\User;
->>>>>>> .merge_file_bWpkVJ
 
 class UserResource extends XotBaseResource
 {

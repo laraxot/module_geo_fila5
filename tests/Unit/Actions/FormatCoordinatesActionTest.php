@@ -5,15 +5,10 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Actions;
 
 use Modules\Geo\Actions\FormatCoordinatesAction;
-<<<<<<< .merge_file_gmHiet
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
->>>>>>> .merge_file_ui5fVF
 it('formats coordinates in decimal format', function (): void {
     $action = new FormatCoordinatesAction();
 

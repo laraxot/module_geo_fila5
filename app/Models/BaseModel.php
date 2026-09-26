@@ -25,11 +25,8 @@ abstract class BaseModel extends XotBaseModel
 
     /**
      * Get the attributes that should be cast.
-<<<<<<< .merge_file_ONRjcT
-=======
      *
      * @return array<string, string>
->>>>>>> .merge_file_bABj4K
      */
     protected function casts(): array
     {

@@ -118,11 +118,7 @@ return [
         ],
         'label' => 'Municipality',
         'sort' => 1,
-<<<<<<< .merge_file_tR3JJu
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_TMn1Nr
     ],
     'actions' => [
         'create' => [

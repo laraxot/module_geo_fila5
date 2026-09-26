@@ -7,10 +7,7 @@ namespace Modules\Geo\Models;
 use Filament\Schemas\Components\Utilities\Get;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\File;
-<<<<<<< .merge_file_Xa6ZwM
-=======
 use Modules\Geo\Database\Factories\LocalityFactory;
->>>>>>> .merge_file_lGKADv
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Sushi\Sushi;
@@ -18,13 +15,8 @@ use Sushi\Sushi;
 /**
  * @property int|null                     $region_id
  * @property int|null                     $province_id
-<<<<<<< .merge_file_Xa6ZwM
- * @property int                          $id
- * @property string|null                  $name
-=======
  * @property string|null                  $name
  * @property int                          $id
->>>>>>> .merge_file_lGKADv
  * @property array<array-key, mixed>|null $postal_code
  * @property ProfileContract|null         $creator
  * @property ProfileContract|null         $updater
@@ -38,13 +30,10 @@ use Sushi\Sushi;
  * @method static Builder<static>|Locality whereProvinceId($value)
  * @method static Builder<static>|Locality whereRegionId($value)
  *
-<<<<<<< .merge_file_Xa6ZwM
-=======
  * @property ProfileContract|null $deleter
  *
  * @method static LocalityFactory factory($count = null, $state = [])
  *
->>>>>>> .merge_file_lGKADv
  * @mixin \Eloquent
  */
 class Locality extends BaseModel
@@ -169,11 +158,7 @@ class Locality extends BaseModel
         $city = $get('locality');
         $res = self::where('region_id', $region)
             ->where('province_id', $province)
-<<<<<<< .merge_file_Xa6ZwM
-            ->when(null !== $city, static fn (Builder $query) => $query->where('id', $city))
-=======
             ->when(null !== $city, static fn ($query) => $query->where('id', $city))
->>>>>>> .merge_file_lGKADv
             ->select('postal_code')
             ->distinct()
             ->orderBy('postal_code')
@@ -204,10 +189,7 @@ class Locality extends BaseModel
      *
      * @return array<string, string>
      */
-<<<<<<< .merge_file_Xa6ZwM
-=======
     #[\Override]
->>>>>>> .merge_file_lGKADv
     protected function casts(): array
     {
         return [

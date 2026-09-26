@@ -61,11 +61,7 @@ class GetAddressFromBingMapsAction
     /**
      * @throws InvalidLocationException
      *
-<<<<<<< .merge_file_rO7qaO
-     * @return array<string, mixed>
-=======
      * @return array<mixed>
->>>>>>> .merge_file_3SYwph
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
     {
@@ -91,20 +87,8 @@ class GetAddressFromBingMapsAction
             throw InvalidLocationException::invalidData('Risposta JSON non valida da Bing Maps');
         }
 
-<<<<<<< .merge_file_rO7qaO
-        $typedResponse = [];
-        foreach ($jsonResponse as $key => $value) {
-            if (! is_string($key)) {
-                continue;
-            }
-            $typedResponse[$key] = $value;
-        }
-
-        return $typedResponse;
-=======
         /* @var array<string, mixed> $jsonResponse */
         return $jsonResponse;
->>>>>>> .merge_file_3SYwph
     }
 
     /**

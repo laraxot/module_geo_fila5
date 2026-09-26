@@ -1,10 +1,3 @@
-<<<<<<< .merge_file_YXCjie
-<?php
-
-declare(strict_types=1);
-?>
-=======
->>>>>>> .merge_file_iz6Ha4
 @php
 /** @var \Modules\Geo\Filament\Forms\Components\LeafletMarkerMapInput $field */
 $statePath = $field->getStatePath();
