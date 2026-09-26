@@ -14,9 +14,6 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
 class LatLngWidget extends XotBaseWidget
 {
     /** @var view-string */
-<<<<<<< .merge_file_gbjBfl
-    protected string $view = 'geo::filament.widgets.lat-lng';
-=======
     protected string $view;
 
     public function __construct()
@@ -27,7 +24,6 @@ class LatLngWidget extends XotBaseWidget
 
         parent::__construct();
     }
->>>>>>> .merge_file_OBqZut
 
     public float $lat = 0;
 

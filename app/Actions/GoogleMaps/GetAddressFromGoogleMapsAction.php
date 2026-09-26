@@ -74,11 +74,7 @@ final class GetAddressFromGoogleMapsAction
         /** @var GoogleMapResponseData $responseData */
         $responseData = GoogleMapResponseData::from($response->json());
 
-<<<<<<< .merge_file_4JYc4v
-        if (0 === $responseData->results->count()) {
-=======
         if ($responseData->results->count() === 0) {
->>>>>>> .merge_file_zfZBmn
             throw GoogleMapsApiException::noResultsFound();
         }
 
@@ -118,30 +114,20 @@ final class GetAddressFromGoogleMapsAction
     }
 
     /**
-<<<<<<< .merge_file_4JYc4v
-     * @param DataCollection<int, GoogleMapAddressComponentData> $components
-     * @param array<string>                                      $types
-=======
      * @param  DataCollection<int, GoogleMapAddressComponentData>  $components
      * @param  array<string>  $types
->>>>>>> .merge_file_zfZBmn
      */
     private function getComponent(DataCollection $components, array $types, bool $short = false): ?string
     {
         /** @var GoogleMapAddressComponentData|null $component */
         $component = $components
             ->toCollection()
-<<<<<<< .merge_file_4JYc4v
-            ->first(function (GoogleMapAddressComponentData $component) use ($types): bool {
-                return [] !== $component->types && count(array_intersect($component->types, $types)) > 0;
-=======
             ->first(function ($component) use ($types) {
                 if (! $component instanceof GoogleMapAddressComponentData) {
                     return false;
                 }
 
                 return ! empty($component->types) && count(array_intersect($component->types, $types)) > 0;
->>>>>>> .merge_file_zfZBmn
             });
 
         if (! $component instanceof GoogleMapAddressComponentData) {

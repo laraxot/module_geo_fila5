@@ -4,15 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Resources;
 
-<<<<<<< .merge_file_clswqA
-use Modules\Geo\Models\Location;
-use Modules\Xot\Filament\Resources\XotBaseResource;
-
-class LocationResource extends XotBaseResource
-{
-    protected static ?string $model = Location::class;
-<<<<<<< .merge_file_nQOJsw
-=======
 use Filament\Forms\Components\TextInput;
 use Filament\Support\Components\Component;
 use Modules\Geo\Filament\Resources\LocationResource\Pages\CreateLocation;
@@ -35,20 +26,13 @@ use Modules\Xot\Filament\Resources\XotBaseResource;
 class LocationResource extends XotBaseResource
 {
     protected static ?string $model = Location::class;
->>>>>>> .merge_file_KmSIUn
 
     // ✅ CORRETTO - NIENTE navigationGroup - La gestione è centralizzata in XotBaseResource
 
     /**
      * @return array<string, Component>
-<<<<<<< .merge_file_clswqA
-     *
-     * @phpstan-return array<string, Component>
-     */
-=======
      */
     #[\Override]
->>>>>>> .merge_file_KmSIUn
     public function getFormSchemaOld(): array
     {
         return [
@@ -92,11 +76,7 @@ class LocationResource extends XotBaseResource
     /**
      * Definisce le relazioni disponibili per questo resource.
      *
-<<<<<<< .merge_file_clswqA
-     * @return array<class-string<RelationManager>|RelationGroup|RelationManagerConfiguration>
-=======
      * @return array<mixed> Le relazioni configurate
->>>>>>> .merge_file_KmSIUn
      */
     #[\Override]
     public static function getRelations(): array
@@ -112,11 +92,7 @@ class LocationResource extends XotBaseResource
      * - Creazione nuovo luogo
      * - Modifica luogo esistente
      *
-<<<<<<< .merge_file_clswqA
-     * @return array<string, PageRegistration>
-=======
      * @return array<mixed> Le pagine configurate
->>>>>>> .merge_file_KmSIUn
      */
     #[\Override]
     public static function getPages(): array
@@ -144,9 +120,4 @@ class LocationResource extends XotBaseResource
         ];
     }
         */
-<<<<<<< .merge_file_clswqA
-=======
->>>>>>> .merge_file_sIGZK8
-=======
->>>>>>> .merge_file_KmSIUn
 }

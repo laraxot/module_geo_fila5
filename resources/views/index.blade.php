@@ -1,10 +1,7 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_w1hLQ4
-=======
 
->>>>>>> .merge_file_Yl3IPb
 ?>
 @extends('geo::layouts.master')
 

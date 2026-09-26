@@ -1,16 +1,7 @@
-<<<<<<< .merge_file_Msff5B
-<?php
-
-declare(strict_types=1);
-?>
-=======
->>>>>>> .merge_file_HOP0ft
 @php
 /** @var \Modules\Geo\Filament\Forms\Components\MapPicker $field */
 $statePath = $field->getStatePath();
 $id = $field->getId();
-<<<<<<< .merge_file_Msff5B
-=======
 
 $labels = [
     'zoom_in' => __('geo::coordinate-picker.zoom_in'),
@@ -31,7 +22,6 @@ $labels = [
 
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
     <div x-data="{
->>>>>>> .merge_file_HOP0ft
             state: $wire.{{ $applyStateBindingModifiers("\$entangle('{$statePath}')") }},
             isFullscreen: false,
             labels: @js($labels),

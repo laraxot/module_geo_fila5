@@ -1,14 +1,7 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_NSeJPQ
-<<<<<<< .merge_file_fThix9
 
-=======
->>>>>>> .merge_file_KlpAI9
-=======
-
->>>>>>> .merge_file_0Gdfok
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
 use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
@@ -34,17 +27,12 @@ test('geo map dataset exposes point categories only', function (): void {
     $categories = app(GetGeoMapDatasetCategoriesAction::class)->execute($path);
 
     Assert::assertNotEmpty($categories);
-<<<<<<< .merge_file_NSeJPQ
-    // `assertContainsOnly()` e' stata rimossa in PHPUnit 13: le varianti per tipo la sostituiscono.
-    Assert::assertContainsOnlyString($categories);
-=======
 
     $nonStringCategories = array_filter(
         $categories,
         static fn (mixed $category): bool => ! is_string($category),
     );
     Assert::assertSame([], $nonStringCategories);
->>>>>>> .merge_file_0Gdfok
 });
 
 test('geo map dataset computes stats for points and zones', function (): void {

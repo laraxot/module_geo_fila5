@@ -267,11 +267,7 @@ use Filament\Forms\Form;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Modules\User\Filament\Resources\UserResource\Pages;
-<<<<<<< .merge_file_wFS8yr
-use Modules\Xot\Contracts\UserContract;
-=======
 use Modules\User\Models\User;
->>>>>>> .merge_file_0w2tZ4
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class UserResource extends XotBaseResource

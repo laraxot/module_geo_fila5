@@ -12,16 +12,10 @@ use Spatie\QueueableAction\QueueableAction;
  */
 class FilterCoordinatesAction
 {
-<<<<<<< .merge_file_Cfbpkp
-    use HandlesCoordinates;
-    use QueueableAction;
-
-=======
     use QueueableAction;
 
     use HandlesCoordinates;
 
->>>>>>> .merge_file_WwYoSb
     /**
      * Filtra le coordinate che si trovano entro un certo raggio da un punto.
      *

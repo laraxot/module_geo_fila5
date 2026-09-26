@@ -1,7 +1,3 @@
-<<<<<<< .merge_file_nyve6I
-<<<<<<< .merge_file_Vd1kit
-=======
->>>>>>> .merge_file_ZOHx4B
 The MIT License (MIT)
 
 Copyright (c) :vendor_name <author@domain.com>
@@ -23,18 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-<<<<<<< .merge_file_nyve6I
-=======
----
-title: "Rimando a license.md"
-description: "Documento unificato: il contenuto canonico vive in license.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [license.md](./license.md).
->>>>>>> .merge_file_TacBwf
-=======
->>>>>>> .merge_file_ZOHx4B

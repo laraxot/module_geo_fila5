@@ -10,15 +10,10 @@ use Modules\Geo\Models\Locality;
 use Modules\Geo\Models\Place;
 use Modules\Geo\Models\PlaceType;
 use Modules\Geo\Models\State;
-<<<<<<< .merge_file_tXnvE3
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
->>>>>>> .merge_file_sr5wpE
 test('State model can be instantiated', function () {
     $state = new State();
 

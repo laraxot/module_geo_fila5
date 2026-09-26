@@ -10,15 +10,10 @@ use Modules\Geo\Actions\GetAddressDataFromFullAddressAction;
 use Modules\Geo\Actions\OptimizeRouteAction;
 use Modules\Geo\Actions\UpdateCoordinatesAction;
 use Modules\Geo\Actions\ValidateCoordinatesAction;
-<<<<<<< .merge_file_ES1nJk
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
->>>>>>> .merge_file_W52sBG
 test('UpdateCoordinatesAction can be instantiated', function () {
     // Wrap in try-catch to handle any dependency issues
     try {

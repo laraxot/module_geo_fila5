@@ -4,23 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-<<<<<<< .merge_file_ucWY0l
-=======
 use Filament\Forms\Components\Repeater;
->>>>>>> .merge_file_lkBS11
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
-<<<<<<< .merge_file_ucWY0l
-use Modules\Geo\Filament\Resources\AddressResource\Schemas\AddressForm;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
-use Modules\Xot\Filament\Forms\Components\XotBaseRepeater;
-=======
 use Modules\Geo\Filament\Resources\AddressResource;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
->>>>>>> .merge_file_lkBS11
 
 use function Safe\preg_match;
 
@@ -39,11 +30,7 @@ use function Safe\preg_match;
  *     ->minItems(1)
  *     ->addActionLabel('Aggiungi Indirizzo')
  */
-<<<<<<< .merge_file_ucWY0l
-class AddressesField extends XotBaseRepeater
-=======
 class AddressesField extends Repeater
->>>>>>> .merge_file_lkBS11
 {
     // protected string $view = 'geo::filament.forms.components.addresses-field';
 
@@ -107,19 +94,11 @@ class AddressesField extends Repeater
     /**
      * Schema form personalizzato per gli indirizzi con logica condizionale per i campi name e is_primary.
      *
-<<<<<<< .merge_file_ucWY0l
-     * @return array<string, Component>
-     */
-    protected function getAddressFormSchema(): array
-    {
-        $baseSchema = app(AddressForm::class)->getFormSchema();
-=======
      * @return array<int|string, Component>
      */
     protected function getAddressFormSchema(): array
     {
         $baseSchema = app(AddressResource::class)->getFormSchema();
->>>>>>> .merge_file_lkBS11
 
         // Campo name: visibile solo con più di 1 elemento
         $baseSchema['name'] = TextInput::make('name')
@@ -131,11 +110,7 @@ class AddressesField extends Repeater
         $baseSchema['is_primary'] = Toggle::make('is_primary')
             ->visible(fn (Get $get): bool => count(self::repeaterAddresses($get)) > 1)
             ->default(fn (Get $get): bool => count(self::repeaterAddresses($get)) <= 1)
-<<<<<<< .merge_file_ucWY0l
-            ->afterStateUpdated(function (?bool $state, Set $set, Get $get, Component $component): void {
-=======
             ->afterStateUpdated(function ($state, Set $set, Get $get, Component $component): void {
->>>>>>> .merge_file_lkBS11
                 // Se questo diventa primary, disattiva tutti gli altri
                 if (true === $state) {
                     $addresses = self::repeaterAddresses($get);
@@ -159,11 +134,7 @@ class AddressesField extends Repeater
                 }
             })
             ->live()
-<<<<<<< .merge_file_ucWY0l
-            ->dehydrateStateUsing(function (?bool $state, Get $get): bool {
-=======
             ->dehydrateStateUsing(function ($state, Get $get): bool {
->>>>>>> .merge_file_lkBS11
                 // Se c'è un solo elemento, forza sempre true
                 if (count(self::repeaterAddresses($get)) <= 1) {
                     return true;

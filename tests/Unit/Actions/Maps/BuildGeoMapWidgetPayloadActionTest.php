@@ -1,10 +1,7 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_k5BcMj
-=======
 
->>>>>>> .merge_file_Cdrthp
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Actions\Maps\BuildGeoMapWidgetPayloadAction;
 use Modules\Geo\Datas\Map\GeoMapWidgetData;

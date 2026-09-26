@@ -1,15 +1,3 @@
-<<<<<<< .merge_file_l0blMf
----
-title: "Rimando a status.md"
-description: "Documento unificato: il contenuto canonico vive in status.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [status.md](./status.md).
-=======
 # Laravel 13 Upgrade Status - Root Project 🐄✨
 
 ## Overview
@@ -36,4 +24,3 @@ This document tracks the overall progress of the Laravel 13 upgrade for the enti
 
 ---
 **Status**: Ready for final verification.
->>>>>>> .merge_file_JvpNnS

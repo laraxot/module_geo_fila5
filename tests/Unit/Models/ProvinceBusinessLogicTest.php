@@ -14,10 +14,7 @@ use function Safe\class_uses;
 
 use Sushi\Sushi;
 
-<<<<<<< .merge_file_zEDWBm
-=======
 uses(\Modules\Geo\Tests\TestCase::class);
->>>>>>> .merge_file_4NlWTf
 describe('Province Business Logic', function () {
     test('province extends base model', function () {
         Assert::assertInstanceOf(BaseModel::class, new Province());

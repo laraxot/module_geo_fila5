@@ -1,10 +1,7 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_9geROR
-=======
 
->>>>>>> .merge_file_aoC5Hs
 ?>
 {{--
 <script src="js/leaflet.js"></script>

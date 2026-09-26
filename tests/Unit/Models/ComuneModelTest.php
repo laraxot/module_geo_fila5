@@ -42,11 +42,8 @@ function comuneModelFixtures(): array
     ];
 }
 
-<<<<<<< .merge_file_7cONfP
-=======
 uses(\Modules\Geo\Tests\TestCase::class);
 
->>>>>>> .merge_file_FDE5T0
 beforeEach(function (): void {
     /* @var \Modules\Geo\Tests\TestCase $this */
     File::put(

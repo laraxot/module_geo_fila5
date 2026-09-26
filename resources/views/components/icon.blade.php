@@ -1,10 +1,3 @@
-<<<<<<< .merge_file_OTelyB
-<?php
-
-declare(strict_types=1);
-?>
-=======
->>>>>>> .merge_file_5ThPTy
 @props(['name', 'class' => 'w-4 h-4'])
 
 @php
