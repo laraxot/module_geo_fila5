@@ -393,14 +393,14 @@ declare(strict_types=1);
 
 namespace Modules\User\Filament\Pages;
 
-use Modules\Xot\Filament\Pages\XotBasePage;
+use Modules\Xot\Filament\Pages\XotBaseDashboard;
 
-class DashboardPage extends XotBasePage
+class Dashboard extends XotBaseDashboard
 {
     // $navigationIcon NON necessario
     // $title NON necessario
     // $navigationLabel NON necessario
-    // Gestiti automaticamente da XotBasePage
+    // Gestiti dalla base XotBaseDashboard
 }
 ```
 
