@@ -78,11 +78,7 @@ return [
         ],
         'label' => 'Postal Code',
         'sort' => 1,
-<<<<<<< .merge_file_xnKfF1
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_ULpUhf
     ],
     'actions' => [
         'create' => [

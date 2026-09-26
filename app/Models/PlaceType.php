@@ -6,10 +6,7 @@ namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
-<<<<<<< .merge_file_CS8Lqk
-=======
 use Modules\Geo\Database\Factories\PlaceTypeFactory;
->>>>>>> .merge_file_Df3VXx
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 
@@ -17,14 +14,6 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @property ProfileContract|null $creator
  * @property ProfileContract|null $updater
  *
-<<<<<<< .merge_file_CS8Lqk
- * @method static \Modules\Geo\Database\Factories\PlaceTypeFactory factory($count = null, $state = [])
- * @method static Builder<static>|PlaceType                        newModelQuery()
- * @method static Builder<static>|PlaceType                        newQuery()
- * @method static Builder<static>|PlaceType                        query()
- *
- * @property int         $id
-=======
  * @method static Builder<static>|PlaceType newModelQuery()
  * @method static Builder<static>|PlaceType newQuery()
  * @method static Builder<static>|PlaceType query()
@@ -34,7 +23,6 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  * @method static PlaceTypeFactory factory($count = null, $state = [])
  *
  * @property string      $id
->>>>>>> .merge_file_Df3VXx
  * @property string      $name
  * @property string|null $description
  * @property Carbon|null $created_at
@@ -50,10 +38,7 @@ use Modules\Xot\Models\Traits\HasXotFactory;
  */
 class PlaceType extends BaseModel
 {
-<<<<<<< .merge_file_CS8Lqk
-=======
     /**  */
->>>>>>> .merge_file_Df3VXx
     use HasXotFactory;
 
     protected $fillable = [

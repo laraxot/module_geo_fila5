@@ -102,11 +102,7 @@ return [
         ],
         'label' => 'City',
         'sort' => 1,
-<<<<<<< .merge_file_dF7fjA
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_5tOCKU
     ],
     'actions' => [
         'create' => [

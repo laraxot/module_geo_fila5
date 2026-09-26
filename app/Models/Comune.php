@@ -109,32 +109,13 @@ class Comune extends BaseModel
     /** @var array<string, string> */
     protected array $schema = [
         'id' => 'integer',
-<<<<<<< .merge_file_JVH881
-        'codice' => 'string',
-        'nome' => 'string',
-        'regione' => 'json',
-        'provincia' => 'json',
-        'sigla_provincia' => 'string',
-        'cap' => 'json',
-        'codice_catastale' => 'string',
-        'popolazione' => 'integer',
-        'zona_altimetrica' => 'string',
-        'altitudine' => 'integer',
-        'superficie' => 'float',
-        'lat' => 'float',
-        'lng' => 'float',
-=======
->>>>>>> .merge_file_ZLjJSX
         'title' => 'json',
         'slug' => 'string',
         'content' => 'string',
         'zona' => 'json',
-<<<<<<< .merge_file_JVH881
-=======
         'provincia' => 'json',
         'regione' => 'json',
         'cap' => 'json',
->>>>>>> .merge_file_ZLjJSX
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'created_by' => 'string',
@@ -151,34 +132,7 @@ class Comune extends BaseModel
      */
     public function getRows(): array
     {
-<<<<<<< .merge_file_JVH881
-        $rows = $this->getSushiRows();
-
-        if ([] === $rows) {
-            return [];
-        }
-
-        /** @var list<string> $columns */
-        $columns = array_keys($rows[0]);
-
-        /** @var array<int, array<string, mixed>> $uniform */
-        $uniform = [];
-
-        foreach ($rows as $row) {
-            /** @var array<string, mixed> $normalized */
-            $normalized = [];
-            foreach ($columns as $column) {
-                $normalized[$column] = $row[$column] ?? null;
-            }
-
-            ksort($normalized);
-            $uniform[] = $normalized;
-        }
-
-        return $uniform;
-=======
         return $this->getSushiRows();
->>>>>>> .merge_file_ZLjJSX
     }
 
     /**
@@ -322,10 +276,7 @@ class Comune extends BaseModel
     }
 
     /** @return array<string, string>     */
-<<<<<<< .merge_file_JVH881
-=======
     #[\Override]
->>>>>>> .merge_file_ZLjJSX
     protected function casts(): array
     {
         return [

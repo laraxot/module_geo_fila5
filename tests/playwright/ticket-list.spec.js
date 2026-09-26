@@ -1,12 +1,3 @@
-<<<<<<< .merge_file_2XNuYL
-<<<<<<< .merge_file_ibLO7B
-=======
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
-// Geo — frontend asset (claude-audit doc ratio).
->>>>>>> .merge_file_EiAE7Y
-=======
->>>>>>> .merge_file_akQENL
 import { test, expect } from '@playwright/test';
 
 test.describe('Segnalazioni Elenco Map Tests', () => {

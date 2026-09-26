@@ -115,11 +115,7 @@ namespace Modules\User\Actions;
 
 use Illuminate\Validation\ValidationException;
 use Modules\User\Datas\UserData;
-<<<<<<< .merge_file_0o8uFG
-use Modules\Xot\Contracts\UserContract;
-=======
 use Modules\User\Models\User;
->>>>>>> .merge_file_DuP0HK
 
 class UpdateUserAction
 {

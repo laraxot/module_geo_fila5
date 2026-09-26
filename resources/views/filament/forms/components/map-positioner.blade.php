@@ -1,10 +1,3 @@
-<<<<<<< .merge_file_5KQZ2k
-<?php
-
-declare(strict_types=1);
-?>
-=======
->>>>>>> .merge_file_4y8Pxk
 @php
 /** @var \Modules\Geo\Filament\Forms\Components\MapPositioner $field */
 $statePath = $field->getStatePath();

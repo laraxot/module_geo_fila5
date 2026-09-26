@@ -28,21 +28,9 @@ class GoogleMapsHttpAction
     private const string ELEVATION_URL = 'https://maps.googleapis.com/maps/api/elevation/json';
 
     /**
-<<<<<<< .merge_file_30luvF
-<<<<<<< .merge_file_LGHe0e
-     * @return array<string, mixed>
-     *
-     * @throws GoogleMapsApiException
-=======
      * @throws GoogleMapsApiException
      *
      * @return array<string, mixed>
->>>>>>> .merge_file_3Axhde
-=======
-     * @throws GoogleMapsApiException
-     *
-     * @return array<string, mixed>
->>>>>>> .merge_file_Jq7xyd
      */
     public function executeReverseGeocode(float $latitude, float $longitude): array
     {
@@ -58,26 +46,12 @@ class GoogleMapsHttpAction
     }
 
     /**
-<<<<<<< .merge_file_30luvF
-<<<<<<< .merge_file_LGHe0e
-     * @param  array<string>  $origins
-     * @param  array<string>  $destinations
-     * @return array<string, mixed>
-     *
-     * @throws GoogleMapsApiException
-=======
-=======
->>>>>>> .merge_file_Jq7xyd
      * @param array<string> $origins
      * @param array<string> $destinations
      *
      * @throws GoogleMapsApiException
      *
      * @return array<string, mixed>
-<<<<<<< .merge_file_30luvF
->>>>>>> .merge_file_3Axhde
-=======
->>>>>>> .merge_file_Jq7xyd
      */
     public function executeDistanceMatrix(array $origins, array $destinations): array
     {
@@ -95,21 +69,9 @@ class GoogleMapsHttpAction
     }
 
     /**
-<<<<<<< .merge_file_30luvF
-<<<<<<< .merge_file_LGHe0e
-     * @return array<string, mixed>
-     *
-     * @throws GoogleMapsApiException
-=======
      * @throws GoogleMapsApiException
      *
      * @return array<string, mixed>
->>>>>>> .merge_file_3Axhde
-=======
-     * @throws GoogleMapsApiException
-     *
-     * @return array<string, mixed>
->>>>>>> .merge_file_Jq7xyd
      */
     public function executeElevation(float $latitude, float $longitude): array
     {
@@ -136,17 +98,8 @@ class GoogleMapsHttpAction
     }
 
     /**
-<<<<<<< .merge_file_30luvF
-<<<<<<< .merge_file_LGHe0e
-     * @param  array<string, mixed>  $params
-=======
      * @param array<string, mixed> $params
      *
->>>>>>> .merge_file_3Axhde
-=======
-     * @param array<string, mixed> $params
-     *
->>>>>>> .merge_file_Jq7xyd
      * @return array<string, mixed>
      */
     private function makeRequest(string $method, string $url, array $params = [], bool $useCache = true): array
@@ -156,15 +109,7 @@ class GoogleMapsHttpAction
         if ($useCache && config('geo.cache.enabled')) {
             /** @var array<string, mixed>|null $cached */
             $cached = Cache::get($cacheKey);
-<<<<<<< .merge_file_30luvF
-<<<<<<< .merge_file_LGHe0e
-            if ($cached !== null) {
-=======
             if (null !== $cached) {
->>>>>>> .merge_file_3Axhde
-=======
-            if (null !== $cached) {
->>>>>>> .merge_file_Jq7xyd
                 return $cached;
             }
         }
@@ -223,15 +168,7 @@ class GoogleMapsHttpAction
     }
 
     /**
-<<<<<<< .merge_file_30luvF
-<<<<<<< .merge_file_LGHe0e
-     * @param  array<string, mixed>  $params
-=======
      * @param array<string, mixed> $params
->>>>>>> .merge_file_3Axhde
-=======
-     * @param array<string, mixed> $params
->>>>>>> .merge_file_Jq7xyd
      */
     private function getCacheKey(string $method, string $url, array $params): string
     {

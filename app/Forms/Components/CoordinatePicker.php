@@ -4,22 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Forms\Components;
 
-<<<<<<< .merge_file_tp4ewE
-=======
 use Filament\Forms\Components\Field;
->>>>>>> .merge_file_cC66Km
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\On;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
-<<<<<<< .merge_file_tp4ewE
-use Modules\Xot\Filament\Forms\Components\XotBaseField;
-
-class CoordinatePicker extends XotBaseField
-=======
 
 class CoordinatePicker extends Field
->>>>>>> .merge_file_cC66Km
 {
     public ?string $latitudeColumn = 'latitude';
 
@@ -174,11 +165,7 @@ class CoordinatePicker extends Field
     }
 
     /**
-<<<<<<< .merge_file_tp4ewE
-     * @param array<array-key, mixed> $data
-=======
      * @param array<mixed> $data
->>>>>>> .merge_file_cC66Km
      *
      * @return array<string, float|null>
      */

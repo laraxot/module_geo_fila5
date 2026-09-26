@@ -76,11 +76,7 @@ return [
             'name' => 'Comuni',
             'plural' => 'Comuni',
             'description' => 'Gestione dei comuni',
-<<<<<<< .merge_file_HMTttD
-            'icon' => 'heroicon-o-building-office',
-=======
             'icon' => 'heroicon-o-building',
->>>>>>> .merge_file_c84xXf
         ],
         'postal_codes' => [
             'name' => 'CAP',
@@ -92,11 +88,7 @@ return [
             'name' => 'Confini',
             'plural' => 'Confini',
             'description' => 'Gestione dei confini amministrativi',
-<<<<<<< .merge_file_HMTttD
-            'icon' => 'geo-icon',
-=======
             'icon' => 'heroicon-o-square-3-stack-3d',
->>>>>>> .merge_file_c84xXf
         ],
         'areas' => [
             'name' => 'Aree',

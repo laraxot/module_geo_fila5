@@ -59,11 +59,7 @@ class GetAddressFromMapboxLatLngAction
     }
 
     /**
-<<<<<<< .merge_file_eWu1ck
-     * @return array<array-key, mixed>
-=======
      * @return array<mixed>
->>>>>>> .merge_file_6pcbOW
      */
     private function makeApiRequest(float $latitude, float $longitude, string $apiKey): array
     {
@@ -94,11 +90,7 @@ class GetAddressFromMapboxLatLngAction
     }
 
     /**
-<<<<<<< .merge_file_eWu1ck
-     * @param array<array-key, mixed> $response
-=======
      * @param array<mixed> $response
->>>>>>> .merge_file_6pcbOW
      */
     private function parseResponse(array $response): MapboxMapData
     {

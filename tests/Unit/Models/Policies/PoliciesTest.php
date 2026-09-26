@@ -10,15 +10,10 @@ use Modules\Geo\Models\Policies\LocalityPolicy;
 use Modules\Geo\Models\Policies\PlacePolicy;
 use Modules\Geo\Models\Policies\PlaceTypePolicy;
 use Modules\Geo\Models\Policies\StatePolicy;
-<<<<<<< .merge_file_jCeqxN
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
->>>>>>> .merge_file_k8AANu
 test('StatePolicy can be instantiated', function () {
     $policy = new StatePolicy();
 

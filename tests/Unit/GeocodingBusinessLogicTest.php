@@ -4,17 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit;
 
-<<<<<<< .merge_file_Jfrhk7
-use Modules\Xot\Actions\Cast\SafeFloatCastAction;
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
->>>>>>> .merge_file_ezVxKK
 /**
  * @return array<string, string>
  */
@@ -32,9 +26,6 @@ function italianAddressFixture(): array
 }
 
 /**
-<<<<<<< .merge_file_Jfrhk7
- * @return array<string, mixed>
-=======
  * @return array{
  *     latitude: float,
  *     longitude: float,
@@ -48,7 +39,6 @@ function italianAddressFixture(): array
  *         west: float
  *     }
  * }
->>>>>>> .merge_file_ezVxKK
  */
 function geocodingResultFixture(): array
 {
@@ -142,21 +132,13 @@ describe('Geocoding Business Logic', function () {
         it('validates Italian regional hierarchy', function () {
             $address = italianAddressFixture();
 
-<<<<<<< .merge_file_Jfrhk7
-            if ('Milano' === $address['city']) {
-=======
             if ($address['city'] === 'Milano') {
->>>>>>> .merge_file_ezVxKK
                 Assert::assertSame('Lombardia', $address['region']);
                 Assert::assertSame('MI', $address['province']);
             }
 
             $lombardyProvinces = ['MI', 'BG', 'BS', 'CO', 'CR', 'MN', 'PV', 'SO', 'VA'];
-<<<<<<< .merge_file_Jfrhk7
-            if ('Lombardia' === $address['region']) {
-=======
             if ($address['region'] === 'Lombardia') {
->>>>>>> .merge_file_ezVxKK
                 Assert::assertContains($address['province'], $lombardyProvinces);
             }
         });
@@ -204,21 +186,12 @@ describe('Geocoding Business Logic', function () {
             Assert::assertArrayHasKey('east', $bbox);
             Assert::assertArrayHasKey('west', $bbox);
 
-<<<<<<< .merge_file_Jfrhk7
-            $latitude = SafeFloatCastAction::cast($result['latitude']);
-            $longitude = SafeFloatCastAction::cast($result['longitude']);
-            $north = SafeFloatCastAction::cast($bbox['north']);
-            $south = SafeFloatCastAction::cast($bbox['south']);
-            $east = SafeFloatCastAction::cast($bbox['east']);
-            $west = SafeFloatCastAction::cast($bbox['west']);
-=======
             $latitude = $result['latitude'];
             $longitude = $result['longitude'];
             $north = $bbox['north'];
             $south = $bbox['south'];
             $east = $bbox['east'];
             $west = $bbox['west'];
->>>>>>> .merge_file_ezVxKK
 
             Assert::assertGreaterThan($latitude, $north);
             Assert::assertLessThan($latitude, $south);
@@ -312,20 +285,12 @@ describe('Geocoding Business Logic', function () {
         it('validates population data for cities', function () {
             $place = placeFixture();
 
-<<<<<<< .merge_file_Jfrhk7
-            if ('city' === $place['type']) {
-=======
             if ($place['type'] === 'city') {
->>>>>>> .merge_file_ezVxKK
                 Assert::assertArrayHasKey('population', $place);
                 Assert::assertGreaterThan(0, $place['population']);
             }
 
-<<<<<<< .merge_file_Jfrhk7
-            if ('Milano' === $place['name']) {
-=======
             if ($place['name'] === 'Milano') {
->>>>>>> .merge_file_ezVxKK
                 Assert::assertGreaterThan(1000000, $place['population']);
                 Assert::assertLessThan(2000000, $place['population']);
             }
@@ -384,15 +349,9 @@ describe('Geocoding Business Logic', function () {
             $pointOutsideMilan = ['lat' => 41.9028, 'lng' => 12.4964];
 
             $isInBounds = fn (array $point, array $bounds): bool => $point['lat'] >= $bounds['south']
-<<<<<<< .merge_file_Jfrhk7
-                            && $point['lat'] <= $bounds['north']
-                            && $point['lng'] >= $bounds['west']
-                            && $point['lng'] <= $bounds['east'];
-=======
                 && $point['lat'] <= $bounds['north']
                 && $point['lng'] >= $bounds['west']
                 && $point['lng'] <= $bounds['east'];
->>>>>>> .merge_file_ezVxKK
 
             Assert::assertTrue($isInBounds($pointInMilan, $milanBounds));
             Assert::assertFalse($isInBounds($pointOutsideMilan, $milanBounds));
@@ -408,10 +367,7 @@ describe('Geocoding Business Logic', function () {
     describe('Data Quality and Validation', function () {
         it('ensures coordinate precision limits', function () {
             $coordinates = ['lat' => 45.4642035, 'lng' => 9.1899738];
-<<<<<<< .merge_file_Jfrhk7
-=======
 
->>>>>>> .merge_file_ezVxKK
             $latFraction = strrchr((string) $coordinates['lat'], '.');
             Assert::assertIsString($latFraction);
             $lngFraction = strrchr((string) $coordinates['lng'], '.');
@@ -419,10 +375,7 @@ describe('Geocoding Business Logic', function () {
 
             $latPrecision = strlen(substr($latFraction, 1));
             $lngPrecision = strlen(substr($lngFraction, 1));
-<<<<<<< .merge_file_Jfrhk7
-=======
 
->>>>>>> .merge_file_ezVxKK
             Assert::assertLessThanOrEqual(8, $latPrecision);
             Assert::assertLessThanOrEqual(8, $lngPrecision);
         });
@@ -434,20 +387,12 @@ describe('Geocoding Business Logic', function () {
 
             $score = 0;
             foreach ($requiredFields as $field) {
-<<<<<<< .merge_file_Jfrhk7
-                if (isset($address[$field]) && '' !== $address[$field]) {
-=======
                 if (isset($address[$field]) && $address[$field] !== '') {
->>>>>>> .merge_file_ezVxKK
                     $score += 40;
                 }
             }
             foreach ($optionalFields as $field) {
-<<<<<<< .merge_file_Jfrhk7
-                if (isset($address[$field]) && '' !== $address[$field]) {
-=======
                 if (isset($address[$field]) && $address[$field] !== '') {
->>>>>>> .merge_file_ezVxKK
                     $score += 20 / count($optionalFields);
                 }
             }

@@ -25,15 +25,6 @@ fix_php_file() {
     local file="$1"
     local dir=$(dirname "$file")
     local current_basename=$(basename "$file" .php)
-<<<<<<< .merge_file_xkkPE3
-
-    # Estrae il nome della classe dal file
-    local class_name=$(get_class_name "$file")
-
-    if [[ -n "$class_name" && "$class_name" != "$current_basename" ]]; then
-        local new_file="$dir/$class_name.php"
-
-=======
     
     # Estrae il nome della classe dal file
     local class_name=$(get_class_name "$file")
@@ -41,7 +32,6 @@ fix_php_file() {
     if [[ -n "$class_name" && "$class_name" != "$current_basename" ]]; then
         local new_file="$dir/$class_name.php"
         
->>>>>>> .merge_file_myr3QM
         # Verifica che il nuovo file non esista già
         if [[ ! -f "$new_file" ]]; then
             echo "Rinomino: $file -> $new_file (classe: $class_name)"
@@ -79,11 +69,7 @@ echo "=============================================="
 HELPER_FILE="$LARAVEL_ROOT/Modules/Xot/helpers/Helper.php"
 if [[ ! -f "$HELPER_FILE" ]]; then
     echo "⚠️  File Helper.php mancante: $HELPER_FILE"
-<<<<<<< .merge_file_xkkPE3
-
-=======
     
->>>>>>> .merge_file_myr3QM
     # Cerca file helper con nomi simili
     find "$LARAVEL_ROOT/Modules/Xot" -name "*helper*" -type f | while read -r file; do
         echo "Trovato file helper simile: $file"
@@ -106,26 +92,15 @@ find "$LARAVEL_ROOT/Modules" -name "*.php" -type f -path "*/app/*" | while read 
     if [[ "$file" =~ vendor|test|Test ]]; then
         continue
     fi
-<<<<<<< .merge_file_xkkPE3
-
-    local current_basename=$(basename "$file" .php)
-    local class_name=$(get_class_name "$file")
-
-=======
     
     local current_basename=$(basename "$file" .php)
     local class_name=$(get_class_name "$file")
     
->>>>>>> .merge_file_myr3QM
     # Se il nome del file non corrisponde al nome della classe, correggi
     if [[ -n "$class_name" && "$class_name" != "$current_basename" ]]; then
         local dir=$(dirname "$file")
         local new_file="$dir/$class_name.php"
-<<<<<<< .merge_file_xkkPE3
-
-=======
         
->>>>>>> .merge_file_myr3QM
         if [[ ! -f "$new_file" ]]; then
             echo "Correzione: $(basename "$file") -> $class_name.php (modulo: $(echo "$file" | sed 's|.*/Modules/\([^/]*\)/.*|\1|'))"
             mv "$file" "$new_file"

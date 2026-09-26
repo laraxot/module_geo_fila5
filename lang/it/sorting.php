@@ -184,11 +184,7 @@ return [
         ],
         'label' => 'Sorting',
         'sort' => 1,
-<<<<<<< .merge_file_g0CWro
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_1L8xfO
     ],
     'actions' => [
         'create' => [

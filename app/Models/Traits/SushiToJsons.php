@@ -165,11 +165,6 @@ trait SushiToJsons
 
     /**
      * Trova l'indice di un record.
-<<<<<<< .merge_file_TwLaQr
-     *
-     * @param mixed $id Chiave primaria del record (int|string da Model::getKey())
-=======
->>>>>>> .merge_file_jiim32
      */
     protected function findIndex(mixed $id): ?int
     {

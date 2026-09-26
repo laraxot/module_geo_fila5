@@ -1,15 +1,3 @@
-<<<<<<< .merge_file_5CRO3v
----
-title: "Rimando a story.md"
-description: "Documento unificato: il contenuto canonico vive in story.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [story.md](./story.md).
-=======
 # Story: Laravel 13 Upgrade
 
 ## Description
@@ -36,4 +24,3 @@ Update the entire modular project to Laravel 13. This includes the root applicat
 - All modules are loaded correctly.
 - All `composer.json` files specify PHP ^8.3 and compatible Laravel version.
 - Documentation for the upgrade is present in every module.
->>>>>>> .merge_file_1HYv8Z

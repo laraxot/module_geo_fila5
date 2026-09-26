@@ -4,17 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-<<<<<<< .merge_file_jqYmq0
-use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Collection;
-use Modules\Geo\Models\Place;
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
-=======
 use Modules\Xot\Filament\Widgets\XotBaseWidget;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Models\Place;
->>>>>>> .merge_file_oNoHDU
 
 // use Webbingbrasil\FilamentMaps\Widgets\MapWidget; // Disabilitato per compatibilità Filament 4
 
@@ -72,10 +65,7 @@ class OSMMapWidget extends XotBaseWidget
     }
 
     /**
-<<<<<<< .merge_file_jqYmq0
-=======
      *
->>>>>>> .merge_file_oNoHDU
      * @return array<string, mixed>
      */
     protected function getData(): array
@@ -101,13 +91,8 @@ class OSMMapWidget extends XotBaseWidget
             return ['lat' => 41.9028, 'lng' => 12.4964]; // Rome, Italy
         }
 
-<<<<<<< .merge_file_jqYmq0
-        $latitudes = $places->filter(static fn (Place $place): bool => is_float($place->latitude))->pluck('latitude');
-        $longitudes = $places->filter(static fn (Place $place): bool => is_float($place->longitude))->pluck('longitude');
-=======
         $latitudes = $places->pluck('latitude')->filter(fn ($lat) => is_float($lat));
         $longitudes = $places->pluck('longitude')->filter(fn ($lng) => is_float($lng));
->>>>>>> .merge_file_oNoHDU
 
         return [
             'lat' => $latitudes->average() ?? 0.0,

@@ -226,8 +226,4 @@ export class LocationPickerLit extends LitElement {
 
 if (!customElements.get('location-picker-lit')) {
     customElements.define('location-picker-lit', LocationPickerLit);
-<<<<<<< .merge_file_F5dLQg
 }
-=======
-}
->>>>>>> .merge_file_cwKqtD

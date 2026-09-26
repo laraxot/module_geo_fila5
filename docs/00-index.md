@@ -1,21 +1,3 @@
-<<<<<<< .merge_file_Yg8m8p
----
-title: "Geo — indice della documentazione"
-description: "Documentazione del modulo Geo: dati geografici e mappe."
-module: Geo
-tags: [geo, documentazione, modulo, laraxot]
-status: active
-repository: https://github.com/laraxot/module_geo_fila5
-related:
-  - ./00-index.md
-  - ./index.md
-  - ../../../../docs/wiki/audits/docs-redundancy-audit.md
-issues: https://github.com/laraxot/module_geo_fila5/issues
-discussions: https://github.com/laraxot/module_geo_fila5/discussions
----
-
-=======
->>>>>>> .merge_file_AbmBoD
 # 📚 **Indice Documentazione Modulo Geo**
 
 **Status**: ✅ PHPStan Level 10 Compliant
@@ -26,11 +8,7 @@ discussions: https://github.com/laraxot/module_geo_fila5/discussions
 Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider (9 provider), database ANPR italiano (8000+ comuni), query spaziali, widget mappa interattivi per Filament.
 
 ## 🎯 **Lettura Essenziale**
-<<<<<<< .merge_file_Yg8m8p
-1. [README.md](./README.md) - Panoramica completa, Multi-API e Comuni Italiani.
-=======
 1. [README.md](./readme.md) - Panoramica completa, Multi-API e Comuni Italiani.
->>>>>>> .merge_file_AbmBoD
 2. [roadmap.md](./roadmap.md) - Obiettivi 2026 e miglioramenti geocoding.
 3. [philosophy.md](./philosophy.md) - Visione architetturale dei dati geografici.
 
@@ -53,11 +31,7 @@ Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider 
 - 🧹 **[PHPMD & Complexity](./cyclomatic-complexity-report.md)** - Analisi della pulizia del codice.
 
 ## 📦 **Pacchetti Composer**
-<<<<<<< .merge_file_Yg8m8p
-- [Riferimento composer packages](../../../../bashscripts/ai/wiki/memories/composer-packages-reference.md) - Nessuna dipendenza diretta; usa Xot, Sushi (via Xot)
-=======
 - [Riferimento](../../../../docs/composer-packages-reference.md) | [Inventario 312 pacchetti](../../../../docs/architecture/composer-packages-full-inventory.md) - Nessuna dipendenza diretta; usa Xot, Sushi (via Xot)
->>>>>>> .merge_file_AbmBoD
 
 ## 📄 Documenti Aggiuntivi
 
@@ -95,13 +69,8 @@ Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider 
 - [AGENTS.md](../../../../AGENTS.md) - Project guidelines
 
 ## 🔗 **Moduli Correlati**
-<<<<<<< .merge_file_Yg8m8p
-- [Xot](../../Xot/docs/README.md) - Core framework e Base Models.
-- [UI](../../UI/docs/README.md) - Componenti grafici e widget mappa.
-=======
 - [Xot](../../xot/docs/readme.md) - Core framework e Base Models.
 - [UI](../../ui/docs/readme.md) - Componenti grafici e widget mappa.
->>>>>>> .merge_file_AbmBoD
 
 ---
 *Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*

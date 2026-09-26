@@ -277,8 +277,4 @@ function refreshMapSize(ctx, delays = [0]) {
     delays.forEach((delay) => {
         setTimeout(() => ctx._map?.invalidateSize(), delay);
     });
-<<<<<<< .merge_file_rEEuuR
 }
-=======
-}
->>>>>>> .merge_file_IA39O2

@@ -140,11 +140,7 @@ return [
         ],
         'label' => 'Validation',
         'sort' => 1,
-<<<<<<< .merge_file_BHO9DK
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_f9iYUg
     ],
     'actions' => [
         'create' => [

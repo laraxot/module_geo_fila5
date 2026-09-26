@@ -159,11 +159,7 @@ return [
         ],
         'label' => 'Cache',
         'sort' => 1,
-<<<<<<< .merge_file_bvmbLk
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_ahiaqL
     ],
     'actions' => [
         'create' => [

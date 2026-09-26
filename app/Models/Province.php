@@ -10,10 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\File;
-<<<<<<< .merge_file_hHnrAT
-=======
 use Modules\Geo\Database\Factories\ProvinceFactory;
->>>>>>> .merge_file_uoK8Ch
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
@@ -29,15 +26,6 @@ use Sushi\Sushi;
  * @property Region|null               $region
  * @property ProfileContract|null      $updater
  *
-<<<<<<< .merge_file_hHnrAT
- * @method static \Modules\Geo\Database\Factories\ProvinceFactory factory($count = null, $state = [])
- * @method static Builder<static>|Province                        newModelQuery()
- * @method static Builder<static>|Province                        newQuery()
- * @method static Builder<static>|Province                        query()
- * @method static Builder<static>|Province                        whereId($value)
- * @method static Builder<static>|Province                        whereName($value)
- * @method static Builder<static>|Province                        whereRegionId($value)
-=======
  * @method static Builder<static>|Province newModelQuery()
  * @method static Builder<static>|Province newQuery()
  * @method static Builder<static>|Province query()
@@ -48,16 +36,12 @@ use Sushi\Sushi;
  * @property ProfileContract|null $deleter
  *
  * @method static ProvinceFactory factory($count = null, $state = [])
->>>>>>> .merge_file_uoK8Ch
  *
  * @mixin \Eloquent
  */
 class Province extends BaseModel
 {
-<<<<<<< .merge_file_hHnrAT
-=======
     /**  */
->>>>>>> .merge_file_uoK8Ch
     use HasXotFactory;
     use Sushi;
 

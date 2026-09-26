@@ -188,11 +188,7 @@ return [
         ],
         'label' => 'Pagination',
         'sort' => 1,
-<<<<<<< .merge_file_hYFEs8
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_IfvC0E
     ],
     'actions' => [
         'create' => [

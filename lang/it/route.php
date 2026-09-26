@@ -116,11 +116,7 @@ return [
         ],
         'label' => 'Route',
         'sort' => 1,
-<<<<<<< .merge_file_xUbUZo
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_ofmJnN
     ],
     'actions' => [
         'create' => [

@@ -178,11 +178,7 @@ return [
         ],
         'label' => 'Log',
         'sort' => 1,
-<<<<<<< .merge_file_K1HQIB
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_eNbJFT
     ],
     'actions' => [
         'create' => [
