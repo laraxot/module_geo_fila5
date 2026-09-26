@@ -81,11 +81,7 @@ class UserService
 namespace Modules\User\Actions;
 
 use Modules\User\Datas\UserData;
-<<<<<<< .merge_file_5Pk7hR
-use Modules\Xot\Contracts\UserContract;
-=======
 use Modules\User\Models\User;
->>>>>>> .merge_file_r4lVwf
 use Spatie\QueueableAction\QueueableAction;
 
 class CreateUserAction

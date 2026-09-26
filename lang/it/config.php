@@ -189,11 +189,7 @@ return [
         ],
         'label' => 'Config',
         'sort' => 1,
-<<<<<<< .merge_file_AXGzaj
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_5La9rK
     ],
     'actions' => [
         'create' => [

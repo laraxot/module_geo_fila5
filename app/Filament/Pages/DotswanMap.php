@@ -4,13 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Pages;
 
-<<<<<<< .merge_file_AF2Hzi
-use Illuminate\Support\Collection;
-// use Dotswan\MapPicker\Fields\Map; // Pacchetto non installato
-=======
 // use Dotswan\MapPicker\Fields\Map; // Pacchetto non installato
 use Illuminate\Support\Collection;
->>>>>>> .merge_file_IMO4UL
 use Modules\Geo\Models\Place;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Filament\Pages\XotBasePage;

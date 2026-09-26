@@ -5,21 +5,12 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Forms\Components;
 
 use Filament\Schemas\Components\Component;
-<<<<<<< .merge_file_9cVy1t
-use Modules\Geo\Filament\Resources\AddressResource\Schemas\AddressForm;
-use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
-
-// use Squire\Models\Country;
-
-class AddressField extends XotBaseSection
-=======
 use Filament\Schemas\Components\Section;
 use Modules\Geo\Filament\Resources\AddressResource;
 
 // use Squire\Models\Country;
 
 class AddressField extends Section
->>>>>>> .merge_file_XHyGTr
 {
     // protected string $view = 'filament-forms::components.group';
 
@@ -43,19 +34,11 @@ class AddressField extends Section
     }
 
     /**
-<<<<<<< .merge_file_9cVy1t
-     * @return array<string, Component>
-     */
-    protected function getAddressFormSchema(): array
-    {
-        $baseSchema = app(AddressForm::class)->getFormSchema();
-=======
      * @return array<int|string, Component>
      */
     protected function getAddressFormSchema(): array
     {
         $baseSchema = app(AddressResource::class)->getFormSchema();
->>>>>>> .merge_file_XHyGTr
 
         // Rimuovi campi non necessari per relazioni semplici
         unset($baseSchema['name'], $baseSchema['is_primary']);
@@ -71,15 +54,9 @@ class AddressField extends Section
     /**
      * Rimuove tutti i pattern reattivi dai campi per prevenire loop infiniti.
      *
-<<<<<<< .merge_file_9cVy1t
-     * @param array<string, Component> $schema
-     *
-     * @return array<string, Component>
-=======
      * @param array<int|string, Component> $schema
      *
      * @return array<int|string, Component>
->>>>>>> .merge_file_XHyGTr
      */
     protected function removeReactivityFromSchema(array $schema): array
     {

@@ -19,13 +19,10 @@ use Modules\Xot\Tests\XotBaseTestCase;
 
 /**
  * @property object|null           $action
-<<<<<<< .merge_file_ZGuEdC
-=======
  * @property MockInterface|null    $mockDistanceMatrixAction
  * @property MockInterface|null    $fetchAction
  * @property MockInterface|null    $mockClient
  * @property MockInterface|null    $getCoordinatesAction
->>>>>>> .merge_file_xJKk0C
  * @property MockHandler|null      $mockHandler
  * @property GoogleMapsAction|null $service
  * @property Address|null          $address
@@ -75,11 +72,6 @@ abstract class TestCase extends XotBaseTestCase
 
     protected function setUp(): void
     {
-<<<<<<< .merge_file_ZGuEdC
-        $this->prepareSharedSqliteForTesting();
-
-=======
->>>>>>> .merge_file_xJKk0C
         parent::setUp();
 
         config(['xra.pub_theme' => 'Meetup']);

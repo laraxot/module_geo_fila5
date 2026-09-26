@@ -1,16 +1,3 @@
-<<<<<<< .merge_file_OKvAK2
----
-title: HasAddress (alias naming)
-type: concept
-tags: [geo, trait, redirect]
-updated_at: '2026-07-27'
-qmd: has_address_trait alias
----
-
-# Alias
-
-Documento canonico: [has-address-trait.md](./has-address-trait.md) (kebab-case).
-=======
 # Trait HasAddress
 
 ## Panoramica
@@ -109,4 +96,3 @@ Quando un modello (es. Studio) necessita di gestire indirizzi tramite Filament, 
 - [models/address.md](./models/address.md)
 - [address-implementation.md](./address-implementation.md)
 - [filament.md](./filament.md)
->>>>>>> .merge_file_Wd9rEP

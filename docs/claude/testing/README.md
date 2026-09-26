@@ -7,11 +7,7 @@ Tests use **Pest** (BDD-style) for better readability.
 ```php
 <?php
 
-<<<<<<< .merge_file_o4GI4R
-use Modules\Xot\Contracts\UserContract;
-=======
 use Modules\User\Models\User;
->>>>>>> .merge_file_WKeQnC
 
 test('can create user', function () {
     $user = User::factory()->create([

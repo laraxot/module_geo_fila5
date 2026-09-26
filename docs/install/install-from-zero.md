@@ -111,10 +111,7 @@ edit file composer.json
         },
         "files": [
             "Modules/Xot/helpers/Helper.php"
-<<<<<<< .merge_file_JxtwZt
-=======
             "Modules/Xot/Helpers/Helper.php"
->>>>>>> .merge_file_ybAf9H
         ]
     },
     "autoload-dev": {

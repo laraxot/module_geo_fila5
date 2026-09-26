@@ -10,14 +10,8 @@ use Modules\Geo\Models\Traits\HasAddress;
 /**
  * Modello di test per il trait HasAddress (solo fixture — i test Pest stanno in HasAddressTest.php).
  */
-<<<<<<< .merge_file_wwYn3u
-class HasAddressTestModel extends BaseModel
-{
-    /** @use HasAddress<HasAddressTestModel> */
-=======
 final class HasAddressTestModel extends BaseModel
 {
->>>>>>> .merge_file_KsSPD5
     use HasAddress;
 
     /** @var list<string> */
@@ -31,11 +25,7 @@ final class HasAddressTestModel extends BaseModel
     {
         parent::boot();
 
-<<<<<<< .merge_file_wwYn3u
-        self::creating(static function (): void {
-=======
         static::creating(static function (): void {
->>>>>>> .merge_file_KsSPD5
             if (! app()->environment('testing')) {
                 throw new \Exception('HasAddressTestModel should only be used in tests.');
             }

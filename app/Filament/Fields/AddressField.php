@@ -5,15 +5,9 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Fields;
 
 use Filament\Forms\Components\TextInput;
-<<<<<<< .merge_file_eXELIO
-use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
-
-class AddressField extends XotBaseSection
-=======
 use Filament\Schemas\Components\Section;
 
 class AddressField extends Section
->>>>>>> .merge_file_nrwN5w
 {
     // protected string $optionValueProperty = 'id';
 

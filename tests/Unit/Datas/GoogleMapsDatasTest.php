@@ -11,16 +11,11 @@ use Modules\Geo\Datas\GoogleMaps\GoogleMapGeometryData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapLocationData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResponseData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResultData;
-<<<<<<< .merge_file_AGuzzd
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
 
->>>>>>> .merge_file_9tbaDS
 test('GoogleMapGeometryData can be instantiated', function () {
     $geometry = GoogleMapGeometryData::from([
         'location' => [
