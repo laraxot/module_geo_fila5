@@ -1,15 +1,3 @@
-<<<<<<< .merge_file_HlQfxK
----
-title: "Rimando a gemini.md"
-description: "Documento unificato: il contenuto canonico vive in gemini.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [gemini.md](./gemini.md).
-=======
 # Gemini — On-Demand Stub
 
 Rules, skills, memories live only in wiki. Load on-demand.
@@ -32,4 +20,3 @@ Rules, skills, memories live only in wiki. Load on-demand.
 - [QMD] `qmd search "<topic>"`
 
 *Updated: 2026*
->>>>>>> .merge_file_4iZBlm

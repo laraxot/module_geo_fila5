@@ -66,17 +66,3 @@ https://polodev.github.io/tuts/2018/11/05/nearby-location-using-latitude-and-lon
 
 https://github.com/geocoder-php/GeocoderLaravel
 
-<<<<<<< .merge_file_6ILJXN
-
-
-## Contenuto originale (txt)
-
----
-module: theme
-topic: filament
-canonical: ../../../Themes/docs/shared-components/filament-Modules.md
----
-
-See canonical documentation: ../../../Themes/docs/shared-components/filament-Modules.md
-=======
->>>>>>> .merge_file_On7IaQ

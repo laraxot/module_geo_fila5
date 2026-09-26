@@ -120,11 +120,7 @@ return [
         ],
         'label' => 'Geolocation',
         'sort' => 1,
-<<<<<<< .merge_file_UmXIr5
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_XIk898
     ],
     'actions' => [
         'create' => [

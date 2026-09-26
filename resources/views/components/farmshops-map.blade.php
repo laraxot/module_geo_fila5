@@ -1,10 +1,7 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_QsXaFv
-=======
 
->>>>>>> .merge_file_yeEiDb
 $geoMapWidget = app(\Modules\Geo\Filament\Widgets\GeoMapWidget::class);
 $componentId = 'geo-farmshops-map-'.spl_object_id($geoMapWidget);
 ?>

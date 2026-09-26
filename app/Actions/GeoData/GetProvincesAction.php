@@ -21,12 +21,7 @@ class GetProvincesAction
     public const int CACHE_TTL = 86400;
 
     /**
-<<<<<<< .merge_file_EyARfv
-     * @param string $regionCode Codice della regione
-     *
-=======
      * @param  string  $regionCode  Codice della regione
->>>>>>> .merge_file_VJy3BJ
      * @return Collection<int, array{name: string, code: string}>
      */
     public function execute(string $regionCode): Collection
@@ -40,11 +35,7 @@ class GetProvincesAction
 
             if (! $region || ! \is_array($region) || ! isset($region['provinces']) || ! \is_array($region['provinces'])) {
                 /** @var Collection<int, array{name: string, code: string}> $empty */
-<<<<<<< .merge_file_EyARfv
-                $empty = new Collection();
-=======
                 $empty = new Collection;
->>>>>>> .merge_file_VJy3BJ
 
                 return $empty;
             }
@@ -62,13 +53,8 @@ class GetProvincesAction
                     $code = $province['code'] ?? '';
 
                     return [
-<<<<<<< .merge_file_EyARfv
-                        'name' => \is_string($name) ? $name : SafeStringCastAction::cast($name),
-                        'code' => \is_string($code) ? $code : SafeStringCastAction::cast($code),
-=======
                         'name' => SafeStringCastAction::cast($name),
                         'code' => SafeStringCastAction::cast($code),
->>>>>>> .merge_file_VJy3BJ
                     ];
                 })
                 ->values();

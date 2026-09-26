@@ -9,35 +9,20 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\File;
-<<<<<<< .merge_file_LejAhS
-=======
 use Modules\Geo\Database\Factories\RegionFactory;
->>>>>>> .merge_file_fOPiWd
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Modules\Xot\Contracts\ProfileContract;
 use Modules\Xot\Models\Traits\HasXotFactory;
 use Sushi\Sushi;
 
 /**
-<<<<<<< .merge_file_LejAhS
- * @property int|null                  $id
-=======
  * @property int                       $id
->>>>>>> .merge_file_fOPiWd
  * @property string|null               $name
  * @property ProfileContract|null      $creator
  * @property Collection<int, Province> $provinces
  * @property int|null                  $provinces_count
  * @property ProfileContract|null      $updater
  *
-<<<<<<< .merge_file_LejAhS
- * @method static \Modules\Geo\Database\Factories\RegionFactory factory($count = null, $state = [])
- * @method static Builder<static>|Region                        newModelQuery()
- * @method static Builder<static>|Region                        newQuery()
- * @method static Builder<static>|Region                        query()
- * @method static Builder<static>|Region                        whereId($value)
- * @method static Builder<static>|Region                        whereName($value)
-=======
  * @method static RegionFactory          factory($count = null, $state = [])
  * @method static Builder<static>|Region newModelQuery()
  * @method static Builder<static>|Region newQuery()
@@ -46,16 +31,12 @@ use Sushi\Sushi;
  * @method static Builder<static>|Region whereName($value)
  *
  * @property ProfileContract|null $deleter
->>>>>>> .merge_file_fOPiWd
  *
  * @mixin \Eloquent
  */
 class Region extends BaseModel
 {
-<<<<<<< .merge_file_LejAhS
-=======
     /**  */
->>>>>>> .merge_file_fOPiWd
     use HasXotFactory;
     use Sushi;
 

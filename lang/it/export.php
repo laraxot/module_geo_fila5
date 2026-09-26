@@ -159,11 +159,7 @@ return [
         ],
         'label' => 'Export',
         'sort' => 1,
-<<<<<<< .merge_file_XIkaBL
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_ZHcpP9
     ],
     'actions' => [
         'create' => [

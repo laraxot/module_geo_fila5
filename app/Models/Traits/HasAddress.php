@@ -11,18 +11,10 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Modules\Geo\Enums\AddressItemEnum;
 use Modules\Geo\Models\Address;
-<<<<<<< .merge_file_k3bZJs
-
-use function Safe\preg_replace;
-
-use Webmozart\Assert\Assert;
-
-=======
 use Webmozart\Assert\Assert;
 
 use function Safe\preg_replace;
 
->>>>>>> .merge_file_4xzFBZ
 /**
  * Trait HasAddress.
  *
@@ -30,21 +22,6 @@ use function Safe\preg_replace;
  * Questo trait implementa la relazione polimorfica con il modello Address
  * e offre metodi di utilità per la gestione degli indirizzi.
  *
-<<<<<<< .merge_file_k3bZJs
- * @template TModel of Model
- *
- * @property Collection<int, Address> $addresses
- * @property string|null              $route
- * @property string|null              $street_number
- * @property string|null              $postal_code
- * @property string|null              $city
- * @property string|null              $province
- * @property string|int               $id
- *
- * @phpstan-require-extends Model
- *
- * @phpstan-ignore trait.unused
-=======
  * @property Collection<int, Address> $addresses
  * @property string|null $route
  * @property string|null $street_number
@@ -54,7 +31,6 @@ use function Safe\preg_replace;
  * @property string|int $id
  *
  * @phpstan-require-extends Model
->>>>>>> .merge_file_4xzFBZ
  */
 trait HasAddress
 {
@@ -63,14 +39,9 @@ trait HasAddress
      *
      * @return MorphMany<Address, $this>
      */
-<<<<<<< .merge_file_k3bZJs
-    public function addresses(): MorphMany // @phpstan-ignore missingType.generics
-    {return $this->morphMany(Address::class, 'model');
-=======
     public function addresses(): MorphMany
     {
         return $this->morphMany(Address::class, 'model');
->>>>>>> .merge_file_4xzFBZ
     }
 
     /**
@@ -78,14 +49,9 @@ trait HasAddress
      *
      * @return MorphOne<Address, $this>
      */
-<<<<<<< .merge_file_k3bZJs
-    public function address(): MorphOne // @phpstan-ignore missingType.generics
-    {return $this->morphOne(Address::class, 'model');
-=======
     public function address(): MorphOne
     {
         return $this->morphOne(Address::class, 'model');
->>>>>>> .merge_file_4xzFBZ
     }
 
     /**
@@ -94,11 +60,7 @@ trait HasAddress
     public function primaryAddress(): ?Address
     {
         $res = $this->addresses()->where('is_primary', true)->first();
-<<<<<<< .merge_file_k3bZJs
-        if (null === $res) {
-=======
         if ($res === null) {
->>>>>>> .merge_file_4xzFBZ
             return $res;
         }
         Assert::isInstanceOf($res, Address::class);
@@ -118,28 +80,16 @@ trait HasAddress
 
     public function getFullAddressAttribute(?string $value): string
     {
-<<<<<<< .merge_file_k3bZJs
-        if (null !== $value) {
-=======
         if ($value !== null) {
->>>>>>> .merge_file_4xzFBZ
             return $value;
         }
         $address = sprintf(
             '%s, %s - %s, %s (%s)',
-<<<<<<< .merge_file_k3bZJs
-            $this->route ?? '',
-            $this->street_number ?? '',
-            $this->postal_code ?? '',
-            $this->city ?? '',
-            $this->province ?? '',
-=======
             $this->route,
             $this->street_number,
             $this->postal_code,
             $this->city,
             $this->province,
->>>>>>> .merge_file_4xzFBZ
         );
 
         return trim(preg_replace('/[,\s]+/', ' ', $address));
@@ -151,21 +101,13 @@ trait HasAddress
             return $value;
         }
         $address = $this->address()->first();
-<<<<<<< .merge_file_k3bZJs
-        if (null === $address) {
-=======
         if ($address === null) {
->>>>>>> .merge_file_4xzFBZ
             return null;
         }
         Assert::isInstanceOf($address, Address::class);
 
         $locality = $address->getLocality();
-<<<<<<< .merge_file_k3bZJs
-        if (null === $locality) {
-=======
         if ($locality === null) {
->>>>>>> .merge_file_4xzFBZ
             return null;
         }
 
@@ -262,43 +204,17 @@ trait HasAddress
      * Ottiene gli indirizzi di un determinato tipo.
      *
      * @return Collection<int, Address>
-<<<<<<< .merge_file_k3bZJs
-     */
-    public function getAddressesByType(string $type): Collection // @phpstan-ignore missingType.generics
-    {return $this->addresses()->where('type', $type)->get();
-=======
      *
      * @phpstan-return Collection<int, Address>
      */
     public function getAddressesByType(string $type): Collection
     {
         return $this->addresses()->where('type', $type)->get();
->>>>>>> .merge_file_4xzFBZ
     }
 
     /**
      * Aggiunge un nuovo indirizzo al modello.
      *
-<<<<<<< .merge_file_k3bZJs
-     * @param array<string, mixed> $data
-     * @param bool                 $setPrimary Se impostare questo indirizzo come principale
-     */
-    public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue
-    {// Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
-                        if ($setPrimary || 0 === $this->addresses()->count()) {
-                            $data['is_primary'] = true;
-
-                            // Rimuovi il flag is_primary da tutti gli altri indirizzi
-                            if ($this->addresses()->count() > 0) {
-                                $this->addresses()->update(['is_primary' => false]);
-                            }
-                        }
-
-        $address = $this->addresses()->create($data); // @phpstan-ignore argument.type
-        Assert::isInstanceOf($address, Address::class);
-
-        return $address;
-=======
      * @param  array<string, mixed>  $data
      * @param  bool  $setPrimary  Se impostare questo indirizzo come principale
      *
@@ -315,18 +231,11 @@ trait HasAddress
         }
 
         return $this->addresses()->create($data);
->>>>>>> .merge_file_4xzFBZ
     }
 
     /**
      * Aggiorna l'indirizzo principale.
      *
-<<<<<<< .merge_file_k3bZJs
-     * @param array<string, mixed> $data
-     */
-    public function updatePrimaryAddress(array $data): ?Address // @phpstan-ignore missingType.iterableValue
-    {$primaryAddress = $this->primaryAddress();
-=======
      * @param  array<string, mixed>  $data
      *
      * @phpstan-param array<string, mixed> $data
@@ -334,16 +243,11 @@ trait HasAddress
     public function updatePrimaryAddress(array $data): ?Address
     {
         $primaryAddress = $this->primaryAddress();
->>>>>>> .merge_file_4xzFBZ
         if (! $primaryAddress) {
             return $this->addAddress($data, true);
         }
 
-<<<<<<< .merge_file_k3bZJs
-        $primaryAddress->update($data); // @phpstan-ignore argument.type
-=======
         $primaryAddress->update($data);
->>>>>>> .merge_file_4xzFBZ
 
         return $primaryAddress;
     }
@@ -351,13 +255,6 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella città indicata (`locality`).
      *
-<<<<<<< .merge_file_k3bZJs
-     * @param Builder<static> $query
-     *
-     * @return Builder<static>
-     */
-    // @phpstan-ignore-next-line missingType.generics
-=======
      * @param  Builder<static>  $query
      *
      * @phpstan-param Builder<static> $query
@@ -366,17 +263,12 @@ trait HasAddress
      *
      * @phpstan-return Builder<static>
      */
->>>>>>> .merge_file_4xzFBZ
     public function scopeInCity(Builder $query, string $city): Builder
     {
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< .merge_file_k3bZJs
-             * @param Builder<Address> $q
-=======
              * @param  Builder<Address>  $q
->>>>>>> .merge_file_4xzFBZ
              */
             function (Builder $q) use ($city): void {
                 $q->where('locality', $city);
@@ -387,11 +279,6 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella provincia (`administrative_area_level_3`).
      *
-<<<<<<< .merge_file_k3bZJs
-     * @param Builder<TModel> $query
-     *
-     * @return Builder<TModel>
-=======
      * @param  Builder<static>  $query
      *
      * @phpstan-param Builder<static> $query
@@ -399,18 +286,13 @@ trait HasAddress
      * @return Builder<static>
      *
      * @phpstan-return Builder<static>
->>>>>>> .merge_file_4xzFBZ
      */
     public function scopeInProvince(Builder $query, string $province): Builder
     {
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< .merge_file_k3bZJs
-             * @param Builder<Address> $q
-=======
              * @param  Builder<Address>  $q
->>>>>>> .merge_file_4xzFBZ
              */
             function (Builder $q) use ($province): void {
                 $q->where('administrative_area_level_3', $province);
@@ -421,11 +303,6 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo nella regione (`administrative_area_level_2`).
      *
-<<<<<<< .merge_file_k3bZJs
-     * @param Builder<TModel> $query
-     *
-     * @return Builder<TModel>
-=======
      * @param  Builder<static>  $query
      *
      * @phpstan-param Builder<static> $query
@@ -433,18 +310,13 @@ trait HasAddress
      * @return Builder<static>
      *
      * @phpstan-return Builder<static>
->>>>>>> .merge_file_4xzFBZ
      */
     public function scopeInRegion(Builder $query, string $region): Builder
     {
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< .merge_file_k3bZJs
-             * @param Builder<Address> $q
-=======
              * @param  Builder<Address>  $q
->>>>>>> .merge_file_4xzFBZ
              */
             function (Builder $q) use ($region): void {
                 $q->where('administrative_area_level_2', $region);
@@ -455,11 +327,6 @@ trait HasAddress
     /**
      * Scope: modelli con almeno un indirizzo con il CAP indicato.
      *
-<<<<<<< .merge_file_k3bZJs
-     * @param Builder<TModel> $query
-     *
-     * @return Builder<TModel>
-=======
      * @param  Builder<static>  $query
      *
      * @phpstan-param Builder<static> $query
@@ -467,18 +334,13 @@ trait HasAddress
      * @return Builder<static>
      *
      * @phpstan-return Builder<static>
->>>>>>> .merge_file_4xzFBZ
      */
     public function scopeInPostalCode(Builder $query, string $postalCode): Builder
     {
         return $query->whereHas(
             'addresses',
             /**
-<<<<<<< .merge_file_k3bZJs
-             * @param Builder<Address> $q
-=======
              * @param  Builder<Address>  $q
->>>>>>> .merge_file_4xzFBZ
              */
             function (Builder $q) use ($postalCode): void {
                 $q->where('postal_code', $postalCode);

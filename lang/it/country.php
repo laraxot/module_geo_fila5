@@ -108,11 +108,7 @@ return [
         ],
         'label' => 'Country',
         'sort' => 1,
-<<<<<<< .merge_file_YmRKpN
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_5AV38J
     ],
     'actions' => [
         'create' => [

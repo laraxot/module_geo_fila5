@@ -1,10 +1,7 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_Q3JoGD
-=======
 
->>>>>>> .merge_file_SMJB5u
 ?>
 <x-filament-widgets::widget>
     <x-filament::section>

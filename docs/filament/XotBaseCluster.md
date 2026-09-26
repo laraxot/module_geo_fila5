@@ -1,15 +1,3 @@
-<<<<<<< .merge_file_K3wABk
----
-title: "Rimando a xotbasecluster.md"
-description: "Documento unificato: il contenuto canonico vive in xotbasecluster.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [xotbasecluster.md](./xotbasecluster.md).
-=======
 # XotBaseCluster
 
 ## Descrizione
@@ -182,4 +170,3 @@ return [
 ## Conclusione
 
 L'implementazione di `XotBaseCluster` garantisce che tutti i cluster nel progetto seguano le stesse convenzioni e regole di sviluppo, facilitando la manutenzione e l'estensione del codice. Questa classe rappresenta un importante passo verso la standardizzazione completa del codice Filament nel framework Laraxot.
->>>>>>> .merge_file_u9gdAs

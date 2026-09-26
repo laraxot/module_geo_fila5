@@ -1,10 +1,7 @@
 <?php
 
 declare(strict_types=1);
-<<<<<<< .merge_file_P4T1MM
-=======
 
->>>>>>> .merge_file_BAJ2YA
 ?>
 <div>
 

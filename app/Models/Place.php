@@ -10,10 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Carbon;
 use Modules\Geo\Contracts\HasGeolocation;
-<<<<<<< .merge_file_htQH2c
-=======
 use Modules\Geo\Database\Factories\PlaceFactory;
->>>>>>> .merge_file_jDK7K6
 use Modules\Xot\Contracts\ProfileContract;
 
 use function Safe\json_encode;
@@ -24,13 +21,7 @@ use function Safe\json_encode;
  * @property string               $formatted_address
  * @property float|null           $latitude
  * @property float|null           $longitude
-<<<<<<< .merge_file_htQH2c
- * @property Model                $linked
- * @property string|null          $name
- * @property string|null          $description
-=======
  * @property Model|\Eloquent      $linked
->>>>>>> .merge_file_jDK7K6
  * @property PlaceType|null       $placeType
  * @property ProfileContract|null $updater
  *
@@ -38,20 +29,6 @@ use function Safe\json_encode;
  * @method static Builder<static>|Place newQuery()
  * @method static Builder<static>|Place query()
  *
-<<<<<<< .merge_file_htQH2c
- * @property int         $id
- * @property string|null $model_type
- * @property int|null    $model_id
- * @property string|null $nearest_street
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property string|null $deleted_by
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $post_type
- *
- * @method static Builder<static>|Place whereAddress($value)
-=======
  * @property int                  $id
  * @property string|null          $model_type
  * @property int|null             $model_id
@@ -104,32 +81,20 @@ use function Safe\json_encode;
  * @method static Builder<static>|Place whereCampgroundShort($value)
  * @method static Builder<static>|Place whereCountry($value)
  * @method static Builder<static>|Place whereCountryShort($value)
->>>>>>> .merge_file_jDK7K6
  * @method static Builder<static>|Place whereCreatedAt($value)
  * @method static Builder<static>|Place whereCreatedBy($value)
  * @method static Builder<static>|Place whereDeletedBy($value)
  * @method static Builder<static>|Place whereFormattedAddress($value)
-<<<<<<< .merge_file_htQH2c
- * @method static Builder<static>|Place whereId($value)
- * @method static Builder<static>|Place whereLatitude($value)
-=======
  * @method static Builder<static>|Place whereGoogleplaceUrl($value)
  * @method static Builder<static>|Place whereGoogleplaceUrlShort($value)
  * @method static Builder<static>|Place whereId($value)
  * @method static Builder<static>|Place whereLatitude($value)
  * @method static Builder<static>|Place whereLocality($value)
  * @method static Builder<static>|Place whereLocalityShort($value)
->>>>>>> .merge_file_jDK7K6
  * @method static Builder<static>|Place whereLongitude($value)
  * @method static Builder<static>|Place whereModelId($value)
  * @method static Builder<static>|Place whereModelType($value)
  * @method static Builder<static>|Place whereNearestStreet($value)
-<<<<<<< .merge_file_htQH2c
- * @method static Builder<static>|Place wherePostType($value)
- * @method static Builder<static>|Place whereUpdatedAt($value)
- * @method static Builder<static>|Place whereUpdatedBy($value)
- *
-=======
  * @method static Builder<static>|Place wherePointOfInterest($value)
  * @method static Builder<static>|Place wherePointOfInterestShort($value)
  * @method static Builder<static>|Place wherePolitical($value)
@@ -158,7 +123,6 @@ use function Safe\json_encode;
  * @method static Builder<static>|Place wherePlaceTypeId($value)
  * @method static Builder<static>|Place whereSlug($value)
  *
->>>>>>> .merge_file_jDK7K6
  * @mixin \Eloquent
  */
 class Place extends BaseModel implements HasGeolocation
@@ -219,10 +183,7 @@ class Place extends BaseModel implements HasGeolocation
      * Get the linked model.
      */
     /**
-<<<<<<< .merge_file_htQH2c
-=======
      *
->>>>>>> .merge_file_jDK7K6
      * @return MorphTo<Model, $this>
      */
     public function linked(): MorphTo
@@ -234,10 +195,7 @@ class Place extends BaseModel implements HasGeolocation
      * Get the place type.
      */
     /**
-<<<<<<< .merge_file_htQH2c
-=======
      *
->>>>>>> .merge_file_jDK7K6
      * @return BelongsTo<PlaceType, $this>
      */
     public function placeType(): BelongsTo
@@ -249,10 +207,7 @@ class Place extends BaseModel implements HasGeolocation
      * Get the address.
      */
     /**
-<<<<<<< .merge_file_htQH2c
-=======
      *
->>>>>>> .merge_file_jDK7K6
      * @return BelongsTo<Address, $this>
      */
     public function address(): BelongsTo
@@ -260,28 +215,19 @@ class Place extends BaseModel implements HasGeolocation
         return $this->belongsTo(Address::class);
     }
 
-<<<<<<< .merge_file_htQH2c
-=======
     #[\Override]
->>>>>>> .merge_file_jDK7K6
     public function getLatitude(): ?float
     {
         return $this->latitude;
     }
 
-<<<<<<< .merge_file_htQH2c
-=======
     #[\Override]
->>>>>>> .merge_file_jDK7K6
     public function getLongitude(): ?float
     {
         return $this->longitude;
     }
 
-<<<<<<< .merge_file_htQH2c
-=======
     #[\Override]
->>>>>>> .merge_file_jDK7K6
     public function getFormattedAddress(): string
     {
         return (string) ($this->formatted_address ?? $this->address->formatted_address ?? '');
@@ -326,34 +272,7 @@ class Place extends BaseModel implements HasGeolocation
         return is_string($address) ? $address : '';
     }
 
-<<<<<<< .merge_file_htQH2c
-    /**
-     * Display name of the place.
-     *
-     * There is no dedicated "name" column in the base schema: fall back to
-     * the "premise" component (Google Places building/place name) when a
-     * "name" value has not been explicitly set on the model.
-     */
-    public function getNameAttribute(): ?string
-    {
-        return $this->getName();
-    }
-
-    public function getName(): ?string
-    {
-        $name = $this->attributes['name'] ?? null;
-        if (is_string($name) && '' !== trim($name)) {
-            return $name;
-        }
-
-        $premise = $this->attributes['premise'] ?? null;
-
-        return is_string($premise) && '' !== trim($premise) ? $premise : null;
-    }
-
-=======
     #[\Override]
->>>>>>> .merge_file_jDK7K6
     public function hasValidCoordinates(): bool
     {
         return null !== $this->latitude
@@ -364,10 +283,7 @@ class Place extends BaseModel implements HasGeolocation
             && $this->longitude <= 180;
     }
 
-<<<<<<< .merge_file_htQH2c
-=======
     #[\Override]
->>>>>>> .merge_file_jDK7K6
     public function getMapIcon(): ?string
     {
         $slug = $this->placeType->slug ?? null;
@@ -391,10 +307,7 @@ class Place extends BaseModel implements HasGeolocation
         return is_string($icon) ? $icon : null;
     }
 
-<<<<<<< .merge_file_htQH2c
-=======
     #[\Override]
->>>>>>> .merge_file_jDK7K6
     public function getLocationType(): ?string
     {
         $name = $this->placeType->name ?? null;
@@ -407,10 +320,7 @@ class Place extends BaseModel implements HasGeolocation
      *
      * @return array<string, string>
      */
-<<<<<<< .merge_file_htQH2c
-=======
     #[\Override]
->>>>>>> .merge_file_jDK7K6
     protected function casts(): array
     {
         return [

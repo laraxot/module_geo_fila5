@@ -8,15 +8,10 @@ use Modules\Geo\Datas\Photon\PhotonAddressData;
 use Modules\Geo\Datas\Photon\PhotonFeatureData;
 use Modules\Geo\Datas\Photon\PhotonPropertiesData;
 use Modules\Geo\Datas\Photon\PhotonResponseData;
-<<<<<<< .merge_file_2xLzjI
-use PHPUnit\Framework\Assert;
-
-=======
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
->>>>>>> .merge_file_OmWJIc
 test('PhotonAddressData can be instantiated', function (): void {
     $address = PhotonAddressData::from([
         'city' => 'Rome',

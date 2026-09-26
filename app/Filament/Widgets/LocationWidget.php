@@ -44,11 +44,7 @@ class LocationWidget extends XotBaseSchemaWidget
     protected int|string|array $columnSpan = 'full';
 
     /** @var view-string */
-<<<<<<< .merge_file_TKROAl
-    protected string $view = 'geo::filament.widgets.location';
-=======
     protected string $view;
->>>>>>> .merge_file_wtZWoy
 
     /**
      * Form per la selezione della località.
@@ -60,9 +56,6 @@ class LocationWidget extends XotBaseSchemaWidget
      */
     public function __construct()
     {
-<<<<<<< .merge_file_TKROAl
-        $this->locationForm = new LocationForm();
-=======
         /** @var view-string $view */
         $view = 'geo::filament.widgets.location';
         $this->view = $view;
@@ -70,7 +63,6 @@ class LocationWidget extends XotBaseSchemaWidget
         $this->locationForm = new LocationForm;
 
         parent::__construct();
->>>>>>> .merge_file_wtZWoy
     }
 
     /**

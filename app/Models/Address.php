@@ -7,13 +7,8 @@ namespace Modules\Geo\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-<<<<<<< .merge_file_kU5iA8
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Carbon;
-=======
 use Illuminate\Support\Carbon;
 use Modules\Geo\Database\Factories\AddressFactory;
->>>>>>> .merge_file_rAWvXg
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Xot\Contracts\ProfileContract;
 
@@ -22,36 +17,6 @@ use Modules\Xot\Contracts\ProfileContract;
  *
  * Implementazione di Schema.org PostalAddress
  *
-<<<<<<< .merge_file_kU5iA8
- * @property int                       $id
- * @property Carbon|null               $deleted_at
- * @property string|null               $model_type
- * @property int|string|null           $model_id
- * @property string|null               $name
- * @property string|null               $description
- * @property string|null               $phone
- * @property string|null               $route
- * @property string|null               $street_number
- * @property string|null               $locality
- * @property string|null               $administrative_area_level_3
- * @property string|null               $administrative_area_level_2
- * @property string|null               $administrative_area_level_1
- * @property string|null               $country
- * @property string|null               $postal_code
- * @property string|null               $formatted_address
- * @property string|null               $place_id
- * @property float|null                $latitude
- * @property float|null                $longitude
- * @property AddressTypeEnum           $type
- * @property bool                      $is_primary
- * @property array<string, mixed>|null $extra_data
- * @property Model                     $addressable
- * @property ProfileContract|null      $creator
- * @property string                    $full_address
- * @property string                    $street_address
- * @property Model                     $model
- * @property ProfileContract|null      $updater
-=======
  * @property int                          $id
  * @property string|null                  $model_type
  * @property string|null                  $model_id
@@ -84,28 +49,13 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string                       $street_address
  * @property Model|\Eloquent|null         $model
  * @property ProfileContract|null         $updater
->>>>>>> .merge_file_rAWvXg
  *
  * @method static Builder<static>|Address nearby(float $latitude, float $longitude, float $radiusKm = 10)
  * @method static Builder<static>|Address newModelQuery()
  * @method static Builder<static>|Address newQuery()
-<<<<<<< .merge_file_kU5iA8
- * @method static Builder<static>|Address ofType(\Modules\Geo\Enums\AddressTypeEnum|string $type)
- * @method static Builder<static>|Address primary()
- * @method static Builder<static>|Address query()
- *
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null $updated_by
- * @property string|null $created_by
- * @property string|null $deleted_by
- *
- * @method static Builder<static>|Address onlyTrashed()
-=======
  * @method static Builder<static>|Address ofType($type)
  * @method static Builder<static>|Address primary()
  * @method static Builder<static>|Address query()
->>>>>>> .merge_file_rAWvXg
  * @method static Builder<static>|Address whereAdministrativeAreaLevel1($value)
  * @method static Builder<static>|Address whereAdministrativeAreaLevel2($value)
  * @method static Builder<static>|Address whereAdministrativeAreaLevel3($value)
@@ -125,10 +75,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Address whereModelId($value)
  * @method static Builder<static>|Address whereModelType($value)
  * @method static Builder<static>|Address whereName($value)
-<<<<<<< .merge_file_kU5iA8
- * @method static Builder<static>|Address wherePhone($value)
-=======
->>>>>>> .merge_file_rAWvXg
  * @method static Builder<static>|Address wherePlaceId($value)
  * @method static Builder<static>|Address wherePostalCode($value)
  * @method static Builder<static>|Address whereRoute($value)
@@ -136,10 +82,6 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Address whereType($value)
  * @method static Builder<static>|Address whereUpdatedAt($value)
  * @method static Builder<static>|Address whereUpdatedBy($value)
-<<<<<<< .merge_file_kU5iA8
- * @method static Builder<static>|Address withTrashed(bool $withTrashed = true)
- * @method static Builder<static>|Address withoutTrashed()
-=======
  *
  * @property ProfileContract|null $deleter
  *
@@ -148,17 +90,11 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string|null $phone
  *
  * @method static Builder<static>|Address wherePhone($value)
->>>>>>> .merge_file_rAWvXg
  *
  * @mixin \Eloquent
  */
 class Address extends BaseModel
 {
-<<<<<<< .merge_file_kU5iA8
-    use SoftDeletes;
-
-=======
->>>>>>> .merge_file_rAWvXg
     /** @var list<string> */
     protected $fillable = [
         'model_type',
@@ -242,11 +178,7 @@ class Address extends BaseModel
             ->orderBy('regione->nome')
             ->where('regione->codice', $this->administrative_area_level_1)
             ->get()
-<<<<<<< .merge_file_kU5iA8
-            ->map(function (Comune $item) {
-=======
             ->map(function ($item) {
->>>>>>> .merge_file_rAWvXg
                 $regione = $item->regione;
                 if (! is_array($regione) || ! isset($regione['codice'], $regione['nome'])) {
                     return;
@@ -269,11 +201,7 @@ class Address extends BaseModel
             ->orderBy('provincia->nome')
             ->where('provincia->codice', $this->administrative_area_level_2)
             ->get()
-<<<<<<< .merge_file_kU5iA8
-            ->map(function (Comune $item): array {
-=======
             ->map(function ($item): array {
->>>>>>> .merge_file_rAWvXg
                 $provincia = is_array($item->provincia ?? null) ? $item->provincia : [];
 
                 return [
@@ -313,11 +241,7 @@ class Address extends BaseModel
             $this->administrative_area_level_2, // Regione
             $this->postal_code,
             $this->country,
-<<<<<<< .merge_file_kU5iA8
-        ], function (?string $part): bool {
-=======
         ], function ($part): bool {
->>>>>>> .merge_file_rAWvXg
             // PHPStan L10: verifica prima il tipo, poi se è vuoto
             if (! \is_string($part)) {
                 return false;
@@ -512,10 +436,7 @@ class Address extends BaseModel
      *
      * @return array<string, string>
      */
-<<<<<<< .merge_file_kU5iA8
-=======
     #[\Override]
->>>>>>> .merge_file_rAWvXg
     protected function casts(): array
     {
         return [

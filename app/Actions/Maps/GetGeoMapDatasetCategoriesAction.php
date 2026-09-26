@@ -19,11 +19,7 @@ class GetGeoMapDatasetCategoriesAction
         $categories = [];
 
         foreach ($features as $feature) {
-<<<<<<< .merge_file_zSYoBY
-            if ('Point' !== $feature['geometry']['type']) {
-=======
             if ($feature['geometry']['type'] !== 'Point') {
->>>>>>> .merge_file_HLaMWF
                 continue;
             }
 

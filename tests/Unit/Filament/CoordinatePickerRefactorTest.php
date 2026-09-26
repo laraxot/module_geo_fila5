@@ -8,10 +8,6 @@ use Modules\Geo\Filament\Forms\Components\CoordinatePicker;
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
-<<<<<<< .merge_file_sWJZOd
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
-=======
->>>>>>> .merge_file_zUVcO4
 use PHPUnit\Framework\Assert;
 
 use function Safe\file;
@@ -28,15 +24,10 @@ function geoReadMethodBody(\ReflectionMethod $ref): string
     $end = $ref->getEndLine();
 
     $body = '';
-<<<<<<< .merge_file_sWJZOd
-    foreach (array_slice($lines, $start - 1, $end - $start + 1) as $line) {
-        $body .= SafeStringCastAction::cast($line);
-=======
     /** @var list<string> $methodLines */
     $methodLines = array_slice($lines, $start - 1, $end - $start + 1);
     foreach ($methodLines as $line) {
         $body .= $line;
->>>>>>> .merge_file_zUVcO4
     }
 
     Assert::assertNotSame('', $body);

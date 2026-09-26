@@ -124,11 +124,7 @@ return [
         ],
         'label' => 'Boundary',
         'sort' => 1,
-<<<<<<< .merge_file_KUyFyf
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_t99GLk
     ],
     'actions' => [
         'create' => [

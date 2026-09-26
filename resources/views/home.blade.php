@@ -1,10 +1,3 @@
-<<<<<<< .merge_file_oV6To0
-<?php
-
-declare(strict_types=1);
-?>
-=======
->>>>>>> .merge_file_2x6nVg
 {{--
     Homepage /it civic content blocks
     Civic portal content blocks parity with Design Comuni

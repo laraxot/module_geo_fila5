@@ -1,10 +1,3 @@
-<<<<<<< .merge_file_JI8vUb
-<?php
-
-declare(strict_types=1);
-?>
-=======
->>>>>>> .merge_file_CRkxi8
 @php
 /** @var \Modules\Geo\Filament\Forms\Components\CoordinatePicker $field */
 $statePath = $field->getStatePath();
