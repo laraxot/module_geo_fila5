@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_PTjs1x
+=======
+
+>>>>>>> .merge_file_MOeed8
 ?>
 <div class="b-pop-places__item">
     <div class="b-pop-place">

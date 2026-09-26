@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_gJr9Nj
+=======
+
+>>>>>>> .merge_file_ytmcgv
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Geo\Models\Location;
 use Modules\Xot\Database\Migrations\XotBaseMigration;

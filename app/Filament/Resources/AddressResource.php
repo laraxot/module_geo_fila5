@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Resources;
 
+<<<<<<< .merge_file_afqde4
 use Modules\Geo\Models\Address;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
@@ -11,14 +12,47 @@ class AddressResource extends XotBaseResource
 {
     protected static ?string $model = Address::class;
 <<<<<<< .merge_file_DxS9wg
+=======
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Component;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
+use Modules\Geo\Models\Address;
+use Modules\Geo\Models\Locality;
+use Modules\Geo\Models\Province;
+use Modules\Geo\Models\Region;
+use Modules\Xot\Filament\Resources\XotBaseResource;
+
+/**
+ * Resource per la gestione degli indirizzi geografici.
+ *
+ * Fornisce un'interfaccia completa per:
+ * - Creazione di nuovi indirizzi con validazione geografica
+ * - Modifica dei dati esistenti
+ * - Visualizzazione delle informazioni su mappa
+ * - Gestione delle relazioni con altri modelli
+ * fornendo funzionalità per la creazione, modifica e visualizzazione
+ * degli indirizzi su mappa.
+ */
+class AddressResource extends XotBaseResource
+{
+    protected static ?string $model = Address::class;
+>>>>>>> .merge_file_Xj8fqt
 
     // ✅ CORRETTO - NIENTE navigationGroup - La gestione è centralizzata in XotBaseResource
 
     /**
      * @return array<string, Component>
+<<<<<<< .merge_file_afqde4
      *
      * @phpstan-return array<string, Component>
      */
+=======
+     */
+    #[\Override]
+>>>>>>> .merge_file_Xj8fqt
     public function getFormSchemaOld(): array
     {
         return [
@@ -76,9 +110,14 @@ class AddressResource extends XotBaseResource
     }
 
     /**
+<<<<<<< .merge_file_afqde4
      * @return array<string, Component>
      *
      * @phpstan-return array<string, Component>
+=======
+     *
+     * @return array<string, mixed>
+>>>>>>> .merge_file_Xj8fqt
      */
     public static function getSearchStep(): array
     {
@@ -128,6 +167,9 @@ class AddressResource extends XotBaseResource
                 ->placeholder(__('filament-forms::components.select.placeholder')),
         ];
     }
+<<<<<<< .merge_file_afqde4
 =======
 >>>>>>> .merge_file_qt8ymY
+=======
+>>>>>>> .merge_file_Xj8fqt
 }

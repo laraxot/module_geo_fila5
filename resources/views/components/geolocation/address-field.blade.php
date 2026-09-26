@@ -1,7 +1,10 @@
+<<<<<<< .merge_file_bU8oao
 <?php
 
 declare(strict_types=1);
 ?>
+=======
+>>>>>>> .merge_file_2lZCuA
 @php
     $sprite = $sprite ?? '/themes/Sixteen/design-comuni/assets/bootstrap-italia/dist/svg/sprites.svg';
 @endphp

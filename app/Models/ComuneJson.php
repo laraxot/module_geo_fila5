@@ -44,6 +44,10 @@ class ComuneJson extends GeoJsonModel
      *     popolazione: int
      * }>
      */
+<<<<<<< .merge_file_8W1rmJ
+=======
+    #[\Override]
+>>>>>>> .merge_file_ZB5shx
     public static function all(): Collection
     {
         /** @var Collection<int, array{
@@ -321,7 +325,11 @@ class ComuneJson extends GeoJsonModel
 
         // Chiavi specifiche per regione
         static::allRegions()
+<<<<<<< .merge_file_8W1rmJ
             ->each(static function (string $_nome, string $code) use (&$clearedKeys): void {
+=======
+            ->each(static function ($_nome, $code) use (&$clearedKeys): void {
+>>>>>>> .merge_file_ZB5shx
                 $keys = ["geo_region_{$code}", "geo_region_{$code}_provinces"];
                 foreach ($keys as $key) {
                     Cache::forget($key);
@@ -331,7 +339,11 @@ class ComuneJson extends GeoJsonModel
 
         // Chiavi specifiche per provincia
         static::allProvinces()
+<<<<<<< .merge_file_8W1rmJ
             ->each(static function (string $_nome, string $code) use (&$clearedKeys): void {
+=======
+            ->each(static function ($_nome, $code) use (&$clearedKeys): void {
+>>>>>>> .merge_file_ZB5shx
                 $key = "geo_province_{$code}";
                 Cache::forget($key);
                 $clearedKeys[] = $key;
@@ -430,7 +442,11 @@ class ComuneJson extends GeoJsonModel
                     'codiceCatastale' => $comune['codiceCatastale'],
                     'popolazione' => $comune['popolazione'],
                 ],
+<<<<<<< .merge_file_8W1rmJ
                 'cap' => $comune['cap'],
+=======
+                'cap' => $comune['cap'] ?? [],
+>>>>>>> .merge_file_ZB5shx
             ];
         });
 

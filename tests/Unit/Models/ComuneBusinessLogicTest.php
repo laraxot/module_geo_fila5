@@ -12,6 +12,10 @@ use PHPUnit\Framework\Assert;
 
 use function Safe\class_uses;
 
+<<<<<<< .merge_file_LTgHgm
+=======
+uses(\Modules\Geo\Tests\TestCase::class);
+>>>>>>> .merge_file_dgTfh5
 describe('Comune Business Logic', function () {
     test('comune extends base model', function () {
         Assert::assertInstanceOf(BaseModel::class, new Comune());

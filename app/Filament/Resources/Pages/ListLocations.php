@@ -13,7 +13,12 @@ class ListLocations extends XotBaseListRecords
     protected static string $resource = LocationResource::class;
 
     /**
+<<<<<<< .merge_file_DkuCWt
      * @return array<int, TextColumn>
+=======
+     *
+     * @return array<int, mixed>
+>>>>>>> .merge_file_1foUnw
      */
     public function getTableComumns(): array
     {

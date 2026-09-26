@@ -1,7 +1,10 @@
+<<<<<<< .merge_file_b6YgDw
 <?php
 
 declare(strict_types=1);
 ?>
+=======
+>>>>>>> .merge_file_VmGwkX
 {{-- Geo address-input geolocation — Alpine factory + Nominatim reverse geocode. --}}
 {{-- Extracted partial: shallow nesting for claude-audit static gate. --}}
 {{-- Canon: Modules/Geo/docs/wiki — Filament address field geolocation UX. --}}

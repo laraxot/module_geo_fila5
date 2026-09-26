@@ -1,4 +1,7 @@
+<<<<<<< .merge_file_l5NzBf
 <<<<<<< .merge_file_d3k0aU
+=======
+>>>>>>> .merge_file_AomqCc
 # GSD (Get Shit Done) - Command Reference
 
 **Version**: 1.0.0  
@@ -394,6 +397,7 @@ git bisect start
 
 *GSD Command Reference v1.0.0*  
 *Last Updated: 2026-03-18*
+<<<<<<< .merge_file_l5NzBf
 =======
 ---
 title: "Rimando a commands.md"
@@ -406,3 +410,5 @@ tags: [merge, duplicato, case-only]
 
 Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [commands.md](./commands.md).
 >>>>>>> .merge_file_j8WK8X
+=======
+>>>>>>> .merge_file_AomqCc
