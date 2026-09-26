@@ -147,7 +147,11 @@ return [
         ],
         'label' => 'Import',
         'sort' => 1,
+<<<<<<< .merge_file_ovFGWT
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_KLBXC6
     ],
     'actions' => [
         'create' => [

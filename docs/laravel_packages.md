@@ -83,6 +83,7 @@ https://ourcodeworld.com/articles/read/1019/how-to-find-nearest-locations-from-a
 -----------------------------------------------
 -----------------------------------------------
 -----------------------------------------------
+<<<<<<< .merge_file_ULgKNG
 <<<<<<< .merge_file_cUiUfN
 =======
 
@@ -97,3 +98,5 @@ canonical: ../../../Themes/docs/shared-components/laravel-packages-Modules.md
 
 See canonical documentation: ../../../Themes/docs/shared-components/laravel-packages-Modules.md
 >>>>>>> .merge_file_YxrZxk
+=======
+>>>>>>> .merge_file_32ZRT2

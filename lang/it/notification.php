@@ -194,7 +194,11 @@ return [
         ],
         'label' => 'Notification',
         'sort' => 1,
+<<<<<<< .merge_file_2zSY5Y
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_0px1ju
     ],
     'actions' => [
         'create' => [

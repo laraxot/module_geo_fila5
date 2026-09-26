@@ -14,8 +14,13 @@ use Modules\Geo\Datas\GeoData;
 /**
  * Modules\Geo\Models\Traits\GeoTrait.
  *
+<<<<<<< .merge_file_YtrIdQ
  * @property float  $latitude
  * @property float  $longitude
+=======
+ * @property float $latitude
+ * @property float $longitude
+>>>>>>> .merge_file_oBG5W6
  * @property string $country.
  * @property string $country.
  * @property string $administrative_area_level_2.
@@ -36,7 +41,10 @@ use Modules\Geo\Datas\GeoData;
  * @property string $administrative_area_level_3.
  * @property string $administrative_area_level_2_short.
  */
+<<<<<<< .merge_file_YtrIdQ
 /** @phpstan-ignore trait.unused */
+=======
+>>>>>>> .merge_file_oBG5W6
 trait GeoTrait
 {
     /*
@@ -65,7 +73,11 @@ trait GeoTrait
             '',
         );
 
+<<<<<<< .merge_file_YtrIdQ
         return null !== $distance ? (float) $distance : null;
+=======
+        return $distance !== null ? (float) $distance : null;
+>>>>>>> .merge_file_oBG5W6
     }
 
     public function distanceCustomField(
@@ -75,6 +87,7 @@ trait GeoTrait
         ?float $lng = null,
         ?string $unit = '',
     ): ?float {
+<<<<<<< .merge_file_YtrIdQ
         $latFieldValue = $this->{$lat_field};
         $lngFieldValue = $this->{$lng_field};
         $latFromField = is_float($latFieldValue) || is_int($latFieldValue)
@@ -87,12 +100,23 @@ trait GeoTrait
         $distance = app(CalculateGeoDistanceAction::class)->execute(
             $latFromField,
             $lngFromField,
+=======
+        $latitude = $this->getAttribute($lat_field);
+        $longitude = $this->getAttribute($lng_field);
+        $distance = app(CalculateGeoDistanceAction::class)->execute(
+            is_numeric($latitude) ? (float) $latitude : 0.0,
+            is_numeric($longitude) ? (float) $longitude : 0.0,
+>>>>>>> .merge_file_oBG5W6
             $lat,
             $lng,
             $unit,
         );
 
+<<<<<<< .merge_file_YtrIdQ
         return null !== $distance ? (float) $distance : null;
+=======
+        return $distance !== null ? (float) $distance : null;
+>>>>>>> .merge_file_oBG5W6
     }
 
     // ---- Scopes ----
@@ -159,7 +183,11 @@ trait GeoTrait
 
     public function getAddress(): string
     {
+<<<<<<< .merge_file_YtrIdQ
         if ('' === $this->country) {
+=======
+        if ($this->country === '') {
+>>>>>>> .merge_file_oBG5W6
             $this->country = 'Italia';
         }
 
@@ -183,7 +211,11 @@ trait GeoTrait
             return (float) $value;
         }
         $address = $this->address;
+<<<<<<< .merge_file_YtrIdQ
         if (null === $address) {
+=======
+        if ($address === null) {
+>>>>>>> .merge_file_oBG5W6
             return null;
         }
         if (is_string($address) && isJson($address)) {
@@ -191,7 +223,11 @@ trait GeoTrait
             $latlng = $geo->latlng;
             $lat = is_float($latlng['lat'] ?? null) || is_int($latlng['lat'] ?? null) ? (float) ($latlng['lat']) : null;
             $lng = is_float($latlng['lng'] ?? null) || is_int($latlng['lng'] ?? null) ? (float) ($latlng['lng']) : null;
+<<<<<<< .merge_file_YtrIdQ
             if (null !== $lat && null !== $lng) {
+=======
+            if ($lat !== null && $lng !== null) {
+>>>>>>> .merge_file_oBG5W6
                 $this->update([
                     'latitude' => $lat,
                     'longitude' => $lng,
@@ -251,8 +287,13 @@ trait GeoTrait
                 $this->attributes['full_address'] = ',,';
             }
 
+<<<<<<< .merge_file_YtrIdQ
             $rawFullAddress = $this->attributes['full_address'] ?? '';
             $fullAddress = is_string($rawFullAddress) ? $rawFullAddress : '';
+=======
+            $fullAddressValue = $this->attributes['full_address'] ?? '';
+            $fullAddress = is_scalar($fullAddressValue) ? (string) $fullAddressValue : '';
+>>>>>>> .merge_file_oBG5W6
             if (strlen($fullAddress) < 10) {
                 $tmp = [];
                 $tmp[] = $geo->route ?? '';
@@ -273,8 +314,12 @@ trait GeoTrait
     }
 
     /**
+<<<<<<< .merge_file_YtrIdQ
      * @param mixed $value
      *
+=======
+     * @param  mixed  $value
+>>>>>>> .merge_file_oBG5W6
      * @return bool|mixed|string
      */
     /*
@@ -308,7 +353,11 @@ trait GeoTrait
      */
     public function getFullAddressAttribute(?string $value): ?string
     {
+<<<<<<< .merge_file_YtrIdQ
         if (null === $this->address) {
+=======
+        if ($this->address === null) {
+>>>>>>> .merge_file_oBG5W6
             return null;
         }
         if (is_string($this->address) && isJson($this->address)) {

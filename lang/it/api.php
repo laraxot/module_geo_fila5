@@ -189,7 +189,11 @@ return [
         ],
         'label' => 'Api',
         'sort' => 1,
+<<<<<<< .merge_file_3opKuZ
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_UKLRXo
     ],
     'actions' => [
         'create' => [

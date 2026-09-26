@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_Oku1FJ
 <<<<<<< .merge_file_rjM7L9
 =======
 // Geo — frontend asset (claude-audit doc ratio).
@@ -5,6 +6,8 @@
 // Geo — frontend asset (claude-audit doc ratio).
 // Geo — frontend asset (claude-audit doc ratio).
 >>>>>>> .merge_file_4dDMMW
+=======
+>>>>>>> .merge_file_B3dmy9
 import { test, expect } from '@playwright/test';
 
 /** Mappa elenco (non il blocco map-preview opzionale in pagina). */
@@ -12,6 +15,7 @@ const mapLit = (page) => page.locator('#segnalazioni-elenco-root map-lit#ticket-
 
 test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () => {
   test.beforeEach(async ({ page }) => {
+<<<<<<< .merge_file_Oku1FJ
 <<<<<<< .merge_file_rjM7L9
 <<<<<<< Updated upstream
     const response = await page.goto('http://127.0.0.1:8000/it/tests/ticket-list', {
@@ -24,6 +28,10 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
     const response = await page.goto('http://127.0.0.1:8000/it/tests/ticket-list', {
       waitUntil: 'domcontentloaded',
 >>>>>>> .merge_file_4dDMMW
+=======
+    const response = await page.goto('http://127.0.0.1:8000/it/tests/ticket-list', {
+      waitUntil: 'domcontentloaded',
+>>>>>>> .merge_file_B3dmy9
       timeout: 30000,
     });
 
@@ -39,6 +47,7 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
       const markers = Array.isArray(el._allMarkers) ? el._allMarkers : [];
       const withIcon = markers.filter((m) => m.options?.typeIconUrl);
       const samples = withIcon.slice(0, 5).map((m) => ({
+<<<<<<< .merge_file_Oku1FJ
 <<<<<<< .merge_file_rjM7L9
 <<<<<<< Updated upstream
         type: m.options.typeValue,
@@ -51,6 +60,10 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
         type: m.options.typeValue,
         typeIconUrl: m.options.typeIconUrl,
 >>>>>>> .merge_file_4dDMMW
+=======
+        type: m.options.typeValue,
+        typeIconUrl: m.options.typeIconUrl,
+>>>>>>> .merge_file_B3dmy9
       }));
 
       return {
@@ -71,10 +84,13 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
     expect(status.withIconUrl).toBeGreaterThan(0);
 
     for (const sample of status.samples) {
+<<<<<<< .merge_file_Oku1FJ
 <<<<<<< .merge_file_rjM7L9
 <<<<<<< Updated upstream
 =======
 >>>>>>> .merge_file_4dDMMW
+=======
+>>>>>>> .merge_file_B3dmy9
       const imgGlyph = page.locator(
         `.geo-map-marker-glyph--img[src="${sample.typeIconUrl}"]`
       ).first();
@@ -87,6 +103,7 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
       expect(box?.width ?? 0).toBeLessThanOrEqual(36);
       expect(box?.height ?? 0).toBeGreaterThanOrEqual(20);
       expect(box?.height ?? 0).toBeLessThanOrEqual(36);
+<<<<<<< .merge_file_Oku1FJ
 <<<<<<< .merge_file_rjM7L9
 =======
       expect(sample.iconHtml).toContain('geo-map-marker-glyph');
@@ -94,6 +111,8 @@ test.describe('Segnalazioni elenco — marker icon parity (TicketTypeEnum)', () 
 >>>>>>> Stashed changes
 =======
 >>>>>>> .merge_file_4dDMMW
+=======
+>>>>>>> .merge_file_B3dmy9
     }
   });
 

@@ -61,7 +61,11 @@ class LocationMapWidget extends XotBaseWidget
     public function getMarkers(): array
     {
         return $this->getPlaces()
+<<<<<<< .merge_file_x0RwVg
             ->filter(fn (Place $place) => null !== $place->latitude && null !== $place->longitude)
+=======
+            ->filter(fn (Place $place) => $place->latitude !== null && $place->longitude !== null)
+>>>>>>> .merge_file_k8sTUE
             ->map(function (Place $place): array {
                 $marker = [
                     'position' => [
@@ -72,7 +76,11 @@ class LocationMapWidget extends XotBaseWidget
                 ];
 
                 $icon = $this->getMarkerIcon($place);
+<<<<<<< .merge_file_x0RwVg
                 if (null !== $icon) {
+=======
+                if ($icon !== null) {
+>>>>>>> .merge_file_k8sTUE
                     $marker['icon'] = $icon;
                 }
 
@@ -105,7 +113,11 @@ class LocationMapWidget extends XotBaseWidget
     {
         $height = $this->maxHeight ?? '50vh';
 
+<<<<<<< .merge_file_x0RwVg
         return is_string($height) ? $height : SafeStringCastAction::cast($height);
+=======
+        return SafeStringCastAction::cast($height);
+>>>>>>> .merge_file_k8sTUE
     }
 
     /**

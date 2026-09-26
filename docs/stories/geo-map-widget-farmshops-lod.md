@@ -1,7 +1,10 @@
+<<<<<<< .merge_file_f2tPd3
 ---
 scope: module:Geo
 ---
 
+=======
+>>>>>>> .merge_file_IcA5x8
 # Story: GeoMapWidget Filament v5 con pattern farmshops e LOD client-side
 
 ## Status
@@ -413,6 +416,7 @@ La story è completata solo se:
 - Leaflet.markercluster official repository: `https://github.com/Leaflet/Leaflet.markercluster`
 - Leaflet.markercluster npm package ufficiale: `https://www.npmjs.com/package/leaflet.markercluster`
 - Deprecated package da non usare: `https://www.npmjs.com/package/leaflet-markercluster`
+<<<<<<< .merge_file_f2tPd3
 
 ## GitHub (tracciamento)
 
@@ -430,3 +434,5 @@ gh issue create --repo laraxot/base_quaeris_fila5 \
   --title "Story: GeoMapWidget Filament v5 con pattern farmshops e LOD client-side" --body-file <FILE>
 gh api repos/laraxot/base_quaeris_fila5/discussions -f title="Story: GeoMapWidget Filament v5 con pattern farmshops e LOD client-side" -f body="vedi la story"
 ```
+=======
+>>>>>>> .merge_file_IcA5x8

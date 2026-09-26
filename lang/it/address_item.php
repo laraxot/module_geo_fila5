@@ -190,7 +190,11 @@ return [
         ],
         'label' => 'Address Item',
         'sort' => 1,
+<<<<<<< .merge_file_f3bgZP
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_Uo1XQ3
     ],
     'actions' => [
         'create' => [

@@ -5,8 +5,15 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Actions;
 
 use Modules\Geo\Actions\FilterCoordinatesAction;
+<<<<<<< .merge_file_a9xP8X
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+>>>>>>> .merge_file_9vYe59
 it('filters coordinates within radius correctly', function (): void {
     $action = new FilterCoordinatesAction();
 

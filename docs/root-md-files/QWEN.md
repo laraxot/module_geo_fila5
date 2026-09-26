@@ -1,4 +1,7 @@
+<<<<<<< .merge_file_QDMvT7
 <<<<<<< .merge_file_SxmugA
+=======
+>>>>>>> .merge_file_AioPaf
 # Qwen — On-Demand Stub
 
 Rules, skills, memories live only in wiki. Load on-demand.
@@ -12,6 +15,7 @@ Rules, skills, memories live only in wiki. Load on-demand.
 - [QMD] `qmd search "<topic>"`
 
 *Updated: 2026*
+<<<<<<< .merge_file_QDMvT7
 =======
 ---
 title: "Rimando a qwen.md"
@@ -24,3 +28,5 @@ tags: [merge, duplicato, case-only]
 
 Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [qwen.md](./qwen.md).
 >>>>>>> .merge_file_DnBnMO
+=======
+>>>>>>> .merge_file_AioPaf

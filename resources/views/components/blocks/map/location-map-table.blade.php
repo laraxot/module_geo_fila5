@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_qHa9is
+=======
+
+>>>>>>> .merge_file_E8ImZK
 ?>
 <div>
     {{--

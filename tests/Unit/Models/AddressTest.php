@@ -8,8 +8,15 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Modules\Geo\Database\Factories\AddressFactory;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
+<<<<<<< .merge_file_FTFFqB
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+>>>>>>> .merge_file_7fjpjn
 test('address can be created', function (): void {
     $address = AddressFactory::new()->createOne();
 

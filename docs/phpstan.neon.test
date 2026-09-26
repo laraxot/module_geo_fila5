@@ -38,6 +38,7 @@ parameters:
         - ./phpstan_constants.php
 
     scanFiles:
+<<<<<<< .merge_file_XzweUj
 <<<<<<< .merge_file_c5ttP8
 <<<<<<< HEAD
     #    - ./helpers/Helper.php
@@ -47,6 +48,9 @@ parameters:
 =======
     #    - ./helpers/Helper.php
 >>>>>>> .merge_file_ZaTuKW
+=======
+    #    - ./helpers/Helper.php
+>>>>>>> .merge_file_gKgzmy
     #   - ./vendor/amenadiel/jpgraph/src/config.inc.php
 
     editorUrl: 'vscode://file/%%file%%:%%line%%'

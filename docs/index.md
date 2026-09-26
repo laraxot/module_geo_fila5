@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_m5jfAp
 ---
 title: "Geo — indice della documentazione"
 description: "Documentazione del modulo Geo: dati geografici e mappe."
@@ -13,6 +14,8 @@ issues: https://github.com/laraxot/module_geo_fila5/issues
 discussions: https://github.com/laraxot/module_geo_fila5/discussions
 ---
 
+=======
+>>>>>>> .merge_file_O1RHR3
 # PTVX - Documentazione Completa
 
 > Sistema Modulare per la Gestione della Pubblica Amministrazione
@@ -106,6 +109,26 @@ discussions: https://github.com/laraxot/module_geo_fila5/discussions
 - **[Testing Guidelines](./testing/guidelines.md)** - Linee guida testing
 
 ## 📊 Performance
+<<<<<<< .merge_file_m5jfAp
+=======
+## 🗺️ Geo Filament Components
+
+### Filosofia e Regole
+- [**Filament Geo Pickers Philosophy**](filament-geo-pickers-philosophy.md) - Filosofia, visione e regole per i componenti Geo picker
+- [**Map Picker Prompt**](/prompts/map-picker.txt) - Prompt per implementazione MapPicker
+
+### Pickers Components
+- CoordinatePicker - Il maestro Zen
+- MapPicker / LocationPicker - Alias backward-compatible
+- LatitudeLongitudeInput - Le viscere grezze
+- PlacePicker - La guida al specifico
+- MapPositioner - Il righello di prospettiva
+- MapLocationInput - Input nascosto sincronizzato
+- LeafletMarkerMapInput - L'amarker con memoria
+- GeopointPicker - Il punto geografico puro
+
+## 📋 Convenzioni e Standard
+>>>>>>> .merge_file_O1RHR3
 
 ### Ottimizzazione
 - **[Performance Optimization](./performance-optimization.md)** - Ottimizzazione generale
@@ -198,6 +221,28 @@ discussions: https://github.com/laraxot/module_geo_fila5/discussions
 
 ---
 
+<<<<<<< .merge_file_m5jfAp
+=======
+## 🔍 Cerca nella Documentazione
+
+Usa Ctrl/Cmd + F per cercare in questa pagina, oppure:
+- [Cerca nei moduli](../laravel/Modules/)
+- [Cerca nelle regole AI](../.cursor/rules/)
+- [Cerca negli script](../bashscripts/)
+
+## 📧 Supporto
+
+- **Email**: marco.sottana@gmail.com
+- **Issues**: [GitHub Issues](link-issues)
+- **Discussions**: [GitHub Discussions](link-discussions)
+
+---
+
+**Ultima Revisione**: 2025-01-29  
+**Versione Documentazione**: 1.0.0  
+**Responsabile Documentazione**: AI Assistant
+
+>>>>>>> .merge_file_O1RHR3
 **Versione**: 3.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Aggiornata

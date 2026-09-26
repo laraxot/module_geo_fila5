@@ -13,13 +13,18 @@ uses(LightTestCase::class);
 it('can instantiate map picker', function () {
     $field = MapPicker::make('location');
 
+<<<<<<< .merge_file_YOvzbh
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+    Assert::assertSame('location', $field->getName());
+>>>>>>> .merge_file_i1SnVl
 });
 
 it('can set and get latitude and longitude field names', function () {
     $field = MapPicker::make('location')
         ->latitudeColumn('lat_field')
         ->longitudeColumn('lng_field');
+<<<<<<< .merge_file_YOvzbh
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -30,6 +35,9 @@ it('can set and get latitude and longitude field names', function () {
     Assert::assertInstanceOf(MapPicker::class, $field);
 
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+
+>>>>>>> .merge_file_i1SnVl
     Assert::assertSame('lat_field', $field->getLatitudeColumn());
 
     Assert::assertSame('lng_field', $field->getLongitudeColumn());
@@ -46,6 +54,7 @@ it('has default latitude and longitude field names', function () {
 it('can set zoom level', function () {
     $field = MapPicker::make('location')
         ->zoom(10);
+<<<<<<< .merge_file_YOvzbh
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -54,6 +63,8 @@ it('can set zoom level', function () {
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+>>>>>>> .merge_file_i1SnVl
 
     Assert::assertSame(10, $field->getZoom());
 });
@@ -61,6 +72,7 @@ it('can set zoom level', function () {
 it('can enable or disable reverse geocoding', function () {
     $field = MapPicker::make('location')
         ->reverseGeocoding(false);
+<<<<<<< .merge_file_YOvzbh
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -69,6 +81,8 @@ it('can enable or disable reverse geocoding', function () {
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+>>>>>>> .merge_file_i1SnVl
 
     Assert::assertFalse($field->hasReverseGeocoding());
 
@@ -79,6 +93,7 @@ it('can enable or disable reverse geocoding', function () {
 it('can enable or disable geolocation when empty', function () {
     $field = MapPicker::make('location')
         ->geolocateWhenEmpty(false);
+<<<<<<< .merge_file_YOvzbh
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -87,6 +102,8 @@ it('can enable or disable geolocation when empty', function () {
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+>>>>>>> .merge_file_i1SnVl
 
     Assert::assertFalse($field->getGeolocateWhenEmpty());
 

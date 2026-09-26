@@ -1,7 +1,10 @@
+<<<<<<< .merge_file_lTUTgW
 <?php
 
 declare(strict_types=1);
 ?>
+=======
+>>>>>>> .merge_file_PfFVOo
 @php
     $sprite = $sprite ?? '/themes/Sixteen/design-comuni/assets/bootstrap-italia/dist/svg/sprites.svg';
     $statePath = $getStatePath();

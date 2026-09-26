@@ -15,7 +15,11 @@ uses(UnitTestCase::class);
 test('MapPicker can be instantiated', function (): void {
     $field = MapPicker::make('location');
 
+<<<<<<< .merge_file_huJubX
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+    Assert::assertSame('location', $field->getName());
+>>>>>>> .merge_file_bRtVyr
 });
 
 test('MapPicker extends XotBaseField', function (): void {
@@ -40,6 +44,7 @@ test('MapPicker supports fluent defaults and presentation options', function ():
         ->zoom(14)
         ->height('420px')
         ->showSearch(false);
+<<<<<<< .merge_file_huJubX
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -49,6 +54,9 @@ test('MapPicker supports fluent defaults and presentation options', function ():
     Assert::assertInstanceOf(MapPicker::class, $field);
 
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+
+>>>>>>> .merge_file_bRtVyr
     Assert::assertSame(45.4642, $field->getCenterLatitude());
     Assert::assertSame(9.1900, $field->getCenterLongitude());
     Assert::assertSame(14, $field->getZoom());
@@ -74,6 +82,7 @@ test('MapPicker getZoom defaults to 13 when zoom not configured', function (): v
     Assert::assertSame(13, $field->getZoom());
 });
 
+<<<<<<< .merge_file_huJubX
 test('LocationPicker is a MapPicker subclass', function (): void {
     Assert::assertInstanceOf(MapPicker::class, LocationPicker::make('location'));
 });
@@ -82,6 +91,19 @@ test('LocationPicker uses map-picker blade view (inherited)', function (): void 
     $field = LocationPicker::make('location');
 
     Assert::assertSame('geo::filament.forms.components.map-picker', $field->getView());
+=======
+test('LocationPicker exposes the coordinate picker defaults', function (): void {
+    $field = LocationPicker::make('location');
+
+    Assert::assertSame('latitude', $field->getLatitudeColumn());
+    Assert::assertSame('longitude', $field->getLongitudeColumn());
+});
+
+test('LocationPicker uses its dedicated blade view', function (): void {
+    $field = LocationPicker::make('location');
+
+    Assert::assertSame('geo::filament.forms.components.location-picker', $field->getView());
+>>>>>>> .merge_file_bRtVyr
 });
 
 test('MapPicker latitudeColumn and longitudeColumn default to standard names', function (): void {
@@ -95,6 +117,7 @@ test('MapPicker latitudeColumn and longitudeColumn setters override defaults', f
     $field = MapPicker::make('location')
         ->latitudeColumn('lat')
         ->longitudeColumn('lng');
+<<<<<<< .merge_file_huJubX
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -104,6 +127,9 @@ test('MapPicker latitudeColumn and longitudeColumn setters override defaults', f
     Assert::assertInstanceOf(MapPicker::class, $field);
 
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+
+>>>>>>> .merge_file_bRtVyr
     Assert::assertSame('lat', $field->getLatitudeColumn());
     Assert::assertSame('lng', $field->getLongitudeColumn());
 });
@@ -147,6 +173,7 @@ test('MapPicker searchAddress returns empty array when Nominatim returns empty',
     ]);
 
     $field = MapPicker::make('location')->center(41.9028, 12.4964);
+<<<<<<< .merge_file_huJubX
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -154,6 +181,8 @@ test('MapPicker searchAddress returns empty array when Nominatim returns empty',
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+>>>>>>> .merge_file_bRtVyr
     $results = $field->searchAddress('nonexistent place xyz');
 
     Assert::assertSame([], $results);

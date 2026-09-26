@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_8SpBfx
+=======
+
+>>>>>>> .merge_file_ld1Aac
 ?>
 <div id="sidebar" class="sidebar collapsed">
         <!-- Nav tabs -->

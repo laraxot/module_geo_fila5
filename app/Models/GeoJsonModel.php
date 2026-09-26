@@ -24,6 +24,10 @@ abstract class GeoJsonModel
      * Restituisce tutti i dati come collection.
      */
     /**
+<<<<<<< .merge_file_DQOwpV
+=======
+     *
+>>>>>>> .merge_file_FOjwuD
      * @return Collection<int, array<string, mixed>>
      */
     public static function all(): Collection
@@ -34,9 +38,17 @@ abstract class GeoJsonModel
     /**
      * Filtra la collection per chiave/valore.
      *
+<<<<<<< .merge_file_DQOwpV
      * @return Collection<int, array<string, mixed>>
      */
     public static function where(string $key, string|int|bool|null $value): Collection
+=======
+     * @param string|int|bool|null $value
+     *
+     * @return Collection<int, array<string, mixed>>
+     */
+    public static function where(string $key, $value): Collection
+>>>>>>> .merge_file_FOjwuD
     {
         /** @var Collection<int, array<string, mixed>> $all */
         $all = static::all();
@@ -54,7 +66,11 @@ abstract class GeoJsonModel
         $path = module_path('Geo', static::$jsonFile);
         $cacheKey = 'geo_comuni_json_'.md5($path);
 
+<<<<<<< .merge_file_DQOwpV
         /** @var array<int, array<string, mixed>>|bool|float|int|string|null $data */
+=======
+        /** @var array<int, array<string, mixed>>|mixed $data */
+>>>>>>> .merge_file_FOjwuD
         $data = cache()->rememberForever($cacheKey, fn () => json_decode(file_get_contents($path), true));
 
         if (! is_array($data)) {

@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_hiX5iF
+=======
+
+>>>>>>> .merge_file_0rEs2O
 ?>
 {{--
     Vista per il componente AddressesField.

@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_U39r3r
+=======
+
+>>>>>>> .merge_file_j4SiJ3
 return array (
   'navigation' => 
   array (

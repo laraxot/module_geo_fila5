@@ -119,22 +119,39 @@ class CalculateTravelTimeAction
          * } $data */
         $data = json_decode($response, true);
 
+<<<<<<< .merge_file_2XJltW
         if ('OK' !== $data['status']) {
+=======
+        if (($data['status']) !== 'OK') {
+>>>>>>> .merge_file_gQfJ7W
             return TravelTimeData::error($data['status']);
         }
 
         $element = $data['rows'][0]['elements'][0];
+<<<<<<< .merge_file_2XJltW
         if ('OK' !== $element['status']) {
+=======
+        if (! $element || ($element['status']) !== 'OK') {
+>>>>>>> .merge_file_gQfJ7W
             return TravelTimeData::error($element['status']);
         }
 
         return new TravelTimeData(
+<<<<<<< .merge_file_2XJltW
             duration_seconds: (int) ($element['duration']['value'] ?? 0),
             duration_in_traffic_seconds: (int) ($element['duration_in_traffic']['value'] ?? $element['duration']['value'] ?? 0),
             distance_meters: (int) ($element['distance']['value'] ?? 0),
             formatted_duration: (string) ($element['duration']['text'] ?? ''),
             formatted_distance: (string) ($element['distance']['text'] ?? ''),
             status: (string) ($data['status'] ?? 'ERROR'),
+=======
+            duration_seconds: (int) $element['duration']['value'],
+            duration_in_traffic_seconds: (int) ($element['duration_in_traffic']['value'] ?? $element['duration']['value']),
+            distance_meters: (int) $element['distance']['value'],
+            formatted_duration: (string) $element['duration']['text'],
+            formatted_distance: (string) $element['distance']['text'],
+            status: (string) $data['status'],
+>>>>>>> .merge_file_gQfJ7W
         );
     }
 }

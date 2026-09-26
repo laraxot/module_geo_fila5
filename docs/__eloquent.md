@@ -26,6 +26,7 @@ composer require matanyadaev/laravel-eloquent-spatial
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
+<<<<<<< .merge_file_caow7y
 
 
 ## Contenuto originale (txt)
@@ -37,3 +38,5 @@ canonical: ../../../Themes/docs/shared-components/--eloquent.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/--eloquent.md
+=======
+>>>>>>> .merge_file_YCXtAA

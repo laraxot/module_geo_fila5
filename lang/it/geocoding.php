@@ -78,7 +78,11 @@ return [
         ],
         'label' => 'Geocoding',
         'sort' => 1,
+<<<<<<< .merge_file_4OdoB3
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_c19R1F
     ],
     'actions' => [
         'create' => [

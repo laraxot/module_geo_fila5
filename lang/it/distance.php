@@ -109,7 +109,11 @@ return [
         ],
         'label' => 'Distance',
         'sort' => 1,
+<<<<<<< .merge_file_AsjQbn
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_zW0aSt
     ],
     'actions' => [
         'create' => [

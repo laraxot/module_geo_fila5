@@ -368,6 +368,7 @@ trait HasCoordinatePicker
         return $data;
     }
 
+<<<<<<< .merge_file_oRCNAt
 <<<<<<< .merge_file_tDQg2b
 =======
 <<<<<<< .merge_file_u1kLfE
@@ -378,6 +379,8 @@ trait HasCoordinatePicker
      */
 >>>>>>> .merge_file_97PN3T
 >>>>>>> .merge_file_mvvJut
+=======
+>>>>>>> .merge_file_1x3vCg
     private static function normalizeCoordinate(mixed $value): ?float
     {
         if (null === $value || '' === $value) {

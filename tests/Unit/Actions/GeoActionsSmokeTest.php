@@ -6,8 +6,16 @@ namespace Modules\Geo\Tests\Unit\Actions;
 
 use Modules\Geo\Actions\Distance\CalculateGeoDistanceAction;
 use Modules\Geo\Actions\GoogleMaps\GoogleMapsHttpAction;
+<<<<<<< .merge_file_HSsFq8
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> .merge_file_gi37oP
 test('CalculateGeoDistanceAction can be resolved', function (): void {
     $action = app(CalculateGeoDistanceAction::class);
 

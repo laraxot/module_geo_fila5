@@ -34,7 +34,11 @@ return [
         ],
         'label' => 'Fields',
         'sort' => 1,
+<<<<<<< .merge_file_OrTwbV
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_31emvk
     ],
     'fields' => [
         'id' => [

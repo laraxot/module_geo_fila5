@@ -1,7 +1,10 @@
+<<<<<<< .merge_file_bsALnc
 <?php
 
 declare(strict_types=1);
 ?>
+=======
+>>>>>>> .merge_file_WW6ES2
 @php
 /** @var \Modules\Geo\Filament\Forms\Components\LocationPicker $field */
 $statePath = $field->getStatePath();

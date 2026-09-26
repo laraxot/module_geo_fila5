@@ -8,6 +8,7 @@ https://github.com/sfneal/google-places
 
 
 
+<<<<<<< .merge_file_9jqumM
 
 
 ## Contenuto originale (txt)
@@ -19,3 +20,5 @@ canonical: ../../../Themes/docs/shared-components/map_test.txt
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/map_test.txt
+=======
+>>>>>>> .merge_file_J3n34A

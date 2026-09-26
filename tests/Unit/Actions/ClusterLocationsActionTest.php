@@ -9,8 +9,16 @@ use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\InvalidLocationException;
 use Modules\Geo\Tests\Fixtures\ClusterDistanceStub;
 use Modules\Geo\Tests\Fixtures\FixedPairDistanceStub;
+<<<<<<< .merge_file_ftw0Vw
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> .merge_file_quO2XG
 it('clusters locations that are close together', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
     $location2 = new LocationData(latitude: 45.4643, longitude: 9.1901);
@@ -40,6 +48,7 @@ it('creates separate clusters for distant locations', function (): void {
     Assert::assertCount(1, $clusters[1]['points']);
 });
 
+<<<<<<< .merge_file_ftw0Vw
 /**
  * Helper che invoca execute() via reflection per testare input non validi.
  *
@@ -48,6 +57,9 @@ it('creates separate clusters for distant locations', function (): void {
  * @return mixed Valore di ritorno di ReflectionMethod::invoke (eterogeneo)
  */
 function invokeClusterLocations(ClusterLocationsAction $action, array $locations, float $maxDistance = 1.0): mixed
+=======
+function invokeClusterLocations(ClusterLocationsAction $action, mixed $locations, float $maxDistance = 1.0): mixed
+>>>>>>> .merge_file_quO2XG
 {
     $method = new \ReflectionMethod(ClusterLocationsAction::class, 'execute');
 
@@ -112,10 +124,18 @@ it('works with different max distance parameter', function (): void {
 it('updates cluster centers correctly', function (): void {
     $location1 = new LocationData(latitude: 45.0, longitude: 9.0);
     $location2 = new LocationData(latitude: 46.0, longitude: 10.0);
+<<<<<<< .merge_file_ftw0Vw
+=======
+
+>>>>>>> .merge_file_quO2XG
     $clusters = (new ClusterLocationsAction(new FixedPairDistanceStub(100)))->execute(
         [$location1, $location2],
         5.0,
     );
+<<<<<<< .merge_file_ftw0Vw
+=======
+
+>>>>>>> .merge_file_quO2XG
     Assert::assertCount(1, $clusters);
     $center = $clusters[0]['center'];
     Assert::assertInstanceOf(LocationData::class, $center);

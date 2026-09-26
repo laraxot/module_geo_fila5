@@ -1,7 +1,10 @@
+<<<<<<< .merge_file_OZ3NHL
 <?php
 
 declare(strict_types=1);
 ?>
+=======
+>>>>>>> .merge_file_foXgTF
 {{-- Reusable Alpine contract:
      expects: searchQuery, searchAddress(), showResults, searchResults, selectSearchResult(), isSearching --}}
 <div class="relative items-center gap-2" x-show="!isFullscreen">

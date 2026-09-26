@@ -176,7 +176,11 @@ return [
         ],
         'label' => 'Errors',
         'sort' => 1,
+<<<<<<< .merge_file_RbsljZ
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_jhfXBq
     ],
     'fields' => [
         'id' => [

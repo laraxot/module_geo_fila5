@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_PsD1La
+=======
+
+>>>>>>> .merge_file_S9t1ar
 ?>
 <x-filament-widgets::widget>
     <div x-data="{ loading: false }" x-init="loading = true; getLocation()">

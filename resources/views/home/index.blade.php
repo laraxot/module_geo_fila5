@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_HpqVRC
+=======
+
+>>>>>>> .merge_file_vIOsM9
 ?>
 @extends('geo::layouts.app')
 @section('content')

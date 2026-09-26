@@ -6,8 +6,15 @@ namespace Modules\Geo\Tests\Unit\Actions;
 
 use Illuminate\Support\Collection;
 use Modules\Geo\Actions\GetAddressDataFromFullAddressAction;
+<<<<<<< .merge_file_GrkWBs
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+>>>>>>> .merge_file_N1nQyR
 it('returns AddressData when first service succeeds', function (): void {
     $action = new GetAddressDataFromFullAddressAction();
 

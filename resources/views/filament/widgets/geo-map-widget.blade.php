@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_6DXLOQ
+=======
+
+>>>>>>> .merge_file_1OWeKg
 /** @var \Modules\Geo\Filament\Widgets\GeoMapWidget $this */
 $widgetId = 'geo-map-widget-'.spl_object_id($this);
 ?>

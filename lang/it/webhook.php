@@ -232,7 +232,11 @@ return [
         ],
         'label' => 'Webhook',
         'sort' => 1,
+<<<<<<< .merge_file_EvyBwd
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_ovdxFR
     ],
     'actions' => [
         'create' => [

@@ -215,7 +215,11 @@ return [
         ],
         'label' => 'Filters',
         'sort' => 1,
+<<<<<<< .merge_file_cZBDto
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_bmq97e
     ],
     'actions' => [
         'create' => [

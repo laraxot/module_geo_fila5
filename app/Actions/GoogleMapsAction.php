@@ -38,12 +38,17 @@ class GoogleMapsAction
     }
 
     /**
+<<<<<<< .merge_file_kIQHc3
 <<<<<<< .merge_file_tC4dKd
      * @param  array<string, mixed>  $params
 =======
      * @param array<string, mixed> $params
      *
 >>>>>>> .merge_file_hK97WK
+=======
+     * @param array<string, mixed> $params
+     *
+>>>>>>> .merge_file_FDaucf
      * @return array<string, mixed>
      */
     private function makeRequest(string $method, string $url, array $params = [], bool $useCache = true): array
@@ -53,11 +58,15 @@ class GoogleMapsAction
         if ($useCache && config('geo.cache.enabled')) {
             /** @var array<string, mixed>|null $cached */
             $cached = Cache::get($cacheKey);
+<<<<<<< .merge_file_kIQHc3
 <<<<<<< .merge_file_tC4dKd
             if ($cached !== null) {
 =======
             if (null !== $cached) {
 >>>>>>> .merge_file_hK97WK
+=======
+            if (null !== $cached) {
+>>>>>>> .merge_file_FDaucf
                 return $cached;
             }
         }
@@ -131,6 +140,7 @@ class GoogleMapsAction
     }
 
     /**
+<<<<<<< .merge_file_kIQHc3
 <<<<<<< .merge_file_tC4dKd
      * @return array<string, mixed>
      *
@@ -140,6 +150,11 @@ class GoogleMapsAction
      *
      * @return array<string, mixed>
 >>>>>>> .merge_file_hK97WK
+=======
+     * @throws GoogleMapsApiException Se la richiesta fallisce
+     *
+     * @return array<string, mixed>
+>>>>>>> .merge_file_FDaucf
      */
     public function reverseGeocode(float $latitude, float $longitude): array
     {
@@ -155,6 +170,7 @@ class GoogleMapsAction
     }
 
     /**
+<<<<<<< .merge_file_kIQHc3
 <<<<<<< .merge_file_tC4dKd
      * @param  array<string>  $origins  Punti di origine (formato: "lat,lng|lat,lng|...")
      * @param  array<string>  $destinations  Punti di destinazione (formato: "lat,lng|lat,lng|...")
@@ -162,13 +178,18 @@ class GoogleMapsAction
      *
      * @throws GoogleMapsApiException Se la richiesta fallisce
 =======
+=======
+>>>>>>> .merge_file_FDaucf
      * @param array<string> $origins      Punti di origine (formato: "lat,lng|lat,lng|...")
      * @param array<string> $destinations Punti di destinazione (formato: "lat,lng|lat,lng|...")
      *
      * @throws GoogleMapsApiException Se la richiesta fallisce
      *
      * @return array<string, mixed>
+<<<<<<< .merge_file_kIQHc3
 >>>>>>> .merge_file_hK97WK
+=======
+>>>>>>> .merge_file_FDaucf
      */
     public function getDistanceMatrix(array $origins, array $destinations): array
     {
@@ -186,6 +207,7 @@ class GoogleMapsAction
     }
 
     /**
+<<<<<<< .merge_file_kIQHc3
 <<<<<<< .merge_file_tC4dKd
      * @return array<string, mixed>
      *
@@ -195,6 +217,11 @@ class GoogleMapsAction
      *
      * @return array<string, mixed>
 >>>>>>> .merge_file_hK97WK
+=======
+     * @throws GoogleMapsApiException Se la richiesta fallisce
+     *
+     * @return array<string, mixed>
+>>>>>>> .merge_file_FDaucf
      */
     public function getElevation(float $latitude, float $longitude): array
     {
@@ -213,6 +240,7 @@ class GoogleMapsAction
         return 'google_maps';
     }
 
+<<<<<<< .merge_file_kIQHc3
 <<<<<<< .merge_file_tC4dKd
     public function execute(): void {}
 =======
@@ -220,4 +248,9 @@ class GoogleMapsAction
     {
     }
 >>>>>>> .merge_file_hK97WK
+=======
+    public function execute(): void
+    {
+    }
+>>>>>>> .merge_file_FDaucf
 }

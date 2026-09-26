@@ -28,7 +28,11 @@ class GetCapAction
         $cacheKey = \sprintf(self::CACHE_KEY, $provinceCode, $cityCode);
 
         /** @var string|null $result */
+<<<<<<< .merge_file_vmCOBu
         $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode, $cityCode): ?string {
+=======
+        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode, $cityCode): null|string {
+>>>>>>> .merge_file_pAS5wj
             /** @var array<string, mixed>|null $province */
             $province = app(LoadGeoDataAction::class)->execute()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
                 ? $region['provinces']
