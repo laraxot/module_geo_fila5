@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Resources\AddressResource\Schemas;
 
+<<<<<<< .merge_file_LiiulV
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -27,10 +28,21 @@ class AddressForm extends XotBaseResourceForm
 {
     /**
      * @return array<string, Component>
+=======
+use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Component;
+use Modules\Xot\Filament\Resources\Schemas\XotBaseResourceForm;
+
+class AddressForm extends XotBaseResourceForm
+{
+    /**
+     * @return array<int|string, Component>
+>>>>>>> .merge_file_p6CQuA
      */
     public function getFormSchema(): array
     {
         return [
+<<<<<<< .merge_file_LiiulV
             'name' => TextInput::make('name')->maxLength(255),
             'country' => TextInput::make('country')
                 ->maxLength(255)
@@ -81,6 +93,9 @@ class AddressForm extends XotBaseResourceForm
             'route' => TextInput::make('route')->required()->maxLength(255),
             'street_number' => TextInput::make('street_number')->maxLength(20),
             'is_primary' => Toggle::make('is_primary')->default(false),
+=======
+            'main' => TextInput::make('name'),
+>>>>>>> .merge_file_p6CQuA
         ];
     }
 }

@@ -6,21 +6,22 @@ use Modules\Geo\Actions\GoogleMaps\FetchGoogleMapsElevationAction;
 use Modules\Geo\Actions\Here\GetHereRouteDurationAndLengthAction;
 use Modules\Geo\Actions\Math\CalculateGeoDistanceAction;
 use Modules\Geo\Actions\Math\GenerateHaversineSqlAction;
+use PHPUnit\Framework\Assert;
 
 test('CalculateGeoDistanceAction can be instantiated', function (): void {
-    expect(app(CalculateGeoDistanceAction::class))->toBeInstanceOf(CalculateGeoDistanceAction::class);
+    Assert::assertInstanceOf(CalculateGeoDistanceAction::class, app(CalculateGeoDistanceAction::class));
 });
 
 test('GenerateHaversineSqlAction can be instantiated', function (): void {
-    expect(app(GenerateHaversineSqlAction::class))->toBeInstanceOf(GenerateHaversineSqlAction::class);
+    Assert::assertInstanceOf(GenerateHaversineSqlAction::class, app(GenerateHaversineSqlAction::class));
 });
 
 test('FetchGoogleMapsElevationAction can be instantiated', function (): void {
-    expect(app(FetchGoogleMapsElevationAction::class))->toBeInstanceOf(FetchGoogleMapsElevationAction::class);
+    Assert::assertInstanceOf(FetchGoogleMapsElevationAction::class, app(FetchGoogleMapsElevationAction::class));
 });
 
 test('GetHereRouteDurationAndLengthAction can be instantiated', function (): void {
-    expect(app(GetHereRouteDurationAndLengthAction::class))->toBeInstanceOf(GetHereRouteDurationAndLengthAction::class);
+    Assert::assertInstanceOf(GetHereRouteDurationAndLengthAction::class, app(GetHereRouteDurationAndLengthAction::class));
 });
 
 test('CalculateGeoDistanceAction returns zero for same point', function (): void {

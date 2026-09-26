@@ -152,7 +152,11 @@ return [
         ],
         'label' => 'Success',
         'sort' => 1,
+<<<<<<< .merge_file_Ci9F0U
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_bv9tvl
     ],
     'fields' => [
         'id' => [

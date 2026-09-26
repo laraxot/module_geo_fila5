@@ -19,7 +19,11 @@ return [
         ],
         'label' => 'Places',
         'sort' => 1,
+<<<<<<< .merge_file_eEYmTg
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_othOQJ
     ],
     'fields' => [
         'id' => [

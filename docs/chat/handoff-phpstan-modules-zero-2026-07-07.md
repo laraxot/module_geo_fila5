@@ -28,6 +28,10 @@ cd laravel && php -d memory_limit=2048M ./vendor/bin/phpstan analyse Modules --n
    - Fix generics/covarianza in `HasRatingsTrait`, `SchedaRelationship`, `TquRelationship`, `HasCriteriValutazione`, `HasValutatore`, `HasMyLogs`.
    - Tipizzazione array in Filament Xot, `SushiToCsv`, `SushiToPhpArray`, `SchedaTrait`, `ProgressioniFunctionTrait`, `HasExtraTrait`.
    - Path `require_once` in `Xot/app/helpers/Helper.php`.
+<<<<<<< .merge_file_ANDWWA
+=======
+   - Path `require_once` in `Xot/app/Helpers/Helper.php`.
+>>>>>>> .merge_file_KcqtL9
    - Rimozione `FilamentMemoryMonitorMiddleware` inesistente.
    - Aggiunta `@phpstan-ignore trait.unused` in vari trait condivisi.
 5. **Installazione tool**

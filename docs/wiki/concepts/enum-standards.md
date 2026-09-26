@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_245tUL
 ---
 title: "Enum standards — Geo"
 type: concept
@@ -7,6 +8,8 @@ created: 2026-07-16
 updated: 2026-07-16
 ---
 
+=======
+>>>>>>> .merge_file_bYfQDp
 # Enum Standards - Geo Module
 
 ## Overview
@@ -99,8 +102,11 @@ return [
 ## References
 
 - Global Rule: `docs/wiki/rules/enum-filament-standard.md`
+<<<<<<< .merge_file_245tUL
 
 
 ## Coerenza casi-definizioni
 
 `AddressItemEnum::getColumnDefinitions()` deve contenere esclusivamente chiavi derivate dai casi attivi. Quando un campo viene rimosso dal dominio, va eliminata nello stesso cambiamento anche la relativa closure: commentare il case lasciando `self::CASE` nel metodo produce errori PHPStan e uno schema non eseguibile. Campi di contatto come telefono, fax, PEC, WhatsApp ed email appartengono al modulo Notify, non allo schema indirizzi Geo.
+=======
+>>>>>>> .merge_file_bYfQDp

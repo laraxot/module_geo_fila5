@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_WTemaQ
+=======
+
+>>>>>>> .merge_file_NMX03T
 ?>
 <div class="input-group"
     wire:ignore

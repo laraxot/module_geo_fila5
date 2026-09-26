@@ -13,6 +13,7 @@ public static function getFormSchema(): array
 
 
 public static function table\(Table \$table\): Table\s*\{[\s\S]*?\n\s*\}
+<<<<<<< .merge_file_d7k7Cu
 
 
 ## Contenuto originale (txt)
@@ -68,3 +69,5 @@ relatedUrl('$1','$2')
 --------------------------
 --------------------------
 --------------------------
+=======
+>>>>>>> .merge_file_VOtIdO

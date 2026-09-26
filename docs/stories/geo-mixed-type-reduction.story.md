@@ -51,32 +51,3 @@ Refactor (typing only, no behavior change)
   `app/Filament/Forms/Components/XotBaseCoordinateField.php`,
   `app/Filament/Forms/Components/Support/CoordinatePickerHelpers.php`,
   `app/Filament/Forms/Components/Traits/HasCoordinatePicker.php`.
-<<<<<<< .merge_file_QfkyFa
-=======
-<<<<<<< .merge_file_Qu8Xew
-=======
-<<<<<<< .merge_file_6REGYz
-=======
-
-## Follow-up 2026-09-21 (residue, best-effort)
-
-Stessa convenzione "dove il tipo e' evidente", senza toccare i contratti vendor Filament
-(`mixed $state` su hydrate/dehydrate/formatStateUsing) ne' `ValidationRule::validate`.
-`FormSearchAddressCategories` resta Livewire HTTP: non e' un widget, non convertito.
-
-Sostituzioni (solo shape verificata dal corpo):
-
-- `GeoData::$latlng`: `array<mixed>` → `array{lat?: float|int|string, lng?: float|int|string}` (accessor `lat`/`lng` in `GeoTrait`).
-- Integrity actions: `array<mixed, mixed>` → `array<array-key, mixed>` (chiavi PHP = `int|string`).
-- `IsPointInPolygonAction`: `array<mixed>` → `array<int, mixed>` (indice numerico `$polygon[$i]`).
-- `GetAddressFromGoogleMapsAction::getComponent()`: callback `mixed` → `GoogleMapAddressComponentData` (`DataCollection` gia' generica).
-- `Address::getRegione()` / `getProvincia()`: `mixed $item` → `Comune`; `getFullAddressAttribute` filtro `mixed $part` → `?string`.
-- `ListLocations::getTableComumns()`: `array<int, mixed>` → `array<int, TextColumn>` (typo del nome metodo lasciato).
-- JSON HTTP (Bing/Mapbox/Nominatim extract): `array<mixed>` → `array<array-key, mixed>` o `array<string, mixed>` dove le chiavi usate sono stringhe.
-
-Lasciati `mixed`: closures Filament, `Model::getKey()`, payload JSON eterogenei (`extra_data`, GeoJSON properties), `SushiToJsons::findIndex($this->getKey())`.
-
-Stesso giro: 22 blade in `resources/views` senza `declare(strict_types=1)` nei primi 25 righe — header di progetto in testa, markup invariato.
->>>>>>> .merge_file_FWN17g
->>>>>>> .merge_file_bFo9v6
->>>>>>> .merge_file_uojOnt

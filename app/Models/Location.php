@@ -7,11 +7,16 @@ namespace Modules\Geo\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Carbon;
+<<<<<<< .merge_file_kucXAe
+=======
+use Modules\Geo\Database\Factories\LocationFactory;
+>>>>>>> .merge_file_7yxsNd
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
  * Class Location.
  *
+<<<<<<< .merge_file_kucXAe
  * @property int                  $id
  * @property string|null          $name
  * @property float|null           $lat
@@ -26,10 +31,36 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property ProfileContract|null $creator
  * @property array<string, mixed> $location
  * @property ProfileContract|null $updater
+=======
+ *
+ * @property int                                     $id
+ * @property string|null                             $model_type
+ * @property string|null                             $model_id
+ * @property string|null                             $name
+ * @property float|null                              $lat
+ * @property float|null                              $lng
+ * @property string|null                             $street
+ * @property string|null                             $city
+ * @property string|null                             $state
+ * @property string|null                             $zip
+ * @property string|null                             $formatted_address
+ * @property string|null                             $description
+ * @property bool|null                               $processed
+ * @property Carbon|null                             $created_at
+ * @property Carbon|null                             $updated_at
+ * @property string|null                             $updated_by
+ * @property string|null                             $created_by
+ * @property string|null                             $deleted_at
+ * @property string|null                             $deleted_by
+ * @property ProfileContract|null                    $creator
+ * @property array{lat: float|null, lng: float|null} $location
+ * @property ProfileContract|null                    $updater
+>>>>>>> .merge_file_7yxsNd
  *
  * @method static Builder<static>|Location newModelQuery()
  * @method static Builder<static>|Location newQuery()
  * @method static Builder<static>|Location query()
+<<<<<<< .merge_file_kucXAe
  * @method static Builder<static>|Location withinDistance(float $latitude, float $longitude, float $distanceInKm)
  *
  * @property string|null $model_type
@@ -41,6 +72,8 @@ use Modules\Xot\Contracts\ProfileContract;
  * @property string|null $deleted_at
  * @property string|null $deleted_by
  *
+=======
+>>>>>>> .merge_file_7yxsNd
  * @method static Builder<static>|Location whereCity($value)
  * @method static Builder<static>|Location whereCreatedAt($value)
  * @method static Builder<static>|Location whereCreatedBy($value)
@@ -60,6 +93,14 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|Location whereUpdatedAt($value)
  * @method static Builder<static>|Location whereUpdatedBy($value)
  * @method static Builder<static>|Location whereZip($value)
+<<<<<<< .merge_file_kucXAe
+=======
+ * @method static Builder<static>|Location withinDistance(float $latitude, float $longitude, float $distanceInKm)
+ *
+ * @property ProfileContract|null $deleter
+ *
+ * @method static LocationFactory factory($count = null, $state = [])
+>>>>>>> .merge_file_7yxsNd
  *
  * @mixin \Eloquent
  */
@@ -86,6 +127,10 @@ class Location extends BaseModel
      * Get the latitude and longitude attributes.
      */
     /**
+<<<<<<< .merge_file_kucXAe
+=======
+     *
+>>>>>>> .merge_file_7yxsNd
      * @return array<string, string>
      */
     public static function getLatLngAttributes(): array
@@ -124,6 +169,10 @@ class Location extends BaseModel
      *
      * @return array<string, string>
      */
+<<<<<<< .merge_file_kucXAe
+=======
+    #[\Override]
+>>>>>>> .merge_file_7yxsNd
     protected function casts(): array
     {
         return [

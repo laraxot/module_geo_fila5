@@ -1,7 +1,10 @@
+<<<<<<< .merge_file_qobIpD
 <?php
 
 declare(strict_types=1);
 ?>
+=======
+>>>>>>> .merge_file_9HXGrx
 @php
 /** @var \Modules\Geo\Filament\Forms\Components\MapLocationInput $field */
 $statePath = $field->getStatePath();

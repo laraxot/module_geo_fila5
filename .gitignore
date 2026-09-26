@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_EGEnvn
 # Auto-generated forbidden paths — do not edit manually
 # Reason: root cleanup policy (see docs/wiki/rules/root-cleanup-policy.md)
 
@@ -22,6 +23,18 @@ tests/.claude-audit
 # Modulo Geo Laraxot - Template standardizzato
 # Ultimo aggiornamento: 2025-01-31
 # DEPENDENCIES & PACKAGES
+=======
+# ==============================================
+# LARAXOT MODULE GEO - .GITIGNORE
+# ==============================================
+# Modulo Geo Laraxot - Template standardizzato
+# Ultimo aggiornamento: 2025-01-31
+# ==============================================
+
+# ==============================================
+# DEPENDENCIES & PACKAGES
+# ==============================================
+>>>>>>> .merge_file_0Urh4p
 /vendor/
 /vendor
 /node_modules/
@@ -31,13 +44,27 @@ yarn.lock
 composer.lock
 yarn-error.log
 npm-debug.log
+<<<<<<< .merge_file_EGEnvn
 # BUILD & COMPILED FILES
+=======
+
+# ==============================================
+# BUILD & COMPILED FILES
+# ==============================================
+>>>>>>> .merge_file_0Urh4p
 /build
 /build/
 build/
 dist/
 cache/
+<<<<<<< .merge_file_EGEnvn
 # CACHE & TEMPORARY FILES
+=======
+
+# ==============================================
+# CACHE & TEMPORARY FILES
+# ==============================================
+>>>>>>> .merge_file_0Urh4p
 *.cache
 *.lock
 *.phar
@@ -50,13 +77,27 @@ cache/
 v8-compile-cache-*
 .php-cs-fixer.cache
 .phpunit.result.cache
+<<<<<<< .merge_file_EGEnvn
 # LOG FILES
+=======
+
+# ==============================================
+# LOG FILES
+# ==============================================
+>>>>>>> .merge_file_0Urh4p
 *.log
 error_log
 npm-debug.log*
 yarn-error.log*
 lerna-debug.log*
+<<<<<<< .merge_file_EGEnvn
 # LARAVEL SPECIFIC
+=======
+
+# ==============================================
+# LARAVEL SPECIFIC
+# ==============================================
+>>>>>>> .merge_file_0Urh4p
 bootstrap/compiled.php
 app/storage/
 public/storage
@@ -67,17 +108,38 @@ storage/*.key
 .env
 .env.*
 !.env.example
+<<<<<<< .merge_file_EGEnvn
 # ENVIRONMENT & CONFIGURATION
+=======
+
+# ==============================================
+# ENVIRONMENT & CONFIGURATION
+# ==============================================
+>>>>>>> .merge_file_0Urh4p
 Homestead.yaml
 Homestead.json
 /.vagrant
 /.idea
 .phpintel
+<<<<<<< .merge_file_EGEnvn
 # GIT SPECIFIC
 .git-rewrite/
 .git-rewrite
 .git-blame-ignore-revs
 # SYSTEM FILES
+=======
+
+# ==============================================
+# GIT SPECIFIC
+# ==============================================
+.git-rewrite/
+.git-rewrite
+.git-blame-ignore-revs
+
+# ==============================================
+# SYSTEM FILES
+# ==============================================
+>>>>>>> .merge_file_0Urh4p
 .DS_Store
 .DS_Store?
 ._*
@@ -85,7 +147,14 @@ Homestead.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+<<<<<<< .merge_file_EGEnvn
 # BACKUP FILES
+=======
+
+# ==============================================
+# BACKUP FILES
+# ==============================================
+>>>>>>> .merge_file_0Urh4p
 *.old
 *.old1
 *.old2
@@ -94,6 +163,7 @@ Thumbs.db
 *.bak
 *.bakcup
 *.new
+<<<<<<< .merge_file_EGEnvn
 # DEVELOPMENT TOOLS
 .windsurf/
 .cursor/
@@ -102,19 +172,53 @@ Thumbs.db
 # LANGUAGE FILES
 resources/lang/
 # OLD DIRECTORIES (LEGACY CLEANUP)
+=======
+
+# ==============================================
+# DEVELOPMENT TOOLS
+# ==============================================
+.windsurf/
+.cursor/
+.phpstorm.meta.php
+
+# ==============================================
+# DOCUMENTATION CACHE
+# ==============================================
+
+# ==============================================
+# LANGUAGE FILES
+# ==============================================
+resources/lang/
+
+# ==============================================
+# OLD DIRECTORIES (LEGACY CLEANUP)
+# ==============================================
+>>>>>>> .merge_file_0Urh4p
 resources/views/Components_old/
 database/Migrations_old/
 database/Seeders_old/
 database/Factories_old/
 database_old/
+<<<<<<< .merge_file_EGEnvn
 # MODULE SPECIFIC - GEO
 # File di configurazione locale
 config/local.php
 config/development.php
+=======
+
+# ==============================================
+# MODULE SPECIFIC - GEO
+# ==============================================
+# File di configurazione locale
+config/local.php
+config/development.php
+
+>>>>>>> .merge_file_0Urh4p
 # Dati geografici temporanei
 geo/temp/
 geo/maps/temp/
 geo/data/temp/
+<<<<<<< .merge_file_EGEnvn
 # Cache geografica
 storage/geo/
 storage/maps/
@@ -122,11 +226,32 @@ storage/maps/
 geo_test_data.json
 test_geo_data.sql
 # END OF GEO .GITIGNORE
+=======
+
+# Cache geografica
+storage/geo/
+storage/maps/
+
+# File di test geografici
+geo_test_data.json
+test_geo_data.sql
+
+# ==============================================
+# END OF GEO .GITIGNORE
+# ==============================================
+
+>>>>>>> .merge_file_0Urh4p
 # 🚫 File specifici del progetto
 *.fila2
 laravel
 public_html
 lang/lang/
+<<<<<<< .merge_file_EGEnvn
+=======
+_docs/
+_docs/
+
+>>>>>>> .merge_file_0Urh4p
 # Second brain: no-docs-archive (wiki) — non tracciare albero legacy docs/archive/
 **/docs/archive/
 # Copie residue da merge/rebase o editor (mai committare — es. `.agent~HEAD`, `*.md~head`)
@@ -137,6 +262,7 @@ lang/lang/
 *.orig
 *.rej
 *~head
+<<<<<<< .merge_file_EGEnvn
 agentdb.rvf
 .claude-flow/
 .vscode/
@@ -168,3 +294,11 @@ phpinsights.php
 rector.php
 test-results/
 >>>>>>> .merge_file_60qGJl
+=======
+
+agentdb.rvf
+.claude-flow/
+test-results
+.vscode/
+.devcontainer/
+>>>>>>> .merge_file_0Urh4p

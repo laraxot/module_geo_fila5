@@ -126,7 +126,11 @@ return [
         ],
         'label' => 'Coordinates',
         'sort' => 1,
+<<<<<<< .merge_file_QjkwNs
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_Zf32s5
     ],
     'actions' => [
         'create' => [

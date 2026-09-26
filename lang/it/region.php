@@ -84,7 +84,11 @@ return [
         ],
         'label' => 'Region',
         'sort' => 1,
+<<<<<<< .merge_file_uTvHNT
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_sRekWI
     ],
     'actions' => [
         'create' => [

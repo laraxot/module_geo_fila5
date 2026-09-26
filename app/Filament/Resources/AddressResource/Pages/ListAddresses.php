@@ -16,6 +16,10 @@ class ListAddresses extends XotBaseListRecords
     /**
      * @return array<string, Action>
      */
+<<<<<<< .merge_file_ybo7tD
+=======
+    #[\Override]
+>>>>>>> .merge_file_1RA7bM
     protected function getHeaderActions(): array
     {
         return [

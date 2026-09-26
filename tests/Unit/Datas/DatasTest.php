@@ -20,8 +20,15 @@ use Modules\Geo\Datas\Routing\RouteData;
 use Modules\Geo\Datas\Routing\TravelTimeData;
 use Modules\Geo\Datas\TimeZoneData;
 use Modules\Geo\Datas\UpdateCoordinatesResult;
+<<<<<<< .merge_file_4A6bES
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+>>>>>>> .merge_file_sPnlYT
 test('CoordinatesData can be instantiated', function () {
     Assert::assertTrue(class_exists(CoordinatesData::class));
 

@@ -4,10 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Transformers;
 
+<<<<<<< .merge_file_PYUAh4
+=======
+use Modules\Geo\Tests\TestCase;
+>>>>>>> .merge_file_DRVZTx
 use Modules\Geo\Transformers\GeoJsonCollection;
 use Modules\Geo\Transformers\GeoJsonResource;
 use PHPUnit\Framework\Assert;
 
+<<<<<<< .merge_file_PYUAh4
+=======
+uses(TestCase::class);
+>>>>>>> .merge_file_DRVZTx
 test('GeoJsonResource can be instantiated', function () {
     Assert::assertTrue(class_exists(GeoJsonResource::class));
 

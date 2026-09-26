@@ -173,7 +173,11 @@ return [
         ],
         'label' => 'Search',
         'sort' => 1,
+<<<<<<< .merge_file_9dFImI
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_5cBIba
     ],
     'actions' => [
         'create' => [

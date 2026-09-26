@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_vYVeSS
 use Illuminate\Support\Env;
 
 return [
@@ -11,6 +12,10 @@ return [
         'enabled' => true,
         'sort' => 60,
     ],
+=======
+
+return [
+>>>>>>> .merge_file_TeojpF
     /*
      * |--------------------------------------------------------------------------
      * | API Keys
@@ -20,9 +25,15 @@ return [
      * |
      */
     'api_keys' => [
+<<<<<<< .merge_file_vYVeSS
         'google_maps' => Env::get('GOOGLE_MAPS_API_KEY'),
         'bing_maps' => Env::get('BING_MAPS_API_KEY'),
         'mapbox' => Env::get('MAPBOX_API_KEY'),
+=======
+        'google_maps' => Illuminate\Support\Env::get('GOOGLE_MAPS_API_KEY'),
+        'bing_maps' => Illuminate\Support\Env::get('BING_MAPS_API_KEY'),
+        'mapbox' => Illuminate\Support\Env::get('MAPBOX_API_KEY'),
+>>>>>>> .merge_file_TeojpF
     ],
     /*
      * |--------------------------------------------------------------------------
@@ -47,7 +58,11 @@ return [
      * | posti (qui per documentare i driver disponibili, nell'Action per il dispatch).
      * |
      */
+<<<<<<< .merge_file_vYVeSS
     'driver' => Env::get('GEO_DRIVER', 'google_maps'),
+=======
+    'driver' => Illuminate\Support\Env::get('GEO_DRIVER', 'google_maps'),
+>>>>>>> .merge_file_TeojpF
     /*
      * |--------------------------------------------------------------------------
      * | Rate Limiting

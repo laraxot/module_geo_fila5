@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+<<<<<<< .merge_file_Yt9XcH
 use Illuminate\Support\Carbon;
+=======
+use Modules\Geo\Database\Factories\GeoNamesCapFactory;
+>>>>>>> .merge_file_Dqit56
 use Modules\Xot\Contracts\ProfileContract;
 
 /**
@@ -18,6 +22,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|GeoNamesCap newQuery()
  * @method static Builder<static>|GeoNamesCap query()
  *
+<<<<<<< .merge_file_Yt9XcH
  * @property int          $id
  * @property string|null  $country_code Codice paese ISO (es. IT)
  * @property string|null  $postal_code  CAP / codice postale
@@ -57,6 +62,11 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|GeoNamesCap wherePostalCode($value)
  * @method static Builder<static>|GeoNamesCap whereUpdatedAt($value)
  * @method static Builder<static>|GeoNamesCap whereUpdatedBy($value)
+=======
+ * @property ProfileContract|null $deleter
+ *
+ * @method static GeoNamesCapFactory factory($count = null, $state = [])
+>>>>>>> .merge_file_Dqit56
  *
  * @mixin \Eloquent
  */

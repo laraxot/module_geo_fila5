@@ -7,6 +7,10 @@ namespace Modules\Geo\Actions;
 class GetBoundingBoxAction
 {
     /**
+<<<<<<< .merge_file_3gYHZJ
+=======
+     *
+>>>>>>> .merge_file_UwsBPo
      * @return array<string, float>
      */
     public function execute(float $latitude, float $longitude, float $distanceKm): array

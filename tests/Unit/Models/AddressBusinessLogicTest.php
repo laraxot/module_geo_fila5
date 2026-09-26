@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
 use Modules\Geo\Models\BaseModel;
+<<<<<<< .merge_file_HXqznM
 use PHPUnit\Framework\Assert;
 
 describe('Address Business Logic', function () {
@@ -19,6 +20,19 @@ describe('Address Business Logic', function () {
 
     test('address has expected fillable fields for postal address', function () {
         $address = new Address();
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+describe('Address Business Logic', function () {
+    test('address extends base model', function () {
+        Assert::assertSame(BaseModel::class, get_parent_class(Address::class));
+    });
+
+    test('address has expected fillable fields for postal address', function () {
+        $address = new Address;
+>>>>>>> .merge_file_XwpNPB
         $expectedFillable = [
             'model_type',
             'model_id',
@@ -45,7 +59,11 @@ describe('Address Business Logic', function () {
     });
 
     test('address has correct casts for geolocation and structured data', function () {
+<<<<<<< .merge_file_HXqznM
         $address = new Address();
+=======
+        $address = new Address;
+>>>>>>> .merge_file_XwpNPB
         $casts = $address->getCasts();
 
         Assert::assertSame('float', $casts['latitude']);
@@ -56,6 +74,7 @@ describe('Address Business Logic', function () {
     });
 
     test('address has polymorphic model relationship', function () {
+<<<<<<< .merge_file_HXqznM
         $address = new Address();
     });
 
@@ -73,6 +92,25 @@ describe('Address Business Logic', function () {
 
     test('address can format full address attribute', function () {
         $address = new Address();
+=======
+        $address = new Address;
+    });
+
+    test('address can get region data from comune', function () {
+        $address = new Address;
+    });
+
+    test('address can get province data from comune', function () {
+        $address = new Address;
+    });
+
+    test('address can get locality data from comune', function () {
+        $address = new Address;
+    });
+
+    test('address can format full address attribute', function () {
+        $address = new Address;
+>>>>>>> .merge_file_XwpNPB
         $address->route = 'Via Roma';
         $address->street_number = '123';
         $address->locality = 'Milano';
@@ -82,7 +120,11 @@ describe('Address Business Logic', function () {
     });
 
     test('address can format street address attribute', function () {
+<<<<<<< .merge_file_HXqznM
         $address = new Address();
+=======
+        $address = new Address;
+>>>>>>> .merge_file_XwpNPB
         $address->route = 'Via Roma';
         $address->street_number = '123';
 
@@ -90,7 +132,11 @@ describe('Address Business Logic', function () {
     });
 
     test('address can get geolocation coordinates', function () {
+<<<<<<< .merge_file_HXqznM
         $address = new Address();
+=======
+        $address = new Address;
+>>>>>>> .merge_file_XwpNPB
         $address->latitude = 45.4642;
         $address->longitude = 9.1900;
 
@@ -99,7 +145,11 @@ describe('Address Business Logic', function () {
     });
 
     test('address can export to schema org format', function () {
+<<<<<<< .merge_file_HXqznM
         $address = new Address();
+=======
+        $address = new Address;
+>>>>>>> .merge_file_XwpNPB
         $address->name = 'Test Address';
         $address->route = 'Via Roma';
         $address->street_number = '123';
