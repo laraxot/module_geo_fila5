@@ -27,8 +27,6 @@ export const mapPickerStyles = css`
         left: 0 !important;
         width: 100vw !important;
         height: 100vh !important;
-<<<<<<< .merge_file_ocDko2
-=======
         z-index: var(--mp-fullscreen-z-index, 999999) !important;
         border-radius: 0 !important;
     }
@@ -60,7 +58,6 @@ export const mapPickerStyles = css`
         position: absolute;
         top: 1rem;
         left: 1rem;
->>>>>>> .merge_file_zeDBnA
         z-index: 3001 !important;
         display: flex !important;
         flex-direction: column;
@@ -84,8 +81,6 @@ export const mapPickerStyles = css`
         box-shadow: 0 8px 18px rgba(23, 50, 77, 0.22);
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 0;
-<<<<<<< .merge_file_ocDko2
-=======
         opacity: 1 !important;
         visibility: visible !important;
         position: relative;
@@ -104,7 +99,6 @@ export const mapPickerStyles = css`
         height: 1.25rem !important;
     }
 
->>>>>>> .merge_file_zeDBnA
     .ctrl-btn .ctrl-fallback {
         display: none;
         font-size: 1rem;
@@ -134,8 +128,6 @@ export const mapPickerStyles = css`
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(8px);
         max-width: 300px;
-<<<<<<< .merge_file_ocDko2
-=======
         width: min(300px, calc(100% - 5rem));
         align-items: center;
     }
@@ -147,7 +139,6 @@ export const mapPickerStyles = css`
         padding: 0.5rem 0.75rem;
         font-size: 0.875rem;
         width: 100%;
->>>>>>> .merge_file_zeDBnA
         min-width: 0;
         outline: none;
         color: #17324d;

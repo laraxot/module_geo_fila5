@@ -132,11 +132,7 @@ return [
         ],
         'label' => 'Area',
         'sort' => 1,
-<<<<<<< .merge_file_QHOY4u
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_bv4JZE
     ],
     'actions' => [
         'create' => [

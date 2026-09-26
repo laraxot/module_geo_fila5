@@ -1,10 +1,3 @@
-<<<<<<< .merge_file_FCKuUQ
-<?php
-
-declare(strict_types=1);
-?>
-=======
->>>>>>> .merge_file_6EA1O8
 @php
     $statePath = $getStatePath();
     $latPath = $statePath.'.latitude';

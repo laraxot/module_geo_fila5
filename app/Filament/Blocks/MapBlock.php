@@ -9,11 +9,8 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Modules\Xot\Actions\View\GetViewsSiblingsAndSelfAction;
 
-<<<<<<< .merge_file_meEoke
-=======
 // use Modules\Blog\Models\Article;
 
->>>>>>> .merge_file_Z2JCaO
 class MapBlock
 {
     public static function make(string $name = 'map', string $context = 'form'): Block

@@ -46,8 +46,4 @@ Primary files:
 Story references:
 
 - `_bmad-output/implementation-artifacts/8-74-segnalazione-crea-map-fullscreen-refinement.md`
-<<<<<<< .merge_file_IF7Oe6
 - `.planning/stories/8-74-segnalazione-crea-map-fullscreen-refinement.story.md`
-=======
-- `.planning/stories/8-74-segnalazione-crea-map-fullscreen-refinement.story.md`
->>>>>>> .merge_file_2YFDMf

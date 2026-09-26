@@ -64,11 +64,7 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
     /**
      * Invia le notifiche di risultato all'utente.
      *
-<<<<<<< .merge_file_bsn50B
-     * @param \Illuminate\Support\Collection<int, string> $errorMessages
-=======
      * @param  \Illuminate\Support\Collection<int, string>  $errorMessages
->>>>>>> .merge_file_f4Wtpb
      */
     protected function sendNotifications(
         int $successCount,
@@ -99,11 +95,7 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
     /**
      * Invia la notifica di errore.
      *
-<<<<<<< .merge_file_bsn50B
-     * @param \Illuminate\Support\Collection<int, string> $errorMessages
-=======
      * @param  \Illuminate\Support\Collection<int, string>  $errorMessages
->>>>>>> .merge_file_f4Wtpb
      */
     protected function notifyErrors(\Illuminate\Support\Collection $errorMessages): void
     {
@@ -127,11 +119,7 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
     /**
      * Elabora i record selezionati aggiornando le coordinate.
      *
-<<<<<<< .merge_file_bsn50B
-     * @param Collection<int, Place> $records
-=======
      * @param  Collection<int, Place>  $records
->>>>>>> .merge_file_f4Wtpb
      */
     private function processRecords(Collection $records): void
     {
@@ -143,11 +131,7 @@ class UpdateCoordinatesBulkAction extends XotBaseBulkAction
         foreach ($records as $record) {
             try {
                 $action->execute($record);
-<<<<<<< .merge_file_bsn50B
-                ++$successCount;
-=======
                 $successCount++;
->>>>>>> .merge_file_f4Wtpb
             } catch (\Throwable $e) {
                 $errors->push(sprintf('Place #%s: %s', SafeStringCastAction::cast($record->getKey()), $e->getMessage()));
             }

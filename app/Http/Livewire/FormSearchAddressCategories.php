@@ -1,19 +1,12 @@
 <?php
 
-<<<<<<< .merge_file_CqiIQf
-declare(strict_types=1);
-=======
->>>>>>> .merge_file_N1yUXG
 /**
  * https://forum.laravel-livewire.com/t/wire-ignore-with-google-autocomplete/734/3.
  * $this->dispatch('address:list:refresh');.
  */
 
-<<<<<<< .merge_file_CqiIQf
-=======
 declare(strict_types=1);
 
->>>>>>> .merge_file_N1yUXG
 namespace Modules\Geo\Http\Livewire;
 
 use Illuminate\Contracts\Support\Renderable;

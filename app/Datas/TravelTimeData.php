@@ -65,11 +65,7 @@ class TravelTimeData extends Data
         }
 
         $element = $response['rows'][0]['elements'][0];
-<<<<<<< .merge_file_52VoTA
-        if ('OK' !== $element['status']) {
-=======
         if (! $element || $element['status'] !== 'OK') {
->>>>>>> .merge_file_PRpmKi
             return self::error($element['status']);
         }
 

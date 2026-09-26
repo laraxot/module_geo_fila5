@@ -1,15 +1,3 @@
-<<<<<<< .merge_file_Zccgwq
----
-title: "Rimando a comprehensive_guide.md"
-description: "Documento unificato: il contenuto canonico vive in comprehensive_guide.md."
-status: merged
-tags: [merge, duplicato, case-only]
----
-
-# Documento unificato
-
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [comprehensive_guide.md](./comprehensive_guide.md).
-=======
 # Comprehensive Guide for Geo Module
 
 ## Table of Contents
@@ -128,4 +116,3 @@ MapComponent::make()
 
 ## Changelog
 See GitHub repository for full changelog.
->>>>>>> .merge_file_dI9xG5

@@ -5,18 +5,10 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Forms\Components\Support;
 
 use Illuminate\Support\Facades\Http;
-<<<<<<< .merge_file_rYDNR7
-use Modules\Geo\Filament\Forms\Components\XotBaseCoordinateField;
-use Modules\Xot\Actions\Cast\SafeStringCastAction;
-
-/**
- * Typed helpers for {@see XotBaseCoordinateField}.
-=======
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
  * Typed helpers for {@see \Modules\Geo\Filament\Forms\Components\XotBaseCoordinateField}.
->>>>>>> .merge_file_tUp2Lh
  *
  * ponytail: extracted from trait so PHPStan L10 sees array generics on a concrete class.
  */
@@ -182,13 +174,6 @@ final class CoordinatePickerHelpers
         return $data;
     }
 
-<<<<<<< .merge_file_rYDNR7
-    /**
-     * Normalizza un valore coordinata grezzo (float|int|string|null atteso;
-     * mixed perche' proviene da attributi Eloquent / state Filament / JSON).
-     */
-=======
->>>>>>> .merge_file_tUp2Lh
     public static function normalizeCoordinate(mixed $value): ?float
     {
         if (null === $value || '' === $value) {

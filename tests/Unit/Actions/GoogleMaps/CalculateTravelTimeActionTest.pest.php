@@ -17,23 +17,6 @@ use PHPUnit\Framework\Assert;
 use function Safe\json_encode;
 
 uses(LightTestCase::class);
-<<<<<<< .merge_file_ylaL4n
-<<<<<<< .merge_file_CYIZbs
-=======
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
-// Laraxot module file — see docs/wiki for domain contract.
->>>>>>> .merge_file_bqm8kZ
-=======
->>>>>>> .merge_file_Nqyp2a
 
 it('throws exception when api key is not configured', function (): void {
     $mockHandler = new MockHandler();

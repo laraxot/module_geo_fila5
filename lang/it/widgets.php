@@ -22,11 +22,7 @@ return [
         ],
         'label' => 'Widgets',
         'sort' => 1,
-<<<<<<< .merge_file_s8Fw66
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_VHTjHU
     ],
     'fields' => [
         'id' => [

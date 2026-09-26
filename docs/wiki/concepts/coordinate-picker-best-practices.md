@@ -113,8 +113,4 @@ Vedi Best Practice #1.
 - [[coordinate-picker-state-binding-rule]]
 - [[coordinate-picker-field]]
 - [[filament5-custom-field-entangle-contract]]
-<<<<<<< .merge_file_udmTFo
 - [[map-picker-family-architecture]]
-=======
-- [[map-picker-family-architecture]]
->>>>>>> .merge_file_5axeek

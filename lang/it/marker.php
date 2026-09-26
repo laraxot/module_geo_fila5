@@ -110,11 +110,7 @@ return [
         ],
         'label' => 'Marker',
         'sort' => 1,
-<<<<<<< .merge_file_gUyMrc
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_lU4oKI
     ],
     'actions' => [
         'create' => [

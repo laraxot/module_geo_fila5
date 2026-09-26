@@ -223,11 +223,7 @@ return [
         ],
         'label' => 'Statistics',
         'sort' => 1,
-<<<<<<< .merge_file_UTQXuN
-        'icon' => 'heroicon-o-rectangle-stack',
-=======
         'icon' => 'heroicon-o-collection',
->>>>>>> .merge_file_eeaGBn
     ],
     'actions' => [
         'create' => [
