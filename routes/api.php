@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_R7JKUI
+=======
+
+>>>>>>> .merge_file_TXEzrT
 /*
  * |--------------------------------------------------------------------------
  * | API Routes

@@ -37,7 +37,11 @@ return [
         ],
         'label' => 'Actions',
         'sort' => 1,
+<<<<<<< .merge_file_JoJtXE
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_UvlzPB
     ],
     'fields' => [
         'id' => [

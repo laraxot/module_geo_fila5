@@ -33,6 +33,7 @@ parameters:
         - ./phpstan-bootstrap.php
 
     scanFiles:
+<<<<<<< .merge_file_RIwURJ
 <<<<<<< .merge_file_xFYFlf
 <<<<<<< HEAD
         - ./Modules/Xot/helpers/Helper.php
@@ -42,6 +43,9 @@ parameters:
 =======
         - ./Modules/Xot/helpers/Helper.php
 >>>>>>> .merge_file_T3UTTU
+=======
+        - ./Modules/Xot/helpers/Helper.php
+>>>>>>> .merge_file_izINvc
 
     mixinExcludeClasses:
         - ./Modules/Badge/Models
@@ -56,8 +60,12 @@ parameters:
     checkModelProperties: true  # Enable model property checking
     treatPhpDocTypesAsCertain: true
     reportUnmatchedIgnoredErrors: true
+<<<<<<< .merge_file_RIwURJ
 <<<<<<< .merge_file_xFYFlf
     checkOctaneCompatibility: false
 =======
     checkOctaneCompatibility: false
 >>>>>>> .merge_file_T3UTTU
+=======
+    checkOctaneCompatibility: false
+>>>>>>> .merge_file_izINvc

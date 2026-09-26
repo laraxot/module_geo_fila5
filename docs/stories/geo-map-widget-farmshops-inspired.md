@@ -1,7 +1,10 @@
+<<<<<<< .merge_file_3sRqwn
 ---
 scope: module:Geo
 ---
 
+=======
+>>>>>>> .merge_file_ueLghX
 # Story: GeoMapWidget farmshops-inspired per modulo Geo
 
 ## Status
@@ -227,6 +230,7 @@ Nel modulo `Geo` esistono già widget mappa legacy come `LocationMapWidget` e `O
 - Leaflet reference: https://leafletjs.com/reference.html
 - Leaflet.markercluster: https://leaflet.github.io/Leaflet.markercluster/
 - Lit reactive properties: https://lit.dev/docs/v2/components/properties/
+<<<<<<< .merge_file_3sRqwn
 
 ## GitHub (tracciamento)
 
@@ -244,3 +248,5 @@ gh issue create --repo laraxot/base_quaeris_fila5 \
   --title "Story: GeoMapWidget farmshops-inspired per modulo Geo" --body-file <FILE>
 gh api repos/laraxot/base_quaeris_fila5/discussions -f title="Story: GeoMapWidget farmshops-inspired per modulo Geo" -f body="vedi la story"
 ```
+=======
+>>>>>>> .merge_file_ueLghX

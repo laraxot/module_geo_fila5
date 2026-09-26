@@ -1,7 +1,10 @@
+<<<<<<< .merge_file_8FDFFT
 <?php
 
 declare(strict_types=1);
 ?>
+=======
+>>>>>>> .merge_file_6plX9s
 @php
 /** @var \Modules\Geo\Filament\Forms\Components\GeopointPicker $field */
 $statePath = $field->getStatePath();

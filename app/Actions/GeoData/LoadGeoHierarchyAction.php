@@ -8,11 +8,15 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+<<<<<<< .merge_file_IRuSoS
 <<<<<<< .merge_file_Hkz5t4
+=======
+>>>>>>> .merge_file_0aa6Wf
 use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
+<<<<<<< .merge_file_IRuSoS
 =======
 
 use function Safe\json_decode;
@@ -20,6 +24,8 @@ use function Safe\json_decode;
 use Spatie\QueueableAction\QueueableAction;
 
 >>>>>>> .merge_file_gZz10w
+=======
+>>>>>>> .merge_file_0aa6Wf
 /**
  * Carica e espone gerarchia regioni/province/città da JSON comuni.
  *
@@ -69,7 +75,11 @@ final class LoadGeoHierarchyAction
             $region = $this->loadData()->firstWhere('code', $regionCode);
 
             if (! $region || ! is_array($region) || ! isset($region['provinces']) || ! is_array($region['provinces'])) {
+<<<<<<< .merge_file_IRuSoS
                 return new Collection();
+=======
+                return new Collection;
+>>>>>>> .merge_file_0aa6Wf
             }
 
             /** @var array<int, array<string, mixed>> $provinces */
@@ -81,8 +91,13 @@ final class LoadGeoHierarchyAction
                     $code = $province['code'] ?? '';
 
                     return [
+<<<<<<< .merge_file_IRuSoS
                         'name' => is_string($name) ? $name : SafeStringCastAction::cast($name),
                         'code' => is_string($code) ? $code : SafeStringCastAction::cast($code),
+=======
+                        'name' => SafeStringCastAction::cast($name),
+                        'code' => SafeStringCastAction::cast($code),
+>>>>>>> .merge_file_0aa6Wf
                     ];
                 })
                 ->values();
@@ -106,7 +121,11 @@ final class LoadGeoHierarchyAction
                 : [])->firstWhere('code', $provinceCode);
 
             if (! $province || ! is_array($province) || ! isset($province['cities']) || ! is_array($province['cities'])) {
+<<<<<<< .merge_file_IRuSoS
                 return new Collection();
+=======
+                return new Collection;
+>>>>>>> .merge_file_0aa6Wf
             }
 
             /** @var array<int, array<string, mixed>> $cities */

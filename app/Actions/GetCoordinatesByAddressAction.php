@@ -142,9 +142,15 @@ class GetCoordinatesByAddressAction
     }
 
     /**
+<<<<<<< .merge_file_RJ4nUo
      * @param array<array-key, mixed> $data
      *
      * @return array<int, mixed>|null
+=======
+     * @param array<mixed> $data
+     *
+     * @return array<mixed>|null
+>>>>>>> .merge_file_o08eAA
      */
     private function extractBingCoordinates(array $data): ?array
     {
@@ -176,7 +182,11 @@ class GetCoordinatesByAddressAction
             return null;
         }
 
+<<<<<<< .merge_file_RJ4nUo
         return array_values($coordinates);
+=======
+        return $coordinates;
+>>>>>>> .merge_file_o08eAA
     }
 
     /**

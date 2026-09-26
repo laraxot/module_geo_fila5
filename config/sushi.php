@@ -1,7 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_p3x9tD
 use Illuminate\Support\Env;
+=======
+>>>>>>> .merge_file_ROCJ2P
 
 return [
     /*
@@ -22,14 +25,20 @@ return [
      * |
      */
     'cache' => [
+<<<<<<< .merge_file_p3x9tD
         'enabled' => Env::get('SUSHI_CACHE_ENABLED', true),
         'duration' => Env::get('SUSHI_CACHE_DURATION', 60 * 24 * 7), // 7 giorni
+=======
+        'enabled' => Illuminate\Support\Env::get('SUSHI_CACHE_ENABLED', true),
+        'duration' => Illuminate\Support\Env::get('SUSHI_CACHE_DURATION', 60 * 24 * 7), // 7 giorni
+>>>>>>> .merge_file_ROCJ2P
     ],
     /*
      * |--------------------------------------------------------------------------
      * | Database Configuration
      * |--------------------------------------------------------------------------
      * |
+<<<<<<< .merge_file_p3x9tD
      * | Configurazione del database per i modelli Sushi.
      * |
      * | Il default eredita dalla connessione applicativa: un modulo riusabile non
@@ -40,6 +49,14 @@ return [
     'database' => [
         'connection' => Env::get('SUSHI_DB_CONNECTION', 'mysql'),
         'database' => Env::get('SUSHI_DB_DATABASE', Env::get('DB_DATABASE')),
+=======
+     * | Configurazione del database SQLite per i modelli Sushi.
+     * |
+     */
+    'database' => [
+        'connection' => Illuminate\Support\Env::get('SUSHI_DB_CONNECTION', 'mysql'),
+        'database' => Illuminate\Support\Env::get('SUSHI_DB_DATABASE', 'quaeris_data_test'),
+>>>>>>> .merge_file_ROCJ2P
     ],
     /*
      * |--------------------------------------------------------------------------

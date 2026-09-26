@@ -8,10 +8,19 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Location;
+<<<<<<< .merge_file_FOw2Zd
+=======
+use Modules\Geo\Tests\TestCase;
+>>>>>>> .merge_file_V7JcYU
 use PHPUnit\Framework\Assert;
 
 use function Safe\class_uses;
 
+<<<<<<< .merge_file_FOw2Zd
+=======
+uses(TestCase::class);
+
+>>>>>>> .merge_file_V7JcYU
 describe('Location Business Logic', function () {
     test('location extends base model', function () {
         $parent = (new \ReflectionClass(Location::class))->getParentClass();

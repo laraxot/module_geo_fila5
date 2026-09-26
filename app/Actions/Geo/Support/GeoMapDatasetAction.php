@@ -4,17 +4,23 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\Geo\Support;
 
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
 use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\file_get_contents;
 
 =======
+=======
+>>>>>>> .merge_file_QaDkfx
 use function Safe\file_get_contents;
 
 use Spatie\QueueableAction\QueueableAction;
 
+<<<<<<< .merge_file_y90iPn
 >>>>>>> .merge_file_VBrZPs
+=======
+>>>>>>> .merge_file_QaDkfx
 /**
  * @phpstan-type GeoProperties array<string, scalar|null>
  * @phpstan-type GeoFeature array{
@@ -41,12 +47,17 @@ final class GeoMapDatasetAction
 
     public function __construct(
         private readonly string $path,
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
     ) {}
 =======
     ) {
     }
 >>>>>>> .merge_file_VBrZPs
+=======
+    ) {
+    }
+>>>>>>> .merge_file_QaDkfx
 
     /**
      * @return GeoDataset
@@ -67,21 +78,29 @@ final class GeoMapDatasetAction
         $categories = [];
 
         foreach ($this->getFeatures() as $feature) {
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
             if ($feature['geometry']['type'] !== 'Point') {
 =======
             if ('Point' !== $feature['geometry']['type']) {
 >>>>>>> .merge_file_VBrZPs
+=======
+            if ($feature['geometry']['type'] !== 'Point') {
+>>>>>>> .merge_file_QaDkfx
                 continue;
             }
 
             $category = $feature['properties']['p'] ?? $feature['properties']['category'] ?? null;
 
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
             if (is_string($category) && $category !== '') {
 =======
             if (is_string($category) && '' !== $category) {
 >>>>>>> .merge_file_VBrZPs
+=======
+            if (is_string($category) && '' !== $category) {
+>>>>>>> .merge_file_QaDkfx
                 $categories[] = $category;
             }
         }
@@ -103,6 +122,7 @@ final class GeoMapDatasetAction
         foreach ($this->getFeatures() as $feature) {
             $geometryType = $feature['geometry']['type'];
 
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
             if ($geometryType === 'Point') {
                 $points++;
@@ -111,13 +131,18 @@ final class GeoMapDatasetAction
             if ($geometryType === 'Polygon' || $geometryType === 'MultiPolygon') {
                 $zones++;
 =======
+=======
+>>>>>>> .merge_file_QaDkfx
             if ('Point' === $geometryType) {
                 ++$points;
             }
 
             if ('Polygon' === $geometryType || 'MultiPolygon' === $geometryType) {
                 ++$zones;
+<<<<<<< .merge_file_y90iPn
 >>>>>>> .merge_file_VBrZPs
+=======
+>>>>>>> .merge_file_QaDkfx
             }
         }
 
@@ -134,11 +159,15 @@ final class GeoMapDatasetAction
      */
     private function getFeatures(): array
     {
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
         if ($this->features !== null) {
 =======
         if (null !== $this->features) {
 >>>>>>> .merge_file_VBrZPs
+=======
+        if (null !== $this->features) {
+>>>>>>> .merge_file_QaDkfx
             return $this->features;
         }
 
@@ -164,12 +193,17 @@ final class GeoMapDatasetAction
     }
 
     /**
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
      * @param  array<array-key, mixed>  $decoded
 =======
      * @param array<array-key, mixed> $decoded
      *
 >>>>>>> .merge_file_VBrZPs
+=======
+     * @param array<array-key, mixed> $decoded
+     *
+>>>>>>> .merge_file_QaDkfx
      * @return list<GeoFeature>
      */
     private function normalizeFeatureCollection(array $decoded): array
@@ -177,11 +211,15 @@ final class GeoMapDatasetAction
         $type = $decoded['type'] ?? null;
         $features = $decoded['features'] ?? null;
 
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
         if ($type !== 'FeatureCollection' || ! is_array($features)) {
 =======
         if ('FeatureCollection' !== $type || ! is_array($features)) {
 >>>>>>> .merge_file_VBrZPs
+=======
+        if ('FeatureCollection' !== $type || ! is_array($features)) {
+>>>>>>> .merge_file_QaDkfx
             throw new \RuntimeException('GeoMapWidget dataset is not a valid FeatureCollection.');
         }
 
@@ -194,11 +232,15 @@ final class GeoMapDatasetAction
 
             $normalizedFeature = $this->normalizeFeature($feature);
 
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
             if ($normalizedFeature !== null) {
 =======
             if (null !== $normalizedFeature) {
 >>>>>>> .merge_file_VBrZPs
+=======
+            if (null !== $normalizedFeature) {
+>>>>>>> .merge_file_QaDkfx
                 $normalized[] = $normalizedFeature;
             }
         }
@@ -207,12 +249,17 @@ final class GeoMapDatasetAction
     }
 
     /**
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
      * @param  array<array-key, mixed>  $feature
 =======
      * @param array<array-key, mixed> $feature
      *
 >>>>>>> .merge_file_VBrZPs
+=======
+     * @param array<array-key, mixed> $feature
+     *
+>>>>>>> .merge_file_QaDkfx
      * @return GeoFeature|null
      */
     private function normalizeFeature(array $feature): ?array
@@ -234,11 +281,15 @@ final class GeoMapDatasetAction
 
         $normalizedProperties = $this->normalizeProperties($properties);
 
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
         if ($normalizedProperties === null) {
 =======
         if (null === $normalizedProperties) {
 >>>>>>> .merge_file_VBrZPs
+=======
+        if (null === $normalizedProperties) {
+>>>>>>> .merge_file_QaDkfx
             return null;
         }
 
@@ -253,12 +304,17 @@ final class GeoMapDatasetAction
     }
 
     /**
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
      * @param  array<array-key, mixed>  $properties
 =======
      * @param array<array-key, mixed> $properties
      *
 >>>>>>> .merge_file_VBrZPs
+=======
+     * @param array<array-key, mixed> $properties
+     *
+>>>>>>> .merge_file_QaDkfx
      * @return GeoProperties|null
      */
     private function normalizeProperties(array $properties): ?array
@@ -266,11 +322,15 @@ final class GeoMapDatasetAction
         $normalized = [];
 
         foreach ($properties as $key => $value) {
+<<<<<<< .merge_file_y90iPn
 <<<<<<< .merge_file_icBVa2
             if (! is_string($key) || (! is_scalar($value) && $value !== null)) {
 =======
             if (! is_string($key) || (! is_scalar($value) && null !== $value)) {
 >>>>>>> .merge_file_VBrZPs
+=======
+            if (! is_string($key) || (! is_scalar($value) && null !== $value)) {
+>>>>>>> .merge_file_QaDkfx
                 return null;
             }
 

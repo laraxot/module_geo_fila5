@@ -1,7 +1,10 @@
+<<<<<<< .merge_file_SSoIlX
 ---
 scope: module:Geo
 ---
 
+=======
+>>>>>>> .merge_file_JDqBr2
 # Story: MapPicker Filament v5 con Leaflet + Lit + Livewire su colonne latitude/longitude
 
 ## Status
@@ -542,6 +545,7 @@ La story è completa solo se:
 
 - Nominatim
 - Photon
+<<<<<<< .merge_file_SSoIlX
 
 ## GitHub (tracciamento)
 
@@ -559,3 +563,5 @@ gh issue create --repo laraxot/base_quaeris_fila5 \
   --title "Story: MapPicker Filament v5 con Leaflet + Lit + Livewire su colonne latitude/longitude" --body-file <FILE>
 gh api repos/laraxot/base_quaeris_fila5/discussions -f title="Story: MapPicker Filament v5 con Leaflet + Lit + Livewire su colonne latitude/longitude" -f body="vedi la story"
 ```
+=======
+>>>>>>> .merge_file_JDqBr2

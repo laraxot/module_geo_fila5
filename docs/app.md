@@ -3,6 +3,7 @@ https://hackernoon.com/transforming-mobile-maps-with-jetpack-compose-insights-fr
 
 https://developer.android.com/develop/ui/compose/tutorial?hl=it
 
+<<<<<<< .merge_file_SAafCB
 
 
 ## Contenuto originale (txt)
@@ -14,3 +15,5 @@ canonical: ../../../Themes/docs/shared-components/app.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/app.md
+=======
+>>>>>>> .merge_file_l4eNSs

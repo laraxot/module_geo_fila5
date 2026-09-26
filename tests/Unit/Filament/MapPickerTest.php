@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_oRfEGT
+=======
+
+>>>>>>> .merge_file_AorEqF
 use Modules\Geo\Filament\Forms\Components\MapPicker;
 use PHPUnit\Framework\Assert;
 
@@ -10,6 +14,7 @@ test('map picker resolves explicit coordinate fields', function (): void {
         ->latitudeColumn('latitude')
         ->longitudeColumn('longitude')
         ->zoom(12);
+<<<<<<< .merge_file_oRfEGT
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -18,6 +23,8 @@ test('map picker resolves explicit coordinate fields', function (): void {
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+>>>>>>> .merge_file_AorEqF
 
     Assert::assertSame('latitude', $field->getLatitudeColumn());
 
@@ -37,6 +44,7 @@ test('map picker accepts absolute coordinate paths', function (): void {
         ->longitudeColumn('filters.longitude')
         ->geolocateWhenEmpty(false)
         ->reverseGeocoding(false);
+<<<<<<< .merge_file_oRfEGT
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -45,6 +53,8 @@ test('map picker accepts absolute coordinate paths', function (): void {
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+>>>>>>> .merge_file_AorEqF
 
     Assert::assertSame('filters.latitude', $field->getLatitudeColumn());
 
@@ -60,6 +70,7 @@ test('map picker keeps bare coordinate paths at root level', function (): void {
         ->statePath('map_picker')
         ->latitudeColumn('latitude')
         ->longitudeColumn('longitude');
+<<<<<<< .merge_file_oRfEGT
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
@@ -68,6 +79,8 @@ test('map picker keeps bare coordinate paths at root level', function (): void {
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
     Assert::assertInstanceOf(MapPicker::class, $field);
+=======
+>>>>>>> .merge_file_AorEqF
 
     Assert::assertSame('latitude', $field->getLatitudeColumn());
 

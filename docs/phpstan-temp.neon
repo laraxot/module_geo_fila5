@@ -24,11 +24,15 @@ parameters:
         - identifier: missingType.iterableValue
         - identifier: missingType.generics
         - identifier: larastan.noEnvCallsOutsideOfConfig
+<<<<<<< .merge_file_Veu9Jn
 <<<<<<< .merge_file_zix5mC
         - identifier: trait.unused 
 =======
         - identifier: trait.unused
 >>>>>>> .merge_file_QARBEn
+=======
+        - identifier: trait.unused 
+>>>>>>> .merge_file_lCq0Rz
         - identifier: method.unused
 
     excludePaths:
@@ -62,6 +66,7 @@ parameters:
         #- ./vendor/amenadiel/jpgraph/src/config.inc.php
 
     scanFiles:
+<<<<<<< .merge_file_Veu9Jn
 <<<<<<< .merge_file_zix5mC
 <<<<<<< HEAD
         - ./Modules/Xot/helpers/Helper.php
@@ -71,6 +76,9 @@ parameters:
 =======
         - ./Modules/Xot/helpers/Helper.php
 >>>>>>> .merge_file_QARBEn
+=======
+        - ./Modules/Xot/helpers/Helper.php
+>>>>>>> .merge_file_lCq0Rz
 
     mixinExcludeClasses:
         - ./Modules/Badge/Models

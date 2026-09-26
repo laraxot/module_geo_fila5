@@ -1,10 +1,14 @@
 #!/bin/bash
 
+<<<<<<< .merge_file_NL8e0t
 <<<<<<< HEAD
 FILE_PATH="Modules/Xot/helpers/Helper.php"
 =======
 FILE_PATH="Modules/Xot/Helpers/Helper.php"
 >>>>>>> 12dc0c78b (.)
+=======
+FILE_PATH="Modules/Xot/helpers/Helper.php"
+>>>>>>> .merge_file_wBEACg
 
 echo "Risoluzione completa conflitti Git in $FILE_PATH..."
 

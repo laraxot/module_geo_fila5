@@ -1,4 +1,7 @@
+<<<<<<< .merge_file_DIsV1U
 <<<<<<< .merge_file_PZcaIb
+=======
+>>>>>>> .merge_file_mpdda5
 # Changelog
 
 All notable changes to `:package_name` will be documented in this file.
@@ -6,6 +9,7 @@ All notable changes to `:package_name` will be documented in this file.
 ## 1.0.0 - 202X-XX-XX
 
 - initial release
+<<<<<<< .merge_file_DIsV1U
 =======
 ---
 title: "Rimando a changelog.md"
@@ -18,3 +22,5 @@ tags: [merge, duplicato, case-only]
 
 Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [changelog.md](./changelog.md).
 >>>>>>> .merge_file_1Cb1m7
+=======
+>>>>>>> .merge_file_mpdda5

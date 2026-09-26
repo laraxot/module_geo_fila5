@@ -15,6 +15,10 @@ use function Safe\class_uses;
 
 use Sushi\Sushi;
 
+<<<<<<< .merge_file_acdKAY
+=======
+uses(\Modules\Geo\Tests\TestCase::class);
+>>>>>>> .merge_file_lSi2LZ
 describe('Region Business Logic', function () {
     test('region extends base model', function () {
         Assert::assertInstanceOf(BaseModel::class, new Region());

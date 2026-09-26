@@ -168,6 +168,10 @@
 **Perché**: Convenience + Type Safety + DRY
 
 **Dove**: `Xot/helpers/Helper.php` (10 funzioni)
+<<<<<<< .merge_file_J3y51x
+=======
+**Dove**: `Xot/Helpers/Helper.php` (10 funzioni)
+>>>>>>> .merge_file_KUNy3A
 
 **Docs**:
 - `helper-functions-complete-list.md` - Lista completa

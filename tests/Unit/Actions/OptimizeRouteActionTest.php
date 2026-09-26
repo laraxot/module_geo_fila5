@@ -8,8 +8,16 @@ use Illuminate\Support\Collection;
 use Modules\Geo\Actions\OptimizeRouteAction;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Tests\Fixtures\RouteDistanceStub;
+<<<<<<< .merge_file_onVz2H
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> .merge_file_WHdC3O
 it('returns same locations when count is 2 or less', function (): void {
     $location1 = new LocationData(latitude: 45.4642, longitude: 9.1900);
     $location2 = new LocationData(latitude: 46.4642, longitude: 10.1900);

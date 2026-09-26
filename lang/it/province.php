@@ -93,7 +93,11 @@ return [
         ],
         'label' => 'Province',
         'sort' => 1,
+<<<<<<< .merge_file_hLufEi
         'icon' => 'heroicon-o-rectangle-stack',
+=======
+        'icon' => 'heroicon-o-collection',
+>>>>>>> .merge_file_1OTPhd
     ],
     'actions' => [
         'create' => [

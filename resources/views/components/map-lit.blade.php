@@ -1,7 +1,10 @@
+<<<<<<< .merge_file_GBALWP
 <?php
 
 declare(strict_types=1);
 ?>
+=======
+>>>>>>> .merge_file_Kz36Oj
 @php
 $lat = $lat ?? null;
 $lng = $lng ?? null;

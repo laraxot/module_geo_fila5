@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_plQ29d
 <<<<<<< .merge_file_D4j6Kf
 =======
 ---
@@ -5,6 +6,8 @@ scope: module:Geo
 ---
 
 >>>>>>> .merge_file_3sGf4c
+=======
+>>>>>>> .merge_file_2nLsip
 # Story 1-1: MapPicker Field per Filament
 
 **Status**: `done`
@@ -68,6 +71,7 @@ Campo Filament v5 personalizzato `MapPicker` che gestisce una mappa interattiva 
 - Loop prevention tramite `lastSignature = lat.toFixed(6):lng.toFixed(6)`
 - `setUp()` chiama `$this->dehydrated(false)` per evitare idratazione automatica
 - `resolveSiblingStatePath()` gestisce path assoluti vs relativi per latitude/longitude
+<<<<<<< .merge_file_plQ29d
 <<<<<<< .merge_file_D4j6Kf
 =======
 
@@ -88,3 +92,5 @@ gh issue create --repo laraxot/base_quaeris_fila5 \
 gh api repos/laraxot/base_quaeris_fila5/discussions -f title="Story 1-1: MapPicker Field per Filament" -f body="vedi la story"
 ```
 >>>>>>> .merge_file_3sGf4c
+=======
+>>>>>>> .merge_file_2nLsip

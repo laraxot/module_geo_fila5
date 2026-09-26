@@ -5,8 +5,16 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use Modules\Geo\Actions\GoogleMaps\GoogleMapsHttpAction;
+<<<<<<< .merge_file_Rapp4m
 use PHPUnit\Framework\Assert;
 
+=======
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+>>>>>>> .merge_file_sZEdjv
 it('can be resolved from container', function (): void {
     $action = app(GoogleMapsHttpAction::class);
 

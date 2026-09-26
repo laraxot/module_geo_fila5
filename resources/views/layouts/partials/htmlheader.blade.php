@@ -1,6 +1,10 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< .merge_file_haBNyN
+=======
+
+>>>>>>> .merge_file_QKGJM6
 ?>
 <head>
     {!! Theme::metatags() !!}

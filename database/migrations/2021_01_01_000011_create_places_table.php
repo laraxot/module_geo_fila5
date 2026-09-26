@@ -1,9 +1,18 @@
 <?php
 
+<<<<<<< .merge_file_JzBEHg
 declare(strict_types=1);
 /**
  * Syntax error or access violation: 1118 Row size too large. The maximum row size for the used table type, not counting BLOBs, is 8126. This includes storage overhead, check the manual. You have to change some columns to TEXT or BLOBs (SQL: alter table `places` add `address` text null).
  */
+=======
+/**
+ * Syntax error or access violation: 1118 Row size too large. The maximum row size for the used table type, not counting BLOBs, is 8126. This includes storage overhead, check the manual. You have to change some columns to TEXT or BLOBs (SQL: alter table `places` add `address` text null).
+ */
+
+declare(strict_types=1);
+
+>>>>>>> .merge_file_xRb9sL
 use Illuminate\Database\Schema\Blueprint;
 // ----- models -----
 use Modules\Geo\Models\Place as MyModel;
