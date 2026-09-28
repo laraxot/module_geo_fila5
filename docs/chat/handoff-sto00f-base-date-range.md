@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+updated: 2026-09-26
+qmd: "handoff sto00f base date range"
+issues: []
+discussions: []
 title: "Handoff — Sto00f BaseDateRangeModel"
 type: chat-handoff
 module: Sigma

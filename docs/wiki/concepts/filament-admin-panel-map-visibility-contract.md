@@ -1,3 +1,14 @@
+---
+title: "filament admin panel map visibility contract"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "filament admin panel map visibility contract"
+issues: []
+discussions: []
+---
+
 # Filament admin panel map visibility contract
 
 ## Scopo

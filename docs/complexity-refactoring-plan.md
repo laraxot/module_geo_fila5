@@ -1,3 +1,14 @@
+---
+title: "complexity refactoring plan"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "complexity refactoring plan"
+issues: []
+discussions: []
+---
+
 # Geo Module - Complexity Refactoring Plan
 
 ## Context and Philosophy
@@ -108,6 +119,14 @@ private function extractStringField(array $data, string $key): ?string
 
 ---
 
+title: "complexity refactoring plan"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "complexity refactoring plan"
+issues: []
+discussions: []
 **Principle Applied**: DRY (Don't Repeat Yourself)
 **Pattern Used**: Extract Method refactoring
 **Reference**: Xot module (0 PHPMD violations)

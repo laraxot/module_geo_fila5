@@ -1,3 +1,14 @@
+---
+title: "tool chain setup"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "tool chain setup"
+issues: []
+discussions: []
+---
+
 # Tool Chain Setup: Type Checking, Metrics, Quality & Visual Testing
 
 ## Rationale: Multi-Layer Quality Assurance

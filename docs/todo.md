@@ -1,3 +1,14 @@
+---
+title: "todo"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "todo"
+issues: []
+discussions: []
+---
+
 # Geo Module - PHPStan Error Resolution Roadmap
 
 This document outlines the steps to resolve the PHPStan errors found in the Geo module.

@@ -1,4 +1,5 @@
 ---
+discussions: []
 title: "studio farmshops.eu — cluster con icone tipologia (non stato)"
 type: concept
 module: Geo

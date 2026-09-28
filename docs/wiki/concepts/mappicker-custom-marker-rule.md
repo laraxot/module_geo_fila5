@@ -1,4 +1,7 @@
 ---
+qmd: "mappicker custom marker rule"
+issues: []
+discussions: []
 title: "MapPicker Custom Marker Rule"
 type: decision
 confidence: high

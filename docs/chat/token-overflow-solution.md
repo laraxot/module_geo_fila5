@@ -1,4 +1,7 @@
 ---
+qmd: "token overflow solution"
+issues: []
+discussions: []
 title: Token Overflow Solution — Endpoint Compression & Context Management
 type: guide
 tags: [token-budget, compression, infrastructure, context-management, anthropic-api]

@@ -1,3 +1,14 @@
+---
+title: "merge conflict marker cleanup"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "merge conflict marker cleanup"
+issues: []
+discussions: []
+---
+
 # Merge Conflict Marker Cleanup
 
 > Updated: 2026-04-21

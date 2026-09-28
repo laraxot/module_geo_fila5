@@ -1,3 +1,14 @@
+---
+title: "documentation index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "documentation index"
+issues: []
+discussions: []
+---
+
 # Indice della Documentazione del Modulo Geo
 
 Questo documento fornisce un indice completo e organizzato di tutta la documentazione disponibile nel modulo Geo, facilitando la navigazione e la ricerca di informazioni specifiche.
@@ -147,5 +158,13 @@ Alcuni documenti potrebbero avere nomi simili ma contenuti diversi, in particola
 
 ---
 
+title: "documentation index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "documentation index"
+issues: []
+discussions: []
 *Documento creato il: 28/05/2025*
 *Autore: Team <main module>*

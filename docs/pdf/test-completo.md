@@ -1,3 +1,14 @@
+---
+title: "test completo"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "test completo"
+issues: []
+discussions: []
+---
+
 # Event Sourcing in Laravel
 *Autore: Brent Roose*
 *Generato il: 2025-05-19 15:27:29*
@@ -21,6 +32,14 @@
 
 ---
 
+title: "test completo"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "test completo"
+issues: []
+discussions: []
 ## Contenuto Completo
 
 EVENT SOURCING

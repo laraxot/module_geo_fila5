@@ -1,3 +1,14 @@
+---
+title: "xotbasefield no view property rule"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "xotbasefield no view property rule"
+issues: []
+discussions: []
+---
+
 # XotBaseField No $view Property Rule (Geo)
 
 ## Regola

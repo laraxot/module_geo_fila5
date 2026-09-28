@@ -1,3 +1,14 @@
+---
+title: "geo models domain analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo models domain analysis"
+issues: []
+discussions: []
+---
+
 # Analisi dominio modelli Geo (`app/Models`)
 
 **Scopo**: mappare responsabilità, sovrapposizioni e raccomandazioni operative senza duplicare guide già presenti su singoli modelli (es. vari file `comune-*.md` nella stessa cartella: vanno consolidati a livello di processo, non in questo documento).
@@ -6,6 +17,14 @@
 
 ---
 
+title: "geo models domain analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo models domain analysis"
+issues: []
+discussions: []
 ## 1. Panoramica rapida
 
 | Modello | Natura | Ruolo dominante |

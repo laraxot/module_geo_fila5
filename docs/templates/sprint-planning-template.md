@@ -1,3 +1,14 @@
+---
+title: "sprint planning template"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "sprint planning template"
+issues: []
+discussions: []
+---
+
 # Sprint Planning Meeting Template
 
 > **Template Standardizzato** - Basato su [Notion Sprint Planning Templates](https://www.notion.com/templates/category/sprint-planning)
@@ -12,6 +23,14 @@
 
 ---
 
+title: "sprint planning template"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "sprint planning template"
+issues: []
+discussions: []
 ## Obiettivo Sprint
 
 ### Sprint Goal

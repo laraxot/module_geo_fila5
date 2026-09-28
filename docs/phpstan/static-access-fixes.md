@@ -1,3 +1,14 @@
+---
+title: "static access fixes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "static access fixes"
+issues: []
+discussions: []
+---
+
 # XotBaseRelationManager Static Access Fixes
 
 ## Static Access to Instance Property Issue

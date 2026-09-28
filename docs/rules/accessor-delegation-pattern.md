@@ -1,3 +1,14 @@
+---
+title: "accessor delegation pattern"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "accessor delegation pattern"
+issues: []
+discussions: []
+---
+
 # 🔴 REGOLA SACRA: Accessor Delegation Pattern
 
 > **Il metodo puro vive VICINO all'accessor, non in Helper separati**
@@ -6,6 +17,14 @@
 
 ---
 
+title: "accessor delegation pattern"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "accessor delegation pattern"
+issues: []
+discussions: []
 ## La Regola
 
 Quando scrivi un accessor Laravel `get<Nome>Attribute()`:

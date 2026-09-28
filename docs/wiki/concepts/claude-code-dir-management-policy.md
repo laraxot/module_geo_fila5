@@ -1,4 +1,9 @@
 ---
+title: "claude code dir management policy"
+tags: [documentation]
+qmd: "claude code dir management policy"
+issues: []
+discussions: []
 type: concept
 module: Geo
 component: claude-code

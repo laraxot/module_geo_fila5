@@ -1,4 +1,8 @@
 ---
+created: 2026-09-26
+qmd: "handoff asz relationship revert"
+issues: []
+discussions: []
 title: handoff revert asz relationship bypass
 type: chat
 tags: [handoff, eloquent, asz, ptv, architecture]

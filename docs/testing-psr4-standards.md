@@ -1,3 +1,14 @@
+---
+title: "testing psr4 standards"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing psr4 standards"
+issues: []
+discussions: []
+---
+
 # Standard PSR-4 per i Test in Laraxot <nome progetto>
 
 ## Panoramica
@@ -263,4 +274,12 @@ Prima di committare file di test:
 
 ---
 
+title: "testing psr4 standards"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing psr4 standards"
+issues: []
+discussions: []
 *Standard: PSR-4, PHPStan livello 9+, Laraxot conventions*

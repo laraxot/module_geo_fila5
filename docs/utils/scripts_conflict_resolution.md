@@ -1,3 +1,14 @@
+---
+title: "scripts conflict resolution"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "scripts conflict resolution"
+issues: []
+discussions: []
+---
+
 # Script di Risoluzione dei Conflitti
 
 ## Panoramica

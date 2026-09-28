@@ -1,3 +1,14 @@
+---
+title: "llm wiki usage"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "llm wiki usage"
+issues: []
+discussions: []
+---
+
 # LLM Wiki - Usage Guide (Module: Geo)
 
 This module provides AddressInput and map-related fields used across ticket wizards.

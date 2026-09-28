@@ -1,3 +1,14 @@
+---
+title: "farmshops integration"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "farmshops integration"
+issues: []
+discussions: []
+---
+
 # 🗺️ FARMSHOPS.EU - INTEGRATION GUIDE
 
 **Source**: https://github.com/CodeforKarlsruhe/farmshops.eu
@@ -5,6 +16,14 @@
 
 ---
 
+title: "farmshops integration"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "farmshops integration"
+issues: []
+discussions: []
 ## 📊 ANALISI PROGETTO FARMSHOPS.EU
 
 ### Scopo

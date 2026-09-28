@@ -1,3 +1,14 @@
+---
+title: "git conflicts resolution guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "git conflicts resolution guide"
+issues: []
+discussions: []
+---
+
 # Guida alla Risoluzione Conflitti Git - <nome progetto>
 
 ## Panoramica
@@ -355,5 +366,13 @@ git log --oneline --grep="conflict" | head -20
 
 ---
 
+title: "git conflicts resolution guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "git conflicts resolution guide"
+issues: []
+discussions: []
 **Versione**: 1.0
 **Compatibilità**: Git 2.x+, Laravel 12.x, PHP 8.3+

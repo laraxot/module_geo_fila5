@@ -1,3 +1,14 @@
+---
+title: "map lit cluster type icons"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map lit cluster type icons"
+issues: []
+discussions: []
+---
+
 # map-lit — icone tipo nel cluster (14px, no SVG oversize)
 
 ## Scopo

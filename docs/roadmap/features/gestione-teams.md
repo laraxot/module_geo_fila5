@@ -1,3 +1,14 @@
+---
+title: "gestione teams"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "gestione teams"
+issues: []
+discussions: []
+---
+
 # Gestione Teams
 
 ⬅️ [Torna alla Roadmap](../../roadmap.md)
@@ -255,4 +266,12 @@ class TeamRoleManagerTest extends TestCase
 - Implementare best practices
 
 ---
+title: "gestione teams"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "gestione teams"
+issues: []
+discussions: []
 ⬅️ [Torna alla Roadmap](../../roadmap.md)

@@ -1,3 +1,14 @@
+---
+title: "geo map popup bem"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo map popup bem"
+issues: []
+discussions: []
+---
+
 # geo-map-popup — bem e template
 
 ## scopo

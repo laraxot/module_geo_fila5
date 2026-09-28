@@ -1,3 +1,14 @@
+---
+title: "module reusability guidelines"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "module reusability guidelines"
+issues: []
+discussions: []
+---
+
 # Linee Guida per la Riusabilità dei Moduli Laraxot
 
 ## Principio Fondamentale

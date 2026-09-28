@@ -1,3 +1,14 @@
+---
+title: "map picker location json contract"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map picker location json contract"
+issues: []
+discussions: []
+---
+
 # Map Picker Location JSON Contract
 
 ## Purpose

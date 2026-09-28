@@ -1,3 +1,14 @@
+---
+title: "phpstan fixes renamed"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan fixes renamed"
+issues: []
+discussions: []
+---
+
 # 🔧 PHPStan Fixes - Modulo Geo - Gennaio 2025
 
 **Status**: ✅ COMPLETATO CON SUCCESSO  
@@ -141,6 +152,14 @@ if (!$region || !is_array($region) || !isset($region['provinces'])) {
 
 ---
 
+title: "phpstan fixes renamed"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan fixes renamed"
+issues: []
+discussions: []
 **🔄 Ultimo aggiornamento**: 27 Gennaio 2025  
 **📦 Versione**: 2.2.0  
 **🐛 PHPStan Level**: 9 ✅  

@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: "Geo — mai Filament\*, sempre XotBase*"
 type: concept
 module: Geo

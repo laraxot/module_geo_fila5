@@ -1,3 +1,14 @@
+---
+title: "readme en"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "readme en"
+issues: []
+discussions: []
+---
+
 # 🗺️ Geo — English presentation
 
 [![Domain-Geo](https://img.shields.io/badge/Domain-Maps%20%26%20Geo-2E7D32.svg)](#)
@@ -14,6 +25,14 @@
 
 ---
 
+title: "readme en"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "readme en"
+issues: []
+discussions: []
 ## Why it exists
 
 Single owner of geo concerns: Italian ANPR data, geocoders, markers, ticket popups, Leaflet clusters.

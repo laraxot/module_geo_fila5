@@ -1,3 +1,14 @@
+---
+title: "leaflet wizard invalidate size"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "leaflet wizard invalidate size"
+issues: []
+discussions: []
+---
+
 # Leaflet Map in Wizard - InvalidateSize Rule
 
 ## Problem

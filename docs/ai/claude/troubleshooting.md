@@ -1,7 +1,26 @@
+---
+title: "troubleshooting"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "troubleshooting"
+issues: []
+discussions: []
+---
+
 # Troubleshooting Claude Code per PTVX
 
 ---
 
+title: "troubleshooting"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "troubleshooting"
+issues: []
+discussions: []
 ## Problemi Comuni
 
 ### 1. Server MCP Non Si Avvia

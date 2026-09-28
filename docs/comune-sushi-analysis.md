@@ -1,3 +1,14 @@
+---
+title: "comune sushi analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "comune sushi analysis"
+issues: []
+discussions: []
+---
+
 # Analisi: Comune.php come modello Laravel Sushi
 
 ## 1. Contesto attuale
@@ -11,6 +22,14 @@
 
 ---
 
+title: "comune sushi analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "comune sushi analysis"
+issues: []
+discussions: []
 ## 3. Vantaggi di Sushi rispetto a GeoJsonModel
 - ✅ **API Eloquent completa**: join, where, order, relazioni, morph, query avanzate.
 - ✅ **Compatibilità Filament/Eloquent**: si comporta come un vero Model, integrabile ovunque serva Eloquent.

@@ -1,4 +1,7 @@
 ---
+qmd: "wiki sacred structure rule"
+issues: []
+discussions: []
 title: "Wiki Sacred Structure Rule"
 type: concept
 sources: ["../../wiki/concepts/wiki-sacred-structure-rule.md"]

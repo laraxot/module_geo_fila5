@@ -1,4 +1,7 @@
 ---
+qmd: "coordinate picker map ux fixes"
+issues: []
+discussions: []
 title: "Coordinate Picker Map UX Fixes"
 description: "Fixes for map centering, search UX, wizard stepper, form fields, and geolocation on segnalazione-crea page"
 type: concept

@@ -1,4 +1,11 @@
 ---
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo map lit implementation"
+issues: []
+discussions: []
 title: GeoMapLit Implementation Guide
 description: Complete implementation guide for GeoMapLit component with farmshops.eu parity
 category: geo-patterns

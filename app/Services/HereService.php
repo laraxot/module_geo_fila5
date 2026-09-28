@@ -41,7 +41,7 @@ class HereService
         }
 
         if (! isset($json['routes'])) {
-            dddx($json);
+            \Log::warning('HereService: routes not found in response', ['json' => $json]);
 
             return null;
         }

@@ -1,3 +1,14 @@
+---
+title: "critical filament rules"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "critical filament rules"
+issues: []
+discussions: []
+---
+
 # CRITICAL FILAMENT EXTENSION RULES
 
 ## 🚫 ABSOLUTELY FORBIDDEN: Direct Filament Extensions
@@ -231,6 +242,14 @@ If you find violations in existing code:
 
 ---
 
+title: "critical filament rules"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "critical filament rules"
+issues: []
+discussions: []
 **Version**: 1.0 - Critical Rules
 **Enforcement**: Mandatory
 **Violation Level**: Critical Architectural Error

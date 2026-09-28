@@ -1,3 +1,14 @@
+---
+title: "has ratings trait"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "has ratings trait"
+issues: []
+discussions: []
+---
+
 # HasRatingsTrait – Best Practice Cross-Modulo
 
 ## Regola
@@ -50,4 +61,12 @@ trait FunctionTrait
 
 ---
 
+title: "has ratings trait"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "has ratings trait"
+issues: []
+discussions: []
 *Ultimo aggiornamento: Gennaio 2026*

@@ -1,4 +1,7 @@
 ---
+qmd: "coordinate picker best practices"
+issues: []
+discussions: []
 title: "CoordinatePicker Best Practices"
 type: concept
 sources: ["../../Modules/Geo/app/Filament/Forms/Components/CoordinatePicker.php"]

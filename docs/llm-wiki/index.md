@@ -1,3 +1,14 @@
+---
+title: "index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "index"
+issues: []
+discussions: []
+---
+
 # Geo Module Wiki Index
 
 > **Module**: Geo
@@ -6,6 +17,14 @@
 
 ---
 
+title: "index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "index"
+issues: []
+discussions: []
 ## Concepts
 
 - [Litelement in JS only rule](concepts/litelement-in-js-only-rule.md)

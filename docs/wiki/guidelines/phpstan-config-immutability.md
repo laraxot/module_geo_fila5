@@ -1,4 +1,5 @@
 ---
+discussions: []
 title: "PHPStan Config Immutability"
 type: guideline
 tags: [phpstan, configuration, agents, quality]

@@ -1,3 +1,14 @@
+---
+title: "sushi to jsons analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "sushi to jsons analysis"
+issues: []
+discussions: []
+---
+
 # Analisi di SushiToJsons per il Modello Comune
 
 ## Panoramica
@@ -375,5 +386,13 @@ Questo approccio offre il miglior equilibrio tra performance, flessibilità e ma
 
 ---
 
+title: "sushi to jsons analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "sushi to jsons analysis"
+issues: []
+discussions: []
 *Documento creato il: 28/05/2025*  
 *Autore: Team <main module>*

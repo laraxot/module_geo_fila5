@@ -1,3 +1,14 @@
+---
+title: "geo map lit reconstruction guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo map lit reconstruction guide"
+issues: []
+discussions: []
+---
+
 # geo-map-lit — guida ricostruzione da documentazione
 
 ## scopo
@@ -10,6 +21,14 @@ Se il codice JS/CSS della mappa su `/it` andasse perso, questa pagina è il **co
 
 ---
 
+title: "geo map lit reconstruction guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo map lit reconstruction guide"
+issues: []
+discussions: []
 ## contratto runtime (non negoziabile)
 
 | Pezzo | Valore |

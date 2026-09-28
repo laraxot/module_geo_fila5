@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: PHPStan Standards - Geo Module
 type: technical
 tags: [phpstan, geo, models, getOptions]

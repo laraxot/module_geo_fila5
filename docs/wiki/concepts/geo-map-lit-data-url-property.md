@@ -1,4 +1,9 @@
 ---
+title: "geo map lit data url property"
+tags: [documentation]
+qmd: "geo map lit data url property"
+issues: []
+discussions: []
 type: concept
 module: Geo
 component: map-lit

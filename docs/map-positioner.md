@@ -1,3 +1,14 @@
+---
+title: "map positioner"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map positioner"
+issues: []
+discussions: []
+---
+
 # MapPositioner (Filament v5)
 
 ## Overview
@@ -33,4 +44,12 @@ npx playwright screenshot --viewport-size=1024,768 http://localhost:8000/tests/m
 ```
 
 ---
+title: "map positioner"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map positioner"
+issues: []
+discussions: []
 *Documentazione generata per LLM Wiki. Aprile 2026.*

@@ -1,4 +1,11 @@
 ---
+title: "phpstan Geo fix"
+type: note
+tags: [documentation]
+updated: 2026-09-26
+qmd: "phpstan Geo fix"
+issues: []
+discussions: []
 id: phpstan-Geo-fix
 slug: phpstan-Geo
 scope: [module:Geo, project:base_workorder_fila5]

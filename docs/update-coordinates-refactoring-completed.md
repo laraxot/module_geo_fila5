@@ -1,3 +1,14 @@
+---
+title: "update coordinates refactoring completed"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "update coordinates refactoring completed"
+issues: []
+discussions: []
+---
+
 # Refactoring Update Coordinates Bulk Action
 
 **Date**: 18 Dicembre 2025
@@ -115,4 +126,12 @@ This refactoring aligns with:
 
 ---
 
+title: "update coordinates refactoring completed"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "update coordinates refactoring completed"
+issues: []
+discussions: []
 *Documento conforme agli standard Laraxot - DRY + KISS + SOLID*

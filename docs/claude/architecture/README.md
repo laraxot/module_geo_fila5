@@ -1,3 +1,14 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # Critical Architecture Rules
 
 These rules are **MANDATORY** and violations will break the system.
@@ -211,6 +222,14 @@ Il modulo PTV funziona come base/core da cui altri moduli specifici ereditano fu
 
 ---
 
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
 ## 📚 Documentation Structure
 
 ### 🛡️ Critical Rules

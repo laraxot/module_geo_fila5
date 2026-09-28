@@ -1,3 +1,14 @@
+---
+title: "geographic models consolidation"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geographic models consolidation"
+issues: []
+discussions: []
+---
+
 # Analisi del Consolidamento dei Modelli Geografici
 
 ## Panoramica
@@ -265,4 +276,12 @@ In sintesi, il modello `Comune` implementato rappresenta un caso di studio posit
 
 ---
 
+title: "geographic models consolidation"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geographic models consolidation"
+issues: []
+discussions: []
 *Documento creato il: 27/05/2025*

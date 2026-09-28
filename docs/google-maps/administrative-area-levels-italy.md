@@ -1,3 +1,14 @@
+---
+title: "administrative area levels italy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "administrative area levels italy"
+issues: []
+discussions: []
+---
+
 # Google Maps Administrative Area Levels - Italy Mapping
 
 ## Official Documentation Reference

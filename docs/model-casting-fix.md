@@ -1,3 +1,14 @@
+---
+title: "model casting fix"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "model casting fix"
+issues: []
+discussions: []
+---
+
 # Correzione Model Casting - Modulo Geo
 
 ## 🚨 Problema Risolto

@@ -1,3 +1,14 @@
+---
+title: "module list"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "module list"
+issues: []
+discussions: []
+---
+
 # Module List
 
 ## 🏗️ Complete Module Overview
@@ -190,5 +201,13 @@ Modules/{ModuleName}/
 
 ---
 
+title: "module list"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "module list"
+issues: []
+discussions: []
 **Version**: 2.0 (Refactor DRY + KISS)  
 **File**: module-list.md - Complete module overview

@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+qmd: "js file english naming standing rule"
+issues: []
+discussions: []
 title: js file english naming standing rule
 type: memory
 module: Geo

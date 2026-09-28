@@ -1,3 +1,14 @@
+---
+title: "wizard location data flow"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "wizard location data flow"
+issues: []
+discussions: []
+---
+
 # Wizard Location Data Flow - Fix Documentation
 
 ## 🔴 Problema Identificato
@@ -14,6 +25,14 @@ In questo repository, la famiglia `CoordinatePicker` (Geo) **è dehydrated** e i
 
 ---
 
+title: "wizard location data flow"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "wizard location data flow"
+issues: []
+discussions: []
 ## 📊 Data Flow Attuale (Rottura)
 
 ```

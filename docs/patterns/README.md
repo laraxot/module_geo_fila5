@@ -1,3 +1,14 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # 🏗️ Design Patterns PTVX
 
 > **Index**: Guida ai pattern architetturali utilizzati in PTVX.
@@ -20,4 +31,12 @@
 | **Checklist** | Standard di qualità | [checklist.md](./checklist.md) |
 
 ---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
 **Torna a**: [Documentazione Principale](../claude/README.md)

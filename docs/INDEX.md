@@ -1,3 +1,14 @@
+---
+title: "INDEX"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "INDEX"
+issues: []
+discussions: []
+---
+
 # Geo Module Documentation Index
 
 ## Documentation Structure
@@ -130,6 +141,14 @@
 
 ---
 
+title: "INDEX"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "INDEX"
+issues: []
+discussions: []
 ## 📋 DEDUPLICATION NOTICE
 
 This module has many duplicate files in docs/. Key actions taken:

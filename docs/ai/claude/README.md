@@ -1,3 +1,14 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # Claude Code - Guida Completa per PTVX
 
 **Ultimo aggiornamento**: 2026-01-12  
@@ -6,6 +17,14 @@
 
 ---
 
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
 ## Panoramica
 
 Claude Code è l'IDE AI di Anthropic che integra Claude AI direttamente nell'ambiente di sviluppo. Questa guida descrive come configurare e utilizzare Claude Code al meglio per lo sviluppo del progetto PTVX.

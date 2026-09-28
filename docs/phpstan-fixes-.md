@@ -1,3 +1,14 @@
+---
+title: "phpstan fixes "
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan fixes "
+issues: []
+discussions: []
+---
+
 # Correzioni PHPStan Modulo Geo - 2025-01-27
 
 **Data**: 2025-01-27  

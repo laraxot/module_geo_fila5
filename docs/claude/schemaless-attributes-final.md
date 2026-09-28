@@ -1,3 +1,14 @@
+---
+title: "schemaless attributes final"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "schemaless attributes final"
+issues: []
+discussions: []
+---
+
 # Spatie Schemaless Attributes - Final Correct Guide
 
 **Package**: `spatie/laravel-schemaless-attributes`  
@@ -7,6 +18,14 @@
 
 ---
 
+title: "schemaless attributes final"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "schemaless attributes final"
+issues: []
+discussions: []
 ## 🎯 The Correct Way
 
 ### Model Setup

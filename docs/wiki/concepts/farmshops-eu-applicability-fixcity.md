@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+qmd: "farmshops eu applicability fixcity"
+issues: []
+discussions: []
 title: "farmshops.eu — cosa riusare in Fixcity (studio 2026)"
 type: concept
 module: Geo

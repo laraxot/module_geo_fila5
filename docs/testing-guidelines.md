@@ -1,3 +1,14 @@
+---
+title: "testing guidelines"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing guidelines"
+issues: []
+discussions: []
+---
+
 # Geo Module - Testing Guidelines
 
 ## Testing Framework Requirements
@@ -359,5 +370,13 @@ describe('Geographic Performance', function () {
 ---
 
 
+title: "testing guidelines"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing guidelines"
+issues: []
+discussions: []
 **Testing Framework**: Pest
 **Environment**: .env.testing

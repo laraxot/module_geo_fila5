@@ -1,3 +1,14 @@
+---
+title: "leaflet marker map input"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "leaflet marker map input"
+issues: []
+discussions: []
+---
+
 # LeafletMarkerMapInput Componente Filament
 
 ## Visione

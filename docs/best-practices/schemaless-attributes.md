@@ -1,3 +1,14 @@
+---
+title: "schemaless attributes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "schemaless attributes"
+issues: []
+discussions: []
+---
+
 # Spatie Laravel Schemaless Attributes - Best Practices
 
 ## ⚠️ AVVISO CRITICO
@@ -55,4 +66,12 @@ public function scopeWithExtraAttributes(Builder $query, string|array $schemales
 
 ---
 
+title: "schemaless attributes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "schemaless attributes"
+issues: []
+discussions: []
 *Ultimo aggiornamento: Dicembre 2025*

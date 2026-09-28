@@ -1,3 +1,14 @@
+---
+title: "research farmshops architecture"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "research farmshops architecture"
+issues: []
+discussions: []
+---
+
 # Research: farmshops.eu Architecture Study
 
 ## Project Overview

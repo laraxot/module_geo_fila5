@@ -1,3 +1,14 @@
+---
+title: "map picker filament field"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map picker filament field"
+issues: []
+discussions: []
+---
+
 # MapPicker Filament Field (Lit + Leaflet + Livewire) - Refactored v2
 
 **Data aggiornamento:** 2026-04-20  
@@ -6,6 +17,14 @@
 
 ---
 
+title: "map picker filament field"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map picker filament field"
+issues: []
+discussions: []
 ## Obiettivo Architetturale
 
 Eliminare la fragilità della sincronizzazione bidirezionale e il coupling tra Blade e schema database, consolidando il `MapPicker` come un componente "Unified State" robusto e testabile.

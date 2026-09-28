@@ -1,4 +1,9 @@
 ---
+title: "gemini cli"
+created: 2026-09-26
+qmd: "gemini cli"
+issues: []
+discussions: []
 type: agent-chat
 tags: [llm-wiki, github-issues, gemini-cli]
 updated: 2026-05-19

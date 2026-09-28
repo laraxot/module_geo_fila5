@@ -1,3 +1,14 @@
+---
+title: "gsd methodology"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "gsd methodology"
+issues: []
+discussions: []
+---
+
 # GSD (Get Shit Done) - Metodologia Spec-Driven per AI Agents
 
 ## Cos'è GSD
@@ -21,6 +32,14 @@ GSD è un sistema leggero e potente di **meta-prompting**, **context engineering
 
 ---
 
+title: "gsd methodology"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "gsd methodology"
+issues: []
+discussions: []
 ## Workflow GSD (6 Step)
 
 ```

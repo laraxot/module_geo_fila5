@@ -1,3 +1,14 @@
+---
+title: "mcp overview"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "mcp overview"
+issues: []
+discussions: []
+---
+
 # Model Context Protocol (MCP) – Panoramica e Guida Rapida
 
 > **Riferimenti ufficiali:**
@@ -7,6 +18,14 @@
 
 ---
 
+title: "mcp overview"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "mcp overview"
+issues: []
+discussions: []
 ## Cos'è MCP?
 Il Model Context Protocol (MCP) è uno standard aperto che permette di estendere le capacità degli LLM (Large Language Model) integrando strumenti e dati esterni tramite interfacce standardizzate. MCP funge da sistema di plugin per Cursor e altre piattaforme compatibili, consentendo di collegare agent e assistenti a fonti dati, API e strumenti custom.
 

@@ -1,3 +1,14 @@
+---
+title: "metodi relazione duplicati"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "metodi relazione duplicati"
+issues: []
+discussions: []
+---
+
 # Metodi Relazione Duplicati
 
 ## `schede` (7 occorrenze) — hasMany
@@ -409,6 +420,14 @@
 
 ---
 
+title: "metodi relazione duplicati"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "metodi relazione duplicati"
+issues: []
+discussions: []
 ## Statistiche per Modulo
 
 - **Performance**: 36 occorrenze

@@ -1,3 +1,14 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # Operazioni Git 🔄
 
 Questa directory contiene gli script per la gestione avanzata delle operazioni Git, con particolare focus su subtrees, submodules e manutenzione del repository.
