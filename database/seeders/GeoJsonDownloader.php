@@ -16,11 +16,11 @@ use function Safe\json_encode;
  */
 class GeoJsonDownloader
 {
-    protected const BASE_URL = 'https://raw.githubusercontent.com/guglielmo/geojson-italy/master/geojson';
+    protected const string BASE_URL = 'https://raw.githubusercontent.com/guglielmo/geojson-italy/master/geojson';
 
-    protected const REGIONS_URL = self::BASE_URL.'/limits_IT_regions.geojson';
-    protected const PROVINCES_URL = self::BASE_URL.'/limits_IT_provinces.geojson';
-    protected const MUNICIPALITIES_URL = self::BASE_URL.'/limits_IT_municipalities.geojson';
+    protected const string REGIONS_URL = self::BASE_URL.'/limits_IT_regions.geojson';
+    protected const string PROVINCES_URL = self::BASE_URL.'/limits_IT_provinces.geojson';
+    protected const string MUNICIPALITIES_URL = self::BASE_URL.'/limits_IT_municipalities.geojson';
 
     protected string $cacheDir;
 
@@ -73,11 +73,7 @@ class GeoJsonDownloader
 
         if (File::exists($cachePath)) {
             $content = File::get($cachePath);
-            $data = json_decode($content, true);
-
-            if (is_array($data) && isset($data['features'])) {
-                return $data['features'];
-            }
+            return $this->featuresFromData(json_decode($content, true), $cacheFile);
         }
 
         $response = Http::timeout(120)->get($url);
@@ -88,13 +84,31 @@ class GeoJsonDownloader
 
         $data = $response->json();
 
-        if (! is_array($data) || ! isset($data['features'])) {
-            throw new Exception("Invalid GeoJSON structure from {$url}");
-        }
+        $features = $this->featuresFromData($data, $url);
 
         File::put($cachePath, json_encode($data, JSON_UNESCAPED_UNICODE));
 
-        return $data['features'];
+        return $features;
+    }
+
+    /**
+     * @return array<int, array<string, mixed>>
+     */
+    private function featuresFromData(mixed $data, string $source): array
+    {
+        if (! is_array($data) || ! isset($data['features']) || ! is_array($data['features'])) {
+            throw new Exception("Invalid GeoJSON structure from {$source}");
+        }
+
+        $features = [];
+        foreach ($data['features'] as $feature) {
+            if (is_array($feature)) {
+                /** @var array<string, mixed> $feature */
+                $features[] = $feature;
+            }
+        }
+
+        return $features;
     }
 
     /**
@@ -108,15 +122,16 @@ class GeoJsonDownloader
         $regions = [];
 
         foreach ($features as $feature) {
-            if (! isset($feature['properties'], $feature['geometry'])) {
+            if (! is_array($feature['properties'] ?? null) || ! is_array($feature['geometry'] ?? null)) {
                 continue;
             }
 
             $props = $feature['properties'];
             $geometry = $feature['geometry'];
+            /** @var array<string, mixed> $geometry */
 
             $regions[] = [
-                'id' => (int) ($props['reg_istat_code_num'] ?? 0),
+                'id' => $this->intValue($props['reg_istat_code_num'] ?? null),
                 'istat_code' => $props['reg_istat_code'] ?? '',
                 'iso_code' => $props['reg_iso_3166_2'] ?? '',
                 'name' => $props['reg_name'] ?? '',
@@ -141,7 +156,7 @@ class GeoJsonDownloader
         $provinces = [];
 
         foreach ($features as $feature) {
-            if (! isset($feature['properties'], $feature['geometry'])) {
+            if (! is_array($feature['properties'] ?? null) || ! is_array($feature['geometry'] ?? null)) {
                 continue;
             }
 
@@ -149,14 +164,14 @@ class GeoJsonDownloader
             $geometry = $feature['geometry'];
 
             $provinces[] = [
-                'id' => (int) ($props['prov_istat_code_num'] ?? 0),
+                'id' => $this->intValue($props['prov_istat_code_num'] ?? null),
                 'istat_code' => $props['prov_istat_code'] ?? '',
                 'uts_code' => $props['prov_uts_code'] ?? '',
                 'iso_code' => $props['prov_iso_3166_2'] ?? '',
                 'acronym' => $props['prov_acr'] ?? '',
                 'name' => $props['prov_name'] ?? '',
                 'type' => $props['prov_tipo_uts'] ?? '',
-                'region_id' => (int) ($props['reg_istat_code_num'] ?? 0),
+                'region_id' => $this->intValue($props['reg_istat_code_num'] ?? null),
                 'region_istat_code' => $props['reg_istat_code'] ?? '',
                 'region_name' => $props['reg_name'] ?? '',
                 'geometry' => $geometry,
@@ -180,30 +195,31 @@ class GeoJsonDownloader
         $municipalities = [];
 
         foreach ($features as $feature) {
-            if (! isset($feature['properties'], $feature['geometry'])) {
+            if (! is_array($feature['properties'] ?? null) || ! is_array($feature['geometry'] ?? null)) {
                 continue;
             }
 
             $props = $feature['properties'];
             $geometry = $feature['geometry'];
+            /** @var array<string, mixed> $geometry */
 
             // Calculate centroid for point representation
             $centroid = $this->calculateCentroid($geometry);
 
             $municipalities[] = [
-                'id' => (int) ($props['com_istat_code_num'] ?? 0),
+                'id' => $this->intValue($props['com_istat_code_num'] ?? null),
                 'istat_code' => $props['com_istat_code'] ?? '',
                 'catasto_code' => $props['com_catasto_code'] ?? '',
                 'name' => $props['name'] ?? '',
                 'op_id' => $props['op_id'] ?? '',
                 'opdm_id' => $props['opdm_id'] ?? '',
-                'province_id' => (int) ($props['prov_istat_code_num'] ?? 0),
+                'province_id' => $this->intValue($props['prov_istat_code_num'] ?? null),
                 'province_istat_code' => $props['prov_istat_code'] ?? '',
                 'province_acronym' => $props['prov_acr'] ?? '',
                 'province_name' => $props['prov_name'] ?? '',
                 'province_uts_code' => $props['prov_uts_code'] ?? '',
                 'province_type' => $props['prov_tipo_uts'] ?? '',
-                'region_id' => (int) ($props['reg_istat_code_num'] ?? 0),
+                'region_id' => $this->intValue($props['reg_istat_code_num'] ?? null),
                 'region_istat_code' => $props['reg_istat_code'] ?? '',
                 'region_name' => $props['reg_name'] ?? '',
                 'minint_elettorale' => $props['minint_elettorale'] ?? '',
@@ -222,6 +238,7 @@ class GeoJsonDownloader
     /**
      * Calculate centroid of a geometry.
      *
+     * @param array<string, mixed> $geometry
      * @return array{lat: float, lng: float}|null
      */
     protected function calculateCentroid(array $geometry): ?array
@@ -236,14 +253,11 @@ class GeoJsonDownloader
         $sumLng = 0.0;
         $count = 0;
 
+        /** @var array<int, array{0: float, 1: float}> $coords */
         foreach ($coords as $coord) {
             $sumLng += $coord[0];
             $sumLat += $coord[1];
             $count++;
-        }
-
-        if ($count === 0) {
-            return null;
         }
 
         return [
@@ -255,7 +269,8 @@ class GeoJsonDownloader
     /**
      * Extract all coordinates from a geometry recursively.
      *
-     * @return array<int, array<float, float>>
+     * @param array<string, mixed> $geometry
+     * @return array<int, array{0: float, 1: float}>
      */
     protected function extractCoordinates(array $geometry): array
     {
@@ -266,15 +281,15 @@ class GeoJsonDownloader
 
         switch ($type) {
             case 'Point':
-                if (is_array($coordinates) && count($coordinates) >= 2) {
+                if (is_array($coordinates) && count($coordinates) >= 2 && is_numeric($coordinates[0]) && is_numeric($coordinates[1])) {
                     $result[] = [(float) $coordinates[0], (float) $coordinates[1]];
                 }
                 break;
 
             case 'LineString':
             case 'MultiPoint':
-                foreach ($coordinates as $coord) {
-                    if (is_array($coord) && count($coord) >= 2) {
+                foreach (is_array($coordinates) ? $coordinates : [] as $coord) {
+                    if (is_array($coord) && count($coord) >= 2 && is_numeric($coord[0]) && is_numeric($coord[1])) {
                         $result[] = [(float) $coord[0], (float) $coord[1]];
                     }
                 }
@@ -282,10 +297,10 @@ class GeoJsonDownloader
 
             case 'Polygon':
             case 'MultiLineString':
-                foreach ($coordinates as $ring) {
+                foreach (is_array($coordinates) ? $coordinates : [] as $ring) {
                     if (is_array($ring)) {
                         foreach ($ring as $coord) {
-                            if (is_array($coord) && count($coord) >= 2) {
+                            if (is_array($coord) && count($coord) >= 2 && is_numeric($coord[0]) && is_numeric($coord[1])) {
                                 $result[] = [(float) $coord[0], (float) $coord[1]];
                             }
                         }
@@ -294,12 +309,12 @@ class GeoJsonDownloader
                 break;
 
             case 'MultiPolygon':
-                foreach ($coordinates as $polygon) {
+                foreach (is_array($coordinates) ? $coordinates : [] as $polygon) {
                     if (is_array($polygon)) {
                         foreach ($polygon as $ring) {
                             if (is_array($ring)) {
                                 foreach ($ring as $coord) {
-                                    if (is_array($coord) && count($coord) >= 2) {
+                                    if (is_array($coord) && count($coord) >= 2 && is_numeric($coord[0]) && is_numeric($coord[1])) {
                                         $result[] = [(float) $coord[0], (float) $coord[1]];
                                     }
                                 }
@@ -312,12 +327,20 @@ class GeoJsonDownloader
             case 'GeometryCollection':
                 if (isset($geometry['geometries']) && is_array($geometry['geometries'])) {
                     foreach ($geometry['geometries'] as $geom) {
-                        $result = array_merge($result, $this->extractCoordinates($geom));
+                        if (is_array($geom)) {
+                            /** @var array<string, mixed> $geom */
+                            $result = array_merge($result, $this->extractCoordinates($geom));
+                        }
                     }
                 }
                 break;
         }
 
         return $result;
+    }
+
+    private function intValue(mixed $value): int
+    {
+        return is_numeric($value) ? (int) $value : 0;
     }
 }

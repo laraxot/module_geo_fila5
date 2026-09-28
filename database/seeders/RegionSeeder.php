@@ -7,7 +7,9 @@ namespace Modules\Geo\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Modules\Geo\Models\Region;
 
+use function Safe\file_put_contents;
 use function Safe\json_encode;
+use function Safe\mkdir;
 
 /**
  * RegionSeeder - Popola le 20 regioni italiane con poligoni GeoJSON.
@@ -33,7 +35,7 @@ class RegionSeeder extends Seeder
             return;
         }
 
-        $this->command?->info("RegionSeeder: trovate {$regions} regioni");
+        $this->command?->info('RegionSeeder: trovate '.count($regions).' regioni');
 
         // Prepara dati per SushiToJson / JSON export
         $jsonData = [];
@@ -68,6 +70,7 @@ class RegionSeeder extends Seeder
     protected function saveToTenantJson(string $table, array $data): void
     {
         $tenant = config('tenant.current', 'central');
+        $tenant = is_string($tenant) && $tenant !== '' ? $tenant : 'central';
         $path = config_path("{$tenant}/database/content/{$table}.json");
 
         $dir = dirname($path);
