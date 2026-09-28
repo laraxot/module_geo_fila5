@@ -1,3 +1,14 @@
+---
+title: "module reusability implementation plan"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "module reusability implementation plan"
+issues: []
+discussions: []
+---
+
 # Piano di Implementazione Riusabilità Moduli
 
 ## Stato Attuale

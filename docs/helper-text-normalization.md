@@ -1,3 +1,14 @@
+---
+title: "helper text normalization"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "helper text normalization"
+issues: []
+discussions: []
+---
+
 # Helper Text Normalization Fix - Modulo Geo
 
 ## Data Intervento
@@ -135,6 +146,14 @@ Assicurarsi che tutti i membri del team conoscano e applichino questa regola cri
 
 ---
 
+title: "helper text normalization"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "helper text normalization"
+issues: []
+discussions: []
 **Status**: ✅ COMPLETATO  
 **Validazione**: ✅ SUPERATA  
 **Conformità**: ✅ REGOLA APPLICATA  

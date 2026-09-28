@@ -1,3 +1,14 @@
+---
+title: "phpstan class references fix"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan class references fix"
+issues: []
+discussions: []
+---
+
 # PHPStan Class References Fix - Geo Module
 
 ## Overview

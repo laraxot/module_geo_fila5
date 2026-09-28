@@ -1,3 +1,14 @@
+---
+title: "implementation sumy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "implementation sumy"
+issues: []
+discussions: []
+---
+
 # Riepilogo Implementazione AddressesField
 
 ## Caso Studio: Applicazione Principio DRY nel Progetto <main module>
@@ -281,6 +292,14 @@ Il componente non solo elimina duplicazione, ma stabilisce un **pattern replicab
 
 ---
 
+title: "implementation sumy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "implementation sumy"
+issues: []
+discussions: []
 ## Collegamenti
 
 ### Documentazione Correlata

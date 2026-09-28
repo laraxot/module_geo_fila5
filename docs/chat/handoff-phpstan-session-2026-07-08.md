@@ -1,4 +1,8 @@
 ---
+created: 2026-09-26
+qmd: "handoff phpstan session 2026 07 08"
+issues: []
+discussions: []
 title: handoff sessione PHPStan 2026-07-08
 type: chat
 tags: [phpstan, session, lang, job, marker-git, blade-component]

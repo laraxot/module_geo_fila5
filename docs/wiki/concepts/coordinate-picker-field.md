@@ -1,3 +1,14 @@
+---
+title: "coordinate picker field"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "coordinate picker field"
+issues: []
+discussions: []
+---
+
 # CoordinatePicker Field (Geo)
 
 ## Context

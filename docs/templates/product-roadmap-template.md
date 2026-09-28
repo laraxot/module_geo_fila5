@@ -1,3 +1,14 @@
+---
+title: "product roadmap template"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "product roadmap template"
+issues: []
+discussions: []
+---
+
 # Product Roadmap Template
 
 > **Template Standardizzato** - Basato su [Notion Product Roadmap Templates](https://www.notion.com/templates/category/product-roadmap)
@@ -11,6 +22,14 @@
 
 ---
 
+title: "product roadmap template"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "product roadmap template"
+issues: []
+discussions: []
 ## Panoramica
 
 Questo roadmap traduce il PRD in sequenza di rilascio per **{Module/Theme Name}**, che nel progetto copre: {brief description of scope and purpose}.

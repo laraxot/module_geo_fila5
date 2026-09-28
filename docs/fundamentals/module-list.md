@@ -1,3 +1,14 @@
+---
+title: "module list"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "module list"
+issues: []
+discussions: []
+---
+
 # Complete Module Inventory
 
 ## 🏗️ Module Architecture Overview
@@ -197,6 +208,14 @@ Xot (Base)
 
 ---
 
+title: "module list"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "module list"
+issues: []
+discussions: []
 **Last Updated**: December 2025  
 **Total Active Modules**: 20+  
 **Critical Modules**: 16

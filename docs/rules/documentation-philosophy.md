@@ -1,3 +1,14 @@
+---
+title: "documentation philosophy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "documentation philosophy"
+issues: []
+discussions: []
+---
+
 # Documentation Philosophy - PTVX
 
 **Focus**: WHY, not just WHAT  
@@ -6,6 +17,14 @@
 
 ---
 
+title: "documentation philosophy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "documentation philosophy"
+issues: []
+discussions: []
 ## 🎯 What to Document
 
 ### Focus On

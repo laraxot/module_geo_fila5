@@ -1,4 +1,11 @@
 ---
+title: "testing location"
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing location"
+issues: []
+discussions: []
 name: Testing Location Policy
 description: Where to place Playwright and other tests — modules and themes
 type: concept

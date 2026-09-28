@@ -1,3 +1,14 @@
+---
+title: "zsh"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "zsh"
+issues: []
+discussions: []
+---
+
 
 link: https://www.reddit.com/r/bash/comments/12lz3kb/is_it_possible_to_make_zsh_look_like_gitbash/
 

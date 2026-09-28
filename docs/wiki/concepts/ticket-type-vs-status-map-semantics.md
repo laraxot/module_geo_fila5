@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+qmd: "ticket type vs status map semantics"
+issues: []
+discussions: []
 title: Ticket type vs status — mappa e filtri
 type: decision
 module: Geo

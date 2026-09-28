@@ -1,3 +1,14 @@
+---
+title: "address resource sumy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address resource sumy"
+issues: []
+discussions: []
+---
+
 # Sintesi Analisi AddressResource - Modulo Geo
 
 ## 📋 Panoramica Completa
@@ -181,6 +192,14 @@ L'implementazione attuale fornisce una base solida per i miglioramenti proposti,
 
 ---
 
+title: "address resource sumy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address resource sumy"
+issues: []
+discussions: []
 *Sintesi completata il: $(date)*
 *Modulo: Geo*
 *Classe: AddressResource*

@@ -1,4 +1,8 @@
 ---
+title: "phpstan modules journey"
+qmd: "phpstan modules journey"
+issues: []
+discussions: []
 name: phpstan-modules-journey
 description: PHPStan journey narrativa — campagna zero-errori per 30+ moduli Laravel, livello max, con visione spirituale e BMAD-METHOD
 type: project

@@ -1,3 +1,14 @@
+---
+title: "github issue sigma function extra trova esclusi body"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "github issue sigma function extra trova esclusi body"
+issues: []
+discussions: []
+---
+
 ## Contesto
 
 | Campo | Valore |

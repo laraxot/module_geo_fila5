@@ -1,3 +1,14 @@
+---
+title: "docs2"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "docs2"
+issues: []
+discussions: []
+---
+
 # Docs2
 
 # SISTEMA DI DOCUMENTAZIONE LARAXOT – GUIDA OPERATIVA COMPLETA
@@ -15,6 +26,14 @@
 
 ---
 
+title: "docs2"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "docs2"
+issues: []
+discussions: []
 ## 1. ARCHITETTURA E STRUTTURA
 
 ### 1.1 Struttura del Progetto

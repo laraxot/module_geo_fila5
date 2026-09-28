@@ -1,4 +1,10 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "handoff ann field relationships"
+issues: []
+discussions: []
 title: "handoff — ann field relazioni"
 type: handoff
 module: Sigma

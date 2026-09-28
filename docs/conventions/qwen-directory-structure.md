@@ -1,3 +1,14 @@
+---
+title: "qwen directory structure"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "qwen directory structure"
+issues: []
+discussions: []
+---
+
 # .qwen Directory Structure & Junction Rules
 
 > **Regola di Organizzazione per directory `.qwen`**
@@ -8,6 +19,14 @@
 
 ---
 
+title: "qwen directory structure"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "qwen directory structure"
+issues: []
+discussions: []
 ## Regola Generale
 
 La directory `.qwen` contiene la configurazione centrale per tutti gli agenti AI. Per garantire coerenza e evitare duplicazioni, tutte le sottodirectory devono puntare alla configurazione centrale tramite symlink.

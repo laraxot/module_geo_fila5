@@ -1,3 +1,14 @@
+---
+title: "protected string view rule"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "protected string view rule"
+issues: []
+discussions: []
+---
+
 # Protected String $view Rule
 
 ## WARNING: Never define protected string $view in Filament components extending XotBaseField

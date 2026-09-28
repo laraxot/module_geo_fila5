@@ -39,7 +39,7 @@ class HereClient
         }
 
         if (! isset($json['routes'])) {
-            dddx($json);
+            \Log::warning('HereClient: routes not found in response', ['json' => $json]);
 
             return null;
         }

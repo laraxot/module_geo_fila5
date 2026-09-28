@@ -1,3 +1,14 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # Script GitIgnore - Laraxot PTVX
 
 Questa cartella contiene script per la gestione e standardizzazione dei file `.gitignore` dei moduli Laraxot.
@@ -104,4 +115,12 @@ done
 
 ---
 
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
 **Nota**: Questi script seguono le regole di organizzazione Laraxot per bashscripts. Tutti gli script devono essere categorizzati e posizionati nelle sottocartelle appropriate di `bashscripts/`.

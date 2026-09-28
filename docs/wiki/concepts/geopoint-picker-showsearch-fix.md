@@ -1,3 +1,14 @@
+---
+title: "geopoint picker showsearch fix"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geopoint picker showsearch fix"
+issues: []
+discussions: []
+---
+
 # GeopointPicker showSearch Fix
 
 ## Issue Summary

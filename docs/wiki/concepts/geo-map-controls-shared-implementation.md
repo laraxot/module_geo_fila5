@@ -1,4 +1,9 @@
 ---
+title: "geo map controls shared implementation"
+tags: [documentation]
+qmd: "geo map controls shared implementation"
+issues: []
+discussions: []
 type: concept
 module: Geo
 component: geo-map-lit

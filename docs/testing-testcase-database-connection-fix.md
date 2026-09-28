@@ -1,3 +1,14 @@
+---
+title: "testing testcase database connection fix"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing testcase database connection fix"
+issues: []
+discussions: []
+---
+
 # Fix: Geo TestCase - Database Connection Configuration
 
 **Problema**: Test Geo falliscono con InvalidArgumentException per database connection 'geo'
@@ -86,5 +97,13 @@ protected function setUp(): void
 
 ---
 
+title: "testing testcase database connection fix"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing testcase database connection fix"
+issues: []
+discussions: []
 **Status**: Completed
 **Risultato**: Test Geo ora configurano correttamente le connessioni database

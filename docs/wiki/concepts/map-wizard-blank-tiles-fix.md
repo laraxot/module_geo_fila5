@@ -1,3 +1,14 @@
+---
+title: "map wizard blank tiles fix"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map wizard blank tiles fix"
+issues: []
+discussions: []
+---
+
 # Fix: Map Blank Tiles in Wizard Steps
 
 ## Issue

@@ -1,4 +1,11 @@
 ---
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modules"
+issues: []
+discussions: []
 title: Moduli Filament
 description: Moduli Filament
 extends: _layouts.documentation

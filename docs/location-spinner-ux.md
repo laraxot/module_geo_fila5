@@ -1,3 +1,14 @@
+---
+title: "location spinner ux"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "location spinner ux"
+issues: []
+discussions: []
+---
+
 # Location Spinner UX Pattern
 
 ## Overview
@@ -6,6 +17,14 @@ The AddressInput component provides **immediate visual feedback** when the user 
 
 ---
 
+title: "location spinner ux"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "location spinner ux"
+issues: []
+discussions: []
 ## Philosophy
 
 ### The Problem (Before)

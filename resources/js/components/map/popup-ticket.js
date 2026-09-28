@@ -11,10 +11,10 @@ const LABELS = {
         type: 'Tipologia',
         address: 'Indirizzo',
         code: 'Codice segnalazione',
-        detail: 'Dettaglio',
+        detail: 'Dettagli',
         images: 'Immagini',
         close: 'Chiudi',
-        openDetail: 'Scheda completa',
+        openDetail: 'Dettagli',
         openMaps: 'Apri in mappe',
         noAddress: 'Indirizzo non disponibile',
     },
@@ -26,7 +26,7 @@ const LABELS = {
         detail: 'Details',
         images: 'Images',
         close: 'Close',
-        openDetail: 'Full details',
+        openDetail: 'Details',
         openMaps: 'Open in maps',
         noAddress: 'Address not available',
     },
@@ -199,8 +199,24 @@ export function buildTicketPopupHtml(properties, ticketType, ticketStatus, detai
         detail?.description || properties.description || properties.content || '',
     );
     const statusColor = escapeHtml(ticketStatus.color || '#607d8b');
-    const detailUrl = String(properties.detail_url || properties.url || '').trim();
-    const hasDetailUrl = detailUrl !== '' && detailUrl.startsWith('/');
+    const rawDetailUrl = String(properties.detail_url || properties.url || '').trim();
+    let detailUrl = '';
+    const locale = (window.location.pathname.split('/').filter(Boolean)[0] || document.documentElement.lang || 'it');
+    if (rawDetailUrl !== '') {
+        try {
+            const parsedUrl = new URL(rawDetailUrl, window.location.origin);
+            if (parsedUrl.origin === window.location.origin) {
+                const path = parsedUrl.pathname.replace(/^\/[a-z]{2}(?=\/)/i, `/${locale}`);
+                detailUrl = `${path}${parsedUrl.search}${parsedUrl.hash}`;
+            }
+        } catch {
+            // Invalid or cross-origin detail URLs are replaced with the local Folio route below.
+        }
+    }
+    if (detailUrl === '' && properties.id !== undefined && properties.id !== null) {
+        detailUrl = `/${encodeURIComponent(locale)}/tickets/${encodeURIComponent(String(properties.id))}`;
+    }
+    const hasDetailUrl = detailUrl !== '';
     const addressRaw = formatAddress(properties);
     const address = escapeHtml(addressRaw !== '' ? addressRaw : labels.noAddress);
 
@@ -215,8 +231,8 @@ export function buildTicketPopupHtml(properties, ticketType, ticketStatus, detai
         : '';
 
     const detailLink = hasDetailUrl
-        ? `<a href="${escapeHtml(detailUrl)}" class="popup__link popup__link--primary">${escapeHtml(labels.openDetail)}</a>`
-        : `<button type="button" class="popup__link popup__link--primary" data-popup-open-detail>${escapeHtml(labels.openDetail)}</button>`;
+        ? `<a href="${escapeHtml(detailUrl)}" class="popup__link popup__link--primary" style="color:#fff!important;background-color:#007a52!important">${escapeHtml(labels.openDetail)}</a>`
+        : `<button type="button" class="popup__link popup__link--primary" style="color:#fff!important;background-color:#007a52!important" data-popup-open-detail>${escapeHtml(labels.openDetail)}</button>`;
 
     const addressLinksBlock = buildAddressLinksWrapper(properties, coords, labels);
     const typeRow = buildTypeRow(ticketType, labels, { skipIfHeaderIcon: true });
@@ -245,7 +261,7 @@ export function buildTicketPopupHtml(properties, ticketType, ticketStatus, detai
                     ${headerTypeIcon ? `<div class="popup__header-icon" aria-hidden="true">${headerTypeIcon}</div>` : ''}
                     <div class="popup__header-text">
                         ${buildStatusBadge(ticketStatus, labels)}
-                        <h2 class="popup__title popup__title--headline">${title}</h2>
+                        <h2 class="popup__title popup__title--headline" style="color:#17324d!important">${title}</h2>
                         ${addressPreview}
                     </div>
                 </div>
@@ -283,8 +299,8 @@ export const popupTicketStylesText = `
         margin: 0 !important;
         padding: 0 !important;
         width: min(440px, 94vw) !important;
-        min-width: min(320px, 88vw);
-        max-width: min(440px, 94vw);
+        min-width: 0;
+        max-width: min(420px, calc(100vw - 2rem));
         height: auto !important;
         min-height: 0 !important;
     }
@@ -417,6 +433,7 @@ export const popupTicketStylesText = `
     .popup__header-text {
         grid-column: 2;
         min-width: 0;
+        min-height: 48px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -430,6 +447,9 @@ export const popupTicketStylesText = `
         font-weight: 700 !important;
         line-height: 1.25 !important;
         color: #17324d;
+    }
+    .leaflet-popup.popup-wrapper .popup__title {
+        color: #17324d !important;
     }
     .popup__address-preview {
         margin: 0;
@@ -476,7 +496,7 @@ export const popupTicketStylesText = `
     .popup__body {
         padding: 0;
         margin: 0;
-        max-height: min(50vh, 280px);
+        max-height: min(26vh, 160px);
         overflow-y: auto;
         overflow-x: hidden;
         position: relative;
@@ -624,6 +644,9 @@ export const popupTicketStylesText = `
         position: relative;
         z-index: 1;
     }
+    .leaflet-popup.popup-wrapper .popup__footer {
+        background: #f8fafc !important;
+    }
     .popup__link {
         flex: 1 1 auto;
         width: 100%;
@@ -644,6 +667,14 @@ export const popupTicketStylesText = `
         color: #fff;
         background: #007a52;
         box-shadow: 0 2px 8px rgba(0, 122, 82, 0.3);
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .leaflet-popup.popup-wrapper .popup__link--primary {
+        color: #fff !important;
+        background: #007a52 !important;
     }
     .popup__link--primary:hover {
         background: #006341;
@@ -655,9 +686,56 @@ export const popupTicketStylesText = `
         color: #007a52;
         background: #fff;
         border: 2px solid #007a52;
+        min-height: 48px;
+    }
+    .leaflet-popup.popup-wrapper .popup__link--ghost {
+        color: #007a52 !important;
+        background: #fff !important;
     }
     .popup__link--ghost:hover {
         background: #f0faf6;
         transform: translateY(-1px);
+    }
+    .popup__link--primary:focus-visible,
+    .popup__link--ghost:focus-visible {
+        outline: 3px solid #17324d;
+        outline-offset: 3px;
+    }
+    @media (max-width: 900px) {
+        .leaflet-popup.popup-wrapper .leaflet-popup-content {
+            max-height: min(260px, 65vh) !important;
+            overflow: hidden;
+        }
+        .popup {
+            display: flex;
+            flex-direction: column;
+            max-height: min(260px, 65vh);
+        }
+        .popup__header,
+        .popup__footer {
+            flex: 0 0 auto;
+        }
+        .popup__body {
+            flex: 1 1 auto;
+            min-height: 0;
+            max-height: none;
+            overflow-y: auto;
+        }
+        .popup__links-block,
+        .popup__hero,
+        .popup__gallery {
+            display: none;
+        }
+        .popup__description {
+            -webkit-line-clamp: 2;
+        }
+        .popup__footer {
+            gap: 0.35rem;
+            padding: 0.4rem 0.65rem;
+        }
+        .popup__link {
+            min-height: 44px;
+            padding: 0.55rem 0.75rem;
+        }
     }
 `;

@@ -1,4 +1,8 @@
 ---
+created: 2026-09-26
+qmd: "module theme github issues manifest"
+issues: []
+discussions: []
 title: manifest issue moduli temi batch 2026-05-26
 type: chat
 tags: [github, modules, themes, manifest]

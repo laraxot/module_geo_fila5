@@ -1,3 +1,14 @@
+---
+title: "frontend stack canonical"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "frontend stack canonical"
+issues: []
+discussions: []
+---
+
 # regola: stack frontoffice (modulo Geo)
 
 ## mantra

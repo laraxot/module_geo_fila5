@@ -1,4 +1,7 @@
 ---
+qmd: "README"
+issues: []
+discussions: []
 title: "Geo Module Documentation"
 type: documentation
 tags: [module, documentation, geospatial, mapping]

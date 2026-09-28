@@ -1,3 +1,14 @@
+---
+title: "comune sushi implementation"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "comune sushi implementation"
+issues: []
+discussions: []
+---
+
 # Implementazione Sushi per il Modello Comune
 
 ## Descrizione

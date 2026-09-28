@@ -1,3 +1,14 @@
+---
+title: "analisi completa modelli factory seeder"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "analisi completa modelli factory seeder"
+issues: []
+discussions: []
+---
+
 # Analisi Completa Modelli, Factory e Seeder - Sistema <nome progetto>
 
 ## Executive Summary

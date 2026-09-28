@@ -1,3 +1,14 @@
+---
+title: "has coordinate picker dry boundary rule"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "has coordinate picker dry boundary rule"
+issues: []
+discussions: []
+---
+
 # HasCoordinatePicker DRY Boundary Rule
 
 ## Regola

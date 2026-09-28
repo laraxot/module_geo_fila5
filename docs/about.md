@@ -1,4 +1,11 @@
 ---
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "about"
+issues: []
+discussions: []
 title: About BashScripts Fila3
 description: Toolkit di automazione Git per progetti Laravel
 extends: _layouts.documentation

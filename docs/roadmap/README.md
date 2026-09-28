@@ -1,3 +1,14 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # Geo Module Roadmap
 
 > "Geographic and location services for the Laraxot ecosystem with maps, geocoding, and spatial features."
@@ -58,3 +69,11 @@ Provide a **comprehensive geographic** toolkit that includes:
 
 ---
 
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []

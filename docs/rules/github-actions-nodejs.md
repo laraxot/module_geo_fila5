@@ -1,3 +1,14 @@
+---
+title: "github actions nodejs"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "github actions nodejs"
+issues: []
+discussions: []
+---
+
 # GitHub Actions Node.js Version Rule
 
 > **Regola: Usare sempre Node.js 24 per GitHub Actions**
@@ -8,6 +19,14 @@
 
 ---
 
+title: "github actions nodejs"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "github actions nodejs"
+issues: []
+discussions: []
 ## Regola Generale
 
 **Tutti i workflow GitHub Actions devono usare Node.js 24** per evitare warning di deprecazione di Node.js 20.

@@ -1,3 +1,14 @@
+---
+title: "modularity hardcoded names"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modularity hardcoded names"
+issues: []
+discussions: []
+---
+
 # Regola Critica: Mai Hardcodare Nomi di Progetto nei Moduli Riutilizzabili
 
 ## Problema Identificato
@@ -157,4 +168,12 @@ Ogni progetto può personalizzare i valori tramite variabili d'ambiente senza mo
 
 ---
 
+title: "modularity hardcoded names"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modularity hardcoded names"
+issues: []
+discussions: []
 **Questa regola è CRITICA e va applicata SEMPRE. La violazione compromette l'architettura modulare del sistema e crea debito tecnico significativo.**

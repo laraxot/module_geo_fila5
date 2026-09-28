@@ -1,3 +1,14 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # 🏗️ LARAXOT Documentation Framework
 
 Sistema completo di documentazione per moduli Laraxot PTVX implementando principi **DRY + KISS + ROBUST + SOLID + LARAXOT**.
@@ -21,6 +32,14 @@ Framework completo per la gestione centralizzata, automatizzata e qualitativa de
 
 ---
 
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
 ## 📂 Struttura Framework
 
 ```

@@ -1,3 +1,14 @@
+---
+title: "handoff xot git conflicts phpstan"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "handoff xot git conflicts phpstan"
+issues: []
+discussions: []
+---
+
 # Handoff — conflitti Git Xot + PHPStan
 
 **Data:** 2026-07-01  

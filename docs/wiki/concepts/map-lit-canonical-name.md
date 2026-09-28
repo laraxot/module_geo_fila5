@@ -1,3 +1,14 @@
+---
+title: "map lit canonical name"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map lit canonical name"
+issues: []
+discussions: []
+---
+
 # `<map-lit>` — Canonical Custom Element Name
 
 **Decision date**: 2026-05-08

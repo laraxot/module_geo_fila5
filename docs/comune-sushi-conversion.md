@@ -1,3 +1,14 @@
+---
+title: "comune sushi conversion"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "comune sushi conversion"
+issues: []
+discussions: []
+---
+
 # Analisi: Conversione del Modello Comune a Laravel Sushi
 
 ## Stato Attuale
@@ -388,4 +399,12 @@ L'implementazione ibrida rappresenta il miglior compromesso tra funzionalità El
 
 ---
 
+title: "comune sushi conversion"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "comune sushi conversion"
+issues: []
+discussions: []
 *Documento creato il: 28/05/2025*

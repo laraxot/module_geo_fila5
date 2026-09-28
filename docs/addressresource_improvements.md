@@ -1,3 +1,14 @@
+---
+title: "addressresource improvements"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "addressresource improvements"
+issues: []
+discussions: []
+---
+
 # Suggerimenti di Miglioramento per AddressResource.php
 
 **Data**: 2025-07-30  

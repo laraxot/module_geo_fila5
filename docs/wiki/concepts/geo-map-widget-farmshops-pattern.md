@@ -1,4 +1,10 @@
 ---
+title: "geo map widget farmshops pattern"
+tags: [documentation]
+created: 2026-09-26
+qmd: "geo map widget farmshops pattern"
+issues: []
+discussions: []
 type: concept
 module: Geo
 sources:

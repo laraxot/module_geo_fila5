@@ -1,4 +1,7 @@
 ---
+qmd: "session phpstan random analysis 2026 06 15"
+issues: []
+discussions: []
 title: "Sessione analisi casuale PHPStan — 2026-06-15 14:09 UTC"
 type: chat
 tags: [phpstan, swarm, session, random-analysis]

@@ -1,3 +1,14 @@
+---
+title: "env changes not applied"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "env changes not applied"
+issues: []
+discussions: []
+---
+
 # .env Changes Not Applied - Troubleshooting
 
 **Issue**: Modified .env but changes not reflected  
@@ -6,6 +17,14 @@
 
 ---
 
+title: "env changes not applied"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "env changes not applied"
+issues: []
+discussions: []
 ## 🚨 The Problem
 
 After changing values in `.env` file (like `DB_HOST`, `DB_PASSWORD`, etc.), the application continues using old values.

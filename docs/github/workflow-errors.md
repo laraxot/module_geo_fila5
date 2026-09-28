@@ -1,3 +1,14 @@
+---
+title: "workflow errors"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "workflow errors"
+issues: []
+discussions: []
+---
+
 # GitHub Workflow Errors
 
 ## Error: `chmod: cannot access 'bashscripts/git/subtrees/sync_remote_repo.sh': No such file or directory`

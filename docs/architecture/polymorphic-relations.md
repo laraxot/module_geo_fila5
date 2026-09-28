@@ -1,3 +1,14 @@
+---
+title: "polymorphic relations"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "polymorphic relations"
+issues: []
+discussions: []
+---
+
 # Relazioni Polimorfiche e Tipi di ID
 
 ## La Dualità degli Identificatori nel Sistema
