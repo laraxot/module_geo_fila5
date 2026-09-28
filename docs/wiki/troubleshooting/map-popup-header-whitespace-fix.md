@@ -1,3 +1,14 @@
+---
+title: "map popup header whitespace fix"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map popup header whitespace fix"
+issues: []
+discussions: []
+---
+
 # popup mappa — vuoto verticale header → Tipologia
 
 ## scopo
@@ -8,6 +19,14 @@ Runbook per l’area bianca segnata in UX tra titolo/badge e la prima riga **TIP
 
 ---
 
+title: "map popup header whitespace fix"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map popup header whitespace fix"
+issues: []
+discussions: []
 ## sintomo
 
 - Popup con titolo «Rifiuti abbandonati» e badge «Risolto» in alto.

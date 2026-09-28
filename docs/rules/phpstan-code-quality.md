@@ -1,3 +1,14 @@
+---
+title: "phpstan code quality"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan code quality"
+issues: []
+discussions: []
+---
+
 # PHPStan Code Quality Guide - base_ptvx_fila5_mono
 
 **Principi**: DRY + KISS + SOLID + Robust  
@@ -6,6 +17,14 @@
 
 ---
 
+title: "phpstan code quality"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan code quality"
+issues: []
+discussions: []
 ## 🚨 Regole Assolute
 
 ### Configurazione

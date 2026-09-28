@@ -1,4 +1,11 @@
 ---
+title: "ProjectHome"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+issues: []
+discussions: []
 concept: Project Home
 last_updated: 2026-05-20
 qmd: "project home, ptvx-project, getting started, overview, module structure"

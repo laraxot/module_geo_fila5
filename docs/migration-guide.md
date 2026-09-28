@@ -1,3 +1,14 @@
+---
+title: "migration guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "migration guide"
+issues: []
+discussions: []
+---
+
 # Migration Guide: Moving from <main module> to Geo Module
 
 ## Overview

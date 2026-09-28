@@ -1,3 +1,14 @@
+---
+title: "test enhanced"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "test enhanced"
+issues: []
+discussions: []
+---
+
 # Sourcing di Eventi in Laravel
 
 **Una strategia oltre il CRUD**
@@ -8,6 +19,14 @@ Di Brent Roose
 
 ---
 
+title: "test enhanced"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "test enhanced"
+issues: []
+discussions: []
 ## Introduzione all'Sourcing di Eventi in Laravel
 
 **Un corso pratico per iniziare a utilizzare l'event sourcing in applicazioni di grandi dimensioni.**

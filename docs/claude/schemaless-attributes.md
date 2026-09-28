@@ -1,3 +1,14 @@
+---
+title: "schemaless attributes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "schemaless attributes"
+issues: []
+discussions: []
+---
+
 # Spatie Laravel Schemaless Attributes - Guida Completa PTVX
 
 > **📘 DOCUMENTAZIONE CORRETTA E VERIFICATA**: Pattern corretti per l'uso di schemaless attributes in PTVX
@@ -7,6 +18,14 @@
 
 ---
 
+title: "schemaless attributes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "schemaless attributes"
+issues: []
+discussions: []
 ## 🎯 Panoramica
 
 Questo progetto utilizza il package `spatie/laravel-schemaless-attributes` per gestire attributi dinamici JSON su modelli Eloquent, principalmente per:

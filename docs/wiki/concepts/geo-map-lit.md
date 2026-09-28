@@ -1,4 +1,11 @@
 ---
+title: "geo map lit"
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo map lit"
+issues: []
+discussions: []
 name: GeoMapLit Component
 description: Documentation for geo-map-lit.js Lit component with Leaflet and markercluster
 type: concept

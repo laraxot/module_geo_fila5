@@ -1,3 +1,14 @@
+---
+title: "migration fixes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "migration fixes"
+issues: []
+discussions: []
+---
+
 # Soluzioni PHPStan per le Migrazioni - Modulo Activity
 
 ## Analisi del Problema

@@ -712,6 +712,7 @@ class MapLit extends LitElement {
                 maxWidth: 420,
                 minWidth: 300,
                 autoPanPaddingTopLeft: L.point(72, 16),
+                autoPanPaddingBottomRight: L.point(24, 96),
             });
             layer.bindPopup(popup);
         }
@@ -759,6 +760,7 @@ class MapLit extends LitElement {
             maxWidth: 380,
             minWidth: 300,
             autoPanPaddingTopLeft: L.point(72, 16),
+            autoPanPaddingBottomRight: L.point(24, 96),
         });
 
         layer.on('click', (event) => {

@@ -1,3 +1,14 @@
+---
+title: "commands"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "commands"
+issues: []
+discussions: []
+---
+
 # GSD (Get Shit Done) - Command Reference
 
 **Version**: 1.0.0  
@@ -6,6 +17,14 @@
 
 ---
 
+title: "commands"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "commands"
+issues: []
+discussions: []
 ## 🚀 Essential Commands
 
 ### Project Initialization

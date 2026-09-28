@@ -1,4 +1,7 @@
 ---
+qmd: "ptv sigma redundancy remotes"
+issues: []
+discussions: []
 title: remotes campagna ridondanza ptv sigma
 type: handoff
 tags: [git, remotes, ptv, sigma, themes, github]

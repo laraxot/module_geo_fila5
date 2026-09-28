@@ -1,3 +1,14 @@
+---
+title: "bmad gsd integration guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "bmad gsd integration guide"
+issues: []
+discussions: []
+---
+
 # BMAD + GSD Integration Guide
 # Guida all'integrazione tra BMAD V6.3.0 e GSD
 

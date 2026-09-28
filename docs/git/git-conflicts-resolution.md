@@ -1,3 +1,14 @@
+---
+title: "git conflicts resolution"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "git conflicts resolution"
+issues: []
+discussions: []
+---
+
 # Risoluzione Conflitti Git
 
 ## Panoramica

@@ -1,3 +1,14 @@
+---
+title: "case conflicts"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "case conflicts"
+issues: []
+discussions: []
+---
+
 # Case-Insensitive File Conflicts
 
 Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dalla capitalizzazione. Va mantenuta una singola variante conforme agli standard Laraxot, aggiornando successivamente i riferimenti.

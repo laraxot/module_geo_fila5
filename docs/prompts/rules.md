@@ -1,3 +1,14 @@
+---
+title: "rules"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "rules"
+issues: []
+discussions: []
+---
+
 # Rules
 
 # Regole del Progetto 

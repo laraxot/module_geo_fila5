@@ -1,3 +1,14 @@
+---
+title: "leaflet class selector governance"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "leaflet class selector governance"
+issues: []
+discussions: []
+---
+
 # Leaflet Class Selector Governance
 
 ## Regola

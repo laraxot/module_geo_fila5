@@ -1,3 +1,14 @@
+---
+title: "database population guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "database population guide"
+issues: []
+discussions: []
+---
+
 # Guida al Popolamento Database - Laraxot <nome progetto>
 
 ## Panoramica
@@ -330,5 +341,13 @@ php artisan tinker
 
 ---
 
+title: "database population guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "database population guide"
+issues: []
+discussions: []
 **Versione**: 1.0
 **Autore**: Sistema Laraxot

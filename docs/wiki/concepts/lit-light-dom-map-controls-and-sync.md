@@ -1,3 +1,14 @@
+---
+title: "lit light dom map controls and sync"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "lit light dom map controls and sync"
+issues: []
+discussions: []
+---
+
 # Lit light dom map controls and sync
 
 ## Scopo

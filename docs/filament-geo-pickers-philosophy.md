@@ -1,3 +1,14 @@
+---
+title: "filament geo pickers philosophy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "filament geo pickers philosophy"
+issues: []
+discussions: []
+---
+
 # Geo Filament Pickers - Filosofia, Visione e Regole
 
 ## Il Cuore (Core Philosophy)
@@ -14,6 +25,14 @@ In pratica questo significa:
 
 ---
 
+title: "filament geo pickers philosophy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "filament geo pickers philosophy"
+issues: []
+discussions: []
 ## I Componenti e la Loro Essenza
 
 ### 1. CoordinatePicker 

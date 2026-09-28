@@ -1,4 +1,8 @@
 ---
+created: 2026-09-26
+qmd: "handoff phpstan modules zero"
+issues: []
+discussions: []
 title: handoff PHPStan zero moduli
 type: chat
 tags: [handoff, phpstan, bootstrap, quality-gate]

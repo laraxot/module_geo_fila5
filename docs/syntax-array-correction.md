@@ -1,3 +1,14 @@
+---
+title: "syntax array correction"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "syntax array correction"
+issues: []
+discussions: []
+---
+
 # Correzione Sintassi Obsoleta Array() - Modulo Geo
 
 **Priorità**: ALTA
@@ -131,5 +142,13 @@ php -l laravel/Modules/Geo/lang/it/address.php
 
 ---
 
+title: "syntax array correction"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "syntax array correction"
+issues: []
+discussions: []
 **Autore**: AI Assistant
 **Stato**: ✅ COMPLETATO

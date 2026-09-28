@@ -1,3 +1,14 @@
+---
+title: "factory creation geo module"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "factory creation geo module"
+issues: []
+discussions: []
+---
+
 # Factory Creation - Geo Module
 
 ## ERRORE GRAVISSIMO RISOLTO NEL MODULO GEO

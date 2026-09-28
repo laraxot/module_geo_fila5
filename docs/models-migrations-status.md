@@ -1,3 +1,14 @@
+---
+title: "models migrations status"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "models migrations status"
+issues: []
+discussions: []
+---
+
 # Geo — Stato Modelli / Migration / Seeder / Factory
 
 > Aggiornato: 2026-07-24 — Ponytail Mode

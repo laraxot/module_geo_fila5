@@ -1,3 +1,14 @@
+---
+title: "testing guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing guide"
+issues: []
+discussions: []
+---
+
 # <nome progetto> Testing Guide
 # <nome progetto> Testing Guide
 
@@ -249,5 +260,13 @@ vendor/bin/pest --filter="test_name" --verbose
 
 ---
 
+title: "testing guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing guide"
+issues: []
+discussions: []
 **Versione Pest**: 3.8
 **Versione PHPUnit**: 11.x

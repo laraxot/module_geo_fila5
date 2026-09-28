@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+qmd: "bem modifier dom contract"
+issues: []
+discussions: []
 title: bem modifier e dom contract
 type: rule
 module: Geo

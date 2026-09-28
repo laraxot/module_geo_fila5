@@ -1,3 +1,14 @@
+---
+title: "trans"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "trans"
+issues: []
+discussions: []
+---
+
 # Trans
 
 sistema /var/www/html/_bases/base_<nome progetto>/laravel/Modules/<nome progetto>/lang/it/patient.php

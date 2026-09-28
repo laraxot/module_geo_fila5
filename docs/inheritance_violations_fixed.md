@@ -1,3 +1,14 @@
+---
+title: "inheritance violations fixed"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "inheritance violations fixed"
+issues: []
+discussions: []
+---
+
 # Violazioni Ereditarietà Corrette - Modulo Geo
 
 ## 🚨 ERRORE GRAVE IDENTIFICATO E CORRETTO
@@ -158,6 +169,14 @@ done
 
 ---
 
+title: "inheritance violations fixed"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "inheritance violations fixed"
+issues: []
+discussions: []
 ## ✅ CORREZIONI COMPLETATE
 
 **Tutti i modelli del modulo Geo** sono ora corretti e rispettano la catena di ereditarietà. Il principio DRY è ripristinato e le regole sono aggiornate per prevenire errori futuri.

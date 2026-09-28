@@ -1,3 +1,14 @@
+---
+title: "git conflicts resolution complete"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "git conflicts resolution complete"
+issues: []
+discussions: []
+---
+
 # Risoluzione Completa Conflitti Git - Modulo Geo
 
 ## Status: ✅ COMPLETATO
@@ -174,5 +185,13 @@ La risoluzione dei conflitti Git è stata completata con successo. Tutti i 28 fi
 - ⚠️ **PHPStan**: Errori preesistenti (da risolvere separatamente)
 
 ---
+title: "git conflicts resolution complete"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "git conflicts resolution complete"
+issues: []
+discussions: []
 **Responsabile**: AI Assistant
 **Status**: ✅ CONFLITTI GIT COMPLETAMENTE RISOLTI

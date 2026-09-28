@@ -1,3 +1,14 @@
+---
+title: "geojson map lit component"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geojson map lit component"
+issues: []
+discussions: []
+---
+
 # geojson-map-lit — Componente Mappa GeoJSON Riutilizzabile
 
 ## Ownership

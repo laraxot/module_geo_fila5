@@ -1,3 +1,14 @@
+---
+title: "user research template"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "user research template"
+issues: []
+discussions: []
+---
+
 # User Research Template
 
 > **Template Standardizzato** - Basato su [Notion User Research Templates](https://www.notion.com/templates/category/user-research)
@@ -11,6 +22,14 @@
 
 ---
 
+title: "user research template"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "user research template"
+issues: []
+discussions: []
 ## Panoramica Research
 
 ### Obiettivo della Ricerca

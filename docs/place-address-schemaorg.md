@@ -1,3 +1,14 @@
+---
+title: "place address schemaorg"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "place address schemaorg"
+issues: []
+discussions: []
+---
+
 # Place, Address e la separazione Regione/Provincia negli indirizzi italiani
 
 ## Obiettivo
@@ -5,6 +16,14 @@ Fornire una linea guida unificata per la rappresentazione degli indirizzi italia
 
 ---
 
+title: "place address schemaorg"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "place address schemaorg"
+issues: []
+discussions: []
 ## Perché separare regione, provincia e numero civico?
 - **Normativa italiana**: la provincia (es. MI), la regione (es. Lombardia) e il numero civico sono entità distinte e servono tutte per identificare univocamente un indirizzo.
 - **Standardizzazione**: schema.org prevede campi separati per `addressRegion` (regione), `addressLocality` (città/comune), mentre la provincia va gestita come campo custom (`addressProvince`) e il numero civico va separato dalla via.

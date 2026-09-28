@@ -1,3 +1,14 @@
+---
+title: "context compression"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "context compression"
+issues: []
+discussions: []
+---
+
 # Gestione della Compressione del Contesto
 
 ## Problema originale
@@ -86,4 +97,12 @@ Esempio per il modulo User:
 > **Nota:** Dopo l'upgrade, è necessario **riavviare la sessione Claude Code** per caricare la nuova versione.
 
 ---
+title: "context compression"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "context compression"
+issues: []
+discussions: []
 *Documento generato automaticamente da Claude Code dopo l'applicazione delle correzioni.*

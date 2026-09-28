@@ -1,7 +1,26 @@
+---
+title: "troubleshooting"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "troubleshooting"
+issues: []
+discussions: []
+---
+
 # Troubleshooting Gemini Code Assist per PTVX
 
 ---
 
+title: "troubleshooting"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "troubleshooting"
+issues: []
+discussions: []
 ## Problemi Comuni
 
 Stessi problemi di Claude Code. Vedi [Troubleshooting Claude](../claude/troubleshooting.md) per dettagli.

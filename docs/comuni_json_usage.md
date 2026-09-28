@@ -1,3 +1,14 @@
+---
+title: "comuni json usage"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "comuni json usage"
+issues: []
+discussions: []
+---
+
 # Using comuni.json for Location Data
 
 ## Overview

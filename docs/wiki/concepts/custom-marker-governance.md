@@ -1,3 +1,14 @@
+---
+title: "custom marker governance"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "custom marker governance"
+issues: []
+discussions: []
+---
+
 # Custom Marker Implementation for Geo Module
 
 ## Regola: No default Leaflet markers

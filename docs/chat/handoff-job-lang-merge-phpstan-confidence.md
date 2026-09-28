@@ -1,4 +1,8 @@
 ---
+created: 2026-09-26
+qmd: "handoff job lang merge phpstan confidence"
+issues: []
+discussions: []
 title: handoff sessione Job Lang merge PHPStan
 type: chat
 tags: [handoff, job, lang, phpstan, merge-conflicts, confidence]

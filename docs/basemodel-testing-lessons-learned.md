@@ -1,3 +1,14 @@
+---
+title: "basemodel testing lessons learned"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "basemodel testing lessons learned"
+issues: []
+discussions: []
+---
+
 # BaseModel Testing - Lessons Learned (Gennaio 2025)
 
 ## Context
@@ -128,6 +139,14 @@ Tutti i moduli che utilizzano `BaseModel` o pattern simili:
 - Laraxot Traits ✅
 
 ---
+title: "basemodel testing lessons learned"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "basemodel testing lessons learned"
+issues: []
+discussions: []
 **Responsabile**: Claude Code Testing Resolution
 **Status**: Completato e Documentato
 **Moduli Testati**: <nome modulo> (54/54 tests passing)

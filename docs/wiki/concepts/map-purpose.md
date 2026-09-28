@@ -1,4 +1,12 @@
 ---
+title: "map purpose"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map purpose"
+issues: []
+discussions: []
 name: map-purpose
 description: Purpose and functionality of the map component in the FixCity admin ticket creation wizard.
 ---

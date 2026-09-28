@@ -1,3 +1,14 @@
+---
+title: "dependabot pr merge log"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "dependabot pr merge log"
+issues: []
+discussions: []
+---
+
 # Dependabot PR merge sweep
 
 Updated: 2026-05-26T11:47:43Z
@@ -97,5 +108,13 @@ Updated: 2026-05-26T11:47:43Z
 | FAIL | laraxot/theme_zero_fila5 | #2 | Bump actions/setup-node from 3 to 6 | GraphQL: refusing to allow an OAuth App to create or update workflow `.github/workflows/release.yml` without `workflow` scope (mergePullRequest) |
 
 ---
+title: "dependabot pr merge log"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "dependabot pr merge log"
+issues: []
+discussions: []
 **Agente AI:** Auto (Cursor agent router)
 **Modello:** Composer

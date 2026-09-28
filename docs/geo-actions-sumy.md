@@ -1,3 +1,14 @@
+---
+title: "geo actions sumy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo actions sumy"
+issues: []
+discussions: []
+---
+
 # Geo Actions Summary
 
 ## Overview

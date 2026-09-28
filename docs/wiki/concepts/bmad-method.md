@@ -1,4 +1,8 @@
 ---
+updated: 2026-09-26
+qmd: "bmad method"
+issues: []
+discussions: []
 title: "BMad Method in Geo Module"
 type: concept
 sources:

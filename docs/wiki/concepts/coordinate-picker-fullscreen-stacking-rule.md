@@ -1,3 +1,14 @@
+---
+title: "coordinate picker fullscreen stacking rule"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "coordinate picker fullscreen stacking rule"
+issues: []
+discussions: []
+---
+
 # Coordinate Picker Fullscreen Stacking Rule
 
 ## Regola

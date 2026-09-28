@@ -1,3 +1,14 @@
+---
+title: "story"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "story"
+issues: []
+discussions: []
+---
+
 # Story: Laravel 13 Upgrade
 
 ## Description

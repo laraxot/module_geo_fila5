@@ -1,3 +1,14 @@
+---
+title: "map rendering in wizards"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map rendering in wizards"
+issues: []
+discussions: []
+---
+
 # Troubleshooting: Map Rendering in Wizards & Tabs
 
 ## Problem: Blank Maps
@@ -9,6 +20,14 @@ When a geographic component (e.g., `MapPicker`, `GeopointPicker`) is placed insi
 
 ---
 
+title: "map rendering in wizards"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map rendering in wizards"
+issues: []
+discussions: []
 ## Solution 1: Resize Recovery
 All standardized components now use a `ResizeObserver` to detect when they gain physical dimensions.
 

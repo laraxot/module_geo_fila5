@@ -1,3 +1,14 @@
+---
+title: "index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "index"
+issues: []
+discussions: []
+---
+
 # PTVX - Documentazione Completa
 
 > Sistema Modulare per la Gestione della Pubblica Amministrazione
@@ -200,6 +211,14 @@
 
 ---
 
+title: "index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "index"
+issues: []
+discussions: []
 ## 🔍 Cerca nella Documentazione
 
 Usa Ctrl/Cmd + F per cercare in questa pagina, oppure:

@@ -1,3 +1,14 @@
+---
+title: "factory best practices"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "factory best practices"
+issues: []
+discussions: []
+---
+
 # Factory Best Practices - Laraxot <nome progetto>
 
 ## 🎯 **Obiettivo**
@@ -481,6 +492,14 @@ Al completamento di tutte le best practices:
 
 ---
 
+title: "factory best practices"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "factory best practices"
+issues: []
+discussions: []
 **Stato**: Best practices definite, implementazione in corso
 **Priorità**: Type safety e schema alignment (ALTA)
 **Responsabile**: AI Assistant

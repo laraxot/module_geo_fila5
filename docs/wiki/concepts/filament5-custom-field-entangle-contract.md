@@ -1,4 +1,7 @@
 ---
+qmd: "filament5 custom field entangle contract"
+issues: []
+discussions: []
 title: "Filament 5 Custom Field: contratto entangle e state binding modifiers"
 type: concept
 confidence: verified

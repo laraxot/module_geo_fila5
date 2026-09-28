@@ -1,3 +1,14 @@
+---
+title: "lang optimizations"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "lang optimizations"
+issues: []
+discussions: []
+---
+
 # Ottimizzazioni Performance Modulo Lang
 
 ## 1. Ottimizzazione AutoLabelAction

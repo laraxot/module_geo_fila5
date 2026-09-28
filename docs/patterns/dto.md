@@ -1,3 +1,14 @@
+---
+title: "dto"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "dto"
+issues: []
+discussions: []
+---
+
 # 📦 Data Transfer Object (DTO) Pattern
 
 > **DTO PATTERN**: Trasferimento dati strutturato e tipizzato tra i layer dell'applicazione.
@@ -79,4 +90,12 @@ class UserData extends Data
 ```
 
 ---
+title: "dto"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "dto"
+issues: []
+discussions: []
 **Vedi anche**: [Action Pattern](./action.md)

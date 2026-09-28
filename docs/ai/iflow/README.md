@@ -1,3 +1,14 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # iFlow CLI - Guida Completa per PTVX
 
 **Ultimo aggiornamento**: 2026-01-12  
@@ -6,6 +17,14 @@
 
 ---
 
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
 ## Panoramica
 
 iFlow CLI è un assistente AI per terminale sviluppato da team affiliato Alibaba. Supporta Qwen3-Coder, Kimi K2, DeepSeek v3 direttamente da command line. Questa guida descrive come configurare e utilizzare iFlow CLI al meglio per lo sviluppo del progetto PTVX.
