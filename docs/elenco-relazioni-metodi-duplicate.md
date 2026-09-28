@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+qmd: "elenco relazioni metodi duplicate"
+issues: []
+discussions: []
 title: "elenco metodi relazioni duplicate"
 type: analysis
 updated: 2026-06-15

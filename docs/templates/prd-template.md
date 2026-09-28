@@ -1,3 +1,14 @@
+---
+title: "prd template"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "prd template"
+issues: []
+discussions: []
+---
+
 # PRD Template (Product Requirements Document)
 
 > **Template Standardizzato** - Basato su [Notion PRD Templates](https://www.notion.com/templates/category/prd)
@@ -11,6 +22,14 @@
 
 ---
 
+title: "prd template"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "prd template"
+issues: []
+discussions: []
 ## Executive Summary
 
 ### Panoramica Prodotto

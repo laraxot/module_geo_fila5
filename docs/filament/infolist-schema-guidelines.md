@@ -1,3 +1,14 @@
+---
+title: "infolist schema guidelines"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "infolist schema guidelines"
+issues: []
+discussions: []
+---
+
 # Linee Guida per l'Implementazione di getInfolistSchema
 
 ## Requisiti Fondamentali

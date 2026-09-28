@@ -1,3 +1,14 @@
+---
+title: "filament v4 theme upgrade"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "filament v4 theme upgrade"
+issues: []
+discussions: []
+---
+
 # Filament v4 Theme Upgrade Guide
 
 ## Tailwind CSS v4 Migration

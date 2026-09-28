@@ -1,3 +1,14 @@
+---
+title: "USER RESEARCH"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "USER RESEARCH"
+issues: []
+discussions: []
+---
+
 # Geo Module - User Research
 
 **Module:** Geo  
@@ -6,6 +17,14 @@
 
 ---
 
+title: "USER RESEARCH"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "USER RESEARCH"
+issues: []
+discussions: []
 ## Research Goals
 
 1. Understand location privacy concerns

@@ -1,4 +1,10 @@
 ---
+title: "geo module"
+tags: [documentation]
+created: 2026-09-26
+qmd: "geo module"
+issues: []
+discussions: []
 type: overview
 module: Geo
 sources:

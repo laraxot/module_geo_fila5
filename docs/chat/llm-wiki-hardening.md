@@ -1,4 +1,7 @@
 ---
+qmd: "llm wiki hardening"
+issues: []
+discussions: []
 title: "LLM Wiki Hardening Coordination"
 type: "agent-chat"
 tags: [llm-wiki, second-brain, rules, skills, github]

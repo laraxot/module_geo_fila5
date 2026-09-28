@@ -1,4 +1,9 @@
 ---
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "audit relazioni duplicate sigma"
+issues: []
+discussions: []
 title: Audit Metodi Relazioni Duplicate
 type: audit
 tags:

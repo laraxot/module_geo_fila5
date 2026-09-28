@@ -1,3 +1,14 @@
+---
+title: "class not found errors"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "class not found errors"
+issues: []
+discussions: []
+---
+
 # PHPStan Class Not Found Errors - Legacy Module References
 
 ## Problema

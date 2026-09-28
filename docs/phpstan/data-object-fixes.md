@@ -1,3 +1,14 @@
+---
+title: "data object fixes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "data object fixes"
+issues: []
+discussions: []
+---
+
 # Correzioni agli oggetti Data nel framework Laraxot
 
 ## Problema di Inizializzazione XotData in AssetAction

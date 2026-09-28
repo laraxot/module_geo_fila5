@@ -1,4 +1,11 @@
 ---
+title: "index"
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "index"
+issues: []
+discussions: []
 name: concepts
 description: Central hub for geo module architectural rules and patterns.
 type: directory

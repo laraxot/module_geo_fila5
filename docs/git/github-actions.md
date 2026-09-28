@@ -1,3 +1,14 @@
+---
+title: "github actions"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "github actions"
+issues: []
+discussions: []
+---
+
 # Sync Remote Repo GitHub Action
 
 This workflow automates the synchronization of remote repository subtrees using the `sync_remote_repo.sh` script.

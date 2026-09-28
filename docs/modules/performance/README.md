@@ -1,9 +1,28 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # 📊 Modulo Performance - Documentazione DRY + KISS
 
 > **MODULO PERFORMANCE**: Sistema di valutazione prestazioni per PTVX con architettura scalabile e manutenibile.
 
 ---
 
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
 ## 🎯 **Scopo e Business Logic**
 
 ### Sistema di Valutazione

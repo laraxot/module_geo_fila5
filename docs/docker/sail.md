@@ -1,3 +1,14 @@
+---
+title: "sail"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "sail"
+issues: []
+discussions: []
+---
+
  Bind for 0.0.0.0:3306 failed: port is already allocated
 ------------------
 Error starting userland proxy: listen tcp4 0.0.0.0:80: bind: address already in use

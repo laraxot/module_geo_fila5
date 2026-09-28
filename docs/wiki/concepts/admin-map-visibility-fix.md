@@ -1,4 +1,12 @@
 ---
+title: "admin map visibility fix"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "admin map visibility fix"
+issues: []
+discussions: []
 name: admin-map-visibility-fix
 description: >
   Fix for missing map in Filament 5 admin ticket creation wizard step.

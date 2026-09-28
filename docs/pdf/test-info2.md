@@ -1,3 +1,14 @@
+---
+title: "test info2"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "test info2"
+issues: []
+discussions: []
+---
+
 # 📚 Analisi Completa del Documento
 
 ## 📋 Informazioni Generali
@@ -99,4 +110,12 @@ Part 1: The BaSics .......... ccc cece cece cece cece cence cence sence eeeseeee
 - 📊 Dettagli tecnici: OCR con Tesseract e analisi testuale
 
 ---
+title: "test info2"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "test info2"
+issues: []
+discussions: []
 *Generato automaticamente con analyze_complete.py*

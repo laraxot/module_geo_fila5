@@ -1,3 +1,14 @@
+---
+title: "action"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "action"
+issues: []
+discussions: []
+---
+
 # ⚡ Action Pattern - Implementazione PTVX
 
 > **ACTION PATTERN**: Incapsula una singola logica di business in una classe eseguibile.
@@ -79,4 +90,12 @@ $action(function (array $data) {
 ```
 
 ---
+title: "action"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "action"
+issues: []
+discussions: []
 **Vedi anche**: [Data Transfer Objects](./dto.md), [Repository Pattern](./repository.md)

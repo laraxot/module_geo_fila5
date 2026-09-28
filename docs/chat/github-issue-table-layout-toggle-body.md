@@ -1,3 +1,14 @@
+---
+title: "github issue table layout toggle body"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "github issue table layout toggle body"
+issues: []
+discussions: []
+---
+
 ## Summary
 
 Il bottone **Cambia layout** (`TableLayoutToggleTableAction`) sulle liste Filament con `HasXotTable` non alternava lista/griglia.

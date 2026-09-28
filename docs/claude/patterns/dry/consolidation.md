@@ -1,3 +1,14 @@
+---
+title: "consolidation"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "consolidation"
+issues: []
+discussions: []
+---
+
 # DRY Patterns - Consolidation
 
 ## Date Handling Consolidation
@@ -161,5 +172,13 @@ $statusCounts = $this->groupAndCount($users, 'status');
 
 ---
 
+title: "consolidation"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "consolidation"
+issues: []
+discussions: []
 **Focus**: Consolidation patterns for common operations
 **Goal**: Single implementation, multiple reuse points

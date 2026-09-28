@@ -1,4 +1,8 @@
 ---
+updated: 2026-09-26
+qmd: "redundancy audit"
+issues: []
+discussions: []
 title: "Geo redundancy audit 2026-05-21"
 type: audit
 module: Geo

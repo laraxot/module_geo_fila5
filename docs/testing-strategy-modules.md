@@ -1,3 +1,14 @@
+---
+title: "testing strategy modules"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing strategy modules"
+issues: []
+discussions: []
+---
+
 # Strategia di Testing per i Moduli <nome progetto>
 
 ## Introduzione
@@ -368,5 +379,13 @@ class DatabaseHelper
 
 ---
 
+title: "testing strategy modules"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing strategy modules"
+issues: []
+discussions: []
 **Stato**: 🚧 In implementazione
 **Responsabile**: Team Development

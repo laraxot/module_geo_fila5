@@ -1,4 +1,7 @@
 ---
+qmd: "coordinate picker design comuni runtime rule"
+issues: []
+discussions: []
 title: CoordinatePicker Design Comuni Runtime Rule
 type: concept
 tags: [geo, coordinate-picker, leaflet, livewire, filament, design-comuni]

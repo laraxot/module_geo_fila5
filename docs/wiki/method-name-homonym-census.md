@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+qmd: "method name homonym census"
+issues: []
+discussions: []
 title: "censimento omonimi metodi — indice progetto"
 type: analysis
 updated: 2026-06-15

@@ -1,3 +1,14 @@
+---
+title: "homepage architecture overview"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "homepage architecture overview"
+issues: []
+discussions: []
+---
+
 # Architettura Homepage - Panoramica Sistema
 
 ## Panoramica

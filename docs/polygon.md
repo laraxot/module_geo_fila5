@@ -1,3 +1,14 @@
+---
+title: "polygon"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "polygon"
+issues: []
+discussions: []
+---
+
 https://stackoverflow.com/questions/5065039/find-point-in-polygon-php
 
 Array

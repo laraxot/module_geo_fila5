@@ -1,4 +1,7 @@
 ---
+qmd: "segnalazioni elenco map visibility issue"
+issues: []
+discussions: []
 title: "Segnalazioni Elenco — Mappa e Cluster: Diagnosi e Fix"
 type: troubleshooting
 confidence: high

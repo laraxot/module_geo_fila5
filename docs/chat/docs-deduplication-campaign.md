@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+updated: 2026-09-26
+qmd: "docs deduplication campaign"
+issues: []
+discussions: []
 title: campagna deduplica docs moduli e temi
 type: chat
 created: 2026-05-21

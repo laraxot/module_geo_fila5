@@ -1,3 +1,14 @@
+---
+title: "geo components"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo components"
+issues: []
+discussions: []
+---
+
 # Geo Components Specification
 
 This document details the technical implementation and features of geographic components in the Geo module, adhering to the "Super Mucca" architecture.
@@ -72,5 +83,13 @@ Components should respect the following CSS tokens for parity:
 - `--cp-fullscreen-z-index: 999999`: For absolute dominance in fullscreen.
 
 ---
+title: "geo components"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo components"
+issues: []
+discussions: []
 *Created: 2026-04-22*
 *Part of: Geo Module Wiki Standard v2.0*

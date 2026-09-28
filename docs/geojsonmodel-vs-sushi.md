@@ -1,3 +1,14 @@
+---
+title: "geojsonmodel vs sushi"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geojsonmodel vs sushi"
+issues: []
+discussions: []
+---
+
 # Analisi Comparativa: GeoJsonModel vs Laravel Sushi
 
 ## Panoramica
@@ -191,4 +202,12 @@ Una migrazione a Laravel Sushi potrebbe essere riconsiderata, con un costo di co
 
 ---
 
+title: "geojsonmodel vs sushi"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geojsonmodel vs sushi"
+issues: []
+discussions: []
 *Documento creato il: 27/05/2025*

@@ -1,3 +1,14 @@
+---
+title: "phpstan analysis business logic"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan analysis business logic"
+issues: []
+discussions: []
+---
+
 # PHPStan Analysis - Business Logic & Factory Issues
 
 ## 🎯 **Obiettivo**
@@ -312,6 +323,14 @@ Al completamento di questo audit e delle correzioni:
 
 ---
 
+title: "phpstan analysis business logic"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan analysis business logic"
+issues: []
+discussions: []
 **Stato**: Analisi completata, implementazione in corso
 **Priorità**: <nome progetto> Factory (CRITICO)
 **Priorità**: <nome progetto> Factory (CRITICO)

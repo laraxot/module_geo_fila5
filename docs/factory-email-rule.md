@@ -1,3 +1,14 @@
+---
+title: "factory email rule"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "factory email rule"
+issues: []
+discussions: []
+---
+
 # Regola Critica: Email nelle Factory - Progetto <nome progetto>
 
 ## ⚠️ REGOLA ASSOLUTAMENTE VIETATA ⚠️
@@ -165,4 +176,12 @@ public function definition(): array
 
 ---
 
+title: "factory email rule"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "factory email rule"
+issues: []
+discussions: []
 **⚠️ RICORDA SEMPRE: Questa regola è SACRA e non può essere violata. Ogni factory deve usare SEMPRE faker per le email, MAI "@example.com"!**

@@ -1,3 +1,14 @@
+---
+title: "path resolution fixes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "path resolution fixes"
+issues: []
+discussions: []
+---
+
 # Path Resolution Fixes per Filament
 
 ## Path Type Issues

@@ -1,4 +1,7 @@
 ---
+qmd: "coordinate picker state binding rule"
+issues: []
+discussions: []
 title: "Coordinate Picker State Binding Rule"
 type: concept
 sources: ["https://filamentphp.com/docs/5.x/forms/custom-fields"]

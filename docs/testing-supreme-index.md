@@ -1,3 +1,14 @@
+---
+title: "testing supreme index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing supreme index"
+issues: []
+discussions: []
+---
+
 # 🎯 INDICE SUPREMO: Testing Business Behavior Rules
 
 ## LA REGOLA PIÙ IMPORTANTE DI TUTTO IL PROGETTO
@@ -105,6 +116,14 @@ Queste regole si applicano a:
 
 ---
 
+title: "testing supreme index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing supreme index"
+issues: []
+discussions: []
 **Questa è la REGOLA SUPREMA del progetto <nome progetto> e ha precedenza su qualsiasi altra considerazione di testing.**
 
 **Status**: REGOLA SUPREMA E NON NEGOZIABILE

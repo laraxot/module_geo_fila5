@@ -1,4 +1,7 @@
 ---
+qmd: "reflective"
+issues: []
+discussions: []
 title: "Reflective Notes"
 type: reflection-log
 status: active

@@ -1,3 +1,14 @@
+---
+title: "development tasks"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "development tasks"
+issues: []
+discussions: []
+---
+
 # Development Tasks
 
 ## 🧪 Testing and Quality
@@ -155,5 +166,13 @@ Checklist:
 
 ---
 
+title: "development tasks"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "development tasks"
+issues: []
+discussions: []
 **Version**: 2.0 (Refactor DRY + KISS)  
 **File**: development-tasks.md - Common development tasks

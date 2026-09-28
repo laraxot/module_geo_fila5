@@ -1,4 +1,7 @@
 ---
+tags: [documentation]
+issues: []
+discussions: []
 title: "Wiki Overview"
 module: "ptvx-project"
 type: overview

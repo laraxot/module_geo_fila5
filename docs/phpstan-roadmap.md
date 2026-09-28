@@ -1,3 +1,14 @@
+---
+title: "phpstan roadmap"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan roadmap"
+issues: []
+discussions: []
+---
+
 # PHPStan Roadmap - Geo Module
 
 > **Created**: [DATE]  
@@ -74,5 +85,13 @@ return $this->state(
 
 ---
 
+title: "phpstan roadmap"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan roadmap"
+issues: []
+discussions: []
 **Status**: ✅ Fully Compliant (Level 10)
 **Next**: Monitor for any future regressions

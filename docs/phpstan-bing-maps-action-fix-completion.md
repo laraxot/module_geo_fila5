@@ -1,3 +1,14 @@
+---
+title: "phpstan bing maps action fix completion"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan bing maps action fix completion"
+issues: []
+discussions: []
+---
+
 # PHPStan Fix Completion - GetAddressFromBingMapsAction - Gennaio 2026
 
 **Stato**: ✅ COMPLETATO CON SUCCESSO  
@@ -94,6 +105,14 @@ Basato sulla documentazione `phpstan-code-quality-guide.md`:
 
 ---
 
+title: "phpstan bing maps action fix completion"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan bing maps action fix completion"
+issues: []
+discussions: []
 **Autore**: iFlow CLI  
 **Approvazione**: Completo e verificato  
 **Status**: Pronto per produzione  

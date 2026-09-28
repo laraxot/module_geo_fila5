@@ -1,3 +1,14 @@
+---
+title: "address input component"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address input component"
+issues: []
+discussions: []
+---
+
 # AddressInput Component — Filament Field con Geolocalizzazione
 
 **Status**: ✅ Production
@@ -8,6 +19,14 @@
 
 ---
 
+title: "address input component"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address input component"
+issues: []
+discussions: []
 ## Cos'è
 
 `AddressInput` è un **campo Filament nativo** che fornisce un input per indirizzo con:

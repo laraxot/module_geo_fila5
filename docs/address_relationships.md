@@ -1,3 +1,14 @@
+---
+title: "address relationships"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address relationships"
+issues: []
+discussions: []
+---
+
 # Relazioni del Modello Address
 
 ## Casi d'Uso Tipici

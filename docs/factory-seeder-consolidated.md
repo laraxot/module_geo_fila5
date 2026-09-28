@@ -1,3 +1,14 @@
+---
+title: "factory seeder consolidated"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "factory seeder consolidated"
+issues: []
+discussions: []
+---
+
 # 🏭 Factory e Seeder Consolidati - Progetto <nome progetto>
 
 ## 📋 Panoramica
@@ -325,6 +336,14 @@ Ho creato uno script intelligente (`smart_populate_models.php`) che:
 
 ---
 
+title: "factory seeder consolidated"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "factory seeder consolidated"
+issues: []
+discussions: []
 **Versione**: 2.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Completa

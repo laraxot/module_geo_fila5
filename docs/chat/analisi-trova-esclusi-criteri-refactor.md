@@ -1,3 +1,14 @@
+---
+title: "analisi trova esclusi criteri refactor"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "analisi trova esclusi criteri refactor"
+issues: []
+discussions: []
+---
+
 # Analisi: estrarre caricamento criteri da `TrovaEsclusiByModelClassYearAction`
 
 **Data:** 2026-06-18  
@@ -6,6 +17,14 @@
 
 ---
 
+title: "analisi trova esclusi criteri refactor"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "analisi trova esclusi criteri refactor"
+issues: []
+discussions: []
 ## Cosa stai cercando di fare (interpretazione)
 
 Vuoi **togliere dall'action** il blocco che:

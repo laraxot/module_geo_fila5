@@ -1,3 +1,14 @@
+---
+title: "geo map fixes registry"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo map fixes registry"
+issues: []
+discussions: []
+---
+
 # geo-map-lit — registro correzioni e ricostruzione
 
 ## scopo
@@ -8,6 +19,14 @@ Indice **cronologico e funzionale** di ogni correzione significativa su mappa `/
 
 ---
 
+title: "geo map fixes registry"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo map fixes registry"
+issues: []
+discussions: []
 ## legenda colonne
 
 | Campo | Significato |

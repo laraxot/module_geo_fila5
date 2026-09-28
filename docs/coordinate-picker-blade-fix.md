@@ -1,3 +1,14 @@
+---
+title: "coordinate picker blade fix"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "coordinate picker blade fix"
+issues: []
+discussions: []
+---
+
 # Coordinate Picker Blade Template Fix
 
 ## Issue

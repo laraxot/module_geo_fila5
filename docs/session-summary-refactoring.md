@@ -1,3 +1,14 @@
+---
+title: "session summary refactoring"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "session summary refactoring"
+issues: []
+discussions: []
+---
+
 # SESSION SUMMARY — Refactoring Module Inheritance
 
 ## Completato

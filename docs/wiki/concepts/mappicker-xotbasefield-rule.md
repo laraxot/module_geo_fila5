@@ -1,3 +1,14 @@
+---
+title: "mappicker xotbasefield rule"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "mappicker xotbasefield rule"
+issues: []
+discussions: []
+---
+
 # MapPicker Must Extend XotBaseField
 
 **Status:** regola permanente  

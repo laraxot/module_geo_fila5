@@ -1,3 +1,14 @@
+---
+title: "phpstan fixes gennaio"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan fixes gennaio"
+issues: []
+discussions: []
+---
+
 # PHPStan Fixes Gennaio 2025 - Modulo Geo
 
 ## Riassunto delle Correzioni
@@ -384,6 +395,14 @@ cd /var/www/html/_bases/base_<nome progetto>/laravel
 
 ---
 
+title: "phpstan fixes gennaio"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan fixes gennaio"
+issues: []
+discussions: []
 ✅ **Status Issue Target**: **COMPLETATO AL 100%** (4/4 errori risolti)  
 ✅ **Status Phase 3**: **COMPLETATO AL 100%** (Filament UI components)  
 ✅ **Status Phase 4**: **COMPLETATO AL 100%** (Console Commands)  

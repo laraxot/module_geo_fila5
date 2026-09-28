@@ -1,3 +1,14 @@
+---
+title: "00 index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "00 index"
+issues: []
+discussions: []
+---
+
 # 📚 **Indice Documentazione Modulo Geo**
 
 **Status**: ✅ PHPStan Level 10 Compliant
@@ -73,6 +84,14 @@ Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider 
 - [UI](../../ui/docs/readme.md) - Componenti grafici e widget mappa.
 
 ---
+title: "00 index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "00 index"
+issues: []
+discussions: []
 *Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*
 
 ## Dependency Intelligence

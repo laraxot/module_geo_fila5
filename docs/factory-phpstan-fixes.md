@@ -1,3 +1,14 @@
+---
+title: "factory phpstan fixes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "factory phpstan fixes"
+issues: []
+discussions: []
+---
+
 # Factory PHPStan Fixes - Geo Module
 
 ## Problemi Identificati

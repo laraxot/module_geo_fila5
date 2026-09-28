@@ -1,3 +1,14 @@
+---
+title: "components guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "components guide"
+issues: []
+discussions: []
+---
+
 # Filament Components Guide - PTVX
 
 ## 📋 Overview
@@ -17,6 +28,14 @@ Componenti per visualizzare dati in formato tabulare con funzionalità di ricerc
 
 ---
 
+title: "components guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "components guide"
+issues: []
+discussions: []
 ## 📝 Forms Components
 
 ### ✅ Placeholder (Raccomandato)

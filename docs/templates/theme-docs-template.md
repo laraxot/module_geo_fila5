@@ -1,3 +1,14 @@
+---
+title: "theme docs template"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "theme docs template"
+issues: []
+discussions: []
+---
+
 # {ThemeName} Theme
 
 > **Filament Version**: Admin panels and Filament resources in this theme target **Filament v5** (see Second Brain `docs/wiki/memories/filament-version-policy.md` and `docs/filament-version.md`).

@@ -1,3 +1,14 @@
+---
+title: "deprecated form method upgrade"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "deprecated form method upgrade"
+issues: []
+discussions: []
+---
+
 # Deprecated Form Method Upgrade
 
 ## Overview

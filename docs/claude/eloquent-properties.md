@@ -1,3 +1,14 @@
+---
+title: "eloquent properties"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "eloquent properties"
+issues: []
+discussions: []
+---
+
 # Eloquent Properties
 
 ## ⚠️ Critical Restriction: Never Use property_exists() for Magic Properties
@@ -204,5 +215,13 @@ This rule is critical for maintaining correct behavior in Laravel applications a
 
 ---
 
+title: "eloquent properties"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "eloquent properties"
+issues: []
+discussions: []
 **Version**: 2.0 (Refactor DRY + KISS)  
 **File**: eloquent-properties.md - Eloquent property handling guidelines

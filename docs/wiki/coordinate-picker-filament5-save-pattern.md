@@ -1,3 +1,14 @@
+---
+title: "coordinate picker filament5 save pattern"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "coordinate picker filament5 save pattern"
+issues: []
+discussions: []
+---
+
 # CoordinatePicker Multi-Column Save Pattern (Filament 5)
 
 ## Problem
