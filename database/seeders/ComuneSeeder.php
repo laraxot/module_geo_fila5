@@ -7,7 +7,9 @@ namespace Modules\Geo\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Modules\Geo\Models\Comune;
 
+use function Safe\file_put_contents;
 use function Safe\json_encode;
+use function Safe\mkdir;
 
 /**
  * ComuneSeeder - Popola i 7900+ comuni italiani con geometrie GeoJSON.
@@ -96,6 +98,7 @@ class ComuneSeeder extends Seeder
     protected function saveToTenantJson(string $table, array $data): void
     {
         $tenant = config('tenant.current', 'central');
+        $tenant = is_string($tenant) && $tenant !== '' ? $tenant : 'central';
         $path = config_path("{$tenant}/database/content/{$table}.json");
 
         $dir = dirname($path);

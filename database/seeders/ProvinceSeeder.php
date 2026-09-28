@@ -7,7 +7,9 @@ namespace Modules\Geo\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Modules\Geo\Models\Province;
 
+use function Safe\file_put_contents;
 use function Safe\json_encode;
+use function Safe\mkdir;
 
 /**
  * ProvinceSeeder - Popola le 107+ province italiane con confini GeoJSON.
@@ -33,7 +35,7 @@ class ProvinceSeeder extends Seeder
             return;
         }
 
-        $this->command?->info("ProvinceSeeder: trovate {$provinces} province");
+        $this->command?->info('ProvinceSeeder: trovate '.count($provinces).' province');
 
         // Prepara dati per SushiToJson / JSON export
         $jsonData = [];
@@ -74,6 +76,7 @@ class ProvinceSeeder extends Seeder
     protected function saveToTenantJson(string $table, array $data): void
     {
         $tenant = config('tenant.current', 'central');
+        $tenant = is_string($tenant) && $tenant !== '' ? $tenant : 'central';
         $path = config_path("{$tenant}/database/content/{$table}.json");
 
         $dir = dirname($path);
