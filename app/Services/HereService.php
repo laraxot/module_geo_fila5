@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Services;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Modules\Tenant\Services\TenantService;
 
 class HereService
@@ -41,7 +42,7 @@ class HereService
         }
 
         if (! isset($json['routes'])) {
-            \Log::warning('HereService: routes not found in response', ['json' => $json]);
+            Log::warning('HereService: routes not found in response', ['json' => $json]);
 
             return null;
         }

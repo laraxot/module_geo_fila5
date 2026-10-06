@@ -48,6 +48,31 @@ senza consumer. **2026-09-24**: `GeoTrait` wired su `Address` (solo distanza/sco
 `HasAddress`), `Models\Traits\SushiToJsons` (nessun consumer Geo; Tenant ha il
 suo).
 
+## Regressione (rilevata 2026-10-06)
+
+I commit `af8982cb` (2026-09-25) e `dd55f6dd` (2026-09-26) hanno riportato nel
+modulo quello che le sezioni sopra avevano tolto. Stato trovato su `dev`:
+
+- probe tornati in `tests/Fixtures/Traits/`: `GeoPhpstanProbeModel`,
+  `GeoTraitPhpstanProbe`, `HasPlaceTraitPhpstanProbe`, e tre che usano trait
+  eliminati e quindi non si caricano (`GeographicalScopesPhpstanProbe`,
+  `HasAddressesPhpstanProbe`, `SushiToJsonsPhpstanProbe`), più
+  `HasAddressesTestModel` (fixture del trait `HasAddresses` eliminato);
+- `tests/Unit/Traits/HasAddressTest.php` e `TestModel.php` sovrascritti con due
+  copie del modello fixture al posto del test Pest;
+- `HasAddressTestModel` senza `@use HasAddress<HasAddressTestModel>`.
+
+Ripristinati il 2026-10-06: il test Pest in `HasAddressTest.php` e il `@use`
+sulla fixture. Rimossi lo stesso giorno i cinque file che non si caricavano o
+duplicavano un consumer reale (`GeoTraitPhpstanProbe`, `GeographicalScopesPhpstanProbe`,
+`HasAddressesPhpstanProbe`, `HasAddressesTestModel`, `SushiToJsonsPhpstanProbe`)
+e `tests/Unit/Traits/TestModel.php`, senza riferimenti. PHPStan `Modules`: 0 errori.
+
+**Decisione aperta su `HasPlaceTrait`**: nessun modello lo usa, l'unico consumer
+è `HasPlaceTraitPhpstanProbe` (con la sua base `GeoPhpstanProbeModel`). Togliere
+il probe fa emergere `trait.unused`; le alternative ammesse da questa policy sono
+collegarlo a un modello reale o eliminare il trait.
+
 `tests/Fixtures/Traits/HasAddressTestModel.php` **non** è un probe: è la fixture reale
 usata da `tests/Unit/Traits/HasAddressTest.php` ed è stata mantenuta.
 
