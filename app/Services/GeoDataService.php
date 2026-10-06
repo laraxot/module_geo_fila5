@@ -23,23 +23,23 @@ class GeoDataService
     /**
      * Chiavi di cache.
      */
-    private const string CACHE_KEY_REGIONS = 'geo.regions';
+    private const CACHE_KEY_REGIONS = 'geo.regions';
 
-    private const string CACHE_KEY_PROVINCES = 'geo.provinces.%s';
+    private const CACHE_KEY_PROVINCES = 'geo.provinces.%s';
 
-    private const string CACHE_KEY_CITIES = 'geo.cities.%s';
+    private const CACHE_KEY_CITIES = 'geo.cities.%s';
 
-    private const string CACHE_KEY_CAP = 'geo.cap.%s.%s';
+    private const CACHE_KEY_CAP = 'geo.cap.%s.%s';
 
     /**
      * Tempo di cache in secondi (24 ore).
      */
-    private const int CACHE_TTL = 86400;
+    private const CACHE_TTL = 86400;
 
     /**
      * Percorso del file JSON.
      */
-    private const string JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
+    private const JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
 
     /**
      * Validatore dei dati.
