@@ -131,3 +131,6 @@ graphify-out/
 .claude-audit/
 test-results/
 geo.code-workspace
+
+# Artefatti audit vietati (rule: tests-auditcoverage-forbidden)
+audit-coverage/
