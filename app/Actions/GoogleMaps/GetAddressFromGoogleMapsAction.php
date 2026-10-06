@@ -22,7 +22,7 @@ final class GetAddressFromGoogleMapsAction
 {
     use QueueableAction;
 
-    private const BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    private const string BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
     /**
      * @throws GoogleMapsApiException Se la richiesta fallisce o i dati non sono validi

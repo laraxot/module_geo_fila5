@@ -19,11 +19,11 @@ class GoogleMapsAction
 {
     use QueueableAction;
 
-    private const GEOCODING_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    private const string GEOCODING_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
-    private const DISTANCE_MATRIX_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+    private const string DISTANCE_MATRIX_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
 
-    private const ELEVATION_URL = 'https://maps.googleapis.com/maps/api/elevation/json';
+    private const string ELEVATION_URL = 'https://maps.googleapis.com/maps/api/elevation/json';
 
     private function getApiKey(): string
     {

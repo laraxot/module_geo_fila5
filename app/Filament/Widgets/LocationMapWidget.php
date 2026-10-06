@@ -28,7 +28,7 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
  */
 class LocationMapWidget extends XotBaseWidget
 {
-    protected const CACHE_TTL = 3600;
+    protected const int CACHE_TTL = 3600;
 
     public Htmlable|string|null $heading = 'Mappa';
 

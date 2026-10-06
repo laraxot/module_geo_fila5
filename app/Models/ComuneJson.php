@@ -29,7 +29,7 @@ class ComuneJson extends GeoJsonModel
     /**
      * Cache duration in seconds (1 week).
      */
-    protected const CACHE_TTL = 604800;
+    protected const int CACHE_TTL = 604800;
 
     /**
      * Get all comuni with their complete data.
