@@ -2,7 +2,7 @@
 title: GeoTrait — distanza Haversine su modelli geo
 type: concept
 tags: [geo, trait, distance, address, phpstan]
-updated_at: '2026-09-24'
+updated_at: '2026-10-06'
 qmd: geotrait distance haversine address latitude longitude scope
 ---
 
@@ -24,6 +24,7 @@ Non include più mutator/accessor JSON legacy (`setAddressAttribute`, `getLatitu
 
 - Colonne attese: `latitude`, `longitude` (float)
 - SQL scope: letterale + binding (stesso pattern di `Address::scopeNearby`) — niente stringhe dinamiche per PHPStan `literal-string`
+- Coordinate accettate: latitudine `[-90, 90]`, longitudine `[-180, 180]`; sono validi anche zero e valori negativi (emisferi sud/ovest)
 - Vietato `@phpstan-ignore` / probe fittizi: il trait deve avere un consumer reale
 - Generics: `@template TModel of \Illuminate\Database\Eloquent\Model` **prima** delle `@property` (come `HasAddress`); consumer `@use GeoTrait<\Modules\Geo\Models\Address>`; scope `Builder<TModel>`. Ordine PHPDoc importante: altrimenti PHPStan può segnalare `generics.notGeneric` su `@use`.
 

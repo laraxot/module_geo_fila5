@@ -40,6 +40,11 @@ module: "Geo"
 
 # Geo - Wiki Activity Log
 
+## [2026-10-06] quality | GeoTrait coordinate validation
+
+- `scopeWithDistance` ora accetta coordinate valide negli emisferi sud/ovest e rifiuta solo valori non finiti o fuori range.
+- PHPStan `Modules`: 0 errori; Pint: OK.
+
 ## [2026-06-03] bmad | STORY-132 — filename JS solo inglese
 
 - [js-file-english-naming-rule.md](rules/js-file-english-naming-rule.md) · [js-file-english-naming-standing-rule.md](memories/js-file-english-naming-standing-rule.md)
