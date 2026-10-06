@@ -18,7 +18,7 @@ class LoadGeoDataAction
 {
     use QueueableAction;
 
-    private const string JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
+    private const JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
 
     /**
      * @throws \RuntimeException

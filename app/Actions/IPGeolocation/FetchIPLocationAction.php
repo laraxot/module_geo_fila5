@@ -19,7 +19,7 @@ class FetchIPLocationAction
 {
     use QueueableAction;
 
-    private const string API_URL = 'http://ip-api.com/json/';
+    private const API_URL = 'http://ip-api.com/json/';
 
     private Client $client;
 
