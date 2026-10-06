@@ -20,7 +20,7 @@ class GetGeocodingDataAction
 {
     use QueueableAction;
 
-    private const API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    private const string API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
 
     public function __construct(
         private readonly Client $client,

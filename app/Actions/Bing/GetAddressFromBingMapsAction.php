@@ -20,7 +20,7 @@ class GetAddressFromBingMapsAction
 {
     use QueueableAction;
 
-    private const BASE_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
+    private const string BASE_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
 
     /**
      * Ottiene l'indirizzo da coordinate geografiche.

@@ -16,9 +16,9 @@ use function Safe\json_encode;
  */
 class GeoJsonDownloader
 {
-    protected const BASE_URL = 'https://raw.githubusercontent.com/guglielmo/geojson-italy/master/geojson';
+    protected const string BASE_URL = 'https://raw.githubusercontent.com/guglielmo/geojson-italy/master/geojson';
 
-    protected const REGIONS_URL = self::BASE_URL.'/limits_IT_regions.geojson';
+    protected const string MUNICIPALITIES_URL = self::BASE_URL.'/limits_IT_municipalities.geojson';
     protected const PROVINCES_URL = self::BASE_URL.'/limits_IT_provinces.geojson';
     protected const MUNICIPALITIES_URL = self::BASE_URL.'/limits_IT_municipalities.geojson';
 
