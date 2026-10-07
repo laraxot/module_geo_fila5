@@ -396,4 +396,10 @@ it('handles invalid json response', function (): void {
     ]);
 
     // Act & Assert
+    try {
+        $action->execute($address);
+        Assert::fail('Expected RuntimeException was not thrown');
+    } catch (\RuntimeException $exception) {
+        Assert::assertSame('Invalid JSON response from Google Maps API', $exception->getMessage());
+    }
 });

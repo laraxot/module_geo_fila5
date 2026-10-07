@@ -40,7 +40,7 @@ class RegionSeeder extends Seeder
         // Prepara dati per SushiToJson / JSON export
         $jsonData = [];
 
-        foreach ($regions as $index => $region) {
+        foreach ($regions as $region) {
             $jsonData[] = [
                 'id' => $region['id'],
                 'istat_code' => $region['istat_code'],

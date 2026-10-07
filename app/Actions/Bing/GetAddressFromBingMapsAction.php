@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\MapPlatforms\BingMapData;
 use Modules\Geo\Exceptions\InvalidLocationException;
+use Modules\Geo\Support\GeoApiEndpoints;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -20,7 +21,7 @@ class GetAddressFromBingMapsAction
 {
     use QueueableAction;
 
-    private const string BASE_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
+    private const string BASE_URL = GeoApiEndpoints::BING_LOCATIONS;
 
     /**
      * Ottiene l'indirizzo da coordinate geografiche.

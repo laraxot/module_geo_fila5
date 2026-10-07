@@ -81,9 +81,9 @@ laravel/.ai/guidelines/
 **SEMPRE DRY + KISS + SOLID + ROBUST + INTELLIGENT + LARAXOT!**
 
 ## Collegamenti
-- [Testing Priority Rule](testing-priority-rule.md)
-- [Model Testing Philosophy](model-testing-philosophy.md)
-- [No RefreshDatabase Rule](no-refresh-database-rule.md)
+- [Testing Priority Rule](testing/testing-priority-rule.md)
+- [Model Testing Philosophy](models/model-testing-philosophy.md)
+- [No RefreshDatabase Rule](testing/no-refresh-database-rule.md)
 - [Laraxot Framework](../../laravel/modules/xot/docs/laraxot-framework.md)
 
 ---

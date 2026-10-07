@@ -57,6 +57,13 @@ it('uses decimal format as default', function (): void {
 
 it('throws exception for unsupported format', function (): void {
     $action = new FormatCoordinatesAction();
+
+    try {
+        $action->execute(45.4642, 9.1900, 'unsupported');
+        Assert::fail('Expected InvalidArgumentException was not thrown');
+    } catch (\InvalidArgumentException $exception) {
+        Assert::assertSame('Formato non supportato', $exception->getMessage());
+    }
 });
 
 it('handles edge case coordinates', function (): void {
