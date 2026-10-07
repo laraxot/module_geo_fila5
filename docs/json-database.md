@@ -3,7 +3,7 @@ title: "json database"
 type: note
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-06
 qmd: "json database"
 issues: []
 discussions: []
@@ -280,3 +280,32 @@ class GeoDataValidator
 - [Documentazione Squire](../../geo/project_docs/squire-integration.md)
 - [Best Practices Filament](../../../../docs/project/filament-best-practices.md)
 - [Clean Code](../../../../docs/project/clean-code.md) 
+
+## Aggiornamento 2026-10-06: configurazione e validazione condivise
+
+Le classi che leggono il JSON (`LoadGeoDataAction`, `Get{Regions,Provinces,Cities,Cap}Action`, `LoadGeoHierarchyAction`,
+`GeoDataService`) non duplicano piu' percorso/TTL/chiavi di cache: usano `Modules\Geo\Support\GeoDataConfig`
+(`JSON_PATH`, `CACHE_TTL`, `CACHE_KEY_REGIONS|PROVINCES|CITIES|CAP`, i pattern con `%s` si espandono con `sprintf`).
+`ClearGeoDataCacheAction` usa la stessa chiave regioni.
+
+Le regole di validazione stanno in un solo posto, `GeoDataValidationRules::RULES` e `::MESSAGES`
+(`public const array`), riusate da `GeoDataValidator` e `ValidateGeoDataIntegrityAction`
+(lo snippet `GeoDataValidator` qui sopra e' una versione didattica semplificata).
+
+Tipi di ritorno reali (prima documentati in modo errato come lista di `{name, code}`):
+
+| Metodo | Ritorno |
+|--------|---------|
+| regioni (`getRegions`, `executeRegions`, `GetRegionsAction`) | `Collection<string, string>` mappa codice => nome |
+| province | `Collection<int, array{name: string, code: string}>` |
+| citta' (`getCities`, `executeCities`, `GetCitiesAction`) | `Collection<string, string>` mappa codice => nome |
+
+Le closure passate a `Cache::remember()` delegano a metodi privati con `@return` preciso: la closure con tipo nativo
+`Collection` viene letta da PHPStan come `Collection<int|string, mixed>` e, per l'invarianza della chiave, rifiuta i
+ritorni piu' specifici.
+
+> Attenzione (decisione aperta): `resources/json/comuni.json` oggi e' una lista piatta di comuni (usata dai modelli
+> Sushi), non l'oggetto `{ "regions": [...] }` che le Actions `GeoData/*` e `GeoDataService` validano. Con il file
+> attuale `LoadGeoDataAction` lancia "Il file JSON dei comuni non e' valido". Nessun chiamante fuori dal modulo le usa
+> (verificato con grep su `Modules` e `Themes`): decidere se allineare il file/le Actions o dismetterle.
+

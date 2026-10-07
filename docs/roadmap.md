@@ -21,14 +21,14 @@ discussions: []
 
 ## Legacy / existing roadmap docs
 
-- [phpstan-bing-maps-action-fix-roadmap.md](phpstan-bing-maps-action-fix-roadmap.md)
-- [phpstan-error-resolution-roadmap.md](phpstan-error-resolution-roadmap.md)
-- [phpstan-errors-resolution-roadmap.md](phpstan-errors-resolution-roadmap.md)
-- [phpstan-errors-roadmap-2026-01-12.md](phpstan-errors-roadmap-2026-01-12.md)
-- [phpstan-errors-roadmap.md](phpstan-errors-roadmap.md)
-- [phpstan-fixes-roadmap.md](phpstan-fixes-roadmap.md)
-- [phpstan-roadmap-geo.md](phpstan-roadmap-geo.md)
-- [phpstan-roadmap.md](phpstan-roadmap.md)
+- [phpstan-bing-maps-action-fix-roadmap.md](phpstan/phpstan-bing-maps-action-fix-roadmap.md)
+- [phpstan-error-resolution-roadmap.md](phpstan/phpstan-error-resolution-roadmap.md)
+- [phpstan-errors-resolution-roadmap.md](phpstan/phpstan-errors-resolution-roadmap.md)
+- [phpstan-errors-roadmap-2026-01-12.md](phpstan/phpstan-errors-roadmap-2026-01-12.md)
+- [phpstan-errors-roadmap.md](phpstan/phpstan-errors-roadmap.md)
+- [phpstan-fixes-roadmap.md](phpstan/phpstan-fixes-roadmap.md)
+- [phpstan-roadmap-geo.md](phpstan/phpstan-roadmap-geo.md)
+- [phpstan-roadmap.md](phpstan/phpstan-roadmap.md)
 - [roadmap/00-index.md](roadmap/00-index.md)
 - [roadmap/00-overview.md](roadmap/00-overview.md)
 - [roadmap/01-current-state.md](roadmap/01-current-state.md)

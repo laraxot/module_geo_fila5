@@ -410,9 +410,13 @@ describe('Geocoding Business Logic', function () {
 
             $isExpired = $cacheEntry['expires_at'] < time();
             $isRecentEnough = (time() - $cacheEntry['cached_at']) < (86400 * 90);
+            $isSameAddress = $cacheEntry['address'] === italianAddressFixture();
+            $hasUsableResult = isset($cacheEntry['result']['latitude'], $cacheEntry['result']['longitude']);
 
             Assert::assertFalse($isExpired);
             Assert::assertTrue($isRecentEnough);
+            Assert::assertTrue($isSameAddress);
+            Assert::assertTrue($hasUsableResult);
         });
     });
 });

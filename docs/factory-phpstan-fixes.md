@@ -76,5 +76,5 @@ return [
 
 - [Geo Module Documentation](../readme.md)
 - [Factory Pattern Guidelines](../../../../docs/factory-pattern.md)
-- [PHPStan Compliance Guide](../phpstan-fixes.md)
+- [PHPStan Compliance Guide](../phpstan/phpstan-fixes.md)
 

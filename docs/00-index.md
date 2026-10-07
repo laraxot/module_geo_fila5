@@ -3,7 +3,7 @@ title: "00 index"
 type: note
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-06
 qmd: "00 index"
 issues: []
 discussions: []
@@ -40,6 +40,7 @@ Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider 
 - ✅ **[PHPStan Level 10](./phpstan-level10-compliance.md)** - Conformità e fix specifici per Geo.
 - 🔬 **[Testing Guidelines](./testing-guidelines.md)** - Strategie di test geografico.
 - 🧹 **[PHPMD & Complexity](./cyclomatic-complexity-report.md)** - Analisi della pulizia del codice.
+- 🧼 **[PHPStan cleanup 2026-10-06](./stories/2026-10-06-phpstan-cleanup-geo.story.md)** - Costanti tipizzate/centralizzate (`GeoApiEndpoints`, `GeoDataConfig`), test senza assert; [dev](./stories/2026-10-06-phpstan-cleanup-geo.dev.md).
 
 ## 📦 **Pacchetti Composer**
 - [Riferimento](../../../../docs/composer-packages-reference.md) | [Inventario 312 pacchetti](../../../../docs/architecture/composer-packages-full-inventory.md) - Nessuna dipendenza diretta; usa Xot, Sushi (via Xot)

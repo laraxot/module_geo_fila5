@@ -357,7 +357,7 @@ git log --oneline --grep="conflict" | head -20
 
 ## Collegamenti
 
-- [Architettura Testing Principale](testing-architecture-overview.md)
+- [Architettura Testing Principale](testing/testing-architecture-overview.md)
 - [Modulo Geo Testing](../../laravel/modules/geo/docs/testing.md)
 - [Modulo <nome modulo> Testing](../../laravel/modules/<nome modulo>/docs/testing-architecture.md)
 - [Best Practices Testing](../../laravel/modules/<nome modulo>/docs/testing-best-practices.md)

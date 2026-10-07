@@ -12,6 +12,7 @@ use Modules\Geo\Datas\GoogleMaps\GoogleMapAddressComponentData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResponseData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResultData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
+use Modules\Geo\Support\GeoApiEndpoints;
 use Spatie\LaravelData\DataCollection;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -22,7 +23,7 @@ final class GetAddressFromGoogleMapsAction
 {
     use QueueableAction;
 
-    private const string BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    private const string BASE_URL = GeoApiEndpoints::GOOGLE_GEOCODING;
 
     /**
      * @throws GoogleMapsApiException Se la richiesta fallisce o i dati non sono validi

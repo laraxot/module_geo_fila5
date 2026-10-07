@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\RateLimiter;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
+use Modules\Geo\Support\GeoApiEndpoints;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -19,11 +20,11 @@ class GoogleMapsService
 {
     use QueueableAction;
 
-    private const string GEOCODING_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    private const string GEOCODING_URL = GeoApiEndpoints::GOOGLE_GEOCODING;
 
-    private const string DISTANCE_MATRIX_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+    private const string DISTANCE_MATRIX_URL = GeoApiEndpoints::GOOGLE_DISTANCE_MATRIX;
 
-    private const string ELEVATION_URL = 'https://maps.googleapis.com/maps/api/elevation/json';
+    private const string ELEVATION_URL = GeoApiEndpoints::GOOGLE_ELEVATION;
 
     /**
      * Ottiene la chiave API dal file di configurazione.

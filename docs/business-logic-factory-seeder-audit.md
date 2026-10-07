@@ -405,9 +405,9 @@ Analizzare tutti i moduli del progetto <nome progetto>, verificare l'esistenza d
 
 ## 📚 **Documentazione Correlata**
 
-- [PHPStan Analysis Business Logic](../phpstan-analysis-business-logic.md)
+- [PHPStan Analysis Business Logic](../phpstan/phpstan-analysis-business-logic.md)
 - [Factory Best Practices](../factory-best-practices.md)
-- [Testing Business Behavior Supreme Rule](../testing-business-behavior-supreme-rule.md)
+- [Testing Business Behavior Supreme Rule](../testing/testing-business-behavior-supreme-rule.md)
 - [Modules Factory Seeder Analysis](../modules-factory-seeder-analysis.md)
 
 ## 🏆 **Risultati Attesi**

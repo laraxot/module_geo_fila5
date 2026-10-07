@@ -1,114 +1,31 @@
 ---
-title: "git conflict resolution"
+title: "git conflict resolution 2026 07 31"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "git conflict resolution"
+qmd: "git conflict resolution 2026 07 31"
 issues: []
 discussions: []
 ---
 
-# Risoluzione dei Conflitti Git
+# Audit collisioni Git committate in bashscripts
 
-## Panoramica
+Risoluzione deterministica per singolo blocco: lato non vuoto, superset, metadata `updated` più recente, quindi HEAD come spareggio conservativo.
 
-Questo documento descrive gli strumenti e le procedure per la risoluzione dei conflitti git nel progetto.
-
-## Collegamenti
-- [Documentazione Git](../../docs/git.md)
-- [Script Git](git_scripts.md)
-- [Best Practices Git](git_best_practices.md)
-
-## Script di Risoluzione
-
-### resolve_conflicts.sh
-Lo script principale per la risoluzione dei conflitti offre due modalità:
-
-1. **Modalità Manuale** (default)
-   ```bash
-   ./bashscripts/utils/resolve_conflicts.sh
-   ```
-   - Rimuove i marker di conflitto
-   - Mantiene il contenuto più recente
-   - Crea backup dei file modificati
-
-2. **Modalità AI** (richiede Ollama)
-   ```bash
-   ./bashscripts/utils/resolve_conflicts.sh --ai
-   ```
-   - Usa CodeLLama per analizzare e risolvere i conflitti
-   - Ottimizza il codice durante la risoluzione
-   - Fallback automatico alla modalità manuale in caso di errori
-
-### Compatibilità
-Per compatibilità con gli script esistenti, sono disponibili i seguenti link simbolici:
-- `bashscripts/git/resolve_git_conflict.sh` → `../utils/resolve_conflicts.sh`
-
-## Best Practices
-
-### Prima della Risoluzione
-1. Eseguire backup del repository
-2. Verificare lo stato di git
-3. Aggiornare il branch locale
-
-### Durante la Risoluzione
-1. Usare la modalità AI solo per conflitti complessi
-2. Verificare i backup creati dallo script
-3. Testare il codice dopo la risoluzione
-
-### Dopo la Risoluzione
-1. Eseguire i test automatizzati
-2. Verificare la funzionalità
-3. Committare le modifiche
-
-## Casi d'Uso
-
-### Conflitti Semplici
-Per conflitti di formattazione o semplici:
-```bash
-./bashscripts/utils/resolve_conflicts.sh --no-ai
-```
-
-### Conflitti Complessi
-Per conflitti che richiedono analisi del codice:
-```bash
-./bashscripts/utils/resolve_conflicts.sh --ai
-```
-
-## Risoluzione Manuale
-Se gli script automatici non sono sufficienti:
-
-1. Identificare i file con conflitti:
-   ```bash
-   git status
-   ```
-
-2. Per ogni file:
-   - Aprire il file
-   - Cercare i marker di conflitto
-   - Scegliere la versione corretta
-   - Rimuovere i marker
-
-3. Testare le modifiche:
-   ```bash
-   ./vendor/bin/phpunit
-   ```
-
-## Prevenzione
-
-### Strategie
-1. Pull frequenti dal repository remoto
-2. Commit atomici e descrittivi
-3. Branch feature di breve durata
-
-### Configurazione Git
-```bash
-git config merge.ff only
-git config pull.rebase true
-```
-
-## Vedi Anche
-- [Workflow Git](git_workflow.md)
-- [Gestione Branch](git_branching.md)
-- [Monitoraggio Conflitti](conflict_monitoring.md) 
+| File | Blocchi | Decisioni | SHA-256 prima → dopo |
+|---|---:|---|---|
+| `laravel/Modules/Geo/app/Models/Traits/HasAddress.php` | 6 | shorter_tiebreak=6 | `0de689907f92` → `888d62c34517` |
+| `laravel/Modules/Geo/app/Models/Traits/HasPlaceTrait.php` | 1 | incoming_nonempty=1 | `49f2b03850f5` → `024ab2845eec` |
+| `laravel/Modules/Geo/app/Traits/HasAddresses.php` | 1 | shorter_tiebreak=1 | `b28e63f50a57` → `ec5e7de9b772` |
+| `laravel/Modules/Geo/docs/chat/handoff-phpstan-modules-zero-2026-07-07.md` | 1 | shorter_tiebreak=1 | `8036fd81f10b` → `eeef67f6a04a` |
+| `laravel/Modules/Geo/docs/index.md` | 2 | shorter_tiebreak=2 | `9ac4b2742d36` → `8ec4ebae1408` |
+| `laravel/Modules/Geo/docs/install/install-from-zero.md` | 1 | shorter_tiebreak=1 | `cfefde31cb78` → `0084c3869301` |
+| `laravel/Modules/Geo/docs/raw/history/docs-update-complete.md` | 1 | shorter_tiebreak=1 | `58caf6914cf9` → `b98a4d856a64` |
+| `laravel/Modules/Geo/docs/raw/history/report.md` | 3 | shorter_tiebreak=3 | `b6046b2bc16d` → `834e6c7503ad` |
+| `laravel/Modules/Geo/docs/raw/history/session-summary.md` | 1 | shorter_tiebreak=1 | `9bd90c4f6331` → `eaa489348b01` |
+| `laravel/Modules/Geo/docs/wiki/index.md` | 1 | head_nonempty=1 | `2bfd25035797` → `76402973a210` |
+| `laravel/Modules/Geo/tests/Playwright/marker-type-icon-parity.spec.js` | 3 | shorter_tiebreak=3 | `fc4854bf67bb` → `84e064280ec3` |
+| `laravel/Modules/Geo/tests/Unit/Traits/HasAddressTest.php` | 1 | shorter_tiebreak=1 | `06363879b566` → `300bd9c17e4f` |
+| `laravel/Modules/Geo/tests/Unit/Traits/TraitsTest.php` | 1 | shorter_tiebreak=1 | `2ba727e5e293` → `f7d232765928` |
+| `laravel/Modules/Geo/tests/playwright/marker-type-icon-parity.spec.js` | 3 | shorter_tiebreak=3 | `fc4854bf67bb` → `84e064280ec3` |

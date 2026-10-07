@@ -3,7 +3,7 @@ title: "geocoding"
 type: note
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-06
 qmd: "geocoding"
 issues: []
 discussions: []
@@ -445,3 +445,20 @@ Oltre a Google Maps, è possibile implementare altri provider:
 4. **TomTom** - Focus sulla precisione
 
 Il servizio dovrebbe essere configurabile per passare facilmente da un provider all'altro.
+
+## Endpoint dei provider (fonte unica)
+
+Gli URL condivisi da piu' Actions/Adapters/Services vivono in `Modules\Geo\Support\GeoApiEndpoints`
+(costanti `public const string`): Google (`GOOGLE_GEOCODING`, `GOOGLE_DISTANCE_MATRIX`, `GOOGLE_ELEVATION`,
+`GOOGLE_DIRECTIONS`, `GOOGLE_TIMEZONE`), Nominatim (`NOMINATIM_BASE/SEARCH/REVERSE/LOOKUP`), Mapbox
+(`MAPBOX_PLACES`), Bing (`BING_LOCATIONS`).
+
+- Le classi che prima duplicavano il letterale (`GoogleMapsService`, `GoogleMapsAction`, `GoogleMapsHttpAction`,
+  `GoogleMapsClient`, le Actions `Nominatim/*`, `Mapbox/*`, `Bing/*`, `GoogleMaps/*`) mantengono la costante locale
+  (`GEOCODING_URL`, `API_URL`, `BASE_URL`: i test la leggono via reflection) ma come alias tipizzato:
+  `private const string GEOCODING_URL = GeoApiEndpoints::GOOGLE_GEOCODING;`.
+- Gli endpoint usati da una sola classe (OpenCage, Here, LocationIQ, Photon, Open-Elevation, ip-api, OpenWeather,
+  GeoJSON downloader) restano costanti locali tipizzate.
+- Nuovo provider condiviso da 2+ classi: aggiungere la costante in `GeoApiEndpoints`, non copiare l'URL.
+- Nota sicurezza: l'endpoint Bing e' `http://` (non TLS) come nel codice originale; da valutare il passaggio a `https://`.
+
