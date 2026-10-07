@@ -29,6 +29,9 @@ export function renderControls(ctx) {
     return html`
         <div class="layer-controls-overlay">
             ${OVERLAY_PARTS.map((renderPart) => renderPart(ctx))}
+            ${ctx._locationError ? html`
+                <p class="map-control-status" role="status">${ctx._locationError}</p>
+            ` : ''}
         </div>
     `;
 }

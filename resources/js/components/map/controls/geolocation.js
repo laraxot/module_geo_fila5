@@ -5,7 +5,22 @@ import { scheduleMapInvalidate } from '../resize-after-action.js';
 export function requestGeolocation(ctx, options = {}) {
     const { showLoading = true } = options;
 
-    if (!navigator.geolocation) return;
+    // Il browser chiede la posizione solo in HTTPS o su localhost.
+    const protocol = window.location?.protocol;
+    const hostname = window.location?.hostname;
+    const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '[::1]';
+
+    if (protocol !== 'https:' && !isLocalhost) {
+        ctx._locationError = 'Apri questa pagina in HTTPS per usare la posizione.';
+        ctx.requestUpdate?.();
+        return;
+    }
+
+    if (!navigator.geolocation) {
+        ctx._locationError = 'Geolocalizzazione non disponibile su questo browser.';
+        ctx.requestUpdate?.();
+        return;
+    }
     if (ctx.isLocating) return;
     if (ctx._geolocRequested && !showLoading) return;
 
@@ -26,6 +41,8 @@ export function requestGeolocation(ctx, options = {}) {
             }
 
             ctx.geolocated = true;
+            ctx._geolocRequested = false;
+            ctx._locationError = '';
 
             if (showLoading) ctx.isLocating = false;
             ctx.requestUpdate?.();
@@ -37,11 +54,23 @@ export function requestGeolocation(ctx, options = {}) {
                 scheduleMapInvalidate(ctx, [150]);
             }
         },
-        () => {
+        (error) => {
             ctx._geolocRequested = false;
             if (showLoading) ctx.isLocating = false;
-            ctx.requestUpdate?.();
             ctx.geolocated = false;
+            if (error?.code !== 1) {
+                ctx._locationError = 'Non è stato possibile rilevare la posizione. Riprova.';
+                ctx.requestUpdate?.();
+                return;
+            }
+            // Permesso negato: se il sito è bloccato il browser non mostra più il prompt, serve dirlo
+            const ask = navigator.permissions?.query({ name: 'geolocation' });
+            (ask || Promise.reject()).then((res) => res.state === 'denied').catch(() => false).then((isBlocked) => {
+                ctx._locationError = isBlocked
+                    ? 'Posizione bloccata per questo sito: clicca il lucchetto accanto all’indirizzo, imposta Posizione su Consenti e ricarica la pagina.'
+                    : 'Consenti l’accesso alla posizione nel browser e riprova.';
+                ctx.requestUpdate?.();
+            });
         },
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 }
     );
