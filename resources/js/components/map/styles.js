@@ -89,6 +89,18 @@ export const mapStyles = css`
         pointer-events: auto !important;
     }
 
+    .map-control-status {
+        max-width: 15rem;
+        margin: 0;
+        padding: .5rem .65rem;
+        border-radius: .5rem;
+        background: #fff;
+        color: #17324d;
+        font-size: .8rem;
+        line-height: 1.25;
+        box-shadow: 0 4px 14px rgba(23, 50, 77, .16);
+    }
+
     .ctrl-btn {
         width: 2.75rem;
         height: 2.75rem;
