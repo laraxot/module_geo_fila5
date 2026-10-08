@@ -7,6 +7,12 @@ links: {github_issue: #XXX, discussion: #XXX}
 
 ## Decisions
 
+### 2026-10-08: Tre pagine View riportate alla linea buona per l'avvio con Xot riallineato
+- **Choose**: Riportare a `cd999d97e` (linea buona, 07/10 06:37) `AddressResource/Pages/ViewAddress.php`, `LocationResource/Pages/ViewLocation.php`, `Resources/Pages/ViewLocation.php`.
+- **Over**: Aggiungere di nuovo `getInfolistSchema()` alla classe base di Xot.
+- **Because**: Dopo il riallineamento di Xot a `cadb1578e` l'app non partiva: le tre pagine, ancora alla copia del 28/09 portata dal merge `10076511`, ridefinivano `getInfolistSchema()` con `#[\Override]`, metodo assente da `XotBaseViewRecord` su `master`, nello stato del 06/10 e nella linea buona di Geo. Nessun commit dopo il merge tocca i tre file.
+- **Aperto**: il resto di Geo ancora alla copia del 28/09 (vedi voce sotto) va riallineato con Marco.
+
 ### 2026-10-08: Ripristino parziale dei file regrediti dal merge `10076511` del 07/10
 - **Choose**: Riportare alla linea buona (`cd999d97e`, 07/10 06:37) `Models/Address`, `Models/Traits/GeoTrait` (blob `2ae1d61a`, con il fix di `7e2fb091` su `scopeWithDistance`), `Models/Traits/HasAddress`, `Adapters/HereClient`, `tests/TestCase.php`, `tests/Unit/Traits/{HasAddressTest,TraitsTest}.php`, `tests/Fixtures/Traits/HasAddressTestModel.php`; eliminare i file assenti sulla linea buona: `app/Traits/HasAddresses.php`, `tests/Unit/Traits/TestModel.php` e le fixture `*PhpstanProbe*` / `HasAddressesTestModel`.
 - **Over**: Ripristinare tutto il modulo, o tenere lo stato attuale.
