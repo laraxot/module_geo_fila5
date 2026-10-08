@@ -1,9 +1,11 @@
 import { html } from 'lit';
 import { geoIcon } from '../heroicons.js';
 import { scheduleMapInvalidate } from '../resize-after-action.js';
+import { getMapLabels } from '../labels.js';
 
 export function requestGeolocation(ctx, options = {}) {
     const { showLoading = true } = options;
+    const t = { ...getMapLabels(), ...(ctx.labels || {}) };
 
     // Il browser chiede la posizione solo in HTTPS o su localhost.
     const protocol = window.location?.protocol;
@@ -11,13 +13,13 @@ export function requestGeolocation(ctx, options = {}) {
     const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '[::1]';
 
     if (protocol !== 'https:' && !isLocalhost) {
-        ctx._locationError = 'Apri questa pagina in HTTPS per usare la posizione.';
+        ctx._locationError = t.geo_insecure;
         ctx.requestUpdate?.();
         return;
     }
 
     if (!navigator.geolocation) {
-        ctx._locationError = 'Geolocalizzazione non disponibile su questo browser.';
+        ctx._locationError = t.geo_unsupported;
         ctx.requestUpdate?.();
         return;
     }
@@ -59,7 +61,7 @@ export function requestGeolocation(ctx, options = {}) {
             if (showLoading) ctx.isLocating = false;
             ctx.geolocated = false;
             if (error?.code !== 1) {
-                ctx._locationError = 'Non è stato possibile rilevare la posizione. Riprova.';
+                ctx._locationError = t.geo_failed;
                 ctx.requestUpdate?.();
                 return;
             }
@@ -67,8 +69,8 @@ export function requestGeolocation(ctx, options = {}) {
             const ask = navigator.permissions?.query({ name: 'geolocation' });
             (ask || Promise.reject()).then((res) => res.state === 'denied').catch(() => false).then((isBlocked) => {
                 ctx._locationError = isBlocked
-                    ? 'Posizione bloccata per questo sito: clicca il lucchetto accanto all’indirizzo, imposta Posizione su Consenti e ricarica la pagina.'
-                    : 'Consenti l’accesso alla posizione nel browser e riprova.';
+                    ? t.geo_blocked
+                    : t.geo_denied;
                 ctx.requestUpdate?.();
             });
         },
