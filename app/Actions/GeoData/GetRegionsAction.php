@@ -19,18 +19,27 @@ class GetRegionsAction
 
     public const int CACHE_TTL = 86400;
 
-    /**
-     * @return Collection<int, array{name: string, code: string}>
-     */
+    /** @return Collection<string, string> keyed by region code */
     public function execute(): Collection
     {
-        /** @var Collection<int, array{name: string, code: string}> $result */
+        /** @var array<string, string> $result */
         $result = Cache::remember(
             self::CACHE_KEY,
             self::CACHE_TTL,
-            fn (): Collection => app(LoadGeoDataAction::class)->execute()->pluck('name', 'code'),
+            static fn (): array => app(LoadGeoDataAction::class)->execute()
+                ->mapWithKeys(static function (array $region): array {
+                    $name = $region['name'] ?? null;
+                    $code = $region['code'] ?? null;
+
+                    if (! is_string($name) || ! is_string($code)) {
+                        throw new \UnexpectedValueException('Geo regions must contain string name and code.');
+                    }
+
+                    return [$code => $name];
+                })
+                ->all(),
         );
 
-        return $result;
+        return new Collection($result);
     }
 }

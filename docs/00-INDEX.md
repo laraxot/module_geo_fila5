@@ -40,6 +40,7 @@ discussions: []
 ## Actions
 
 - [Da Services a Queueable Actions](./wiki/concepts/no-app-support-queueable-actions.md) — contratto `QueueableAction`, `execute()` e composizione tra use case.
+- [Geo no-services architecture](./wiki/concepts/geo-no-services-migration.md) — responsabilità migrate da `app/Services` ad Actions e Adapters.
 
 
 | Action | Path | Descrizione |

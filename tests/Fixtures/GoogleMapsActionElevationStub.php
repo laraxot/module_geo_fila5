@@ -9,7 +9,7 @@ use Modules\Geo\Actions\GoogleMapsAction;
 /**
  * @internal
  */
-final class GoogleMapsServiceElevationStub extends GoogleMapsAction
+final class GoogleMapsActionElevationStub extends GoogleMapsAction
 {
     /**
      * @param array<string, mixed> $elevationResponse

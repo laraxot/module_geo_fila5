@@ -8,8 +8,8 @@ namespace Modules\Geo\Support;
  * Configurazione condivisa dei dati geografici (JSON comuni + cache).
  *
  * Unica fonte per sorgente JSON, TTL e chiavi di cache usati da
- * LoadGeoDataAction, Get{Regions,Provinces,Cities,Cap}Action,
- * LoadGeoHierarchyAction e GeoDataService.
+ * LoadGeoDataAction, Get{Regions,Provinces,Cities,Cap}Action e
+ * LoadGeoHierarchyAction.
  */
 final class GeoDataConfig
 {
