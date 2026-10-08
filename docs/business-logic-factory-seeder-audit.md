@@ -1,3 +1,14 @@
+---
+title: "business logic factory seeder audit"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "business logic factory seeder audit"
+issues: []
+discussions: []
+---
+
 # Business Logic Factory & Seeder Audit Completo
 
 ## 🎯 **Obiettivo**
@@ -412,6 +423,14 @@ Al completamento di questo audit:
 
 ---
 
+title: "business logic factory seeder audit"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "business logic factory seeder audit"
+issues: []
+discussions: []
 **Stato**: <nome progetto> completato, altri moduli in corso
 **Stato**: <nome progetto> completato, altri moduli in corso
 **Priorità**: User e Geo Factory (ALTA)

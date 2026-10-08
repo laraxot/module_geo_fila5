@@ -1,3 +1,14 @@
+---
+title: "getting started"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "getting started"
+issues: []
+discussions: []
+---
+
 # 🚀 Guida Rapida - Entry Point PTVX
 
 > **BENVENUTO in PTVX!** Questa è la tua guida di partenza per iniziare rapidamente.
@@ -20,6 +31,14 @@ Quando sei bloccato, consulta [Quick Reference](./../quick-reference/errors.md) 
 
 ---
 
+title: "getting started"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "getting started"
+issues: []
+discussions: []
 ## 📂 Navigazione Principale
 
 ### 🏗️ Architettura e Struttura

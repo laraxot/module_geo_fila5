@@ -1,3 +1,14 @@
+---
+title: "sintassi array correzione"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "sintassi array correzione"
+issues: []
+discussions: []
+---
+
 # Correzione Sintassi Obsoleta Array() - Modulo Geo
 
 **Data**: 6 Gennaio 2025  
@@ -132,5 +143,13 @@ php -l laravel/Modules/Geo/lang/it/address.php
 
 ---
 
+title: "sintassi array correzione"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "sintassi array correzione"
+issues: []
+discussions: []
 **Ultimo aggiornamento**: 6 Gennaio 2025  
 **Autore**: AI Assistant  

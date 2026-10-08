@@ -1,3 +1,14 @@
+---
+title: "stabilization roadmap"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "stabilization roadmap"
+issues: []
+discussions: []
+---
+
 # Stabilization Roadmap - Geo Module
 
 ## Context & Philosophy

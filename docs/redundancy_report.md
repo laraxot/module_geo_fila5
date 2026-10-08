@@ -1,3 +1,14 @@
+---
+title: "redundancy report"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "redundancy report"
+issues: []
+discussions: []
+---
+
 # Analisi di Codice Ridondante
 
 ## Sommario
@@ -5,6 +16,14 @@ Questo documento riassume le principali ridondanze rilevate nei **moduli** e **t
 
 ---
 
+title: "redundancy report"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "redundancy report"
+issues: []
+discussions: []
 ## 1. Classi Duplicate più Frequenti
 | Classe | Numero di occorrenze | Percorsi (esempi) |
 |--------|----------------------|-------------------|

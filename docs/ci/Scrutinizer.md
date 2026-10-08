@@ -1,10 +1,13 @@
 ---
-title: "Rimando a scrutinizer.md"
-description: "Documento unificato: il contenuto canonico vive in scrutinizer.md."
-status: merged
-tags: [merge, duplicato, case-only]
+title: "Scrutinizer"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "Scrutinizer"
+issues: []
+discussions: []
 ---
 
-# Documento unificato
+https://scrutinizer-ci.com/
 
-Questo file era un duplicato esatto che differiva solo per maiuscole/minuscole, in violazione della regola no-case-only-variations. Il contenuto canonico si trova in [scrutinizer.md](./scrutinizer.md).

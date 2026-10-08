@@ -1,3 +1,14 @@
+---
+title: "laravel boost"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "laravel boost"
+issues: []
+discussions: []
+---
+
 # Laravel Boost Guidelines
 
 ## 🚀 Quick Start
@@ -124,5 +135,13 @@ protected function isAccessible(User $user, ?string $path = null): bool
 
 ---
 
+title: "laravel boost"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "laravel boost"
+issues: []
+discussions: []
 **Version**: 2.0 (Refactor DRY + KISS)  
 **File**: laravel-boost.md - Laravel Boost specific guidelines

@@ -1,3 +1,14 @@
+---
+title: "filament class"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "filament class"
+issues: []
+discussions: []
+---
+
 # Filament Class
 
 non estendiamo mai classi di filament direttamente , estendiamo sempre una classe astratta con lo stesso nome con il prefisso XotBase , questa classe astratta rispetta anche il vecchio percorso percio' 

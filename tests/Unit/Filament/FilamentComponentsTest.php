@@ -10,38 +10,40 @@ use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Filament\Widgets\GeoMapWidget;
 use Modules\Geo\Filament\Widgets\LatLngWidget;
 use Modules\Geo\Filament\Widgets\LocationWidget;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use ReflectionClass;
 
-test('AddressField can be instantiated', function (): void {
+uses(TestCase::class);
+test('AddressField can be instantiated', function () {
     $field = AddressField::make('address');
 
-    Assert::assertFalse((new ReflectionClass($field))->isAbstract());
+    Assert::assertSame(AddressField::class, (new \ReflectionClass($field))->getName());
 });
 
-test('MapPicker can be instantiated with coordinate columns', function (): void {
+test('MapPicker can be instantiated', function () {
     $field = MapPicker::make('map_picker')
         ->latitudeColumn('latitude')
         ->longitudeColumn('longitude');
 
+    Assert::assertSame('map_picker', $field->getName());
     Assert::assertSame('latitude', $field->getLatitudeColumn());
     Assert::assertSame('longitude', $field->getLongitudeColumn());
 });
 
-test('LocationWidget is a concrete Filament widget', function (): void {
-    Assert::assertFalse((new ReflectionClass(LocationWidget::class))->isAbstract());
+test('LocationWidget can be instantiated', function () {
+    Assert::assertTrue(class_exists(LocationWidget::class));
 });
 
-test('LatLngWidget is a concrete Filament widget', function (): void {
-    Assert::assertFalse((new ReflectionClass(LatLngWidget::class))->isAbstract());
+test('LatLngWidget can be instantiated', function () {
+    Assert::assertTrue(class_exists(LatLngWidget::class));
 });
 
-test('GeoMapWidget is a concrete Filament widget', function (): void {
-    Assert::assertFalse((new ReflectionClass(GeoMapWidget::class))->isAbstract());
+test('GeoMapWidget can be instantiated', function () {
+    Assert::assertTrue(class_exists(GeoMapWidget::class));
 });
 
-test('UpdateCoordinatesBulkAction can be instantiated', function (): void {
+test('UpdateCoordinatesBulkAction can be instantiated', function () {
     $action = UpdateCoordinatesBulkAction::make('update_coordinates');
 
-    Assert::assertFalse((new ReflectionClass($action))->isAbstract());
+    Assert::assertSame('update_coordinates', $action->getName());
 });

@@ -1,3 +1,14 @@
+---
+title: "conflict resolutiones"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "conflict resolutiones"
+issues: []
+discussions: []
+---
+
 # Risoluzione Conflitti Git - Modulo Geo
 
 ## Panoramica

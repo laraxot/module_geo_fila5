@@ -1,3 +1,14 @@
+---
+title: "overview"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "overview"
+issues: []
+discussions: []
+---
+
 # Overview e Technology Stack
 
 This documentation provides guidance when working with code in this repository.
@@ -45,5 +56,13 @@ Modules/{ModuleName}/
 
 ---
 
+title: "overview"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "overview"
+issues: []
+discussions: []
 **Version**: 2.0 (Refactor DRY + KISS)  
 **File**: overview.md - Overview and quick start

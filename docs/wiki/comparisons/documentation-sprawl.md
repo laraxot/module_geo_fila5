@@ -1,4 +1,7 @@
 ---
+qmd: "documentation sprawl"
+issues: []
+discussions: []
 title: "Documentation Sprawl Analysis — Geo Module"
 type: comparison
 tags: [geo, documentation, redundancy, sprawl, dry]

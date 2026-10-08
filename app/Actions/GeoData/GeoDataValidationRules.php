@@ -13,7 +13,7 @@ final class GeoDataValidationRules
 {
     use QueueableAction;
 
-    /** @var array<string, string> */
+    /** Regole di validazione della struttura regioni/province/città. */
     public const array RULES = [
         'regions' => 'required|array',
         'regions.*.name' => 'required|string',
@@ -27,7 +27,7 @@ final class GeoDataValidationRules
         'regions.*.provinces.*.cities.*.cap' => 'required|string|size:5',
     ];
 
-    /** @var array<string, string> */
+    /** Messaggi di errore personalizzati per RULES. */
     public const array MESSAGES = [
         'regions.required' => 'Il file JSON deve contenere un array di regioni',
         'regions.array' => 'Le regioni devono essere un array',

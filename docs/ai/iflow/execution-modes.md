@@ -1,7 +1,26 @@
+---
+title: "execution modes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "execution modes"
+issues: []
+discussions: []
+---
+
 # Execution Modes - iFlow CLI
 
 ---
 
+title: "execution modes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "execution modes"
+issues: []
+discussions: []
 ## Panoramica
 
 iFlow CLI supporta 4 modi di esecuzione per adattarsi a diversi scenari di utilizzo.

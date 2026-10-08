@@ -5,22 +5,23 @@ declare(strict_types=1);
 namespace Modules\Geo\Adapters;
 
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
+use Modules\Geo\Support\GeoApiEndpoints;
 
 /**
  * Adapter per le interazioni con l'API di Google Maps (geocoding, distance matrix, elevation).
  */
 class GoogleMapsClient extends GeoHttpClientBase
 {
-    private const string GEOCODING_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    private const string GEOCODING_URL = GeoApiEndpoints::GOOGLE_GEOCODING;
 
-    private const string DISTANCE_MATRIX_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+    private const string DISTANCE_MATRIX_URL = GeoApiEndpoints::GOOGLE_DISTANCE_MATRIX;
 
-    private const string ELEVATION_URL = 'https://maps.googleapis.com/maps/api/elevation/json';
+    private const string ELEVATION_URL = GeoApiEndpoints::GOOGLE_ELEVATION;
 
     /**
-     * @return array<string, mixed>
-     *
      * @throws GoogleMapsApiException
+     *
+     * @return array<string, mixed>
      */
     public function reverseGeocode(float $latitude, float $longitude): array
     {
@@ -36,11 +37,12 @@ class GoogleMapsClient extends GeoHttpClientBase
     }
 
     /**
-     * @param  array<string>  $origins
-     * @param  array<string>  $destinations
-     * @return array<string, mixed>
+     * @param array<string> $origins
+     * @param array<string> $destinations
      *
      * @throws GoogleMapsApiException
+     *
+     * @return array<string, mixed>
      */
     public function getDistanceMatrix(array $origins, array $destinations): array
     {
@@ -58,9 +60,9 @@ class GoogleMapsClient extends GeoHttpClientBase
     }
 
     /**
-     * @return array<string, mixed>
-     *
      * @throws GoogleMapsApiException
+     *
+     * @return array<string, mixed>
      */
     public function getElevation(float $latitude, float $longitude): array
     {

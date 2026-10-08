@@ -1,3 +1,14 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # Code Examples
 
 ## Filament Patterns
@@ -115,7 +126,7 @@ namespace Modules\User\Actions;
 
 use Illuminate\Validation\ValidationException;
 use Modules\User\Datas\UserData;
-use Modules\Xot\Contracts\UserContract;
+use Modules\User\Models\User;
 
 class UpdateUserAction
 {

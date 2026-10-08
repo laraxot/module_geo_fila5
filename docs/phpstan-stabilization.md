@@ -1,3 +1,14 @@
+---
+title: "phpstan stabilization"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan stabilization"
+issues: []
+discussions: []
+---
+
 # PHPStan Stabilization - Geo Module
 
 This document tracks the systematic effort to achieve and maintain PHPStan Level 10 compliance for the Geo module, focusing on type narrowing, static data management, and architectural integrity.
@@ -24,4 +35,12 @@ To satisfy Level 10 requirements for dynamic geographic data, the module employs
 - **Action**: Implemented deep shape definitions for geographic attributes. Standardized return types in `searchByName()` and `getPostalCodeOptions()`.
 
 ---
+title: "phpstan stabilization"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan stabilization"
+issues: []
+discussions: []
 *This document is maintained as a living record of the module's quality status.*

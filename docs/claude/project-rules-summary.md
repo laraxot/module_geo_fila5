@@ -1,3 +1,14 @@
+---
+title: "project rules summary"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "project rules summary"
+issues: []
+discussions: []
+---
+
 # Project Rules Summary - Quick Reference
 
 **Purpose**: Critical rules that must ALWAYS be followed  
@@ -5,6 +16,14 @@
 
 ---
 
+title: "project rules summary"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "project rules summary"
+issues: []
+discussions: []
 ## 🔴 The 7 Cardinal Rules
 
 ### 1. Forward-Only (Git & Migrations)

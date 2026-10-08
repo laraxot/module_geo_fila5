@@ -1,3 +1,14 @@
+---
+title: "guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "guide"
+issues: []
+discussions: []
+---
+
 # 🧭 Navigation Guide - Trova Quello Che Ti Serve
 
 > **GUIDA ALLA NAVIGAZIONE** - Dove trovare ogni argomento nella documentazione PTVX.
@@ -109,6 +120,14 @@ docs/
 
 ---
 
+title: "guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "guide"
+issues: []
+discussions: []
 **💡 Suggerimento**: Usa [Quick Reference](../quick-reference/errors.md) per problemi urgenti!
 
 *Ultimo aggiornamento: Dicembre 2025*

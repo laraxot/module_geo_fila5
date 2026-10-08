@@ -1,4 +1,7 @@
 ---
+qmd: "story 166 second brain ui mcp"
+issues: []
+discussions: []
 title: "BMAD story — second brain UI/UX MCP e prompt compatto"
 type: agent-chat
 tags: [bmad, story, mcp, llm-wiki, ui-tooling]

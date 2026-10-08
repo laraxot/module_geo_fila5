@@ -1,3 +1,14 @@
+---
+title: "documentation policy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "documentation policy"
+issues: []
+discussions: []
+---
+
 # Documentation Policy
 
 ## 📝 Documentation Rules
@@ -78,5 +89,13 @@ Each module should maintain its own detailed documentation in its `docs/` direct
 
 ---
 
+title: "documentation policy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "documentation policy"
+issues: []
+discussions: []
 **Version**: 2.0 (Refactor DRY + KISS)  
 **File**: documentation-policy.md - Documentation standards and policies

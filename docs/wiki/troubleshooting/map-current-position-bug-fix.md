@@ -1,4 +1,7 @@
 ---
+qmd: "map current position bug fix"
+issues: []
+discussions: []
 title: "Map Current Position Bug Fix"
 type: troubleshooting
 confidence: high

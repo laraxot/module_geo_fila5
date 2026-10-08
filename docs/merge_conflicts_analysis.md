@@ -1,3 +1,14 @@
+---
+title: "merge conflicts analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "merge conflicts analysis"
+issues: []
+discussions: []
+---
+
 # Analisi Conflitti di Merge - Modulo Geo
 
 ## Panoramica
@@ -110,4 +121,12 @@ Questo documento elenca tutti i file che contengono conflitti di merge  nel modu
 
 ---
 
+title: "merge conflicts analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "merge conflicts analysis"
+issues: []
+discussions: []
 **Stato**: In corso di analisi 

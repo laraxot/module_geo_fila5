@@ -1,3 +1,14 @@
+---
+title: "common pitfalls"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "common pitfalls"
+issues: []
+discussions: []
+---
+
 # Common Pitfalls
 
 ## ⚠️ Critical Eloquent Property Handling
@@ -175,5 +186,13 @@ if ($temp) {
 
 ---
 
+title: "common pitfalls"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "common pitfalls"
+issues: []
+discussions: []
 **Version**: 2.0 (Refactor DRY + KISS)  
 **File**: common-pitfalls.md - Common mistakes to avoid

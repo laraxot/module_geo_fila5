@@ -71,7 +71,7 @@ trait GeoTrait
      */
     public function scopeWithDistance(Builder $query, float $lat, float $lng): Builder
     {
-        if ($lat <= 0 || $lng <= 0) {
+        if (! is_finite($lat) || ! is_finite($lng) || abs($lat) > 90 || abs($lng) > 180) {
             return $query;
         }
 

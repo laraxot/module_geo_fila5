@@ -1,3 +1,14 @@
+---
+title: "address italian structure"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address italian structure"
+issues: []
+discussions: []
+---
+
 # Struttura degli Indirizzi Italiani
 
 ## Peculiarità del Sistema di Indirizzi Italiano

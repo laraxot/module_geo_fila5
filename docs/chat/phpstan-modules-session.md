@@ -1,4 +1,6 @@
 ---
+issues: []
+discussions: []
 title: PHPStan Modules Type Hints Session
 type: project
 tags: [phpstan, type-hints, modules, session]

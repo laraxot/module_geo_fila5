@@ -1,3 +1,14 @@
+---
+title: "missing factories audit"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "missing factories audit"
+issues: []
+discussions: []
+---
+
 # Factory Mancanti - Modulo Geo
 
 ## Situazione Critica Identificata
@@ -152,4 +163,12 @@
 - [Sushi Implementation](./sushi-implementation.md)
 
 ---
+title: "missing factories audit"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "missing factories audit"
+issues: []
+discussions: []
 **Errore gravissimo da non ripetere mai più**

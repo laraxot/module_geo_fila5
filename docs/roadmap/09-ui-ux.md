@@ -1,3 +1,14 @@
+---
+title: "09 ui ux"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "09 ui ux"
+issues: []
+discussions: []
+---
+
 
 
 

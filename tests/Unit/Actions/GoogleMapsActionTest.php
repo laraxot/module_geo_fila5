@@ -25,5 +25,10 @@ it('has correct constants defined', function (): void {
 });
 
 it('has required methods', function (): void {
-    $service = new GoogleMapsAction();
+    $reflection = new \ReflectionClass(GoogleMapsAction::class);
+
+    foreach (['reverseGeocode', 'getDistanceMatrix', 'getElevation'] as $method) {
+        Assert::assertTrue($reflection->hasMethod($method), "Missing method {$method}");
+        Assert::assertTrue($reflection->getMethod($method)->isPublic(), "Method {$method} must be public");
+    }
 });

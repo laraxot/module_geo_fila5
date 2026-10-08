@@ -1,3 +1,14 @@
+---
+title: "queueable actions"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "queueable actions"
+issues: []
+discussions: []
+---
+
 # Spatie QueueableActions
 
 ## Introduzione

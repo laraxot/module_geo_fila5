@@ -1,3 +1,14 @@
+---
+title: "coordinate picker entanglement"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "coordinate picker entanglement"
+issues: []
+discussions: []
+---
+
 # CoordinatePicker: State Management and Multi-Column Mapping
 
 ## State Entanglement in Filament v5

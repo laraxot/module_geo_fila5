@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GetCoordinatesAction;
 use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+uses(TestCase::class);
 it('returns coordinates for valid address', function (): void {
     $action = new GetCoordinatesAction();
 
@@ -394,4 +396,10 @@ it('handles invalid json response', function (): void {
     ]);
 
     // Act & Assert
+    try {
+        $action->execute($address);
+        Assert::fail('Expected RuntimeException was not thrown');
+    } catch (\RuntimeException $exception) {
+        Assert::assertSame('Invalid JSON response from Google Maps API', $exception->getMessage());
+    }
 });

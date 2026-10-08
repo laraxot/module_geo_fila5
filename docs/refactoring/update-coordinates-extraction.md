@@ -1,3 +1,14 @@
+---
+title: "update coordinates extraction"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "update coordinates extraction"
+issues: []
+discussions: []
+---
+
 # Update Coordinates Action - DRY Refactoring
 
 **Status**: 🚧 In Progress
@@ -286,4 +297,12 @@ This refactoring follows established Laraxot patterns:
 
 ---
 
+title: "update coordinates extraction"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "update coordinates extraction"
+issues: []
+discussions: []
 **Next Steps**: Implement Step 1 (Core Action) and verify with all quality tools.

@@ -1,3 +1,14 @@
+---
+title: "handoff phpstan modules zero 2026 07 07"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "handoff phpstan modules zero 2026 07 07"
+issues: []
+discussions: []
+---
+
 # Handoff — PHPStan Modules zero errori
 
 **Data**: 2026-07-07
@@ -28,6 +39,7 @@ cd laravel && php -d memory_limit=2048M ./vendor/bin/phpstan analyse Modules --n
    - Fix generics/covarianza in `HasRatingsTrait`, `SchedaRelationship`, `TquRelationship`, `HasCriteriValutazione`, `HasValutatore`, `HasMyLogs`.
    - Tipizzazione array in Filament Xot, `SushiToCsv`, `SushiToPhpArray`, `SchedaTrait`, `ProgressioniFunctionTrait`, `HasExtraTrait`.
    - Path `require_once` in `Xot/app/helpers/Helper.php`.
+   - Path `require_once` in `Xot/app/Helpers/Helper.php`.
    - Rimozione `FilamentMemoryMonitorMiddleware` inesistente.
    - Aggiunta `@phpstan-ignore trait.unused` in vari trait condivisi.
 5. **Installazione tool**

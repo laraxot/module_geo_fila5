@@ -1,3 +1,14 @@
+---
+title: "farmshops analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "farmshops analysis"
+issues: []
+discussions: []
+---
+
 # 🗺️ ANALISI PROGETTO FARMSHOPS.EU
 
 **Fonte**: https://github.com/CodeforKarlsruhe/farmshops.eu
@@ -6,6 +17,14 @@
 
 ---
 
+title: "farmshops analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "farmshops analysis"
+issues: []
+discussions: []
 ## 📋 PANORAMICA PROGETTO
 
 ### 🎯 Scopo

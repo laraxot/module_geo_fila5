@@ -1,3 +1,14 @@
+---
+title: "polygon integration"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "polygon integration"
+issues: []
+discussions: []
+---
+
 # poligon
 
 <!-- Contenuto migrato da _docs/poligon.txt -->

@@ -1,3 +1,14 @@
+---
+title: "coordinate picker purpose"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "coordinate picker purpose"
+issues: []
+discussions: []
+---
+
 # Scopo e Utilità del Coordinate Picker nella Creazione Ticket
 
 ## Overview
@@ -49,6 +60,14 @@ Seguendo il principio **DRY (Don't Repeat Yourself)** e le regole Laraxot, tutti
 
 ---
 
+title: "coordinate picker purpose"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "coordinate picker purpose"
+issues: []
+discussions: []
 ## 🎨 SVG Icon Architecture (NO Hardcoded SVG)
 
 ### ❌ DON'T - SVG Inline Hardcoded

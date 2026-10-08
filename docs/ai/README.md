@@ -1,3 +1,14 @@
+---
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
+---
+
 # AI Tools - Guida Completa per PTVX
 
 **Ultimo aggiornamento**: 2026-01-12  
@@ -5,6 +16,14 @@
 
 ---
 
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
 ## Panoramica
 
 Questa sezione contiene la documentazione completa per tutti gli AI tools utilizzati nello sviluppo del progetto PTVX.

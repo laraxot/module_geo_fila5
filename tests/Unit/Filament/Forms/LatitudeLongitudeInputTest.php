@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Filament\Forms;
 
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+uses(TestCase::class);
 /*
  * Test LatitudeLongitudeInput component for story 8-10:
  * - Bidirectional sync between map marker and coordinate inputs
@@ -101,6 +103,10 @@ test('LatitudeLongitudeInput initializes with coordinate priority', function () 
     $field = LatitudeLongitudeInput::make('location')
         ->center(41.9028, 12.4964)
         ->zoom(13);
+
+    Assert::assertSame(41.9028, $field->getCenterLatitude());
+    Assert::assertSame(12.4964, $field->getCenterLongitude());
+    Assert::assertSame(13, $field->getZoom());
 });
 
 test('LatitudeLongitudeInput supports all three map layers', function () {

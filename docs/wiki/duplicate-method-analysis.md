@@ -1,3 +1,14 @@
+---
+title: "duplicate method analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "duplicate method analysis"
+issues: []
+discussions: []
+---
+
 # Analisi delle duplicazioni di metodi PHP nel codebase
 
 ## Panoramica
@@ -12,6 +23,14 @@ Durante l'esplorazione del repository Laravel (moduli e temi) è stato identific
 
 ---
 
+title: "duplicate method analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "duplicate method analysis"
+issues: []
+discussions: []
 ## Metodi duplicati più frequenti
 
 | Metodo | Occorrenze totali | Classi coinvolte | Commenti generali |

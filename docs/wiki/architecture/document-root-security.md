@@ -1,3 +1,14 @@
+---
+title: "document root security"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "document root security"
+issues: []
+discussions: []
+---
+
 # Architettura Web Root: public_html vs laravel/public
 
 ## Panoramica
@@ -8,6 +19,14 @@ Questa scelta non è estetica, ma risponde a precise direttive di **sicurezza**,
 
 ---
 
+title: "document root security"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "document root security"
+issues: []
+discussions: []
 ## Razionale Tecnico
 
 ### 1. Isolamento del Codice Sorgente (Security Isolation)

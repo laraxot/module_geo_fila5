@@ -1,3 +1,14 @@
+---
+title: "map lit lessons learned"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map lit lessons learned"
+issues: []
+discussions: []
+---
+
 # Map-Lit: Lessons Learned & Error Resolution
 
 **Modulo:** Geo  
@@ -9,6 +20,14 @@
 
 ---
 
+title: "map lit lessons learned"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map lit lessons learned"
+issues: []
+discussions: []
 ## Problemi Risolti
 
 ### 1. Marker Cluster che "Scappano" al Hover (STORY-123)

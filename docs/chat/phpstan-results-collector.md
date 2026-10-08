@@ -1,4 +1,7 @@
 ---
+qmd: "phpstan results collector"
+issues: []
+discussions: []
 title: "Raccoglitore risultati PHPStan — 2026-06-15"
 type: chat
 tags: [phpstan, results, coordination, swarm]

@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+qmd: "map popup bem block popup"
+issues: []
+discussions: []
 title: map popup bem block popup
 type: memory
 module: Geo

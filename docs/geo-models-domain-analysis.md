@@ -1,3 +1,14 @@
+---
+title: "geo models domain analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo models domain analysis"
+issues: []
+discussions: []
+---
+
 # Analisi dominio modelli Geo (`app/Models`)
 
 **Scopo**: mappare responsabilità, sovrapposizioni e raccomandazioni operative senza duplicare guide già presenti su singoli modelli (es. vari file `comune-*.md` nella stessa cartella: vanno consolidati a livello di processo, non in questo documento).
@@ -6,6 +17,14 @@
 
 ---
 
+title: "geo models domain analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo models domain analysis"
+issues: []
+discussions: []
 ## 1. Panoramica rapida
 
 | Modello | Natura | Ruolo dominante |
@@ -81,8 +100,7 @@ Tabella dedicata ma classe **senza logica**: non è duplicato di `Comune`/`cap` 
 
 ## 3. Trait e basi
 
-- `Traits/HasAddress`, `HasPlaceTrait`, `GeoTrait`: comportamento condiviso con consumer reale. `GeographicalScopes` / `HasAddresses` / `SushiToJsons` (Geo) rimossi 2026-09-24 (dead / duplicati).
-- `GeoTrait`: consumer reale su `Address` (distanza/scope Haversine). Dettaglio: [traits/geo-trait.md](./traits/geo-trait.md).
+- `Traits/HasAddress`, `HasPlaceTrait`, `GeoTrait`, `GeographicalScopes`, `SushiToJsons`: incapsulano comportamento condiviso; non sono “modelli doppi”.
 
 ---
 

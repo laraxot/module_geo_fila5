@@ -1,3 +1,14 @@
+---
+title: "casting actions usage"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "casting actions usage"
+issues: []
+discussions: []
+---
+
 # Uso delle Azioni di Cast Xot
 
 ## Descrizione
@@ -144,3 +155,11 @@ $percentage = SafeFloatCastAction::castAsPercentage($mixedValue);
 - [Azioni Cast Xot](../../laravel/Modules/Xot/app/Actions/Cast/)
 
 ---
+title: "casting actions usage"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "casting actions usage"
+issues: []
+discussions: []

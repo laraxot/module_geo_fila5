@@ -1,3 +1,14 @@
+---
+title: "phpstan error resolution"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan error resolution"
+issues: []
+discussions: []
+---
+
 # Risoluzione Errori PHPStan - 8 Gennaio 2025
 
 ## Panoramica

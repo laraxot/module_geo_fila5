@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Modules\Geo\Database\Factories\AddressFactory;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
+uses(TestCase::class);
 test('address can be created', function (): void {
     $address = AddressFactory::new()->createOne();
 
@@ -71,6 +73,12 @@ test('address can be queried by locality', function (): void {
 
     Assert::assertCount(1, $results);
     Assert::assertSame($address->id, $results->first()?->id);
+});
+
+test('address distance scope accepts southern and western hemisphere coordinates', function (): void {
+    $query = Address::query()->withDistance(-33.8688, -70.6693);
+
+    Assert::assertStringContainsString('distance', $query->toSql());
 });
 
 test('address can be filtered by postal code', function (): void {
