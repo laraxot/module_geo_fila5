@@ -15,9 +15,9 @@ class IsPointInPolygonAction
      */
     public function execute(float $latitude, float $longitude, array $polygon): bool
     {
-        $i = $j = $c = 0;
         $points_polygon = \count($polygon) - 1;
 
+        $c = 0;
         for ($i = 0, $j = $points_polygon; $i < $points_polygon; $j = $i++) {
             if (! is_array($polygon[$i]) || ! is_array($polygon[$j])) {
                 continue;

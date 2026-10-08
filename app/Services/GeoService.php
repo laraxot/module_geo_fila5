@@ -165,11 +165,11 @@ class GeoService
      */
     public static function is_in_polygon(float $latitude, float $longitude, array $polygon): bool
     {
-        $i = $j = $c = 0;
         $points_polygon = \count($polygon) - 1;
 
         // dddx([$latitude, $longitude, $polygon]);
 
+        $c = 0;
         for ($i = 0, $j = $points_polygon; $i < $points_polygon; $j = $i++) {
             if (! is_array($polygon[$i]) || ! is_array($polygon[$j])) {
                 continue;
@@ -182,6 +182,7 @@ class GeoService
                 continue;
             }
 
+            $c = 0;
             $latI = is_float($pointI->lat) || is_int($pointI->lat) ? (float) $pointI->lat : 0.0;
             $lngI = is_float($pointI->lng) || is_int($pointI->lng) ? (float) $pointI->lng : 0.0;
             $latJ = is_float($pointJ->lat) || is_int($pointJ->lat) ? (float) $pointJ->lat : 0.0;
@@ -194,7 +195,7 @@ class GeoService
                                 ($latJ - $latI)) +
                         $lngI
             ) {
-                $c = ! $c;
+                $c = 1 - $c;
             }
         }
 

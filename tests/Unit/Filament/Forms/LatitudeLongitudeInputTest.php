@@ -100,8 +100,7 @@ test('LatitudeLongitudeInput initializes with coordinate priority', function () 
     // 3. Sets currentLat/currentLng
     // 4. Only commits to Livewire if using defaults (usedDefaults = true)
 
-    $field = LatitudeLongitudeInput::make('location')
-        ->center(41.9028, 12.4964)
+    LatitudeLongitudeInput::make('location')        ->center(41.9028, 12.4964)
         ->zoom(13);
 });
 

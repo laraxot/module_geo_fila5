@@ -55,9 +55,7 @@ it('uses decimal format as default', function (): void {
     Assert::assertSame('45.464200, 9.190000', $result);
 });
 
-it('throws exception for unsupported format', function (): void {
-    $action = new FormatCoordinatesAction();
-});
+it('throws exception for unsupported format', function (): void { })->todo();
 
 it('handles edge case coordinates', function (): void {
     $action = new FormatCoordinatesAction();

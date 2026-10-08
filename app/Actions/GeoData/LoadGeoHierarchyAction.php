@@ -34,18 +34,17 @@ final class LoadGeoHierarchyAction
     private const string JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
 
     /**
-     * @return Collection<int, array{name: string, code: string}>
+     * @return Collection<int|string, mixed>
      */
     public function executeRegions(): Collection
     {
-        /** @var Collection<int, array{name: string, code: string}> $result */
         $result = Cache::remember(
             self::CACHE_KEY_REGIONS,
             self::CACHE_TTL,
-            fn (): Collection => $this->loadData()->pluck('name', 'code'),
+            fn (): array => $this->loadData()->pluck('name', 'code')->all(),
         );
 
-        return $result;
+        return new Collection($result);
     }
 
     /**
@@ -55,13 +54,12 @@ final class LoadGeoHierarchyAction
     {
         $cacheKey = sprintf(self::CACHE_KEY_PROVINCES, $regionCode);
 
-        /** @var Collection<int, array{name: string, code: string}> $result */
-        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($regionCode): Collection {
+        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($regionCode): array {
             /** @var array<string, mixed>|null $region */
             $region = $this->loadData()->firstWhere('code', $regionCode);
 
             if (! $region || ! is_array($region) || ! isset($region['provinces']) || ! is_array($region['provinces'])) {
-                return new Collection;
+                return [];
             }
 
             /** @var array<int, array<string, mixed>> $provinces */
@@ -77,40 +75,36 @@ final class LoadGeoHierarchyAction
                         'code' => SafeStringCastAction::cast($code),
                     ];
                 })
-                ->values();
+                ->values()->all();
         });
 
-        return $result;
+        return new Collection($result);
     }
 
     /**
-     * @return Collection<int, array{name: string, code: string}>
+     * @return Collection<int|string, mixed>
      */
     public function executeCities(string $provinceCode): Collection
     {
         $cacheKey = sprintf(self::CACHE_KEY_CITIES, $provinceCode);
 
-        /** @var Collection<int, array{name: string, code: string}> $result */
-        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode): Collection {
+        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode): array {
             /** @var array<string, mixed>|null $province */
             $province = $this->loadData()->flatMap(static fn (array $region): array => is_array($region['provinces'] ?? null)
                 ? $region['provinces']
                 : [])->firstWhere('code', $provinceCode);
 
             if (! $province || ! is_array($province) || ! isset($province['cities']) || ! is_array($province['cities'])) {
-                return new Collection;
+                return [];
             }
 
             /** @var array<int, array<string, mixed>> $cities */
             $cities = $province['cities'];
 
-            /** @var Collection<string, string> $cityResult */
-            $cityResult = (new Collection($cities))->pluck('name', 'code');
-
-            return $cityResult;
+            return (new Collection($cities))->pluck('name', 'code')->all();
         });
 
-        return $result;
+        return new Collection($result);
     }
 
     public function executeCap(string $provinceCode, string $cityCode): ?string
