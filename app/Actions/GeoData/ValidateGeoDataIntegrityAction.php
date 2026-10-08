@@ -17,7 +17,7 @@ final class ValidateGeoDataIntegrityAction
     use QueueableAction;
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function execute(array $data): bool
     {
@@ -44,8 +44,7 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-     * @param array<string, mixed> $data
-     *
+     * @param  array<string, mixed>  $data
      * @return array<string, array<int, string>>
      */
     public function getErrors(array $data): array
@@ -59,7 +58,7 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     private function validate(array $data): bool
     {
@@ -69,8 +68,8 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-     * @param array<mixed, mixed> $region
-     * @param list<string>        $regionCodes
+     * @param  array<mixed, mixed>  $region
+     * @param  list<string>  $regionCodes
      *
      * @param-out list<string> $regionCodes
      */
@@ -102,8 +101,8 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-     * @param array<mixed, mixed> $province
-     * @param list<string>        $provinceCodes
+     * @param  array<mixed, mixed>  $province
+     * @param  list<string>  $provinceCodes
      *
      * @param-out list<string> $provinceCodes
      */
@@ -144,8 +143,8 @@ final class ValidateGeoDataIntegrityAction
     }
 
     /**
-     * @param array<mixed, mixed> $city
-     * @param list<string>        $cityCodes
+     * @param  array<mixed, mixed>  $city
+     * @param  list<string>  $cityCodes
      *
      * @param-out list<string> $cityCodes
      */

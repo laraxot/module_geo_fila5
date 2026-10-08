@@ -88,7 +88,7 @@ abstract class XotBaseCoordinateField extends XotBaseField
     }
 
     /**
-     * @param float|array{latitude?: float|int|string, lat?: float|int|string, longitude?: float|int|string, lng?: float|int|string} $latitude
+     * @param  float|array{latitude?: float|int|string, lat?: float|int|string, longitude?: float|int|string, lng?: float|int|string}  $latitude
      */
     public function center(float|array $latitude, ?float $longitude = null): static
     {
@@ -219,8 +219,7 @@ abstract class XotBaseCoordinateField extends XotBaseField
     }
 
     /**
-     * @param array<string, mixed> $data
-     *
+     * @param  array<string, mixed>  $data
      * @return array<string, mixed>
      */
     public static function extractCoordinates(array $data, string $field = 'coordinates', string $latColumn = 'latitude', string $lngColumn = 'longitude'): array

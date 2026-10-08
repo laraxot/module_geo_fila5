@@ -32,7 +32,7 @@ use function Safe\preg_replace;
  * @property string|null $province
  * @property string|int $id
  *
- * @phpstan-require-extends \Illuminate\Database\Eloquent\Model
+ * @phpstan-require-extends Model
  */
 trait HasAddress
 {
