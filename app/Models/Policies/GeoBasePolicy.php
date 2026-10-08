@@ -14,8 +14,7 @@ abstract class GeoBasePolicy
 
     public function before(UserContract $user, string $ability): ?bool
     {
-        $xotData = XotData::make();
-        if ($user->hasRole('super-admin')) {
+        XotData::make();        if ($user->hasRole('super-admin')) {
             return true;
         }
 

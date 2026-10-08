@@ -60,15 +60,11 @@ it('calculates bounding box with larger distance expands more', function (): voi
 });
 
 it('handles boundary coordinates at equator', function (): void {
-    $action = new GetBoundingBoxAction();
-
-    $result = $action->execute(0, 0, 1.0);
+    Assert::assertNotEmpty((new GetBoundingBoxAction())->execute(0, 0, 1.0));
 });
 
 it('handles boundary coordinates at poles', function (): void {
-    $action = new GetBoundingBoxAction();
-
-    $result = $action->execute(89.0, 0, 1.0);
+    Assert::assertNotEmpty((new GetBoundingBoxAction())->execute(89.0, 0, 1.0));
 });
 
 it('handles boundary coordinates at international date line', function (): void {

@@ -402,8 +402,6 @@ describe('Geocoding Business Logic', function () {
 
         it('validates geocoding cache invalidation logic', function () {
             $cacheEntry = [
-                'address' => italianAddressFixture(),
-                'result' => geocodingResultFixture(),
                 'cached_at' => time() - 86400,
                 'expires_at' => time() + (86400 * 30),
             ];

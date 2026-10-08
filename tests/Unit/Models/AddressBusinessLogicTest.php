@@ -56,20 +56,16 @@ describe('Address Business Logic', function () {
     });
 
     test('address has polymorphic model relationship', function () {
-        $address = new Address;
-    });
+        new Address;    });
 
     test('address can get region data from comune', function () {
-        $address = new Address;
-    });
+        new Address;    });
 
     test('address can get province data from comune', function () {
-        $address = new Address;
-    });
+        new Address;    });
 
     test('address can get locality data from comune', function () {
-        $address = new Address;
-    });
+        new Address;    });
 
     test('address can format full address attribute', function () {
         $address = new Address;

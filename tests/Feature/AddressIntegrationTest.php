@@ -167,7 +167,7 @@ function formatFullAddress(array $address): string
 
 describe('Address Integration', function () {
     it('can attach address to patient via polymorphic relationship', function () {
-        $patient = ['id' => 1001, 'type' => 'patient'];
+        $patient = ['id' => 1001];
 
         $address = makeAddress([
             'model_type' => 'patient',
@@ -235,7 +235,7 @@ describe('Address Integration', function () {
     });
 
     it('supports multiple addresses per entity', function () {
-        $patient = ['id' => 2001, 'type' => 'patient'];
+        $patient = ['id' => 2001];
 
         $homeAddress = makeAddress([
             'model_type' => 'patient',

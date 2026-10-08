@@ -313,7 +313,6 @@ trait GeoTrait
              */
             $geo = GeoData::from(json_decode((string) $this->address, true, 512, JSON_THROW_ON_ERROR));
 
-            $value = str_ireplace(', Italia', '', $geo->value);
             // Call to function is_array() with string will always evaluate to false.
             // if (\is_array($value)) {
             //    $value = implode(' ', $value);

@@ -24,6 +24,4 @@ it('has correct constants defined', function (): void {
     Assert::assertSame('https://maps.googleapis.com/maps/api/elevation/json', $reflection->getConstant('ELEVATION_URL'));
 });
 
-it('has required methods', function (): void {
-    $service = new GoogleMapsAction();
-});
+it('has required methods', function (): void { })->todo();

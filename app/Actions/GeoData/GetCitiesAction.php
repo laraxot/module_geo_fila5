@@ -22,35 +22,28 @@ class GetCitiesAction
     /**
      * @param string $provinceCode Codice della provincia
      *
-     * @return Collection<int, array{name: string, code: string}>
+     * @return Collection<int|string, mixed>
      */
     public function execute(string $provinceCode): Collection
     {
         $cacheKey = \sprintf(self::CACHE_KEY, $provinceCode);
 
-        /** @var Collection<int, array{name: string, code: string}> $result */
-        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode): Collection {
+        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode): array {
             /** @var array<string, mixed>|null $province */
             $province = app(LoadGeoDataAction::class)->execute()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
                 ? $region['provinces']
                 : [])->firstWhere('code', $provinceCode);
 
             if (! $province || ! \is_array($province) || ! isset($province['cities']) || ! \is_array($province['cities'])) {
-                return new Collection();
+                return [];
             }
 
             /** @var array<int, array<string, mixed>> $cities */
             $cities = $province['cities'];
 
-            /** @var Collection<int, array<string, mixed>> $citiesCollection */
-            $citiesCollection = new Collection($cities);
-
-            /** @var Collection<string, string> $cityResult */
-            $cityResult = $citiesCollection->pluck('name', 'code');
-
-            return $cityResult;
+            return (new Collection($cities))->pluck('name', 'code')->all();
         });
 
-        return $result;
+        return new Collection($result);
     }
 }

@@ -61,14 +61,15 @@ class GeoDataService
      */
     public function getRegions(): Collection
     {
-        /** @var Collection<int, array{name: string, code: string}> $result */
         $result = Cache::remember(
             self::CACHE_KEY_REGIONS,
             self::CACHE_TTL,
             fn (): Collection => $this->loadData()->pluck('name', 'code'),
         );
 
-        return $result;
+        return $result->map(
+            static fn (mixed $name, int|string $code): array => ['name' => (string) $name, 'code' => (string) $code],
+        );
     }
 
     /**
@@ -82,26 +83,18 @@ class GeoDataService
     {
         $cacheKey = \sprintf(self::CACHE_KEY_PROVINCES, $regionCode);
 
-        /** @var Collection<int, array{name: string, code: string}> $result */
-        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($regionCode): Collection {
+        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($regionCode): array {
             /** @var array<string, mixed>|null $region */
             $region = $this->loadData()->firstWhere('code', $regionCode);
 
             if (! $region || ! \is_array($region) || ! isset($region['provinces']) || ! \is_array($region['provinces'])) {
-                /** @var Collection<int, array{name: string, code: string}> $empty */
-                $empty = new Collection();
-
-                return $empty;
+                return [];
             }
 
             /** @var array<int, array<string, mixed>> $provinces */
             $provinces = $region['provinces'];
 
-            /** @var Collection<int, array<string, mixed>> $provincesCollection */
-            $provincesCollection = new Collection($provinces);
-
-            /** @var Collection<int, array{name: string, code: string}> $provinceResult */
-            $provinceResult = $provincesCollection
+            return (new Collection($provinces))
                 ->map(static function (array $province): array {
                     $name = $province['name'] ?? '';
                     $code = $province['code'] ?? '';
@@ -111,12 +104,14 @@ class GeoDataService
                         'code' => \is_scalar($code) ? (string) $code : '',
                     ];
                 })
-                ->values();
-
-            return $provinceResult;
+                ->values()
+                ->all();
         });
 
-        return $result;
+        return new Collection($result)->map(static fn (array $province): array => [
+            'name' => $province['name'] ?? '',
+            'code' => $province['code'] ?? '',
+        ]);
     }
 
     /**
@@ -124,36 +119,29 @@ class GeoDataService
      *
      * @param string $provinceCode Codice della provincia
      *
-     * @return Collection<int, array{name: string, code: string}>
+     * @return Collection<int|string, mixed>
      */
     public function getCities(string $provinceCode): Collection
     {
         $cacheKey = \sprintf(self::CACHE_KEY_CITIES, $provinceCode);
 
-        /** @var Collection<int, array{name: string, code: string}> $result */
-        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode): Collection {
+        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode): array {
             /** @var array<string, mixed>|null $province */
             $province = $this->loadData()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
                 ? $region['provinces']
                 : [])->firstWhere('code', $provinceCode);
 
             if (! $province || ! \is_array($province) || ! isset($province['cities']) || ! \is_array($province['cities'])) {
-                return new Collection();
+                return [];
             }
 
             /** @var array<int, array<string, mixed>> $cities */
             $cities = $province['cities'];
 
-            /** @var Collection<int, array<string, mixed>> $citiesCollection */
-            $citiesCollection = new Collection($cities);
-
-            /** @var Collection<string, string> $cityResult */
-            $cityResult = $citiesCollection->pluck('name', 'code');
-
-            return $cityResult;
+            return (new Collection($cities))->pluck('name', 'code')->all();
         });
 
-        return $result;
+        return new Collection($result);
     }
 
     /**
