@@ -7,6 +7,19 @@ links: {github_issue: #XXX, discussion: #XXX}
 
 ## Decisions
 
+### 2026-10-08: Riallineamento dell'intero modulo all'ultimo commit buono `cd999d97e`
+- **Choose**: Confronto a tre vie dell'intero modulo (app, config, routes, resources, lang, database, tests) con `cd999d97e` (07/10 06:37), l'ultimo commit prima del merge `10076511` che ha preso la copia di lavoro del 28/09 (`bfd4966a`).
+- **Over**: Fermarsi ai file delle voci precedenti (gruppo `Address`/`HasAddress`, tre pagine View).
+- **Because**: Ogni contenuto sovrascritto o eliminato e' stato verificato come gia' esistente prima del 07/10 (32 + 22 su 54).
+  - 32 toccati solo dalla copia vecchia: contenuto da `cd999d97e`.
+  - 22 aggiunti solo dalla copia vecchia: eliminati. `tests/playwright/**` (16), `app/Models/Traits/SushiToJsons.php` (doppione: Cms usa quello di Tenant), `app/Models/Traits/GeographicalScopes.php` (non usato), `app/datatransferobjects/LocationDTO.php` (namespace `DataTransferObjects`, usato solo da file `.wip`; il DTO buono e' `app/Datas/LocationDTO.php`), una migrazione `.bak1`, uno spec e un geojson di test.
+  - Lavoro di Marco mantenuto:
+    - `f890c86f` (story `map-controls-i18n-it-en-de-es`, `map-popup-contrast-and-fit`, `marker-popup-and-location-ux`), `589764c0` (messaggi di errore della geolocalizzazione) e `e46ede56`: uniti a tre vie senza conflitti; `resources/js/components/map/labels.js` nuovo.
+    - `b112b61b` (Services → Actions): restano eliminati i 9 servizi di `app/Services`, lo stub e i 3 test dei servizi; restano `GoogleMapsActionElevationStub` e `LoadGeoHierarchyActionTest`; test e `GeoDataConfig` uniti a tre vie.
+  - Contenuto da `cd999d97e` per le tre action `GetCitiesAction`, `GetRegionsAction`, `LoadGeoHierarchyAction` (in conflitto): la migrazione da `GeoDataService` era gia' fatta in `cd999d97e` ("Sostituisce GeoDataService") con le chiavi di cache condivise in `GeoDataConfig`; `b112b61b` la rifaceva sulla copia vecchia duplicando le costanti nelle action.
+  - Contenuto da `cd999d97e` per i 13 file toccati solo da `f9e8b556`: rimozione meccanica di variabili, espressioni in linea, test vuoti marcati `todo`.
+- **Verifica**: `php -l` pulito, nessun marcatore di conflitto; `php artisan about` si avvia; le 246 classi di `app/` si caricano; PHPStan su `Modules` senza errori in Geo. Pest prima/dopo a blocchi, confronto JUnit: 0 peggiorati, 3 migliorati. Molti test Geo falliscono in entrambi gli stati per l'ambiente (il bootstrap cerca `Themes/Meetup`).
+
 ### 2026-10-08: Tre pagine View riportate alla linea buona per l'avvio con Xot riallineato
 - **Choose**: Riportare a `cd999d97e` (linea buona, 07/10 06:37) `AddressResource/Pages/ViewAddress.php`, `LocationResource/Pages/ViewLocation.php`, `Resources/Pages/ViewLocation.php`.
 - **Over**: Aggiungere di nuovo `getInfolistSchema()` alla classe base di Xot.

@@ -6,6 +6,7 @@ namespace Modules\Geo\Actions\GeoData;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use Modules\Geo\Support\GeoDataConfig;
 
 use function Safe\json_decode;
 
@@ -18,8 +19,6 @@ class LoadGeoDataAction
 {
     use QueueableAction;
 
-    private const string JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
-
     /**
      * @throws \RuntimeException
      *
@@ -27,12 +26,12 @@ class LoadGeoDataAction
      */
     public function execute(): Collection
     {
-        if (! File::exists(base_path(self::JSON_PATH))) {
+        if (! File::exists(base_path(GeoDataConfig::JSON_PATH))) {
             throw new \RuntimeException('Il file JSON dei comuni non esiste');
         }
 
         /** @var array<string, mixed> $data */
-        $data = json_decode(File::get(base_path(self::JSON_PATH)), true);
+        $data = json_decode(File::get(base_path(GeoDataConfig::JSON_PATH)), true);
 
         if (! \is_array($data)) {
             throw new \RuntimeException('Il file JSON dei comuni non è valido');

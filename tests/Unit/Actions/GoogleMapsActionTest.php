@@ -24,4 +24,11 @@ it('has correct constants defined', function (): void {
     Assert::assertSame('https://maps.googleapis.com/maps/api/elevation/json', $reflection->getConstant('ELEVATION_URL'));
 });
 
-it('has required methods', function (): void { })->todo();
+it('has required methods', function (): void {
+    $reflection = new \ReflectionClass(GoogleMapsAction::class);
+
+    foreach (['reverseGeocode', 'getDistanceMatrix', 'getElevation'] as $method) {
+        Assert::assertTrue($reflection->hasMethod($method), "Missing method {$method}");
+        Assert::assertTrue($reflection->getMethod($method)->isPublic(), "Method {$method} must be public");
+    }
+});

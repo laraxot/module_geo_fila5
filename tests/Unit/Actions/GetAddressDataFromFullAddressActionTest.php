@@ -21,7 +21,6 @@ it('returns AddressData when first service succeeds', function (): void {
 });
 
 it('initializes with empty errors collection', function (): void {
-
     $action = new GetAddressDataFromFullAddressAction();
 
     Assert::assertInstanceOf(Collection::class, $action->getErrors());
@@ -29,10 +28,10 @@ it('initializes with empty errors collection', function (): void {
 });
 
 it('executes without throwing error for basic call', function (): void {
+    $action = new GetAddressDataFromFullAddressAction();
 
     // This tests that the action can be instantiated and executed without critical errors
     // Since it depends on external services, we can't easily test the full functionality
-    $action = new GetAddressDataFromFullAddressAction();
 
     // The execute method should handle missing services gracefully
     $result = $action->execute('Test Address');

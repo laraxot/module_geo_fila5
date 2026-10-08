@@ -402,15 +402,21 @@ describe('Geocoding Business Logic', function () {
 
         it('validates geocoding cache invalidation logic', function () {
             $cacheEntry = [
+                'address' => italianAddressFixture(),
+                'result' => geocodingResultFixture(),
                 'cached_at' => time() - 86400,
                 'expires_at' => time() + (86400 * 30),
             ];
 
             $isExpired = $cacheEntry['expires_at'] < time();
             $isRecentEnough = (time() - $cacheEntry['cached_at']) < (86400 * 90);
+            $isSameAddress = $cacheEntry['address'] === italianAddressFixture();
+            $hasUsableResult = isset($cacheEntry['result']['latitude'], $cacheEntry['result']['longitude']);
 
             Assert::assertFalse($isExpired);
             Assert::assertTrue($isRecentEnough);
+            Assert::assertTrue($isSameAddress);
+            Assert::assertTrue($hasUsableResult);
         });
     });
 });

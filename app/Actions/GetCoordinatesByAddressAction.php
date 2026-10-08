@@ -8,6 +8,7 @@ use Filament\Notifications\Notification;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Location\CoordinatesData;
+use Modules\Geo\Support\GeoApiEndpoints;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -43,7 +44,7 @@ class GetCoordinatesByAddressAction
      */
     private function getGoogleResponse(string $address): array
     {
-        $response = $this->makeHttpRequest('https://maps.googleapis.com/maps/api/geocode/json', [
+        $response = $this->makeHttpRequest(GeoApiEndpoints::GOOGLE_GEOCODING, [
             'address' => $address,
             'key' => config('services.google.maps_api_key'),
         ]);
@@ -92,7 +93,7 @@ class GetCoordinatesByAddressAction
      */
     private function getBingResponse(string $address, string $apiKey): array
     {
-        $response = $this->makeHttpRequest('http://dev.virtualearth.net/REST/v1/Locations', [
+        $response = $this->makeHttpRequest(GeoApiEndpoints::BING_LOCATIONS, [
             'q' => $address,
             'key' => $apiKey,
         ]);
@@ -237,7 +238,7 @@ class GetCoordinatesByAddressAction
      */
     private function getNominatimResponse(string $address): array
     {
-        $response = $this->makeHttpRequest('https://nominatim.openstreetmap.org/search', [
+        $response = $this->makeHttpRequest(GeoApiEndpoints::NOMINATIM_SEARCH, [
             'q' => $address,
             'format' => 'json',
             'limit' => 1,
