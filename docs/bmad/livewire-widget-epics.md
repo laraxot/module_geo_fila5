@@ -1,4 +1,10 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "livewire widget epics"
+issues: []
+discussions: []
 title: "Epics — Geo Livewire"
 type: epics
 module: Geo
