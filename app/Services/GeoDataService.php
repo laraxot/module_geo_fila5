@@ -67,9 +67,13 @@ class GeoDataService
             fn (): Collection => $this->loadData()->pluck('name', 'code'),
         );
 
-        return $result->map(
-            static fn (mixed $name, int|string $code): array => ['name' => (string) $name, 'code' => (string) $code],
-        );
+        return $result->map(static function (mixed $name, int|string $code): array {
+            if (! is_string($name)) {
+                throw new \UnexpectedValueException('Geo region names must be strings.');
+            }
+
+            return ['name' => $name, 'code' => (string) $code];
+        });
     }
 
     /**
