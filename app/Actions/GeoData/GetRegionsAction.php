@@ -6,6 +6,8 @@ namespace Modules\Geo\Actions\GeoData;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use Modules\Geo\Support\GeoDataConfig;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -15,31 +17,21 @@ class GetRegionsAction
 {
     use QueueableAction;
 
-    public const string CACHE_KEY = 'geo.regions';
-
-    public const int CACHE_TTL = 86400;
-
-    /** @return Collection<string, string> keyed by region code */
+    /**
+     * Regioni come mappa codice => nome.
+     *
+     * @return Collection<string, string>
+     */
     public function execute(): Collection
     {
-        /** @var array<string, string> $result */
-        $result = Cache::remember(
-            self::CACHE_KEY,
-            self::CACHE_TTL,
-            static fn (): array => app(LoadGeoDataAction::class)->execute()
-                ->mapWithKeys(static function (array $region): array {
-                    $name = $region['name'] ?? null;
-                    $code = $region['code'] ?? null;
-
-                    if (! is_string($name) || ! is_string($code)) {
-                        throw new \UnexpectedValueException('Geo regions must contain string name and code.');
-                    }
-
-                    return [$code => $name];
-                })
-                ->all(),
+        return Cache::remember(
+            GeoDataConfig::CACHE_KEY_REGIONS,
+            GeoDataConfig::CACHE_TTL,
+            fn (): Collection => app(LoadGeoDataAction::class)->execute()->mapWithKeys(
+                static fn (array $region): array => [
+                    SafeStringCastAction::cast($region['code'] ?? '') => SafeStringCastAction::cast($region['name'] ?? ''),
+                ],
+            ),
         );
-
-        return new Collection($result);
     }
 }

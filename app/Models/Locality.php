@@ -124,7 +124,6 @@ class Locality extends BaseModel
             return [];
         }
 
-        $get('locality');
         $keys = [];
         $values = [];
 

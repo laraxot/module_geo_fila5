@@ -75,6 +75,12 @@ test('address can be queried by locality', function (): void {
     Assert::assertSame($address->id, $results->first()?->id);
 });
 
+test('address distance scope accepts southern and western hemisphere coordinates', function (): void {
+    $query = Address::query()->withDistance(-33.8688, -70.6693);
+
+    Assert::assertStringContainsString('distance', $query->toSql());
+});
+
 test('address can be filtered by postal code', function (): void {
     $address = AddressFactory::new()->createOne(['postal_code' => '99999-Test']);
 

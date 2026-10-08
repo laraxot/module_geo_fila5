@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\AddressData;
+use Modules\Geo\Support\GeoApiEndpoints;
 
 use function Safe\json_decode;
 use function Safe\preg_match;
@@ -24,7 +25,7 @@ class GetAddressFromMapboxAction
 {
     use QueueableAction;
 
-    private const string API_URL = 'https://api.mapbox.com/geocoding/v5/mapbox.places';
+    private const string API_URL = GeoApiEndpoints::MAPBOX_PLACES;
 
     public function __construct(
         private readonly Client $client,

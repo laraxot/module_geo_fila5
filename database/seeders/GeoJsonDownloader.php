@@ -19,8 +19,10 @@ class GeoJsonDownloader
     protected const string BASE_URL = 'https://raw.githubusercontent.com/guglielmo/geojson-italy/master/geojson';
 
     protected const string REGIONS_URL = self::BASE_URL.'/limits_IT_regions.geojson';
-    protected const string PROVINCES_URL = self::BASE_URL.'/limits_IT_provinces.geojson';
+
     protected const string MUNICIPALITIES_URL = self::BASE_URL.'/limits_IT_municipalities.geojson';
+
+    protected const string PROVINCES_URL = self::BASE_URL.'/limits_IT_provinces.geojson';
 
     protected string $cacheDir;
 

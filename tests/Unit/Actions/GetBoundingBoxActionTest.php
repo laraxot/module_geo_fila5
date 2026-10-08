@@ -60,11 +60,32 @@ it('calculates bounding box with larger distance expands more', function (): voi
 });
 
 it('handles boundary coordinates at equator', function (): void {
-    Assert::assertNotEmpty((new GetBoundingBoxAction())->execute(0, 0, 1.0));
+    $action = new GetBoundingBoxAction();
+
+    $result = $action->execute(0, 0, 1.0);
+
+    Assert::assertLessThan(0.0, $result['min_lat']);
+    Assert::assertGreaterThan(0.0, $result['max_lat']);
+    Assert::assertLessThan(0.0, $result['min_lon']);
+    Assert::assertGreaterThan(0.0, $result['max_lon']);
+
+    // All'equatore cos(0) = 1: l'ampiezza in longitudine coincide con quella in latitudine
+    Assert::assertEqualsWithDelta($result['max_lat'], $result['max_lon'], 1e-9);
 });
 
 it('handles boundary coordinates at poles', function (): void {
-    Assert::assertNotEmpty((new GetBoundingBoxAction())->execute(89.0, 0, 1.0));
+    $action = new GetBoundingBoxAction();
+
+    $result = $action->execute(89.0, 0, 1.0);
+
+    Assert::assertLessThan(89.0, $result['min_lat']);
+    Assert::assertGreaterThan(89.0, $result['max_lat']);
+
+    // Vicino ai poli i meridiani convergono: a parita' di distanza l'ampiezza in longitudine supera quella in latitudine
+    Assert::assertGreaterThan(
+        $result['max_lat'] - $result['min_lat'],
+        $result['max_lon'] - $result['min_lon'],
+    );
 });
 
 it('handles boundary coordinates at international date line', function (): void {

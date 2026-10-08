@@ -385,12 +385,21 @@ it('handles network timeout gracefully', function (): void {
 });
 
 it('handles invalid json response', function (): void {
-;
+    $action = new GetCoordinatesAction();
+
     // Arrange
+    $address = 'Via Roma 123, Milano, Italia';
+
     Config::set('services.google.maps.key', 'test-api-key');
     Http::fake([
         'maps.googleapis.com/*' => Http::response('Invalid JSON', 200),
     ]);
 
     // Act & Assert
+    try {
+        $action->execute($address);
+        Assert::fail('Expected RuntimeException was not thrown');
+    } catch (\RuntimeException $exception) {
+        Assert::assertSame('Invalid JSON response from Google Maps API', $exception->getMessage());
+    }
 });

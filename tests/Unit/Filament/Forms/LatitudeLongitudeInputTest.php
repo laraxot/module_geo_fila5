@@ -100,8 +100,13 @@ test('LatitudeLongitudeInput initializes with coordinate priority', function () 
     // 3. Sets currentLat/currentLng
     // 4. Only commits to Livewire if using defaults (usedDefaults = true)
 
-    LatitudeLongitudeInput::make('location')        ->center(41.9028, 12.4964)
+    $field = LatitudeLongitudeInput::make('location')
+        ->center(41.9028, 12.4964)
         ->zoom(13);
+
+    Assert::assertSame(41.9028, $field->getCenterLatitude());
+    Assert::assertSame(12.4964, $field->getCenterLongitude());
+    Assert::assertSame(13, $field->getZoom());
 });
 
 test('LatitudeLongitudeInput supports all three map layers', function () {

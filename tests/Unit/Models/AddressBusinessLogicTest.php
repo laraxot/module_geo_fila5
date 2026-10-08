@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
 use Modules\Geo\Models\BaseModel;
@@ -12,6 +13,20 @@ use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
+
+/**
+ * I dati regione/provincia/comune derivano dal modello Comune (Sushi): il contratto
+ * dei getter e' "array oppure null" quando il comune non e' risolvibile.
+ */
+function addressComuneGetterReturnsNullableArray(string $method): bool
+{
+    $returnType = (new \ReflectionMethod(Address::class, $method))->getReturnType();
+
+    return $returnType instanceof \ReflectionNamedType
+        && 'array' === $returnType->getName()
+        && $returnType->allowsNull();
+}
+
 describe('Address Business Logic', function () {
     test('address extends base model', function () {
         Assert::assertSame(BaseModel::class, get_parent_class(Address::class));
@@ -56,16 +71,23 @@ describe('Address Business Logic', function () {
     });
 
     test('address has polymorphic model relationship', function () {
-        new Address;    });
+        $address = new Address;
+
+        Assert::assertInstanceOf(MorphTo::class, $address->model());
+        Assert::assertInstanceOf(MorphTo::class, $address->addressable());
+    });
 
     test('address can get region data from comune', function () {
-        new Address;    });
+        Assert::assertTrue(addressComuneGetterReturnsNullableArray('getRegione'));
+    });
 
     test('address can get province data from comune', function () {
-        new Address;    });
+        Assert::assertTrue(addressComuneGetterReturnsNullableArray('getProvincia'));
+    });
 
     test('address can get locality data from comune', function () {
-        new Address;    });
+        Assert::assertTrue(addressComuneGetterReturnsNullableArray('getLocality'));
+    });
 
     test('address can format full address attribute', function () {
         $address = new Address;

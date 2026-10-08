@@ -6,6 +6,7 @@ namespace Modules\Geo\Actions\GeoData;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use Modules\Geo\Support\GeoDataConfig;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -15,47 +16,42 @@ class GetCitiesAction
 {
     use QueueableAction;
 
-    public const string CACHE_KEY = 'geo.cities.%s';
-
-    public const int CACHE_TTL = 86400;
-
     /**
+     * Città della provincia come mappa codice => nome.
+     *
      * @param string $provinceCode Codice della provincia
      *
-     * @return Collection<string, string> keyed by city code
+     * @return Collection<string, string>
      */
     public function execute(string $provinceCode): Collection
     {
-        $cacheKey = \sprintf(self::CACHE_KEY, $provinceCode);
+        return Cache::remember(
+            \sprintf(GeoDataConfig::CACHE_KEY_CITIES, $provinceCode),
+            GeoDataConfig::CACHE_TTL,
+            fn (): Collection => $this->loadCities($provinceCode),
+        );
+    }
 
-        /** @var array<string, string> $result */
-        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode): array {
-            /** @var array<string, mixed>|null $province */
-            $province = app(LoadGeoDataAction::class)->execute()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
-                ? $region['provinces']
-                : [])->firstWhere('code', $provinceCode);
+    /**
+     * @return Collection<string, string>
+     */
+    private function loadCities(string $provinceCode): Collection
+    {
+        /** @var array<string, mixed>|null $province */
+        $province = app(LoadGeoDataAction::class)->execute()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
+            ? $region['provinces']
+            : [])->firstWhere('code', $provinceCode);
 
-            if (! $province || ! \is_array($province) || ! isset($province['cities']) || ! \is_array($province['cities'])) {
-                return [];
-            }
+        if (! $province || ! \is_array($province) || ! isset($province['cities']) || ! \is_array($province['cities'])) {
+            return new Collection();
+        }
 
-            /** @var array<int, array<string, mixed>> $cities */
-            $cities = $province['cities'];
+        /** @var array<int, array<string, mixed>> $cities */
+        $cities = $province['cities'];
 
-            return (new Collection($cities))
-                ->mapWithKeys(static function (array $city): array {
-                    $name = $city['name'] ?? null;
-                    $code = $city['code'] ?? null;
+        /** @var Collection<string, string> $cityResult */
+        $cityResult = (new Collection($cities))->pluck('name', 'code');
 
-                    if (! is_string($name) || ! is_string($code)) {
-                        throw new \UnexpectedValueException('Geo cities must contain string name and code.');
-                    }
-
-                    return [$code => $name];
-                })
-                ->all();
-        });
-
-        return new Collection($result);
+        return $cityResult;
     }
 }

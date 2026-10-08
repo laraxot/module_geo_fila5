@@ -8,6 +8,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
+use Modules\Geo\Support\GeoApiEndpoints;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -17,7 +18,7 @@ class GetAddressFromNominatimAction
 {
     use QueueableAction;
 
-    private const string BASE_URL = 'https://nominatim.openstreetmap.org';
+    private const string BASE_URL = GeoApiEndpoints::NOMINATIM_BASE;
 
     /**
      * Esegue la ricerca dell'indirizzo su Nominatim.
