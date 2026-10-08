@@ -97,6 +97,7 @@ class Address extends BaseModel
 {
     /** @use GeoTrait<Address> */
     use GeoTrait;
+
     use SoftDeletes;
 
     /** @var list<string> */

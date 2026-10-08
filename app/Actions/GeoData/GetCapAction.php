@@ -17,15 +17,15 @@ class GetCapAction
     use QueueableAction;
 
     /**
-     * @param string $provinceCode Codice della provincia
-     * @param string $cityCode     Codice della città
+     * @param  string  $provinceCode  Codice della provincia
+     * @param  string  $cityCode  Codice della città
      */
     public function execute(string $provinceCode, string $cityCode): ?string
     {
         $cacheKey = \sprintf(GeoDataConfig::CACHE_KEY_CAP, $provinceCode, $cityCode);
 
         /** @var string|null $result */
-        $result = Cache::remember($cacheKey, GeoDataConfig::CACHE_TTL, function () use ($provinceCode, $cityCode): null|string {
+        $result = Cache::remember($cacheKey, GeoDataConfig::CACHE_TTL, function () use ($provinceCode, $cityCode): ?string {
             /** @var array<string, mixed>|null $province */
             $province = app(LoadGeoDataAction::class)->execute()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
                 ? $region['provinces']

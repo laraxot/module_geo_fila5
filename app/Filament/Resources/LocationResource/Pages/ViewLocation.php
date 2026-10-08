@@ -26,7 +26,6 @@ class ViewLocation extends XotBaseViewRecord
     /**
      * @return array<string, Component>
      */
-
     protected function getInfolistSchema(): array
     {
         return [

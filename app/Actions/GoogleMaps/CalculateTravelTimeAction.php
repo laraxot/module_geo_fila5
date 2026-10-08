@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\TravelTimeData;
 use Modules\Geo\Support\GeoApiEndpoints;
-
-use function Safe\json_decode;
-
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
+
+use function Safe\json_decode;
 
 /**
  * Action per calcolare il tempo di percorrenza tra due punti tramite Google Maps.
@@ -30,14 +29,13 @@ class CalculateTravelTimeAction
 
     public function __construct(
         private readonly Client $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Calcola il tempo di percorrenza tra due punti.
      *
      * @throws \InvalidArgumentException Se i dati di input non sono validi
-     * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
+     * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(LocationData $origin, LocationData $destination): TravelTimeData
     {
@@ -62,7 +60,7 @@ class CalculateTravelTimeAction
      * Valida i dati di input.
      *
      * @throws \InvalidArgumentException Se i dati di input non sono validi
-     * @throws \RuntimeException         Se la chiave API non è configurata o i dati non sono validi
+     * @throws \RuntimeException Se la chiave API non è configurata o i dati non sono validi
      */
     private function validateInput(LocationData $origin, LocationData $destination): void
     {

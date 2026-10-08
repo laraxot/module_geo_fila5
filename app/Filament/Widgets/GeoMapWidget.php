@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-use Modules\Xot\Filament\Widgets\XotBaseWidget;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
 use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
+use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
 /**
  * @phpstan-type GeoDataset array{type: string, features: list<array{
@@ -27,7 +27,6 @@ use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
  */
 final class GeoMapWidget extends XotBaseWidget
 {
-
     protected int|string|array $columnSpan = 'full';
 
     protected string $datasetRelativePath =
@@ -116,7 +115,7 @@ final class GeoMapWidget extends XotBaseWidget
     }
 
     /**
-     * @param array<string, mixed> $payload
+     * @param  array<string, mixed>  $payload
      */
     private function encodeJson(array $payload, string $message): string
     {
