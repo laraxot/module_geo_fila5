@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+updated: 2026-09-26
+qmd: "handoff sigma ente matr fields"
+issues: []
+discussions: []
 title: "Handoff — EnteMatrFieldsContract"
 type: chat-handoff
 module: Sigma

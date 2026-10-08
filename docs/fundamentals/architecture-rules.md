@@ -1,3 +1,14 @@
+---
+title: "architecture rules"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "architecture rules"
+issues: []
+discussions: []
+---
+
 # Critical Architecture Rules
 
 > **⚠️ CRITICAL**: These are the most important rules that must always be followed.
@@ -109,5 +120,13 @@ class ProcessUserDataAction {
 
 ---
 
+title: "architecture rules"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "architecture rules"
+issues: []
+discussions: []
 **Priority**: 🔴 Critical (Read First)  
 **Version**: 3.0 (DRY + KISS Refactor)

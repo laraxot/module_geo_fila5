@@ -1,10 +1,12 @@
 ---
-title: "Enum standards — Geo"
-type: concept
-module: Geo
-tags: [enum, filament, xot, phpstan]
-created: 2026-07-16
-updated: 2026-07-16
+title: "enum standards"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "enum standards"
+issues: []
+discussions: []
 ---
 
 # Enum Standards - Geo Module
@@ -99,8 +101,3 @@ return [
 ## References
 
 - Global Rule: `docs/wiki/rules/enum-filament-standard.md`
-
-
-## Coerenza casi-definizioni
-
-`AddressItemEnum::getColumnDefinitions()` deve contenere esclusivamente chiavi derivate dai casi attivi. Quando un campo viene rimosso dal dominio, va eliminata nello stesso cambiamento anche la relativa closure: commentare il case lasciando `self::CASE` nel metodo produce errori PHPStan e uno schema non eseguibile. Campi di contatto come telefono, fax, PEC, WhatsApp ed email appartengono al modulo Notify, non allo schema indirizzi Geo.

@@ -1,3 +1,14 @@
+---
+title: "geo map marker status background"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo map marker status background"
+issues: []
+discussions: []
+---
+
 # geo-map-marker — sfondo stato (farmshops parity)
 
 ## scopo

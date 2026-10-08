@@ -1,3 +1,14 @@
+---
+title: "farmshops conversion"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "farmshops conversion"
+issues: []
+discussions: []
+---
+
 # Conversione farmshops.eu -> map-lit.js (Lit.dev)
 
 ## Panoramica
@@ -38,4 +49,12 @@ Gli asset vengono compilati e distribuiti esclusivamente in `/public_html/assets
 ```
 
 ---
+title: "farmshops conversion"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "farmshops conversion"
+issues: []
+discussions: []
 *Ultimo aggiornamento: Aprile 2026*

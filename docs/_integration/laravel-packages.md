@@ -1,3 +1,14 @@
+---
+title: "laravel packages"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "laravel packages"
+issues: []
+discussions: []
+---
+
 # laravel_packages
 
 <!-- Contenuto migrato da _docs/laravel_packages.txt -->

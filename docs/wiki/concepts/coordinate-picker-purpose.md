@@ -1,3 +1,14 @@
+---
+title: "coordinate picker purpose"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "coordinate picker purpose"
+issues: []
+discussions: []
+---
+
 # CoordinatePicker Purpose in Admin Ticket Creation
 
 ## Overview

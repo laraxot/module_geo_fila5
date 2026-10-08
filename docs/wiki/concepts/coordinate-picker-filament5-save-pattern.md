@@ -1,4 +1,7 @@
 ---
+qmd: "coordinate picker filament5 save pattern"
+issues: []
+discussions: []
 title: "CoordinatePicker Filament 5 — Pattern salvataggio campo composito"
 type: concept
 confidence: high

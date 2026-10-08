@@ -1,3 +1,14 @@
+---
+title: "super mucca"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "super mucca"
+issues: []
+discussions: []
+---
+
 # Roadmap: Super Mucca Transition 🐄✨
 
 ## 🎯 Goal

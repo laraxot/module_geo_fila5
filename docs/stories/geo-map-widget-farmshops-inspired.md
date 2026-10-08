@@ -1,5 +1,12 @@
 ---
-scope: module:Geo
+title: "geo map widget farmshops inspired"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo map widget farmshops inspired"
+issues: []
+discussions: []
 ---
 
 # Story: GeoMapWidget farmshops-inspired per modulo Geo
@@ -227,20 +234,3 @@ Nel modulo `Geo` esistono già widget mappa legacy come `LocationMapWidget` e `O
 - Leaflet reference: https://leafletjs.com/reference.html
 - Leaflet.markercluster: https://leaflet.github.io/Leaflet.markercluster/
 - Lit reactive properties: https://lit.dev/docs/v2/components/properties/
-
-## GitHub (tracciamento)
-
-Repository letto da frontmatter `github.repository` o `git remote -v` (se assente: repo root **`laraxot/base_quaeris_fila5`**): **`laraxot/base_quaeris_fila5`**.
-
-| Risorsa | Stato | Link |
-|---|---|---|
-| Issue | **DA CREARE** | https://github.com/laraxot/base_quaeris_fila5/issues |
-| Discussion | **DA CREARE** | https://github.com/laraxot/base_quaeris_fila5/discussions |
-
-Il numero non e' scritto perche' non esiste ancora: `gh` non e' autenticato in questa sessione e i repo sono privati. Appena disponibile, creare con:
-
-```bash
-gh issue create --repo laraxot/base_quaeris_fila5 \
-  --title "Story: GeoMapWidget farmshops-inspired per modulo Geo" --body-file <FILE>
-gh api repos/laraxot/base_quaeris_fila5/discussions -f title="Story: GeoMapWidget farmshops-inspired per modulo Geo" -f body="vedi la story"
-```

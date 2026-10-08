@@ -1,4 +1,11 @@
 ---
+title: "spatie queryable actions"
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "spatie queryable actions"
+issues: []
+discussions: []
 name: Spatie Queryable actions for view calculation
 description: Use Spatie Queryable actions to resolve view paths and other runtime data for XotBaseField subclasses.
 type: concept

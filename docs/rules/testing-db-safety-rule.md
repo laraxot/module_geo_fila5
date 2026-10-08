@@ -1,3 +1,14 @@
+---
+title: "testing db safety rule"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "testing db safety rule"
+issues: []
+discussions: []
+---
+
 # Testing DB Safety Rule
 
 ## Regola obbligatoria

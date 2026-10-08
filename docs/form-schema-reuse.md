@@ -1,3 +1,14 @@
+---
+title: "form schema reuse"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "form schema reuse"
+issues: []
+discussions: []
+---
+
 # Riutilizzo degli Schemi Form tra Moduli
 
 ## Principio DRY nella Definizione dei Form

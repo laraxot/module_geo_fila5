@@ -1,3 +1,14 @@
+---
+title: "address resource improvements"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address resource improvements"
+issues: []
+discussions: []
+---
+
 # Suggerimenti di Miglioramento per AddressResource.php
 
 **File**: `/laravel/Modules/Geo/app/Filament/Resources/AddressResource.php`

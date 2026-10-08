@@ -1,4 +1,12 @@
 ---
+title: "geo mixed type reduction.story"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo mixed type reduction.story"
+issues: []
+discussions: []
 scope: module:Geo
 ---
 

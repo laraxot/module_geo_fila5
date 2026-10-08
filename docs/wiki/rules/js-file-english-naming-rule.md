@@ -1,3 +1,14 @@
+---
+title: "js file english naming rule"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "js file english naming rule"
+issues: []
+discussions: []
+---
+
 # regola: filename JS modulo Geo — solo inglese
 
 ## scopo
@@ -8,6 +19,14 @@ Nei path sotto `Modules/Geo/resources/js/` (e mirror tema se presente) **ogni se
 
 ---
 
+title: "js file english naming rule"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "js file english naming rule"
+issues: []
+discussions: []
 ## regola
 
 | Contesto | Convenzione | Esempio |

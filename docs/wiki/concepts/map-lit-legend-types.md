@@ -1,3 +1,14 @@
+---
+title: "map lit legend types"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map lit legend types"
+issues: []
+discussions: []
+---
+
 > **OBSOLETO (STORY-125):** legenda tipologie errata. Vedi [map-legend-status-semantics.md](./map-legend-status-semantics.md).
 
 # map-lit — legenda tipologie colore (STORY-094)

@@ -1,3 +1,14 @@
+---
+title: "lessons learned coordinate picker optimizations"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "lessons learned coordinate picker optimizations"
+issues: []
+discussions: []
+---
+
 # Lessons Learned – Coordinate Picker Optimizations
 
 ## Best Practices

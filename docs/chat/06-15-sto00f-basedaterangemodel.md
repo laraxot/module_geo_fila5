@@ -1,4 +1,11 @@
 ---
+title: "06 15 sto00f basedaterangemodel"
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "06 15 sto00f basedaterangemodel"
+issues: []
+discussions: []
 agent: opencode
 type: session-summary
 module: Sigma

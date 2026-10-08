@@ -10,7 +10,7 @@ use Modules\Geo\Models\Traits\HasAddress;
 /**
  * Modello di test per il trait HasAddress (solo fixture — i test Pest stanno in HasAddressTest.php).
  */
-class HasAddressTestModel extends BaseModel
+final class HasAddressTestModel extends BaseModel
 {
     /** @use HasAddress<HasAddressTestModel> */
     use HasAddress;
@@ -26,7 +26,7 @@ class HasAddressTestModel extends BaseModel
     {
         parent::boot();
 
-        self::creating(static function (): void {
+        static::creating(static function (): void {
             if (! app()->environment('testing')) {
                 throw new \Exception('HasAddressTestModel should only be used in tests.');
             }

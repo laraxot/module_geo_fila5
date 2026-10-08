@@ -1,3 +1,14 @@
+---
+title: "windsurf rules update"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "windsurf rules update"
+issues: []
+discussions: []
+---
+
 # Windsurf Rules Update - Forbidden Documentation Directories
 
 ## Rule to Add to .windsurf/rules/

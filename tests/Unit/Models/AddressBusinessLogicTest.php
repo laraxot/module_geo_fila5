@@ -5,20 +5,35 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
 use Modules\Geo\Models\BaseModel;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
+
+/**
+ * I dati regione/provincia/comune derivano dal modello Comune (Sushi): il contratto
+ * dei getter e' "array oppure null" quando il comune non e' risolvibile.
+ */
+function addressComuneGetterReturnsNullableArray(string $method): bool
+{
+    $returnType = (new \ReflectionMethod(Address::class, $method))->getReturnType();
+
+    return $returnType instanceof \ReflectionNamedType
+        && 'array' === $returnType->getName()
+        && $returnType->allowsNull();
+}
 
 describe('Address Business Logic', function () {
     test('address extends base model', function () {
-        Assert::assertTrue(
-            (new \ReflectionClass(Address::class))->isSubclassOf(BaseModel::class),
-        );
+        Assert::assertSame(BaseModel::class, get_parent_class(Address::class));
     });
 
     test('address has expected fillable fields for postal address', function () {
-        $address = new Address();
+        $address = new Address;
         $expectedFillable = [
             'model_type',
             'model_id',
@@ -45,7 +60,7 @@ describe('Address Business Logic', function () {
     });
 
     test('address has correct casts for geolocation and structured data', function () {
-        $address = new Address();
+        $address = new Address;
         $casts = $address->getCasts();
 
         Assert::assertSame('float', $casts['latitude']);
@@ -56,23 +71,26 @@ describe('Address Business Logic', function () {
     });
 
     test('address has polymorphic model relationship', function () {
-        $address = new Address();
+        $address = new Address;
+
+        Assert::assertInstanceOf(MorphTo::class, $address->model());
+        Assert::assertInstanceOf(MorphTo::class, $address->addressable());
     });
 
     test('address can get region data from comune', function () {
-        $address = new Address();
+        Assert::assertTrue(addressComuneGetterReturnsNullableArray('getRegione'));
     });
 
     test('address can get province data from comune', function () {
-        $address = new Address();
+        Assert::assertTrue(addressComuneGetterReturnsNullableArray('getProvincia'));
     });
 
     test('address can get locality data from comune', function () {
-        $address = new Address();
+        Assert::assertTrue(addressComuneGetterReturnsNullableArray('getLocality'));
     });
 
     test('address can format full address attribute', function () {
-        $address = new Address();
+        $address = new Address;
         $address->route = 'Via Roma';
         $address->street_number = '123';
         $address->locality = 'Milano';
@@ -82,7 +100,7 @@ describe('Address Business Logic', function () {
     });
 
     test('address can format street address attribute', function () {
-        $address = new Address();
+        $address = new Address;
         $address->route = 'Via Roma';
         $address->street_number = '123';
 
@@ -90,7 +108,7 @@ describe('Address Business Logic', function () {
     });
 
     test('address can get geolocation coordinates', function () {
-        $address = new Address();
+        $address = new Address;
         $address->latitude = 45.4642;
         $address->longitude = 9.1900;
 
@@ -99,7 +117,7 @@ describe('Address Business Logic', function () {
     });
 
     test('address can export to schema org format', function () {
-        $address = new Address();
+        $address = new Address;
         $address->name = 'Test Address';
         $address->route = 'Via Roma';
         $address->street_number = '123';

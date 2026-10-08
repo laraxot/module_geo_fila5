@@ -1,3 +1,14 @@
+---
+title: "modules optimization sumy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modules optimization sumy"
+issues: []
+discussions: []
+---
+
 # Riepilogo Analisi Ottimizzazione - Tutti i Moduli <nome progetto>
 # Riepilogo Analisi Ottimizzazione - Tutti i Moduli <nome progetto>
 
@@ -10,6 +21,14 @@ Analisi completa di **14 moduli** del sistema <nome progetto> con identificazion
 
 ---
 
+title: "modules optimization sumy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modules optimization sumy"
+issues: []
+discussions: []
 ## 🚨 Problemi Critici Trasversali
 
 ### 1. **VIOLAZIONI DRY (Don't Repeat Yourself)**

@@ -1,3 +1,14 @@
+---
+title: "cleanup geo docs"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "cleanup geo docs"
+issues: []
+discussions: []
+---
+
 # Task: Geo Docs Consolidation & Cleanup
 
 ## 📋 Obiettivo

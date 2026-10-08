@@ -1,3 +1,14 @@
+---
+title: "SPRINT PLANNING"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "SPRINT PLANNING"
+issues: []
+discussions: []
+---
+
 # Geo Module - Sprint Planning
 
 **Module:** Geo  
@@ -6,6 +17,14 @@
 
 ---
 
+title: "SPRINT PLANNING"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "SPRINT PLANNING"
+issues: []
+discussions: []
 ## Sprint Goal
 
 Implement core geolocation services with IP detection and basic restrictions.

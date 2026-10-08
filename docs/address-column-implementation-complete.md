@@ -1,3 +1,14 @@
+---
+title: "address column implementation complete"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address column implementation complete"
+issues: []
+discussions: []
+---
+
 # AddressColumn Implementation Complete
 
 **Date**: [DATE]

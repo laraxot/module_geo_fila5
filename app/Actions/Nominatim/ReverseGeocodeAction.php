@@ -7,9 +7,11 @@ namespace Modules\Geo\Actions\Nominatim;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\LocationData;
-use Spatie\QueueableAction\QueueableAction;
+use Modules\Geo\Support\GeoApiEndpoints;
 
 use function Safe\json_decode;
+
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per ottenere l'indirizzo da coordinate geografiche usando Nominatim.
@@ -18,7 +20,7 @@ class ReverseGeocodeAction
 {
     use QueueableAction;
 
-    private const string API_URL = 'https://nominatim.openstreetmap.org/reverse';
+    private const string API_URL = GeoApiEndpoints::NOMINATIM_REVERSE;
 
     private Client $client;
 
@@ -30,8 +32,8 @@ class ReverseGeocodeAction
     /**
      * Ottiene l'indirizzo da coordinate geografiche.
      *
-     * @param  float  $latitude  Latitudine
-     * @param  float  $longitude  Longitudine
+     * @param float $latitude  Latitudine
+     * @param float $longitude Longitudine
      *
      * @throws GuzzleException
      * @throws \RuntimeException

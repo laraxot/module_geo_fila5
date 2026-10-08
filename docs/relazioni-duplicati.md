@@ -1,3 +1,14 @@
+---
+title: "relazioni duplicati"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "relazioni duplicati"
+issues: []
+discussions: []
+---
+
 # Elenco Metodi di Relazione Duplicati
 
 ## Panoramica
@@ -5,6 +16,14 @@ Questo documento elenca i metodi di relazione (`HasMany`, `HasOne`) che presenta
 
 ---
 
+title: "relazioni duplicati"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "relazioni duplicati"
+issues: []
+discussions: []
 ## 1. Metodi `qua00f` (HasMany) - Range di Date
 
 ### File: `laravel/Modules/Incentivi/app/Models/Employee.php`

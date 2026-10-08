@@ -1,3 +1,14 @@
+---
+title: "script organization"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "script organization"
+issues: []
+discussions: []
+---
+
 # Organizzazione Script - Regole Fondamentali
 
 ## Regola Assoluta

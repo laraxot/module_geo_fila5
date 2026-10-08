@@ -1,3 +1,14 @@
+---
+title: "phases"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phases"
+issues: []
+discussions: []
+---
+
 # Fasi di sviluppo - Geo Module
 
 ## Fase 1: Core Geo Services (Completata)

@@ -1,4 +1,7 @@
 ---
+qmd: "phpstan compliance"
+issues: []
+discussions: []
 title: "Geo Module - PHPStan Type Compliance"
 type: concept
 tags: [geo, phpstan, types, compliance, quality, static-analysis]

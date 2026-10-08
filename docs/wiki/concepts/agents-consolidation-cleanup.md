@@ -1,5 +1,19 @@
+---
+title: "agents consolidation cleanup"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "agents consolidation cleanup"
+issues: []
+discussions: []
+---
+
 
 ---
+qmd: "agents consolidation cleanup"
+issues: []
+discussions: []
 title: "Agents Directory Consolidation & Cleanup"
 type: cleanup
 created: 2026-04-30

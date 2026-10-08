@@ -1,3 +1,14 @@
+---
+title: "business logic consolidated"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "business logic consolidated"
+issues: []
+discussions: []
+---
+
 # 🏥 Business Logic Consolidata - Progetto <nome progetto>
 
 ## 📋 Panoramica del Sistema
@@ -254,6 +265,14 @@ User (base)
 
 ---
 
+title: "business logic consolidated"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "business logic consolidated"
+issues: []
+discussions: []
 **Versione**: 2.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Rifattorizzata

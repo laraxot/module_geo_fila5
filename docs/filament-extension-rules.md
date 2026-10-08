@@ -1,3 +1,14 @@
+---
+title: "filament extension rules"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "filament extension rules"
+issues: []
+discussions: []
+---
+
 # Filament Class Extension Rules
 
 **Fundamental Principle**: Never extend Filament classes directly - always use XotBase classes.
@@ -234,4 +245,12 @@ app(CreateUserAction::class)->execute($data);
 
 ---
 
+title: "filament extension rules"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "filament extension rules"
+issues: []
+discussions: []
 **Philosophy**: DRY + KISS - Do not duplicate, do not complicate, always use base classes.

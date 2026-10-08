@@ -1,3 +1,14 @@
+---
+title: "addressresource summary"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "addressresource summary"
+issues: []
+discussions: []
+---
+
 # Sintesi Analisi AddressResource - Modulo Geo
 
 ## 📋 Panoramica Completa
@@ -181,6 +192,14 @@ L'implementazione attuale fornisce una base solida per i miglioramenti proposti,
 
 ---
 
+title: "addressresource summary"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "addressresource summary"
+issues: []
+discussions: []
 *Sintesi completata il: $(date)*
 *Modulo: Geo*
 *Classe: AddressResource*

@@ -1,3 +1,14 @@
+---
+title: "geographic data management compendium"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geographic data management compendium"
+issues: []
+discussions: []
+---
+
 # Compendio sulla Gestione dei Dati Geografici in <main module>
 
 Questo documento fornisce una panoramica completa delle strategie implementative per la gestione dei dati geografici nel modulo Geo, collegando e contestualizzando tutte le analisi e documentazioni esistenti.
@@ -202,6 +213,14 @@ Per facilitare la navigazione nella documentazione esistente, ecco una mappa org
 
 ---
 
+title: "geographic data management compendium"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geographic data management compendium"
+issues: []
+discussions: []
 ## Conclusione
 
 La gestione dei dati geografici in <main module> presenta diverse strategie implementative, ognuna con vantaggi e svantaggi specifici. La scelta della strategia ottimale dipende dal caso d'uso specifico, dai requisiti di performance e dalle preferenze del team di sviluppo.

@@ -1,4 +1,7 @@
 ---
+qmd: "map lit cluster hover escape fix"
+issues: []
+discussions: []
 title: "Map-Lit Cluster — i marker 'scappano' al hover (fix)"
 type: troubleshooting
 confidence: high

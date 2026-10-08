@@ -1,3 +1,14 @@
+---
+title: "geo map lit clustering"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo map lit clustering"
+issues: []
+discussions: []
+---
+
 # geo-map-lit Clustering Specification
 
 ## Overview

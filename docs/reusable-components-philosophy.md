@@ -1,3 +1,14 @@
+---
+title: "reusable components philosophy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "reusable components philosophy"
+issues: []
+discussions: []
+---
+
 # Filosofia dei Componenti Riutilizzabili
 
 **Modulo**: Geo

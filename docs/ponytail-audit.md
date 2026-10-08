@@ -1,3 +1,14 @@
+---
+title: "ponytail audit"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "ponytail audit"
+issues: []
+discussions: []
+---
+
 # Ponytail-audit 2026-07-02: Geo module findings
 
 Source: repo-wide ponytail-audit follow-up, same pass that produced the Xot and Notify findings dated 2026-07-02.

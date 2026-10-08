@@ -1,3 +1,14 @@
+---
+title: "tips and links"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "tips and links"
+issues: []
+discussions: []
+---
+
 mappa piu' carina con tanto di repository github
 https://farmshops.eu/
 https://github.com/CodeforKarlsruhe/direktvermarkter
@@ -72,14 +83,3 @@ https://www.igismap.com/top-10-map-direction-api-routing-libraries-navigation-fr
 
 
 
-
-
-## Contenuto originale (txt)
-
----
-module: theme
-topic: tips_and_links
-canonical: ../../../Themes/docs/shared-components/tips_and_links.txt
----
-
-See canonical documentation: ../../../Themes/docs/shared-components/tips_and_links.txt

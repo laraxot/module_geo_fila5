@@ -1,4 +1,11 @@
 ---
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "on module"
+issues: []
+discussions: []
 title: Comandi per il singolo modulo
 description: Comandi per il singolo modulo
 extends: _layouts.documentation

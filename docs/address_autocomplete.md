@@ -1,3 +1,14 @@
+---
+title: "address autocomplete"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address autocomplete"
+issues: []
+discussions: []
+---
+
 https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform?hl=it#maps_places_autocomplete_addressform-css
 https://developers.google.com/maps/documentation/javascript/places-autocomplete
 
@@ -32,14 +43,3 @@ https://www.w3docs.com/learn-javascript/places-autocomplete.html
 
 
 
-
-
-## Contenuto originale (txt)
-
----
-module: theme
-topic: address_autocomplete
-canonical: ../../../Themes/docs/shared-components/address-autocomplete-Modules.md
----
-
-See canonical documentation: ../../../Themes/docs/shared-components/address-autocomplete-Modules.md

@@ -1,3 +1,14 @@
+---
+title: "filament resources xotbase"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "filament resources xotbase"
+issues: []
+discussions: []
+---
+
 # Filament Resources e XotBase nel Framework PTVX
 
 ## Panoramica
@@ -267,7 +278,7 @@ use Filament\Forms\Form;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Modules\User\Filament\Resources\UserResource\Pages;
-use Modules\Xot\Contracts\UserContract;
+use Modules\User\Models\User;
 use Modules\Xot\Filament\Resources\XotBaseResource;
 
 class UserResource extends XotBaseResource

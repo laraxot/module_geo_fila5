@@ -1,3 +1,14 @@
+---
+title: "database seeding"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "database seeding"
+issues: []
+discussions: []
+---
+
 # Database Seeding - Moduli <nome modulo> e <nome progetto>
 
 ## Panoramica
@@ -231,6 +242,14 @@ php bashscripts/database/seeding/<nome progetto>-1000-records.php
 
 ---
 
+title: "database seeding"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "database seeding"
+issues: []
+discussions: []
 **Versione**: 2.0
 **Compatibilità**: Laravel 10+, Moduli <nome progetto>/<nome modulo>
 **Compatibilità**: Laravel 10+, Moduli <nome progetto>/<nome progetto>

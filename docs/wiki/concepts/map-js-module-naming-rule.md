@@ -1,4 +1,7 @@
 ---
+qmd: "map js module naming rule"
+issues: []
+discussions: []
 title: "Map JS Module Naming Rule"
 type: concept
 module: Geo

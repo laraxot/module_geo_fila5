@@ -1,4 +1,7 @@
 ---
+qmd: "handoff phpstan random scan 2026 06 15"
+issues: []
+discussions: []
 title: "Handoff — PHPStan scan random 2026-06-15"
 type: handoff
 tags: [phpstan, gate, swarm, coordination]

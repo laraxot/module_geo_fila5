@@ -1,7 +1,26 @@
+---
+title: "best practices"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "best practices"
+issues: []
+discussions: []
+---
+
 # Best Practices iFlow CLI per PTVX
 
 ---
 
+title: "best practices"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "best practices"
+issues: []
+discussions: []
 ## Principi Fondamentali
 
 Stessi principi di Claude Code e Gemini. Vedi [Best Practices Claude](../claude/best-practices.md) per dettagli.

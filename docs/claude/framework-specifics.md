@@ -1,3 +1,14 @@
+---
+title: "framework specifics"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "framework specifics"
+issues: []
+discussions: []
+---
+
 # Framework Specifics
 
 ## 🚨 Filament 4 Critical Rules
@@ -175,16 +186,16 @@ declare(strict_types=1);
 
 namespace Modules\NomeModulo\Filament\Pages;
 
-use Modules\Xot\Filament\Pages\XotBasePage;
+use Modules\Xot\Filament\Pages\XotBaseDashboard;
 
-class Dashboard extends XotBasePage
+class Dashboard extends XotBaseDashboard
 {
     protected static ?string $navigationIcon = 'heroicon-o-home';
-    protected static string $view = 'nomemodulo::filament.pages.dashboard';
+    protected string $view = 'nomemodulo::filament.pages.dashboard';
     protected static ?string $navigationGroup = 'Dashboard';
     protected static ?int $navigationSort = 1;
     
-    protected function getHeaderWidgets(): array
+    public function getWidgets(): array
     {
         return [
             Widgets\StatsOverviewWidget::class,
@@ -296,5 +307,13 @@ return [
 
 ---
 
+title: "framework specifics"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "framework specifics"
+issues: []
+discussions: []
 **Version**: 2.0 (Refactor DRY + KISS)  
 **File**: framework-specifics.md - Framework specific guidelines

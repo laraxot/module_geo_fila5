@@ -1,9 +1,28 @@
+---
+title: "start here"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "start here"
+issues: []
+discussions: []
+---
+
 # 🎯 START HERE - PTVX Project Documentation
 
 **Welcome!** This is your entry point to comprehensive PTVX documentation.
 
 ---
 
+title: "start here"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "start here"
+issues: []
+discussions: []
 ## 🚀 Quick Navigation (Choose Your Path)
 
 ### 👨‍💻 I'm a New Developer
