@@ -30,6 +30,30 @@ const LABELS = {
         openMaps: 'Open in maps',
         noAddress: 'Address not available',
     },
+    de: {
+        status: 'Status',
+        type: 'Art der Meldung',
+        address: 'Adresse',
+        code: 'Meldungscode',
+        detail: 'Details',
+        images: 'Bilder',
+        close: 'Schließen',
+        openDetail: 'Details',
+        openMaps: 'In Karten öffnen',
+        noAddress: 'Adresse nicht verfügbar',
+    },
+    es: {
+        status: 'Estado',
+        type: 'Tipo de incidencia',
+        address: 'Dirección',
+        code: 'Código de la incidencia',
+        detail: 'Detalles',
+        images: 'Imágenes',
+        close: 'Cerrar',
+        openDetail: 'Detalles',
+        openMaps: 'Abrir en mapas',
+        noAddress: 'Dirección no disponible',
+    },
 };
 
 export function getPopupLabels() {
@@ -243,12 +267,12 @@ export function buildTicketPopupHtml(properties, ticketType, ticketStatus, detai
         ? `<p class="popup__address-preview">${address}</p>`
         : '';
     const heroImage = images.length > 0
-        ? `<div class="popup__hero"><img src="${escapeHtml(images[0])}" alt="" loading="lazy" class="popup__hero-img"></div>`
+        ? `<div class="popup__hero"><img src="${escapeHtml(images[0])}" alt="" loading="lazy" class="popup__hero-img" onerror="this.parentElement.remove()"></div>`
         : '';
     const galleryRest = images.length > 1
         ? `<div class="popup__gallery">${images
             .slice(1, 4)
-            .map((src) => `<img src="${escapeHtml(src)}" alt="" loading="lazy" class="popup__img">`)
+            .map((src) => `<img src="${escapeHtml(src)}" alt="" loading="lazy" class="popup__img" onerror="this.remove()">`)
             .join('')}</div>`
         : '';
 
@@ -298,11 +322,25 @@ export const popupTicketStylesText = `
     .leaflet-popup.popup-wrapper .leaflet-popup-content {
         margin: 0 !important;
         padding: 0 !important;
-        width: min(440px, 94vw) !important;
+        /* 4.5rem = margini pagina + bordo mappa: il popup non deve superare la larghezza reale della mappa (94vw la superava su mobile) */
+        width: min(440px, calc(100vw - 4.5rem)) !important;
         min-width: 0;
-        max-width: min(420px, calc(100vw - 2rem));
-        height: auto !important;
+        max-width: min(420px, calc(100vw - 4.5rem));
         min-height: 0 !important;
+    }
+    /* Popup piu' alto della mappa: scorre il contenuto, ma le azioni (Dettagli/Chiudi) restano sempre visibili */
+    .leaflet-popup.popup-wrapper .leaflet-popup-scrolled .popup__footer {
+        position: sticky;
+        bottom: 0;
+        z-index: 3;
+        box-shadow: 0 -6px 12px rgba(15, 23, 42, 0.08);
+    }
+    /* Mappe strette: Leaflet lascia 72px a sinistra (autoPanPadding) per i controlli, il popup deve starci nel resto */
+    @media (max-width: 480px) {
+        .leaflet-popup.popup-wrapper .leaflet-popup-content {
+            width: calc(100vw - 8.5rem) !important;
+            max-width: calc(100vw - 8.5rem) !important;
+        }
     }
     .leaflet-popup.popup-wrapper .leaflet-popup-content p {
         margin: 0 !important;
@@ -331,7 +369,7 @@ export const popupTicketStylesText = `
     }
     .popup {
         font-family: 'Titillium Web', system-ui, sans-serif;
-        color: #17324d;
+        color: #17324d; /* ENFORCE dark text — avoid white-on-white */
         background: #fff;
         position: relative;
         isolation: isolate;
@@ -736,6 +774,75 @@ export const popupTicketStylesText = `
         .popup__link {
             min-height: 44px;
             padding: 0.55rem 0.75rem;
+        }
+    }
+
+    /* UX 2026-10-07: popup compatto, mai piu largo della mappa, un solo indirizzo, pulsanti affiancati. */
+    .leaflet-popup.popup-wrapper .leaflet-popup-content {
+        width: min(360px, calc(100vw - 3rem)) !important;
+        max-width: none;
+    }
+    .leaflet-popup.popup-wrapper .popup__address-preview {
+        display: none;
+    }
+    .leaflet-popup.popup-wrapper .popup__body {
+        max-height: min(34vh, 230px);
+    }
+    .leaflet-popup.popup-wrapper .popup__description {
+        display: block;
+        -webkit-line-clamp: unset;
+        overflow: visible;
+        color: #17324d;
+    }
+    .leaflet-popup.popup-wrapper .popup__footer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 0.5rem;
+        padding: 0.6rem 0.75rem;
+    }
+    .leaflet-popup.popup-wrapper .popup__link {
+        width: auto;
+        min-height: 44px;
+        text-decoration: none !important;
+    }
+    .leaflet-popup.popup-wrapper .popup__link--primary {
+        flex: 1 1 60%;
+    }
+    .leaflet-popup.popup-wrapper .popup__link--ghost {
+        flex: 0 0 auto;
+        padding-inline: 1.1rem;
+    }
+    .leaflet-popup.popup-wrapper .popup__header-bar {
+        padding-right: 2.25rem;
+    }
+    /* la regola base con !important metteva l'icona nella colonna 1fr (180px): variante con icona piu specifica */
+    .leaflet-popup.popup-wrapper .popup__header-bar.popup__header-bar--with-icon {
+        grid-template-columns: 2.75rem minmax(0, 1fr) !important;
+        column-gap: 0.75rem;
+    }
+    .leaflet-popup.popup-wrapper .popup__header-text {
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+        min-width: 0;
+    }
+    .leaflet-popup.popup-wrapper .popup__title {
+        text-align: left;
+    }
+    /* Mobile: la mappa lascia 56px ai controlli a sinistra (autoPan) e 16px a destra */
+    @media (max-width: 640px) {
+        .leaflet-popup.popup-wrapper .leaflet-popup-content {
+            width: calc(100vw - 6.75rem) !important;
+        }
+    }
+    @media (max-width: 900px) {
+        .leaflet-popup.popup-wrapper .leaflet-popup-content {
+            max-height: min(250px, 58vh) !important;
+        }
+        .leaflet-popup.popup-wrapper .popup {
+            max-height: min(250px, 58vh);
         }
     }
 `;
