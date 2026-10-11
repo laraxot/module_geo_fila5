@@ -14,10 +14,11 @@ const MARKER_GLYPH_SIZE = 22;
 const MARKER_BORDER_WIDTH = 3;
 
 const DESIGN_COMUNI_PRIMARY = '#0057b8';
-const DESIGN_COMUNI_SPRITE = '/themes/Sixteen/design-comuni/assets/bootstrap-italia/dist/svg/sprites.svg#it-map-pin';
+const MAP_PIN_PATH_D =
+  'M12 2C8.69 2 6 4.69 6 8c0 5.25 6 10 6 10s6-4.75 6-10c0-3.31-2.69-6-6-6zm0 8.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z';
 
 export function normalizeGeoMapColor(color, fallback = DESIGN_COMUNI_PRIMARY) {
-    return SAFE_HEX_COLOR.test(String(color || '')) ? color : fallback;
+  return SAFE_HEX_COLOR.test(String(color || '')) ? color : fallback;
 }
 
 /**
@@ -25,49 +26,64 @@ export function normalizeGeoMapColor(color, fallback = DESIGN_COMUNI_PRIMARY) {
  * @param {number} [alpha]
  */
 export function hexToRgba(hex, alpha = 1) {
-    const normalized = normalizeGeoMapColor(hex).replace('#', '');
-    const full = normalized.length === 3
-        ? normalized.split('').map((c) => c + c).join('')
-        : normalized;
-    const n = Number.parseInt(full, 16);
-    if (!Number.isFinite(n)) {
-        return `rgba(96, 125, 139, ${alpha})`;
-    }
+  const normalized = normalizeGeoMapColor(hex).replace('#', '');
+  const full =
+    normalized.length === 3
+      ? normalized
+          .split('')
+          .map(c => c + c)
+          .join('')
+      : normalized;
+  const n = Number.parseInt(full, 16);
+  if (!Number.isFinite(n)) {
+    return `rgba(96, 125, 139, ${alpha})`;
+  }
 
-    const r = (n >> 16) & 255;
-    const g = (n >> 8) & 255;
-    const b = n & 255;
+  const r = (n >> 16) & 255;
+  const g = (n >> 8) & 255;
+  const b = n & 255;
 
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
 function buildTypeInitial(label) {
-    const initial = String(label || '?').trim().charAt(0).toUpperCase() || '?';
+  const initial =
+    String(label || '?')
+      .trim()
+      .charAt(0)
+      .toUpperCase() || '?';
 
-    return `<span class="geo-map-marker-designcomuni__initial" aria-hidden="true">${initial}</span>`;
+  return `<span class="geo-map-marker-designcomuni__initial" aria-hidden="true">${initial}</span>`;
 }
 
-export function createGeoMapLeafletIcon(L, color = DESIGN_COMUNI_PRIMARY, iconUrl = null, typeLabel = '') {
-    const statusColor = normalizeGeoMapColor(color, DESIGN_COMUNI_PRIMARY);
-    // Icona SVG da sprite DesignComuni (pin bianco per contrasto)
-    const glyph = buildMarkerGlyphHtml(iconUrl, MARKER_GLYPH_SIZE, { monochrome: true });
-    const fallbackDot = glyph ? '' : buildTypeInitial(typeLabel);
-    const useSprite = !glyph && !iconUrl;
-    const spriteIcon = useSprite
-        ? `<svg class="geo-map-marker-designcomuni__glyph-svg" aria-hidden="true" width="${MARKER_GLYPH_SIZE}" height="${MARKER_GLYPH_SIZE}"><use href="${DESIGN_COMUNI_SPRITE}"></use></svg>`
-        : '';
+export function createGeoMapLeafletIcon(
+  L,
+  color = DESIGN_COMUNI_PRIMARY,
+  iconUrl = null,
+  typeLabel = ''
+) {
+  const statusColor = normalizeGeoMapColor(color, DESIGN_COMUNI_PRIMARY);
+  // Icona SVG da sprite DesignComuni (pin bianco per contrasto)
+  const glyph = buildMarkerGlyphHtml(iconUrl, MARKER_GLYPH_SIZE, {
+    monochrome: true,
+  });
+  const fallbackDot = glyph ? '' : buildTypeInitial(typeLabel);
+  const useSprite = !glyph && !iconUrl;
+  const spriteIcon = useSprite
+    ? `<svg class="geo-map-marker-designcomuni__glyph-svg" aria-hidden="true" width="${MARKER_GLYPH_SIZE}" height="${MARKER_GLYPH_SIZE}" viewBox="0 0 24 24"><path fill="currentColor" d="${MAP_PIN_PATH_D}"></path></svg>`
+    : '';
 
-    return L.divIcon({
-        html: `<div class="geo-map-marker-designcomuni" style="--marker-color:${statusColor}" role="img" aria-label="Marker posizione segnalazione" aria-hidden="true">
+  return L.divIcon({
+    html: `<div class="geo-map-marker-designcomuni" style="--marker-color:${statusColor}" role="img" aria-label="Marker posizione segnalazione" aria-hidden="true">
             <div class="geo-map-marker-designcomuni__circle">
                 <div class="geo-map-marker-designcomuni__icon">${glyph}${spriteIcon}${fallbackDot}</div>
             </div>
         </div>`,
-        className: 'geo-map-marker-wrapper geo-map-marker-wrapper--designcomuni',
-        iconSize: [MARKER_WIDTH, MARKER_TOTAL_HEIGHT],
-        iconAnchor: [MARKER_WIDTH / 2, MARKER_BODY_SIZE / 2],
-        popupAnchor: [0, -MARKER_BODY_SIZE / 2],
-    });
+    className: 'geo-map-marker-wrapper geo-map-marker-wrapper--designcomuni',
+    iconSize: [MARKER_WIDTH, MARKER_TOTAL_HEIGHT],
+    iconAnchor: [MARKER_WIDTH / 2, MARKER_BODY_SIZE / 2],
+    popupAnchor: [0, -MARKER_BODY_SIZE / 2],
+  });
 }
 
 export const markerCardStylesText = `
