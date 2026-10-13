@@ -18,12 +18,16 @@ export class CoordinatePickerField extends LitElement {
         state:          { type: Object },
         zoom:           { type: Number },
         height:         { type: String },
+        centerLatitude: { type: Number, attribute: 'center-latitude' },
+        centerLongitude: { type: Number, attribute: 'center-longitude' },
         isLocating:     { type: Boolean, state: true },
         isFullscreen:   { type: Boolean, state: true },
         geolocateWhenEmpty: { type: Boolean, attribute: 'geolocate-when-empty' },
         labels:         { type: Object },
         provider:       { type: String },
         showSearch:     { type: Boolean, attribute: 'show-search' },
+        /** Sola lettura: marker fisso, nessun click/drag che scrive lo stato, niente ricerca/geolocalizzazione/fullscreen. */
+        readonly:       { type: Boolean },
         searchQuery:    { type: String, state: true },
         searchResults:  { type: Array, state: true },
         showSearchResults: { type: Boolean, state: true },
@@ -42,6 +46,8 @@ export class CoordinatePickerField extends LitElement {
         this.state = null;
         this.zoom = 13;
         this.height = '400px';
+        this.centerLatitude = 41.9028;
+        this.centerLongitude = 12.4964;
         this.isLocating = false;
         this.isFullscreen = false;
         this.geolocateWhenEmpty = false;
@@ -49,6 +55,7 @@ export class CoordinatePickerField extends LitElement {
         this.labels = {};
         this.provider = 'osm';
         this.showSearch = true;
+        this.readonly = false;
         this.searchQuery = '';
         this.searchResults = [];
         this.showSearchResults = false;
@@ -85,7 +92,7 @@ export class CoordinatePickerField extends LitElement {
                 <div class="map-picker-viewport">
                     ${guard([], () => html`<div class="map-picker-leaflet-pane" style="height: 100%;"></div>`)}
                 </div>
-                ${this.showSearch !== false && this._searchOpen ? renderSearch(this, searchUiHandlers) : ''}
+                ${this.showSearch !== false && !this.readonly && this._searchOpen ? renderSearch(this, searchUiHandlers) : ''}
                 ${renderControls(this)}
                 <div class="loading-overlay ${this.isLocating ? 'active' : ''}">
                     <div class="spinner"></div>

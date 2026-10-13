@@ -31,6 +31,7 @@ discussions: []
 ### 🔧 Integration & Usage
 
 - [**Coordinate Picker Purpose & Architecture**](./coordinate-picker-purpose.md) - Scopo, utilità e implementazione del componente mappa per wizard ticket
+- [**Mappa di sola lettura (`<x-geo::point-map>`, `CoordinatePicker::readOnly()`)**](./wiki/concepts/point-map-readonly.md) - Mostrare un punto senza poterlo modificare (riepilogo wizard, DCP-33)
 - [**SVG Icon Architecture**](./coordinate-picker-purpose.md#-svg-icon-architecture-no-hardcoded-svg) - Regola DRY: SVG separati in `resources/svg/`, no inline hardcoded
 - [**Filament Components**](./filament-forms-components.md) - Filament forms components, web components (Lit.dev), and integration patterns
 - [**Filament Integration**](./FILAMENT_EXTENSION_RULES.md) - Filament PHP integration patterns
