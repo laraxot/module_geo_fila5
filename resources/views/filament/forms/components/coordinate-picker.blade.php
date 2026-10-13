@@ -2,6 +2,7 @@
 /** @var \Modules\Geo\Filament\Forms\Components\CoordinatePicker $field */
 $statePath = $field->getStatePath();
 $id = $field->getId();
+$isReadonly = $field->isMapReadonly();
 
 $labels = [
 'zoom_in' => __('geo::coordinate-picker.zoom_in'),
@@ -115,8 +116,11 @@ $labels = [
                 :state="state"
                 zoom="{{ $field->getZoom() }}"
                 height="{{ $field->getHeight() }}"
-                show-search
-                geolocate-when-empty="{{ $field->getGeolocateWhenEmpty() ? 'true' : 'false' }}"
+                center-latitude="{{ $field->getCenterLatitude() }}"
+                center-longitude="{{ $field->getCenterLongitude() }}"
+                @if($isReadonly) readonly @endif
+                @if(! $isReadonly) show-search @endif
+                @if($field->getGeolocateWhenEmpty()) geolocate-when-empty @endif
                 labels='@json($labels)'
             ></coordinate-picker-lit>
         </div>

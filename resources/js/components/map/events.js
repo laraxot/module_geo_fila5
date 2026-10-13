@@ -72,6 +72,9 @@ export function scheduleClientReverseGeocode(ctx, lat, lng, source) {
  * @param {Object} ctx - CoordinatePickerField instance (this)
  */
 export function handleMapInteraction(ctx, lat, lng, source = 'manual') {
+    // Sola lettura: unico punto di scrittura dello stato (click, drag, ricerca, geolocalizzazione passano da qui).
+    if (ctx.readonly) return;
+
     ctx._isProgrammaticUpdate = true;
     const normalized = normalizeCoordinatePair(lat, lng);
     if (!normalized) {
@@ -128,8 +131,11 @@ export function handleMapInteraction(ctx, lat, lng, source = 'manual') {
 export function updateMarker(ctx, lat, lng) {
     if (!ctx._map) return;
     if (!ctx._marker) {
+        // Sola lettura: marker fisso, non interattivo e senza tab stop (Leaflet gli darebbe role=button + tabindex).
         ctx._marker = L.marker([lat, lng], {
-            draggable: true,
+            draggable: !ctx.readonly,
+            interactive: !ctx.readonly,
+            keyboard: !ctx.readonly,
             icon: createGeoMapLeafletIcon(L)
         }).addTo(ctx._map);
         ctx._marker.on('dragend', (e) => {
@@ -165,24 +171,28 @@ export function initMap(ctx) {
     ctx._currentLayer = ctx._currentLayer ?? 'street';
 
     const hasStateCoordinates = ctx._lat != null && ctx._lng != null;
-    const centerLat = hasStateCoordinates ? ctx._lat : 41.9028;
-    const centerLng = hasStateCoordinates ? ctx._lng : 12.4964;
+    const centerLat = hasStateCoordinates ? ctx._lat : ctx.centerLatitude;
+    const centerLng = hasStateCoordinates ? ctx._lng : ctx.centerLongitude;
 
     ctx._map = L.map(el, {
         center: [centerLat, centerLng],
         zoom: ctx.zoom,
         zoomControl: false,
-        attributionControl: false
+        attributionControl: false,
+        // Sola lettura: niente tab stop sulla mappa e niente zoom con la rotella (non deve catturare lo scroll della pagina).
+        ...(ctx.readonly ? { keyboard: false, scrollWheelZoom: false } : {})
     });
 
     ctx._layers = buildMapLayers(L);
     ctx._layers.street.addTo(ctx._map);
 
-    ctx._map.on('click', (e) => handleMapInteraction(ctx, e.latlng.lat, e.latlng.lng, 'click'));
+    if (!ctx.readonly) {
+        ctx._map.on('click', (e) => handleMapInteraction(ctx, e.latlng.lat, e.latlng.lng, 'click'));
+    }
 
     if (hasStateCoordinates) {
         syncMarkerToProperties(ctx);
-    } else {
+    } else if (!ctx.readonly && ctx.geolocateWhenEmpty) {
         window.setTimeout(() => {
             if (ctx._lat == null && ctx._lng == null) {
                 void requestGeolocation(ctx, { showLoading: true });
