@@ -67,8 +67,9 @@ export function createGeoMapLeafletIcon(
   const glyph = buildMarkerGlyphHtml(iconUrl, MARKER_GLYPH_SIZE, {
     monochrome: true,
   });
-  const fallbackDot = glyph ? '' : buildTypeInitial(typeLabel);
   const useSprite = !glyph && !iconUrl;
+  // iniziale solo se l'icona del tipo c'era ma non e' utilizzabile: con il pin di default un "?" affiancato era un doppione
+  const fallbackDot = glyph || useSprite ? '' : buildTypeInitial(typeLabel);
   const spriteIcon = useSprite
     ? `<svg class="geo-map-marker-designcomuni__glyph-svg" aria-hidden="true" width="${MARKER_GLYPH_SIZE}" height="${MARKER_GLYPH_SIZE}" viewBox="0 0 24 24"><path fill="currentColor" d="${MAP_PIN_PATH_D}"></path></svg>`
     : '';

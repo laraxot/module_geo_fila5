@@ -11,6 +11,7 @@ $labels = [
 'close_fullscreen'=> __('geo::coordinate-picker.close_fullscreen'),
 'use_location' => __('geo::coordinate-picker.use_my_location'),
 'locating' => __('geo::coordinate-picker.locating'),
+'location_unavailable' => __('geo::coordinate-picker.location_unavailable'),
 'search' => __('geo::coordinate-picker.search'),
 'search_placeholder' => __('geo::coordinate-picker.search_placeholder'),
 'close_search' => __('geo::coordinate-picker.close_search'),
@@ -18,6 +19,7 @@ $labels = [
 'latitude' => __('geo::coordinate-picker.latitude'),
 'longitude' => __('geo::coordinate-picker.longitude'),
 'address' => __('geo::coordinate-picker.address'),
+'no_position' => __('geo::coordinate-picker.no_position'),
 ];
 @endphp
 
@@ -47,11 +49,9 @@ $labels = [
                 }
                 this.state = next;
 
-                @if($field->hasReverseGeocoding())
-                if (latitude !== null && longitude !== null) {
-                    void this.reverseGeocode(latitude, longitude);
-                }
-                @endif
+                // The Lit map already reverse-geocodes client-side and emits
+                // the enriched state. Avoid a second schema RPC: a public
+                // page wrapper may not expose Filament's schema dispatcher.
             },
 
             handleAddressSelected(event) {
@@ -72,37 +72,13 @@ $labels = [
                     raw: payload.raw ?? detail.result ?? this.state?.raw ?? null,
                 };
 
-                @if($field->hasReverseGeocoding())
-                if (latitude !== null && longitude !== null) {
-                    void this.reverseGeocode(latitude, longitude);
-                }
-                @endif
+                // Search results already contain their address payload.
             },
 
             handleFullscreenChanged(event) {
                 this.isFullscreen = event.detail.isFullscreen;
             },
 
-            async reverseGeocode(lat, lng) {
-                try {
-                    let result = await this.$wire.callSchemaComponentMethod('{{ $id }}', 'reverseGeocode', { latitude: lat, longitude: lng });
-                    if (typeof result === 'string') {
-                        result = { display_name: result, address: result };
-                    }
-                    if (result && typeof result === 'object') {
-                        this.state = {
-                            ...(this.state ?? {}),
-                            ...result,
-                            latitude: lat,
-                            longitude: lng,
-                            lat,
-                            lng,
-                            address: result.display_name ?? result.address ?? this.state?.address ?? null,
-                            provider: result.provider ?? 'nominatim',
-                        };
-                    }
-                } catch (e) {}
-            }
         }"
         class="coordinate-picker-field-wrapper space-y-2"
         @coords-changed.stop="handleCoordsChanged($event)"
@@ -116,11 +92,12 @@ $labels = [
                 :state="state"
                 zoom="{{ $field->getZoom() }}"
                 height="{{ $field->getHeight() }}"
-                center-latitude="{{ $field->getCenterLatitude() }}"
-                center-longitude="{{ $field->getCenterLongitude() }}"
+                @if(null !== $field->getCenterLatitude()) center-latitude="{{ $field->getCenterLatitude() }}" @endif
+                @if(null !== $field->getCenterLongitude()) center-longitude="{{ $field->getCenterLongitude() }}" @endif
                 @if($isReadonly) readonly @endif
                 @if(! $isReadonly) show-search @endif
                 @if($field->getGeolocateWhenEmpty()) geolocate-when-empty @endif
+                default-view='@json($field->getMapDefaultView())'
                 labels='@json($labels)'
             ></coordinate-picker-lit>
         </div>
@@ -132,7 +109,10 @@ $labels = [
                     <span><span x-text="labels?.longitude || 'Lng'"></span>: <strong x-text="(state && (state.longitude || state.longitude === 0)) ? Number(state.longitude).toFixed(6) : '--'"></strong></span>
                 </div>
                 <div class="geo-coordinate-readout__address" :title="state?.address || ''">
-                    <x-heroicon-o-map-pin class="geo-coordinate-readout__icon" />
+                    <x-heroicon-o-map-pin
+                        class="geo-coordinate-readout__icon"
+                        style="display:inline-block;width:1rem;height:1rem;max-width:1rem;max-height:1rem;flex:0 0 1rem;"
+                    />
                     <span><span x-text="labels?.address || 'Address'"></span>: <strong x-text="state?.address || '--'"></strong></span>
                 </div>
             </div>
