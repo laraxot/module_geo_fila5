@@ -12,16 +12,24 @@ discussions:
   - "https://github.com/laraxot/base_fixcity_fila5/discussions/273"
 related:
   - ./concepts/ai-harness-geo-discipline.md
-  - ../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md
+  - ../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md
 ---
 
 # Geo Module Wiki
 
+## Picker
+
+- [picker-marker-and-controls-on-host-pages](./concepts/picker-marker-and-controls-on-host-pages.md) - marker con tipo/stato e pulsanti opachi nelle pagine ospiti (DCP-152)
+- [coordinate-picker-field](./concepts/coordinate-picker-field.md) - il campo Filament del picker e il suo componente Lit
+- [coordinate-picker-design-comuni-runtime-rule](./concepts/coordinate-picker-design-comuni-runtime-rule.md) - regola runtime del picker nelle pagine Design Comuni
+- [geo-map-lit](./concepts/geo-map-lit.md) - il componente mappa `geo-map-lit`
+- [Elenco completo dei concept](./concepts/INDEX.md) - tutti i 148 concept della cartella, uno per riga
+
 ## AI / second brain
 
 - [ai-harness-geo-discipline](./concepts/ai-harness-geo-discipline.md)
-- [hackernoon-ai-coding-tips-fixcity-map](../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md)
-- [bmad/architecture](../../../../docs/wiki/bmad/architecture.md)
+- [hackernoon-ai-coding-tips-fixcity-map](../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md)
+- [bmad/architecture](../../../../../docs/wiki/bmad/architecture.md)
 - [ai-harness-module-discipline](../../docs/wiki/concepts/ai-harness-module-discipline.md)
 - [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) → canon Xot
 
@@ -39,7 +47,7 @@ related:
 
 **Ricostruzione:** [geo-map-lit-reconstruction-guide.md](concepts/geo-map-lit-reconstruction-guide.md) · [geo-map-fixes-registry.md](concepts/geo-map-fixes-registry.md) · hub root [map-lit-reconstruction-hub.md](../../../../../docs/wiki/memories/map-lit-reconstruction-hub.md)
 
-- [map-lit-it-incidents-2026-06.md](troubleshooting/map-lit-it-incidents-2026-06.md) — STORY-121…129 runbook
+- [map-lit-it-incidents-2026.md](troubleshooting/map-lit-it-incidents-2026.md) — STORY-121…129 runbook
 - [map-popup-header-whitespace-fix.md](troubleshooting/map-popup-header-whitespace-fix.md) — vuoto popup header→Tipologia
 - [farmshops-eu-applicability-fixcity.md](concepts/farmshops-eu-applicability-fixcity.md) — pattern cluster
 - [farmshops-cluster-type-icons-study.md](concepts/farmshops-cluster-type-icons-study.md) — STORY-284 gap stato→icone tipo

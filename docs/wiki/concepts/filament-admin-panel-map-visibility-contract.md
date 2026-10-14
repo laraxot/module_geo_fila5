@@ -59,4 +59,4 @@ Conclusione: la mappa dipende ancora da catena fallback non pienamente allineata
 
 - [leaflet wizard step invalidate size](./leaflet-wizard-step-invalidate-size.md)
 - [coordinate picker lit wizard fullscreen rule](./coordinate-picker-lit-wizard-fullscreen-rule.md)
-- [fixcity admin ticket create map visual contract](../../../Fixcity/docs/wiki/concepts/admin-ticket-create-map-visual-contract.md)
+- [fixcity admin ticket create map visual contract](../../../../Fixcity/docs/wiki/concepts/admin-ticket-create-map-visual-contract.md)

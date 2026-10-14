@@ -157,7 +157,7 @@ discussions: []
 
 ## Collegamenti
 
-- [README Modulo Geo](./readme.md)
+- [README Modulo Geo](./README.md)
 - [Factory Audit Root](../../../../docs/factory-audit-2025.md)
 - [Address Implementation](./address-implementation.md)
 - [Sushi Implementation](./sushi-implementation.md)

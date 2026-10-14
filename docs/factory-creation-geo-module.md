@@ -113,7 +113,7 @@ public function milano(): static
 ## 🔗 COLLEGAMENTI
 
 - [Factory Lessons Learned CRITICAL](../../../../docs/factory-lessons-learned-critical.md)
-- [Geo Module README](./readme.md)
+- [Geo Module README](./README.md)
 - [Geographic Data Documentation](./geographic-data.md)
 
 ## ⚠️ REGOLE GEO SPECIFICHE

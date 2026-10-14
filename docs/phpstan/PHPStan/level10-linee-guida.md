@@ -76,7 +76,7 @@ protected function getInfolistSchema(): array
 }
 ```
 
-Per linee guida più dettagliate sul metodo `getInfolistSchema`, consultare il documento [INFOLIST_SCHEMA_GUIDELINES.md](../filament/INFOLIST_SCHEMA_GUIDELINES.md).
+Per linee guida più dettagliate sul metodo `getInfolistSchema`, consultare il documento [INFOLIST_SCHEMA_GUIDELINES.md](../../filament/INFOLIST_SCHEMA_GUIDELINES.md).
 
 ## Gestione degli Errori Comuni
 

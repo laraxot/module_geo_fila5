@@ -149,7 +149,7 @@ app(SendMailByRecord::class)->execute($performance);
 ### 🚨 **Troubleshooting**
 - **[Common Issues](../performance-troubleshooting.md)** - Problemi frequenti
 - **[Debug Guide](../performance-debug.md)** - Tecniche debug
-- **[Performance Issues](../performance-optimization.md)** - Ottimizzazioni
+- **[Performance Issues](../../performance-optimization.md)** - Ottimizzazioni
 
 ---
 
@@ -215,14 +215,14 @@ PerformanceUpdated::dispatch($performance);
 ## 🔗 **Integrazioni Sistema**
 
 ### Moduli Core
-- **[User](../User/docs/)** - Valutatori e valutati
-- **[Xot](../Xot/docs/)** - Framework base
-- **[Lang](../Lang/docs/)** - Traduzioni
+- **[User](../../../../User/docs)** - Valutatori e valutati
+- **[Xot](../../../../Xot/docs)** - Framework base
+- **[Lang](../../../../Lang/docs)** - Traduzioni
 
 ### Moduli Business
 - **[Ptv](../Ptv/docs/)** - Sistema PTV integrato
-- **[Notify](../Notify/docs/)** - Sistema notifiche
-- **[Activity](../Activity/docs/)** - Audit trail
+- **[Notify](../../../../Notify/docs)** - Sistema notifiche
+- **[Activity](../../../../Activity/docs)** - Audit trail
 
 ---
 

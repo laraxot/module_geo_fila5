@@ -469,7 +469,7 @@ CREATE TABLE geo_cache (
 
 ### 12.3 Related PRDs
 - [Predict Module PRD](../Predict/docs/PRD.md)
-- [User Module PRD](../User/docs/PRD.md)
+- [User Module PRD](../../User/docs/prd.md)
 - [UI Module PRD](../UI/docs/PRD.md)
 
 ---

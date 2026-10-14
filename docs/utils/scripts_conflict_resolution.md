@@ -183,7 +183,7 @@ Dopo la risoluzione dei conflitti, verranno eseguite le seguenti verifiche:
 - [Documentazione Generale sulla Risoluzione dei Conflitti](../../docs/bashscripts_conflict_resolution.md)
 - [Linee Guida per la Scrittura di Script Bash](./git_scripts.md)
 - [Principio DRY negli Script Bash](./NO_DUPLICATE_FUNCTIONS_IN_SOURCED_SCRIPTS.md)
-- [Risoluzione dei Conflitti Bash](./CONFLICT_RESOLUTION_BASH.md)
+- [Risoluzione dei Conflitti Bash](./conflict_resolution_bash.md)
 
 ## Risoluzioni recenti (Aprile 2025)
 
@@ -256,7 +256,7 @@ Dopo la risoluzione dei conflitti, verranno eseguite le seguenti verifiche:
 - [Documentazione Generale sulla Risoluzione dei Conflitti](../../docs/bashscripts_conflict_resolution.md)
 - [Linee Guida per la Scrittura di Script Bash](./git_scripts.md)
 - [Principio DRY negli Script Bash](./NO_DUPLICATE_FUNCTIONS_IN_SOURCED_SCRIPTS.md)
-- [Risoluzione dei Conflitti Bash](./CONFLICT_RESOLUTION_BASH.md)
+- [Risoluzione dei Conflitti Bash](./conflict_resolution_bash.md)
 
 ## Risoluzioni recenti (Aprile 2025)
 

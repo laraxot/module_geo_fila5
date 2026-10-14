@@ -8,8 +8,8 @@ discussions: []
 type: concept
 module: Geo
 sources:
-  - ../../../stories/geo-map-widget-farmshops-lod.md
-  - ../../../farmshops-integration-analysis.md
+  - ../../stories/geo-map-widget-farmshops-lod.md
+  - ../../farmshops-integration-analysis.md
   - ../../../LIT-MAP-IMPLEMENTATION.md
   - https://github.com/CodeforKarlsruhe/farmshops.eu/blob/master/js/direktvermarkter.js
   - https://github.com/CodeforKarlsruhe/farmshops.eu/blob/master/js/popupcontent.js

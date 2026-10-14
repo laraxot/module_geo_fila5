@@ -61,8 +61,8 @@ if (app(SafeObjectCastAction::class)->hasProperty($object, 'value')) {
 ### Collegamenti
 
 - [Documentazione Azioni Cast](../../laravel/modules/xot/docs/cast-actions.md)
-- [SafeEloquentCastAction](../../laravel/Modules/Xot/app/Actions/Cast/SafeEloquentCastAction.php)
-- [SafeObjectCastAction](../../laravel/Modules/Xot/app/Actions/Cast/SafeObjectCastAction.php)
+- [SafeEloquentCastAction](../../Xot/app/Actions/Cast/SafeEloquentCastAction.php)
+- [SafeObjectCastAction](../../Xot/app/Actions/Cast/SafeObjectCastAction.php)
 
 ## 2. Estensione Diretta di Classi Filament
 
@@ -265,5 +265,5 @@ php artisan test
 
 - [Regole Cursor](../../.cursor/rules)
 - [Regole Windsurf](../../.windsurf/rules)
-- [Documentazione Moduli](../../laravel/Modules/)
-- [PHPStan Configuration](../../laravel/phpstan.neon)
+- [Documentazione Moduli](../..)
+- [PHPStan Configuration](../../../phpstan.neon)

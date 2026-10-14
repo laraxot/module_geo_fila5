@@ -215,4 +215,4 @@ $screenshotPath = $this->mcpService->puppeteer()->captureScreenshot(
 - [mcp_implementation_guide.md](../../../docs/mcp_implementation_guide.md)
 - [mcp_implementation_correction.md](../../../docs/mcp_implementation_correction.md)
 - [mcp_errors_and_lessons.md](../../../docs/mcp_errors_and_lessons.md)
-- [Indice e collegamenti root](../../../docs/links.md) 
+- [Indice e collegamenti root](../../../../../docs/links.md) 

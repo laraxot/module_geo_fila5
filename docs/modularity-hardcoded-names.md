@@ -162,9 +162,9 @@ Ogni progetto può personalizzare i valori tramite variabili d'ambiente senza mo
 
 ## Documentazione Correlata
 
-- [Modulo Notify](../laravel/modules/notify/docs/modularity-hardcoded-names.md)
+- [Modulo Notify](../../Notify/docs/modularity-hardcoded-names.md)
 - [Regole Cursor](../.cursor/rules/modularity-hardcoded-names.mdc)
-- [Testing Guidelines](../laravel/modules/notify/docs/testing-guidelines.md)
+- [Testing Guidelines](../../Notify/docs/testing-guidelines.md)
 
 ---
 

@@ -41,7 +41,7 @@ Il colore in `ticket_type_enum` (es. `#fbc02d`) serve ad altri contesti (admin F
 }
 ```
 
-- `type`: **solo** `iconUrl` — file `Modules/Fixcity/resources/svg/{value-kebab}.svg`, riferimento `fixcity::svg/{value-kebab}.svg` ([regola icona](../../../Fixcity/docs/wiki/concepts/ticket-type-icon-fixcity-svg.md)).
+- `type`: **solo** `iconUrl` — file `Modules/Fixcity/resources/svg/{value-kebab}.svg`, riferimento `fixcity::svg/{value-kebab}.svg` ([regola icona](../../../../Fixcity/docs/wiki/concepts/ticket-type-icon-fixcity-svg.md)).
 - `status.color`: **sempre hex** (`ResolveTicketStatusMarkerPropertiesAction::resolveMapHexColor`).
 - Vietato: `type.icon` heroicon + `iconUrl` UI in parallelo.
 

@@ -11,7 +11,7 @@ issues: []
 related:
   - geo-map-lit-farmshops-parity.md
   - map-lit-cluster-type-icons.md
-  - ../../../Fixcity/docs/wiki/concepts/ticket-type-icon-fixcity-svg.md
+  - ../../../../Fixcity/docs/wiki/concepts/ticket-type-icon-fixcity-svg.md
   - ../../../../../../docs/stories/STORY-284-map-cluster-type-icons-farmshops-parity.md
 reference: "https://github.com/CodeforKarlsruhe/farmshops.eu"
 ---
@@ -85,6 +85,6 @@ markers.forEach(m => {
 
 ## Collegamenti
 
-- [ticket-type-icon-fixcity-svg.md](../../../Fixcity/docs/wiki/concepts/ticket-type-icon-fixcity-svg.md)
+- [ticket-type-icon-fixcity-svg.md](../../../../Fixcity/docs/wiki/concepts/ticket-type-icon-fixcity-svg.md)
 - [STORY-284](../../../../../../docs/stories/STORY-284-map-cluster-type-icons-farmshops-parity.md)
 - Reference: [direktvermarkter.js](https://github.com/CodeforKarlsruhe/farmshops.eu/blob/master/js/direktvermarkter.js)

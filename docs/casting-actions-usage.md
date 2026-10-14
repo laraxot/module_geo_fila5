@@ -152,7 +152,7 @@ $percentage = SafeFloatCastAction::castAsPercentage($mixedValue);
 ## Collegamenti
 - [Regole Cursor: Casting Actions](.cursor/rules/casting-actions-rule.mdc)
 - [Memorie: Casting Actions](.cursor/memories/casting-actions.mdc)
-- [Azioni Cast Xot](../../laravel/Modules/Xot/app/Actions/Cast/)
+- [Azioni Cast Xot](../../Xot/app/Actions/Cast)
 
 ---
 title: "casting actions usage"

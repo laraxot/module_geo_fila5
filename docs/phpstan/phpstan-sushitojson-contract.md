@@ -36,5 +36,5 @@ class Comune extends BaseModel implements SushiToJsonContract
 
 ## Riferimenti
 
-- [SushiToJsonContract](../../Tenant/app/Contracts/SushiToJsonContract.php)
+- [SushiToJsonContract](../../../Tenant/app/Contracts/SushiToJsonContract.php)
 - [00-index](00-index.md)

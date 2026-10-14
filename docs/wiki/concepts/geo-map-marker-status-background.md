@@ -61,7 +61,7 @@ Vedi [geo-map-lit-reconstruction-guide.md](./geo-map-lit-reconstruction-guide.md
 
 ## story
 
-- [STORY-130](../../../../../docs/stories/STORY-130-map-marker-status-colored-fill.md)
+- [STORY-130](../../../../../../docs/stories/STORY-130-map-marker-status-colored-fill.md)
 
 ## collegamenti
 

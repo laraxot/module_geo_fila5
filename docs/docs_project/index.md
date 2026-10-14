@@ -95,11 +95,11 @@ discussions: []
 
 ### Documentazione Moduli
 {nome-progetto}
-- [**User**](../modules/user/docs/readme.md) - Documentazione modulo gestione utenti
-- [**Geo**](../modules/geo/docs/readme.md) - Documentazione modulo dati geografici
-- [**Media**](../modules/media/docs/readme.md) - Documentazione modulo gestione media
-- [**UI**](../modules/ui/docs/readme.md) - Documentazione modulo componenti UI
-- [**Xot**](../modules/xot/docs/readme.md) - Documentazione modulo base
+- [**User**](../../../User/docs/readme.md) - Documentazione modulo gestione utenti
+- [**Geo**](../README.md) - Documentazione modulo dati geografici
+- [**Media**](../../../Media/docs/readme.md) - Documentazione modulo gestione media
+- [**UI**](../../../UI/docs/README.md) - Documentazione modulo componenti UI
+- [**Xot**](../../../Xot/docs/README.md) - Documentazione modulo base
 
 ## 📋 Convenzioni e Standard
 

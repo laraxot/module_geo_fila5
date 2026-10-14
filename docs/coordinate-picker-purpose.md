@@ -261,10 +261,10 @@ $table->geometry('location_point', 'POINT')->nullable(); // PostGIS
 
 ## 📚 References
 
-- [TicketForm Schema](../../Modules/Fixcity/app/Filament/Resources/TicketResource/Schemas/TicketForm.php)
-- [CoordinatePicker Component](../../Modules/Geo/app/Filament/Forms/Components/CoordinatePicker.php)
-- [Lit Component JS](../../Modules/Geo/resources/js/components/coordinate-picker-lit.js)
-- [Blade View](../../Modules/Geo/resources/views/filament/forms/components/coordinate-picker.blade.php)
+- [TicketForm Schema](../../Fixcity/app/Filament/Resources/TicketResource/Schemas/TicketForm.php)
+- [CoordinatePicker Component](../app/Filament/Forms/Components/CoordinatePicker.php)
+- [Lit Component JS](../resources/js/components/coordinate-picker-lit.js)
+- [Blade View](../resources/views/filament/forms/components/coordinate-picker.blade.php)
 
 ---
 

@@ -44,7 +44,7 @@ discussions: []
 | Pattern | Motivo |
 |---------|--------|
 | `popup-segnalazione.js` | `segnalazione` italiano |
-| `mappa-filtro.js` | italiano ([STORY-106](../../../../../docs/stories/STORY-106-playwright-vietato-nome-italiano-mappa-filtro.md)) |
+| `mappa-filtro.js` | italiano ([STORY-106](../../../../../../docs/stories/STORY-106-playwright-vietato-nome-italiano-mappa-filtro.md)) |
 | `buildSegnalazionePopupHtml` | italiano nel symbol |
 | `geo-popup-segnalazione*` | ridondante + italiano (deprecato) |
 
@@ -87,5 +87,5 @@ find laravel/Modules/Geo/resources/js -name '*segnalazione*' -o -name '*mappa*' 
 - [map-js-module-naming-rule.md](../concepts/map-js-module-naming-rule.md) — layout cartella `map/`
 - [geo-map-lit-reconstruction-guide.md](../concepts/geo-map-lit-reconstruction-guide.md)
 - [STORY-132](../../../../../docs/stories/STORY-132-rename-popup-segnalazione-js-english.md)
-- [STORY-063](../../../../../docs/stories/STORY-063-naming-convention-ticket-vs-segnalazioni.md)
+- [STORY-063](../../../../../../docs/stories/STORY-063-naming-convention-ticket-vs-segnalazioni.md)
 - Tema: [no-italian-component-names.md](../../../../../Themes/Sixteen/docs/wiki/rules/no-italian-component-names.md)

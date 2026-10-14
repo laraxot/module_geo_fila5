@@ -28,17 +28,17 @@ discussions: []
 - **[Dependency Management](./dependencies.md)** - Gestione dipendenze
 
 ### Moduli Core
-- **[Xot Module](../laravel/Modules/Xot/docs/README.md)** - Framework base
-- **[User Module](../laravel/Modules/User/docs/README.md)** - Autenticazione e autorizzazione
-- **[UI Module](../laravel/Modules/UI/docs/README.md)** - Componenti interfaccia
-- **[Tenant Module](../laravel/Modules/Tenant/docs/README.md)** - Multi-tenancy
-- **[Lang Module](../laravel/Modules/Lang/docs/README.md)** - Gestione traduzioni
+- **[Xot Module](../../Xot/docs/README.md)** - Framework base
+- **[User Module](../../User/docs/README.md)** - Autenticazione e autorizzazione
+- **[UI Module](../../UI/docs/README.md)** - Componenti interfaccia
+- **[Tenant Module](../../Tenant/docs/README.md)** - Multi-tenancy
+- **[Lang Module](../../Lang/docs/README.md)** - Gestione traduzioni
 
 ### Design Patterns
 - **[Service Providers](./service-provider-best-practices.md)** - Pattern service providers
 - **[Data Transfer Objects](./best-practices/dto-pattern.md)** - DTO con Spatie Laravel Data
 - **[Actions Pattern](./actions.md)** - Spatie QueueableActions
-- **[Event Sourcing](../laravel/Modules/Activity/docs/event-sourcing.md)** - Event sourcing pattern
+- **[Event Sourcing](../../Activity/docs/event-sourcing.md)** - Event sourcing pattern
 
 ## 💻 Sviluppo
 
@@ -80,13 +80,13 @@ discussions: []
 ### Autenticazione e Autorizzazione
 - **[Authentication](./core/authentication.md)** - Sistema autenticazione
 - **[Authorization](./authorization.md)** - Autorizzazione e permessi
-- **[Roles & Permissions](../laravel/Modules/User/docs/roles-permissions.md)** - Gestione ruoli
+- **[Roles & Permissions](../../User/docs/roles-permissions.md)** - Gestione ruoli
 - **[Teams](./teams.md)** - Gestione team
 
 ### Sicurezza Dati
 - **[Security Best Practices](./security.md)** - Sicurezza applicazione
 - **[GDPR Compliance](./gdpr-compliance.md)** - Conformità GDPR
-- **[Audit Log](../laravel/Modules/Activity/docs/README.md)** - Logging attività
+- **[Audit Log](../../Activity/docs/README.md)** - Logging attività
 
 ## 🧪 Testing
 
@@ -133,7 +133,7 @@ discussions: []
 ## 🌐 Internazionalizzazione
 
 ### Traduzioni
-- **[Lang Service](../laravel/Modules/Lang/docs/README.md)** - Sistema traduzioni
+- **[Lang Service](../../Lang/docs/README.md)** - Sistema traduzioni
 - **[Translation Guidelines](./conventions/translations.md)** - Linee guida traduzioni
 - **[Multi-language Support](./core/i18n.md)** - Supporto multilingua
 
@@ -222,9 +222,9 @@ discussions: []
 ## 🔍 Cerca nella Documentazione
 
 Usa Ctrl/Cmd + F per cercare in questa pagina, oppure:
-- [Cerca nei moduli](../laravel/Modules/)
+- [Cerca nei moduli](../..)
 - [Cerca nelle regole AI](../.cursor/rules/)
-- [Cerca negli script](../bashscripts/)
+- [Cerca negli script](../../../../bashscripts)
 
 ## 📧 Supporto
 

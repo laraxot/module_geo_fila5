@@ -140,7 +140,7 @@ export const mapStyles = css`
         z-index: 3002;
     }
 
-    /* Pagine ospiti con un reset su `button` (es. `body:has(.page-content[data-dc]) button`, specificita' 0,2,2: sfondo trasparente,
+    /* Pagine ospiti con un reset su button (es. body:has(.page-content[data-dc]) button, specificita' 0,2,2: sfondo trasparente,
        bordo 0, raggio 0) lasciavano i pulsanti senza sfondo sopra la mappa. Il picker e' in light DOM e le regole del tema li' sono
        spente dal plugin PostCSS: lo sfondo lo garantisce il componente, con specificita' 0,3,0 e senza !important. */
     .map-container .ctrl-btn.ctrl-btn {
