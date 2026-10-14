@@ -32,9 +32,7 @@ export function renderControls(ctx) {
     return html`
         <div class="layer-controls-overlay">
             ${(ctx.readonly ? READONLY_PARTS : OVERLAY_PARTS).map((renderPart) => renderPart(ctx))}
-            ${ctx._locationError ? html`
-                <p class="map-control-status" role="status">${ctx._locationError}</p>
-            ` : ''}
+            <p class="map-control-status" role="status" aria-live="polite">${ctx._locationError || ''}</p>
         </div>
     `;
 }

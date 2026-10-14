@@ -23,10 +23,11 @@ related: [dcp-33]
 ## Follow-up
 1. Build del modulo Geo (`npm run build && npm run copy` in `Modules/Geo`; oggi non eseguibile: manca `node_modules`) per il back office Filament.
 2. Rimontaggio della mappa quando cambia il punto dentro Livewire reale e `readonly` reattivo dopo il primo render: non provati.
-3. Mobile: il pan a un dito cattura lo scroll dentro la mappa (`dragging: !L.Browser.mobile` descritto nella nota `docs/wiki/concepts/point-map-readonly.md`, non applicato).
-4. `min-height: 200px` del Lit contro l'altezza configurabile del componente.
-5. Due istanze con lo stesso punto nello stesso componente Livewire richiedono `id` esplicito (il `wire:key` deriva dal contenuto).
-6. Test preesistenti rotti in Geo: `CoordinatePicker is not dehydrated by default` e 24 in `FilamentComponentsTest`/`LatitudeLongitudeInputTest` (manca `database/fixcity_user_test.sqlite`).
+3. Contratto di centro iniziale per picker/mappa editabile: se il record/stato contiene coordinate, centrare su quelle; altrimenti provare la posizione browser/utente quando disponibile; altrimenti usare fallback Comune/default Geo, lasciando sempre selezione manuale. Non introdurre un requisito HTTPS per completare la segnalazione: la geolocalizzazione automatica e' progressiva e non bloccante (vedi DCP-35/DCP-43 Fixcity).
+4. Mobile: il pan a un dito cattura lo scroll dentro la mappa (`dragging: !L.Browser.mobile` descritto nella nota `docs/wiki/concepts/point-map-readonly.md`, non applicato).
+5. `min-height: 200px` del Lit contro l'altezza configurabile del componente.
+6. Due istanze con lo stesso punto nello stesso componente Livewire richiedono `id` esplicito (il `wire:key` deriva dal contenuto).
+7. Test preesistenti rotti in Geo: `CoordinatePicker is not dehydrated by default` e 24 in `FilamentComponentsTest`/`LatitudeLongitudeInputTest` (manca `database/fixcity_user_test.sqlite`).
 
 ## Acceptance criteria
 1. Fix a monte del namespace con test per Geo, AI, Activity, Mobile.

@@ -21,9 +21,9 @@ trait HasCoordinatePicker
 
     protected ?string $longitude = null;
 
-    protected float $centerLatitude = 41.9028;
+    protected ?float $centerLatitude = null;
 
-    protected float $centerLongitude = 12.4964;
+    protected ?float $centerLongitude = null;
 
     protected int $zoom = 13;
 
@@ -157,14 +157,38 @@ trait HasCoordinatePicker
         return $this->zoom;
     }
 
-    public function getCenterLatitude(): float
+    /** Centro esplicito del campo (`center()`): se manca la mappa si centra sull'utente o sulla vista di partenza (`getMapDefaultView()`). */
+    public function getCenterLatitude(): ?float
     {
         return $this->centerLatitude;
     }
 
-    public function getCenterLongitude(): float
+    public function getCenterLongitude(): ?float
     {
         return $this->centerLongitude;
+    }
+
+    /**
+     * Vista di partenza della mappa quando non c'e' un punto: territorio dell'ente (`geo.config.map.default_view`), mai il mondo.
+     * Un valore non valido (env sbagliata, config in cache vecchia) ricade sulla panoramica d'Italia: la pagina non si rompe.
+     * Il nome evita `getDefaultView()`, che in Filament e' la vista Blade del componente.
+     *
+     * @return array{lat: float, lng: float, zoom: int}
+     */
+    public function getMapDefaultView(): array
+    {
+        $view = config('geo.config.map.default_view');
+        $lat = \is_array($view) ? self::normalizeCoordinate($view['lat'] ?? null) : null;
+        $lng = \is_array($view) ? self::normalizeCoordinate($view['lng'] ?? null) : null;
+        $rawZoom = \is_array($view) ? ($view['zoom'] ?? null) : null;
+        $zoom = is_numeric($rawZoom) ? (float) $rawZoom : null;
+
+        if ($lat === null || $lng === null || $zoom === null
+            || abs($lat) > 90 || abs($lng) > 180 || $zoom !== floor($zoom) || $zoom < 1 || $zoom > 19) {
+            return ['lat' => 42.5, 'lng' => 12.5, 'zoom' => 6];
+        }
+
+        return ['lat' => $lat, 'lng' => $lng, 'zoom' => (int) $zoom];
     }
 
     public function hasReverseGeocoding(): bool

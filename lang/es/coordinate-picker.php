@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 // Selettore di coordinate (mappa) nel wizard tickets/create (DCP-55 difetto 2).
 return [
+    'no_position' => 'Toca el mapa para indicar la posición',
+    'location_unavailable' => 'No puedo leer tu ubicación desde este dispositivo. Busca una dirección o toca el mapa.',
     'address' => 'Dirección',
     'close_fullscreen' => 'Salir de pantalla completa',
     'close_search' => 'Cerrar búsqueda',
