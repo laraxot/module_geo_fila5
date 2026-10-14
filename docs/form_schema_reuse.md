@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "form schema reuse"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Riutilizzo degli Schemi Form tra Moduli

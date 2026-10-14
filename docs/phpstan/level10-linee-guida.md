@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "level10 linee guida"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Linee Guida per PHPStan Livello 10 - Regole Comuni

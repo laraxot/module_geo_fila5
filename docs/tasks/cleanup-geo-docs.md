@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "cleanup geo docs"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Task: Geo Docs Consolidation & Cleanup

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geopoint picker showsearch fix"
 issues: []
 discussions: []
+status: draft
 ---
 
 # GeopointPicker showSearch Fix

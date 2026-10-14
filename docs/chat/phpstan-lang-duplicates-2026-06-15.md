@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan lang duplicates 2026 06 15"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Audit — Job, Lang, Gdpr
@@ -45,14 +46,6 @@ Nessun errore di duplicazione rilevato nell'analisi odierna. Le traduzioni sono 
 Tutti e tre i moduli hanno **0 errori PHPStan**. Lang ha completato la risoluzione dei duplicate key issues del 2026-05-26.
 
 ---
-title: "phpstan lang duplicates 2026 06 15"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan lang duplicates 2026 06 15"
-issues: []
-discussions: []
 **Prossimi step:**
 - Monitorare Lang per ricorrenza di duplicate key
 - Continuare audit su altri moduli critici

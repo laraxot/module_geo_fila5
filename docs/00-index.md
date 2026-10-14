@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "00 index"
 issues: []
 discussions: []
+status: draft
 ---
 
 > **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
@@ -27,7 +28,7 @@ Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider 
 
 ## 🏗️ **Geocoding & Indirizzi**
 - 🏠 **[Address Implementation](./address-implementation.md)** - Guida al modello Address e ai trait.
-- 🎯 **[Geocoding Services](./geocoding-services-integration.md)** - Google Maps, Mapbox, Here.
+- 🎯 **Geocoding Services** _(target mancante, verificato 2026-10-14: `geocoding-services-integration.md` non esiste)_ - Google Maps, Mapbox, Here.
 - 🚚 **[Bulk Actions](./bulk-coordinate-updates.md)** - Aggiornamento massivo di coordinate.
 
 ## 🇮🇹 **Dati Italiani (Anpr/Sushi)**
@@ -39,12 +40,12 @@ Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider 
 - 🛠️ **[Address Field](./address-field.md)** - Form field personalizzati per indirizzi.
 
 ## 🧪 **Qualità e Sviluppo**
-- ✅ **[PHPStan Level 10](./phpstan-level10-compliance.md)** - Conformità e fix specifici per Geo.
+- ✅ **PHPStan Level 10** _(target mancante, verificato 2026-10-14: `phpstan-level10-compliance.md` non esiste)_ - Conformità e fix specifici per Geo.
 - 🔬 **[Testing Guidelines](./testing-guidelines.md)** - Strategie di test geografico.
 - 🧹 **[PHPMD & Complexity](./cyclomatic-complexity-report.md)** - Analisi della pulizia del codice.
 
 ## 📦 **Pacchetti Composer**
-- [Riferimento](../../../../docs/composer-packages-reference.md) | [Inventario 312 pacchetti](../../../../docs/architecture/composer-packages-full-inventory.md) - Nessuna dipendenza diretta; usa Xot, Sushi (via Xot)
+- Riferimento pacchetti e inventario 312 pacchetti _(target mancanti, verificato 2026-10-14: `docs/composer-packages-reference.md` e `docs/architecture/composer-packages-full-inventory.md` non esistono alla radice)_ - Nessuna dipendenza diretta; usa Xot, Sushi (via Xot)
 
 ## 📄 Documenti Aggiuntivi
 
@@ -57,23 +58,23 @@ Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider 
 ### Geocoding
 | File | Scopo |
 |------|-------|
-| [geocoding-implementation.md](./geocoding-implementation.md) | Geocoding multi-provider |
-| [provider-integration.md](./provider-integration.md) | Integrazione provider |
+| geocoding-implementation.md _(target mancante, verificato 2026-10-14)_ | Geocoding multi-provider |
+| provider-integration.md _(target mancante, verificato 2026-10-14)_ | Integrazione provider |
 
 ### Database ANPR
 | File | Scopo |
 |------|-------|
 | [comune-model.md](./comune-model.md) | Modello Comune ANPR |
-| [region-province-model.md](./region-province-model.md) | Modelli territoriali |
+| region-province-model.md _(target mancante, verificato 2026-10-14)_ | Modelli territoriali |
 
 ## 📊 Metriche Modulo
 
 | Aspetto | Valore |
 |---------|--------|
 | Modelli | 13 |
-| Azioni | 51 |
+| Azioni | 51 _(misura del 2026-10-14: 77 file `.php` in `app/Actions/`)_ |
 | Provider Geocoding | 9 |
-| Widget Filament | 6 |
+| Widget Filament | 6 _(misura del 2026-10-14: 7 classi `.php` in `app/Filament/Widgets/`)_ |
 | Comuni ANPR | 8000+ |
 | PHPStan Level | 10 |
 
@@ -86,14 +87,6 @@ Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider 
 - [UI](../../UI/docs/README.md) - Componenti grafici e widget mappa.
 
 ---
-title: "00 index"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "00 index"
-issues: []
-discussions: []
 *Documentazione conforme agli standard Laraxot - DRY + KISS + SOLID*
 
 ## Dependency Intelligence

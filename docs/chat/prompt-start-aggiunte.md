@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "prompt start aggiunte"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Aggiunte a start.txt

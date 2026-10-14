@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "magic numbers"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Magic Numbers Pattern
@@ -212,15 +213,6 @@ $filename = $this->generateInvoiceFilename($id, time());
 ```
 
 ---
-
-title: "magic numbers"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "magic numbers"
-issues: []
-discussions: []
 **Pattern**: Magic Number Elimination
 **Purpose**: Make code self-documenting and maintainable
 **Result**: Clear, professional, business-rule-aware code

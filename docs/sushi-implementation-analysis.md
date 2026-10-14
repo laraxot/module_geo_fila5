@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "sushi implementation analysis"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Analisi Implementazione Comune con Laravel Sushi

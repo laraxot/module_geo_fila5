@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "prd"
 issues: []
 discussions: []
+status: draft
 ---
 
 # [Module/Theme Name] - Product Requirements Document (PRD)

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "standardized geo architecture"
 issues: []
 discussions: []
+status: draft
 ---
 
 # ADR: Standardized Geo Architecture (2026.1)

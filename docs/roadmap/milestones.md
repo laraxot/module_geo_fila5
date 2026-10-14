@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: milestones
 canonical: ../../../../Themes/docs/shared-components/04-milestones-Modules.md
+status: stub
 ---
 
 See canonical documentation: ../../../../Themes/docs/shared-components/04-milestones-Modules.md

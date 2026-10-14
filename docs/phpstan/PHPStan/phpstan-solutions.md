@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan solutions"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Soluzioni per Errori PHPStan di Livello 9

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "testing best practices"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Best Practices Testing Globali - <nome progetto>
@@ -612,14 +613,5 @@ describe('Edge Cases', function () {
 - [Testing Modulo Geo](../testing.md)
 
 ---
-
-title: "testing best practices"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "testing best practices"
-issues: []
-discussions: []
 **Versione**: 1.0
 **Compatibilità**: Pest 2.x+, Laravel 12.x, PHP 8.3+

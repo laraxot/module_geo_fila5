@@ -163,7 +163,7 @@ Il valore principale di questa risoluzione è documentativo, mantenendo la leggi
 
 - [Documentazione Git Subtree](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging)
 
-- [Documentazione sulla Risoluzione dei Conflitti Bash](CONFLICT_RESOLUTION_BASH.md)
+- [Documentazione sulla Risoluzione dei Conflitti Bash](../utils/conflict_resolution_bash.md)
 - [Documentazione degli Script Git](git_scripts.md)
 - [Documentazione Generale sulla Risoluzione dei Conflitti](../../docs/bashscripts_conflict_resolution.md)
 - [Archivio degli Script con Conflitti Risolti](../.old_scripts/README.md)

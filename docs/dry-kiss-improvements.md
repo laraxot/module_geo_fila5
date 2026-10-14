@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "dry kiss improvements"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module - DRY + KISS Improvements

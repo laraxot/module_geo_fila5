@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "module list"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Complete Module Inventory
@@ -207,15 +208,6 @@ Xot (Base)
 - [Development Tasks](../development/tasks.md) - Common module development tasks
 
 ---
-
-title: "module list"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "module list"
-issues: []
-discussions: []
 **Last Updated**: December 2025  
 **Total Active Modules**: 20+  
 **Critical Modules**: 16

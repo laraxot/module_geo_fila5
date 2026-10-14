@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "litelement in js only rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # litelement in js only rule

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "README"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Code Conventions
@@ -90,15 +91,6 @@ class StoreUserRequest extends FormRequest
 - [Filament Forms](https://filamentphp.com/docs/forms)
 
 ---
-
-title: "README"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "README"
-issues: []
-discussions: []
 **Version**: 4.0
 **Last Updated**: December 2025
 **Applies to**: All PTVX modules

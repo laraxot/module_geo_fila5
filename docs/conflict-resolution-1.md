@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "conflict resolution 1"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Risoluzione Conflitti Git - Modulo Geo
@@ -161,15 +162,6 @@ php artisan lang:check
 - [x] Collegamenti bidirezionali creati
 
 ---
-
-title: "conflict resolution 1"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "conflict resolution 1"
-issues: []
-discussions: []
 **Ultimo aggiornamento**: 2025-01-06
 **Autore**: Sistema di correzione automatica
 **Stato**: ✅ Completato

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "components guide"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Filament Components Guide - PTVX
@@ -27,15 +28,6 @@ Componenti per mostrare dati strutturati in modo readonly, come pagine di dettag
 Componenti per visualizzare dati in formato tabulare con funzionalità di ricerca e ordinamento.
 
 ---
-
-title: "components guide"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "components guide"
-issues: []
-discussions: []
 ## 📝 Forms Components
 
 ### ✅ Placeholder (Raccomandato)

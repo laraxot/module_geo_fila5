@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan session 4 5 fixes complete"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module - PHPStan Session 4 & 5 Fixes Complete
@@ -371,15 +372,6 @@ Add `@var` annotations before complex operations:
 - Type narrowing
 
 ---
-
-title: "phpstan session 4 5 fixes complete"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan session 4 5 fixes complete"
-issues: []
-discussions: []
 **Document Version**: 1.0
 **Status**: Session 4 & 5 Complete
 **

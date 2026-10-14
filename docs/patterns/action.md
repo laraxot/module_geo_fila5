@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "action"
 issues: []
 discussions: []
+status: draft
 ---
 
 # ⚡ Action Pattern - Implementazione PTVX
@@ -90,12 +91,4 @@ $action(function (array $data) {
 ```
 
 ---
-title: "action"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "action"
-issues: []
-discussions: []
 **Vedi anche**: [Data Transfer Objects](./dto.md), [Repository Pattern](./repository.md)

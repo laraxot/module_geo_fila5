@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "PROJECT"
 issues: []
 discussions: []
+status: draft
 ---
 
 ## Modifiche Recenti

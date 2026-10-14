@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo actions sumy"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Actions Summary

@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: model-inheritance
 canonical: ../../../Themes/docs/shared-components/model-inheritance-pattern.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/model-inheritance-pattern.md

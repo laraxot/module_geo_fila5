@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "frontend stack canonical"
 issues: []
 discussions: []
+status: draft
 ---
 
 # regola: stack frontoffice (modulo Geo)

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "translation"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Translation Audit Report - [DATE]

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "INDEX"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module - rules Index
@@ -35,12 +36,4 @@ qmd search "Geo rules" --limit 5
 - [geo-map-popup-bem.md](../concepts/geo-map-popup-bem.md)
 
 ---
-title: "INDEX"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "INDEX"
-issues: []
-discussions: []
 *Updated: 2026-06-03*

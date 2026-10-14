@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "xotbasefield no view property rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # XotBaseField No $view Property Rule (Geo)

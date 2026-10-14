@@ -2,6 +2,10 @@
 type: investigation
 title: "Investigation Spatial Query Optimization"
 links: {github_issue: #XXX}
+status: draft
+updated: 2026-10-08
+tags: [docs, geo, investigation]
+qmd: "investigation: spatial query optimization geo"
 ---
 # Investigation: Spatial Query Optimization
 

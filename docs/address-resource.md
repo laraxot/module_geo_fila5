@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: address-resource
 canonical: ../../../Themes/docs/shared-components/address-resource-1.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/address-resource-1.md

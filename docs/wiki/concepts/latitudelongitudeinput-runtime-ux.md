@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "latitudelongitudeinput runtime ux"
 issues: []
 discussions: []
+status: draft
 ---
 
 # LatitudeLongitudeInput Runtime UX

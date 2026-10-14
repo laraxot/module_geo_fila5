@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "has coordinate picker dry boundary rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # HasCoordinatePicker DRY Boundary Rule

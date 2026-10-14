@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "install from zero"
 issues: []
 discussions: []
+status: draft
 ---
 
 #Install from zero

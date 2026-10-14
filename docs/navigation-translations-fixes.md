@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "navigation translations fixes"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Correzioni Traduzioni Navigation - Modulo Geo

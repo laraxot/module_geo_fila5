@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo json model"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Modello GeoJsonModel (ispirato a Squire) per Laravel
@@ -301,15 +302,6 @@ class ComuneSushi extends Model
 - **Strategia consigliata**: mantenere Comune (GeoJsonModel) come default, ma documentare e testare una variante Sushi per chi ha bisogno di Eloquent puro.
 
 ---
-
-title: "geo json model"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "geo json model"
-issues: []
-discussions: []
 - Vedi anche [geo_entities.md](./geo_entities.md) per motivazione e percentuali di adozione.
 
 ## Approfondimento: Sushi (calebporzio/sushi) per modelli geografici

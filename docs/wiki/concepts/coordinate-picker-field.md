@@ -7,6 +7,7 @@ updated: 2026-10-14
 qmd: "coordinate picker field"
 issues: []
 discussions: []
+status: draft
 ---
 
 # CoordinatePicker Field (Geo)

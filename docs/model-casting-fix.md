@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "model casting fix"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Correzione Model Casting - Modulo Geo

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geographic hierarchy management"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Task: Geographic Hierarchy Management

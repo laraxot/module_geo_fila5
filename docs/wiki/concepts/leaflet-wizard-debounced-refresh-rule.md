@@ -9,6 +9,7 @@ issues: []
 discussions: []
 name: leaflet-wizard-debounced-refresh-rule
 description: Debounced Leaflet size invalidation for Filament wizard steps to prevent flicker and redraw storms
+status: draft
 ---
 
 # Leaflet Wizard Debounced Refresh Rule

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "MCP SERVER RECOMMENDED"
 issues: []
 discussions: []
+status: draft
 ---
 
 # MCP Server Consigliati per il Modulo Geo

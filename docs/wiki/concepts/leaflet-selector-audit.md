@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "leaflet selector audit"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Leaflet Selector Audit

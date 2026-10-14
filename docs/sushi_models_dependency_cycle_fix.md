@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "sushi models dependency cycle fix"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Sushi Models - Dependency Cycle Fix
@@ -140,15 +141,6 @@ La trasparenza del path diretto è superiore all'astrazione del `module_path()` 
 - [Sushi Documentation](https://github.com/calebporzio/sushi)
 
 ---
-
-title: "sushi models dependency cycle fix"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "sushi models dependency cycle fix"
-issues: []
-discussions: []
 **Risolto**: Dicembre 2024  
 **Priorità**: P0 (Critical) - Bloccava registrazioni  
 **Impatto**: Sistema completamente non funzionale  

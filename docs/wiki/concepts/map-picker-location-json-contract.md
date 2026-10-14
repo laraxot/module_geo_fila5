@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map picker location json contract"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Map Picker Location JSON Contract

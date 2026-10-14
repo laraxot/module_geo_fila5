@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "migration naming pattern"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Convenzione di Naming e Gestione delle Migrazioni

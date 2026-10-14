@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan analysis geo"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Analysis - Geo Module
@@ -93,15 +94,6 @@ PHPStan analysis on the Geo module consistently times out or hangs, preventing c
    - Gradually increase to level 10
 
 ---
-
-title: "phpstan analysis geo"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan analysis geo"
-issues: []
-discussions: []
 **Analysis Date**: [DATE]
 **PHPStan Version**: 2.1.2
 **Laravel Version**: 12.31.1

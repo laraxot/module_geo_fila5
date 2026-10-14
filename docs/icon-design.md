@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "icon design"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module - Icon Design

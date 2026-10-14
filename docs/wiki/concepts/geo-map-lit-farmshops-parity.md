@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo map lit farmshops parity"
 issues: []
 discussions: []
+status: draft
 ---
 
 # GeoMapLit — Farmshops.eu Parity Implementation
@@ -191,15 +192,6 @@ Popup on click → AJAX fetch /api/ticket-details/{id}
 4. Document any remaining issues in Known Issues section
 
 ---
-
-title: "geo map lit farmshops parity"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "geo map lit farmshops parity"
-issues: []
-discussions: []
 ## Aggiornamento 2026-06 — implementazione corrente
 
 > **Nota:** la sezione `L.geoJson` con `pointToLayer` sopra è il pattern farmshops originale.

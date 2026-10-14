@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "todo"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module - PHPStan Error Resolution Roadmap

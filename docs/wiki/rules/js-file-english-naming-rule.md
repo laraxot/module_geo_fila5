@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "js file english naming rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # regola: filename JS modulo Geo — solo inglese
@@ -18,15 +19,6 @@ Nei path sotto `Modules/Geo/resources/js/` (e mirror tema se presente) **ogni se
 **Perché:** `grep`, import Vite, story dev, ricostruzione da docs — un vocabolario unico. L’italiano resta in `lang/`, route slug pubblici, commenti che citano Design Comuni, label UI.
 
 ---
-
-title: "js file english naming rule"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "js file english naming rule"
-issues: []
-discussions: []
 ## regola
 
 | Contesto | Convenzione | Esempio |

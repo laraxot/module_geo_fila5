@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: phpstanes-uppercase
 canonical: ../../../Themes/docs/shared-components/PHPSTAN_FIXES.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/PHPSTAN_FIXES.md

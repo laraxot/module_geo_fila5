@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "PHILOSOPHY"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module Philosophy
@@ -17,15 +18,6 @@ discussions: []
 **Compliance**: PHPStan Level 10, Filament v5, Laravel 13  
 
 ---
-
-title: "PHILOSOPHY"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "PHILOSOPHY"
-issues: []
-discussions: []
 ## RELIGIONE
 
 The Geo module is built on three unshakeable dogmas:

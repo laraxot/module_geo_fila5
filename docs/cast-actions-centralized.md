@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "cast actions centralized"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Azioni Cast Centralizzate - Regola di Progetto

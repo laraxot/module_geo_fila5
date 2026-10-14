@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "AGENTS"
 issues: []
 discussions: []
+status: draft
 ---
 
 # AI Agent Instructions for LLM Wiki Management

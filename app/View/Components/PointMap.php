@@ -21,9 +21,9 @@ use function Safe\preg_match;
  */
 class PointMap extends Component
 {
-    public const DEFAULT_HEIGHT = '16rem';
+    public const string DEFAULT_HEIGHT = '16rem';
 
-    public const DEFAULT_ZOOM = 16;
+    public const int DEFAULT_ZOOM = 16;
 
     public readonly ?float $lat;
 

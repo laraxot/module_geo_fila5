@@ -11,6 +11,7 @@ related:
   - ../wiki/how-to/phpstan-modules-swarm.md
   - ../wiki/troubleshooting/phpstan-parallel-worker-oom.md
   - ./handoff-phpstan-random-scan-2026-06-15.md
+status: draft
 ---
 
 # PHPStan swarm — esito

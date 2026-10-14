@@ -9,6 +9,7 @@ discussions: []
 name: filament-admin-coordinate-picker-theme-bundle-rule
 description: Filament admin must load the same Sixteen theme JS bundle as frontoffice when using coordinate-picker-lit controls
 type: concept
+status: draft
 ---
 
 # Filament Admin Coordinate Picker Theme Bundle Rule

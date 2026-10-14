@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "coordinate picker state binding"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Binding dello Stato per CoordinatePicker

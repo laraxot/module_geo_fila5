@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map legend status semantics"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Legenda mappa — semantica stato vs tipologia (STORY-125)

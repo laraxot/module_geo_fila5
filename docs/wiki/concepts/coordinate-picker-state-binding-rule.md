@@ -12,6 +12,7 @@ tags: [coordinate-picker, state-binding, filament-5, alpine, livewire]
 related:
   - concepts/coordinate-picker-comprehensive-guide.md
   - concepts/coordinate-picker-filament5-save-pattern.md
+status: draft
 ---
 
 # Coordinate Picker State Binding Rule

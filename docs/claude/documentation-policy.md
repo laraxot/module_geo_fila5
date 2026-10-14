@@ -48,7 +48,7 @@ All links should be relative to maintain portability:
 2. **[architecture-rules.md](architecture-rules.md)** - Critical architecture rules
 3. **[module-structure.md](module-structure.md)** - Module structure and conventions
 4. **[development-tasks.md](development-tasks.md)** - Common development tasks
-5. **[conventions.md](conventions.md)** - Code conventions and best practices
+5. **[conventions.md](../development/conventions.md)** - Code conventions and best practices
 6. **[code-quality.md](code-quality.md)** - PHPStan, PHPMD, PHP Insights, Rector
 7. **[common-pitfalls.md](common-pitfalls.md)** - Common mistakes to avoid
 8. **[documentation-policy.md](documentation-policy.md)** - Documentation policies

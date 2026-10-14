@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: ai-methodologies
 canonical: ../../../Themes/docs/shared-components/ai-methodologies.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/ai-methodologies.md

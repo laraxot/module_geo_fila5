@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "has tenants"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Trait HasTenants

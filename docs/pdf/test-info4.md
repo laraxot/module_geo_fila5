@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "test info4"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Analisi tecnica del PDF: test.pdf
@@ -63,13 +64,4 @@ discussions: []
 - Per ottenere il contenuto testuale sarà necessario un OCR avanzato o un intervento manuale sulle immagini.
 
 ---
-
-title: "test info4"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "test info4"
-issues: []
-discussions: []
 **Nota**: Se hai bisogno di una sintesi dei contenuti, sarà necessario fornire immagini di esempio o utilizzare servizi OCR esterni più potenti rispetto a quelli disponibili in ambiente CLI standard. 

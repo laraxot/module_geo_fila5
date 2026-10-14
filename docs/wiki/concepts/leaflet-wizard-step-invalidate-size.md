@@ -9,6 +9,7 @@ discussions: []
 name: leaflet-wizard-step-invalidate-size
 description: Leaflet map in Filament wizard must call invalidateSize() when step container becomes visible
 type: concept
+status: draft
 ---
 
 # Leaflet Map in Filament Wizard — invalidateSize() Rule

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan error resolution"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Risoluzione Errori PHPStan - 8 Gennaio 2025

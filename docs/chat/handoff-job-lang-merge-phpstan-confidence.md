@@ -12,6 +12,7 @@ related:
   - ../wiki/memories/phpstan-modules-inventory.md
   - phpstan-modules-coordination.md
   - ../../../Job/docs/wiki/memories/session-confidence-checkpoint.md
+status: draft
 ---
 
 # Handoff — ripartenza agente (livello confidenza 2026-05-26)

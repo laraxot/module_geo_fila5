@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "module geo 1"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Modulo Geo
@@ -51,15 +52,6 @@ Namespace: `Modules\Geo\Database\Factories`
 Namespace: `Modules\Geo\Database\Seeders`
 
 ---
-
-title: "module geo 1"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "module geo 1"
-issues: []
-discussions: []
 ## Gestione dati geografici statici (GeoJsonModel readonly)
 
 Per tutti i dati statici (regioni, province, comuni, cap) di dimensioni ridotte, **NON** vengono create tabelle/migration dedicate. Si utilizza invece un modello base readonly, ispirato a [Squire](https://github.com/squirephp/squire), che legge i dati direttamente dal file JSON (`resources/json/comuni.json`).

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "workspace naming"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Workspace Naming Convention
@@ -18,15 +19,6 @@ discussions: []
 > **Owner:** Development Team
 
 ---
-
-title: "workspace naming"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "workspace naming"
-issues: []
-discussions: []
 ## Regola Generale
 
 Ogni modulo o tema deve avere **UNICO** file `.code-workspace` con il nome del modulo stesso, preceduto da underscore.

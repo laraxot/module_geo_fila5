@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo map lit reconstruction guide"
 issues: []
 discussions: []
+status: draft
 ---
 
 # geo-map-lit — guida ricostruzione da documentazione
@@ -20,15 +21,6 @@ Se il codice JS/CSS della mappa su `/it` andasse perso, questa pagina è il **co
 **Registro correzioni (tabella):** [geo-map-fixes-registry.md](./geo-map-fixes-registry.md) · **Hub root:** [map-lit-reconstruction-hub.md](../../../../../../docs/wiki/memories/map-lit-reconstruction-hub.md)
 
 ---
-
-title: "geo map lit reconstruction guide"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "geo map lit reconstruction guide"
-issues: []
-discussions: []
 ## contratto runtime (non negoziabile)
 
 | Pezzo | Valore |

@@ -7,6 +7,7 @@ type: comparison
 tags: [geo, documentation, redundancy, sprawl, dry]
 created: "2026-05-25"
 updated: "2026-05-25"
+status: draft
 ---
 
 # Documentation Sprawl Analysis — Geo Module

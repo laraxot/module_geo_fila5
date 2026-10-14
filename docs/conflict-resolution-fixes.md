@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "conflict resolution fixes"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Risoluzione Conflitti Git - Modulo Geo

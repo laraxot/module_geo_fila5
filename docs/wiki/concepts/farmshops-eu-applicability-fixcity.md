@@ -19,6 +19,7 @@ updated: 2026-06-10
 related:
   - ../../../../Fixcity/docs/wiki/concepts/ticket-list-map-architecture.md
   - ../../../../../../docs/stories/STORY-064-farmshops-eu-study-second-brain.md
+status: draft
 ---
 
 # farmshops.eu — applicabilità Fixcity

@@ -11,6 +11,7 @@ updated: 2026-06-03
 related:
   - ../rules/bem-modifier-dom-contract.md
   - ../concepts/geo-map-popup-bem.md
+status: draft
 ---
 
 # Memoria — popup mappa: block `popup`

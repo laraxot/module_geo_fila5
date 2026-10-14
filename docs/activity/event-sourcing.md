@@ -10,6 +10,7 @@ title: Event Sourcing
 description: Event Sourcing
 extends: _layouts.documentation
 section: content
+status: draft
 ---
 
 # Video

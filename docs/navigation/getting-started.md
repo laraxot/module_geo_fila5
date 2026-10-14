@@ -23,7 +23,7 @@ Prima di tutto, **leggi [Regole Fondamentali](./core.md)** - sono essenziali per
 |---------|----------|
 | **Sviluppare nuove funzionalità** | [Architettura](./architecture-rules.md) |
 | **Capire la struttura moduli** | [Struttura Moduli](./module-structure.md) |
-| **Risolvere problemi** | [Errori Comuni](./common-pitfalls.md) |
+| **Risolvere problemi** | [Errori Comuni](../claude/common-pitfalls.md) |
 | **Migliorare qualità codice** | [Qualità Codice](./code-quality.md) |
 
 ### 3. Usa il Quick Reference
@@ -44,22 +44,22 @@ discussions: []
 ### 🏗️ Architettura e Struttura
 - **[Architettura PTVX](./architecture-rules.md)** - Come è organizzato il progetto
 - **[Struttura Moduli](./module-structure.md)** - Come creare e gestire moduli
-- **[Proprietà Eloquent](./eloquent-properties.md)** - Gestione modelli (CRITICO)
+- **[Proprietà Eloquent](../claude/eloquent-properties.md)** - Gestione modelli (CRITICO)
 
 ### 🛠️ Sviluppo e Qualità
 - **[Qualità Codice](./code-quality.md)** - PHPStan, testing, PSR-12
-- **[Framework Specifici](./framework-specifics.md)** - Filament, Livewire, Tailwind
-- **[Task di Sviluppo](./development-tasks.md)** - Workflow e automazioni
+- **[Framework Specifici](../claude/framework-specifics.md)** - Filament, Livewire, Tailwind
+- **[Task di Sviluppo](../claude/development-tasks.md)** - Workflow e automazioni
 
 ### 📚 Policy e Convenzioni
-- **[Policy Documentazione](./documentation-policy.md)** - Come scrivere documentazione
-- **[Convenzioni](./conventions.md)** - Stile codice e naming
-- **[Laravel Boost MCP](./laravel-boost.md)** - Strumenti AI
+- **[Policy Documentazione](../claude/documentation-policy.md)** - Come scrivere documentazione
+- **[Convenzioni](../development/conventions.md)** - Stile codice e naming
+- **[Laravel Boost MCP](../claude/laravel-boost.md)** - Strumenti AI
 
 ### 🔧 Risoluzione Problemi
-- **[Errori Comuni](./common-pitfalls.md)** - Cosa NON fare
+- **[Errori Comuni](../claude/common-pitfalls.md)** - Cosa NON fare
 - **[Pattern DRY/KISS](./dry-kiss-patterns.md)** - Best practices
-- **[Principi SOLID](./solid-principles.md)** - Design principles
+- **[Principi SOLID](../claude/solid-principles.md)** - Design principles
 
 ---
 

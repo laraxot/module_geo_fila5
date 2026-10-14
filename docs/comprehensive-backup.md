@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: comprehensive-backup
 canonical: ../../../Themes/docs/shared-components/COMPREHENSIVE_GUIDE.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/COMPREHENSIVE_GUIDE.md

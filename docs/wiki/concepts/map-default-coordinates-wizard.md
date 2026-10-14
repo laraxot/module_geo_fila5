@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map default coordinates wizard"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Map Default Coordinates in Wizard Steps

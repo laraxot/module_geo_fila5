@@ -10,6 +10,7 @@ title: Configurazione modules.php
 description: Configurazione modules.php
 extends: _layouts.documentation
 section: content
+status: draft
 ---
 
 # Configurazione modules.php {#configurazione-modules-php}

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "tips and links"
 issues: []
 discussions: []
+status: draft
 ---
 
 # tips_and_links

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map tile incomplete loading"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Map Tile Incomplete Loading Fix

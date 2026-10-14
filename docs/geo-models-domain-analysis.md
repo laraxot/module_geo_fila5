@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo models domain analysis"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Analisi dominio modelli Geo (`app/Models`)
@@ -16,15 +17,6 @@ discussions: []
 **Riferimento codice**: `laravel/Modules/Geo/app/Models/`.
 
 ---
-
-title: "geo models domain analysis"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "geo models domain analysis"
-issues: []
-discussions: []
 ## 1. Panoramica rapida
 
 | Modello | Natura | Ruolo dominante |

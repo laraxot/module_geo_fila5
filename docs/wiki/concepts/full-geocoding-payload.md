@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "full geocoding payload"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Full Geocoding Payload — `CoordinatePicker` Contract
@@ -140,13 +141,4 @@ submit del wizard / save Filament.
   guida tecnica al componente.
 
 ---
-
-title: "full geocoding payload"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "full geocoding payload"
-issues: []
-discussions: []
 *Creato: 2026-05-13 — Claude Opus 4.7 / sessione "full geocoding payload".*

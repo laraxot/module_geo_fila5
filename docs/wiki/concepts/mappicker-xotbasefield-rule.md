@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "mappicker xotbasefield rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # MapPicker Must Extend XotBaseField

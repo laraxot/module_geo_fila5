@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan activity fixes completed"
 issues: []
 discussions: []
+status: draft
 ---
 
 # ✅ Correzioni PHPStan Modulo Activity Completate

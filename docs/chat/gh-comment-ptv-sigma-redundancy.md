@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "gh comment ptv sigma redundancy"
 issues: []
 discussions: []
+status: draft
 ---
 
 ## Documentazione campagna Ptv ↔ Sigma (2026-05-27)

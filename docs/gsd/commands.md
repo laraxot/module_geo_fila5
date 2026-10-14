@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "commands"
 issues: []
 discussions: []
+status: draft
 ---
 
 # GSD (Get Shit Done) - Command Reference
@@ -16,15 +17,6 @@ discussions: []
 **Frameworks**: GSD v1.25.1 + BMAD-METHOD v6.2.0
 
 ---
-
-title: "commands"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "commands"
-issues: []
-discussions: []
 ## 🚀 Essential Commands
 
 ### Project Initialization

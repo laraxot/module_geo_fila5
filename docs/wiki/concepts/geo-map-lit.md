@@ -9,6 +9,7 @@ discussions: []
 name: GeoMapLit Component
 description: Documentation for geo-map-lit.js Lit component with Leaflet and markercluster
 type: concept
+status: draft
 ---
 
 # GeoMapLit Component

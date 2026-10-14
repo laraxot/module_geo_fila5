@@ -231,8 +231,8 @@ rm ".gitattributes copy"
 
 ### Documenti Correlati
 
-- [Workspace Naming Convention](conventions/workspace-naming.md)
-- [Module Folder Structure](conventions/module-folder-structure.md)
+- [Workspace Naming Convention](workspace-naming.md)
+- [Module Folder Structure](module-folder-structure.md)
 - [AGENTS.md](../../AGENTS.md)
 
 ### Git Documentation

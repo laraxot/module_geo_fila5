@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "enum standards"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Enum Standards - Geo Module

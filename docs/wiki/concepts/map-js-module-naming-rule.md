@@ -14,6 +14,7 @@ related:
   - map-picker-family-architecture.md
   - geo-map-controls-shared-implementation.md
   - ../../../../../Themes/Sixteen/docs/wiki/concepts/theme-geo-js-boundary.md
+status: draft
 ---
 
 # Regola: moduli JS mappa in `components/map/`
