@@ -109,3 +109,9 @@ module: "Geo"
 - Created INDEX.md for each section
 - Created module index.md
 - Ready for on-demand loading via QMD
+
+## [2026-10-14] DCP-152 marker e pulsanti del picker
+
+- `coordinate-picker-lit` include `markerCardStylesText` e accetta `marker-icon-url`, `marker-color`, `marker-label` (dettaglio ticket: tipo e stato noti).
+- Pulsanti `.ctrl-btn` protetti dal reset `button` delle pagine `data-dc` (`.map-container .ctrl-btn.ctrl-btn`).
+- Concept: `concepts/picker-marker-and-controls-on-host-pages.md`; story `stories/2026-10-14-dcp-152-...story.md`.

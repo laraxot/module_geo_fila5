@@ -73,6 +73,6 @@ BashScripts Fila3 è ideale per:
 ## Supporto
 
 Per supporto e domande:
-- Documentazione: [docs/](docs/)
+- Documentazione: [docs/](.)
 - Issues: [GitHub Issues](https://github.com/laraxot/bashscripts_fila5/issues)
 - Contatto: marco76tv@gmail.com

@@ -94,4 +94,4 @@ Questa correzione si allinea con gli obiettivi della roadmap, in particolare:
 ## Riferimenti
 - [Laravel Migration Documentation](https://laravel.com/docs/migrations)
 - [PHPStan Level 9 Requirements](https://phpstan.org/user-guide/rule-levels)
-- [Xot Module Documentation](../Xot/docs/readme.md) 
+- [Xot Module Documentation](../../../Xot/docs/README.md) 

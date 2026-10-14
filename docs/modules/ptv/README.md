@@ -256,14 +256,14 @@ return [
 ## 🔗 **Integrazioni Sistema**
 
 ### Moduli Core
-- **[Xot](../Xot/docs/)** - Framework base e PDF generation
-- **[User](../User/docs/)** - Utenti valutatori/valutati
-- **[Notify](../Notify/docs/)** - Sistema notifiche email
+- **[Xot](../../../../Xot/docs)** - Framework base e PDF generation
+- **[User](../../../../User/docs)** - Utenti valutatori/valutati
+- **[Notify](../../../../Notify/docs)** - Sistema notifiche email
 
 ### Moduli Business
 - **[Performance](../Performance/docs/)** - Sistema valutazione integrato
-- **[Gdpr](../Gdpr/docs/)** - Compliance privacy dati
-- **[Activity](../Activity/docs/)** - Audit trail operazioni
+- **[Gdpr](../../../../Gdpr/docs)** - Compliance privacy dati
+- **[Activity](../../../../Activity/docs)** - Audit trail operazioni
 
 ---
 

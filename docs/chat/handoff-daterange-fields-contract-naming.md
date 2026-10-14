@@ -11,7 +11,7 @@ module: Sigma
 status: completed
 completed: 2026-06-15
 related:
-  - ../../../../docs/wiki/rules/contract-naming-suffix.md
+  - ../../../../../docs/wiki/rules/contract-naming-suffix.md
   - ../wiki/rules/model-contracts-placement.md
 ---
 

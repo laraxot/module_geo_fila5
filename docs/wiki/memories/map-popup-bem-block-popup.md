@@ -32,7 +32,7 @@ Usare `<div class="popup__header">` — mai `<header>` (conflitto `min-height: 2
 
 ## STORY
 
-[STORY-129](../../../../../docs/stories/STORY-129-map-marker-icon-first-popup-ux.md) · issue [#43](https://github.com/laraxot/module_geo_fila5/issues/43)
+[STORY-129](../../../../../../docs/stories/STORY-129-map-marker-icon-first-popup-ux.md) · issue [#43](https://github.com/laraxot/module_geo_fila5/issues/43)
 
 ## ricostruzione
 

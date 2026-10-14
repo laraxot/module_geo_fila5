@@ -251,11 +251,11 @@ User (base)
 ### Documentazione Moduli
 - [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
 - [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
-- [User](../modules/user/docs/readme.md)
-- [Geo](../modules/geo/docs/readme.md)
-- [Media](../modules/media/docs/readme.md)
-- [UI](../modules/ui/docs/readme.md)
-- [Xot](../modules/xot/docs/readme.md)
+- [User](../../User/docs/readme.md)
+- [Geo](README.md)
+- [Media](../../Media/docs/readme.md)
+- [UI](../../UI/docs/README.md)
+- [Xot](../../Xot/docs/README.md)
 
 ### Documentazione Tecnica
 - [Architettura](../laraxot-architecture-principles.md)

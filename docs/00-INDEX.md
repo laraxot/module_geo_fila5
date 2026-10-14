@@ -9,6 +9,8 @@ issues: []
 discussions: []
 ---
 
+> **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
+
 # Geo Module — Documentation Index
 
 ## Architecture

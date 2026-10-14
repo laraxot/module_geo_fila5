@@ -371,14 +371,14 @@ Questo documento fornisce un'analisi completa dello stato attuale di factory, se
 - [Gdpr](../laravel/modules/gdpr/docs/module-analysis-complete.md)
 - [Tenant](../laravel/modules/tenant/docs/module-analysis-complete.md)
 - [Xot](../laravel/modules/xot/docs/module-analysis-complete.md)
-- [User](../laravel/modules/user/docs/module-analysis-complete.md)
+- [User](../../User/docs/module-analysis-complete.md)
 - [UI](../laravel/modules/ui/docs/module-analysis-complete.md)
-- [Geo](../laravel/modules/geo/docs/module-analysis-complete.md)
-- [Cms](../laravel/modules/cms/docs/module-analysis-complete.md)
-- [Notify](../laravel/modules/notify/docs/module-analysis-complete.md)
+- [Geo](module-analysis-complete.md)
+- [Cms](../../Cms/docs/module-analysis-complete.md)
+- [Notify](../../Notify/docs/module-analysis-complete.md)
 
 ### Documentazione Root
-- [README Principale](../readme.md)
+- [README Principale](../README.md)
 - [Analisi Testing](../../docs/module-testing-analysis.md)
 
 ---

@@ -542,7 +542,7 @@ class CustomModuleGenerator extends BaseDocumentationGenerator
 ## 📚 Risorse & Links
 
 ### **Framework Resources**
-- [**LARAXOT Framework**](../../laravel/docs/) - Documentazione framework principale
+- [**LARAXOT Framework**](../../../../docs) - Documentazione framework principale
 - [**Module Standards**](../../laravel/docs/module-standards.md) - Standard sviluppo moduli
 - [**Best Practices**](../../laravel/docs/best-practices.md) - Best practices architetturali
 

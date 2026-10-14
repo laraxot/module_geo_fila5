@@ -112,4 +112,4 @@ In `07-map-clusters-and-leaflet.css` **non** usare `.dc-homepage-parity header` 
 - [geo-map-popup-bem.md](../concepts/geo-map-popup-bem.md)
 - [geo-map-lit-reconstruction-guide.md](../concepts/geo-map-lit-reconstruction-guide.md)
 - [geo-map-popup-leaflet-boundary.md](../../../../../Themes/Sixteen/docs/wiki/concepts/geo-map-popup-leaflet-boundary.md)
-- [STORY-129](../../../../../docs/stories/STORY-129-map-marker-icon-first-popup-ux.md)
+- [STORY-129](../../../../../../docs/stories/STORY-129-map-marker-icon-first-popup-ux.md)

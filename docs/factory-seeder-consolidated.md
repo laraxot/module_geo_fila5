@@ -324,9 +324,9 @@ Ho creato uno script intelligente (`smart_populate_models.php`) che:
 ### Documentazione Moduli
 - [<nome progetto> Factory](../modules/<nome progetto>/docs/factory-issues-analysis.md)
 - [<nome progetto> Factory](../modules/<nome progetto>/docs/factory-issues-analysis.md)
-- [User Factory](../modules/user/docs/factory-audit-lessons-learned.md)
-- [Geo Factory](../modules/geo/docs/factory-creation-geo-module.md)
-- [Media Factory](../modules/media/docs/readme.md)
+- [User Factory](../../User/docs/factory-audit-lessons-learned.md)
+- [Geo Factory](factory-creation-geo-module.md)
+- [Media Factory](../../Media/docs/readme.md)
 
 ### Documentazione Tecnica
 - [Business Logic](../business-logic-consolidated.md)

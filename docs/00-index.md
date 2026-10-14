@@ -9,6 +9,8 @@ issues: []
 discussions: []
 ---
 
+> **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
+
 # 📚 **Indice Documentazione Modulo Geo**
 
 **Status**: ✅ PHPStan Level 10 Compliant
@@ -19,7 +21,7 @@ discussions: []
 Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider (9 provider), database ANPR italiano (8000+ comuni), query spaziali, widget mappa interattivi per Filament.
 
 ## 🎯 **Lettura Essenziale**
-1. [README.md](./readme.md) - Panoramica completa, Multi-API e Comuni Italiani.
+1. [README.md](./README.md) - Panoramica completa, Multi-API e Comuni Italiani.
 2. [roadmap.md](./roadmap.md) - Obiettivi 2026 e miglioramenti geocoding.
 3. [philosophy.md](./philosophy.md) - Visione architetturale dei dati geografici.
 
@@ -80,8 +82,8 @@ Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider 
 - [AGENTS.md](../../../../AGENTS.md) - Project guidelines
 
 ## 🔗 **Moduli Correlati**
-- [Xot](../../xot/docs/readme.md) - Core framework e Base Models.
-- [UI](../../ui/docs/readme.md) - Componenti grafici e widget mappa.
+- [Xot](../../Xot/docs/README.md) - Core framework e Base Models.
+- [UI](../../UI/docs/README.md) - Componenti grafici e widget mappa.
 
 ---
 title: "00 index"

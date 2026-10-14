@@ -97,8 +97,8 @@ discussions: []
 | Module | Entry Point | Analysis | Plan |
 |--------|-------------|----------|------|
 | IndennitaResponsabilita | [README](../laravel/Modules/IndennitaResponsabilita/docs/README.md) | [Summary](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md) | [Refactoring](../laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md) |
-| Rating | [README](../laravel/Modules/Rating/docs/README.md) | [Scope Fix](../laravel/Modules/Rating/docs/schemaless-scope-fix.md) | [Consolidation](../laravel/Modules/Rating/docs/trait-consolidation-plan.md) |
-| Xot | [README](../laravel/Modules/Xot/docs/README.md) | N/A | N/A |
+| Rating | [README](../../Rating/docs/README.md) | [Scope Fix](../laravel/Modules/Rating/docs/schemaless-scope-fix.md) | [Consolidation](../laravel/Modules/Rating/docs/trait-consolidation-plan.md) |
+| Xot | [README](../../Xot/docs/README.md) | N/A | N/A |
 
 ### Tier 3: Reference
 

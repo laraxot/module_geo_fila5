@@ -94,7 +94,7 @@ Basato sulla documentazione `phpstan-code-quality-guide.md`:
 - [File Corretto](../app/Actions/Bing/GetAddressFromBingMapsAction.php) 
 - [Documento Roadmap](./phpstan-bing-maps-action-fix-roadmap.md)
 - [PHPStan Code Quality Guide](../../../xot/docs/phpstan-code-quality-guide.md)
-- [Best Practices Geocoding](../readme.md)
+- [Best Practices Geocoding](../README.md)
 
 ## 🎯 Impatto sul Sistema
 

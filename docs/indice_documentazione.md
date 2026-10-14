@@ -28,7 +28,7 @@ Questo documento fornisce un indice completo e organizzato di tutta la documenta
 
 Documenti che forniscono una panoramica generale del modulo Geo, della sua architettura e dei suoi componenti principali.
 
-- [README.md](readme.md) - Introduzione generale al modulo Geo
+- [README.md](README.md) - Introduzione generale al modulo Geo
 - [module_geo.md](module_geo.md) - Panoramica dettagliata del modulo
 - [architecture.md](architecture.md) - Architettura del modulo Geo
 - [structure.md](structure.md) - Struttura del modulo e organizzazione dei file

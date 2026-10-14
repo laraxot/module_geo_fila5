@@ -286,9 +286,9 @@ protected function getInfolistSchema()
 
 - [Filament ViewRecord Errors (Root Docs)](../../../docs/filament-view-record-errors.md)
 - [Testing Analysis Documentation](../../../docs/testing-analysis.md)
-- [XotBaseViewRecord Source Code](../../../Xot/app/Filament/Resources/Pages/XotBaseViewRecord.php)
-- [Location Model](../../app/Models/Location.php)
-- [LocationResource](../../app/Filament/Resources/LocationResource.php)
+- [XotBaseViewRecord Source Code](../../Xot/app/Filament/Resources/Pages/XotBaseViewRecord.php)
+- [Location Model](../app/Models/Location.php)
+- [LocationResource](../app/Filament/Resources/LocationResource.php)
 
 ## Note di Manutenzione
 

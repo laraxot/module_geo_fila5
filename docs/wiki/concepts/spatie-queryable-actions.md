@@ -74,4 +74,4 @@ class AddressPicker extends XotBaseField
 
 ## Related Rules
 - [XotBaseField view rule](xotbasefield-view-rule.md)
-- [Coordinate picker field](../../Modules/Geo/docs/wiki/concepts/coordinate-picker-field.md)
+- [Coordinate picker field](coordinate-picker-field.md)

@@ -94,9 +94,9 @@ find . -name "*.php" -path "*/tests/*" | grep -E "(Test\.php|test\.php)"
 - **NON** procedere senza aver completato la Fase 1
 
 ## Collegamenti
-- [phpunit.xml](../laravel/phpunit.xml)
-- [Pest.php](../laravel/tests/Pest.php)
-- [Test Case](../laravel/tests/TestCase.php)
+- [phpunit.xml](../../../phpunit.xml)
+- [Pest.php](../../../tests/Pest.php)
+- [Test Case](../../../tests/TestCase.php)
 
 ---
 title: "testing priority rule"

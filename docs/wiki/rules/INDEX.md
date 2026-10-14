@@ -30,7 +30,7 @@ qmd search "Geo rules" --limit 5
 | [blade-icons-registration.md](./blade-icons-registration.md) | Blade icons |
 
 ## See Also
-- [Root Trigger Map](../../../../../docs/wiki/rules/00-TRIGGER_MAP.md)
+- [Root Trigger Map](../../../../../../docs/wiki/rules/00-TRIGGER_MAP.md)
 - [Root Wiki](../../../docs/wiki/)
 - [geo-map-popup-bem.md](../concepts/geo-map-popup-bem.md)
 

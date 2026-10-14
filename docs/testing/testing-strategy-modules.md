@@ -372,10 +372,10 @@ class DatabaseHelper
 
 ## Collegamenti
 
-- [Test Autenticazione Esistenti](../tests/Feature/Auth/) - Pattern di riferimento
+- [Test Autenticazione Esistenti](../../../../tests/Feature/Auth) - Pattern di riferimento
 - [Documentazione Modulo <nome progetto>](../modules/<nome progetto>/docs/readme.md)
-- [Documentazione Modulo User](../modules/user/docs/readme.md)
-- [Configurazione Pest](../tests/Pest.php)
+- [Documentazione Modulo User](../../../User/docs/readme.md)
+- [Configurazione Pest](../../tests/Pest.php)
 
 ---
 

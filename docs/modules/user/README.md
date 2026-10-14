@@ -232,14 +232,14 @@ php artisan user:performance-audit
 ## 🔗 **Ecosistema Integrazioni**
 
 ### Moduli Core
-- **[Xot](../Xot/docs/)** - Framework base e utilities
-- **[Lang](../Lang/docs/)** - Sistema traduzioni
-- **[Activity](../Activity/docs/)** - Audit trail
+- **[Xot](../../../../Xot/docs)** - Framework base e utilities
+- **[Lang](../../../../Lang/docs)** - Sistema traduzioni
+- **[Activity](../../../../Activity/docs)** - Audit trail
 
 ### Moduli Business
 - **[Performance](../Performance/docs/)** - Valutazioni performance
 - **[Ptv](../Ptv/docs/)** - Sistema PTV
-- **[Gdpr](../Gdpr/docs/)** - Compliance privacy
+- **[Gdpr](../../../../Gdpr/docs)** - Compliance privacy
 
 ### Packages Esterni
 - **Spatie Laravel Permission** - Gestione ruoli/permessi
@@ -307,7 +307,7 @@ $userQuery = User::where('tenant_id', $tenant->id);
 
 **🎉 Modulo User: Architettura solida, codice pulito, documentazione completa!**
 
-**🚀 Pronto a sviluppare? Inizia da [Getting Started](../../docs/navigation/getting-started.md)!**
+**🚀 Pronto a sviluppare? Inizia da [Getting Started](../../navigation/getting-started.md)!**
 
 ---
 

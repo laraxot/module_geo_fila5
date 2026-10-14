@@ -154,9 +154,9 @@ find . -type f | wc -l  # Should show ~4,531 files
 
 ## References
 
-- [Root CLAUDE.md](../../../../CLAUDE.md) — Canonical rules location
+- [Root CLAUDE.md](../../../../../CLAUDE.md) — Canonical rules location
 - [Context Compression Discipline](../../../../bashscripts/ai/.claude/rules/context-compression-discipline.md)
-- [Geo Module LLM Wiki](../wiki/index.md)
+- [Geo Module LLM Wiki](../index.md)
 - [Map Controls Shared Implementation](./geo-map-controls-shared-implementation.md)
 
 ## Related Stories
