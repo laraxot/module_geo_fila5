@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "checklist"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 📋 Checklist Pattern
@@ -59,12 +60,4 @@ Le checklist servono a:
 - [ ] Testing appropriato
 
 ---
-title: "checklist"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "checklist"
-issues: []
-discussions: []
 **Vedi anche**: [Action Pattern](./action.md), [Repository Pattern](./repository.md)

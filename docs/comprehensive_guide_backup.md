@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "comprehensive guide backup"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Comprehensive Guide for Geo Module

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "script organization"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Organizzazione Script - Regole Fondamentali

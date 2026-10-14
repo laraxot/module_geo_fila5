@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "prompt start refactor"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Refactor prompt start

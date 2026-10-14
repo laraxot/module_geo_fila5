@@ -14,6 +14,7 @@ related:
   - ../../../../Fixcity/docs/wiki/troubleshooting/ticket-location-not-saved-mass-assignment.md
 supersedes:
   - story 8-64 (root cause errata)
+status: draft
 ---
 
 # CoordinatePicker Filament 5 — Pattern salvataggio campo composito

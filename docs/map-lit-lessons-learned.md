@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map lit lessons learned"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Map-Lit: Lessons Learned & Error Resolution
@@ -19,15 +20,6 @@ discussions: []
 **Ricostruzione da docs:** [wiki/concepts/geo-map-lit-reconstruction-guide.md](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
 
 ---
-
-title: "map lit lessons learned"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "map lit lessons learned"
-issues: []
-discussions: []
 ## Problemi Risolti
 
 ### 1. Marker Cluster che "Scappano" al Hover (STORY-123)

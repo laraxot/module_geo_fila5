@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "tutorial"
 issues: []
 discussions: []
+status: draft
 ---
 
 https://fly.io/laravel-bytes/console-applications-with-laravel-zero/

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "stabilization roadmap"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Stabilization Roadmap - Geo Module

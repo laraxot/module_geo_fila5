@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: index
 canonical: ../../../../Themes/docs/shared-components/00-index-Modules.md
+status: stub
 ---
 
 See canonical documentation: ../../../../Themes/docs/shared-components/00-index-Modules.md

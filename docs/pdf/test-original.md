@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "test original"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Event Sourcing in Laravel
@@ -18,15 +19,6 @@ Di Brent Roose
 **EVENT-SOURCING-LARAVEL.COM | SPATIE**
 
 ---
-
-title: "test original"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "test original"
-issues: []
-discussions: []
 ## Introduzione all'Event Sourcing in Laravel
 
 **Un corso pratico per iniziare a utilizzare l'event sourcing in applicazioni di grandi dimensioni.**

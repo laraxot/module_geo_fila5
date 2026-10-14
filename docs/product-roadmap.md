@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: product-roadmap
 canonical: ../../../Themes/docs/shared-components/PRODUCT_ROADMAP.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/PRODUCT_ROADMAP.md

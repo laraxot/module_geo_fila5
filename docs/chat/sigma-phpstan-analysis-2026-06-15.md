@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "sigma phpstan analysis 2026 06 15"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Analisi PHPStan Modulo Sigma — 2026-06-15
@@ -68,13 +69,4 @@ interface DateRangeFieldsContract
 3. ⏳ Correggere gli errori di tipo identificati
 
 ---
-
-title: "sigma phpstan analysis 2026 06 15"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "sigma phpstan analysis 2026 06 15"
-issues: []
-discussions: []
 **Nota:** PHPStan non riesce a procedere fino al completamento di questo errore interno.

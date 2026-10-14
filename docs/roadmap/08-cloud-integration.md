@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "08 cloud integration"
 issues: []
 discussions: []
+status: draft
 ---
 
 

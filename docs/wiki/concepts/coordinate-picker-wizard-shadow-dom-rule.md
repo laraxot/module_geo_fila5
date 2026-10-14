@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "coordinate picker wizard shadow dom rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Coordinate Picker Wizard Shadow DOM Rule

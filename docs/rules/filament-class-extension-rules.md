@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "filament class extension rules"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Filament Class Extension Rules - Laraxot Framework
@@ -14,15 +15,6 @@ discussions: []
 **Principio Fondamentale**: Mai estendere classi Filament direttamente - sempre usare classi XotBase
 
 ---
-
-title: "filament class extension rules"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "filament class extension rules"
-issues: []
-discussions: []
 ## 🚨 Regola Assoluta
 
 **NON estendere MAI classi Filament direttamente**

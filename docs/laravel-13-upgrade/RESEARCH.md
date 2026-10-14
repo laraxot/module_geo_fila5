@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "RESEARCH"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Research: Laravel 13 Upgrade for Modular Project

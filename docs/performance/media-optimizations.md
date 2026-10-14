@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "media optimizations"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Ottimizzazioni Performance Modulo Media

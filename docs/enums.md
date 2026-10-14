@@ -10,6 +10,7 @@ discussions: []
 description:
 globs:
 alwaysApply: false
+status: draft
 ---
 # Regole per gli Enum nel Modulo Geo
 

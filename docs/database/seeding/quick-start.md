@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "quick start"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Quick Start per Script di Seeding Database

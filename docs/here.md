@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "here"
 issues: []
 discussions: []
+status: draft
 ---
 
 aggiungere ad .env

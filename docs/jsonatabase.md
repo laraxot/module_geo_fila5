@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: jsonatabase
 canonical: ../../../Themes/docs/shared-components/json-database.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/json-database.md

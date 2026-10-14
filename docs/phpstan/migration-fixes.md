@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "migration fixes"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Soluzioni PHPStan per le Migrazioni - Modulo Activity

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "ci semantic release"
 issues: []
 discussions: []
+status: draft
 ---
 
 # ci — semantic release modulo geo

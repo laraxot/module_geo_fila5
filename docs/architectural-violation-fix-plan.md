@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "architectural violation fix plan"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 🚨 PIANO DI CORREZIONE: Violazione Architetturale Critica

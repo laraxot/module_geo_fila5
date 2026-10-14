@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "second brain geo module discipline"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Second Brain Discipline For Geo Module

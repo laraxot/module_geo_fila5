@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "test v3"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Event Sourcing in Laravel

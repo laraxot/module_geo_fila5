@@ -851,7 +851,7 @@ find docs/ -name "*" | grep '[A-Z]' | grep -v "README.md"
 - [Architecture Overview](../../docs/architecture-overview.md)
 - [Coding Standards](../../docs/coding-standards.md)
 - [Testing Guidelines](../../docs/testing-guidelines.md)
-- [Filament Best Practices](../../docs/filament-best-practices.md)
+- [Filament Best Practices](../raw/history/filament-best-practices.md)
 
 ### 16.2 Moduli Principali
 - [Xot Module](../../../Xot/docs/README.md)

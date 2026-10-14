@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "class not found errors"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Class Not Found Errors - Legacy Module References

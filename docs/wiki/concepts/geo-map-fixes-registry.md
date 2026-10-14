@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo map fixes registry"
 issues: []
 discussions: []
+status: draft
 ---
 
 # geo-map-lit — registro correzioni e ricostruzione
@@ -18,15 +19,6 @@ Indice **cronologico e funzionale** di ogni correzione significativa su mappa `/
 **Quando usarlo:** post-mortem, onboarding, o rebuild dopo perdita repository parziale.
 
 ---
-
-title: "geo map fixes registry"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "geo map fixes registry"
-issues: []
-discussions: []
 ## legenda colonne
 
 | Campo | Significato |

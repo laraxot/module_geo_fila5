@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "field component lessons learned"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Field Component Lessons Learned
@@ -16,15 +17,6 @@ discussions: []
 Raccolta di lezioni, anti-pattern e false friends scoperti durante lo sviluppo e il fix dei componenti Geo e Filament.
 
 ---
-
-title: "field component lessons learned"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "field component lessons learned"
-issues: []
-discussions: []
 ## 1. Merge Conflict = Bootstrap Failure
 
 ### Problema

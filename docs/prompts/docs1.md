@@ -833,7 +833,7 @@ protected function casts(): array
 - [Architecture Overview](../../docs/architecture-overview.md)
 - [Coding Standards](../../docs/coding-standards.md)
 - [Testing Guidelines](../../docs/testing-guidelines.md)
-- [Filament Best Practices](../../docs/filament-best-practices.md)
+- [Filament Best Practices](../raw/history/filament-best-practices.md)
 
 ### 13.2 Moduli Principali
 - [Xot Module](../../../Xot/docs/README.md)

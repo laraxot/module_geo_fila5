@@ -9,6 +9,7 @@ issues: []
 discussions: []
 name: map-picker-admin-visibility
 description: Specific troubleshooting steps for missing map on the admin ticket‑creation page
+status: draft
 ---
 
 # Admin Ticket Creation – Map Not Visible

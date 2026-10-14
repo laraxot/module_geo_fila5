@@ -230,7 +230,7 @@ php artisan docs:validate
 - [Notify - Notifications](../../Notify/docs/optimization-analysis.md)
 
 ### Documentazione Generale
-- [SOLID Principles](./solid-principles.md)
+- [SOLID Principles](./claude/solid-principles.md)
 - [Performance Best Practices](./performance-best-practices.md)
 - [Security Guidelines](./security-guidelines.md)
 - [Testing Strategy](./testing-strategy.md)

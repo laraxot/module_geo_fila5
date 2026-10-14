@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "filament 5x compatibility"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Filament 5.x compatibility - modulo Geo

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "leaflet wizard flicker"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Leaflet Wizard Flicker Rule

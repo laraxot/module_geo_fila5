@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "analisi moduli completata"
 issues: []
 discussions: []
+status: draft
 ---
 
 # ✅ ANALISI MODULI COMPLETATA - Report Finale
@@ -188,15 +189,6 @@ Creato file `optimization_recommendations.md` in ogni modulo con:
 4. **Verificare** con script check ad ogni step
 
 ---
-
-title: "analisi moduli completata"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "analisi moduli completata"
-issues: []
-discussions: []
 ## 📞 Supporto
 
 Per domande sull'implementazione delle raccomandazioni:

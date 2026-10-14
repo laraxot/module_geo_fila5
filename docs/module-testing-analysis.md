@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "module testing analysis"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Analisi Completa Testing e Factory Moduli - <nome progetto>
@@ -382,15 +383,6 @@ Questo documento fornisce un'analisi completa dello stato attuale di factory, se
 - [Analisi Testing](../../docs/module-testing-analysis.md)
 
 ---
-
-title: "module testing analysis"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "module testing analysis"
-issues: []
-discussions: []
 **Versione**: 2.1
 **Stato**: 100% moduli completati (14/14) ✅
 **Copertura Media**: 85%

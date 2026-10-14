@@ -10,6 +10,7 @@ updated: 2026-10-14
 sources:
   - ../../../../../Themes/Sixteen/docs/wiki/concepts/coordinate-picker-design-comuni-parity-rule.md
   - ../../../../../../docs/wiki/concepts/filament5-schema-section-namespace-rule.md
+status: draft
 ---
 
 # CoordinatePicker Design Comuni Runtime Rule

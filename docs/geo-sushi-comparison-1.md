@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo sushi comparison 1"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Confronto: GeoJsonModel (readonly JSON) vs Laravel Sushi
@@ -26,15 +27,6 @@ discussions: []
 - Supporta anche dati dinamici (API, config, ecc.)
 
 ---
-
-title: "geo sushi comparison 1"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "geo sushi comparison 1"
-issues: []
-discussions: []
 ## 2. Vantaggi e svantaggi
 
 ### GeoJsonModel

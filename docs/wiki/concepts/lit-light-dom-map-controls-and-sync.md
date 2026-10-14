@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "lit light dom map controls and sync"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Lit light dom map controls and sync

@@ -9,6 +9,7 @@ discussions: []
 name: geopoint-picker-map-invisible-wizard-fix
 description: "GeopointPicker map not visible in wizard: JS component not imported in theme, missing MutationObserver, missing Leaflet CSS import"
 type: bugfix
+status: draft
 ---
 
 # GeopointPicker — Map Invisible in Wizard Fix

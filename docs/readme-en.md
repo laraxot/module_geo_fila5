@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "readme en"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 🗺️ Geo — English presentation
@@ -24,15 +25,6 @@ discussions: []
 > **Every address has coordinates. Every ticket has a map pin.** Multi-provider geocoding and Lit `map-lit` — production-grade.
 
 ---
-
-title: "readme en"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "readme en"
-issues: []
-discussions: []
 ## Why it exists
 
 Single owner of geo concerns: Italian ANPR data, geocoders, markers, ticket popups, Leaflet clusters.

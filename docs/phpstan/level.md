@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "level"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Livello 1 - Modulo Activity

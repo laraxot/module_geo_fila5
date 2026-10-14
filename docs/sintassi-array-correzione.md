@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "sintassi array correzione"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Correzione Sintassi Obsoleta Array() - Modulo Geo
@@ -142,14 +143,5 @@ php -l laravel/Modules/Geo/lang/it/address.php
 - Mantenere standard di codice uniformi
 
 ---
-
-title: "sintassi array correzione"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "sintassi array correzione"
-issues: []
-discussions: []
 **Ultimo aggiornamento**: 6 Gennaio 2025  
 **Autore**: AI Assistant  

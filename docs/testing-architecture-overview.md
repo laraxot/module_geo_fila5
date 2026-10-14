@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "testing architecture overview"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Architettura di Testing - <nome progetto>

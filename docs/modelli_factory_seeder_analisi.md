@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "modelli factory seeder analisi"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Analisi Modelli, Factory e Seeder - Modulo Geo

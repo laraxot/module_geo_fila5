@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "global context"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Global Context

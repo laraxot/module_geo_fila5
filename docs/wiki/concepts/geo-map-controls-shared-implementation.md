@@ -274,7 +274,7 @@ grep -r 'map-controls' laravel/Modules/Geo/resources/js/
 ## Referenze
 
 - [geo-map-lit](./entities/geo-map-lit.md) — Entità componente
-- [geo-map-controls-unification-rule](./concepts/geo-map-controls-unification-rule.md) — Regola parity
+- [geo-map-controls-unification-rule](./geo-map-controls-unification-rule.md) — Regola parity
 - [coordinate-picker-lit](./entities/coordinate-picker-lit.md) — Componente input form
 - [map-controls](./concepts/map-controls.md) — Dettagli moduli condivisi
 

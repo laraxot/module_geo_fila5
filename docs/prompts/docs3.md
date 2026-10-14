@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "docs3"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Docs3
@@ -27,15 +28,6 @@ discussions: []
 ### 10. CROSS-REFERENCES E VALIDAZIONE
 
 ---
-
-title: "docs3"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "docs3"
-issues: []
-discussions: []
 ## 1. STRUTTURA GERARCHICA E MODULARITÀ
 
 ### 1.1 Struttura delle Cartelle

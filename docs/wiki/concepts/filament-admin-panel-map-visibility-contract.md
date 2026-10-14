@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "filament admin panel map visibility contract"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Filament admin panel map visibility contract

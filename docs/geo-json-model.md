@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: geo-json-model
 canonical: ../../../Themes/docs/shared-components/geo-json-model-1.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/geo-json-model-1.md

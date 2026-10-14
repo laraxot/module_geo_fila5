@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "analisi modelli doppi"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Analisi Modelli Doppi nel Geo Module

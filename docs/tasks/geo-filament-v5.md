@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo filament v5"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Task: Geo Filament v5 Alignment (Clusters)

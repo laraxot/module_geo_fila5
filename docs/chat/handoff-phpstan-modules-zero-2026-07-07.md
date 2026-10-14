@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "handoff phpstan modules zero 2026 07 07"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Handoff — PHPStan Modules zero errori

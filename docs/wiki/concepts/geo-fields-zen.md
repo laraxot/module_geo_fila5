@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo fields zen"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Fields Zen: Philosophy, Religion, and Methodology
@@ -46,13 +47,5 @@ We NEVER use aliases for these core components.
 5. **Thou shalt be fluent**: provide many methods to configure center, zoom, and height.
 
 ---
-title: "geo fields zen"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "geo fields zen"
-issues: []
-discussions: []
 *Created: 2026-04-22*
 *Updated: 2026-04-22 (v2.0 Architecture)*

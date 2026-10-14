@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo entities"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Entità Geografiche

@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: addressresource
 canonical: ../../../Themes/docs/shared-components/addressresource-sumy.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/addressresource-sumy.md

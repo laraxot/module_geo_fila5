@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: product-launch-plan
 canonical: ../../../Themes/docs/shared-components/PRODUCT_LAUNCH_PLAN-Modules.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/PRODUCT_LAUNCH_PLAN-Modules.md

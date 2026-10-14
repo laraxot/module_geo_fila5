@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "anti patterns"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Anti-Pattern Comuni in Laraxot

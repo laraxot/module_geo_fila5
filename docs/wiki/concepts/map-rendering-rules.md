@@ -9,6 +9,7 @@ discussions: []
 name: map-rendering-rules
 description: Best practices, bad practices and false friends for rendering maps in Filament wizard components.
 type: concept
+status: draft
 ---
 
 # Map Rendering Rules for Filament Wizard

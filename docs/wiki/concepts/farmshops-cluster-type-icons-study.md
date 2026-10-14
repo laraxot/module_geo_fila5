@@ -14,6 +14,7 @@ related:
   - ../../../../Fixcity/docs/wiki/concepts/ticket-type-icon-fixcity-svg.md
   - ../../../../../../docs/stories/STORY-284-map-cluster-type-icons-farmshops-parity.md
 reference: "https://github.com/CodeforKarlsruhe/farmshops.eu"
+status: draft
 ---
 
 # Studio [farmshops.eu](https://github.com/CodeforKarlsruhe/farmshops.eu) — cluster e icone tipologia

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo map marker status background"
 issues: []
 discussions: []
+status: draft
 ---
 
 # geo-map-marker — sfondo stato (farmshops parity)

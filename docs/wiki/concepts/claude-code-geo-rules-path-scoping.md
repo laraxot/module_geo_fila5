@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "claude code geo rules path scoping"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Claude Code Geo Rules Path Scoping

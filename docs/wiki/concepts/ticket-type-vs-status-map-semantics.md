@@ -17,6 +17,7 @@ updated: 2026-06-03
 related:
   - ../../../../../../docs/stories/STORY-125-map-legend-status-semantics-collapsible.md
   - ../../../../../../docs/stories/STORY-127-map-gps-filtri-legenda-farmshops.md
+status: draft
 ---
 
 # Semantica type vs status (mappa `/it`)

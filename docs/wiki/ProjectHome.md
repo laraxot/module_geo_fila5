@@ -9,7 +9,10 @@ discussions: []
 concept: Project Home
 last_updated: 2026-05-20
 qmd: "project home, ptvx-project, getting started, overview, module structure"
+status: stale
 ---
+
+> Nota 2026-10-14 (docs-audit): Home wiki del progetto PTVX copiata nel wiki di Geo: 10 dei suoi link, relativi a una radice diversa (rules/database-guidelines.md, concepts/module-structure.md e altri) non esistono qui. L'indice del wiki di Geo e' wiki/index.md. Contenuto non riscritto, verificare prima di usarlo.
 
 # PTVX LLM Wiki
 
@@ -26,7 +29,7 @@ Welcome to the central knowledge base for the **PTVX** project. This wiki is aut
 ## Architectural Principles
 
 - [BaseModel Pattern](../../laravel/Modules/Xot/docs/wiki/BaseModel.md): The sacred inheritance chain.
-- [Actions Over Services](concepts/actions-over-services.md): Preferred business logic pattern.
+- [Actions Over Services](../architecture/actions-over-services.md): Preferred business logic pattern.
 - [Database guidelines](rules/database-guidelines.md): Managing connections across modules.
 - [Translation standards](rules/translation-standards.md): Automatic localization rules.
 

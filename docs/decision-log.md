@@ -2,6 +2,10 @@
 type: decision-log
 title: "Decision Log — Geo"
 links: {github_issue: #XXX, discussion: #XXX}
+status: draft
+updated: 2026-10-14
+tags: [docs, geo]
+qmd: "decision log   geo geo"
 ---
 # Decision Log — Geo
 
@@ -41,4 +45,6 @@ links: {github_issue: #XXX, discussion: #XXX}
 - **Aperto**: approvazione gruppo per gruppo della mappa (poi `git mv` e `links --fix`); `docs/wiki/.gitignore` ignora `concepts/`, quindi i concept nuovi (es. `picker-marker-and-controls-on-host-pages.md`) vanno aggiunti con `git add -f`; `wiki/index.md` ha ancora un link rotto senza bersaglio (`ai-harness-module-discipline.md`); `geo-map-lit.js` importa ancora `leaflet.heat` senza usarlo (cambio di codice, fuori da questa revisione).
 
 ## Open Questions
+
+- (2026-10-14, studio degli ingressi) Quale file e' l'indice canonico del modulo? Il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` dice `00-INDEX.md`; la decisione del 2026-10-14 sopra dice `INDEX.md` e marca `00-INDEX.md` e `00-index.md` come superseded (due nomi che differiscono solo per le maiuscole). Nessuna rinomina fatta. Vedi la story `stories/2026-10-14-studio-docs-geo-ingressi-verificati.story.md`.
 

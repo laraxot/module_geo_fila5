@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "protected string view rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Protected String $view Rule

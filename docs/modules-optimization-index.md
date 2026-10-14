@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "modules optimization index"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Indice Completo - Analisi e Ottimizzazioni Moduli

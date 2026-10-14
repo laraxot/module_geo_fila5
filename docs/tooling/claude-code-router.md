@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "claude code router"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Claude Code Router – DeepSeek Reasoning Fix

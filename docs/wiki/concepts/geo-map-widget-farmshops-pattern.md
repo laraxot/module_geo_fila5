@@ -18,6 +18,7 @@ confidence: high
 updated: 2026-06-03
 related:
   - ./farmshops-eu-applicability-fixcity.md
+status: draft
 ---
 
 # GeoMapWidget Farmshops Pattern

@@ -14,6 +14,7 @@ sources:
 related:
   - ./map-picker-runtime-asset-governance.md
   - ../../../../../../docs/rules/xotbasefield-mandatory.md
+status: draft
 ---
 
 # MapPicker Custom Marker Rule

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "address column implementation complete"
 issues: []
 discussions: []
+status: draft
 ---
 
 # AddressColumn Implementation Complete

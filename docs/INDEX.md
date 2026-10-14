@@ -7,12 +7,24 @@ updated: 2026-09-26
 qmd: "INDEX"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module Documentation Index
 
 <!-- p4-docs-geo: ingresso unico -->
 **Punto d'ingresso unico della documentazione del modulo Geo.** `00-INDEX.md` e `00-index.md` sono superseded da questo file (restano per cronologia, non vengono aggiornati).
+
+> Nota 2026-10-14 (studio degli ingressi): il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` indica `00-INDEX.md` come indice canonico dei moduli, mentre la decisione del [decision-log](./decision-log.md) (2026-10-14) fa di questo `INDEX.md` l'ingresso unico e lascia `00-INDEX.md` e `00-index.md` come superseded. Le due regole divergono: non e' stato rinominato nulla, resta da decidere (vedi la story `2026-10-14-studio-docs-geo-ingressi-verificati.story.md`). `00-INDEX.md` e `00-index.md` sono anche due nomi che differiscono solo per le maiuscole (collisione su filesystem insensibili alle maiuscole).
+
+## Classificazione delle directory (verificata il 2026-10-14)
+
+| Classe | Cartelle e file | Come usarli |
+|---|---|---|
+| Canonica | `stories/` (33 file), `wiki/` (238 file: `concepts/` 148 concept, `rules/`, `decisions/`, `troubleshooting/`, `memories/`), [decision-log.md](./decision-log.md), [README.md](./README.md) | Intento, regole e decisioni del modulo. Le story non si cancellano ne' si rinumerano |
+| Evidence | `raw/` (477 file, immutabile), `phpstan/` (124 file di rapporti), `chat/` (86, solo passaggio di consegne), `git/`, `git-management/`, `claude/`, `prompts/` | Cronologia di un momento passato: non descrivono lo stato corrente |
+| Legacy | file `.md` della radice (622 file nella radice, vedi [DOCS-MIGRATION-MAP.md](./DOCS-MIGRATION-MAP.md)), `00-INDEX.md`, `00-index.md`, `index.md` (indice PTVX, segnato `stale`), `wiki/ProjectHome.md`, `wiki/projecthome.md`, `wiki/reflective.md`, `wiki/method-name-homonym-census.md` (segnati `stale`) | Ricercabili, non attendibili finche' una story non li richiama. Molti descrivono classi che non esistono (`GeocodingService`, `MapProviderService`) |
+| Non verificate in questa passata | le altre sottocartelle (`roadmap/` 72, `testing/` 39, `utils/` 41, `pdf/`, `scripts/`, `ai/`, `filament/`, `models/`, ...) | Non e' stato confrontato il contenuto con il codice |
 
 ## Navigazione rapida
 
@@ -67,7 +79,7 @@ discussions: []
 - [**Model Analysis**](./analisi-modelli-doppi.md) - Duplicate models analysis and recommendations
 - [**Code Quality Analysis**](./analysis/code-quality-analysis.md) - Code quality metrics and improvements
 - [**User Research**](./USER_RESEARCH.md) - User experience research findings
-- [**Domain Research**](./_integration/archive/here-com.md) - Geographic domain research
+- [**Domain Research**](./_integration/here-com.md) - Geographic domain research _(link corretto il 2026-10-14: `_integration/archive/` non esiste, il file e' in `_integration/`)_
 
 ### 🛠️ Development & Tools
 
@@ -79,8 +91,8 @@ discussions: []
 
 ### 📁 Stories & Tasks
 
-- [**Map Component Enhancement Story**](../../_bmad/bmm/4-implementation/bmad-create-story/story-map-ticket-wizard.md) - Enhanced map component for ticket wizard
-- [**Address Input Story**](../../_bmad/bmm/4-implementation/bmad-create-story/discover-inputs.md) - Address input implementation
+- Map Component Enhancement Story - Enhanced map component for ticket wizard _(target mancante, verificato 2026-10-14: la cartella `_bmad/` non esiste nel repo; le story attuali del modulo sono in [stories/index.md](./stories/index.md))_
+- Address Input Story - Address input implementation _(target mancante, verificato 2026-10-14: stessa causa)_
 
 ### 📋 Guidelines & Best Practices
 
@@ -92,7 +104,7 @@ discussions: []
 
 - **Fixcity Module** - Main application module using Geo components
   - [Ticket Wizard Implementation](../../Fixcity/docs/ticket-wizard-frontoffice.md)
-  - [Address Integration](../../Fixcity/docs/address-implementation.md)
+  - Address Integration _(target mancante, verificato 2026-10-14: `Fixcity/docs/address-implementation.md` non esiste; il documento omonimo di questo modulo e' [address-implementation.md](./address-implementation.md))_
 
 ## Quick Reference
 
@@ -131,7 +143,7 @@ discussions: []
 
 | Action | File |
 |--------|------|
-| GetCoordinatesFromAddressAction | `app/Actions/GetCoordinatesByAddressAction.php` |
+| GetCoordinatesByAddressAction | `app/Actions/GetCoordinatesByAddressAction.php` _(nome classe corretto il 2026-10-14: prima `GetCoordinatesFromAddressAction`, che non esiste)_ |
 | GetAddressFromNominatimAction | `app/Actions/Nominatim/GetAddressFromNominatimAction.php` |
 | GetAddressFromGoogleMapsAction | `app/Actions/GoogleMaps/GetAddressFromGoogleMapsAction.php` |
 | GetAddressFromMapboxAction | `app/Actions/Mapbox/GetAddressFromMapboxAction.php` |
@@ -153,18 +165,11 @@ discussions: []
 - English: `lang/en/address.php`
 
 ---
-
-title: "INDEX"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "INDEX"
-issues: []
-discussions: []
 ## 📋 DEDUPLICATION NOTICE
 
 This module has many duplicate files in docs/. Key actions taken:
+
+> Nota 2026-10-14: questa sezione e' del 2026-06 e non e' piu' vera nei fatti. Nessun file `*backup.md` o `*--*.md` e' stato cancellato (la policy vieta di cancellare) e la radice di `docs/` ha 622 file, di cui 62 copie byte-identiche (misura in [DOCS-MIGRATION-MAP.md](./DOCS-MIGRATION-MAP.md)). Le azioni "Delete (git preserves)" della tabella sotto sono da leggere come proposte non eseguite.
 
 ### Consolidated Documents
 - ✅ **Model Analysis** - [analisi-modelli-doppi.md](./analisi-modelli-doppi.md) - Single source of truth
@@ -189,8 +194,8 @@ This module has many duplicate files in docs/. Key actions taken:
 
 ### 🤝 Contributing
 
-- Follow the [BMad methodology](../../../_bmad/README.md) for development
-- Maintain [design system compliance](../../DesignComuni/README.md)
+- Follow the BMad methodology for development _(target mancante, verificato 2026-10-14: `_bmad/README.md` non esiste; vedi [BMad Method](../../../../docs/wiki/concepts/bmad-method.md))_
+- Maintain design system compliance _(target mancante, verificato 2026-10-14: il modulo `DesignComuni` non esiste in `laravel/Modules/`; il tema e' [Sixteen](../../../Themes/Sixteen/docs/README.md))_
 - Ensure [accessibility standards](./USER_RESEARCH.md#accessibility) are met
 - Run quality checks with [PHPStan](./PHPSTAN_FIXES.md)
 

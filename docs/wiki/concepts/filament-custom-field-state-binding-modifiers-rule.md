@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "filament custom field state binding modifiers rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Filament Custom Field State Binding Modifiers Rule

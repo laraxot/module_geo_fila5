@@ -10,6 +10,7 @@ title: Creazione di una Resource
 description: Creazione di una Resource
 extends: _layouts.documentation
 section: content
+status: draft
 ---
 
 # Creazione di una Resource {#creazione-resource}

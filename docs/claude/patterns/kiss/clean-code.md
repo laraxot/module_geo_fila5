@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "clean code"
 issues: []
 discussions: []
+status: draft
 ---
 
 # KISS Patterns - Clean Code
@@ -294,14 +295,5 @@ public function processItems(array $items): array
 - **Team Productivity**: Less time spent deciphering unclear code
 
 ---
-
-title: "clean code"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "clean code"
-issues: []
-discussions: []
 **Focus**: Code cleanliness and maintainability
 **Goal**: Professional, production-ready codebase

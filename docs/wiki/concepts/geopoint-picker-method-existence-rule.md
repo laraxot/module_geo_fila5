@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geopoint picker method existence rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 ## Rule: GeopointPicker Method Existence Check

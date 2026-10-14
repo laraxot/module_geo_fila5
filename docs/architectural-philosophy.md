@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "architectural philosophy"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 🏛️ Architectural Philosophy - Geo Module

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "static map clickable implementation"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Mappa Statica Cliccabile - Implementazione

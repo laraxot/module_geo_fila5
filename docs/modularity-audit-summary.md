@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "modularity audit summary"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Audit di Modularità - Riepilogo Completo
@@ -313,15 +314,6 @@ Dopo la correzione completa, tutti i comandi devono restituire **0 occorrenze**.
 - [Cursor Memories: Violations](../.cursor/memories/modularity-violations.mdc)
 
 ---
-
-title: "modularity audit summary"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "modularity audit summary"
-issues: []
-discussions: []
 **Questo audit ha identificato violazioni CRITICHE dei principi di modularità che compromettono completamente l'architettura del sistema. La correzione è PRIORITARIA e richiede azione immediata.**
 
 **Stato**: Fase 1 completata, Fase 2 in corso

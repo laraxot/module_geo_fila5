@@ -8,6 +8,7 @@ discussions: []
 title: Playwright — Visual Testing MapPicker
 description: Guida definitiva al testing visivo per componenti mappa (Geo Module) nel 2026
 tags: [playwright, puppeteer, visual-testing, map-picker, leaflet, laravel, pest]
+status: draft
 ---
 
 # Playwright — Visual Testing MapPicker

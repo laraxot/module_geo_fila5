@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo map lit marker clustering"
 issues: []
 discussions: []
+status: draft
 ---
 
 # GeoMapLit Marker Clustering — Corrected Implementation
@@ -93,12 +94,4 @@ data.features?.forEach(feature => {
 - farmshops.eu reference: https://github.com/CodeforKarlsruhe/farmshops.eu/blob/master/js/direktvermarkter.js
 
 ---
-title: "geo map lit marker clustering"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "geo map lit marker clustering"
-issues: []
-discussions: []
 *Updated: 2026-04-30 — fixed cluster LOD condition (typesPresent > 1)*

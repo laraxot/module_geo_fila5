@@ -14,6 +14,7 @@ related:
   - concepts/map-lit-canonical-name.md
   - ../../farmshops-integration.md
   - ../../research-farmshops-architecture.md
+status: draft
 ---
 
 # Map-Lit Cluster — i marker "scappano" al hover

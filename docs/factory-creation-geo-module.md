@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "factory creation geo module"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Factory Creation - Geo Module

@@ -9,6 +9,7 @@ discussions: []
 name: Coordinate Picker Comprehensive Guide
 description: Complete guide for Geo module coordinate pickers with best practices, bad practices, and false friends.
 type: concept
+status: draft
 ---
 
 # Coordinate Picker Comprehensive Guide

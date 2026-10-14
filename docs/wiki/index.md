@@ -13,6 +13,7 @@ discussions:
 related:
   - ./concepts/ai-harness-geo-discipline.md
   - ../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md
+status: draft
 ---
 
 # Geo Module Wiki
@@ -30,7 +31,7 @@ related:
 - [ai-harness-geo-discipline](./concepts/ai-harness-geo-discipline.md)
 - [hackernoon-ai-coding-tips-fixcity-map](../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md)
 - [bmad/architecture](../../../../../docs/wiki/bmad/architecture.md)
-- [ai-harness-module-discipline](../../docs/wiki/concepts/ai-harness-module-discipline.md)
+- [ai-harness-module-discipline](../../../Fixcity/docs/wiki/concepts/ai-harness-module-discipline.md) (unico file con questo nome nel repo, vive nel wiki di Fixcity)
 - [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) → canon Xot
 
 
@@ -73,3 +74,6 @@ qmd search "Geo <topic>" --limit 5
 ## Composer / nwidart
 
 - [composer-root-minimal-nwidart](concepts/composer-root-minimal-nwidart.md) — root skeleton nwidart (modello fixcity)
+## Canonical boundary
+
+- [geo-data-and-map-boundary](./concepts/geo-data-and-map-boundary.md) — GeoJSON, geocoding e confine con Fixcity/Sixteen.

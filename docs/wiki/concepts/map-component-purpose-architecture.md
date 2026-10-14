@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map component purpose architecture"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Map Component Purpose — Architecture & Business Outcome

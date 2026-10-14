@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "02 next"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Next (Module Geo)

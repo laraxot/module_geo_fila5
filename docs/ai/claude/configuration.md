@@ -7,20 +7,12 @@ updated: 2026-09-26
 qmd: "configuration"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Configurazione Claude Code per PTVX
 
 ---
-
-title: "configuration"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "configuration"
-issues: []
-discussions: []
 ## File di Configurazione
 
 ### 1. Configurazione Globale

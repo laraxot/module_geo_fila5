@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "leaflet partial tile load rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Leaflet Partial Tile Load Rule

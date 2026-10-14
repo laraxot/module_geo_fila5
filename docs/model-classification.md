@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "model classification"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module - Model Classification

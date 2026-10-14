@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "migration morphs strategy"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Strategia Migrazioni e Morphs Polymorphic - <nome progetto>

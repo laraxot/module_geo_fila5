@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo map lit dynamic popup"
 issues: []
 discussions: []
+status: draft
 ---
 
 # GeoMapLit Dynamic Popup Pattern

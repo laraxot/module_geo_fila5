@@ -10,6 +10,7 @@ module: Sigma
 created: 2026-06-15
 related:
   - ../../laravel/Modules/Sigma/docs/wiki/concepts/ente-matr-field-ownership.md
+status: draft
 ---
 
 # EnteMatrFieldsContract — implementato

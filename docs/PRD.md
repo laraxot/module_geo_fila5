@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "PRD"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Product Requirements Document (PRD) - Geo Module
@@ -17,15 +18,6 @@ discussions: []
 **Author**: Product Team
 
 ---
-
-title: "PRD"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "PRD"
-issues: []
-discussions: []
 ## Document Control
 
 | Version | Date | Author | Changes |

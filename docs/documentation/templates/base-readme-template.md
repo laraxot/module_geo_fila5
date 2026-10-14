@@ -388,8 +388,8 @@ return [
 - [**Extension Guide**](extension-guide.md) - Guida per estensioni custom
 
 ### Guide Amministratore
-- [**Deployment**](deployment.md) - Guida deployment produzione
-- [**Maintenance**](maintenance.md) - Operazioni di manutenzione
+- [**Deployment**](../../roadmap/deployment.md) - Guida deployment produzione
+- [**Maintenance**](../../roadmap/maintenance.md) - Operazioni di manutenzione
 - [**Troubleshooting**](troubleshooting.md) - Risoluzione problemi comuni
 
 ---

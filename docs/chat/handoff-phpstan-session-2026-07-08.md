@@ -7,6 +7,7 @@ title: handoff sessione PHPStan 2026-07-08
 type: chat
 tags: [phpstan, session, lang, job, marker-git, blade-component]
 updated: 2026-07-08
+status: draft
 ---
 
 # Handoff — Sessione PHPStan 2026-07-08

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "regions provinces"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Gestione Regioni e Province Italiane

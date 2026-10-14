@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "queueable action testing"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Testare le QueueableAction: convenzione di chiamata

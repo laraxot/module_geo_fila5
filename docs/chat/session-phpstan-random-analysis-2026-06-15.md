@@ -11,6 +11,7 @@ related:
   - ../wiki/memories/phpstan-modules-inventory.md
   - ../wiki/how-to/phpstan-modules-swarm.md
   - handoff-phpstan-modules-zero.md
+status: draft
 ---
 
 # Sessione PHPStan — Analisi Random Moduli
