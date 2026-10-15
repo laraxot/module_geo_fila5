@@ -101,7 +101,7 @@ Schema::create('addresses', function (Blueprint $table) {
 ## Collegamenti
 - [schema.org/PostalAddress](https://schema.org/PostalAddress)
 - [Geo Module Architecture](./architecture.md)
-- [Entità Geografiche](./geo_entities.md)
+- [Entità Geografiche](./geo-entities.md)
 - [location-select.md](./location-select.md)
 - [README.md](./README.md)
 

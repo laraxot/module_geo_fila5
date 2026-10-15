@@ -24,7 +24,7 @@ qmd search "Geo concepts" --limit 5
 <!-- p4-docs-geo: elenco concept -->
 ## Elenco completo dei concept
 
-148 concept in questa cartella (esclusi `INDEX.md` e il backup `playwright-visual-testing.md_old`, che non e un concept). Ogni voce punta a un file esistente.
+148 concept in questa cartella (esclusi `index.md` e il backup `playwright-visual-testing.md_old`, che non e un concept). Ogni voce punta a un file esistente.
 
 - [admin-map-magnifier-and-controls-visibility](./admin-map-magnifier-and-controls-visibility.md)
 - [admin-map-runtime-500-encryption-key-blocker](./admin-map-runtime-500-encryption-key-blocker.md)

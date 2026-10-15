@@ -22,3 +22,11 @@ See canonical documentation: ../../../Themes/docs/shared-components/testing-rule
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
 =======
 >>>>>>> laraxot/dev
+
+## Cartella `tests/` (minuscolo obbligatorio)
+
+- Solo `tests/` minuscolo. `Tests/` e' vietato.
+
+## PHPStan standing order
+
+- Zero errori PHPStan; non modificare `phpstan.neon`.

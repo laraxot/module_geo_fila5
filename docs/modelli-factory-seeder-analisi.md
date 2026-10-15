@@ -185,9 +185,9 @@ Tutti i file factory devono essere validati con PHPStan livello 9:
 ## Collegamenti
 
 ### Documentazione Correlata
-- [Geo JSON Model](./geo_json_model.md)
-- [Comune Unificazione](./comune_unificazione_analisi.md)
-- [Consolidamento Modelli](./consolidamento_modelli_geografici.md)
+- [Geo JSON Model](./geo-json-model.md)
+- [Comune Unificazione](./comune-unificazione-analisi.md)
+- [Consolidamento Modelli](./consolidamento-modelli-geografici.md)
 - [Cache Strategy](./cache_strategy.md)
 
 ### Moduli Collegati

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Geo\app\Actions\Map;
+namespace Modules\Geo\Actions\Map;
 
 use Spatie\QueueableAction\QueueableAction;
 

@@ -38,7 +38,7 @@ qmd: "decision log   geo geo"
 - **Verifica**: `php -l`; PHPStan su `Modules/Geo` senza errori; test prima/dopo identici.
 
 ### 2026-10-14: INDEX.md come ingresso unico e mappa di migrazione della radice (proposta)
-- **Choose**: `docs/INDEX.md` e l'unico punto d'ingresso; `00-INDEX.md` e `00-index.md` portano in testa "Superseded: vedi INDEX.md" e restano per cronologia; `docs/DOCS-MIGRATION-MAP.md` ha una riga (vecchio, nuovo proposto, scopo, nota, stato `proposto`) per ognuno dei 622 file della radice; `wiki/concepts/INDEX.md` elenca tutti i 148 concept.
+- **Choose**: `docs/INDEX.md` e l'unico punto d'ingresso; `00-index.md` e `00-index.md` portano in testa "Superseded: vedi INDEX.md" e restano per cronologia; `docs/DOCS-MIGRATION-MAP.md` ha una riga (vecchio, nuovo proposto, scopo, nota, stato `proposto`) per ognuno dei 622 file della radice; `wiki/concepts/INDEX.md` elenca tutti i 148 concept.
 - **Over**: spostare o cancellare subito i file della radice; fondere i tre indici cancellando due.
 - **Because**: il progetto vieta spostamenti senza mappa e senza decisione. La radice ha 622 file (575 `.md`, 47 di configurazione o senza estensione), 62 copie byte-identiche e 1933 link relativi non risolvibili: spostare prima di decidere moltiplicherebbe i link rotti. Le destinazioni proposte sono cartelle gia esistenti di `docs/` (nessuna cartella nuova di primo livello).
 - **Verifica** (strumento `bashscripts/tools/docs/docs-organizer.py links`, escluse `raw/` e `stories/`): prima 2275 eventi (1933 irrisolti + 342 correggibili); dopo 1933 eventi (0 correggibili): 340 link riparati dallo strumento, tutti con bersaglio esistente (verificato uno per uno), piu 9 riparati a mano con bersaglio unico (`leaflet-marker-map-input.md`, `../config/config.php`, `map-lit-it-incidents-2026.md` in due file, `../coordinate-picker.md`, 4 profondita `../` sbagliate: 3 in `wiki/index.md` e 1 nel campo `sources` del concept `coordinate-picker-design-comuni-runtime-rule.md`). Gli irrisolti puntano a file inesistenti: non riparati, nessun bersaglio inventato. Il confronto non e al pelo: la prima misura saltava i file toccati da meno di 10 minuti.
@@ -46,7 +46,7 @@ qmd: "decision log   geo geo"
 
 ## Open Questions
 
-- (2026-10-14, studio degli ingressi) Quale file e' l'indice canonico del modulo? Il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` dice `00-INDEX.md`; la decisione del 2026-10-14 sopra dice `INDEX.md` e marca `00-INDEX.md` e `00-index.md` come superseded (due nomi che differiscono solo per le maiuscole). Nessuna rinomina fatta. Vedi la story `stories/studio-docs-geo-ingressi-verificati.story.md`.
+- (2026-10-14, studio degli ingressi) Quale file e' l'indice canonico del modulo? Il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` dice `00-index.md`; la decisione del 2026-10-14 sopra dice `index.md` e marca `00-index.md` e `00-index.md` come superseded (due nomi che differiscono solo per le maiuscole). Nessuna rinomina fatta. Vedi la story `stories/studio-docs-geo-ingressi-verificati.story.md`.
 
 <<<<<<< HEAD
 

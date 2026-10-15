@@ -291,7 +291,7 @@ Tutti i modelli BaseModel, BasePivot, BaseUser, etc. sono classi astratte utiliz
 ### Documentazione Moduli
 - [<nome progetto> Analysis](../laravel/modules/<nome progetto>/docs/modelli_factory_seeder_analisi.md)
 - [User Analysis](../../User/docs/modelli_factory_seeder_analisi.md)
-- [Geo Analysis](modelli_factory_seeder_analisi.md)
+- [Geo Analysis](modelli-factory-seeder-analisi.md)
 - [Media Analysis](../../Media/docs/modelli_factory_seeder_analisi.md)
 - [Notify Analysis](../../Notify/docs/modelli_factory_seeder_analisi.md)
 - [Job Analysis](../../Job/docs/modelli_factory_seeder_analisi.md)

@@ -57,7 +57,7 @@ Ho completato l'analisi sistematica di **tutti i moduli** del progetto <nome pro
 ## 📋 DOCUMENTAZIONE CREATA
 
 ### 🎯 Per Ogni Modulo
-Creato file `optimization_recommendations.md` in ogni modulo con:
+Creato file `optimization-recommendations.md` in ogni modulo con:
 
 #### Struttura Standardizzata
 1. **🎯 Stato Attuale**: Punti forza e problemi critici
@@ -193,7 +193,7 @@ Creato file `optimization_recommendations.md` in ogni modulo con:
 
 Per domande sull'implementazione delle raccomandazioni:
 
-1. **Consultare** file `optimization_recommendations.md` del modulo specifico
+1. **Consultare** file `optimization-recommendations.md` del modulo specifico
 2. **Utilizzare** script `check_module_reusability.sh` per verifica
 3. **Seguire** linee guida in `module_reusability_guidelines.md`
 

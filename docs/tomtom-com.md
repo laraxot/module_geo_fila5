@@ -8,12 +8,12 @@ qmd: "tomtom com"
 issues: []
 discussions: []
 module: theme
-topic: tomtom-com
-canonical: ../../../Themes/docs/shared-components/.gitkeep
+topic: tomtom_com
+canonical: ../../../Themes/docs/shared-components/.gitkeep-Modules
 status: stub
 ---
 
-See canonical documentation: ../../../Themes/docs/shared-components/.gitkeep
+See canonical documentation: ../../../Themes/docs/shared-components/.gitkeep-Modules
 <<<<<<< HEAD
 
 --- BMAD + Second Brain ---

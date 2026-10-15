@@ -20,26 +20,26 @@ The `laravel/Modules/Geo/docs` directory contains over 200 files in its root, ex
 
 ### 1. Snake-case vs. Kebab-case Duplicates
 Many files exist with both naming conventions and nearly identical content:
-- `address_autocomplete.md` vs `address-autocomplete.md`
-- `address_implementation.md` vs `address-implementation.md`
-- `address_migration_guide.md` vs `address-migration.md` / `address_migration.md`
-- `address_model_italian.md` vs `address-model-italian.md`
-- `address_relationships.md` vs `address-relationships.md`
+- `address-autocomplete.md` vs `address-autocomplete.md`
+- `address-implementation.md` vs `address-implementation.md`
+- `address-migration-guide.md` vs `address-migration.md` / `address_migration.md`
+- `address-model-italian.md` vs `address-model-italian.md`
+- `address-relationships.md` vs `address-relationships.md`
 
 ### 2. Fragmentation by Detail
 Topics are split into too many small files that should be consolidated:
 - **Address Resource**: `address-resource.md`, `address-resource-risorsa-filament.md`, `address-resource-analysis.md`, `address-resource-improvements.md`, `address-resource-summary.md`, `address-resource-sumy.md`, `addressresource.md`, etc.
-- **Comune Model**: `comune_model.md`, `comune-model.md`, `comune_sushi_analisi.md`, `comune_sushi_conversion.md`, `comune_sushi_implementation.md`, `comune-sushi-analysis.md`, etc.
+- **Comune Model**: `comune-model.md`, `comune-model.md`, `comune-sushi-analisi.md`, `comune-sushi-conversion.md`, `comune-sushi-implementation.md`, `comune-sushi-analysis.md`, etc.
 
 ### 3. Duplicate Analysis and Summaries
 Multiple files exist for "Implementation Summary" and "Consolidated Business Logic":
-- `implementation_summary.md`, `implementation-summary.md`, `implementation-summary.md`, `implementation-sumy.md`
+- `implementation-summary.md`, `implementation-summary.md`, `implementation-summary.md`, `implementation-sumy.md`
 - `business-logic-analysis.md`, `business-logic-consolidated.md`, `business-logic-overview.md`
 
 ### 4. Placeholder and Empty Files
-- `sushi_command.md` (1 byte)
-- `tomtom_com.md` / `tomtom_com.txt` (0 bytes)
-- `QMD-SETUP.md` (0 bytes)
+- `sushi-command.md` (1 byte)
+- `tomtom-com.md` / `tomtom_com.txt` (0 bytes)
+- `qmd-setup.md` (0 bytes)
 
 ## Recommended Actions
 
