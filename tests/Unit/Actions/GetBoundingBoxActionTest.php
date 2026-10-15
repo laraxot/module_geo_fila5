@@ -2,106 +2,77 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions;
-
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Geo\Actions\GetBoundingBoxAction;
-use PHPUnit\Framework\Assert;
+use Tests\TestCase;
 
-it('calculates bounding box correctly for milan', function (): void {
-    $action = new GetBoundingBoxAction;
+uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
 
-    // Milano: 45.4642, 9.1900
-    $result = $action->execute(45.4642, 9.1900, 1.0);
-
-    Assert::assertLessThan(45.4642, $result['min_lat']);
-
-    Assert::assertGreaterThan(45.4642, $result['max_lat']);
-
-    Assert::assertLessThan(9.1900, $result['min_lon']);
-
-    Assert::assertGreaterThan(9.1900, $result['max_lon']);
+beforeEach(function () {
+    $this->action = app(GetBoundingBoxAction::class);
 });
 
-it('calculates bounding box for rome', function (): void {
-    $action = new GetBoundingBoxAction;
+describe('GetBoundingBoxAction', function () {
+    it('calculates bounding box from coordinates array', function () {
+        $coordinates = [
+            ['lat' => 45.4642, 'lng' => 9.1900],   // Milano
+            ['lat' => 41.9028, 'lng' => 12.4964],  // Roma
+            ['lat' => 40.8518, 'lng' => 14.2681],  // Napoli
+        ];
 
-    // Roma: 41.9028, 12.4964
-    $result = $action->execute(41.9028, 12.4964, 5.0);
+        $result = $this->action->execute($coordinates);
 
-    Assert::assertLessThan(41.9028, $result['min_lat']);
+        expect($result)->toBeArray()
+            ->toHaveKeys(['minLat', 'maxLat', 'minLng', 'maxLng']);
 
-    Assert::assertGreaterThan(41.9028, $result['max_lat']);
+        expect($result['minLat'])->toBe(40.8518);
+        expect($result['maxLat'])->toBe(45.4642);
+        expect($result['minLng'])->toBe(9.1900);
+        expect($result['maxLng'])->toBe(14.2681);
+    });
 
-    Assert::assertLessThan(12.4964, $result['min_lon']);
+    it('handles single coordinate', function () {
+        $coordinates = [
+            ['lat' => 45.4642, 'lng' => 9.1900],
+        ];
 
-    Assert::assertGreaterThan(12.4964, $result['max_lon']);
-});
+        $result = $this->action->execute($coordinates);
 
-it('calculates bounding box with zero distance', function (): void {
-    $action = new GetBoundingBoxAction;
+        expect($result['minLat'])->toBe(45.4642);
+        expect($result['maxLat'])->toBe(45.4642);
+        expect($result['minLng'])->toBe(9.1900);
+        expect($result['maxLng'])->toBe(9.1900);
+    });
 
-    $result = $action->execute(45.4642, 9.1900, 0);
+    it('handles empty array', function () {
+        $result = $this->action->execute([]);
 
-    // With zero distance, min and max should be the same as the center
-    Assert::assertSame(45.4642, $result['min_lat']);
-    Assert::assertSame(45.4642, $result['max_lat']);
-    Assert::assertSame(9.1900, $result['min_lon']);
-    Assert::assertSame(9.1900, $result['max_lon']);
-});
+        expect($result)->toBeNull();
+    });
 
-it('calculates bounding box with larger distance expands more', function (): void {
-    $action = new GetBoundingBoxAction;
+    it('handles negative coordinates', function () {
+        $coordinates = [
+            ['lat' => -33.8688, 'lng' => 151.2093],  // Sydney
+            ['lat' => -37.8136, 'lng' => 144.9631],  // Melbourne
+        ];
 
-    $smallResult = $action->execute(45.4642, 9.1900, 1.0);
-    $largeResult = $action->execute(45.4642, 9.1900, 10.0);
+        $result = $this->action->execute($coordinates);
 
-    // Larger distance should produce wider bounds
-    Assert::assertGreaterThan($smallResult['max_lat'] - $smallResult['min_lat'], $largeResult['max_lat'] - $largeResult['min_lat']);
-});
+        expect($result['minLat'])->toBe(-37.8136);
+        expect($result['maxLat'])->toBe(-33.8688);
+        expect($result['minLng'])->toBe(144.9631);
+        expect($result['maxLng'])->toBe(151.2093);
+    });
 
-it('handles boundary coordinates at equator', function (): void {
-    $action = new GetBoundingBoxAction;
+    it('handles coordinates crossing antimeridian', function () {
+        $coordinates = [
+            ['lat' => 0, 'lng' => 179],
+            ['lat' => 0, 'lng' => -179],
+        ];
 
-    $result = $action->execute(0, 0, 1.0);
+        $result = $this->action->execute($coordinates);
 
-    Assert::assertLessThan(0.0, $result['min_lat']);
-    Assert::assertGreaterThan(0.0, $result['max_lat']);
-    Assert::assertLessThan(0.0, $result['min_lon']);
-    Assert::assertGreaterThan(0.0, $result['max_lon']);
-
-    // All'equatore cos(0) = 1: l'ampiezza in longitudine coincide con quella in latitudine
-    Assert::assertEqualsWithDelta($result['max_lat'], $result['max_lon'], 1e-9);
-});
-
-it('handles boundary coordinates at poles', function (): void {
-    $action = new GetBoundingBoxAction;
-
-    $result = $action->execute(89.0, 0, 1.0);
-
-    Assert::assertLessThan(89.0, $result['min_lat']);
-    Assert::assertGreaterThan(89.0, $result['max_lat']);
-
-    // Vicino ai poli i meridiani convergono: a parita' di distanza l'ampiezza in longitudine supera quella in latitudine
-    Assert::assertGreaterThan(
-        $result['max_lat'] - $result['min_lat'],
-        $result['max_lon'] - $result['min_lon'],
-    );
-});
-
-it('handles boundary coordinates at international date line', function (): void {
-    $action = new GetBoundingBoxAction;
-
-    $result = $action->execute(0, 179.0, 1.0);
-
-    Assert::assertGreaterThan(170.0, $result['min_lon']);
-});
-
-it('handles negative coordinates', function (): void {
-    $action = new GetBoundingBoxAction;
-
-    $result = $action->execute(-33.8688, 151.2093, 5.0); // Sydney
-
-    Assert::assertLessThan(-33.8688, $result['min_lat']);
-
-    Assert::assertGreaterThan(-33.8688, $result['max_lat']);
+        expect($result)->toHaveKeys(['minLat', 'maxLat', 'minLng', 'maxLng']);
+    });
 });
