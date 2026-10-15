@@ -7,8 +7,8 @@ updated: 2026-10-14
 module: Geo
 epic: docs-organization
 related:
-  - ../../../Fixcity/docs/stories/2026-10-13-dcp-56-organizzazione-docs-moduli-e-temi.story.md
-  - ../../../Fixcity/docs/stories/2026-10-14-studio-docs-fixcity-ingressi-verificati.story.md
+  - ../../../Fixcity/docs/stories/dcp-56-organizzazione-docs-moduli-e-temi.story.md
+  - ../../../Fixcity/docs/stories/studio-docs-fixcity-ingressi-verificati.story.md
   - ../../../../../bmad-output/docs-architecture/module-theme-docs-contract.md
 tags: [docs, organizzazione, verifica-nel-codice, second-brain, doc-010, doc-002, config, test]
 qmd: "studio docs geo ingressi README INDEX 00-INDEX index.md PTVX stale config geo.config geo.driver null Themes Meetup test TestCase pub_theme phpstan zero Actions duplicate"
@@ -19,7 +19,7 @@ qmd: "studio docs geo ingressi README INDEX 00-INDEX index.md PTVX stale config 
 Fase BMAD: documentazione e qualita' (DOC-010 + DOC-002 del piano `bmad-output/stories/docs-organization/`). Non tocca codice applicativo, non sposta e non cancella file, git in sola lettura.
 
 ## Richiesta
-Utente, 2026-10-13 e 2026-10-14: studiare, aggiornare, migliorare e organizzare le cartelle `docs/` di moduli e temi con BMAD e second brain. Perimetro: `laravel/Modules/Geo/docs`. Complemento: [studio di Fixcity](../../../Fixcity/docs/stories/2026-10-14-studio-docs-fixcity-ingressi-verificati.story.md).
+Utente, 2026-10-13 e 2026-10-14: studiare, aggiornare, migliorare e organizzare le cartelle `docs/` di moduli e temi con BMAD e second brain. Perimetro: `laravel/Modules/Geo/docs`. Complemento: [studio di Fixcity](../../../Fixcity/docs/stories/studio-docs-fixcity-ingressi-verificati.story.md).
 
 ## Analisi: cosa e' stato letto
 `module.json`, `composer.json`, `package.json`, `vite.config.js`; `app/` (77 file `.php` in `Actions/`, 16 file in `Models/` con 13 modelli e 13 policy, 46 in `Datas/`, `Adapters/`, `Contracts/`, `Support/`, `Filament/` con `Forms/Components`, `Resources`, `Pages`, `Widgets`); `routes/`, `config/config.php`, `resources/js/components`, `resources/svg`, `lang/`, `tests/` (105 file PHP, 16 spec Playwright, 1 test Node). Prove eseguite: `php artisan module:list`, `route:list --json`, `tinker` sulle chiavi di config (senza config cache), PHPStan, `node --test`, un file Pest su database usa-e-getta.
@@ -48,7 +48,7 @@ Utente, 2026-10-13 e 2026-10-14: studiare, aggiornare, migliorare e organizzare 
 4. `app/DataTransferObjects/LocationDTO.php` esiste, mentre il decision-log del 2026-10-08 lo dava per eliminato.
 
 ## Modifiche (solo sostituzioni mirate)
-`README.md` (sezione di identita'/quick start, albero, tabella componenti, esempi, config, test, qualita', link), `INDEX.md` (nota sul contratto, classificazione delle directory, 5 link, nome classe, nota sulla deduplicazione), `00-INDEX.md` e `00-index.md` (correzioni con evidenza, link annotati), `decision-log.md` (una voce in Open Questions), `stories/index.md` (link a questa story e alle recenti), `wiki/index.md`, `wiki/log.md`, `wiki/agents.md`, `wiki/bmad-method.md`, `wiki/coordinate-picker-filament5-save-pattern.md`; `index.md`, `wiki/ProjectHome.md`, `wiki/projecthome.md`, `wiki/reflective.md`, `wiki/method-name-homonym-census.md` segnati `stale` con lo strumento; questa story e la nota di memoria `bashscripts/ai/wiki/memories/2026-10-14-docs-fixcity-geo-studio.md`. Nessun file spostato, rinominato o cancellato.
+`README.md` (sezione di identita'/quick start, albero, tabella componenti, esempi, config, test, qualita', link), `INDEX.md` (nota sul contratto, classificazione delle directory, 5 link, nome classe, nota sulla deduplicazione), `00-INDEX.md` e `00-index.md` (correzioni con evidenza, link annotati), `decision-log.md` (una voce in Open Questions), `stories/index.md` (link a questa story e alle recenti), `wiki/index.md`, `wiki/log.md`, `wiki/agents.md`, `wiki/bmad-method.md`, `wiki/coordinate-picker-filament5-save-pattern.md`; `index.md`, `wiki/ProjectHome.md`, `wiki/projecthome.md`, `wiki/reflective.md`, `wiki/method-name-homonym-census.md` segnati `stale` con lo strumento; questa story e la nota di memoria `bashscripts/ai/wiki/memories/docs-fixcity-geo-studio.md`. Nessun file spostato, rinominato o cancellato.
 
 ## Verifica (output reale, 2026-10-14)
 - Link non risolti (`docs-organizer.py --busy-minutes 0 links ... --by-name`, dry-run), prima -> dopo: `README.md` 2 -> 0, `00-INDEX.md` 4 -> 0, `00-index.md` 7 -> 0, `INDEX.md` 6 -> 0, `wiki/index.md` 1 -> 0, `wiki/log.md` 2 -> 0, `wiki/bmad-method.md` 1 -> 0, `wiki/coordinate-picker-filament5-save-pattern.md` 2 -> 0; `wiki/agents.md` 1 -> 1 (annotato, il tool conta comunque il commento). Somma sugli ingressi e sulle pagine corrette: 26 -> 1. Restano 101 eventi nei 5 file `stale` (`index.md` 41, `ProjectHome.md` 10, `projecthome.md` 10, `reflective.md` 7, `method-name-homonym-census.md` 33): spiegati dalla nota `stale`, non annotati uno per uno. Intera cartella: 1787 -> 1762.

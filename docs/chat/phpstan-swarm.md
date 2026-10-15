@@ -10,7 +10,7 @@ created: 2026-06-15
 related:
   - ../wiki/how-to/phpstan-modules-swarm.md
   - ../wiki/troubleshooting/phpstan-parallel-worker-oom.md
-  - ./handoff-phpstan-random-scan-2026-06-15.md
+  - ./handoff-phpstan-random-scan.md
 status: draft
 ---
 

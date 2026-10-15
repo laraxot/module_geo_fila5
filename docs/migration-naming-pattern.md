@@ -9,8 +9,8 @@ issues: []
 discussions: []
 module: theme
 topic: migration-naming-pattern
-canonical: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
+canonical: ../../../Themes/docs/shared-components/migration-naming-pattern-convenzione-gestione.md
 status: stub
 ---
 
-See canonical documentation: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
+See canonical documentation: ../../../Themes/docs/shared-components/migration-naming-pattern-convenzione-gestione.md

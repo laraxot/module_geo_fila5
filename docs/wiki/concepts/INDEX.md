@@ -133,7 +133,7 @@ qmd search "Geo concepts" --limit 5
 - [map-picker-family-architecture](./map-picker-family-architecture.md)
 - [map-picker-filament-field](./map-picker-filament-field.md) - MapPicker Filament Field (Lit + Leaflet + Livewire) - Refactored v2
 - [map-picker-latitude-marker-configuration](./map-picker-latitude-marker-configuration.md) - Map Picker Latitude/Longitude Configuration
-- [map-picker-lit-admin-fix-8](./map-picker-lit-admin-fix-8.md) - map-picker-lit.js - Admin Panel Fix (Story 8-56)
+- [map-picker-lit-admin-fix-8](./map-picker-lit-admin-fix.md) - map-picker-lit.js - Admin Panel Fix (Story 8-56)
 - [map-picker-location-json-contract](./map-picker-location-json-contract.md)
 - [map-picker-locationpicker-architecture](./map-picker-locationpicker-architecture.md) - MapPicker/LocationPicker Architecture (Unified State)
 - [map-picker-runtime-asset-governance](./map-picker-runtime-asset-governance.md) - MapPicker Runtime Asset Governance

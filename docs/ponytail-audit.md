@@ -42,4 +42,4 @@ While preparing this fix, a `git stash` / `git stash pop` cycle in `Modules/Geo`
 
 ## Related
 
-- `Modules/Xot/docs/ponytail-audit-2026-07-02.md`, `Modules/Notify/docs/ponytail-audit-2026-07-02.md`: same audit pass, same day.
+- `Modules/Xot/docs/ponytail-audit-2026-07-02.md`, `Modules/Notify/docs/ponytail-audit-notify-module.md`: same audit pass, same day.

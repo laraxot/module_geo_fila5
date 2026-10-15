@@ -310,7 +310,7 @@ Motivo del gruppo: analisi di duplicati e ridondanza: casa naturale analysis/. S
 | `business-logic-overview.md` | `analysis/business-logic-overview.md` | Geo Module - Business Logic Overview | link in ingresso: 0 | proposto |
 | `copilot-redundancy-audit-2026-05-25.md` | `analysis/copilot-redundancy-audit-2026-05-25.md` | copilot redundancy audit 2026 05 25 | link in ingresso: 0 | proposto |
 | `copilot-redundancy-audit.md` | `analysis/copilot-redundancy-audit.md` | copilot redundancy audit | link in ingresso: 0 | proposto |
-| `DATA-CONSOLIDATION-2026-06-30.md` | `analysis/DATA-CONSOLIDATION-2026-06-30.md` | Geo Module - Data Consolidation Report | link in ingresso: 0 | proposto |
+| `DATA-CONSOLIDATION-geo-module-classes-completed.md` | `analysis/DATA-CONSOLIDATION-geo-module-classes-completed.md` | Geo Module - Data Consolidation Report | link in ingresso: 0 | proposto |
 | `DATA-CONSOLIDATION.md` | `analysis/DATA-CONSOLIDATION.md` | Geo Module - Data Consolidation Report | omonimo con contenuto diverso: `data-consolidation.md`; collisione di maiuscole nella destinazione; link in ingresso: 0 | proposto |
 | `data-consolidation.md` | `analysis/data-consolidation.md` | Geo Module - Data Consolidation Report | omonimo con contenuto diverso: `DATA-CONSOLIDATION.md`; collisione di maiuscole nella destinazione; link in ingresso: 0 | proposto |
 | `duplicate-analysis.md` | `analysis/duplicate-analysis.md` | Geo Models Duplicate Analysis | link in ingresso: 0 | proposto |
@@ -350,7 +350,7 @@ Motivo del gruppo: analisi di duplicati e ridondanza: casa naturale analysis/. S
 | `ponytail-audit-report.md` | `analysis/ponytail-audit-report.md` | Ponytail audit - report | link in ingresso: 2 | proposto |
 | `ponytail-audit.md` | `analysis/ponytail-audit.md` | Ponytail-audit 2026-07-02: Geo module findings | link in ingresso: 0 | proposto |
 | `redundancy-analysis.md` | `analysis/redundancy-analysis.md` | redundancy analysis | canonico delle copie byte-identiche; stub (<200 caratteri); link in ingresso: 0 | proposto |
-| `redundancy-audit-2026-05-21.md` | `analysis/redundancy-audit-2026-05-21.md` | Geo redundancy audit 2026-05-21 | link in ingresso: 0 | proposto |
+| `redundancy-audit-geo.md` | `analysis/redundancy-audit-2026-05-21.md` | Geo redundancy audit 2026-05-21 | link in ingresso: 0 | proposto |
 | `redundancy-audit.md` | `analysis/redundancy-audit.md` | Geo redundancy audit 2026-05-21 | link in ingresso: 0 | proposto |
 | `redundancy-report.md` | `analysis/redundancy-report.md` | Redundancy Report - Geo Module | omonimo con contenuto diverso: `redundancy_report.md`; link in ingresso: 0 | proposto |
 | `REDUNDANCY_ANALYSIS.md` | `analysis/REDUNDANCY_ANALYSIS.md` | REDUNDANCY ANALYSIS | stub (<200 caratteri); omonimo con contenuto diverso: `redundancy-analysis.md`; link in ingresso: 0 | proposto |
