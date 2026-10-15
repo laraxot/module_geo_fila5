@@ -15,7 +15,7 @@ status: draft
 <!-- p4-docs-geo: ingresso unico -->
 **Punto d'ingresso unico della documentazione del modulo Geo.** `00-INDEX.md` e `00-index.md` sono superseded da questo file (restano per cronologia, non vengono aggiornati).
 
-> Nota 2026-10-14 (studio degli ingressi): il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` indica `00-INDEX.md` come indice canonico dei moduli, mentre la decisione del [decision-log](./decision-log.md) (2026-10-14) fa di questo `INDEX.md` l'ingresso unico e lascia `00-INDEX.md` e `00-index.md` come superseded. Le due regole divergono: non e' stato rinominato nulla, resta da decidere (vedi la story `2026-10-14-studio-docs-geo-ingressi-verificati.story.md`). `00-INDEX.md` e `00-index.md` sono anche due nomi che differiscono solo per le maiuscole (collisione su filesystem insensibili alle maiuscole).
+> Nota 2026-10-14 (studio degli ingressi): il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` indica `00-INDEX.md` come indice canonico dei moduli, mentre la decisione del [decision-log](./decision-log.md) (2026-10-14) fa di questo `INDEX.md` l'ingresso unico e lascia `00-INDEX.md` e `00-index.md` come superseded. Le due regole divergono: non e' stato rinominato nulla, resta da decidere (vedi la story `studio-docs-geo-ingressi-verificati.story.md`). `00-INDEX.md` e `00-index.md` sono anche due nomi che differiscono solo per le maiuscole (collisione su filesystem insensibili alle maiuscole).
 
 ## Classificazione delle directory (verificata il 2026-10-14)
 

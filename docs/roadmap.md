@@ -25,7 +25,7 @@ status: draft
 - [phpstan-bing-maps-action-fix-roadmap.md](phpstan-bing-maps-action-fix-roadmap.md)
 - [phpstan-error-resolution-roadmap.md](phpstan-error-resolution-roadmap.md)
 - [phpstan-errors-resolution-roadmap.md](phpstan-errors-resolution-roadmap.md)
-- [phpstan-errors-roadmap-2026-01-12.md](phpstan-errors-roadmap-2026-01-12.md)
+- [phpstan-errors-roadmap-2026-01-12.md](phpstan-errors-roadmap.md)
 - [phpstan-errors-roadmap.md](phpstan-errors-roadmap.md)
 - [phpstan-fixes-roadmap.md](phpstan-fixes-roadmap.md)
 - [phpstan-roadmap-geo.md](phpstan-roadmap-geo.md)

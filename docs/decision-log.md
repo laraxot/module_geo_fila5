@@ -46,5 +46,5 @@ qmd: "decision log   geo geo"
 
 ## Open Questions
 
-- (2026-10-14, studio degli ingressi) Quale file e' l'indice canonico del modulo? Il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` dice `00-INDEX.md`; la decisione del 2026-10-14 sopra dice `INDEX.md` e marca `00-INDEX.md` e `00-index.md` come superseded (due nomi che differiscono solo per le maiuscole). Nessuna rinomina fatta. Vedi la story `stories/2026-10-14-studio-docs-geo-ingressi-verificati.story.md`.
+- (2026-10-14, studio degli ingressi) Quale file e' l'indice canonico del modulo? Il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` dice `00-INDEX.md`; la decisione del 2026-10-14 sopra dice `INDEX.md` e marca `00-INDEX.md` e `00-index.md` come superseded (due nomi che differiscono solo per le maiuscole). Nessuna rinomina fatta. Vedi la story `stories/studio-docs-geo-ingressi-verificati.story.md`.
 

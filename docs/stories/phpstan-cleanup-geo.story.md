@@ -8,7 +8,7 @@ created: 2026-10-06
 updated: 2026-10-06
 tags: [phpstan, geo, constants, typeCoverage, cache, tests, bmad]
 related:
-  - ./2026-10-06-phpstan-cleanup-geo.dev.md
+  - ./phpstan-cleanup-geo.dev.md
 ---
 
 # [STORY] PHPStan cleanup modulo Geo

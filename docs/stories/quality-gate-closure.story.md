@@ -87,7 +87,7 @@ oggi assenti.
 - `app/Models/Locality.php`
 - `app/Models/Policies/GeoBasePolicy.php`
 - `docs/coverage.md`
-- `docs/stories/quality-gate-closure-2026-09-04.story.md` (questo file)
+- `docs/stories/quality-gate-closure.story.md` (questo file)
 
 Non aggiunti (drift di sessioni concorrenti, non toccato da questa sessione): `app/Datas/RouteData.php`,
 `app/Datas/Routing/RouteData.php`, `app/Filament/Forms/Components/AddressInput.php`,

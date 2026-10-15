@@ -33,7 +33,7 @@ Cartella dedicata a **messaggi di handoff**, note di sessione e coordinamento tr
 - [handoff-scheda-peso-homonym.md](handoff-scheda-peso-homonym.md) — fix `Scheda::peso()` su CompilaScheda (ArgumentCountError)
 - [handoff-asz-relationship-revert.md](handoff-asz-relationship-revert.md) — revert bypass `Asz00k1::query()` → `$scheda->asz()`
 - [handoff-phpstan-modules-zero.md](handoff-phpstan-modules-zero.md) — bootstrap 2026-06-15: PHPStan 0 su tutti i moduli
-- [handoff-phpstan-random-scan-2026-06-15.md](handoff-phpstan-random-scan-2026-06-15.md) — scan random + swarm, moduli esclusi Pdnd/Incentivi
+- [handoff-phpstan-random-scan-2026-06-15.md](handoff-phpstan-random-scan.md) — scan random + swarm, moduli esclusi Pdnd/Incentivi
 - [handoff-job-lang-merge-phpstan-confidence.md](handoff-job-lang-merge-phpstan-confidence.md) — ripartenza agente: Job PHPStan OK, Lang 8 errori, merge sweep
 - [handoff-table-layout-toggle-not-working.md](handoff-table-layout-toggle-not-working.md) — toggle lista/griglia: sync layoutView + issue GitHub
 - [handoff-trova-esclusi-check-sessione.md](handoff-trova-esclusi-check-sessione.md) — Check, fillable, no persist*, script GH sessione
