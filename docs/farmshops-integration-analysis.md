@@ -632,8 +632,11 @@ Realtà aumentata per visualizzare punti di interesse tramite fotocamera smartph
 ---
 
 *Prossimi passi: Creare POC (Proof of Concept) con subset di dati per validare approccio.*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

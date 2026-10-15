@@ -1049,8 +1049,11 @@ Welcome to the geographic heart of FixCity.
 **Last Updated**: 2026-09-06  
 **Maintainer**: FixCity Geo Team  
 **License**: By the module's license (check LICENSE file)  
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -311,8 +311,11 @@ Tutti i modelli BaseModel, BasePivot, BaseUser, etc. sono classi astratte utiliz
 
 *Autore: Sistema di analisi automatizzata*
 *Scope: Completo sistema <nome progetto> (14 moduli, ~150 modelli)*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

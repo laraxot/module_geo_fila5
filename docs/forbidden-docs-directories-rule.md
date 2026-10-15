@@ -80,8 +80,11 @@ find /var/www/html/_bases/base_* -name "docs" -type d | grep -E "(base_[^/]+/doc
 ## Priority
 
 **ABSOLUTE CRITICAL** - This rule is fundamental to proper documentation organization and must never be violated.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

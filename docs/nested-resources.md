@@ -214,8 +214,12 @@ Following the documented approach in `Modules/UI/docs/filament/nested-resource.m
 ### 3. Performance Optimization
 - Geographic data caching strategies
 - Spatial indexing for geographic queries
+<<<<<<< HEAD
 - Efficient handling of large geographic datasets
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+- Efficient handling of large geographic datasets
+>>>>>>> laraxot/dev

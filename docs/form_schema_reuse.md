@@ -107,8 +107,11 @@ $addressSchema['locality'] = Forms\Components\TextInput::make('locality')
 - [pattern-filament-pages.md](../project_docs/pattern-filament-pages.md)
 - [AddressResource](../app/Filament/Resources/AddressResource.php)
 - [StudioResource](../../<main module>/app/Filament/Resources/StudioResource.php)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

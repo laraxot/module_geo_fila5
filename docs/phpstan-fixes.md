@@ -191,8 +191,11 @@ Sempre documentare in docstring: `@throws \InvalidArgumentException`
 - [Pest Fully Qualified Class Names](../../../docs/wiki/skills/pest-fqn-resolution.md)
 
 *Ultimo aggiornamento: 2026-06-13*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -26,8 +26,11 @@ status: draft
 - Update the Blade shim to reference the shared module (`import … from '@modules/geo/...';`).
 
 *No other code-level redundancies were identified in the Geo module at this depth.*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

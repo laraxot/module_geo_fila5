@@ -52,8 +52,11 @@ status: draft
 
 - [Composer packages study](../../../../docs/architecture/composer-packages-study.md)
 - [Composer packages full inventory](../../../../docs/architecture/composer-packages-full-inventory.md)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

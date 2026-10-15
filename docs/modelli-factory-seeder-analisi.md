@@ -202,8 +202,11 @@ Tutti i file factory devono essere validati con PHPStan livello 9:
 
 *Analisi completa di 12 modelli attivi, 1 modello obsoleto identificato*
 *Sistema geografico completo per Italia con supporto internazionale*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

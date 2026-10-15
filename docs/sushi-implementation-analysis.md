@@ -300,8 +300,11 @@ Basandoci sull'analisi, raccomandiamo l'adozione di Laravel Sushi per il modello
 - [Guida alla Migrazione](migration-guide.md)
 - [Benchmark Dettagliati](benchmarks/readme.md)
 - [Documentazione GeoJsonModel](geo-json-model.md)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

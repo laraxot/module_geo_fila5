@@ -474,8 +474,11 @@ CREATE TABLE geo_cache (
 | Engineering Lead | | | |
 | Design Lead | | | |
 | Stakeholder | | | |
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

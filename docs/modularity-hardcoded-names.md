@@ -169,8 +169,11 @@ Ogni progetto può personalizzare i valori tramite variabili d'ambiente senza mo
 
 ---
 **Questa regola è CRITICA e va applicata SEMPRE. La violazione compromette l'architettura modulare del sistema e crea debito tecnico significativo.**
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

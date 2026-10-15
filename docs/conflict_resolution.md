@@ -164,8 +164,12 @@ php artisan lang:check
 
 ---
 **Autore**: Sistema di correzione automatica
+<<<<<<< HEAD
 **Stato**: ✅ Completato
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+**Stato**: ✅ Completato
+>>>>>>> laraxot/dev

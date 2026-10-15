@@ -267,8 +267,12 @@ Includere controlli PHPStan nella pipeline:
 
 - [Root PHPStan Rules](../../../../docs/project/phpstan_rules.md)
 - [Geo Module Structure](./structure.md)
+<<<<<<< HEAD
 - [Employee PHPStan Covariance](../../employee/project_docs/phpstan_covariance_issues.md)
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+- [Employee PHPStan Covariance](../../employee/project_docs/phpstan_covariance_issues.md)
+>>>>>>> laraxot/dev

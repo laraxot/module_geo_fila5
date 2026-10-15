@@ -350,8 +350,12 @@ $contained = SpatialQueryService::withinPolygon($polygon);
 
 ---
 **Versione**: v1.8.0-beta  
+<<<<<<< HEAD
 **Stato**: Production Ready with Real-time Enhancement
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+**Stato**: Production Ready with Real-time Enhancement
+>>>>>>> laraxot/dev

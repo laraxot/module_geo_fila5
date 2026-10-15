@@ -70,8 +70,11 @@ To maintain PHPStan compliance:
 - [Location Services](location-services.md)
 - [Address Handling](address-handling.md)
 - [Map Integration](map-integration.md)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

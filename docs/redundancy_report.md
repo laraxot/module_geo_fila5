@@ -94,8 +94,11 @@ Questo documento riassume le principali ridondanze rilevate nei **moduli** e **t
 ---
 
 *Questo documento è stato generato automaticamente. Per eventuali domande o per approfondire una sezione specifica, apri una issue nella repository o contatta il team di architettura.*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

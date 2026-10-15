@@ -206,8 +206,11 @@ Per domande sull'implementazione delle raccomandazioni:
 **🔧 Strumenti**: Script automatici forniti
 
 **✨ Ready for Implementation!**
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

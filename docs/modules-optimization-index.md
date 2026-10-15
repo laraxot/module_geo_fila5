@@ -174,8 +174,11 @@ cp -r laravel/Modules/*/docs laravel/Modules-docs-backup-$(date +%Y%m%d)
 
 *Metodologia: Analisi sistematica seguendo principi DRY+KISS*
 *Validazione: Script automatici + review manuale*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

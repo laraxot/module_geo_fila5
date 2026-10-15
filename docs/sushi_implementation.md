@@ -78,8 +78,12 @@ Per il modello `Comune.php`, Sushi rappresenta una scelta eccellente (valutazion
 - **Memoria**: Incremento stimato di 2-5 MB in memoria
 - **Caricamento iniziale**: Rallentamento di 100-300ms all'avvio dell'applicazione
 
+<<<<<<< HEAD
 #### Valutazione complessiva: 95% positiva
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+#### Valutazione complessiva: 95% positiva
+>>>>>>> laraxot/dev

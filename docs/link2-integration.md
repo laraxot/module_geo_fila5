@@ -38,8 +38,11 @@ instructionsType=text&language=en-US\
 https://www.mapbox.com/
 
 https://www.mapfit.com/
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

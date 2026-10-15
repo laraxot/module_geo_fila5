@@ -174,8 +174,11 @@ test('patient inherits user functionality', function () {
 **Ultima modifica**: [DATE]
 **Priorità**: CRITICA
 **Applicazione**: SEMPRE, TUTTI I TEST
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

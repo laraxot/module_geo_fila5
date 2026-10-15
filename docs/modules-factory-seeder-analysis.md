@@ -170,8 +170,11 @@ The application has **excellent factory coverage** with 117 factories covering a
 **Minor Gaps:**
 - Need more seeders for integration testing
 - Some geographic model consolidation opportunities
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

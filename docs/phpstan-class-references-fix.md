@@ -262,8 +262,11 @@ cd /var/www/html/_bases/<directory progetto>/laravel
 - [Geo Module Architecture](./architecture.md)
 - [Google Maps Service Documentation](./services/)
 
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -38,8 +38,12 @@ status: draft
 
 - **Progressioni**: ✅ 0 errori
 - **Ptv**: ✅ 0 errori
+<<<<<<< HEAD
 - **Sigma**: ✅ 0 errori (dopo dump-autoload)
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+- **Sigma**: ✅ 0 errori (dopo dump-autoload)
+>>>>>>> laraxot/dev

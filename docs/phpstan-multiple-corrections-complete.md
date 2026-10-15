@@ -167,8 +167,11 @@ array_merge(
 *Correzioni completate: 6 Gennaio 2025*
 *Metodologia: Studio → Correzione → Prevenzione*
 *Risultato: 0 errori PHPStan + regole preventive*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

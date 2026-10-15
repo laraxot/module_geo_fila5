@@ -144,8 +144,11 @@ php -l laravel/Modules/Geo/lang/it/address.php
 ---
 **Autore**: AI Assistant
 **Stato**: ✅ COMPLETATO
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

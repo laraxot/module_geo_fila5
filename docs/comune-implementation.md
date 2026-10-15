@@ -104,8 +104,12 @@ protected $casts = [
 
 - [Documentazione Sushi](https://github.com/calebporzio/sushi)
 - [GeoJsonModel vs Sushi](geo-sushi-comparison.md)
+<<<<<<< HEAD
 - [Analisi Implementazione](comune-sushi-analisi.md) 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+- [Analisi Implementazione](comune-sushi-analisi.md) 
+>>>>>>> laraxot/dev

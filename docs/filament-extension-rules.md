@@ -246,8 +246,11 @@ app(CreateUserAction::class)->execute($data);
 
 ---
 **Philosophy**: DRY + KISS - Do not duplicate, do not complicate, always use base classes.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

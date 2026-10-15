@@ -216,8 +216,11 @@ Copy relevant configs from project root `docs/`:
 **Status:** Documented and ready for integration
 
 **Last Updated:** 2026-06-03
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

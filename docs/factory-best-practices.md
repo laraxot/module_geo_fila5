@@ -495,8 +495,11 @@ Al completamento di tutte le best practices:
 **Stato**: Best practices definite, implementazione in corso
 **Priorità**: Type safety e schema alignment (ALTA)
 **Responsabile**: AI Assistant
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

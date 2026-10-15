@@ -15,8 +15,12 @@ status: draft
 ## Ottimizzazione Percorsi
 
 ### Algoritmo del Commesso Viaggiatore
+<<<<<<< HEAD
 L'`OptimizeRouteAction` implementa una soluzione euristica al problema del commesso viaggiatore (TSP) utilizzando l'algoritmo del "nearest neighbor": 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+L'`OptimizeRouteAction` implementa una soluzione euristica al problema del commesso viaggiatore (TSP) utilizzando l'algoritmo del "nearest neighbor": 
+>>>>>>> laraxot/dev

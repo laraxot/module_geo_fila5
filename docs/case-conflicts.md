@@ -63,8 +63,11 @@ Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dal
 - `Modules/Geo/tests/Unit`: `PlaceTest.test`, `placetest.test`
 
 **Nota**: uniformare i nomi (ad es. mantenendo PascalCase per classi/Livewire, maiuscolo per file di policy/README) e rimuovere i duplicati non necessari.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

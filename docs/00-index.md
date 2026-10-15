@@ -92,8 +92,11 @@ Gestisce tutto ciò che riguarda la geolocalizzazione: geocoding multi-provider 
 ## Dependency Intelligence
 
 - [Dependency intelligence](dependency-intelligence.md)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

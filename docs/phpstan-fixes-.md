@@ -102,8 +102,11 @@ Il widget fa parte del piano di migrazione a Filament 4.x documentato in:
 - [Piano Migrazione Filament](../../../../../docs/filament_4x_migration_plan.md)
 
 *
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -14,8 +14,11 @@ status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/map_test.txt
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

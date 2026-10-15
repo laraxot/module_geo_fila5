@@ -167,8 +167,11 @@ The audit serves as a template for future translation audits and reinforces the 
 
 *Audit conducted: [DATE]*
 *Next review: As needed for new components*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -49,8 +49,12 @@ Con:
 ```php
 ->where($this->enteField(), $this->{$this->enteField()})
 ->where($this->matrField(), $this->{$this->matrField()})
+<<<<<<< HEAD
 ```
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+```
+>>>>>>> laraxot/dev

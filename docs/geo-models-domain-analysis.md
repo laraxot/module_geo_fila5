@@ -108,8 +108,11 @@ Tabella dedicata ma classe **senza logica**: non è duplicato di `Comune`/`cap` 
 - [Indice modulo](./00-index.md)
 - [Filosofia modulo](./module-philosophy.md)
 - Documentazione storica su comuni (molti file con nomi simili): preferire un **unico** documento canonico in un refactor successivo della cartella `docs/`.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

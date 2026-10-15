@@ -107,8 +107,11 @@ https://laraveldaily.com/laravel-find-addresses-with-coordinates-via-google-maps
 ---------------------------------------------------------------------------------------------
 
 https://css-tricks.com/lets-make-a-form-that-puts-current-location-to-use-in-a-map/
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

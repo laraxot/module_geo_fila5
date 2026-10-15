@@ -167,8 +167,11 @@ find ./bashscripts ./Modules/*/bashscripts ./docker -name "*.sh" -type f
 ---
 **Questa convenzione è OBBLIGATORIA per tutti gli script del progetto.**
 
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

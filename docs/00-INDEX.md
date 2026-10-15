@@ -127,8 +127,11 @@ Placeholder::make('address')
 - **DRY**: Un solo componente, molti consumatori
 - **Consistency**: Stesso comportamento in tutti i moduli
 - **Maintainability**: Fix in un posto, beneficio ovunque
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

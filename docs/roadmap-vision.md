@@ -452,8 +452,11 @@ class GeoAIAssistant {
 
 **🐄 Super Mucca Methodology Applied**: This roadmap represents the triumph of spatial intelligence over geographical complexity. By applying DRY (Don't Repeat Yourself) and KISS (Keep It Simple, Stupid) principles, we transform geographical data management from a technical burden into a spatial intelligence superpower.
 
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

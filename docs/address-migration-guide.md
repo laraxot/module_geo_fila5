@@ -142,8 +142,11 @@ La scelta di evitare il prefisso `address_` nei campi della tabella `addresses` 
 5. **Rende il codice più manutenibile**
 
 Questa struttura, combinata con l'uso di `nullableMorphs('addressable')` per la relazione polimorfica, fornisce un modello Address flessibile e riutilizzabile in diversi contesti applicativi.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

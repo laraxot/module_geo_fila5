@@ -39,8 +39,11 @@ class Comune extends BaseModel implements SushiToJsonContract
 
 - [SushiToJsonContract](../../Tenant/app/Contracts/SushiToJsonContract.php)
 - [00-index](00-index.md)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

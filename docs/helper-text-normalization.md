@@ -150,8 +150,11 @@ Assicurarsi che tutti i membri del team conoscano e applichino questa regola cri
 **Validazione**: ✅ SUPERATA  
 **Conformità**: ✅ REGOLA APPLICATA  
 **Documentazione**: ✅ AGGIORNATA
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -39,8 +39,11 @@ I will address these errors by correcting the return type hints in each file.
 5.  **`GeoDataValidator.php`**: Update the return type for `getErrors`.
 
 After each fix, I will run `phpstan analyse Modules/Geo` to ensure the error is resolved.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

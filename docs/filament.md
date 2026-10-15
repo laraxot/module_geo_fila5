@@ -78,8 +78,11 @@ https://polodev.github.io/tuts/2018/11/05/nearby-location-using-latitude-and-lon
 
 https://github.com/geocoder-php/GeocoderLaravel
 
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

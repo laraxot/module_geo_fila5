@@ -63,8 +63,11 @@ Portare **Geo** a uno stato in cui il progetto ottiene un vantaggio netto e misu
 - Action-first: niente generic `Services` per la business logic
 - Standard operativo: `spatie/laravel-queueable-action`
 - Convenzione: Action con metodo `execute()` e dispatch tramite container
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

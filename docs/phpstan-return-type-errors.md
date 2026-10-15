@@ -268,8 +268,11 @@ grep -n "Attribute.*string" Modules/*/Models/*.php | grep -v "SafeStringCastActi
 - [Geo Module Structure](./structure.md)
 - [Class Not Found Errors](./class_not_found_errors.md)
 
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

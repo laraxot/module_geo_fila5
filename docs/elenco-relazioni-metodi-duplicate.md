@@ -854,8 +854,11 @@ In questi casi il nome è uguale ma la **semantica** è più stretta del trait b
 
 - [Censimento omonimi metodi (689)](./wiki/method-name-homonym-census.md)
 - [Ente/matr field ownership](../laravel/Modules/Sigma/docs/wiki/concepts/ente-matr-field-ownership.md)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev
