@@ -1,3 +1,15 @@
+---
+title: "GITHUB INTERACTION LOG"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "GITHUB INTERACTION LOG"
+issues: []
+discussions: []
+status: draft
+---
+
 # GitHub Interaction Log — Module Geo
 
 **Data:** 2026-06-03  
@@ -5,7 +17,6 @@
 **Scope:** Aggiornamento completo issues e discussions
 
 ---
-
 ## Issues Aggiornate
 
 ### STORY-123 — Cluster Stability
@@ -82,3 +93,8 @@ curl -s -X POST "https://api.github.com/graphql" \
 1. Chiudere issues risolte (#28, #27, #25, #24, etc.)
 2. Aggiornare labels (add `resolved`, `verified`)
 3. Creare milestone per STORY-121/122/123
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

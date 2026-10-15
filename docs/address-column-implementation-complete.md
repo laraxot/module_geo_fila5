@@ -1,3 +1,15 @@
+---
+title: "address column implementation complete"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address column implementation complete"
+issues: []
+discussions: []
+status: draft
+---
+
 # AddressColumn Implementation Complete
 
 **Date**: [DATE]
@@ -154,3 +166,8 @@ This implementation resolves:
 2. Migrate legacy Place::$address_components usage
 3. Document best practices in module docs
 4. Consider deprecating manual column definitions
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

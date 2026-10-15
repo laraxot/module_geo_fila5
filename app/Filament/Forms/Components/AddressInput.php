@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-use Modules\Xot\Filament\Forms\Components\XotBaseField;
+use Filament\Forms\Components\Field;
 
 /**
  * Address input field with geolocation button.
@@ -26,7 +26,7 @@ use Modules\Xot\Filament\Forms\Components\XotBaseField;
  *
  * @see Modules/Geo/resources/views/filament/forms/components/address-input.blade.php
  */
-class AddressInput extends XotBaseField
+class AddressInput extends Field
 {
     protected string $view = 'geo::filament.forms.components.address-input';
 

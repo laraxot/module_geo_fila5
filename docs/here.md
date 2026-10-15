@@ -1,3 +1,15 @@
+---
+title: "here"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "here"
+issues: []
+discussions: []
+status: draft
+---
+
 aggiungere ad .env
 HERE_API_KEY
 
@@ -9,3 +21,8 @@ https://route.ls.hereapi.com/routing/7.2/calculateroute.xml?waypoint0=geo!52.5,1
 https://developer.here.com/documentation/routing-api/8.20.3/dev_guide/topics/use-cases/calculate-route.html
 
 https://router.hereapi.com/v8/routes?transportMode=car&origin=52.5308,13.3847&destination=52.5323,13.3789&return=summary
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

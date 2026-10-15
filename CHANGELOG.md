@@ -1,7 +1,7 @@
-# Changelog
+# Geo Module Changelog
 
-All notable changes to `:package_name` will be documented in this file.
-
-## 1.0.0 - 202X-XX-XX
-
-- initial release
+## 2026-09-28
+- Added CHANGELOG.md for demo readiness
+- GeoJsonModel, ComuneJson, all seeders verified
+- JSON export via SushiToJson trait
+- Documentation complete

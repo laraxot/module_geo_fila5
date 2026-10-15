@@ -7,7 +7,7 @@ namespace Modules\Geo\Actions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
-use Modules\Geo\Datas\AddressData;
+use Modules\Geo\Datas\Geocoding\AddressData;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -42,23 +42,21 @@ class UpdateCoordinatesFromAddressAction
      */
     private Collection $errors;
 
-    public function __construct(
-        private readonly GetAddressDataFromFullAddressAction $getAddressDataAction,
-    ) {
-        $this->errors = $this->newErrorCollection();
+    public function __construct()
+    {
+        $this->errors = new Collection;
     }
 
     /**
      * Esegue l'aggiornamento delle coordinate per un modello.
      *
-     * @param Model $model Il modello da aggiornare (deve avere full_address, latitude, longitude)
-     *
+     * @param  Model  $model  Il modello da aggiornare (deve avere full_address, latitude, longitude)
      * @return bool True se l'aggiornamento è riuscito, false altrimenti
      */
     public function execute(Model $model): bool
     {
         // Reset errori per questa esecuzione
-        $this->errors = $this->newErrorCollection();
+        $this->errors = new Collection;
 
         // Ottieni l'indirizzo completo dal modello
         $fullAddress = $this->getFullAddressFromModel($model);
@@ -70,13 +68,14 @@ class UpdateCoordinatesFromAddressAction
         }
 
         // Esegui geocoding per ottenere i dati dell'indirizzo
-        $addressData = $this->getAddressDataAction->execute($fullAddress);
+        $getAddressDataAction = app(GetAddressDataFromFullAddressAction::class);
+        $addressData = $getAddressDataAction->execute($fullAddress);
 
-        if (null === $addressData) {
+        if ($addressData === null) {
             // Raccogli errori dal servizio di geocoding
-            $geocodingErrors = $this->getAddressDataAction->getErrors();
+            $geocodingErrors = $getAddressDataAction->getErrors();
             if ($geocodingErrors->isNotEmpty()) {
-                $geocodingErrors->each(fn (string $error): Collection => $this->errors->push($error));
+                $this->errors->merge($geocodingErrors);
             } else {
                 $this->errors->push(__('geo::actions.update_coordinates.errors.geocoding_failed'));
             }
@@ -89,15 +88,7 @@ class UpdateCoordinatesFromAddressAction
     }
 
     /**
-     * @return Collection<int, string>
-     */
-    private function newErrorCollection(): Collection
-    {
-        return new Collection();
-    }
-
-    /**
-     * Restituisce la collezione degli errori verificatisi durante l.esecuzione.
+     * Restituisce la collezione degli errori verificatisi durante l'esecuzione.
      *
      * @return Collection<int, string>
      */

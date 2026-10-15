@@ -1,13 +1,20 @@
 ---
+title: "geo module"
+tags: [documentation]
+created: 2026-09-26
+qmd: "geo module"
+issues: []
+discussions: []
 type: overview
 module: Geo
 sources:
-  - ../../../architecture.md
-  - ../../../business-logic-overview.md
-  - ../../../address-implementation.md
-  - ../../../structure.md
+  - ../../architecture.md
+  - ../../business-logic-overview.md
+  - ../../address-implementation.md
+  - ../../structure.md
 confidence: high
 updated: 2026-04-15
+status: draft
 ---
 
 # Geo Module — Overview
@@ -144,7 +151,6 @@ Region (20) → Province (110) → City/Comune (8000+) → Cap → Address
 
 ## Cross-References
 
-- [[../concepts/inventage-leaflet-map-reference|inventage/leaflet-map (upstream)]] — confronto Web Component Leaflet con `map-picker-lit`
 - [[../../../../../../laravel/Modules/Fixcity/docs/wiki/overviews/fixcity-module|Fixcity Module]] — usa LeafletMarkerMapInput
 - [[../../../../../../laravel/Modules/Xot/docs/wiki/overviews/xot-module|Xot Module]] — XotBaseModel base
 - [[../../../../../../laravel/Modules/Tenant/docs/wiki/index|Tenant Module]] — multi-tenant scoping

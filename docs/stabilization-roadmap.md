@@ -1,3 +1,15 @@
+---
+title: "stabilization roadmap"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "stabilization roadmap"
+issues: []
+discussions: []
+status: draft
+---
+
 # Stabilization Roadmap - Geo Module
 
 ## Context & Philosophy
@@ -33,3 +45,8 @@ Status: `ComuneJson.php` and `Locality.php` have `mixed` return types.
 
 ## Zen Note
 "Geography is the art of precise location. In code, a mixed type is a location that is everywhere and nowhere. We choose 'somewhere' specifically."
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

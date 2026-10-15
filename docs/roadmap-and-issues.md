@@ -1,3 +1,15 @@
+---
+title: "roadmap and issues"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "roadmap and issues"
+issues: []
+discussions: []
+status: draft
+---
+
 # Geo Module - Roadmap, Issues & Optimization
 
 **Modulo**: Geo (Geographic Data & Maps)
@@ -5,7 +17,6 @@
 **Status PHPStan**: ✅ 0 errori (Level 9)
 
 ---
-
 ## 📊 STATO ATTUALE
 
 ### Completezza Funzionale: 80%
@@ -145,12 +156,17 @@ Cache::remember("geocode:{$address}", 3600, function() use ($address) {
 
 ## 🔗 Collegamenti
 
-- [← Geo Module README](../readme.md)
+- [← Geo Module README](../README.md)
 - [← Fixcity Integration](../../fixcity/docs/roadmap-and-issues.md)
-- [← Root Documentation](../../../docs/index.md)
+- [← Root Documentation](../../../../docs/index.md)
 
 ---
 
 **Status**: ✅ BUONO
 **PHPStan**: ✅ 0 errori
 **Focus**: Integration + Features
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

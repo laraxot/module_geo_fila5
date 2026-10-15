@@ -1,3 +1,15 @@
+---
+title: "cast actions centralized"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "cast actions centralized"
+issues: []
+discussions: []
+status: draft
+---
+
 # Azioni Cast Centralizzate - Regola di Progetto
 
 ## Principio Fondamentale
@@ -81,3 +93,8 @@ Ogni volta che si utilizzano queste azioni:
 - [Xot Cast Actions](../laravel/modules/xot/docs/actions/cast-actions.md)
 - [PHPStan Best Practices](./phpstan-best-practices.md)
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

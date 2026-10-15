@@ -1,10 +1,21 @@
+---
+title: "farmshops integration analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "farmshops integration analysis"
+issues: []
+discussions: []
+status: draft
+---
+
 # 🗺️ Farmshops.eu Integration Analysis
 
 **Module:** Geo
 **Status:** Analysis & Proposal
 
 ---
-
 ## 📋 Executive Summary
 
 **Farmshops.eu** è un progetto open-source che visualizza su mappa interattiva negozi di fattoria, distributori automatici di latte/cibo e mercati diretti utilizzando dati da OpenStreetMap.
@@ -621,3 +632,8 @@ Realtà aumentata per visualizzare punti di interesse tramite fotocamera smartph
 ---
 
 *Prossimi passi: Creare POC (Proof of Concept) con subset di dati per validare approccio.*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

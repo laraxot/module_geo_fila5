@@ -1,3 +1,15 @@
+---
+title: "address resource"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address resource"
+issues: []
+discussions: []
+status: draft
+---
+
 # Risorsa Filament per il Modello Address
 
 ## Panoramica
@@ -104,3 +116,8 @@ Quando un altro modulo (es. StudioResource) deve gestire indirizzi, è best prac
 - [../../Xot/app/Filament/Resources/XotBaseResource.php](../../Xot/app/Filament/Resources/XotBaseResource.php)
 - [filament.md](./filament.md)
 - [models/address.md](./models/address.md)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,3 +1,15 @@
+---
+title: "phpstan roadmap geo"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan roadmap geo"
+issues: []
+discussions: []
+status: draft
+---
+
 # PHPStan Level 10 - Roadmap Modulo Geo
 
 ## Stato Attuale
@@ -140,3 +152,7 @@ Dopo ogni correzione modulo:
 ✅ **Type safety garantita** per tutte le operazioni geografiche
 ✅ **Documentazione aggiornata** con pattern di correzione
 ✅ **Logica funzionale mantenuta** senza regressioni
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

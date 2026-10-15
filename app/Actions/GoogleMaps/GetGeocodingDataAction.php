@@ -8,20 +8,23 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\GeocodingData;
+use Modules\Geo\Support\GeoApiEndpoints;
+use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
 /**
  * Action per ottenere i dati di geocodifica da Google Maps.
  */
-readonly class GetGeocodingDataAction
+class GetGeocodingDataAction
 {
-    private const API_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    use QueueableAction;
+
+    private const string API_URL = GeoApiEndpoints::GOOGLE_GEOCODING;
 
     public function __construct(
-        private Client $client,
-    ) {
-    }
+        private readonly Client $client,
+    ) {}
 
     /**
      * Ottiene i dati di geocodifica per un indirizzo.
@@ -108,7 +111,7 @@ readonly class GetGeocodingDataAction
          * } $data */
         $data = json_decode($response, true);
 
-        if ('OK' !== $data['status'] || empty($data['results'])) {
+        if ($data['status'] !== 'OK' || empty($data['results'])) {
             Log::warning('Geocodifica fallita', [
                 'status' => $data['status'],
                 'error' => $data['error_message'] ?? 'Nessun risultato trovato',
@@ -117,6 +120,9 @@ readonly class GetGeocodingDataAction
             return GeocodingData::error($data['status']);
         }
 
-        return GeocodingData::fromGoogleResponse($data);
+        return GeocodingData::fromGoogleResponse([
+            'status' => $data['status'],
+            'results' => $data['results'],
+        ]);
     }
 }

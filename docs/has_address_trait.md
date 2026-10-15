@@ -1,3 +1,15 @@
+---
+title: "has address trait"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "has address trait"
+issues: []
+discussions: []
+status: draft
+---
+
 # Trait HasAddress
 
 ## Panoramica
@@ -96,3 +108,8 @@ Quando un modello (es. Studio) necessita di gestire indirizzi tramite Filament, 
 - [models/address.md](./models/address.md)
 - [address-implementation.md](./address-implementation.md)
 - [filament.md](./filament.md)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

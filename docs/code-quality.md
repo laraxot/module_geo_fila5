@@ -1,3 +1,15 @@
+---
+title: "code quality"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "code quality"
+issues: []
+discussions: []
+status: draft
+---
+
 # 🌍 Geo Module - Code Quality Analysis Report
 
 **Date**: [DATE]
@@ -102,6 +114,9 @@ PHPStan analysis was blocked by a syntax error in the Cms module, but PHPMD anal
 4. **Update Documentation**: Document the improvements and patterns
 
 ---
-
 **Report Generated**: [DATE]
 **Target Completion**: [DATE]
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

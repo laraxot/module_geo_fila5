@@ -1,3 +1,15 @@
+---
+title: "farmshops analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "farmshops analysis"
+issues: []
+discussions: []
+status: draft
+---
+
 # 🗺️ ANALISI PROGETTO FARMSHOPS.EU
 
 **Fonte**: https://github.com/CodeforKarlsruhe/farmshops.eu
@@ -5,7 +17,6 @@
 **Obiettivo**: Integrazione funzionalità mappa interattiva nel progetto FixCity
 
 ---
-
 ## 📋 PANORAMICA PROGETTO
 
 ### 🎯 Scopo
@@ -343,3 +354,8 @@ class MapComponent {
 ---
 
 *Questa analisi fornisce le basi per integrare le funzionalità di farmshops.eu nel progetto FixCity, migliorando significativamente l'esperienza utente con visualizzazioni geografiche avanzate.*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

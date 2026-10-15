@@ -1,3 +1,15 @@
+---
+title: "leaflet marker map input"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "leaflet marker map input"
+issues: []
+discussions: []
+status: draft
+---
+
 # LeafletMarkerMapInput Componente Filament
 
 ## Visione
@@ -38,3 +50,7 @@ Fornire un input Filament che:
 - **Trasparenza**: Il comportamento è completamente visibile nel Blade template
 - **Estensibilità**: Facile da sottoclassificare per varianti (es. con ricerca indirizzi)
 - **Robustezza**: Gestisce casi edge come coordinate iniziali non valide, negazione geolocalizzazione
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

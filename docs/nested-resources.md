@@ -1,3 +1,15 @@
+---
+title: "nested resources"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "nested resources"
+issues: []
+discussions: []
+status: draft
+---
+
 # Geo Module - Nested Resource Implementation Guide
 
 ## Overview
@@ -203,3 +215,7 @@ Following the documented approach in `Modules/UI/docs/filament/nested-resource.m
 - Geographic data caching strategies
 - Spatial indexing for geographic queries
 - Efficient handling of large geographic datasets
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

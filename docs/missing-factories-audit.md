@@ -1,3 +1,15 @@
+---
+title: "missing factories audit"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "missing factories audit"
+issues: []
+discussions: []
+status: draft
+---
+
 # Factory Mancanti - Modulo Geo
 
 ## Situazione Critica Identificata
@@ -146,10 +158,15 @@
 
 ## Collegamenti
 
-- [README Modulo Geo](./readme.md)
+- [README Modulo Geo](./README.md)
 - [Factory Audit Root](../../../../docs/factory-audit-2025.md)
 - [Address Implementation](./address-implementation.md)
 - [Sushi Implementation](./sushi-implementation.md)
 
 ---
 **Errore gravissimo da non ripetere mai più**
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,3 +1,15 @@
+---
+title: "story map component analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "story map component analysis"
+issues: []
+discussions: []
+status: draft
+---
+
 # Analisi del Componente Mappa per Ticket Wizard
 
 ## Filosofia di farmshops.eu
@@ -283,3 +295,7 @@ La strategia proposta è:
 3. Aggiungere funzionalità avanzate quando necessario
 
 Il risultato sarà un componente mappa che non funziona bene, ma che fornisce un'esperienza utenza eccezionale.
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

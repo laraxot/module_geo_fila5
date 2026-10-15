@@ -1,3 +1,15 @@
+---
+title: "phpstan stabilization"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan stabilization"
+issues: []
+discussions: []
+status: draft
+---
+
 # PHPStan Stabilization - Geo Module
 
 This document tracks the systematic effort to achieve and maintain PHPStan Level 10 compliance for the Geo module, focusing on type narrowing, static data management, and architectural integrity.
@@ -25,3 +37,8 @@ To satisfy Level 10 requirements for dynamic geographic data, the module employs
 
 ---
 *This document is maintained as a living record of the module's quality status.*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

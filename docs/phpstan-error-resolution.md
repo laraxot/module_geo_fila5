@@ -1,3 +1,15 @@
+---
+title: "phpstan error resolution"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan error resolution"
+issues: []
+discussions: []
+status: draft
+---
+
 # Risoluzione Errori PHPStan - 8 Gennaio 2025
 
 ## Panoramica
@@ -87,3 +99,8 @@ Questo intervento consolida l'approccio sistematico alla risoluzione di errori P
 
 *Documento aggiornato: 8 Gennaio 2025*
 *Conformità: PHPStan Level 9+, Laraxot Conventions*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

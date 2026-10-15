@@ -1,23 +1,21 @@
-# MCP Server Consigliati per il Modulo Geo
+---
+title: "mcp server recommended uppercase"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "mcp server recommended uppercase"
+issues: []
+discussions: []
+module: theme
+topic: mcp-server-recommended-uppercase
+canonical: ../../../Themes/docs/shared-components/MCP_SERVER_RECOMMENDED-Modules.md
+status: stub
+---
 
-## Scopo del Modulo
-Gestione dati geografici, mappe e geolocalizzazione.
+See canonical documentation: ../../../Themes/docs/shared-components/MCP_SERVER_RECOMMENDED-Modules.md
 
-## Server MCP Consigliati
-- `fetch`: Per recupero dati geografici da API esterne.
-- `memory`: Per caching temporaneo di dati geospaziali.
-- `filesystem`: Per gestione file geojson, shapefile, ecc.
-
-## Configurazione Minima Esempio
-```json
-{
-  "mcpServers": {
-    "fetch": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-fetch"] },
-    "memory": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-memory"] },
-    "filesystem": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-filesystem"] }
-  }
-}
-```
-
-## Note
-- Estendi la configurazione se il modulo gestisce analisi geospaziali avanzate.
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

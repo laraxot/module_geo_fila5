@@ -1,3 +1,15 @@
+---
+title: "models analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "models analysis"
+issues: []
+discussions: []
+status: draft
+---
+
 # Models Analysis - Geo Module
 
 ## Factory e Seeder Status
@@ -83,3 +95,8 @@ Tutte le factory business sono già state create ✅
 - I modelli Sushi (Locality) non necessitano factory perché generano dati dinamicamente
 - I modelli JSON readonly non necessitano factory perché sono facade su dati statici
 - Le classi base astratte non necessitano factory
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

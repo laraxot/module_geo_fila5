@@ -1,3 +1,15 @@
+---
+title: "comune implementation"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "comune implementation"
+issues: []
+discussions: []
+status: draft
+---
+
 # Implementazione del Modello Comune
 
 ## Scelta Architetturale
@@ -93,3 +105,7 @@ protected $casts = [
 - [Documentazione Sushi](https://github.com/calebporzio/sushi)
 - [GeoJsonModel vs Sushi](geo-sushi-comparison.md)
 - [Analisi Implementazione](comune-sushi-analisi.md) 
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

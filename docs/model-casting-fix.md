@@ -1,3 +1,15 @@
+---
+title: "model casting fix"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "model casting fix"
+issues: []
+discussions: []
+status: draft
+---
+
 # Correzione Model Casting - Modulo Geo
 
 ## 🚨 Problema Risolto
@@ -196,3 +208,8 @@ protected function casts(): array
 - [ ] **Altri moduli**: Ricerca globale
 
 ## Ultimo aggiornamento
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

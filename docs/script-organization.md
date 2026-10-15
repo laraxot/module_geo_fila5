@@ -1,3 +1,15 @@
+---
+title: "script organization"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "script organization"
+issues: []
+discussions: []
+status: draft
+---
+
 # Organizzazione Script - Regole Fondamentali
 
 ## Regola Assoluta
@@ -129,3 +141,8 @@ Ogni script deve includere:
 - [Struttura Progetto](project-structure.md)
 - [Database Seeding](database-seeding.md)
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

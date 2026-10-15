@@ -1,3 +1,19 @@
+---
+title: "log"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "log"
+issues: []
+discussions: []
+status: draft
+---
+
+## [2026-10-14] docs | studio degli ingressi di Geo confrontati con il codice
+
+`README.md` descriveva classi e metodi inesistenti (`app/Services/GeocodingService.php`, `provider()`, `storeCoordinates()`, `GetCoordinatesAction::execute([...])` statico, config in `laravel/config/local/geo/`): corretto con le firme vere. Fatti durevoli, tutti verificati: `routes/` e `resources/views/pages` assenti (nessuna rotta del modulo), pannello Filament su `/geo/admin`, `config/config.php` si carica sotto `geo.config`, quindi `config('geo.driver')`, `geo.api_keys`, `geo.cache`, `geo.rate_limits`, `geo.http_client` letti in `GetAddressDataFromFullAddressAction`, `GoogleMapsAction` e `GoogleMaps/GoogleMapsHttpAction` valgono `null` (solo `geo.config.map.default_view` e' letta giusta); `tests/TestCase.php` forza `xra.pub_theme = Meetup` e `Themes/Meetup` non ha `resources/views/pages`, per cui i test PHP di Geo non partono; PHPStan 0 errori; `node --test tests/js/default-view.test.mjs` 3 passati. `index.md`, `wiki/ProjectHome.md`, `wiki/projecthome.md`, `wiki/reflective.md`, `wiki/method-name-homonym-census.md` sono contenuti di altri progetti o moduli, segnati `stale`. Conflitto aperto: contratto (`00-INDEX.md` canonico) contro decisione del 2026-10-14 (`INDEX.md` ingresso unico). Story: [studio-docs-geo-ingressi-verificati](../stories/studio-docs-geo-ingressi-verificati.story.md). Memoria: `bashscripts/ai/wiki/memories/docs-fixcity-geo-studio.md`.
+
 ## [2026-06-30] ponytail-audit | Phase 3 Finding 2 — BaseGeoService inlined into GoogleMapsService
 
 - **BaseGeoService eliminated** ✅
@@ -12,11 +28,10 @@
 
 ## [2026-06-05] docs | HackerNoon harness — tips 001-022 in wiki locale
 
-- Stub/checklist: second-brain → canon Xot, ai-harness, [hackernoon map](../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md), [llm-wiki.txt](../../../../../bashscripts/tools/prompts/llm-wiki.txt)
+- Stub/checklist: second-brain → canon Xot, ai-harness, [hackernoon map](../../../../../docs/wiki/concepts/hackernoon-ai-coding-tips-fixcity-map.md), llm-wiki.txt _(target mancante, verificato 2026-10-14: `bashscripts/tools/prompts/llm-wiki.txt` non esiste)_
 - GitHub: [#272](https://github.com/laraxot/base_fixcity_fila5/issues/272) / [D#273](https://github.com/laraxot/base_fixcity_fila5/discussions/273)
 
 ---
-title: "Geo Wiki Activity Log"
 module: "Geo"
 ---
 
@@ -25,7 +40,7 @@ module: "Geo"
 ## [2026-06-03] bmad | STORY-132 — filename JS solo inglese
 
 - [js-file-english-naming-rule.md](rules/js-file-english-naming-rule.md) · [js-file-english-naming-standing-rule.md](memories/js-file-english-naming-standing-rule.md)
-- Rename pianificato: `popup-segnalazione.js` → `popup-ticket.js` ([STORY-132](../../../../../docs/stories/STORY-132-rename-popup-segnalazione-js-english.md))
+- Rename pianificato: `popup-segnalazione.js` → `popup-ticket.js` ([STORY-132](../../../../../docs/stories/STORY-132-rename-popup-ticket-js-english.md), file rinominato rispetto al link originale `...popup-segnalazione-js-english.md`)
 
 ## [2026-06-03] docs | map-lit ricostruzione + registro correzioni
 
@@ -91,3 +106,13 @@ module: "Geo"
 - Created INDEX.md for each section
 - Created module index.md
 - Ready for on-demand loading via QMD
+
+## [2026-10-14] DCP-152 marker e pulsanti del picker
+
+- `coordinate-picker-lit` include `markerCardStylesText` e accetta `marker-icon-url`, `marker-color`, `marker-label` (dettaglio ticket: tipo e stato noti).
+- Pulsanti `.ctrl-btn` protetti dal reset `button` delle pagine `data-dc` (`.map-container .ctrl-btn.ctrl-btn`).
+- Concept: `concepts/picker-marker-and-controls-on-host-pages.md`; story `stories/2026-10-14-dcp-152-...story.md`.
+## [2026-10-14] docs | confine dati geografici e mappe
+
+- Aggiunta `concepts/geo-data-and-map-boundary.md`.
+- Documentati ordine GeoJSON, ownership geocoding e separazione da Fixcity/Sixteen.

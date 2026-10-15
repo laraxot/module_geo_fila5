@@ -1,3 +1,15 @@
+---
+title: "comune sushi implementazione"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "comune sushi implementazione"
+issues: []
+discussions: []
+status: draft
+---
+
 # Implementazione di Comune.php con Laravel Sushi
 
 ## 1. Cos'è Sushi (github.com/calebporzio/sushi)
@@ -49,7 +61,6 @@ class Comune extends Model
 - Si può usare in Filament, query builder, relazioni, morph, ecc.
 
 ---
-
 ## 3. Vantaggi
 - ✅ API Eloquent completa (join, relazioni, morph, query avanzate, scope, ecc.)
 - ✅ Compatibilità totale con Filament/Eloquent
@@ -137,3 +148,8 @@ Responsabile: Cascade AI
 
 ## Policy aggiornata: niente trait per una sola classe
 Non creare trait come ComuneSushiTrait se usati solo in un modello. I trait vanno creati solo se riutilizzati in più classi. Se la logica è specifica di un solo modello, va implementata direttamente nella classe. Motivazione: semplicità, KISS, manutenibilità, evitare complessità inutile. Collegamento a docs/xot.md.
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

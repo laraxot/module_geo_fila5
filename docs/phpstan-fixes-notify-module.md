@@ -1,3 +1,15 @@
+---
+title: "phpstan fixes notify module"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan fixes notify module"
+issues: []
+discussions: []
+status: draft
+---
+
 # PHPStan Fixes for Notify Module
 
 ## Overview
@@ -152,3 +164,8 @@ All fixes have been designed to:
 - ✅ Reusable across multiple projects
 
 This ensures the Notify module is fully compliant with Laraxot modular architecture principles and can be safely reused across different projects without modification.
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,10 +1,21 @@
+---
+title: "farmshops integration"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "farmshops integration"
+issues: []
+discussions: []
+status: draft
+---
+
 # 🗺️ FARMSHOPS.EU - INTEGRATION GUIDE
 
 **Source**: https://github.com/CodeforKarlsruhe/farmshops.eu
 **Purpose**: Integrare tecnologie e pattern da farmshops.eu in FixCity
 
 ---
-
 ## 📊 ANALISI PROGETTO FARMSHOPS.EU
 
 ### Scopo
@@ -437,3 +448,8 @@ class TicketMap extends Component
 **Impact**: MAJOR UX improvement
 
 *"Integrando le migliori pratiche da farmshops.eu, FixCity avrà una mappa interattiva di livello mondiale!"*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

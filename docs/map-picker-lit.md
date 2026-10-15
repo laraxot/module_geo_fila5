@@ -1,3 +1,15 @@
+---
+title: "map picker lit"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map picker lit"
+issues: []
+discussions: []
+status: draft
+---
+
 # CoordinatePickerLit Component Implementation
 
 ## Overview
@@ -161,3 +173,8 @@ CoordinatePicker::make('location')
 - Added info bar that hides in fullscreen
 - Added close button in fullscreen mode
 - Fixed Zoom In/Out using Leaflet methods (`zoomIn()`/`zoomOut()`)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,3 +1,15 @@
+---
+title: "optimization summary report"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "optimization summary report"
+issues: []
+discussions: []
+status: draft
+---
+
 # Report di Sintesi - Analisi e Ottimizzazioni Moduli
 
 ## 📋 Executive Summary
@@ -255,3 +267,8 @@ jobs:
 *Report compilato: gennaio 2025*
 *Analista: AI Assistant seguendo metodologia DRY+KISS*
 *Validazione: Script automatici e review manuale*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

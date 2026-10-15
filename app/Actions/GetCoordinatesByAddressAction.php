@@ -7,10 +7,15 @@ namespace Modules\Geo\Actions;
 use Filament\Notifications\Notification;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Datas\CoordinatesData;
+use Modules\Geo\Datas\Location\CoordinatesData;
+use Modules\Geo\Support\GeoApiEndpoints;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
+use Spatie\QueueableAction\QueueableAction;
 
 class GetCoordinatesByAddressAction
 {
+    use QueueableAction;
+
     public function execute(string $address): ?CoordinatesData
     {
         // Prova con Google Maps
@@ -39,7 +44,7 @@ class GetCoordinatesByAddressAction
      */
     private function getGoogleResponse(string $address): array
     {
-        $response = $this->makeHttpRequest('https://maps.googleapis.com/maps/api/geocode/json', [
+        $response = $this->makeHttpRequest(GeoApiEndpoints::GOOGLE_GEOCODING, [
             'address' => $address,
             'key' => config('services.google.maps_api_key'),
         ]);
@@ -88,7 +93,7 @@ class GetCoordinatesByAddressAction
      */
     private function getBingResponse(string $address, string $apiKey): array
     {
-        $response = $this->makeHttpRequest('http://dev.virtualearth.net/REST/v1/Locations', [
+        $response = $this->makeHttpRequest(GeoApiEndpoints::BING_LOCATIONS, [
             'q' => $address,
             'key' => $apiKey,
         ]);
@@ -109,39 +114,37 @@ class GetCoordinatesByAddressAction
     /**
      * Execute an HTTP GET request and always return a typed Response.
      *
-     * @param array<string, mixed> $params
+     * @param  array<string, mixed>  $params
      */
     private function makeHttpRequest(string $url, array $params): Response
     {
+        /* @var Response $response */
         return Http::get($url, $params);
     }
 
     private function getFromBing(string $address): ?CoordinatesData
     {
         $apiKey = config('services.bing.maps_api_key');
-        if (! is_string($apiKey) || '' === $apiKey) {
+        if (! is_string($apiKey) || $apiKey === '') {
             return null;
         }
 
         $data = $this->getBingResponse($address, $apiKey);
 
         $coordinates = $this->extractBingCoordinates($data);
-        if (null === $coordinates) {
+        if ($coordinates === null) {
             return null;
         }
 
         return new CoordinatesData(
-            latitude: (float) ($coordinates[0] ?? 0),
-            longitude: (float) ($coordinates[1] ?? 0),
+            latitude: SafeFloatCastAction::cast($coordinates[0] ?? 0),
+            longitude: SafeFloatCastAction::cast($coordinates[1] ?? 0),
         );
     }
 
     /**
-     * Extract coordinates from Bing response.
-     *
-     * @param array<string, mixed> $data
-     *
-     * @return array<int, float>|null
+     * @param  array<mixed>  $data
+     * @return array<mixed>|null
      */
     private function extractBingCoordinates(array $data): ?array
     {
@@ -173,7 +176,7 @@ class GetCoordinatesByAddressAction
             return null;
         }
 
-        return [(float) $coordinates[0], (float) $coordinates[1]];
+        return $coordinates;
     }
 
     /**
@@ -205,7 +208,7 @@ class GetCoordinatesByAddressAction
     private function getFromOpenCage(string $address): ?CoordinatesData
     {
         $apiKey = config('services.opencage.api_key');
-        if (! is_string($apiKey) || '' === $apiKey) {
+        if (! is_string($apiKey) || $apiKey === '') {
             return null;
         }
 
@@ -234,7 +237,7 @@ class GetCoordinatesByAddressAction
      */
     private function getNominatimResponse(string $address): array
     {
-        $response = $this->makeHttpRequest('https://nominatim.openstreetmap.org/search', [
+        $response = $this->makeHttpRequest(GeoApiEndpoints::NOMINATIM_SEARCH, [
             'q' => $address,
             'format' => 'json',
             'limit' => 1,

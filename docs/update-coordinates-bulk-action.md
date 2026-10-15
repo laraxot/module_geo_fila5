@@ -1,3 +1,15 @@
+---
+title: "update coordinates bulk action"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "update coordinates bulk action"
+issues: []
+discussions: []
+status: draft
+---
+
 # UpdateCoordinatesBulkAction - Azione Riutilizzabile per Aggiornamento Coordinate
 
 **Modulo**: Geo
@@ -159,3 +171,7 @@ public function getTableBulkActions(): array
 
 ---
 
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

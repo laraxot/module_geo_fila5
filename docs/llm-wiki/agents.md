@@ -9,6 +9,7 @@ issues: []
 discussions: []
 related:
   - ./coding-agent-manifests.md
+status: draft
 ---
 
 # Geo {{TYPE^}} LLM Wiki Agent Instructions

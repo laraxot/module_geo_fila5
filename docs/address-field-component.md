@@ -1,3 +1,15 @@
+---
+title: "address field component"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address field component"
+issues: []
+discussions: []
+status: draft
+---
+
 # Geo Module — AddressInput Component
 
 ## Overview
@@ -75,3 +87,8 @@ Namespace: `geo::address.*`
 - [Nominatim Reverse Geocoding API](https://nominatim.org/release-docs/develop/api/Reverse/)
 - [MDN Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
 - [Filament v5 Custom Fields](https://filamentphp.com/docs/5.x/forms/fields/custom)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

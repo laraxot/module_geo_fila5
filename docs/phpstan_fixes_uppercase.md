@@ -1,3 +1,15 @@
+---
+title: "phpstan fixes uppercase"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan fixes uppercase"
+issues: []
+discussions: []
+status: draft
+---
+
 # PHPStan Fixes for Geo Module
 
 This document outlines the PHPStan-related fixes and improvements made to the Geo module to ensure type safety and code quality at PHPStan level 9.
@@ -68,3 +80,8 @@ All changes have been verified with PHPStan level 9. To run the analysis:
 - [PHPStan Documentation](https://phpstan.org/)
 - [Laravel Data Documentation](https://spatie.be/project_docs/laravel-data/v3/introduction)
 - [Geo Module Architecture](architecture.md)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

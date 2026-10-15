@@ -1,3 +1,15 @@
+---
+title: "phpstan bing maps action fix roadmap"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan bing maps action fix roadmap"
+issues: []
+discussions: []
+status: draft
+---
+
 # PHPStan Fix Roadmap - GetAddressFromBingMapsAction - Gennaio 2026
 
 **File**: `Modules/Geo/app/Actions/Bing/GetAddressFromBingMapsAction.php`  
@@ -178,3 +190,7 @@ L'errore PHPStan è stato risolto con successo! Ecco le modifiche implementate:
 - [PHPStan Code Quality Guide](../../../xot/docs/phpstan-code-quality-guide.md)
 - [Geo Module PHPStan Fixes](./phpstan-fixes-gennaio-2025.md)
 - [Pattern Type Safety](../../../xot/docs/phpstan-patterns.md)
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,3 +1,15 @@
+---
+title: "research farmshops architecture"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "research farmshops architecture"
+issues: []
+discussions: []
+status: draft
+---
+
 # Research: farmshops.eu Architecture Study
 
 ## Project Overview
@@ -23,3 +35,8 @@
 1. **Modern Stack**: Use Lit Web Components instead of jQuery.
 2. **Vite Bundling**: No CDNs, everything local for better reliability and performance.
 3. **Filament Integration**: Deep integration with Filament v5 dashboard patterns.
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

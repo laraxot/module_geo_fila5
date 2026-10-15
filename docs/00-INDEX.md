@@ -1,3 +1,17 @@
+---
+title: "00 INDEX"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "00 INDEX"
+issues: []
+discussions: []
+status: draft
+---
+
+> **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
+
 # Geo Module — Documentation Index
 
 ## Architecture
@@ -5,7 +19,7 @@
 | Documento | Descrizione |
 |-----------|-------------|
 | [Filament Forms Components](./filament-forms-components.md) | **Guida principale** per componenti form: AddressInput, AddressSection, MapInput, ecc. |
-| [Module Philosophy](./module-philosophy.md) | Perché Geo possiede la geolocalizzazione e come i moduli la consumano |
+| Module Philosophy _(target mancante, verificato 2026-10-14: `module-philosophy.md` non esiste; vedi [philosophy.md](./philosophy.md) e [architectural-philosophy.md](./architectural-philosophy.md))_ | Perché Geo possiede la geolocalizzazione e come i moduli la consumano |
 
 ## Components
 
@@ -24,9 +38,13 @@
 |-----------|--------|
 | [ponytail-audit-over-engineering.md](./ponytail-audit-over-engineering.md) | Findings Ponytail Geo (multi-provider, Bing duplicato) |
 | [ADR: driver geocoding configurabile + pulizia duplicati orfani](./wiki/decisions/geo-geocoding-driver-consolidation.md) | Consolidamento G1/G2: `geo.driver` config, dispatcher unico, `.bak` su duplicati orfani |
-| [Hub repo](../../../../docs/audit/ponytail-audit.md) | Audit repo-wide |
+| Hub repo _(target mancante, verificato 2026-10-14: `docs/audit/ponytail-audit.md` non esiste alla radice)_ | Audit repo-wide |
 
 ## Actions
+
+- Da Services a Queueable Actions _(target mancante, verificato 2026-10-14: `wiki/concepts/no-app-support-queueable-actions.md` non esiste)_ — contratto `QueueableAction`, `execute()` e composizione tra use case.
+- [Geo no-services architecture](./wiki/concepts/geo-no-services-migration.md) — responsabilità migrate da `app/Services` ad Actions e Adapters.
+
 
 | Action | Path | Descrizione |
 |--------|------|-------------|
@@ -38,6 +56,8 @@
 > **2026-06-30**: `app/Actions/FilterCoordinatesInRadius.php` (duplicato buggato, mai chiamato) e
 > `app/Actions/ClusterLocationsAction.wip` / `clusterlocationsaction.wip` (scratch superati, mai
 > autoloadati) rinominati `.bak` — mai cancellati. Dettagli nell'ADR sopra.
+>
+> Nota 2026-10-14 (verificata con `ls`): lo stato attuale e' diverso. `app/Actions/FilterCoordinatesInRadius.php` esiste ancora con quel nome (nessun `.bak`), accanto a `FilterCoordinatesInRadiusAction.php`; `ClusterLocationsAction.wip` e `clusterlocationsaction.wip` sono ancora `.wip`, e `ClusterLocationsAction.php` esiste (con test in `tests/Unit/Actions/ClusterLocationsActionTest.php`). Probabile causa, non provata: il riallineamento del 2026-10-08 a `cd999d97e` (vedi decision-log) ha riportato la versione precedente alla rinomina.
 
 ## Models
 
@@ -56,7 +76,7 @@
 
 | Enum | Path | Descrizione |
 |------|------|-------------|
-| AddressItemType | `app/Enums/AddressItemType.php` | Tipi di indirizzo (home, work, etc.) |
+| AddressItemEnum, AddressTypeEnum | `app/Enums/AddressItemEnum.php`, `app/Enums/AddressTypeEnum.php` | Tipi di indirizzo (home, work, etc.). _(Corretto il 2026-10-14: `AddressItemType.php` non esiste)_ |
 
 ## Translations
 
@@ -78,10 +98,9 @@
 | Documento | Descrizione |
 |-----------|-------------|
 | **[DAISYUI.md](./DAISYUI.md)** | DaisyUI nel modulo Geo: perché non è installato, pro/contro, metriche |
-| **[Sixteen/docs/DAISYUI-APPLY.md](../Sixteen/docs/DAISYUI-APPLY.md)** | DaisyUI + `@apply` nel tema Sixteen: guida pratica, percentuali, opinione |
+| Sixteen/docs/DAISYUI-APPLY.md _(target mancante, verificato 2026-10-14: `Themes/Sixteen/docs/DAISYUI-APPLY.md` non esiste)_ | DaisyUI + `@apply` nel tema Sixteen: guida pratica, percentuali, opinione |
 
 ---
-
 ## Zen: Domain-Driven Design
 
 **Geo possiede tutto ciò che è geo-spaziale.** I moduli consumatori (Fixcity, Municipal, User, etc.) importano i componenti da Geo.
@@ -108,3 +127,8 @@ Placeholder::make('address')
 - **DRY**: Un solo componente, molti consumatori
 - **Consistency**: Stesso comportamento in tutti i moduli
 - **Maintainability**: Fix in un posto, beneficio ovunque
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

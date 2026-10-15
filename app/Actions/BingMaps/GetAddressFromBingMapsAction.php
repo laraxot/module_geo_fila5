@@ -8,6 +8,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\AddressData;
+use Modules\Geo\Support\GeoApiEndpoints;
+use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 
@@ -17,14 +19,15 @@ use function Safe\json_decode;
  * Questa classe utilizza l'API Bing Maps Geocoding per convertire
  * un indirizzo in coordinate geografiche e dettagli dell'indirizzo.
  */
-readonly class GetAddressFromBingMapsAction
+class GetAddressFromBingMapsAction
 {
-    private const API_URL = 'http://dev.virtualearth.net/REST/v1/Locations';
+    use QueueableAction;
+
+    private const string API_URL = GeoApiEndpoints::BING_LOCATIONS;
 
     public function __construct(
-        private Client $client,
-    ) {
-    }
+        private readonly Client $client,
+    ) {}
 
     /**
      * Ottiene i dettagli dell'indirizzo utilizzando Bing Maps.
@@ -112,7 +115,7 @@ readonly class GetAddressFromBingMapsAction
          * } $data */
         $data = json_decode($response, true);
 
-        if (200 !== $data['statusCode'] || empty($data['resourceSets'][0]['resources'])) {
+        if ($data['statusCode'] !== 200 || empty($data['resourceSets'][0]['resources'])) {
             return null;
         }
 

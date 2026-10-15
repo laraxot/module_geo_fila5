@@ -22,8 +22,7 @@ class GeocodingData extends Data
         public readonly ?string $country,
         public readonly ?string $postal_code,
         public readonly ?string $error = null,
-    ) {
-    }
+    ) {}
 
     /**
      * Crea un'istanza di errore.
@@ -68,6 +67,16 @@ class GeocodingData extends Data
      */
     public static function fromGoogleResponse(array $response): self
     {
+        if (($response['status'] ?? '') !== 'OK' || ! isset($response['results'][0]) || ! is_array($response['results'][0])) {
+            return self::error((string) ($response['error_message'] ?? 'Geocoding failed'));
+        }
+
+        /** @var array{
+         *     geometry: array{location: array{lat: float, lng: float}},
+         *     formatted_address: string,
+         *     address_components: array<array{long_name: string, short_name: string, types: array<string>}>
+         * } $result
+         */
         $result = $response['results'][0];
         $location = $result['geometry']['location'];
         $components = self::extractAddressComponents($result['address_components']);
@@ -93,7 +102,6 @@ class GeocodingData extends Data
      *     short_name: string,
      *     types: array<string>
      * }> $components
-     *
      * @return array<string, string>
      */
     private static function extractAddressComponents(array $components): array

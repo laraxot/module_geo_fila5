@@ -1,3 +1,15 @@
+---
+title: "phpstan corrections"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan corrections"
+issues: []
+discussions: []
+status: draft
+---
+
 # PHPStan Corrections - Geo Module
 
 ## Fixed Issues
@@ -45,3 +57,7 @@ private const BASE_URL = 'https://maps.googleapis.com/maps/api/directions/json';
 - Correct namespace for PromiseInterface is `GuzzleHttp\Promise\PromiseInterface`
 - All HTTP client responses now properly handle both synchronous and asynchronous cases
 - PHPDoc casting ensures PHPStan recognizes the correct type after Promise resolution
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,3 +1,15 @@
+---
+title: "squire integration"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "squire integration"
+issues: []
+discussions: []
+status: draft
+---
+
 # Integrazione con Squire per dati geografici
 
 ## Contesto
@@ -215,3 +227,8 @@ public function getFormSchema(): array
 - [Clean Code](../../../../docs/project/clean-code.md)
 
 **Nota:** Il namespace corretto per LocationForm è `Modules\Geo\Filament\Forms\LocationForm`. Non usare mai `Modules\Geo\App\Filament\Forms\LocationForm`. 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

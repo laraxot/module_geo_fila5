@@ -1,3 +1,15 @@
+---
+title: "address column implementation"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address column implementation"
+issues: []
+discussions: []
+status: draft
+---
+
 # AddressColumn Implementation Plan
 
 **Date**: [DATE]
@@ -155,3 +167,8 @@ AddressItemEnum::columns($table, $this);
 2. Create `AddressColumn` trait
 3. Update documentation in other modules
 4. Begin migration updates
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

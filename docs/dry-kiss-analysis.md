@@ -1,3 +1,15 @@
+---
+title: "dry kiss analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "dry kiss analysis"
+issues: []
+discussions: []
+status: draft
+---
+
 # 🐄 DRY & KISS Analysis - Geo
 
 **Data:** [DATE] | **Status:** ✅
@@ -36,3 +48,8 @@ DRY: 7/10 🟢 | KISS: 6/10 🟡 | **Overall: 6.5/10 🟡**
 3. Docs cleanup (1 sett)
 
 **Status:** 🟢 BUONO, ottimizzabile
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

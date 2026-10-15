@@ -17,6 +17,8 @@ class MapLocationInput extends XotBaseField
 {
     use HasCoordinatePicker;
 
+    protected string $view = 'geo::filament.forms.components.map-location-input';
+
     protected function setUp(): void
     {
         parent::setUp();

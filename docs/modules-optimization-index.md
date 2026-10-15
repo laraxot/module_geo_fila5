@@ -1,3 +1,15 @@
+---
+title: "modules optimization index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modules optimization index"
+issues: []
+discussions: []
+status: draft
+---
+
 # Indice Completo - Analisi e Ottimizzazioni Moduli
 
 ## 🎯 Navigazione Rapida
@@ -20,19 +32,19 @@
 **Azione**: Refactoring PathHelper con configurazioni dinamiche
 **Tempo**: 2 ore | **Impatto**: Sblocca riusabilità framework
 
-#### [Modulo Notify](../laravel/modules/notify/docs/optimization_recommendations.md)
+#### [Modulo Notify](../../Notify/docs/optimization_recommendations.md)
 **Problema**: 336 occorrenze hardcoded + 150+ file docs frammentati
 **Azione**: Correzione test + consolidamento documentazione
 **Tempo**: 2 giorni | **Impatto**: Sistema notifiche riutilizzabile
 
 ### 🟡 PRIORITÀ ALTA
 
-#### [Modulo User](../laravel/modules/user/docs/optimization_recommendations.md)
+#### [Modulo User](../../User/docs/optimization_recommendations.md)
 **Problema**: README gigantesco (955 righe) + 141 occorrenze hardcoded
 **Azione**: Ristrutturazione completa + rimozione hardcoding
 **Tempo**: 1 giorno | **Impatto**: Modulo auth riutilizzabile
 
-#### [Modulo Cms](../laravel/modules/cms/docs/optimization_recommendations.md)
+#### [Modulo Cms](../../Cms/docs/optimization_recommendations.md)
 **Problema**: 194 occorrenze hardcoded + content troppo specifico
 **Azione**: Generalizzazione content + organizzazione docs
 **Tempo**: 1 giorno | **Impatto**: CMS riutilizzabile per qualsiasi business
@@ -50,7 +62,7 @@
 **Azione**: Documentation update + performance optimization
 **Tempo**: 4 ore | **Impatto**: Migliora manutenibilità
 
-#### [Modulo Geo](../laravel/modules/geo/docs/optimization_recommendations.md)
+#### [Modulo Geo](optimization_recommendations.md)
 **Stato**: Funzionalità complete con Google API
 **Azione**: Generalizzazione docs + Google API caching
 **Tempo**: 3 ore | **Impatto**: Modulo geo riutilizzabile
@@ -162,3 +174,8 @@ cp -r laravel/Modules/*/docs laravel/Modules-docs-backup-$(date +%Y%m%d)
 
 *Metodologia: Analisi sistematica seguendo principi DRY+KISS*
 *Validazione: Script automatici + review manuale*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

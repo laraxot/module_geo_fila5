@@ -1,3 +1,15 @@
+---
+title: "address resource sumy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address resource sumy"
+issues: []
+discussions: []
+status: draft
+---
+
 # Sintesi Analisi AddressResource - Modulo Geo
 
 ## 📋 Panoramica Completa
@@ -180,8 +192,12 @@ L'`AddressResource` è una classe ben progettata che implementa correttamente la
 L'implementazione attuale fornisce una base solida per i miglioramenti proposti, mantenendo la compatibilità e la stabilità del sistema esistente.
 
 ---
-
 *Sintesi completata il: $(date)*
 *Modulo: Geo*
 *Classe: AddressResource*
 *Versione: 1.0*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

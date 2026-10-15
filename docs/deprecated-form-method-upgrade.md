@@ -1,3 +1,15 @@
+---
+title: "deprecated form method upgrade"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "deprecated form method upgrade"
+issues: []
+discussions: []
+status: draft
+---
+
 # Deprecated Form Method Upgrade
 
 ## Overview
@@ -28,3 +40,8 @@ This document records the upgrade from deprecated `->form()` method to `->schema
 ## Related Documentation
 - `Modules/Notify/docs/refactoring/ZEN_OF_SCHEMA.md` - Philosophy and reasoning
 - `Modules/Notify/docs/refactoring/send-notification-bulk-action.md` - Implementation guidelines
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

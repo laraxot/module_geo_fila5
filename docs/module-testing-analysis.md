@@ -1,3 +1,15 @@
+---
+title: "module testing analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "module testing analysis"
+issues: []
+discussions: []
+status: draft
+---
+
 # Analisi Completa Testing e Factory Moduli - <nome progetto>
 
 ## 📊 Panoramica Generale
@@ -360,19 +372,23 @@ Questo documento fornisce un'analisi completa dello stato attuale di factory, se
 - [Gdpr](../laravel/modules/gdpr/docs/module-analysis-complete.md)
 - [Tenant](../laravel/modules/tenant/docs/module-analysis-complete.md)
 - [Xot](../laravel/modules/xot/docs/module-analysis-complete.md)
-- [User](../laravel/modules/user/docs/module-analysis-complete.md)
+- [User](../../User/docs/module-analysis-complete.md)
 - [UI](../laravel/modules/ui/docs/module-analysis-complete.md)
-- [Geo](../laravel/modules/geo/docs/module-analysis-complete.md)
-- [Cms](../laravel/modules/cms/docs/module-analysis-complete.md)
-- [Notify](../laravel/modules/notify/docs/module-analysis-complete.md)
+- [Geo](module-analysis-complete.md)
+- [Cms](../../Cms/docs/module-analysis-complete.md)
+- [Notify](../../Notify/docs/module-analysis-complete.md)
 
 ### Documentazione Root
-- [README Principale](../readme.md)
+- [README Principale](../README.md)
 - [Analisi Testing](../../docs/module-testing-analysis.md)
 
 ---
-
 **Versione**: 2.1
 **Stato**: 100% moduli completati (14/14) ✅
 **Copertura Media**: 85%
 **Prossimo obiettivo**: Completamento factories e test unitari
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

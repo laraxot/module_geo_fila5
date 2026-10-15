@@ -1,3 +1,15 @@
+---
+title: "prd"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "prd"
+issues: []
+discussions: []
+status: draft
+---
+
 # Geo - Product Requirements Document (PRD)
 
 > Documento vivente. Modulo servizi geografici.
@@ -85,3 +97,8 @@ Il modulo $(basename $(dirname $(dirname "$prd"))) segue la **Metodologia "Super
 - **No RefreshDatabase**: Utilizzo di `DatabaseTransactions`.
 - **Obiettivo**: 100% di coverage. Se un test fallisce, va sistemato o eliminato se il sito è funzionale.
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

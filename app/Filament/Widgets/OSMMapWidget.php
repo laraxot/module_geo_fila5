@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Widgets;
 
-use Filament\Widgets\Widget;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Models\Place;
+use Modules\Xot\Filament\Widgets\XotBaseWidget;
 
 // use Webbingbrasil\FilamentMaps\Widgets\MapWidget; // Disabilitato per compatibilità Filament 4
 
@@ -16,7 +16,7 @@ use Modules\Geo\Models\Place;
  *
  * DISABILITATO per compatibilità con Filament 4
  */
-class OSMMapWidget extends Widget
+class OSMMapWidget extends XotBaseWidget
 {
     protected int|string|array $columnSpan = 'full';
 
@@ -34,7 +34,7 @@ class OSMMapWidget extends Widget
         $places = Place::with(['address', 'placeType'])->get();
 
         return $places
-            ->filter(fn (Place $place) => null !== $place->latitude && null !== $place->longitude)
+            ->filter(fn (Place $place) => $place->latitude !== null && $place->longitude !== null)
             ->map(function (Place $place): array {
                 $marker = [
                     'position' => [
@@ -46,7 +46,7 @@ class OSMMapWidget extends Widget
                 ];
 
                 $icon = $this->getMarkerIcon($place);
-                if (null !== $icon) {
+                if ($icon !== null) {
                     $marker['icon'] = $icon;
                 }
 
@@ -65,12 +65,7 @@ class OSMMapWidget extends Widget
     }
 
     /**
-     * @return array{markers: array<int, array{
-     *     position: array{lat: float, lng: float},
-     *     title: string,
-     *     content: string,
-     *     icon?: array{url: string, scaledSize: array{width: int, height: int}}
-     * }>, center: array{lat: float, lng: float}, zoom: int}
+     * @return array<string, mixed>
      */
     protected function getData(): array
     {
@@ -85,8 +80,7 @@ class OSMMapWidget extends Widget
     }
 
     /**
-     * @param Collection<int, Place> $places
-     *
+     * @param  Collection<int, Place>  $places
      * @return array{lat: float, lng: float}
      */
     protected function getMapCenter(Collection $places): array
@@ -105,7 +99,7 @@ class OSMMapWidget extends Widget
     }
 
     /**
-     * @param Collection<int, Place> $places
+     * @param  Collection<int, Place>  $places
      */
     protected function getMapZoom(Collection $places): int
     {

@@ -1,3 +1,15 @@
+---
+title: "form schema reuse"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "form schema reuse"
+issues: []
+discussions: []
+status: draft
+---
+
 # Riutilizzo degli Schemi Form tra Moduli
 
 ## Principio DRY nella Definizione dei Form
@@ -95,3 +107,8 @@ $addressSchema['locality'] = Forms\Components\TextInput::make('locality')
 - [pattern-filament-pages.md](../project_docs/pattern-filament-pages.md)
 - [AddressResource](../app/Filament/Resources/AddressResource.php)
 - [StudioResource](../../<main module>/app/Filament/Resources/StudioResource.php)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,3 +1,15 @@
+---
+title: "case conflicts"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "case conflicts"
+issues: []
+discussions: []
+status: draft
+---
+
 # Case-Insensitive File Conflicts
 
 Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dalla capitalizzazione. Va mantenuta una singola variante conforme agli standard Laraxot, aggiornando successivamente i riferimenti.
@@ -51,3 +63,8 @@ Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dal
 - `Modules/Geo/tests/Unit`: `PlaceTest.test`, `placetest.test`
 
 **Nota**: uniformare i nomi (ad es. mantenendo PascalCase per classi/Livewire, maiuscolo per file di policy/README) e rimuovere i duplicati non necessari.
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -12,14 +12,18 @@ use Modules\Geo\Datas\GoogleMaps\GoogleMapAddressComponentData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResponseData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResultData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
+use Modules\Geo\Support\GeoApiEndpoints;
 use Spatie\LaravelData\DataCollection;
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Gestisce le richieste e l'elaborazione delle risposte dell'API di geocodifica di Google Maps.
  */
 final class GetAddressFromGoogleMapsAction
 {
-    private const BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    use QueueableAction;
+
+    private const string BASE_URL = GeoApiEndpoints::GOOGLE_GEOCODING;
 
     /**
      * @throws GoogleMapsApiException Se la richiesta fallisce o i dati non sono validi
@@ -71,7 +75,7 @@ final class GetAddressFromGoogleMapsAction
         /** @var GoogleMapResponseData $responseData */
         $responseData = GoogleMapResponseData::from($response->json());
 
-        if (0 === $responseData->results->count()) {
+        if ($responseData->results->count() === 0) {
             throw GoogleMapsApiException::noResultsFound();
         }
 
@@ -83,7 +87,7 @@ final class GetAddressFromGoogleMapsAction
      */
     private function getFirstResult(GoogleMapResponseData $responseData): GoogleMapResultData
     {
-        $firstResult = $responseData->results->first();
+        $firstResult = $responseData->results->toCollection()->first();
 
         if (! $firstResult instanceof GoogleMapResultData) {
             throw GoogleMapsApiException::noResultsFound();
@@ -111,8 +115,8 @@ final class GetAddressFromGoogleMapsAction
     }
 
     /**
-     * @param DataCollection<int, GoogleMapAddressComponentData> $components
-     * @param array<string>                                      $types
+     * @param  DataCollection<int, GoogleMapAddressComponentData>  $components
+     * @param  array<string>  $types
      */
     private function getComponent(DataCollection $components, array $types, bool $short = false): ?string
     {

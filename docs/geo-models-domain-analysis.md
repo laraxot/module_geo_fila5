@@ -1,3 +1,15 @@
+---
+title: "geo models domain analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo models domain analysis"
+issues: []
+discussions: []
+status: draft
+---
+
 # Analisi dominio modelli Geo (`app/Models`)
 
 **Scopo**: mappare responsabilità, sovrapposizioni e raccomandazioni operative senza duplicare guide già presenti su singoli modelli (es. vari file `comune-*.md` nella stessa cartella: vanno consolidati a livello di processo, non in questo documento).
@@ -5,7 +17,6 @@
 **Riferimento codice**: `laravel/Modules/Geo/app/Models/`.
 
 ---
-
 ## 1. Panoramica rapida
 
 | Modello | Natura | Ruolo dominante |
@@ -97,3 +108,8 @@ Tabella dedicata ma classe **senza logica**: non è duplicato di `Comune`/`cap` 
 - [Indice modulo](./00-index.md)
 - [Filosofia modulo](./module-philosophy.md)
 - Documentazione storica su comuni (molti file con nomi simili): preferire un **unico** documento canonico in un refactor successivo della cartella `docs/`.
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

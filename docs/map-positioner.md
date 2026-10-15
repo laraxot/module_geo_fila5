@@ -1,3 +1,15 @@
+---
+title: "map positioner"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "map positioner"
+issues: []
+discussions: []
+status: draft
+---
+
 # MapPositioner (Filament v5)
 
 ## Overview
@@ -34,3 +46,8 @@ npx playwright screenshot --viewport-size=1024,768 http://localhost:8000/tests/m
 
 ---
 *Documentazione generata per LLM Wiki. Aprile 2026.*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

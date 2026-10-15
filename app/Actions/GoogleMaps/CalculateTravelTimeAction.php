@@ -9,10 +9,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\TravelTimeData;
+use Modules\Geo\Support\GeoApiEndpoints;
+use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
 use function Safe\json_decode;
-
-use Webmozart\Assert\Assert;
 
 /**
  * Action per calcolare il tempo di percorrenza tra due punti tramite Google Maps.
@@ -20,18 +21,20 @@ use Webmozart\Assert\Assert;
  * Questa classe utilizza l'API Google Maps Distance Matrix per calcolare
  * il tempo di percorrenza tra due località, considerando il traffico attuale.
  */
-readonly class CalculateTravelTimeAction
+class CalculateTravelTimeAction
 {
-    private const API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+    use QueueableAction;
+
+    private const string API_URL = GeoApiEndpoints::GOOGLE_DISTANCE_MATRIX;
 
     public function __construct(
-        private Client $client,
-    ) {
-    }
+        private readonly Client $client,
+    ) {}
 
     /**
      * Calcola il tempo di percorrenza tra due punti.
      *
+     * @throws \InvalidArgumentException Se i dati di input non sono validi
      * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(LocationData $origin, LocationData $destination): TravelTimeData
@@ -56,6 +59,7 @@ readonly class CalculateTravelTimeAction
     /**
      * Valida i dati di input.
      *
+     * @throws \InvalidArgumentException Se i dati di input non sono validi
      * @throws \RuntimeException Se la chiave API non è configurata o i dati non sono validi
      */
     private function validateInput(LocationData $origin, LocationData $destination): void
@@ -114,22 +118,22 @@ readonly class CalculateTravelTimeAction
          * } $data */
         $data = json_decode($response, true);
 
-        if (($data['status'] ?? null) !== 'OK') {
-            return TravelTimeData::error($data['status'] ?? 'INVALID_RESPONSE');
+        if (($data['status']) !== 'OK') {
+            return TravelTimeData::error($data['status']);
         }
 
-        $element = $data['rows'][0]['elements'][0] ?? null;
-        if (! $element || ($element['status'] ?? null) !== 'OK') {
-            return TravelTimeData::error($element['status'] ?? 'NO_ROUTE');
+        $element = $data['rows'][0]['elements'][0];
+        if (! $element || ($element['status']) !== 'OK') {
+            return TravelTimeData::error($element['status']);
         }
 
         return new TravelTimeData(
-            duration_seconds: (int) ($element['duration']['value'] ?? 0),
-            duration_in_traffic_seconds: (int) ($element['duration_in_traffic']['value'] ?? $element['duration']['value'] ?? 0),
-            distance_meters: (int) ($element['distance']['value'] ?? 0),
-            formatted_duration: (string) ($element['duration']['text'] ?? ''),
-            formatted_distance: (string) ($element['distance']['text'] ?? ''),
-            status: (string) ($data['status'] ?? 'ERROR'),
+            duration_seconds: (int) $element['duration']['value'],
+            duration_in_traffic_seconds: (int) ($element['duration_in_traffic']['value'] ?? $element['duration']['value']),
+            distance_meters: (int) $element['distance']['value'],
+            formatted_duration: (string) $element['duration']['text'],
+            formatted_distance: (string) $element['distance']['text'],
+            status: (string) $data['status'],
         );
     }
 }

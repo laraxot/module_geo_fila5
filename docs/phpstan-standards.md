@@ -1,10 +1,13 @@
 ---
+issues: []
+discussions: []
 title: PHPStan Standards - Geo Module
 type: technical
 tags: [phpstan, geo, models, getOptions]
 created: 2026-06-10
 updated: 2026-06-10
 qmd: docs/wiki/phpstan-geo-module.md
+status: draft
 ---
 
 # PHPStan Level 10 Standards - Geo Module
@@ -88,3 +91,8 @@ class Region extends BaseModel
 
 Last PHPStan Check: 2026-06-10
 Status: ✅ All getOptions() methods typed and verified
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

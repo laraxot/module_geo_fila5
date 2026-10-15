@@ -1,3 +1,15 @@
+---
+title: "coverage full"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "coverage full"
+issues: []
+discussions: []
+status: draft
+---
+
 
    PASS  Modules\Geo\tests\Feature\AddressIntegrationTest
   ✓ Address Integration → it can attach address to patient via polymorphic relationship
@@ -2043,3 +2055,8 @@
   Tests:    100 failed, 21 warnings, 52 passed (219 assertions)
   Duration: 10.71s
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

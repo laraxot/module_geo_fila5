@@ -1,3 +1,15 @@
+---
+title: "conflict resolution fixes"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "conflict resolution fixes"
+issues: []
+discussions: []
+status: draft
+---
+
 # Risoluzione Conflitti Git - Modulo Geo
 
 ## Panoramica
@@ -54,3 +66,8 @@ use Filament\Tables\Table;
 - [Script Risoluzione Conflitti](../../../bashscripts/docs/conflict_resolution_script_improvements.md)
 - [Report Completo PHPStan Fixes](../../../bashscripts/docs/phpstan_fixes_comprehensive_report.md)
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

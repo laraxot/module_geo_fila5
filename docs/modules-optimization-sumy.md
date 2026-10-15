@@ -1,3 +1,14 @@
+---
+title: "modules optimization sumy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modules optimization sumy"
+issues: []
+discussions: []
+---
+
 # Riepilogo Analisi Ottimizzazione - Tutti i Moduli <nome progetto>
 # Riepilogo Analisi Ottimizzazione - Tutti i Moduli <nome progetto>
 
@@ -10,6 +21,14 @@ Analisi completa di **14 moduli** del sistema <nome progetto> con identificazion
 
 ---
 
+title: "modules optimization sumy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modules optimization sumy"
+issues: []
+discussions: []
 ## 🚨 Problemi Critici Trasversali
 
 ### 1. **VIOLAZIONI DRY (Don't Repeat Yourself)**
@@ -197,21 +216,21 @@ php artisan docs:validate
 ### Moduli Principali
 - [<nome progetto> - Core Business](../modules/<nome progetto>/docs/optimization-analysis.md)
 - [<nome progetto> - Core Business](../modules/<nome progetto>/docs/optimization-analysis.md)
-- [User - Authentication](../modules/user/docs/optimization-analysis.md)
+- [User - Authentication](../../User/docs/optimization-analysis.md)
 - [Xot - Framework Base](../modules/xot/docs/optimization-analysis.md)
 - [UI - Interface Components](../modules/ui/docs/optimization-analysis.md)
-- [Tenant - Multi-Tenancy](../modules/tenant/docs/optimization-analysis.md)
+- [Tenant - Multi-Tenancy](../../Tenant/docs/optimization-analysis.md)
 
 ### Moduli di Supporto
-- [Activity - Logging](../modules/activity/docs/optimization-analysis.md)
-- [Geo - Geolocation](../modules/geo/docs/optimization-analysis.md)
-- [Gdpr - Privacy](../modules/gdpr/docs/optimization-analysis.md)
-- [Media - File Management](../modules/media/docs/optimization-analysis.md)
-- [Lang - Translations](../modules/lang/docs/optimization-analysis.md)
-- [Notify - Notifications](../modules/notify/docs/optimization-analysis.md)
+- [Activity - Logging](../../Activity/docs/optimization-analysis.md)
+- [Geo - Geolocation](optimization-analysis.md)
+- [Gdpr - Privacy](../../Gdpr/docs/optimization-analysis.md)
+- [Media - File Management](../../Media/docs/optimization-analysis.md)
+- [Lang - Translations](../../Lang/docs/optimization-analysis.md)
+- [Notify - Notifications](../../Notify/docs/optimization-analysis.md)
 
 ### Documentazione Generale
-- [SOLID Principles](./solid-principles.md)
+- [SOLID Principles](./claude/solid-principles.md)
 - [Performance Best Practices](./performance-best-practices.md)
 - [Security Guidelines](./security-guidelines.md)
 - [Testing Strategy](./testing-strategy.md)
@@ -242,3 +261,8 @@ Il sistema <nome progetto> presenta una **architettura solida** con il framework
 *Analisi: 14 moduli, 50+ problemi identificati*
 *Principi: DRY + KISS + SOLID + ROBUST + Laraxot*
 *Stato: 📋 Roadmap Completa per Ottimizzazione Sistemica*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

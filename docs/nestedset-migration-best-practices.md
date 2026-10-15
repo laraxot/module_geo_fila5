@@ -1,3 +1,15 @@
+---
+title: "nestedset migration best practices"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "nestedset migration best practices"
+issues: []
+discussions: []
+status: draft
+---
+
 # NestedSet Migration Best Practices - Geo Module
 
 ## Overview
@@ -429,3 +441,8 @@ public function setLatitudeAttribute($value)
 - [Documentazione principale](/docs/migration/nestedset-best-practices.md)
 - [Geo Module Architecture](/docs/architecture/geo-module.md)
 - [AddressItemEnum Guide](/docs/address-item-enum-guide.md)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

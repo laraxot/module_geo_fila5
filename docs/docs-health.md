@@ -1,3 +1,15 @@
+---
+title: "docs health"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "docs health"
+issues: []
+discussions: []
+status: draft
+---
+
 # Docs Health - Geo
 
 ## Snapshot
@@ -29,3 +41,8 @@
 
 ---
 Generated during docs confidence hardening batch (2026-03-07).
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

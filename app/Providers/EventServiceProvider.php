@@ -19,6 +19,8 @@ class EventServiceProvider extends XotBaseEventServiceProvider
 
     /**
      * Indicates if events should be discovered.
+     *
+     * @var bool
      */
     protected static $shouldDiscoverEvents = true;
 
@@ -26,7 +28,5 @@ class EventServiceProvider extends XotBaseEventServiceProvider
      * Configure the proper event listeners for email verification.
      */
     #[\Override]
-    protected function configureEmailVerification(): void
-    {
-    }
+    protected function configureEmailVerification(): void {}
 }

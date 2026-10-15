@@ -1,3 +1,15 @@
+---
+title: "architectural philosophy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "architectural philosophy"
+issues: []
+discussions: []
+status: draft
+---
+
 # 🏛️ Architectural Philosophy - Geo Module
 
 ## 🎯 Core Principles
@@ -216,7 +228,20 @@ $success = $action->execute($client);
 ---
 
 
+title: "architectural philosophy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "architectural philosophy"
+issues: []
+discussions: []
 **Architectural Version**: 2.0
 **Compliance**: PHPStan Level 10 ✅
 **Patterns**: Strategy, Command, Adapter, Observer ✅
 **Principles**: SoC, DRY, Interface Segregation ✅
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

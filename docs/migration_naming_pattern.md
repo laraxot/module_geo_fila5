@@ -1,3 +1,15 @@
+---
+title: "migration naming pattern"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "migration naming pattern"
+issues: []
+discussions: []
+status: draft
+---
+
 # Convenzione di Naming e Gestione delle Migrazioni
 
 ## Pattern del Progetto <main module>
@@ -81,3 +93,8 @@ $this->tableUpdate(
 - [XotBaseMigration](../../../Xot/database/migrations/XotBaseMigration.php)
 - [Documentazione Laravel sulle Migrazioni](https://laravel.com/project_docs/migrations)
 - [Xot Module Documentation Standards](../../../xot/project_docs/documentation-standards.md)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

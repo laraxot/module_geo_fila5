@@ -1,3 +1,15 @@
+---
+title: "refactoring bashscriptsatabase seeding"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "refactoring bashscriptsatabase seeding"
+issues: []
+discussions: []
+status: draft
+---
+
 # Refactoring Bashscripts Database Seeding - Rimozione Riferimenti Specifici Progetto
 
 ## Executive Summary
@@ -222,3 +234,8 @@ La cartella bashscripts è ora veramente condivisibile tra progetti diversi, ris
 *Intervento completato: Gennaio 2025*
 *Validato: PHPStan livello 9, documentazione completa*
 *Status: ✅ Produzione ready*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

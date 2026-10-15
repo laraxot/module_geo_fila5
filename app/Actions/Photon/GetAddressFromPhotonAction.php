@@ -9,10 +9,12 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\Photon\PhotonAddressData;
+use Modules\Xot\Actions\Cast\SafeFloatCastAction;
+use Modules\Xot\Actions\Cast\SafeIntCastAction;
+use Spatie\QueueableAction\QueueableAction;
+use Webmozart\Assert\Assert;
 
 use function Safe\json_decode;
-
-use Webmozart\Assert\Assert;
 
 /**
  * Action per ottenere l'indirizzo e le coordinate tramite Photon.
@@ -20,14 +22,15 @@ use Webmozart\Assert\Assert;
  * Questa classe utilizza l'API Photon per convertire
  * un indirizzo in coordinate geografiche e dettagli dell'indirizzo.
  */
-readonly class GetAddressFromPhotonAction
+class GetAddressFromPhotonAction
 {
-    private const API_URL = 'https://photon.komoot.io/api';
+    use QueueableAction;
+
+    private const string API_URL = 'https://photon.komoot.io/api';
 
     public function __construct(
-        private Client $client,
-    ) {
-    }
+        private readonly Client $client,
+    ) {}
 
     /**
      * Ottiene i dettagli dell'indirizzo utilizzando Photon.
@@ -51,11 +54,11 @@ readonly class GetAddressFromPhotonAction
             $longitude = $photonData->coordinates['longitude'] ?? 0.0;
 
             return new AddressData(
-                latitude: is_float($latitude) ? $latitude : (float) $latitude,
-                longitude: is_float($longitude) ? $longitude : (float) $longitude,
+                latitude: SafeFloatCastAction::cast($latitude),
+                longitude: SafeFloatCastAction::cast($longitude),
                 country: $photonData->country,
                 city: $photonData->city,
-                postal_code: (int) ($photonData->postcode ?: 0),
+                postal_code: SafeIntCastAction::cast($photonData->postcode ?: 0),
                 street: $photonData->street,
                 street_number: $photonData->housenumber,
             );

@@ -1,3 +1,15 @@
+---
+title: "update coordinates refactoring completed"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "update coordinates refactoring completed"
+issues: []
+discussions: []
+status: draft
+---
+
 # Refactoring Update Coordinates Bulk Action
 
 **Date**: 18 Dicembre 2025
@@ -114,5 +126,9 @@ This refactoring aligns with:
 - Action can be configured with additional options for different use cases
 
 ---
-
 *Documento conforme agli standard Laraxot - DRY + KISS + SOLID*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

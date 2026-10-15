@@ -1,3 +1,15 @@
+---
+title: "comune sushi implementation"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "comune sushi implementation"
+issues: []
+discussions: []
+status: draft
+---
+
 # Implementazione Sushi per il Modello Comune
 
 ## Descrizione
@@ -178,3 +190,8 @@ class Comune extends Model
 
 ## Regola: evitare trait inutili e non riusabili
 Non ha senso creare un trait come ComuneSushiTrait se viene usato solo in un modello. I trait vanno creati solo se riutilizzati in più classi. Se la logica è specifica di un solo modello, va implementata direttamente nella classe. Motivazione: semplicità, KISS, manutenibilità, evitare complessità inutile. Collegamento a docs/structure.md e best practices.
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

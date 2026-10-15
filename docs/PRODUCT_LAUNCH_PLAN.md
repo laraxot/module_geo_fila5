@@ -1,3 +1,15 @@
+---
+title: "PRODUCT LAUNCH PLAN"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "PRODUCT LAUNCH PLAN"
+issues: []
+discussions: []
+status: draft
+---
+
 # Geo Module - Product Launch Plan
 
 **Module:** Geo  
@@ -5,7 +17,6 @@
 **Owner:** Product Team
 
 ---
-
 ## Launch Objectives
 
 1. **Product:** Deploy IP geolocation service
@@ -79,3 +90,8 @@
 
 ---
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

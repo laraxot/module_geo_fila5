@@ -1,3 +1,15 @@
+---
+title: "migration morphs strategy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "migration morphs strategy"
+issues: []
+discussions: []
+status: draft
+---
+
 # Strategia Migrazioni e Morphs Polymorphic - <nome progetto>
 
 ## Principio Architetturale Fondamentale
@@ -163,9 +175,14 @@ Schema::table('activity_log', function($table) { /* stessa logica */ });
 
 ## Collegamenti
 
-- [Modules/Activity/docs/database/migrations.md](../laravel/modules/activity/docs/database/migrations.md)
+- [Modules/Activity/docs/database/migrations.md](../../Activity/docs/database/migrations.md)
 - [.cursor/rules/migration-morphs-polymorphic.md](../.cursor/rules/migration-morphs-polymorphic.md)
 - [.cursor/rules/migration-complete-rules.mdc](../.cursor/rules/migration-complete-rules.mdc)
 
 *Autore: Sistema di AI Learning <nome progetto>*
 *Motivazione: Comprensione profonda architettura morphs polymorphic*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

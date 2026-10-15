@@ -1,3 +1,15 @@
+---
+title: "location spinner ux"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "location spinner ux"
+issues: []
+discussions: []
+status: draft
+---
+
 # Location Spinner UX Pattern
 
 ## Overview
@@ -5,7 +17,6 @@
 The AddressInput component provides **immediate visual feedback** when the user clicks "Use your position" by showing a spinner icon. This prevents the "did it work?" uncertainty that leads to double-clicks, frustration, and poor UX.
 
 ---
-
 ## Philosophy
 
 ### The Problem (Before)
@@ -243,3 +254,8 @@ For consistency, **prefer** these components in new Blade views. The AddressInpu
 - [Tailwind Animations](https://tailwindcss.com/docs/animation)
 - [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
 - [Nominatim Reverse Geocoding](https://nominatim.org/release-docs/develop/api/Reverse/)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

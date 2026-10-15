@@ -1,3 +1,15 @@
+---
+title: "sushi implementation analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "sushi implementation analysis"
+issues: []
+discussions: []
+status: draft
+---
+
 # Analisi Implementazione Comune con Laravel Sushi
 
 ## Indice
@@ -288,3 +300,8 @@ Basandoci sull'analisi, raccomandiamo l'adozione di Laravel Sushi per il modello
 - [Guida alla Migrazione](migration-guide.md)
 - [Benchmark Dettagliati](benchmarks/readme.md)
 - [Documentazione GeoJsonModel](geo-json-model.md)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,3 +1,15 @@
+---
+title: "roadmap"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "roadmap"
+issues: []
+discussions: []
+status: draft
+---
+
 # Roadmap (Module Geo)
 
 ## Current roadmap
@@ -13,7 +25,7 @@
 - [phpstan-bing-maps-action-fix-roadmap.md](phpstan-bing-maps-action-fix-roadmap.md)
 - [phpstan-error-resolution-roadmap.md](phpstan-error-resolution-roadmap.md)
 - [phpstan-errors-resolution-roadmap.md](phpstan-errors-resolution-roadmap.md)
-- [phpstan-errors-roadmap-2026-01-12.md](phpstan-errors-roadmap-2026-01-12.md)
+- [phpstan-errors-roadmap-2026-01-12.md](phpstan-errors-roadmap.md)
 - [phpstan-errors-roadmap.md](phpstan-errors-roadmap.md)
 - [phpstan-fixes-roadmap.md](phpstan-fixes-roadmap.md)
 - [phpstan-roadmap-geo.md](phpstan-roadmap-geo.md)
@@ -36,3 +48,8 @@
 - [roadmap/quality.md](roadmap/quality.md)
 - [roadmap/vision.md](roadmap/vision.md)
 - [stabilization-roadmap.md](stabilization-roadmap.md)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

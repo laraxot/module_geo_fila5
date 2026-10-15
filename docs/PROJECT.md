@@ -1,3 +1,15 @@
+---
+title: "PROJECT"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "PROJECT"
+issues: []
+discussions: []
+status: draft
+---
+
 ## Modifiche Recenti
 
 ### Uso di Spatie Queable Actions
@@ -16,3 +28,7 @@ $coordinates = $action->execute('1600 Amphitheatre Parkway, Mountain View, CA');
 ```
 
 Questa modifica è stata applicata anche in `UpdateCoordinatesAction`, dove ora utilizziamo `GetCoordinatesAction` per aggiornare le coordinate di un luogo. 
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,3 +1,15 @@
+---
+title: "laravel packages integration"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "laravel packages integration"
+issues: []
+discussions: []
+status: draft
+---
+
 # laravel_packages
 
 <!-- Contenuto migrato da _docs/laravel_packages.txt -->
@@ -86,3 +98,8 @@ https://ourcodeworld.com/articles/read/1019/how-to-find-nearest-locations-from-a
 -----------------------------------------------
 -----------------------------------------------
 -----------------------------------------------
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,3 +1,15 @@
+---
+title: "address autocomplete"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address autocomplete"
+issues: []
+discussions: []
+status: draft
+---
+
 https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform?hl=it#maps_places_autocomplete_addressform-css
 https://developers.google.com/maps/documentation/javascript/places-autocomplete
 
@@ -32,3 +44,8 @@ https://www.w3docs.com/learn-javascript/places-autocomplete.html
 
 
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

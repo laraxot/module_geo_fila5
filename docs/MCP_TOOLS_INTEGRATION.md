@@ -1,3 +1,15 @@
+---
+title: "MCP TOOLS INTEGRATION"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "MCP TOOLS INTEGRATION"
+issues: []
+discussions: []
+status: draft
+---
+
 # MCP Tools Integration — Geo Module
 
 **Data:** 2026-06-03  
@@ -5,7 +17,6 @@
 **Related:** `docs/mcp-tools-master-guide.md`
 
 ---
-
 ## Overview
 
 This document describes how MCP (Model Context Protocol) tools integrate with the Geo module for enhanced UI/UX development.
@@ -205,3 +216,8 @@ Copy relevant configs from project root `docs/`:
 **Status:** Documented and ready for integration
 
 **Last Updated:** 2026-06-03
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

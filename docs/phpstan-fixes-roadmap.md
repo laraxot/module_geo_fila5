@@ -1,3 +1,15 @@
+---
+title: "phpstan fixes roadmap"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan fixes roadmap"
+issues: []
+discussions: []
+status: draft
+---
+
 # PHPStan Level 10 Fixes Roadmap - Modulo Geo
 
 **Data Creazione**: [DATE]  
@@ -85,3 +97,8 @@ private function extractLocationFromResponse(array $response): array
 
 - [PHPStan Array Types](https://phpstan.org/writing-php-code/phpdoc-types#array-types)
 - [Array Shapes in PHPStan](https://phpstan.org/writing-php-code/phpdoc-types#array-shapes)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

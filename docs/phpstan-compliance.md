@@ -1,3 +1,15 @@
+---
+title: "phpstan compliance"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "phpstan compliance"
+issues: []
+discussions: []
+status: draft
+---
+
 # PHPStan Compliance - Geo Module
 
 ## Status: ✅ FULLY COMPLIANT
@@ -43,3 +55,8 @@ The module maintains:
 - Comprehensive type hints
 - Geospatial data handling best practices
 - Modern PHP 8.2+ feature utilization
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

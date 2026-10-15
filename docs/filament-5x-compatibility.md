@@ -1,3 +1,15 @@
+---
+title: "filament 5x compatibility"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "filament 5x compatibility"
+issues: []
+discussions: []
+status: draft
+---
+
 # Filament 5.x compatibility - modulo Geo
 
 **Versione Filament:** v5.2.1
@@ -50,3 +62,8 @@ Questo evita errori di `ComponentNotFoundException` nelle architetture modulari.
 - [Guida upgrade Filament 5 (Xot)](../../Xot/docs/filament-5-upgrade-guide.md)
 - [Regole Laraxot per Filament 5 (Xot)](../../Xot/docs/filament-5-laraxot-rules.md)
 - [Documentazione ufficiale](https://filamentphp.com/docs/5.x/upgrade-guide)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

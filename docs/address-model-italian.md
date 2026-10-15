@@ -1,3 +1,15 @@
+---
+title: "address model italian"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address model italian"
+issues: []
+discussions: []
+status: draft
+---
+
 # Modello Address per Indirizzi Italiani
 
 ## Struttura Amministrativa Italiana
@@ -339,3 +351,8 @@ Per supportare gli indirizzi italiani in un contesto multilingua:
 ## Conclusione
 
 La corretta gestione degli indirizzi italiani richiede una struttura dedicata che rispetti la suddivisione amministrativa del paese. Il modello `Address` proposto, con i campi e le relazioni specifiche per regioni, province e comuni italiani, fornisce una base solida per implementare un sistema di indirizzi completo e conforme agli standard italiani.
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

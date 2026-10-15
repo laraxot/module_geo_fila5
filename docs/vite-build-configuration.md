@@ -1,9 +1,20 @@
+---
+title: "vite build configuration"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "vite build configuration"
+issues: []
+discussions: []
+status: draft
+---
+
 # Geo Module Vite Build Configuration
 
 > Configurazione Vite 7.x + Tailwind 4.x per moduli Laraxot
 
 ---
-
 ## Stato Attuale
 
 ✅ **Build funzionante** - 2026-04-27
@@ -258,3 +269,8 @@ Verifica:
 **Data**: 2026-04-27
 **Modulo**: Geo
 **Stato**: ✅ Build funzionante
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

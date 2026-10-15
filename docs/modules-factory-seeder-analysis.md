@@ -1,3 +1,15 @@
+---
+title: "modules factory seeder analysis"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modules factory seeder analysis"
+issues: []
+discussions: []
+status: draft
+---
+
 # Complete Modules Factory & Seeder Analysis
 
 ## Summary Status by Module
@@ -158,3 +170,8 @@ The application has **excellent factory coverage** with 117 factories covering a
 **Minor Gaps:**
 - Need more seeders for integration testing
 - Some geographic model consolidation opportunities
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

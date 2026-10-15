@@ -1,3 +1,15 @@
+---
+title: "redundancy report"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "redundancy report"
+issues: []
+discussions: []
+status: draft
+---
+
 # Redundancy Report – Geo Module
 
 ## 1. Duplicate Alpine Global Function `geoMapPickerField`
@@ -14,3 +26,8 @@
 - Update the Blade shim to reference the shared module (`import … from '@modules/geo/...';`).
 
 *No other code-level redundancies were identified in the Geo module at this depth.*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

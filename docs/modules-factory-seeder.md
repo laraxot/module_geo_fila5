@@ -1,3 +1,15 @@
+---
+title: "modules factory seeder"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "modules factory seeder"
+issues: []
+discussions: []
+status: draft
+---
+
 # Analisi Completa Modelli, Factory e Seeder - Sistema <nome progetto>
 
 ## Riepilogo Generale
@@ -150,3 +162,8 @@ Il sistema <nome progetto> ha una **copertura factory del 100%** per tutti i mod
 ---
 *Analisi completa sistema: 12/14 moduli (86% completato)*
 *Analizzato da: Sistema di analisi automatica moduli*
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

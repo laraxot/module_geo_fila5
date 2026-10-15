@@ -1,3 +1,15 @@
+---
+title: "model inheritance pattern"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "model inheritance pattern"
+issues: []
+discussions: []
+status: draft
+---
+
 # Principio di Ereditarietà nei Modelli
 
 ## Analisi del Pattern di Ereditarietà
@@ -150,3 +162,8 @@ In essenza, estendere `BaseModel` è un atto di rispetto verso:
 - I principi di design
 - I futuri sviluppatori
 - L'armonia dell'intero sistema
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

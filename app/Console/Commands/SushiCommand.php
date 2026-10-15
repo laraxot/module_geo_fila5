@@ -15,11 +15,15 @@ class SushiCommand extends Command
 {
     /**
      * The name and signature of the console command.
+     *
+     * @var string
      */
     protected $signature = 'sushi:manage {action : L\'azione da eseguire (refresh|clear|status)}';
 
     /**
      * The console command description.
+     *
+     * @var string
      */
     protected $description = 'Gestisce il database SQLite di Sushi';
 
@@ -126,7 +130,7 @@ class SushiCommand extends Command
     /**
      * Valida i dati di un comune.
      *
-     * @param array<mixed, mixed> $comune
+     * @param  array<mixed, mixed>  $comune
      */
     protected function isValidComuneData(array $comune): bool
     {

@@ -17,6 +17,8 @@ class MapPositioner extends XotBaseField
 {
     use HasCoordinatePicker;
 
+    protected string $view = 'geo::filament.forms.components.map-positioner';
+
     protected function setUp(): void
     {
         parent::setUp();

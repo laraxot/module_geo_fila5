@@ -8,8 +8,7 @@ class FilterCoordinatesInRadius
 {
     // filtra Coordinate In Raggio
     /**
-     * @param array<string|int, array{latitude: string|null, longitude: string|null}> $coordinateArray
-     *
+     * @param  array<string|int, array{latitude: string|null, longitude: string|null}>  $coordinateArray
      * @return array<string|int, array{latitude: string|null, longitude: string|null}>
      */
     public function execute(float $latPartenza, float $lonPartenza, array $coordinateArray, int $raggio): array
@@ -21,8 +20,8 @@ class FilterCoordinatesInRadius
                 continue; // Skip non-array elements
             }
 
-            $lat = $coordinate['latitude'] ?? null;
-            $lon = $coordinate['longitude'] ?? null;
+            $lat = $coordinate['latitude'];
+            $lon = $coordinate['longitude'];
 
             if (! is_string($lat) || ! is_string($lon)) {
                 continue; // Skip if coordinates are not strings

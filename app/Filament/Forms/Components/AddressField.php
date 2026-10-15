@@ -34,22 +34,18 @@ class AddressField extends Section
     }
 
     /**
-     * @return array<string, Component>
+     * @return array<int|string, Component>
      */
     protected function getAddressFormSchema(): array
     {
-        $baseSchema = [];
+        $baseSchema = app(AddressResource::class)->getFormSchema();
 
-        foreach (AddressResource::getFormSchema() as $key => $component) {
-            if (in_array($key, ['name', 'is_primary'], true) || ! $component instanceof Component) {
-                continue;
-            }
+        // Rimuovi campi non necessari per relazioni semplici
+        unset($baseSchema['name'], $baseSchema['is_primary']);
 
-            $baseSchema[$key] = $component;
-        }
-
+        // Se i live updates sono disabilitati, rimuovi la reattività
         if ($this->disableLiveUpdates) {
-            return $this->removeReactivityFromSchema($baseSchema);
+            $baseSchema = $this->removeReactivityFromSchema($baseSchema);
         }
 
         return $baseSchema;
@@ -58,28 +54,15 @@ class AddressField extends Section
     /**
      * Rimuove tutti i pattern reattivi dai campi per prevenire loop infiniti.
      *
-     * @param array<string, Component> $schema
-     *
-     * @return array<string, Component>
+     * @param  array<int|string, Component>  $schema
+     * @return array<int|string, Component>
      */
     protected function removeReactivityFromSchema(array $schema): array
     {
         foreach ($schema as $key => $field) {
-            if (method_exists($field, 'live')) {
-                // Rimuovi reattività live
-                $field->live(false);
-            }
-
-            if (method_exists($field, 'afterStateUpdated')) {
-                // Rimuovi callback afterStateUpdated
-                $field->afterStateUpdated(null);
-            }
-
-            if (method_exists($field, 'disabled')) {
-                // Rimuovi condizioni disabled dinamiche
-                $field->disabled(false);
-            }
-
+            $field->live(false);
+            $field->afterStateUpdated(null);
+            $field->disabled(false);
             $schema[$key] = $field;
         }
 

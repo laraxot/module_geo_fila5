@@ -1,13 +1,21 @@
-# CRITICAL ARCHITECTURE RULE: NO MIGRATE:FRESH
+---
+title: "rules testing no migrate fresh"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "rules testing no migrate fresh"
+issues: []
+discussions: []
+module: theme
+topic: rules-testing-no-migrate-fresh
+canonical: ../../../Themes/docs/shared-components/rules-testing-no-migrate-fresh.md
+status: stub
+---
 
-## Rule
-**NEVER** use `migrate:fresh` or the `RefreshDatabase` trait in any test or setup script within this modular architecture (Laraxot).
+See canonical documentation: ../../../Themes/docs/shared-components/rules-testing-no-migrate-fresh.md
 
-## Why?
-1. **Destructive**: It destroys all tables across the default database connection.
-2. **Tenant/Module Coupling**: In a modular application, tables are meant to be isolated. Wiping the entire database crashes other concurrently running tests or removes shared look-up tables that are not seeded correctly per-module.
-3. **Data Loss**: Running tests with `RefreshDatabase` against a shared testing database will indiscriminately destroy other modules' data.
-
-## Correct Approach
-- Only use `DatabaseTransactions` to rollback state after tests.
-- Maintain strict database boundaries.
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

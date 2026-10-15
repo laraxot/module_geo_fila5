@@ -1,3 +1,15 @@
+---
+title: "location select"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "location select"
+issues: []
+discussions: []
+status: draft
+---
+
 # Location Select Component
 
 ## Overview
@@ -386,3 +398,8 @@ use Modules\Geo\Filament\Forms\LocationForm;
 Non utilizzare mai `Modules\Geo\App\Filament\Forms\LocationForm`.
 
 > Aggiornare sempre la documentazione e i file .mdc windsurf/cursor in caso di modifica del path o del namespace.
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

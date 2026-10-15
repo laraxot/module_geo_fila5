@@ -1,3 +1,15 @@
+---
+title: "windsurf rules update"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "windsurf rules update"
+issues: []
+discussions: []
+status: draft
+---
+
 # Windsurf Rules Update - Forbidden Documentation Directories
 
 ## Rule to Add to .windsurf/rules/
@@ -46,3 +58,8 @@ ls -la ../docs_project/ # Should contain moved files
 ```
 
 The forbidden documentation directories have been successfully removed and the rule has been documented and implemented.
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

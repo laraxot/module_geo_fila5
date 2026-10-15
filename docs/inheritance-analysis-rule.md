@@ -1,3 +1,15 @@
+---
+title: "inheritance analysis rule"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "inheritance analysis rule"
+issues: []
+discussions: []
+status: draft
+---
+
 # Inheritance Analysis Rule - Critical Requirement
 
 ## Critical Rule
@@ -97,3 +109,8 @@ Before committing any model changes:
 - [Model Extension Rules](model-extension-rules.md)
 - [DRY Principles](dry-principles.md)
 - [Laraxot Architecture](laraxot-architecture.md)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

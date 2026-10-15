@@ -1,3 +1,15 @@
+---
+title: "geo actions sumy"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "geo actions sumy"
+issues: []
+discussions: []
+status: draft
+---
+
 # Geo Actions Summary
 
 ## Overview
@@ -101,3 +113,8 @@ For detailed implementation guides and advanced usage, see:
 - `docs/actions/` directory for action-specific documentation
 - `docs/services/` for service layer documentation
 - Language files in `lang/it/actions.php` for UI translations
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

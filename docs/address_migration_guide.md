@@ -1,3 +1,15 @@
+---
+title: "address migration guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "address migration guide"
+issues: []
+discussions: []
+status: draft
+---
+
 # Guida alla Migrazione del Modello Address
 
 ## Struttura della Tabella Indirizzi
@@ -130,3 +142,8 @@ La scelta di evitare il prefisso `address_` nei campi della tabella `addresses` 
 5. **Rende il codice più manutenibile**
 
 Questa struttura, combinata con l'uso di `nullableMorphs('addressable')` per la relazione polimorfica, fornisce un modello Address flessibile e riutilizzabile in diversi contesti applicativi.
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

@@ -1,3 +1,15 @@
+---
+title: "coordinate picker purpose"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "coordinate picker purpose"
+issues: []
+discussions: []
+status: draft
+---
+
 # Scopo e Utilità del Coordinate Picker nella Creazione Ticket
 
 ## Overview
@@ -48,7 +60,6 @@ Seguendo il principio **DRY (Don't Repeat Yourself)** e le regole Laraxot, tutti
 - **Consistenza**: Stessa UI in tutto il sistema
 
 ---
-
 ## 🎨 SVG Icon Architecture (NO Hardcoded SVG)
 
 ### ❌ DON'T - SVG Inline Hardcoded
@@ -242,13 +253,17 @@ $table->geometry('location_point', 'POINT')->nullable(); // PostGIS
 
 ## 📚 References
 
-- [TicketForm Schema](../../Modules/Fixcity/app/Filament/Resources/TicketResource/Schemas/TicketForm.php)
-- [CoordinatePicker Component](../../Modules/Geo/app/Filament/Forms/Components/CoordinatePicker.php)
-- [Lit Component JS](../../Modules/Geo/resources/js/components/coordinate-picker-lit.js)
-- [Blade View](../../Modules/Geo/resources/views/filament/forms/components/coordinate-picker.blade.php)
+- [TicketForm Schema](../../Fixcity/app/Filament/Resources/TicketResource/Schemas/TicketForm.php)
+- [CoordinatePicker Component](../app/Filament/Forms/Components/CoordinatePicker.php)
+- [Lit Component JS](../resources/js/components/coordinate-picker-lit.js)
+- [Blade View](../resources/views/filament/forms/components/coordinate-picker.blade.php)
 
 ---
 
 **Ultimo aggiornamento**: 2026-04-27
 **Autore**: System
 **Scopo**: Documentazione architetturale per AI agents e developers
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

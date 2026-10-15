@@ -1,3 +1,15 @@
+---
+title: "enums implementation"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "enums implementation"
+issues: []
+discussions: []
+status: draft
+---
+
 # Implementazione degli Enum nel Modulo Geo
 
 ## Introduzione
@@ -131,3 +143,8 @@ $request->validate([
 - [Documentazione PHP sugli Enum](https://www.php.net/manual/en/language.enumerations.php)
 - [Filament Enums Docs](https://filamentphp.com/project_docs/3.x/support/enums)
 - [Best Practices Enum](enums-best-practices.md) 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

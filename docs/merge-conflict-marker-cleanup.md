@@ -1,3 +1,15 @@
+---
+title: "merge conflict marker cleanup"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "merge conflict marker cleanup"
+issues: []
+discussions: []
+status: draft
+---
+
 # Merge Conflict Marker Cleanup
 
 > Updated: 2026-04-21
@@ -25,3 +37,8 @@ php -l Modules/Geo/app/Actions/Maps/BuildGeoMapWidgetPayloadAction.php
 php -l Modules/Geo/lang/it/map-picker.php
 ```
 
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

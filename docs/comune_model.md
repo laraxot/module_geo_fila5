@@ -1,3 +1,15 @@
+---
+title: "comune model"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "comune model"
+issues: []
+discussions: []
+status: draft
+---
+
 # Modello Comune
 
 ## Introduzione
@@ -153,3 +165,8 @@ Comune::clearCache();
 - [GeoJsonModel](geo-json-model.md)
 - [Struttura Dati Geografici](geo-entities.md)
 - [Guida alla Migrazione](migration-guide.md)
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).

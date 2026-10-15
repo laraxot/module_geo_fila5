@@ -1,3 +1,14 @@
+---
+title: "legacy roadmap and issues"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "legacy roadmap and issues"
+issues: []
+discussions: []
+---
+
 # Geo Module - Roadmap, Issues & Optimization
 
 **Modulo**: Geo (Geographic Data & Maps)
@@ -6,6 +17,14 @@
 
 ---
 
+title: "legacy roadmap and issues"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "legacy roadmap and issues"
+issues: []
+discussions: []
 ## 📊 STATO ATTUALE
 
 ### Completezza Funzionale: 80%
@@ -145,9 +164,9 @@ Cache::remember("geocode:{$address}", 3600, function() use ($address) {
 
 ## 🔗 Collegamenti
 
-- [← Geo Module README](../readme.md)
-- [← Fixcity Integration](../../fixcity/docs/roadmap-and-issues.md)
-- [← Root Documentation](../../../../docs/index.md)
+- [← Geo Module README](../README.md)
+- [← Fixcity Integration](../../roadmap-and-issues.md)
+- [← Root Documentation](../../index.md)
 
 ---
 

@@ -1,3 +1,15 @@
+---
+title: "link3 integration"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "link3 integration"
+issues: []
+discussions: []
+status: draft
+---
+
 # link3
 
 <!-- Contenuto migrato da _docs/link3.txt -->
@@ -24,3 +36,8 @@ app('geocoder')->geocode('8.8.8.8')->get();
 app('geocoder')->reverse(43.882587,-103.454067)->get();
 
 --------------------------------------------------------
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
