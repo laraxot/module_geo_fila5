@@ -27,8 +27,12 @@ $action = new GetCoordinatesAction();
 $coordinates = $action->execute('1600 Amphitheatre Parkway, Mountain View, CA');
 ```
 
+<<<<<<< HEAD
 Questa modifica è stata applicata anche in `UpdateCoordinatesAction`, dove ora utilizziamo `GetCoordinatesAction` per aggiornare le coordinate di un luogo. 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+Questa modifica è stata applicata anche in `UpdateCoordinatesAction`, dove ora utilizziamo `GetCoordinatesAction` per aggiornare le coordinate di un luogo. 
+>>>>>>> laraxot/dev

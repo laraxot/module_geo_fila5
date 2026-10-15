@@ -465,8 +465,11 @@ Ogni componente deve avere:
 - [Filament Wizards](https://filamentphp.com/docs/5.x/schemas/wizards)
 - [Livewire + Geolocation](https://dev.to/bradisrad83/browser-location-with-laravel-livewire-54bd)
 - [CheeseGrits Google Maps Plugin](https://filamentphp.com/plugins/cheesegrits-google-maps)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

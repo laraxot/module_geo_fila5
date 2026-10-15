@@ -139,8 +139,12 @@ Dopo ogni correzione:
 
 ---
 **Responsabile**: iFlow CLI
+<<<<<<< HEAD
 **Status**: In pianificazione
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+**Status**: In pianificazione
+>>>>>>> laraxot/dev

@@ -35,8 +35,11 @@ https://www.npmjs.com/package/use-places-autocomplete
 https://github.com/wellyshen/use-places-autocomplete
 
 https://www.w3docs.com/learn-javascript/places-autocomplete.html
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -108,8 +108,12 @@ Basato sulla documentazione `phpstan-code-quality-guide.md`:
 **Autore**: iFlow CLI  
 **Approvazione**: Completo e verificato  
 **Status**: Pronto per produzione  
+<<<<<<< HEAD
 **Data Completamento**: [DATE]
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+**Data Completamento**: [DATE]
+>>>>>>> laraxot/dev

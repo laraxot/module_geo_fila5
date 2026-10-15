@@ -240,8 +240,11 @@ discussions: []
 **Compliance**: PHPStan Level 10 ✅
 **Patterns**: Strategy, Command, Adapter, Observer ✅
 **Principles**: SoC, DRY, Interface Segregation ✅
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

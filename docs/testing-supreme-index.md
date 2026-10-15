@@ -120,8 +120,11 @@ Queste regole si applicano a:
 
 **Status**: REGOLA SUPREMA E NON NEGOZIABILE
 **Applicabilità**: UNIVERSALE - tutto il progetto
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

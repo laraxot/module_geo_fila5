@@ -269,8 +269,11 @@ Prima di considerare completata la risoluzione:
 ## ✅ Update Febbraio 2026
 - **CalculateDistanceAction.php**: Risolto errore critico di namespace collision (PHPStan) e violazioni di complessità/stile (PHPMD/PHPInsights). Rifattorizzato per usare `final`, importazioni corrette e rimozione di complessità inutile.
 
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

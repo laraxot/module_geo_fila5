@@ -101,8 +101,11 @@ return Http::timeout($timeout)->retry($retryTimes, $retrySleep, function (\Throw
 
 - [Laravel Factory State Documentation](https://laravel.com/docs/12.x/database-testing#factory-states)
 - [PHPStan Closure Type Hints](https://phpstan.org/writing-php-code/phpdoc-types#callable-types)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

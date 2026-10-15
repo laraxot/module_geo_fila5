@@ -97,8 +97,11 @@ Il modulo $(basename $(dirname $(dirname "$prd"))) segue la **Metodologia "Super
 - **No RefreshDatabase**: Utilizzo di `DatabaseTransactions`.
 - **Obiettivo**: 100% di coverage. Se un test fallisce, va sistemato o eliminato se il sito è funzionale.
 
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

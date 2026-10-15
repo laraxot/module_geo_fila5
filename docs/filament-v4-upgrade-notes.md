@@ -84,8 +84,11 @@ By adhering to these principles, the `Geo` module maintains its architectural in
 *   **Global Configuration:** Utilizing `configureUsing()` in `AppServiceProvider` for global component behavior (e.g., `columnSpanFull()`) helps keep configuration DRY and easy to manage from a single location.
 
 By adhering to these principles, the `Geo` module remains maintainable and aligned with the project's architectural standards.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

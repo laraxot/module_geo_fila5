@@ -43,8 +43,11 @@ Seeder: `database/seeders/GeoDatabaseSeeder.php`
 
 ## Likely non-business-critical
 - Trait/utility classes listed above; not direct domain entities.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

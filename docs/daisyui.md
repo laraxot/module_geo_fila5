@@ -125,8 +125,11 @@ Per il modulo Geo l'implicazione è:
   Tailwind (eventualmente componenti DaisyUI come `btn`, `card`).
 
 Doc canonico (con pro/contro/percentuali completi): `laravel/Themes/Sixteen/docs/DAISYUI.md`.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

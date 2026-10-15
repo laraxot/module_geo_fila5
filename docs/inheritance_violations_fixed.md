@@ -174,8 +174,11 @@ done
 **Tutti i modelli del modulo Geo** sono ora corretti e rispettano la catena di ereditarietà. Il principio DRY è ripristinato e le regole sono aggiornate per prevenire errori futuri.
 
 *Correzioni completate: gennaio 2025*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

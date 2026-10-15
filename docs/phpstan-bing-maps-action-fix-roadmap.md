@@ -189,8 +189,12 @@ L'errore PHPStan è stato risolto con successo! Ecco le modifiche implementate:
 - [GetAddressFromBingMapsAction.php](../app/Actions/Bing/GetAddressFromBingMapsAction.php)
 - [PHPStan Code Quality Guide](../../../xot/docs/phpstan-code-quality-guide.md)
 - [Geo Module PHPStan Fixes](./phpstan-fixes-gennaio-2025.md)
+<<<<<<< HEAD
 - [Pattern Type Safety](../../../xot/docs/phpstan-patterns.md)
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+- [Pattern Type Safety](../../../xot/docs/phpstan-patterns.md)
+>>>>>>> laraxot/dev

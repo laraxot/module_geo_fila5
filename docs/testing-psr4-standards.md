@@ -275,8 +275,11 @@ Prima di committare file di test:
 
 ---
 *Standard: PSR-4, PHPStan livello 9+, Laraxot conventions*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

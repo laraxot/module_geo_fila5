@@ -251,8 +251,11 @@ class <nome progetto>SpecificService
 - [docs/laraxot_conventions.md](laraxot_conventions.md)
 - [docs/module_architecture.md](module_architecture.md)
 
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

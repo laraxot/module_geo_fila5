@@ -162,8 +162,11 @@ Il sistema <nome progetto> ha una **copertura factory del 100%** per tutti i mod
 ---
 *Analisi completa sistema: 12/14 moduli (86% completato)*
 *Analizzato da: Sistema di analisi automatica moduli*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

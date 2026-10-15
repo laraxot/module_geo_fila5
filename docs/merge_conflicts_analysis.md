@@ -121,8 +121,12 @@ Questo documento elenca tutti i file che contengono conflitti di merge  nel modu
 - [Regole PHPStan](phpstan_fixes.md)
 
 ---
+<<<<<<< HEAD
 **Stato**: In corso di analisi 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+**Stato**: In corso di analisi 
+>>>>>>> laraxot/dev

@@ -148,8 +148,11 @@ find Modules/*/lang/ -name "*.php" -exec sed -i 's/<nome progetto>\.com/{{app_do
 - [Modules/Notify/docs/reusability_guidelines.md](../../Notify/docs/reusability_guidelines.md)
 - [.cursor/rules/module_reusability_critical.md](../.cursor/rules/module_reusability_critical.md)
 
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -173,8 +173,11 @@ CoordinatePicker::make('location')
 - Added info bar that hides in fullscreen
 - Added close button in fullscreen mode
 - Fixed Zoom In/Out using Leaflet methods (`zoomIn()`/`zoomOut()`)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

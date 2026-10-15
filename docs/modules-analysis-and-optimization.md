@@ -345,8 +345,11 @@ public static function getProjectBasePath(): string
 - [Architettura Testing](testing-architecture-overview.md)
 - [Best Practices Testing](testing-best-practices.md)
 
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

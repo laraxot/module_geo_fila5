@@ -223,8 +223,11 @@ gh issue close $ISSUE --repo $OWNER/$REPO
 ---
 
 **Next:** Applica questo pattern su tutti i 50+ moduli/temi.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -147,8 +147,11 @@ Per il caso d'uso specifico della gestione dei dati geografici italiani, l'imple
 - Footprint ridotto
 
 Si raccomanda di valutare il passaggio a Sushi solo in presenza di specifici requisiti che giustifichino la maggiore complessità e il maggiore consumo di risorse.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

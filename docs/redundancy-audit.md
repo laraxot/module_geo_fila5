@@ -30,8 +30,11 @@ Suggested cleanup order:
 2. Canonicalize frontend component names to one casing convention.
 3. Keep external vendor map assets in one directory and reference them from views/build config.
 4. Normalize docs to lowercase-kebab-case after code paths are stable.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

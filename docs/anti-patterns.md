@@ -268,8 +268,11 @@ php artisan test
 - [Regole Windsurf](../../.windsurf/rules)
 - [Documentazione Moduli](../..)
 - [PHPStan Configuration](../../../phpstan.neon)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

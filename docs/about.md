@@ -76,8 +76,12 @@ BashScripts Fila3 è ideale per:
 Per supporto e domande:
 - Documentazione: [docs/](.)
 - Issues: [GitHub Issues](https://github.com/laraxot/bashscripts_fila5/issues)
+<<<<<<< HEAD
 - Contatto: marco76tv@gmail.com
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+- Contatto: marco76tv@gmail.com
+>>>>>>> laraxot/dev

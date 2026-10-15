@@ -267,8 +267,11 @@ jobs:
 *Report compilato: gennaio 2025*
 *Analista: AI Assistant seguendo metodologia DRY+KISS*
 *Validazione: Script automatici e review manuale*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

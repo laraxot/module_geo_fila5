@@ -221,8 +221,11 @@ Rappresenta un equilibrio ottimale tra la semplicità degli array PHP e la poten
 - [Repository ufficiale di Laravel Sushi](https://github.com/calebporzio/sushi)
 - [Documentazione di Laravel Eloquent](https://laravel.com/project_docs/eloquent)
 - [Estensione PDO SQLite](https://www.php.net/manual/en/ref.pdo-sqlite.php)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

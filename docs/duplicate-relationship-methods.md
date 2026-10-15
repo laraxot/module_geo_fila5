@@ -270,8 +270,11 @@ Cross-modulo: User, Tenant, Incentivi, Performance. Pattern standard Laravel, no
 ---
 
 *Generato automaticamente da analisi grep. Aggiornare dopo refactoring.*
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

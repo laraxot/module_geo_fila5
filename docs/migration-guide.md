@@ -549,8 +549,11 @@ git checkout -- app/Models/Comune.php
 - [Comune Model](comune-model.md)
 - [Sushi Configuration](sushi-configuration.md)
 - [Sushi Command](sushi-command.md)
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

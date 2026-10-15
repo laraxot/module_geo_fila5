@@ -391,8 +391,11 @@ Il modello `Address` è stato progettato per essere altamente riutilizzabile in 
 3. **Per tipizzazione**: Considerare i modelli embeddable (con Laravel 10+)
 
 In tutti i casi, è importante mantenere una struttura coerente per gli indirizzi in tutta l'applicazione e seguire le best practices per la validazione e la formattazione degli indirizzi italiani.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

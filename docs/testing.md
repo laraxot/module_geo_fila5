@@ -61,8 +61,12 @@ To run specific test files:
 ```bash
 ./vendor/bin/pest Modules/Geo/tests/Unit/Actions/CalculateDistanceActionTest.php
 ./vendor/bin/pest Modules/Geo/tests/Unit/Actions/GetCoordinatesActionTest.php
+<<<<<<< HEAD
 ```
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+```
+>>>>>>> laraxot/dev

@@ -64,8 +64,11 @@ cd laravel
 php -d memory_limit=2048M vendor/bin/phpstan analyse Modules/Geo --no-progress
 vendor/bin/pint Modules/Geo/app/Actions
 ```
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

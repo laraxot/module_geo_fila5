@@ -159,8 +159,11 @@ Si raccomanda di procedere con la migrazione seguendo il piano proposto, assicur
 3. Eseguire test approfonditi
 
 La stima del tempo di implementazione è di 2-3 giorni/uomo, con un ROI atteso di 3-4 mesi grazie alla riduzione dei costi di manutenzione.
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

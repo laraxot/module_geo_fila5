@@ -195,8 +195,12 @@ L'implementazione attuale fornisce una base solida per i miglioramenti proposti,
 *Sintesi completata il: $(date)*
 *Modulo: Geo*
 *Classe: AddressResource*
+<<<<<<< HEAD
 *Versione: 1.0* 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+*Versione: 1.0* 
+>>>>>>> laraxot/dev

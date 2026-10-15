@@ -169,8 +169,11 @@ Quando sistemo un test esistente che non funziona:
 
 **Status**: REGOLA ASSOLUTA E NON NEGOZIABILE
 **Applicabilità**: UNIVERSALE - ogni test, ogni modulo, ogni scenario
+<<<<<<< HEAD
 
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.
 - Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev
