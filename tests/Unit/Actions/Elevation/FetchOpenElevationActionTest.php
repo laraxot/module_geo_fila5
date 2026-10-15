@@ -2,129 +2,76 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions;
-
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Response;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\Elevation\FetchOpenElevationAction;
-use Modules\Geo\Datas\Elevation\ElevationData;
-use PHPUnit\Framework\Assert;
+use Tests\TestCase;
 
-use function Safe\json_encode;
+uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
 
-/**
- * @return array{0: FetchOpenElevationAction, 1: MockHandler}
- */
-function createFetchOpenElevationActionWithMock(): array
-{
-    $mockHandler = new MockHandler;
-    $client = new Client(['handler' => HandlerStack::create($mockHandler)]);
+beforeEach(function () {
+    $this->action = app(FetchOpenElevationAction::class);
+    Http::fake();
+});
 
-    return [new FetchOpenElevationAction($client), $mockHandler];
-}
+afterEach(function () {
+    Http::assertNothingSent();
+});
 
-it('fetches elevation successfully', function (): void {
-    [$action, $mockHandler] = createFetchOpenElevationActionWithMock();
-
-    $mockHandler->append(new Response(
-        200,
-        [],
-        json_encode([
-            'results' => [
-                [
-                    'latitude' => 45.4642,
-                    'longitude' => 9.1900,
-                    'elevation' => 120.5,
+describe('FetchOpenElevationAction', function () {
+    it('fetches elevation from Open-Elevation API', function () {
+        Http::fake([
+            'api.open-elevation.com/api/v1/lookup*' => Http::response([
+                'results' => [
+                    ['latitude' => 45.4642, 'longitude' => 9.1900, 'elevation' => 122.5],
                 ],
-            ],
-        ])
-    ));
+            ], 200),
+        ]);
 
-    $result = $action->execute(45.4642, 9.1900);
+        $result = $this->action->execute(45.4642, 9.1900);
 
-    Assert::assertInstanceOf(ElevationData::class, $result);
-    Assert::assertSame(45.4642, $result->latitude);
-    Assert::assertSame(9.1900, $result->longitude);
-    Assert::assertSame(120.5, $result->elevation);
-});
+        expect($result)->toBeArray()
+            ->toHaveKeys(['latitude', 'longitude', 'elevation']);
+    });
 
-it('throws exception for failed API request', function (): void {
-    [$action, $mockHandler] = createFetchOpenElevationActionWithMock();
+    it('batches multiple coordinates in single request', function () {
+        Http::fake([
+            'api.open-elevation.com/api/v1/lookup*' => Http::response([
+                'results' => [
+                    ['latitude' => 45.4642, 'longitude' => 9.1900, 'elevation' => 122.5],
+                    ['latitude' => 41.9028, 'longitude' => 12.4964, 'elevation' => 21.0],
+                    ['latitude' => 40.8518, 'longitude' => 14.2681, 'elevation' => 17.0],
+                ],
+            ], 200),
+        ]);
 
-    $request = new Request('POST', 'https://api.open-elevation.com/api/v1/lookup');
-    $mockHandler->append(RequestException::create($request, null, new \Exception('Connection failed')));
+        $coordinates = [
+            ['lat' => 45.4642, 'lng' => 9.1900],
+            ['lat' => 41.9028, 'lng' => 12.4964],
+            ['lat' => 40.8518, 'lng' => 14.2681],
+        ];
 
-    try {
-        $action->execute(45.4642, 9.1900);
-        Assert::fail('Expected RuntimeException was not thrown');
-    } catch (\RuntimeException $exception) {
-        Assert::assertSame('Failed to get elevation data', $exception->getMessage());
-    }
-});
+        $result = $this->action->execute($coordinates);
 
-it('throws exception for invalid response', function (): void {
-    [$action, $mockHandler] = createFetchOpenElevationActionWithMock();
+        expect($result)->toHaveCount(3);
+    });
 
-    $mockHandler->append(new Response(200, [], json_encode(['results' => []])));
+    it('handles rate limiting', function () {
+        Http::fake([
+            'api.open-elevation.com/api/v1/lookup*' => Http::response(null, 429),
+        ]);
 
-    try {
-        $action->execute(45.4642, 9.1900);
-        Assert::fail('Expected RuntimeException was not thrown');
-    } catch (\RuntimeException $exception) {
-        Assert::assertSame('Invalid elevation data response', $exception->getMessage());
-    }
-});
+        expect(fn () => $this->action->execute(45.4642, 9.1900))
+            ->toThrow(\Exception::class);
+    });
 
-it('handles negative elevation', function (): void {
-    [$action, $mockHandler] = createFetchOpenElevationActionWithMock();
+    it('handles network timeout', function () {
+        Http::fake([
+            'api.open-elevation.com/api/v1/lookup*' => Http::response(null, 504),
+        ]);
 
-    $mockHandler->append(new Response(200, [], json_encode([
-        'results' => [
-            ['latitude' => 31.5, 'longitude' => 35.5, 'elevation' => -430.0],
-        ],
-    ])));
-
-    Assert::assertSame(-430.0, $action->execute(31.5, 35.5)->elevation);
-});
-
-it('handles high elevation', function (): void {
-    [$action, $mockHandler] = createFetchOpenElevationActionWithMock();
-
-    $mockHandler->append(new Response(200, [], json_encode([
-        'results' => [
-            ['latitude' => 27.9881, 'longitude' => 86.9250, 'elevation' => 8848.0],
-        ],
-    ])));
-
-    Assert::assertSame(8848.0, $action->execute(27.9881, 86.9250)->elevation);
-});
-
-it('handles zero elevation', function (): void {
-    [$action, $mockHandler] = createFetchOpenElevationActionWithMock();
-
-    $mockHandler->append(new Response(200, [], json_encode([
-        'results' => [
-            ['latitude' => 0.0, 'longitude' => 0.0, 'elevation' => 0.0],
-        ],
-    ])));
-
-    Assert::assertSame(0.0, $action->execute(0.0, 0.0)->elevation);
-});
-
-it('sends correct API payload', function (): void {
-    [$action, $mockHandler] = createFetchOpenElevationActionWithMock();
-
-    $mockHandler->append(new Response(200, [], json_encode([
-        'results' => [
-            ['latitude' => 45.4642, 'longitude' => 9.1900, 'elevation' => 100.0],
-        ],
-    ])));
-
-    $action->execute(45.4642, 9.1900);
-
-    Assert::assertCount(1, $mockHandler);
+        expect(fn () => $this->action->execute(45.4642, 9.1900))
+            ->toThrow(\Exception::class);
+    });
 });

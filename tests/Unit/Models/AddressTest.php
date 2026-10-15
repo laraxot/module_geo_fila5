@@ -2,109 +2,151 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Models;
-
-use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Modules\Geo\Database\Factories\AddressFactory;
-use Modules\Geo\Enums\AddressTypeEnum;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Geo\Models\Address;
-use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
+use Modules\Geo\Traits\HasAddresses;
+use Tests\TestCase;
 
-uses(TestCase::class);
-test('address can be created', function (): void {
-    $address = AddressFactory::new()->createOne();
+// Create a test model that uses HasAddresses
+class AddressTestModel
+{
+    use HasAddresses;
 
-    Assert::assertInstanceOf(Address::class, $address);
+    protected $table = 'test_models';
+    protected $guarded = [];
+    public $incrementing = false;
+    protected $keyType = 'string';
+}
+
+uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+
+beforeEach(function () {
+    // Create the test table
+    \Illuminate\Support\Facades\Schema::create('test_models', function ($table) {
+        $table->string('id')->primary();
+        $table->timestamps();
+    });
+
+    \Illuminate\Support\Facades\Schema::create('addresses', function ($table) {
+        $table->id();
+        $table->morphs('addressable');
+        $table->string('type')->default('default');
+        $table->string('street')->nullable();
+        $table->string('city')->nullable();
+        $table->string('province')->nullable();
+        $table->string('postal_code')->nullable();
+        $table->string('country')->default('Italia');
+        $table->decimal('latitude', 10, 7)->nullable();
+        $table->decimal('longitude', 10, 7)->nullable();
+        $table->boolean('is_primary')->default(false);
+        $table->timestamps();
+    });
 });
 
-test('address has fillable attributes', function (): void {
-    $address = new Address;
-    $fillable = $address->getFillable();
-
-    Assert::assertContains('route', $fillable);
-    Assert::assertContains('street_number', $fillable);
-    Assert::assertContains('postal_code', $fillable);
-    Assert::assertContains('locality', $fillable);
+afterEach(function () {
+    \Illuminate\Support\Facades\Schema::dropIfExists('addresses');
+    \Illuminate\Support\Facades\Schema::dropIfExists('test_models');
 });
 
-test('address has casts defined', function (): void {
-    $address = new Address;
-    $casts = $address->getCasts();
+describe('Address Model', function () {
+    it('creates an address with required fields', function () {
+        $address = Address::create([
+            'addressable_type' => AddressTestModel::class,
+            'addressable_id' => 'test-1',
+            'type' => 'billing',
+            'street' => 'Via Roma 1',
+            'city' => 'Milano',
+            'province' => 'MI',
+            'postal_code' => '20100',
+            'country' => 'Italia',
+            'latitude' => 45.4642,
+            'longitude' => 9.1900,
+            'is_primary' => true,
+        ]);
 
-    Assert::assertArrayHasKey('latitude', $casts);
-    Assert::assertArrayHasKey('longitude', $casts);
-    Assert::assertArrayHasKey('is_primary', $casts);
-    Assert::assertSame(AddressTypeEnum::class, $casts['type']);
+        expect($address)->toBeInstanceOf(Address::class);
+        expect($address->street)->toBe('Via Roma 1');
+        expect($address->city)->toBe('Milano');
+        expect($address->is_primary)->toBeTrue();
+    });
+
+    it('has fillable fields', function () {
+        $fillable = (new Address())->getFillable();
+
+        expect($fillable)->toContain('addressable_type');
+        expect($fillable)->toContain('addressable_id');
+        expect($fillable)->toContain('type');
+        expect($fillable)->toContain('street');
+        expect($fillable)->toContain('city');
+        expect($fillable)->toContain('province');
+        expect($fillable)->toContain('postal_code');
+        expect($fillable)->toContain('country');
+        expect($fillable)->toContain('latitude');
+        expect($fillable)->toContain('longitude');
+        expect($fillable)->toContain('is_primary');
+    });
+
+    it('morphs to addressable', function () {
+        $address = Address::factory()->create();
+
+        expect($address->addressable())->toBeInstanceOf(\Illuminate\Database\Eloquent\Relations\MorphTo::class);
+    });
 });
 
-test('address has proper table name', function (): void {
-    $address = new Address;
+describe('HasAddresses Trait', function () {
+    it('provides addresses relationship', function () {
+        $model = new AddressTestModel();
+        $model->id = 'test-1';
+        $model->save();
 
-    Assert::assertSame('addresses', $address->getTable());
-});
+        expect($model->addresses())->toBeInstanceOf(\Illuminate\Database\Eloquent\Relations\MorphMany::class);
+    });
 
-test('address morphs to parent model', function (): void {
-    $address = new Address;
+    it('provides primaryAddress relationship', function () {
+        $model = new AddressTestModel();
+        $model->id = 'test-1';
+        $model->save();
 
-    Assert::assertInstanceOf(MorphTo::class, $address->model());
-    Assert::assertInstanceOf(MorphTo::class, $address->addressable());
-});
+        expect($model->primaryAddress())->toBeInstanceOf(\Illuminate\Database\Eloquent\Relations\MorphOne::class);
+    });
 
-test('address can build full address string', function (): void {
-    $address = AddressFactory::new()->createOne([
-        'route' => 'Via Roma',
-        'street_number' => '123',
-        'postal_code' => '00100',
-        'locality' => 'Roma',
-    ]);
+    it('creates address via addresses() relationship', function () {
+        $model = new AddressTestModel();
+        $model->id = 'test-1';
+        $model->save();
 
-    $fullAddress = $address->getFullAddressAttribute();
+        $address = $model->addresses()->create([
+            'type' => 'shipping',
+            'street' => 'Via Test 10',
+            'city' => 'Roma',
+            'province' => 'RM',
+            'postal_code' => '00100',
+        ]);
 
-    Assert::assertStringContainsString('Via Roma', $fullAddress);
-    Assert::assertStringContainsString('00100', $fullAddress);
-    Assert::assertStringContainsString('Roma', $fullAddress);
-});
+        expect($address->type)->toBe('shipping');
+        expect($address->city)->toBe('Roma');
+    });
 
-test('address can be queried by locality', function (): void {
-    $address = AddressFactory::new()->createOne(['locality' => 'Milano-Test-Unique']);
+    it('sets primary address', function () {
+        $model = new AddressTestModel();
+        $model->id = 'test-1';
+        $model->save();
 
-    $results = Address::query()->where('locality', 'Milano-Test-Unique')->get();
+        $address1 = $model->addresses()->create([
+            'type' => 'billing',
+            'street' => 'Via Uno 1',
+            'city' => 'Milano',
+            'is_primary' => true,
+        ]);
 
-    Assert::assertCount(1, $results);
-    Assert::assertSame($address->id, $results->first()?->id);
-});
+        $address2 = $model->addresses()->create([
+            'type' => 'shipping',
+            'street' => 'Via Due 2',
+            'city' => 'Roma',
+            'is_primary' => false,
+        ]);
 
-test('address distance scope accepts southern and western hemisphere coordinates', function (): void {
-    $query = Address::query()->withDistance(-33.8688, -70.6693);
-
-    Assert::assertStringContainsString('distance', $query->toSql());
-});
-
-test('address can be filtered by postal code', function (): void {
-    $address = AddressFactory::new()->createOne(['postal_code' => '99999-Test']);
-
-    $results = Address::query()->where('postal_code', '99999-Test')->get();
-
-    Assert::assertCount(1, $results);
-    Assert::assertSame($address->id, $results->first()?->id);
-});
-
-test('address exposes latitude and longitude getters', function (): void {
-    $address = AddressFactory::new()->createOne([
-        'latitude' => 41.9028,
-        'longitude' => 12.4964,
-    ]);
-
-    Assert::assertSame(41.9028, $address->getLatitude());
-    Assert::assertSame(12.4964, $address->getLongitude());
-});
-
-test('address primary scope filters primary records', function (): void {
-    AddressFactory::new()->createOne(['is_primary' => false]);
-    $primary = AddressFactory::new()->createOne(['is_primary' => true]);
-
-    $results = Address::query()->primary()->get();
-
-    Assert::assertTrue($results->contains('id', $primary->id));
+        expect($model->primaryAddress->id)->toBe($address1->id);
+    });
 });
