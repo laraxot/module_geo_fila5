@@ -291,7 +291,7 @@ Tutti i modelli BaseModel, BasePivot, BaseUser, etc. sono classi astratte utiliz
 ### Documentazione Moduli
 - [<nome progetto> Analysis](../laravel/modules/<nome progetto>/docs/modelli_factory_seeder_analisi.md)
 - [User Analysis](../../User/docs/modelli_factory_seeder_analisi.md)
-- [Geo Analysis](modelli_factory_seeder_analisi.md)
+- [Geo Analysis](modelli-factory-seeder-analisi.md)
 - [Media Analysis](../../Media/docs/modelli_factory_seeder_analisi.md)
 - [Notify Analysis](../../Notify/docs/modelli_factory_seeder_analisi.md)
 - [Job Analysis](../../Job/docs/modelli_factory_seeder_analisi.md)
@@ -311,3 +311,11 @@ Tutti i modelli BaseModel, BasePivot, BaseUser, etc. sono classi astratte utiliz
 
 *Autore: Sistema di analisi automatizzata*
 *Scope: Completo sistema <nome progetto> (14 moduli, ~150 modelli)*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

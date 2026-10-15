@@ -144,3 +144,11 @@ discussions: []
 ---
 
 > Vedi anche: Xot/docs/standards/coding-standards.md, Xot/docs/filosofia.md, Xot/docs/zen.md
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

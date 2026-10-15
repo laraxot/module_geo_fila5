@@ -60,3 +60,11 @@ status: draft
 - [x] Usare Google Maps embed (più preciso per indirizzi italiani)
 - [ ] Considerare download mappa statica PNG
 - [ ] Integrare con modelli Address del modulo Geo
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

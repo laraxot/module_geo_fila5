@@ -168,4 +168,12 @@ GeopointPicker        → geopoint-picker.blade.php         → geopoint-picker-
 
 - Filosofia Zen applicata a Filament components
 - hasCoordinatePicker trait condiviso
+<<<<<<< HEAD
 - Vedi anche: `/docs/prompts/map-picker.txt`
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+- Vedi anche: `/docs/prompts/map-picker.txt`
+>>>>>>> laraxot/dev

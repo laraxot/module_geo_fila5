@@ -166,3 +166,11 @@ This implementation resolves:
 2. Migrate legacy Place::$address_components usage
 3. Document best practices in module docs
 4. Consider deprecating manual column definitions
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -79,3 +79,11 @@ return [
 - [Factory Pattern Guidelines](../../../../docs/factory-pattern.md)
 - [PHPStan Compliance Guide](../phpstan-fixes.md)
 
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

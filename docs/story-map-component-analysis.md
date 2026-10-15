@@ -294,4 +294,12 @@ La strategia proposta è:
 2. Ottimizzare performance e accessibilità
 3. Aggiungere funzionalità avanzate quando necessario
 
+<<<<<<< HEAD
 Il risultato sarà un componente mappa che non funziona bene, ma che fornisce un'esperienza utenza eccezionale.
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+Il risultato sarà un componente mappa che non funziona bene, ma che fornisce un'esperienza utenza eccezionale.
+>>>>>>> laraxot/dev

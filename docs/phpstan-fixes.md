@@ -76,7 +76,7 @@ Il widget utilizza la vista `geo::filament.widgets.webbingbrasil-map-stub` che m
 
 ### Integrazione con Filament 4.x
 Il widget fa parte del piano di migrazione a Filament 4.x documentato in:
-- `filament_4x_compatibility.md`
+- `filament-4x-compatibility.md`
 - Piano di riattivazione graduale quando i pacchetti saranno compatibili
 
 ### Pacchetti Coinvolti
@@ -97,7 +97,7 @@ Il widget fa parte del piano di migrazione a Filament 4.x documentato in:
 
 ## 📚 Collegamenti
 
-- [Documentazione Compatibilità Filament 4.x](./filament_4x_compatibility.md)
+- [Documentazione Compatibilità Filament 4.x](./filament-4x-compatibility.md)
 - [Documentazione Widget Disabilitati](./widgets/disabled_widgets.md)
 - [Piano Migrazione Filament](../../../docs/filament_4x_migration_plan.md)
 
@@ -191,3 +191,11 @@ Sempre documentare in docstring: `@throws \InvalidArgumentException`
 - [Pest Fully Qualified Class Names](../../../docs/wiki/skills/pest-fqn-resolution.md)
 
 *Ultimo aggiornamento: 2026-06-13*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

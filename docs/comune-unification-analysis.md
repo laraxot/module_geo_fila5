@@ -67,9 +67,17 @@ status: draft
 ## 7. Collegamenti
 - [geo-json-model.md](geo-json-model.md)
 - [geo-sushi-comparison.md](geo-sushi-comparison.md)
-- [module_geo.md](module_geo.md)
+- [module_geo.md](module-geo.md)
 - [Xot/module-structure.md](../../xot/docs/module-structure.md)
 
 ---
 
 Responsabile: Cascade AI
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

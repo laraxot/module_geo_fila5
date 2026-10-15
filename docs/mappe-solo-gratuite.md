@@ -172,3 +172,11 @@ Prima di ogni commit, verificare:
 ## Riferimenti Regole Progetto
 
 - [Regola Cursor: Solo Servizi Gratuiti](../../../../.cursor/rules/free-maps-only.mdc)
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -14,8 +14,8 @@ status: draft
 
 Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dalla capitalizzazione. Va mantenuta una singola variante conforme agli standard Laraxot, aggiornando successivamente i riferimenti.
 
-- `Modules/Geo`: `CHANGELOG.md`, `changelog.md`
-- `Modules/Geo`: `LICENSE.md`, `license.md`
+- `Modules/Geo`: `changelog.md`, `changelog.md`
+- `Modules/Geo`: `license.md`, `license.md`
 - `Modules/Geo/.github`: `CONTRIBUTING.md`, `contributing.md`
 - `Modules/Geo/.github`: `FUNDING.yml`, `funding.yml`
 - `Modules/Geo/.github`: `SECURITY.md`, `security.md`
@@ -24,12 +24,12 @@ Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dal
 - `Modules/Geo/app/Filament/Widgets`: `ImprovedLocationMapWidget.wip`, `improvedlocationmapwidget.wip`
 - `Modules/Geo/app/Http/Livewire`: `Test.test`, `test.test`
 - `Modules/Geo/app/View/Components/Card`: `Place.json`, `place.json`
-- `Modules/Geo/docs`: `PHPSTAN_FIXES.md`, `phpstan_fixes.md`
-- `Modules/Geo/docs`: `PROJECT.md`, `project.md`
-- `Modules/Geo/docs`: `ADVANCED_FEATURES.md`, `advanced_features.md`
-- `Modules/Geo/docs`: `MCP_SERVER_RECOMMENDED.md`, `mcp_server_recommended.md`
-- `Modules/Geo/docs`: `COMPREHENSIVE_GUIDE.md`, `comprehensive_guide.md`
-- `Modules/Geo/docs`: `TECHNICAL.md`, `technical.md`
+- `Modules/Geo/docs`: `phpstan-fixes.md`, `phpstan-fixes.md`
+- `Modules/Geo/docs`: `project.md`, `project.md`
+- `Modules/Geo/docs`: `advanced-features.md`, `advanced-features.md`
+- `Modules/Geo/docs`: `mcp-server-recommended.md`, `mcp-server-recommended.md`
+- `Modules/Geo/docs`: `comprehensive-guide.md`, `comprehensive-guide.md`
+- `Modules/Geo/docs`: `technical.md`, `technical.md`
 - `Modules/Geo/resources/css`: `MarkerCluster.Default.css`, `markercluster.default.css`
 - `Modules/Geo/resources/css`: `MarkerCluster.css`, `markercluster.css`
 - `Modules/Geo/resources/css`: `L.Control.Locate.mapbox.min.css`, `l.control.locate.mapbox.min.css`
@@ -63,3 +63,11 @@ Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dal
 - `Modules/Geo/tests/Unit`: `PlaceTest.test`, `placetest.test`
 
 **Nota**: uniformare i nomi (ad es. mantenendo PascalCase per classi/Livewire, maiuscolo per file di policy/README) e rimuovere i duplicati non necessari.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

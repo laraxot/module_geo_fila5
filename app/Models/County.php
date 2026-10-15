@@ -33,6 +33,7 @@ use Modules\Xot\Contracts\ProfileContract;
  * @method static Builder<static>|County whereStateId($value)
  * @method static Builder<static>|County whereUpdatedAt($value)
  *
+ * @property int $id
  * @mixin \Eloquent
  */
 class County extends BaseModel

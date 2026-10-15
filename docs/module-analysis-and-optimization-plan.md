@@ -359,3 +359,11 @@ This document provides a comprehensive analysis of all modules in the Laraxot pr
 3. **Pre-release**: Documentation completeness check
 
 This analysis provides the foundation for systematic improvement of all modules while maintaining the modular architecture principles essential for multi-project reusability.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

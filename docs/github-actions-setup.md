@@ -160,3 +160,11 @@ git push origin main
 ---
 
 **Next:** Implementa in Xot, poi scale ai rimanenti moduli.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -21,4 +21,12 @@ status: draft
 1. **Rappresentatività dei dati**: Il findings trovati suggesti una sola occorrenza, ma questo potrebbe riflettere una limitazione del pattern di ricerca.
 2. **Migliore pattern**: Un pattern che catturi il nome della funzione (`\w+`) potrebbe migliorare la precisione.
 3. **Rischi di duplicazione**: Metodi duplicati possono causare conflitti di portata, difficoltà di manutenzione e bug imprevisti.
+<<<<<<< HEAD
 4. **Prossimi passi**: Avviare una ricerca più mirata con un pattern più specifico per confermare eventuali duplicati.
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+4. **Prossimi passi**: Avviare una ricerca più mirata con un pattern più specifico per confermare eventuali duplicati.
+>>>>>>> laraxot/dev

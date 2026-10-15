@@ -7,17 +7,16 @@ namespace Modules\Geo\Actions\Map;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
- * Marker mappa interattiva (stub — implementazione dominio futura).
- *
- * Sostituisce MapService::getMarkers().
+ * @phpstan-type MapFilters array{category?: string, categories?: list<string>, search?: string|null, bounds?: array{minLat: float, minLng: float, maxLat: float, maxLng: float}, limit?: int, offset?: int}
+ * @phpstan-type MapMarker array{id: string, lat: float, lng: float, category: string}
  */
 final class GetMapMarkersAction
 {
     use QueueableAction;
 
     /**
-     * @param  array<string, mixed>  $filters
-     * @return list<array<string, mixed>>
+     * @param MapFilters $filters
+     * @return list<MapMarker>
      */
     public function execute(array $filters = []): array
     {

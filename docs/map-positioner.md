@@ -46,3 +46,11 @@ npx playwright screenshot --viewport-size=1024,768 http://localhost:8000/tests/m
 
 ---
 *Documentazione generata per LLM Wiki. Aprile 2026.*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

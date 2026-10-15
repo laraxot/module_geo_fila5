@@ -448,3 +448,11 @@ class TicketMap extends Component
 **Impact**: MAJOR UX improvement
 
 *"Integrando le migliori pratiche da farmshops.eu, FixCity avrà una mappa interattiva di livello mondiale!"*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

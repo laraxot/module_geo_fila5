@@ -122,3 +122,11 @@ private function extractStringField(array $data, string $key): ?string
 **Principle Applied**: DRY (Don't Repeat Yourself)
 **Pattern Used**: Extract Method refactoring
 **Reference**: Xot module (0 PHPMD violations)
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

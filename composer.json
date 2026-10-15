@@ -27,14 +27,7 @@
             "Modules\\Geo\\Database\\Seeders\\": "database/seeders/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Modules\\Geo\\Tests\\": "tests/"
-        }
-    },
-    "require": {
-        
-    },
+    "require": {},
     "require_comment": {
         "cheesegrits/filament-google-maps": "*",
         "dotswan/filament-map-picker": "*",

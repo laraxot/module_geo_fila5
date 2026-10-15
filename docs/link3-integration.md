@@ -36,3 +36,11 @@ app('geocoder')->geocode('8.8.8.8')->get();
 app('geocoder')->reverse(43.882587,-103.454067)->get();
 
 --------------------------------------------------------
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

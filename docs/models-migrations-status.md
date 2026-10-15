@@ -68,3 +68,11 @@ Regola: `Modules/UI` NON deve importare `Modules\Geo\*` (direzione consentita: G
 La violazione preesistente (`LocationSelector` in UI con `use Modules\Geo\Models\Comune;`) e' risolta:
 il componente vive ora in `Modules/Geo/app/Filament/Forms/Components/LocationSelector.php`.
 Nessuna dipendenza inversa introdotta da queste modifiche.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -43,3 +43,11 @@ While preparing this fix, a `git stash` / `git stash pop` cycle in `Modules/Geo`
 ## Related
 
 - `Modules/Xot/docs/ponytail-audit-user-module-findings.md`, `Modules/Notify/docs/ponytail-audit-notify-module.md`: same audit pass, same day.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

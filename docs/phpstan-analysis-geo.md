@@ -99,3 +99,11 @@ PHPStan analysis on the Geo module consistently times out or hangs, preventing c
 **Laravel Version**: 12.31.1
 **Status**: ⚠️ Analysis Blocked - Requires Investigation
 **Documentation Status**: ⚠️ Basic - Analysis issues need resolution
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

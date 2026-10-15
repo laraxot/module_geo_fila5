@@ -104,7 +104,7 @@ class Comune extends Model
 - [geo-json-model.md](geo-json-model.md)
 - [geo-sushi-comparison.md](geo-sushi-comparison.md)
 - [comune-unificazione-analisi.md](comune-unificazione-analisi.md)
-- [module_geo.md](module_geo.md)
+- [module_geo.md](module-geo.md)
 
 ---
 
@@ -148,3 +148,11 @@ Responsabile: Cascade AI
 
 ## Policy aggiornata: niente trait per una sola classe
 Non creare trait come ComuneSushiTrait se usati solo in un modello. I trait vanno creati solo se riutilizzati in più classi. Se la logica è specifica di un solo modello, va implementata direttamente nella classe. Motivazione: semplicità, KISS, manutenibilità, evitare complessità inutile. Collegamento a docs/xot.md.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

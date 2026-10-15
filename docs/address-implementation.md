@@ -527,3 +527,11 @@ Questo modello `Address` fornisce una struttura robusta, flessibile e riutilizza
 - **Filosofia**: Un solo punto di verità, nessun path assoluto, nessun lock-in.
 - **Religione**: "Non avrai altro path all'infuori del relativo".
 - **Zen**: Serenità nella navigazione, nessun errore di path, nessun link rotto dopo un refactor.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

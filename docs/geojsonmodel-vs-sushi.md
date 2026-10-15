@@ -203,3 +203,11 @@ Una migrazione a Laravel Sushi potrebbe essere riconsiderata, con un costo di co
 
 ---
 *Documento creato il: 27/05/2025*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

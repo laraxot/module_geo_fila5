@@ -285,3 +285,11 @@ Il modulo Geo è il sistema di gestione geografica di <main module>, fornendo mo
 **Stato**: In Progress
 **Responsabile**: Team Sviluppo <main module>
 **Prossima Revisione**: Gennaio 2025
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

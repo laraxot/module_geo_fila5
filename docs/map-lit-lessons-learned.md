@@ -213,3 +213,11 @@ return L.divIcon({
 - [STORY-122](../../../../docs/stories/STORY-122-map-lit-marker-scomparsa-gps-center.md)
 - [STORY-123](../../../../docs/stories/STORY-123-map-lit-cluster-hover-escape-fix.md)
 - [STORY-129](../../../../docs/stories/STORY-129-map-marker-icon-first-popup-ux.md)
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

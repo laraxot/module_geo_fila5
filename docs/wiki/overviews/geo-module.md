@@ -162,4 +162,4 @@ Region (20) → Province (110) → City/Comune (8000+) → Cap → Address
 - `address-implementation.md` — schema completo Address, codice migrazioni
 - `address-item-enum-guide.md` — enum per tipi address item
 - `place-address-schemaorg.md` — mapping schema.org
-- `filament_integration.md` — componenti Filament del modulo
+- `filament-integration.md` — componenti Filament del modulo

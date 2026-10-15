@@ -374,4 +374,12 @@ Add `@var` annotations before complex operations:
 ---
 **Document Version**: 1.0
 **Status**: Session 4 & 5 Complete
+<<<<<<< HEAD
 **
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+**
+>>>>>>> laraxot/dev

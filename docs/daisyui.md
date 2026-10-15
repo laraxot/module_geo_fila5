@@ -1,10 +1,10 @@
 ---
-title: "daisyui"
+title: "DAISYUI"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "daisyui"
+qmd: "DAISYUI"
 issues: []
 discussions: []
 status: draft
@@ -125,3 +125,11 @@ Per il modulo Geo l'implicazione è:
   Tailwind (eventualmente componenti DaisyUI come `btn`, `card`).
 
 Doc canonico (con pro/contro/percentuali completi): `laravel/Themes/Sixteen/docs/DAISYUI.md`.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

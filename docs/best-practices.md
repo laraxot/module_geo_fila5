@@ -34,3 +34,11 @@ status: draft
 
 - Aggiorna sempre `docs/INDEX.md` quando aggiungi file.
 - Riferisciti alle regole in `bashscripts/ai/.claude/rules/` per approfondimenti.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev
