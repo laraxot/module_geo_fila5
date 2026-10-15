@@ -99,3 +99,11 @@ protected function setUp(): void
 ---
 **Status**: Completed
 **Risultato**: Test Geo ora configurano correttamente le connessioni database
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -7,20 +7,19 @@ namespace Modules\Geo\Actions\Map;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
- * Statistiche mappa interattiva (stub).
- *
- * Sostituisce MapService::getMapStats().
+ * @phpstan-type MapFilters array{category?: string, categories?: list<string>, search?: string|null, bounds?: array{minLat: float, minLng: float, maxLat: float, maxLng: float}, limit?: int, offset?: int}
+ * @phpstan-type MapStats array{total: int, categories: int}
  */
 final class GetMapStatsAction
 {
     use QueueableAction;
 
     /**
-     * @param  array<string, mixed>  $filters
-     * @return array<string, mixed>
+     * @param MapFilters $filters
+     * @return MapStats
      */
     public function execute(array $filters = []): array
     {
-        return [];
+        return ['total' => 0, 'categories' => 0];
     }
 }

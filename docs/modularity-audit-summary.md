@@ -323,3 +323,11 @@ Dopo la correzione completa, tutti i comandi devono restituire **0 occorrenze**.
 
 **Responsabile**: Team di sviluppo Laraxot
 **Stato**: Audit completato, correzioni in corso
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

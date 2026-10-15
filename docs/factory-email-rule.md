@@ -177,3 +177,11 @@ public function definition(): array
 
 ---
 **⚠️ RICORDA SEMPRE: Questa regola è SACRA e non può essere violata. Ogni factory deve usare SEMPRE faker per le email, MAI "@example.com"!**
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -558,4 +558,12 @@ test('address getAvailableComuni returns correct format', function () {
 ---
 **Status**: Ready for Implementation
 **Estimated Time**: 3 days
+<<<<<<< HEAD
 **Priority**: HIGH
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+**Priority**: HIGH
+>>>>>>> laraxot/dev

@@ -513,3 +513,11 @@ Per procedere, si consiglia di:
 ---
 *Documento creato il: 28/05/2025*  
 *Autore: Team <main module>*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

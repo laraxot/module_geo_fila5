@@ -117,3 +117,11 @@ TextInput::make('lng')
 - [Pacchetto Google Maps](https://github.com/cheesegrits/filament-google-maps)
 
 *Ultimo aggiornamento: 2025-01-27*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

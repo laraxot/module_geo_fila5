@@ -39,3 +39,11 @@ Ogni nuovo componente UI (es. `MapPositioner`) deve essere accompagnato da:
 
 ---
 *Ultimo aggiornamento: Aprile 2026*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

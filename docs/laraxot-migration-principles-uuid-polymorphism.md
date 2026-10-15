@@ -262,3 +262,11 @@ $table->index(['morphable_id', 'morphable_type']); // Performance
 
 *Caso studio: Migration Activity Table con polimorfismo UUID*
 *Status: ✅ Lezione appresa e memorizzata permanentemente*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

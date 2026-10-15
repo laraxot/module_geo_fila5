@@ -53,3 +53,11 @@ Dopo una ricerca riuscita `selectSearchResult` emette `address-selected` oltre a
 - `node --test Modules/Geo/tests/js/default-view.test.mjs` (3 test, ordine dei livelli e vista non valida).
 - `Modules/Geo/tests/Unit/Filament/Forms/Components/CoordinatePickerDefaultViewTest.php` (10 test: default di config, tipi, valori non validi, attributo nei 3 blade).
 - Browser su `http://192.168.1.40:8000` (`isSecureContext=false`), script nello scratchpad della sessione DCP-146 (`w2/probe2.mjs`, `w2/langs.mjs`, `w2/search2.mjs`).
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

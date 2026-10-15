@@ -162,3 +162,11 @@ In essenza, estendere `BaseModel` è un atto di rispetto verso:
 - I principi di design
 - I futuri sviluppatori
 - L'armonia dell'intero sistema
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

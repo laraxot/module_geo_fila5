@@ -12,3 +12,11 @@ status: draft
 
 Depending on your authentication method you either need to add an Authorization header with a Bearer token or a query parameter 
 
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -30,3 +30,11 @@ Risoluzione deterministica per singolo blocco: lato non vuoto, superset, metadat
 | `laravel/Modules/Geo/tests/Unit/Traits/HasAddressTest.php` | 1 | shorter_tiebreak=1 | `06363879b566` → `300bd9c17e4f` |
 | `laravel/Modules/Geo/tests/Unit/Traits/TraitsTest.php` | 1 | shorter_tiebreak=1 | `2ba727e5e293` → `f7d232765928` |
 | `laravel/Modules/Geo/tests/playwright/marker-type-icon-parity.spec.js` | 3 | shorter_tiebreak=3 | `fc4854bf67bb` → `84e064280ec3` |
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

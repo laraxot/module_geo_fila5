@@ -1,5 +1,5 @@
 ---
-qmd: "project structure"
+qmd: "PROJECT STRUCTURE"
 issues: []
 discussions: []
 title: "Project Structure — Module Geo"
@@ -51,7 +51,7 @@ status: draft
 | `wiki/log.md` | Storico attività (ingest/query/lint) |
 | `wiki/rules/` | Regole + trigger map locale |
 | `wiki/concepts/` | Concetti specifici del modulo |
-| `ON-DEMAND-PATTERN.md` | **Leggi prima** — pattern da seguire |
+| `on-demand-pattern.md` | **Leggi prima** — pattern da seguire |
 
 ## Convenzioni
 
@@ -124,3 +124,11 @@ git commit -m "docs: add wiki structure for Geo"
 
 ---
 *Pattern: On-Demand | Source: docs/wiki/*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

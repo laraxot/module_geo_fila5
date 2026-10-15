@@ -148,4 +148,12 @@ Quando si migra da vecchi schemi che utilizzano prefissi ridondanti, è importan
 1. Aggiornare tutte le query esistenti
 2. Verificare la compatibilità con i form esistenti
 3. Aggiornare eventuali validazioni
+<<<<<<< HEAD
 4. Creare una migrazione che rinomini i campi in modo appropriato
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+4. Creare una migrazione che rinomini i campi in modo appropriato
+>>>>>>> laraxot/dev

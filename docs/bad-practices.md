@@ -17,3 +17,11 @@ status: draft
 - ❌ **Non utilizzare** `dehydrated(false)` sui field composti (sospende il passaggio lat/lng al modello)
 - ❌ **Non inserire** script inline nei template Blade; usa componenti Lit separati (`lit-element-placement.md`)
 - ❌ **Non ripetere** stili CSS Leaflet già definiti in `theme.css`; includi solo override.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -107,3 +107,11 @@ legittimo, non una violazione del pattern.
   producendo «Unknown database ':memory:'» nel setup DB. I corpi dei test qui
   convertiti non usano il DB (usano stub bindati nel container); i test
   `LightTestCase` (Elevation, IPGeolocation) passano.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

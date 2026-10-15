@@ -117,3 +117,11 @@ use Modules\Geo\Datas\Location\CoordinatesData;
 
 **Commit**: 82de5f0a5  
 **Next Steps**: Await final QA verification (PHPStan, PHPMD, PHPInsights, Pest)
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

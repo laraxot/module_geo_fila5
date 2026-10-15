@@ -308,3 +308,11 @@ php artisan geo:test-api-integration
 - [Google Places Integration](google-places.md)
 - [Address Model Documentation](models/address.md)
 
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

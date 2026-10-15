@@ -55,3 +55,11 @@ The module maintains:
 - Comprehensive type hints
 - Geospatial data handling best practices
 - Modern PHP 8.2+ feature utilization
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

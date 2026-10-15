@@ -151,4 +151,12 @@ Dopo ogni correzione modulo:
 ✅ **0 errori PHPStan Level 10** nel modulo Geo
 ✅ **Type safety garantita** per tutte le operazioni geografiche
 ✅ **Documentazione aggiornata** con pattern di correzione
+<<<<<<< HEAD
 ✅ **Logica funzionale mantenuta** senza regressioni
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+✅ **Logica funzionale mantenuta** senza regressioni
+>>>>>>> laraxot/dev

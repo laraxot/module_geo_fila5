@@ -164,3 +164,11 @@ All fixes have been designed to:
 - ✅ Reusable across multiple projects
 
 This ensures the Notify module is fully compliant with Laraxot modular architecture principles and can be safely reused across different projects without modification.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

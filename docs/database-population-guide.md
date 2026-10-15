@@ -343,3 +343,11 @@ php artisan tinker
 ---
 **Versione**: 1.0
 **Autore**: Sistema Laraxot
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

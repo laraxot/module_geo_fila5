@@ -190,7 +190,7 @@ Example: [IndennitaResponsabilita](../laravel/Modules/IndennitaResponsabilita/do
 
 ```markdown
 <!-- In permanent doc -->
-For historical changes, see [CHANGELOG.md](./CHANGELOG.md)
+For historical changes, see [CHANGELOG.md](./changelog.md)
 
 <!-- In CHANGELOG.md -->
 ## [2024-12-10]

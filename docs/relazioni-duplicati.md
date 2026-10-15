@@ -149,4 +149,12 @@ public function ofRangeDate(int $dateStart, int $dateEnd): HasMany
 **Quando applicarla?**
 - Quando 2+ metodi hanno lo stesso scopo
 - Quando il nome include dati specifici (es. `Retribuzione`)
+<<<<<<< HEAD
 - Quando `whereRaw` supera 3 parametri
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+- Quando `whereRaw` supera 3 parametri
+>>>>>>> laraxot/dev

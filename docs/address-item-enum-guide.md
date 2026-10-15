@@ -363,3 +363,11 @@ This is not just an enum; it's a **comprehensive addressing philosophy** encoded
   ma non indica priorità né moduli impattati.
   *Da fare*: aggiungere una piccola roadmap (es. v1: CAP IT, v2: altri paesi, v3: autocomplete) collegata ai moduli
   che useranno queste feature (Geo, TechPlanner, eventuali CRM).
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

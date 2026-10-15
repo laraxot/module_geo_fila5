@@ -380,3 +380,11 @@ AddressInput::make('address');  // Geo gestisce tutto
 - **CreateTicketWizardWidget**: `../../Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php`
 - **Filament v5 Fields**: https://filamentphp.com/docs/5.x/forms/fields
 - **DDD Bounded Contexts**: https://martinfowler.com/bliki/BoundedContext.html
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

@@ -45,3 +45,11 @@ status: draft
 - Nessuna dipendenza da CDN.
 - Gli asset Filament sono registrati in `app/Providers/Filament/AdminPanelProvider.php`.
 - Il build frontend del modulo `Geo` resta il build locale del modulo.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

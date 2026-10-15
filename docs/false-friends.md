@@ -37,3 +37,11 @@ const map = L.map('map');
 // ✅ CORRETTO
 const map = L.map(this.querySelector('.coordinate-picker-map'));
 ```
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

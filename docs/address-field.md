@@ -192,3 +192,11 @@ display_name → aggiorna wire:model="data.address"
 > **SEMPRE** usare `geo::filament.components.address-field`.
 >
 > Vedi: [`MODULE-BOUNDARY-PHILOSOPHY.md`](../../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md)
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

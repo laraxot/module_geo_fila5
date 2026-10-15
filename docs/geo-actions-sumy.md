@@ -113,3 +113,11 @@ For detailed implementation guides and advanced usage, see:
 - `docs/actions/` directory for action-specific documentation
 - `docs/services/` for service layer documentation
 - Language files in `lang/it/actions.php` for UI translations
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

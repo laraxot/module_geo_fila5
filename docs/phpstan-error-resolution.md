@@ -99,3 +99,11 @@ Questo intervento consolida l'approccio sistematico alla risoluzione di errori P
 
 *Documento aggiornato: 8 Gennaio 2025*
 *Conformità: PHPStan Level 9+, Laraxot Conventions*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

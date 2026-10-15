@@ -7,10 +7,20 @@ updated: 2026-09-26
 qmd: "advanced features backup"
 issues: []
 discussions: []
-module: theme
-topic: advanced-features-backup
-canonical: ../../../Themes/docs/shared-components/ADVANCED_FEATURES.md
-status: stub
+status: draft
 ---
 
-See canonical documentation: ../../../Themes/docs/shared-components/ADVANCED_FEATURES.md
+# Funzionalità Avanzate del Modulo Geo
+
+## Ottimizzazione Percorsi
+
+### Algoritmo del Commesso Viaggiatore
+<<<<<<< HEAD
+L'`OptimizeRouteAction` implementa una soluzione euristica al problema del commesso viaggiatore (TSP) utilizzando l'algoritmo del "nearest neighbor": 
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+L'`OptimizeRouteAction` implementa una soluzione euristica al problema del commesso viaggiatore (TSP) utilizzando l'algoritmo del "nearest neighbor": 
+>>>>>>> laraxot/dev

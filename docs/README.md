@@ -6,7 +6,7 @@ title: "Geo Module Documentation"
 type: documentation
 tags: [module, documentation, geospatial, mapping]
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-10-15
 status: draft
 ---
 
@@ -42,7 +42,7 @@ Il modulo **Geo** gestisce tutte le funzionalità geospaziali della piattaforma 
 - **Ownership**: tutto cio' che e' geospaziale (geocoding, distanze, gerarchia comuni/province/regioni, modelli `Address`/`Location`/`Place`, picker e mappe Lit/Leaflet). Consumatore nel codice vivo: `Fixcity` (`TicketForm` e `TicketResource` usano `Modules\Geo\Filament\Forms\Components\CoordinatePicker`); misurato con `grep` dei riferimenti `Modules\Geo` nelle `app/` degli altri moduli: 4 file in Fixcity e 1 file `.old` in UI (`InteractiveMap.php.old`, non caricato).
 - **Superficie HTTP**: `routes/web.php` e `routes/api.php` contengono solo commenti e non esiste `resources/views/pages` (nessuna pagina Folio, nessuna API del modulo). Il pannello Filament risponde su `/geo/admin` (dashboard, `addresses`, `locations`, pagine `lat-lng`, `location-map`, `location-map-table`, `o-s-m-map`, `dotswan-map`, `webbingbrasil-map`, `setting-page`) da `php artisan route:list`.
 - **Quick start** (da `laravel/`): `php artisan module:list`; `./vendor/bin/phpstan analyse Modules/Geo` (0 errori); `node --test Modules/Geo/tests/js/default-view.test.mjs` (3 passati); build JS con `cd Modules/Geo && npm run build` (`vite.config.js` scrive in `public_html/assets/geo`; non eseguito qui). Per i test PHP vedi Testing, con il limite noto.
-- **Limiti noti**: la radice di `docs/` ha 622 file (vedi [DOCS-MIGRATION-MAP.md](./DOCS-MIGRATION-MAP.md), proposta senza spostamenti); `app/` contiene 19 file di scarto (`.wip`, `.disabled*`, `.fila3`, `.maybe_profile`, `.old`, `.backup-*`, `.bak*`) e copie duplicate di Actions (due `GetAddressFromBingMapsAction`, due `CalculateGeoDistanceAction`, due `IsPointInPolygonAction`, due `OptimizeRouteAction`); le chiavi di config `geo.driver`, `geo.api_keys`, `geo.cache` lette dal codice non esistono a runtime (vedi Configuration); i test PHP non girano per `Themes/Meetup`.
+- **Limiti noti**: la radice di `docs/` ha 622 file (vedi [DOCS-MIGRATION-MAP.md](./docs-migration-map.md), proposta senza spostamenti); `app/` contiene 19 file di scarto (`.wip`, `.disabled*`, `.fila3`, `.maybe_profile`, `.old`, `.backup-*`, `.bak*`) e copie duplicate di Actions (due `GetAddressFromBingMapsAction`, due `CalculateGeoDistanceAction`, due `IsPointInPolygonAction`, due `OptimizeRouteAction`); le chiavi di config `geo.driver`, `geo.api_keys`, `geo.cache` lette dal codice non esistono a runtime (vedi Configuration); i test PHP non girano per `Themes/Meetup`.
 
 ## Struttura del Modulo
 
@@ -292,3 +292,14 @@ _(Nota 2026-10-14, stato reale: i provider sono Actions separate per cartella, n
 **PHPStan Level**: 10 (Compliant)
 
 > Verifica 2026-10-14 di questo blocco: PHPStan 0 errori su `Modules/Geo` (config unica, livello `max`): confermato. "Production" non e' provato (i test PHP del modulo non girano in questo ambiente, vedi Testing). Lo stato dei requisiti PHP/Laravel e' in `composer.json` e nell'app di `laravel/`, non in questo README.
+
+## Standing order (qualita' + docs)
+
+- **PHPStan a zero** sul codice del modulo: non ignorare errori, non abbassare il livello, non modificare `phpstan.neon` del progetto. Qualita' + docs + BMAD sono standing order, non opzionali.
+- **Cartella test**: solo `tests/` (minuscolo). `Tests/` e' vietato (case-collision su macOS/Windows e confusione PSR-4).
+- **Nomi `.md`**: kebab-case minuscolo, niente date/timestamp nel nome, unica eccezione `README.md`. Se esistono `readme.md` e `README.md`, resta solo `README.md`.
+- **Docs**: solo dentro `docs/` gia' esistente; consolida invece di moltiplicare file; link relativi; focus su scopo/perche'/business logic (DRY + KISS).
+- **Git**: forward-only (patch in avanti); no reset/revert/checkout come scorciatoia.
+- **BMAD + second brain**: indici e decisioni vivono in `docs/` del modulo; aggiornali quando cambia il perche', non solo il come.
+
+Vedi anche: [00-index.md](./00-index.md) · [index.md](./index.md)

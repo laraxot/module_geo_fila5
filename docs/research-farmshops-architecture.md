@@ -35,3 +35,11 @@ status: draft
 1. **Modern Stack**: Use Lit Web Components instead of jQuery.
 2. **Vite Bundling**: No CDNs, everything local for better reliability and performance.
 3. **Filament Integration**: Deep integration with Filament v5 dashboard patterns.
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

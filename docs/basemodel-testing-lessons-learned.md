@@ -143,3 +143,11 @@ Tutti i moduli che utilizzano `BaseModel` o pattern simili:
 **Responsabile**: Claude Code Testing Resolution
 **Status**: Completato e Documentato
 **Moduli Testati**: <nome modulo> (54/54 tests passing)
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

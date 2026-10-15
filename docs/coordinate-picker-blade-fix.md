@@ -57,4 +57,12 @@ Verified that:
 ## Related Documentation
 - [Geo Module Documentation](../README.md)
 - [Filament Form Components](../filament-form-components.md)
+<<<<<<< HEAD
 - [Alpine.js Directives](https://alpinejs.dev/directives/)
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+- [Alpine.js Directives](https://alpinejs.dev/directives/)
+>>>>>>> laraxot/dev

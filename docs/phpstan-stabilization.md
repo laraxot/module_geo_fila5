@@ -37,3 +37,11 @@ To satisfy Level 10 requirements for dynamic geographic data, the module employs
 
 ---
 *This document is maintained as a living record of the module's quality status.*
+<<<<<<< HEAD
+
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+>>>>>>> laraxot/dev

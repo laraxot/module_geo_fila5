@@ -262,4 +262,12 @@ $table->geometry('location_point', 'POINT')->nullable(); // PostGIS
 
 **Ultimo aggiornamento**: 2026-04-27
 **Autore**: System
+<<<<<<< HEAD
 **Scopo**: Documentazione architetturale per AI agents e developers
+--- BMAD + Second Brain ---
+- Scopo: documentazione tecnica del modulo.
+- Utilità: riferimento sviluppatori/audit.
+- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
+=======
+**Scopo**: Documentazione architetturale per AI agents e developers
+>>>>>>> laraxot/dev
