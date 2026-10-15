@@ -344,7 +344,7 @@ Motivo del gruppo: analisi di duplicati e ridondanza: casa naturale analysis/. S
 | `optimization_recommendations.md` | `analysis/optimization_recommendations.md` | Raccomandazioni di Ottimizzazione - Modulo Geo | canonico delle copie byte-identiche; link in ingresso: 1 | proposto |
 | `PERFORMANCE-OPTIMIZATION.md` | `analysis/PERFORMANCE-OPTIMIZATION.md` | Performance Optimization - Module Geo | omonimo con contenuto diverso: `performance-optimization.md`; collisione di maiuscole nella destinazione; link in ingresso: 0 | proposto |
 | `performance-optimization.md` | `analysis/performance-optimization.md` | Performance Optimization - Module Geo | omonimo con contenuto diverso: `PERFORMANCE-OPTIMIZATION.md`; collisione di maiuscole nella destinazione; link in ingresso: 3 | proposto |
-| `ponytail-audit-2026-07-02.md` | `analysis/ponytail-audit-2026-07-02.md` | Ponytail-audit 2026-07-02: Geo module findings | link in ingresso: 0 | proposto |
+| `ponytail-audit-user-module-findings.md` | `analysis/ponytail-audit-user-module-findings.md` | Ponytail-audit 2026-07-02: Geo module findings | link in ingresso: 0 | proposto |
 | `ponytail-audit-over-engineering.md` | `analysis/ponytail-audit-over-engineering.md` | Ponytail audit - Geo (over-engineering) | link in ingresso: 2 | proposto |
 | `ponytail-audit-plan.md` | `analysis/ponytail-audit-plan.md` | Ponytail audit - planning | link in ingresso: 4 | proposto |
 | `ponytail-audit-report.md` | `analysis/ponytail-audit-report.md` | Ponytail audit - report | link in ingresso: 2 | proposto |
