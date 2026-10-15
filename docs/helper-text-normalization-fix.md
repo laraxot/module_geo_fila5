@@ -1,10 +1,10 @@
 ---
-title: "helper text normalization fix"
+title: "helper text normalization fix "
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "helper text normalization fix"
+qmd: "helper text normalization fix "
 issues: []
 discussions: []
 status: draft
@@ -99,9 +99,9 @@ php docs/helper-text-audit-script.php
 - ✅ Script di audit automatico creato per controlli futuri
 
 ### Collegamenti Bidirezionali
-- [Documentazione Centrale Traduzioni](../../../../docs/translation-field-structure-complete.md)
-- [Script Audit Helper Text](../../../../docs/helper-text-audit-script.php)
-- [Memoria Regola Critica](../../../../docs/translation-refactor-complete-summary.md)
+- [Documentazione Centrale Traduzioni](../../../../../../docs/translation-field-structure-complete.md)
+- [Script Audit Helper Text](../../../../../../docs/helper-text-audit-script.php)
+- [Memoria Regola Critica](../../../../../../docs/translation-refactor-complete-summary.md)
 
 ## Validazione
 

@@ -148,9 +148,9 @@ WAVE 1 (parallel)     WAVE 2 (parallel)     WAVE 3
 
 | GSD Concept | Laraxot Equivalent |
 |------------|-------------------|
-| `PROJECT.md` | `.planning/PROJECT.md` |
+| `project.md` | `.planning/PROJECT.md` |
 | `REQUIREMENTS.md` | `.planning/REQUIREMENTS.md` |
-| `ROADMAP.md` | `.planning/ROADMAP.md` |
+| `roadmap.md` | `.planning/ROADMAP.md` |
 | `STATE.md` | `.planning/STATE.md` |
 | Research | `.planning/research/` |
 | Phase plans | `.planning/phases/` |

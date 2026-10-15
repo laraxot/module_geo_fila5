@@ -104,7 +104,7 @@ class Comune extends Model
 - [geo-json-model.md](geo-json-model.md)
 - [geo-sushi-comparison.md](geo-sushi-comparison.md)
 - [comune-unificazione-analisi.md](comune-unificazione-analisi.md)
-- [module_geo.md](module_geo.md)
+- [module_geo.md](module-geo.md)
 
 ---
 

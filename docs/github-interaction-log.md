@@ -1,10 +1,10 @@
 ---
-title: "github interaction log"
+title: "GITHUB INTERACTION LOG"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "github interaction log"
+qmd: "GITHUB INTERACTION LOG"
 issues: []
 discussions: []
 status: draft

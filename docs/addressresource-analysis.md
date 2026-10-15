@@ -12,7 +12,7 @@ status: draft
 
 # Analisi AddressResource.php
 
-**Data analisi**: [DATE]  
+**Data analisi**: 2025-07-30  
 **File**: `/laravel/Modules/Geo/app/Filament/Resources/AddressResource.php`  
 **Stato**: Analizzato completamente (404 righe)
 

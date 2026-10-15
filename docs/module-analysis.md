@@ -349,6 +349,7 @@ $contained = SpatialQueryService::withinPolygon($polygon);
 - [Geocoding Best Practices](https://geocode.earth/guidelines)
 
 ---
+**Ultimo Aggiornamento**: 2026-01-23  
 **Versione**: v1.8.0-beta  
 <<<<<<< HEAD
 **Stato**: Production Ready with Real-time Enhancement

@@ -34,8 +34,8 @@ Utente, 2026-10-13 e 2026-10-14: studiare, aggiornare, migliorare e organizzare 
 | `README.md` | `AddressInput->provider()->storeCoordinates()->showMap()`, `LeafletMarkerMapInput->storeAs()` | nessuno dei quattro metodi e' definito in `app/` |
 | `README.md` | config in `laravel/config/local/geo/config.php` con `default_provider`, `providers`, `distance_unit` | la config e' `Modules/Geo/config/config.php` con altre chiavi; `laravel/config/local/geo` non esiste |
 | `README.md` | test `pest Modules/Geo/tests/Feature/GeocodingTest.php`, copertura 80%, `phpstan --level=max` | il file non esiste; il livello e' fissato da `laravel/phpstan.neon`; copertura non misurata |
-| `INDEX.md` | `GetCoordinatesFromAddressAction`; 5 link a `_bmad/`, `DesignComuni`, `Fixcity/docs/address-implementation.md`, `_integration/archive/` | la classe e' `GetCoordinatesByAddressAction`; i bersagli non esistono (uno ricollocato in `_integration/here-com.md`); sezione "DEDUPLICATION" parla di cancellazioni mai avvenute |
-| `00-INDEX.md` | `app/Enums/AddressItemType.php`; `FilterCoordinatesInRadius.php` e `ClusterLocationsAction.wip` rinominati `.bak` | gli enum sono `AddressItemEnum`, `AddressTypeEnum`; `FilterCoordinatesInRadius.php` esiste ancora, i `.wip` pure, e `ClusterLocationsAction.php` esiste |
+| `index.md` | `GetCoordinatesFromAddressAction`; 5 link a `_bmad/`, `DesignComuni`, `Fixcity/docs/address-implementation.md`, `_integration/archive/` | la classe e' `GetCoordinatesByAddressAction`; i bersagli non esistono (uno ricollocato in `_integration/here-com.md`); sezione "DEDUPLICATION" parla di cancellazioni mai avvenute |
+| `00-index.md` | `app/Enums/AddressItemType.php`; `FilterCoordinatesInRadius.php` e `ClusterLocationsAction.wip` rinominati `.bak` | gli enum sono `AddressItemEnum`, `AddressTypeEnum`; `FilterCoordinatesInRadius.php` esiste ancora, i `.wip` pure, e `ClusterLocationsAction.php` esiste |
 | `00-index.md` | 51 azioni, 6 widget, 7 link inesistenti | 77 file in `Actions/`, 7 widget; link annotati |
 | `index.md` | sembra l'indice di Geo | e' l'indice "PTVX - Documentazione Completa" (41 link senza bersaglio): segnato `stale` |
 | `wiki/ProjectHome.md`, `projecthome.md`, `reflective.md`, `method-name-homonym-census.md` | wiki di Geo | contenuti di PTVX, Ptv/UI e un censimento di progetto: segnati `stale` |
@@ -48,22 +48,22 @@ Utente, 2026-10-13 e 2026-10-14: studiare, aggiornare, migliorare e organizzare 
 4. `app/DataTransferObjects/LocationDTO.php` esiste, mentre il decision-log del 2026-10-08 lo dava per eliminato.
 
 ## Modifiche (solo sostituzioni mirate)
-`README.md` (sezione di identita'/quick start, albero, tabella componenti, esempi, config, test, qualita', link), `INDEX.md` (nota sul contratto, classificazione delle directory, 5 link, nome classe, nota sulla deduplicazione), `00-INDEX.md` e `00-index.md` (correzioni con evidenza, link annotati), `decision-log.md` (una voce in Open Questions), `stories/index.md` (link a questa story e alle recenti), `wiki/index.md`, `wiki/log.md`, `wiki/agents.md`, `wiki/bmad-method.md`, `wiki/coordinate-picker-filament5-save-pattern.md`; `index.md`, `wiki/ProjectHome.md`, `wiki/projecthome.md`, `wiki/reflective.md`, `wiki/method-name-homonym-census.md` segnati `stale` con lo strumento; questa story e la nota di memoria `bashscripts/ai/wiki/memories/docs-fixcity-geo-studio.md`. Nessun file spostato, rinominato o cancellato.
+`README.md` (sezione di identita'/quick start, albero, tabella componenti, esempi, config, test, qualita', link), `index.md` (nota sul contratto, classificazione delle directory, 5 link, nome classe, nota sulla deduplicazione), `00-index.md` e `00-index.md` (correzioni con evidenza, link annotati), `decision-log.md` (una voce in Open Questions), `stories/index.md` (link a questa story e alle recenti), `wiki/index.md`, `wiki/log.md`, `wiki/agents.md`, `wiki/bmad-method.md`, `wiki/coordinate-picker-filament5-save-pattern.md`; `index.md`, `wiki/ProjectHome.md`, `wiki/projecthome.md`, `wiki/reflective.md`, `wiki/method-name-homonym-census.md` segnati `stale` con lo strumento; questa story e la nota di memoria `bashscripts/ai/wiki/memories/docs-fixcity-geo-studio.md`. Nessun file spostato, rinominato o cancellato.
 
 ## Verifica (output reale, 2026-10-14)
-- Link non risolti (`docs-organizer.py --busy-minutes 0 links ... --by-name`, dry-run), prima -> dopo: `README.md` 2 -> 0, `00-INDEX.md` 4 -> 0, `00-index.md` 7 -> 0, `INDEX.md` 6 -> 0, `wiki/index.md` 1 -> 0, `wiki/log.md` 2 -> 0, `wiki/bmad-method.md` 1 -> 0, `wiki/coordinate-picker-filament5-save-pattern.md` 2 -> 0; `wiki/agents.md` 1 -> 1 (annotato, il tool conta comunque il commento). Somma sugli ingressi e sulle pagine corrette: 26 -> 1. Restano 101 eventi nei 5 file `stale` (`index.md` 41, `ProjectHome.md` 10, `projecthome.md` 10, `reflective.md` 7, `method-name-homonym-census.md` 33): spiegati dalla nota `stale`, non annotati uno per uno. Intera cartella: 1787 -> 1762.
-- Controllo indipendente di ogni link relativo: `README.md` 0/15 e `INDEX.md` 0/74 rotti.
+- Link non risolti (`docs-organizer.py --busy-minutes 0 links ... --by-name`, dry-run), prima -> dopo: `README.md` 2 -> 0, `00-index.md` 4 -> 0, `00-index.md` 7 -> 0, `index.md` 6 -> 0, `wiki/index.md` 1 -> 0, `wiki/log.md` 2 -> 0, `wiki/bmad-method.md` 1 -> 0, `wiki/coordinate-picker-filament5-save-pattern.md` 2 -> 0; `wiki/agents.md` 1 -> 1 (annotato, il tool conta comunque il commento). Somma sugli ingressi e sulle pagine corrette: 26 -> 1. Restano 101 eventi nei 5 file `stale` (`index.md` 41, `ProjectHome.md` 10, `projecthome.md` 10, `reflective.md` 7, `method-name-homonym-census.md` 33): spiegati dalla nota `stale`, non annotati uno per uno. Intera cartella: 1787 -> 1762.
+- Controllo indipendente di ogni link relativo: `README.md` 0/15 e `index.md` 0/74 rotti.
 - `phpstan analyse Modules/Fixcity Modules/Geo` (config unica, livello `max`): Geo 0 errori.
 - `node --test Modules/Geo/tests/js/default-view.test.mjs`: 3 passati, 0 falliti.
 - Pest: vedi scoperta 2; DB di sviluppo invariato (18 ticket, 11 utenti prima e dopo).
 - `php artisan module:list`: Geo `Enabled`. `route:list`: `geo/admin`, `geo/admin/addresses`, `geo/admin/locations` e 7 pagine; nessuna rotta fuori dal pannello.
 
 ## Decisioni
-- Nessun indice nuovo. Il conflitto fra contratto (`00-INDEX.md` canonico) e decisione del 2026-10-14 (`INDEX.md` ingresso unico) non e' risolto qui: annotato in `INDEX.md` e nel decision-log.
+- Nessun indice nuovo. Il conflitto fra contratto (`00-index.md` canonico) e decisione del 2026-10-14 (`index.md` ingresso unico) non e' risolto qui: annotato in `index.md` e nel decision-log.
 - Le sezioni storiche false non sono state cancellate: correzione in linea con evidenza.
 
 ## Aperto
-- Decidere l'indice canonico (e la collisione `00-INDEX.md`/`00-index.md` su filesystem insensibili alle maiuscole, DOC-006).
+- Decidere l'indice canonico (e la collisione `00-index.md`/`00-index.md` su filesystem insensibili alle maiuscole, DOC-006).
 - Correggere le chiavi `geo.*` nel codice (o spostare il file di config) e rendere eseguibili i test PHP di Geo (`Meetup`): sono bug di codice.
 - Rimuovere o archiviare i 19 file di scarto e le copie di Actions, con decisione e mappa dei riferimenti.
 - 101 link nei 5 file `stale` e il resto della cartella (1762 eventi) dipendono da DOC-004/006.
