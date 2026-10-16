@@ -273,11 +273,3 @@ La roadmap proposta è **incrementale** e **non disruptive**, permettendo miglio
 ---
 **Versione**: 1.0
 **Stato**: ✅ Analisi completa di tutti i 14 moduli
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

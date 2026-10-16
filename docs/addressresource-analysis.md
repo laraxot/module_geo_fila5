@@ -12,7 +12,7 @@ status: draft
 
 # Analisi AddressResource.php
 
-**Data analisi**: 2025-07-30  
+**Data analisi**: [DATE]  
 **File**: `/laravel/Modules/Geo/app/Filament/Resources/AddressResource.php`  
 **Stato**: Analizzato completamente (404 righe)
 
@@ -160,11 +160,3 @@ Regione → Province → Località → CAP
 - **Complessità ciclomatica**: Media-Alta (per le closure nei Select)
 - **Dipendenze**: 11 import
 - **Modelli coinvolti**: 5
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

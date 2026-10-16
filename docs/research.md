@@ -15,11 +15,3 @@ status: draft
 ## Insights
 - Gli sviluppatori preferiscono pattern consistenti basati su XotBase.
 - La mancanza di tipi forti aumenta il tempo di debug del 30%.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

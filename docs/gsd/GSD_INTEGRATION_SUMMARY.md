@@ -198,9 +198,9 @@ bmad-laravel-module-dev --module=Scheda
 4. **Crea roadmap** — Mappa requirements a fasi eseguibili
 
 **File creati**:
-- `project.md` — Vision del progetto
+- `PROJECT.md` — Vision del progetto
 - `REQUIREMENTS.md` — Requirements scoped
-- `roadmap.md` — Fasi mappate
+- `ROADMAP.md` — Fasi mappate
 - `STATE.md` — Decisioni e blockers
 - `.planning/research/` — Research findings
 

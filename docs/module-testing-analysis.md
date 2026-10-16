@@ -387,11 +387,3 @@ Questo documento fornisce un'analisi completa dello stato attuale di factory, se
 **Stato**: 100% moduli completati (14/14) ✅
 **Copertura Media**: 85%
 **Prossimo obiettivo**: Completamento factories e test unitari
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

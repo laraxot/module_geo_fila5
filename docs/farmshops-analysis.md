@@ -354,11 +354,3 @@ class MapComponent {
 ---
 
 *Questa analisi fornisce le basi per integrare le funzionalità di farmshops.eu nel progetto FixCity, migliorando significativamente l'esperienza utente con visualizzazioni geografiche avanzate.*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

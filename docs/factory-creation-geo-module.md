@@ -130,11 +130,3 @@ public function milano(): static
 *Creato: [DATE]*
 *Modulo: Geo - 8/8 factory necessarie completate*
 *Status: ✅ ERRORE GRAVISSIMO RISOLTO*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

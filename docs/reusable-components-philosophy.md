@@ -117,11 +117,3 @@ L'AddressColumn risiede in Geo perché la sua anima è la logica degli indirizzi
 ## Conclusione
 
 Seguendo questa filosofia, manteniamo un'architettura pulita, manutenibile e scalabile dove ogni modulo ha le sue responsabilità chiare e i componenti riutilizzabili sono centralizzati dove la loro logica appartiene.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

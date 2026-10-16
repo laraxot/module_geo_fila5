@@ -57,9 +57,9 @@ Definisci COSA costruire e per CHI.
 
 | Code | Workflow | Skill | Agente | Output | PTVX Use Case |
 |------|----------|-------|--------|--------|---------------|
-| **CP** | [Create PRD](#create-prd) | `bmad-create-prd` | John 📋 | `prd.md` | **NUOVI MODULI** |
+| **CP** | [Create PRD](#create-prd) | `bmad-create-prd` | John 📋 | `PRD.md` | **NUOVI MODULI** |
 | **VP** | [Validate PRD](#validate-prd) | `bmad-validate-prd` | John 📋 | `validation-report.md` | Quality gate PRD |
-| **EP** | [Edit PRD](#edit-prd) | `bmad-edit-prd` | John 📋 | `prd.md` | Aggiornamento PRD |
+| **EP** | [Edit PRD](#edit-prd) | `bmad-edit-prd` | John 📋 | `PRD.md` | Aggiornamento PRD |
 | **CU** | [Create UX](#create-ux) | `bmad-create-ux-design` | Sally 🎨 | `ux-spec.md` | UI Filament, dashboard |
 
 ---

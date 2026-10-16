@@ -398,11 +398,3 @@ use Modules\Geo\Filament\Forms\LocationForm;
 Non utilizzare mai `Modules\Geo\App\Filament\Forms\LocationForm`.
 
 > Aggiornare sempre la documentazione e i file .mdc windsurf/cursor in caso di modifica del path o del namespace.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

@@ -339,11 +339,3 @@ jobs:
 **Stato**: ✅ Implementazione Completa
 **Responsabile**: Team Development
 **Review**: Richiesta per validazione e deployment
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

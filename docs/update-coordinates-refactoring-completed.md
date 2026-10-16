@@ -127,11 +127,3 @@ This refactoring aligns with:
 
 ---
 *Documento conforme agli standard Laraxot - DRY + KISS + SOLID*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

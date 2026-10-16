@@ -115,12 +115,4 @@ PHPStan analysis was blocked by a syntax error in the Cms module, but PHPMD anal
 
 ---
 **Report Generated**: [DATE]
-<<<<<<< HEAD
 **Target Completion**: [DATE]
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
-**Target Completion**: [DATE]
->>>>>>> laraxot/dev

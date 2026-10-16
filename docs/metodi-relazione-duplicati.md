@@ -460,11 +460,3 @@ status: draft
 3. **Centralizzare gerarchie**: relazioni `belongsTo` allo stesso modello target possono essere centralizzate in un trait.
 4. **Verificare relazioni in trait vs classi utilizzatrici**: molte duplicazioni sono tra un trait e le classi che lo usano; valutare se il metodo è già nel trait.
 5. **Priorità moduli**: concentrare il refactoring sui moduli con più duplicati.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

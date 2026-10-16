@@ -2055,11 +2055,3 @@ status: draft
   Tests:    100 failed, 21 warnings, 52 passed (219 assertions)
   Duration: 10.71s
 
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

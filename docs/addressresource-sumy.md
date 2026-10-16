@@ -170,9 +170,9 @@ edit, view, delete, setPrimary
 ## 🔗 Documentazione Correlata
 
 ### File di Analisi
-- `addressresource-analysis.md`: Analisi tecnica dettagliata
-- `addressresource-improvements.md`: Miglioramenti proposti
-- `addressresource-summary.md`: Questo documento di sintesi
+- `addressresource_analysis.md`: Analisi tecnica dettagliata
+- `addressresource_improvements.md`: Miglioramenti proposti
+- `addressresource_summary.md`: Questo documento di sintesi
 
 ### Documentazione Modulo
 - `address-implementation.md`: Implementazione generale indirizzi
@@ -195,12 +195,4 @@ L'implementazione attuale fornisce una base solida per i miglioramenti proposti,
 *Sintesi completata il: $(date)*
 *Modulo: Geo*
 *Classe: AddressResource*
-<<<<<<< HEAD
 *Versione: 1.0* 
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
-*Versione: 1.0* 
->>>>>>> laraxot/dev

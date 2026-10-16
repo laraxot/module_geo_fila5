@@ -17,11 +17,3 @@ status: draft
 SET @g = ST_GEOMFROMTEXT('POLYGON((11.0000000 46.0000000,11.0000000 45.0000000,13.0000000 45.0000000,13.0000000 46.0000000, 11.0000000 46.0000000))');
 set @p = ST_GEOMFROMTEXT('POINT(12.2442554 45.5653223)');
 SELECT ST_CONTAINS(@g,@p);
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

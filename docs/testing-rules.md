@@ -14,19 +14,3 @@ status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/testing-rules-Modules.md
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev
-
-## Cartella `tests/` (minuscolo obbligatorio)
-
-- Solo `tests/` minuscolo. `Tests/` e' vietato.
-
-## PHPStan standing order
-
-- Zero errori PHPStan; non modificare `phpstan.neon`.

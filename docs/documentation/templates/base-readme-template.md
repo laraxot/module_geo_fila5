@@ -454,7 +454,7 @@ return [
 - **{{version}}** ({{timeline}}) - {{description}}
 {{/each}}
 
-Vedi [CHANGELOG.md](changelog.md) per storico completo.
+Vedi [CHANGELOG.md](CHANGELOG.md) per storico completo.
 
 ---
 

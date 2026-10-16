@@ -454,11 +454,3 @@ Assert::string($config);      // now string
 **Autore**: Claude Code (Sonnet 4.5)
 
 **Revisione**: Required after all fixes implemented
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

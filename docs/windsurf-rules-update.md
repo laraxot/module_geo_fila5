@@ -58,11 +58,3 @@ ls -la ../docs_project/ # Should contain moved files
 ```
 
 The forbidden documentation directories have been successfully removed and the rule has been documented and implemented.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

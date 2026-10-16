@@ -56,12 +56,4 @@ private const BASE_URL = 'https://maps.googleapis.com/maps/api/directions/json';
 ## Technical Notes
 - Correct namespace for PromiseInterface is `GuzzleHttp\Promise\PromiseInterface`
 - All HTTP client responses now properly handle both synchronous and asynchronous cases
-<<<<<<< HEAD
 - PHPDoc casting ensures PHPStan recognizes the correct type after Promise resolution
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
-- PHPDoc casting ensures PHPStan recognizes the correct type after Promise resolution
->>>>>>> laraxot/dev
