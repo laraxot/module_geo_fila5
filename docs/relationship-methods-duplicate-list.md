@@ -1,10 +1,10 @@
 ---
-title: "RELATIONSHIP METHODS DUPLICATE LIST"
+title: "relationship methods duplicate list"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "RELATIONSHIP METHODS DUPLICATE LIST"
+qmd: "relationship methods duplicate list"
 issues: []
 discussions: []
 status: draft
@@ -49,12 +49,4 @@ Con:
 ```php
 ->where($this->enteField(), $this->{$this->enteField()})
 ->where($this->matrField(), $this->{$this->matrField()})
-<<<<<<< HEAD
 ```
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
-```
->>>>>>> laraxot/dev

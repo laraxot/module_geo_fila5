@@ -97,11 +97,3 @@ private function extractLocationFromResponse(array $response): array
 
 - [PHPStan Array Types](https://phpstan.org/writing-php-code/phpdoc-types#array-types)
 - [Array Shapes in PHPStan](https://phpstan.org/writing-php-code/phpdoc-types#array-shapes)
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

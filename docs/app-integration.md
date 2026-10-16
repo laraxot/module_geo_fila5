@@ -17,11 +17,3 @@ status: draft
 https://hackernoon.com/transforming-mobile-maps-with-jetpack-compose-insights-from-google-io-for-developers
 
 https://developer.android.com/develop/ui/compose/tutorial?hl=it
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

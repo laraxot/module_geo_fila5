@@ -181,7 +181,7 @@ Indipendentemente dalla strategia scelta, le seguenti best practices dovrebbero 
 Per facilitare la navigazione nella documentazione esistente, ecco una mappa organizzata per argomento:
 
 ### Analisi Generali
-- [module_geo.md](module-geo.md) - Panoramica del modulo Geo
+- [module_geo.md](module_geo.md) - Panoramica del modulo Geo
 - [architecture.md](architecture.md) - Architettura del modulo
 
 ### GeoJsonModel
@@ -223,11 +223,3 @@ Questo compendio fornisce un punto di partenza per navigare nella documentazione
 
 *Documento creato il: 28/05/2025*  
 *Autore: Team <main module>*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

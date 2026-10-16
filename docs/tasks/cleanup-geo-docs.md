@@ -17,7 +17,7 @@ Sfoltire l'enorme documentazione del modulo Geo (370+ file), eliminando duplicat
 
 ## 🚨 Problemi Identificati
 - 379 file in root `docs/`.
-- File duplicati con estensioni diverse (es. `eloquent.md`, `__eloquent.txt`).
+- File duplicati con estensioni diverse (es. `__eloquent.md`, `__eloquent.txt`).
 - File di backup `README.md.cleaned`, `comprehensive-guide-backup.md`.
 - Report di coverage enormi in formato `.txt` (es. `coverage_full.txt`).
 

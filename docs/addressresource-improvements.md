@@ -12,7 +12,6 @@ status: draft
 
 # Suggerimenti di Miglioramento per AddressResource.php
 
-**Data**: 2025-07-30  
 **File**: `/laravel/Modules/Geo/app/Filament/Resources/AddressResource.php`  
 **Priorità**: Alta (per performance e manutenibilità)
 
@@ -261,11 +260,3 @@ public static function getSearchStep(): array
 - [ ] Preparazione dati di test geografici
 - [ ] Review architetturale con team
 - [ ] Pianificazione rollback strategy
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

@@ -69,7 +69,7 @@ La premessa iniziale ("manca") è quindi **falsa**: lo stack esiste. Restano per
 ### User Flow
 
 1. Merge su `main` con Conventional Commits.
-2. `release.yml` esegue `semantic-release` → tag + `changelog.md` + GitHub Release.
+2. `release.yml` esegue `semantic-release` → tag + `CHANGELOG.md` + GitHub Release.
 3. `semantic-versioning.yml` su push a `main`/`master` **non** crea tag (skip via guard);
    resta operativo su altri branch e via dispatch.
 4. Al completamento di `Release` (e settimanalmente via cron) `changelog-advanced.yml`

@@ -228,11 +228,3 @@ Le stesse correzioni sono state applicate a:
 ---
 
 **Ultimo aggiornamento**: 27 Gennaio 2025  
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

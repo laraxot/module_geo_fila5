@@ -145,11 +145,3 @@ php -l laravel/Modules/Geo/lang/it/address.php
 ---
 **Ultimo aggiornamento**: 6 Gennaio 2025  
 **Autore**: AI Assistant  
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

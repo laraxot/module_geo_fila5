@@ -165,11 +165,3 @@ Cache::remember("geocode:{$address}", 3600, function() use ($address) {
 **Status**: ✅ BUONO
 **PHPStan**: ✅ 0 errori
 **Focus**: Integration + Features
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

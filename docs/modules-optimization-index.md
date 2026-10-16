@@ -62,7 +62,7 @@ status: draft
 **Azione**: Documentation update + performance optimization
 **Tempo**: 4 ore | **Impatto**: Migliora manutenibilità
 
-#### [Modulo Geo](optimization-recommendations.md)
+#### [Modulo Geo](optimization_recommendations.md)
 **Stato**: Funzionalità complete con Google API
 **Azione**: Generalizzazione docs + Google API caching
 **Tempo**: 3 ore | **Impatto**: Modulo geo riutilizzabile
@@ -174,11 +174,3 @@ cp -r laravel/Modules/*/docs laravel/Modules-docs-backup-$(date +%Y%m%d)
 
 *Metodologia: Analisi sistematica seguendo principi DRY+KISS*
 *Validazione: Script automatici + review manuale*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

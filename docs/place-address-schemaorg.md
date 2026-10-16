@@ -101,18 +101,10 @@ Schema::create('addresses', function (Blueprint $table) {
 ## Collegamenti
 - [schema.org/PostalAddress](https://schema.org/PostalAddress)
 - [Geo Module Architecture](./architecture.md)
-- [Entità Geografiche](./geo-entities.md)
+- [Entità Geografiche](./geo_entities.md)
 - [location-select.md](./location-select.md)
 - [README.md](./README.md)
 
 ---
 
 Responsabile: Cascade AI 
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

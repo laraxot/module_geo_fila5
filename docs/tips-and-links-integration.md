@@ -63,11 +63,3 @@ https://www.wrld3d.com/wrld.js/latest/project_docs/examples/adding-a-leaflet-mar
 https://openrouteservice.org/
 
 https://www.igismap.com/top-10-map-direction-api-routing-libraries-navigation-free-or-paid/
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

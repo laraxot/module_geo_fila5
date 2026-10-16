@@ -232,7 +232,7 @@ class Comune extends GeoJsonModel
 ```
 
 - Tutti i filtri e le select dinamiche ora usano solo il modello Comune.
-- Vedi anche [geo_entities.md](./geo-entities.md) per motivazione e percentuali di adozione.
+- Vedi anche [geo_entities.md](./geo_entities.md) per motivazione e percentuali di adozione.
 
 ## Analisi: Comune come modello Sushi
 
@@ -302,7 +302,7 @@ class ComuneSushi extends Model
 - **Strategia consigliata**: mantenere Comune (GeoJsonModel) come default, ma documentare e testare una variante Sushi per chi ha bisogno di Eloquent puro.
 
 ---
-- Vedi anche [geo_entities.md](./geo-entities.md) per motivazione e percentuali di adozione.
+- Vedi anche [geo_entities.md](./geo_entities.md) per motivazione e percentuali di adozione.
 
 ## Approfondimento: Sushi (calebporzio/sushi) per modelli geografici
 
@@ -379,7 +379,7 @@ class ComuneSushi extends Model
 - [Sito ufficiale Sushi](https://usesushi.dev/)
 - [GitHub Sushi](https://github.com/calebporzio/sushi)
 - [Esempi avanzati](https://jasonlbeggs.com/blog/laravel-sushi)
-- [geo_entities.md](./geo-entities.md)
+- [geo_entities.md](./geo_entities.md)
 
 ---
 
@@ -418,7 +418,7 @@ class ComuneSushi extends Model
 
 ---
 
-- Vedi anche [geo_entities.md](./geo-entities.md) e [squire-integration.md](./squire-integration.md) per altri confronti e strategie.
+- Vedi anche [geo_entities.md](./geo_entities.md) e [squire-integration.md](./squire-integration.md) per altri confronti e strategie.
 
 ## Approccio avanzato: SushiToJsons (CRUD, multi-tenant, Eloquent + JSON)
 
@@ -502,12 +502,4 @@ trait SushiToJsons
 
 ---
 
-- Vedi anche [geo_entities.md](./geo-entities.md) e [squire-integration.md](./squire-integration.md) per altri confronti e strategie.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev
+- Vedi anche [geo_entities.md](./geo_entities.md) e [squire-integration.md](./squire-integration.md) per altri confronti e strategie.

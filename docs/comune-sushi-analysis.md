@@ -66,16 +66,8 @@ status: draft
 - [geo-sushi-comparison.md](geo-sushi-comparison.md)
 - [comune-unificazione-analisi.md](comune-unificazione-analisi.md)
 - [Sushi - usesushi.dev](https://usesushi.dev/)
-- [module_geo.md](module-geo.md)
+- [module_geo.md](module_geo.md)
 
 ---
 
 Responsabile: Cascade AI
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev
