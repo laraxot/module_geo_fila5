@@ -1,14 +1,3 @@
----
-title: "README"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "README"
-issues: []
-discussions: []
----
-
 # Farmshops Map / Direktvermarkter Karte
 Data viewer for  markets, farmshops, milk and food vending machines and other direct marketers on openstreetmap.
 
@@ -70,3 +59,4 @@ Das Script verwendet https://overpass-turbo.eu/ um diese Tags von OpenstreetMap 
 - https://wiki.openstreetmap.org/wiki/DE:Tag:amenity%3Dvending_machine ( Wobei vending machines indirekt über Tags wie vending:milk oder vending:food gezogen werden.)
 - https://wiki.openstreetmap.org/wiki/DE:Tag:amenity=marketplace
 - https://wiki.openstreetmap.org/wiki/DE:Tag:craft%3Dbeekeeper
+
