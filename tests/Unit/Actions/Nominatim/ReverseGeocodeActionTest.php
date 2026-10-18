@@ -63,7 +63,7 @@ test('ReverseGeocodeAction calls the Nominatim reverse endpoint with coordinates
     $action->execute(45.4642, 9.19);
 
     $request = $mockHandler->getLastRequest();
-    if ($request === null) {
+    if (null === $request) {
         Assert::fail('Nominatim e stato chiamato zero volte');
     }
     parse_str($request->getUri()->getQuery(), $query);

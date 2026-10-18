@@ -13,9 +13,9 @@ class FetchGoogleMapsElevationAction
     use QueueableAction;
 
     /**
-     * @return array<string, mixed>
-     *
      * @throws GoogleMapsApiException
+     *
+     * @return array<string, mixed>
      */
     public function execute(float $lat, float $lng): array
     {
