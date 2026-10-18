@@ -76,7 +76,7 @@ class ProvinceSeeder extends Seeder
     protected function saveToTenantJson(string $table, array $data): void
     {
         $tenant = config('tenant.current', 'central');
-        $tenant = is_string($tenant) && $tenant !== '' ? $tenant : 'central';
+        $tenant = is_string($tenant) && '' !== $tenant ? $tenant : 'central';
         $path = config_path("{$tenant}/database/content/{$table}.json");
 
         $dir = dirname($path);

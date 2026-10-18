@@ -9,7 +9,7 @@ use Modules\Geo\Tests\Fixtures\Traits\HasAddressTestModel;
 use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
-/**
+/*
  * HasAddresses (plurale) è stato rimosso; questo file verifica il trait canonico HasAddress sulla fixture.
  */
 uses(TestCase::class);

@@ -355,8 +355,7 @@ describe('Geocoding Business Logic', function () {
             $pointOutsideMilan = ['lat' => 41.9028, 'lng' => 12.4964];
 
             // Business Logic: Point in bounds check
-            $isInBounds = fn ($point, $bounds) =>
-                $point['lat'] >= $bounds['south']
+            $isInBounds = fn ($point, $bounds) => $point['lat'] >= $bounds['south']
                 && $point['lat'] <= $bounds['north']
                 && $point['lng'] >= $bounds['west']
                 && $point['lng'] <= $bounds['east']

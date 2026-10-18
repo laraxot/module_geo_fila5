@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Modules\Geo\Actions\GeoData\ValidateGeoDataAction;
 use Modules\Geo\Actions\GeoData\GeoDataValidationRules;
+use Modules\Geo\Actions\GeoData\ValidateGeoDataAction;
 use Tests\TestCase;
 
 uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
