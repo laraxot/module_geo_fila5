@@ -24,7 +24,7 @@ class LoadGeoMapDatasetAction
     /**
      * @return GeoDataset
      */
-    public function execute(string $path): array
+    public function execute(string $path): GeoDataset
     {
         return [
             'type' => 'FeatureCollection',
@@ -92,7 +92,7 @@ class LoadGeoMapDatasetAction
      *
      * @return GeoFeature|null
      */
-    private function normalizeFeature(array $feature): ?array
+    private function normalizeFeature(array $feature): ?GeoFeature
     {
         $type = $feature['type'] ?? null;
         $properties = $feature['properties'] ?? null;
@@ -130,7 +130,7 @@ class LoadGeoMapDatasetAction
      *
      * @return GeoProperties|null
      */
-    private function normalizeProperties(array $properties): ?array
+    private function normalizeProperties(array $properties): ?GeoProperties
     {
         $normalized = [];
 
