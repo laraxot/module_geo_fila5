@@ -209,7 +209,7 @@ class Comune extends BaseModel
      *
      * @return static|null The found comune or null if not found
      */
-    public static function findByNome(string $nome): ?self
+    public static function findByNome(string $nome): ?static
     {
         /** @var static|null $comune */
         $comune = static::all()

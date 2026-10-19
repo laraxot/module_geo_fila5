@@ -42,7 +42,7 @@ trait HasAddress
      *
      * @return MorphMany<Address, $this>
      */
-    public function addresses(): MorphMany // @phpstan-ignore missingType.generics
+    public function addresses(): MorphMany
     {return $this->morphMany(Address::class, 'model');
     }
 
@@ -51,7 +51,7 @@ trait HasAddress
      *
      * @return MorphOne<Address, $this>
      */
-    public function address(): MorphOne // @phpstan-ignore missingType.generics
+    public function address(): MorphOne
     {return $this->morphOne(Address::class, 'model');
     }
 
@@ -208,7 +208,7 @@ trait HasAddress
      *
      * @return Collection<int, Address>
      */
-    public function getAddressesByType(string $type): Collection // @phpstan-ignore missingType.generics
+    public function getAddressesByType(string $type): Collection
     {return $this->addresses()->where('type', $type)->get();
     }
 

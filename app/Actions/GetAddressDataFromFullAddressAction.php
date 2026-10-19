@@ -40,7 +40,7 @@ class GetAddressDataFromFullAddressAction
      *
      * @return AddressData I dati dell'indirizzo trovato
      */
-    public function execute(string $fullAddress): ?AddressData
+    public function execute(string $fullAddress): AddressData
     {
         $this->errors = new Collection();
 
