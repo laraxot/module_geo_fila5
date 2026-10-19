@@ -9,7 +9,7 @@ use Modules\Geo\Models\Address;
 use Modules\Geo\Models\BaseModel;
 use PHPUnit\Framework\Assert;
 
-/**
+/*
  * Contratto di dominio Address (PostalAddress / Schema.org, geolocalizzazione, scope query).
  * Assert PHPUnit: evita crash pest-plugin-phpstan HigherOrderExpectationTypeExtension.
  */
