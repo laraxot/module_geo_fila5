@@ -8,7 +8,7 @@ use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Location;
 use PHPUnit\Framework\Assert;
 
-/**
+/*
  * Contratto di dominio Location (coordinate, componenti indirizzo, scope geografici).
  * Assert PHPUnit: evita crash pest-plugin-phpstan HigherOrderExpectationTypeExtension.
  */
