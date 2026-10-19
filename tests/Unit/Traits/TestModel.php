@@ -7,7 +7,6 @@ namespace Modules\Geo\Tests\Unit\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Geo\Models\Traits\HasAddress;
 use PHPUnit\Framework\TestCase;
-use RuntimeException;
 
 /** Modello di test per il trait HasAddress. */
 class TestModel extends Model
@@ -26,7 +25,7 @@ class TestModel extends Model
 
         static::creating(static function (): void {
             if (! app()->environment('testing')) {
-                throw new RuntimeException('TestModel should only be used in tests.');
+                throw new \RuntimeException('TestModel should only be used in tests.');
             }
         });
     }
