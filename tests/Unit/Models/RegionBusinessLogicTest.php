@@ -28,11 +28,21 @@ describe('Region Business Logic', function () {
     });
 
     test('region has correct key type configured', function () {
+<<<<<<< .merge_file_9AUUeL
         Assert::assertSame('integer', (new Region)->getKeyType());
     });
 
     test('region has schema definition for geographic data', function () {
         $schema = (new Region)->getSchema();
+=======
+        $region = new Region();
+
+        expect($region->getKeyType())->toBe('integer');
+    });
+
+    test('region has schema definition for geographic data', function () {
+        $region = new Region();
+>>>>>>> .merge_file_OQJhKu
 
         Assert::assertIsArray($schema);
         Assert::assertSame('integer', $schema['id'] ?? null);
@@ -44,7 +54,7 @@ describe('Region Business Logic', function () {
     });
 
     test('region model can be instantiated without errors', function () {
-        $region = new Region;
+        $region = new Region();
 
         Assert::assertInstanceOf(Region::class, $region);
         Assert::assertInstanceOf(BaseModel::class, $region);

@@ -9,10 +9,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Support\GeoApiEndpoints;
-use Spatie\QueueableAction\QueueableAction;
 
 use function Safe\json_decode;
 use function Safe\preg_match;
+
+use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per ottenere l'indirizzo e le coordinate tramite Mapbox.
@@ -28,7 +29,8 @@ class GetAddressFromMapboxAction
 
     public function __construct(
         private readonly Client $client,
-    ) {}
+    ) {
+    }
 
     /**
      * Ottiene i dettagli dell'indirizzo utilizzando Mapbox.

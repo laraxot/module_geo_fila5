@@ -9,6 +9,7 @@ use Illuminate\Database\Seeder;
 /**
  * Geo Data Seeder — comprehensive map data for investor demo.
  * Seeds regions, provinces, comuni, and location data.
+ *
  * @see BMAD STORY-371 (Second Brain) · Issue #387 · Discussion #392
  */
 class GeoDataSeeder extends Seeder

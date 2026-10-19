@@ -16,7 +16,7 @@ use Modules\Xot\Actions\Cast\SafeStringCastAction;
 final class CoordinatePickerHelpers
 {
     /**
-     * @param  array{latitude?: float|int|string, lat?: float|int|string, longitude?: float|int|string, lng?: float|int|string}  $center
+     * @param array{latitude?: float|int|string, lat?: float|int|string, longitude?: float|int|string, lng?: float|int|string} $center
      */
     public static function resolveCenterLatitude(array $center, float $default): float
     {
@@ -26,7 +26,7 @@ final class CoordinatePickerHelpers
     }
 
     /**
-     * @param  array{latitude?: float|int|string, lat?: float|int|string, longitude?: float|int|string, lng?: float|int|string}  $center
+     * @param array{latitude?: float|int|string, lat?: float|int|string, longitude?: float|int|string, lng?: float|int|string} $center
      */
     public static function resolveCenterLongitude(array $center, float $default): float
     {
@@ -160,7 +160,8 @@ final class CoordinatePickerHelpers
     }
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param array<string, mixed> $data
+     *
      * @return array<string, mixed>
      */
     public static function extractCoordinates(array $data, string $field = 'coordinates', string $latColumn = 'latitude', string $lngColumn = 'longitude'): array
@@ -176,7 +177,7 @@ final class CoordinatePickerHelpers
 
     public static function normalizeCoordinate(mixed $value): ?float
     {
-        if ($value === null || $value === '') {
+        if (null === $value || '' === $value) {
             return null;
         }
 
@@ -184,8 +185,8 @@ final class CoordinatePickerHelpers
     }
 
     /**
-     * @param  array<string, mixed>  $data
-     * @param  list<string>  $keys
+     * @param array<string, mixed> $data
+     * @param list<string>         $keys
      */
     private static function firstString(array $data, array $keys): string
     {
@@ -195,7 +196,7 @@ final class CoordinatePickerHelpers
             }
 
             $value = $data[$key] ?? null;
-            if (\is_string($value) && trim($value) !== '') {
+            if (\is_string($value) && '' !== trim($value)) {
                 return $value;
             }
         }

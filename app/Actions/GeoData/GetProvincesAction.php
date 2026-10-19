@@ -18,7 +18,8 @@ class GetProvincesAction
     use QueueableAction;
 
     /**
-     * @param  string  $regionCode  Codice della regione
+     * @param string $regionCode Codice della regione
+     *
      * @return Collection<int, array{name: string, code: string}>
      */
     public function execute(string $regionCode): Collection
@@ -32,7 +33,7 @@ class GetProvincesAction
 
             if (! $region || ! \is_array($region) || ! isset($region['provinces']) || ! \is_array($region['provinces'])) {
                 /** @var Collection<int, array{name: string, code: string}> $empty */
-                $empty = new Collection;
+                $empty = new Collection();
 
                 return $empty;
             }
