@@ -29,7 +29,7 @@ describe('Comune Business Logic', function () {
     });
 
     test('comune has expected fillable fields for italian municipalities', function () {
-        $comune = new Comune;
+        $comune = new Comune();
         $expectedFillable = [
             'id',
             'codice',
@@ -51,7 +51,11 @@ describe('Comune Business Logic', function () {
     });
 
     test('comune has schema definition for structured geographic data', function () {
+<<<<<<< .merge_file_fuiqrI
         $schema = (new Comune)->getSchema();
+=======
+        $comune = new Comune();
+>>>>>>> .merge_file_fmLNvW
 
         Assert::assertSame('json', $schema['zona'] ?? null);
         Assert::assertSame('json', $schema['provincia'] ?? null);
@@ -60,15 +64,28 @@ describe('Comune Business Logic', function () {
     });
 
     test('comune has json directory property for data source', function () {
+<<<<<<< .merge_file_fuiqrI
         Assert::assertSame('', (new Comune)->jsonDirectory);
     });
 
     test('comune has translatable array configured', function () {
         Assert::assertSame([], (new Comune)->translatable);
+=======
+        $comune = new Comune();
+
+        expect($comune)->toHaveProperty('jsonDirectory');
+        expect($comune->jsonDirectory)->toBeString();
+    });
+
+    test('comune has translatable array configured', function () {
+        $comune = new Comune();
+
+        expect($comune->translatable)->toBeArray();
+>>>>>>> .merge_file_fmLNvW
     });
 
     test('comune model can be instantiated without errors', function () {
-        $comune = new Comune;
+        $comune = new Comune();
 
         Assert::assertInstanceOf(Comune::class, $comune);
         Assert::assertInstanceOf(BaseModel::class, $comune);

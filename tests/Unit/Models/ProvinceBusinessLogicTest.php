@@ -27,7 +27,11 @@ describe('Province Business Logic', function () {
     });
 
     test('province has schema definition for geographic hierarchy', function () {
+<<<<<<< .merge_file_Oil9jp
         $schema = (new Province)->getSchema();
+=======
+        $province = new Province();
+>>>>>>> .merge_file_bM1315
 
         Assert::assertIsArray($schema);
         Assert::assertSame('integer', $schema['region_id'] ?? null);
@@ -36,13 +40,17 @@ describe('Province Business Logic', function () {
     });
 
     test('province can get rows from comune data', function () {
+<<<<<<< .merge_file_Oil9jp
         $rows = (new Province)->getRows();
+=======
+        $province = new Province();
+>>>>>>> .merge_file_bM1315
 
         Assert::assertGreaterThanOrEqual(0, count($rows));
     });
 
     test('province model can be instantiated without errors', function () {
-        $province = new Province;
+        $province = new Province();
 
         Assert::assertInstanceOf(Province::class, $province);
         Assert::assertInstanceOf(BaseModel::class, $province);

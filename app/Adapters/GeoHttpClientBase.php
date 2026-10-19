@@ -33,10 +33,11 @@ abstract class GeoHttpClientBase
     }
 
     /**
-     * @param  array<string, mixed>  $params
-     * @return array<string, mixed>
+     * @param array<string, mixed> $params
      *
      * @throws \RuntimeException
+     *
+     * @return array<string, mixed>
      */
     protected function makeRequest(string $method, string $url, array $params = [], bool $useCache = true): array
     {
@@ -45,7 +46,7 @@ abstract class GeoHttpClientBase
         if ($useCache && config('geo.cache.enabled')) {
             /** @var array<string, mixed>|null $cached */
             $cached = Cache::get($cacheKey);
-            if ($cached !== null) {
+            if (null !== $cached) {
                 return $cached;
             }
         }
@@ -109,7 +110,7 @@ abstract class GeoHttpClientBase
     }
 
     /**
-     * @param  array<string, mixed>  $params
+     * @param array<string, mixed> $params
      */
     protected function getCacheKey(string $method, string $url, array $params): string
     {

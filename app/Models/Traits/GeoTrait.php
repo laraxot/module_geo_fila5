@@ -36,7 +36,7 @@ trait GeoTrait
             '',
         );
 
-        return $distance !== null ? SafeFloatCastAction::cast($distance) : null;
+        return null !== $distance ? SafeFloatCastAction::cast($distance) : null;
     }
 
     public function distanceCustomField(
@@ -60,13 +60,14 @@ trait GeoTrait
             $unit,
         );
 
-        return $distance !== null ? SafeFloatCastAction::cast($distance) : null;
+        return null !== $distance ? SafeFloatCastAction::cast($distance) : null;
     }
 
     /**
      * Ordina per distanza Haversine da un punto (colonna distance in select).
      *
-     * @param  Builder<TModel>  $query
+     * @param Builder<TModel> $query
+     *
      * @return Builder<TModel>
      */
     public function scopeWithDistance(Builder $query, float $lat, float $lng): Builder
@@ -86,7 +87,8 @@ trait GeoTrait
     /**
      * Filtra righe il cui poligono JSON (`zone_polygon`) contiene il punto.
      *
-     * @param  Builder<TModel>  $query
+     * @param Builder<TModel> $query
+     *
      * @return Builder<TModel>
      */
     public function scopeOfInPolygon(Builder $query, string $polygon_field, float $lat, float $lng): Builder
