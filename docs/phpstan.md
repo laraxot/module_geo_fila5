@@ -67,6 +67,8 @@ return $this->state(function (array $attributes, ?\Illuminate\Database\Eloquent\
 
 ### BaseGeoService Retry Pattern
 
+> `BaseGeoService` e' stato ritirato. Lo stesso codice vive in `app/Adapters/GeoHttpClientBase.php` (vedi [la story](./stories/services-to-actions-geo.story.md)).
+
 ```php
 // ❌ ERRATO
 return Http::timeout($timeout)->retry($retryTimes, $retrySleep, function ($exception) use ($whenTypes) {
