@@ -330,7 +330,6 @@ describe('Geocoding Business Logic', function () {
             $pointInMilan = ['lat' => 45.4642, 'lng' => 9.1900];
             $pointOutsideMilan = ['lat' => 41.9028, 'lng' => 12.4964];
 
-<<<<<<< .merge_file_PAOEMC
             /**
              * @param  array{lat: float, lng: float}  $point
              * @param  array{north: float, south: float, east: float, west: float}  $bounds
@@ -344,17 +343,6 @@ describe('Geocoding Business Logic', function () {
 
             Assert::assertTrue($isInBounds($pointInMilan, $milanBounds));
             Assert::assertFalse($isInBounds($pointOutsideMilan, $milanBounds));
-=======
-            // Business Logic: Point in bounds check
-            $isInBounds = fn ($point, $bounds) => $point['lat'] >= $bounds['south']
-                && $point['lat'] <= $bounds['north']
-                && $point['lng'] >= $bounds['west']
-                && $point['lng'] <= $bounds['east']
-            ;
-
-            expect($isInBounds($pointInMilan, $milanBounds))->toBeTrue();
-            expect($isInBounds($pointOutsideMilan, $milanBounds))->toBeFalse();
->>>>>>> .merge_file_5vB11R
         });
 
         it('validates proximity search radius', function () {
