@@ -32,7 +32,8 @@ status: draft
 - **GeoTrait** - Geographical functionality trait
 - **HasAddress** - Address relationship trait
 - **HasPlaceTrait** - Place functionality trait
-- **GeographicalScopes** - Geographical query scopes
+
+`GeographicalScopes` non esiste piu' (zero chiamanti, sostituito da `GeoTrait::scopeWithDistance`, vedi [decision-log](./decision-log.md)).
 
 ### 📊 Static Data Models
 - **GeoJsonModel** - JSON-based geographical data
