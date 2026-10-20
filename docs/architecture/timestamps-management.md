@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "timestamps management"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Gestione dei Timestamps e Soft Delete

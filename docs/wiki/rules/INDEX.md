@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "INDEX"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module - rules Index
@@ -30,17 +31,9 @@ qmd search "Geo rules" --limit 5
 | [blade-icons-registration.md](./blade-icons-registration.md) | Blade icons |
 
 ## See Also
-- [Root Trigger Map](../../../../../docs/wiki/rules/00-TRIGGER_MAP.md)
+- [Root Trigger Map](../../../../../../docs/wiki/rules/00-TRIGGER_MAP.md)
 - [Root Wiki](../../../docs/wiki/)
 - [geo-map-popup-bem.md](../concepts/geo-map-popup-bem.md)
 
 ---
-title: "INDEX"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "INDEX"
-issues: []
-discussions: []
 *Updated: 2026-06-03*

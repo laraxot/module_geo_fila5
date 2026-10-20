@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "github issue sigma function extra trova esclusi body"
 issues: []
 discussions: []
+status: draft
 ---
 
 ## Contesto

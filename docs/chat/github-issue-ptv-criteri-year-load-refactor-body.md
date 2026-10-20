@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "github issue ptv criteri year load refactor body"
 issues: []
 discussions: []
+status: draft
 ---
 
 ## Contesto

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "github interaction log"
 issues: []
 discussions: []
+status: draft
 ---
 
 # GitHub Interaction Log — Module Geo
@@ -16,15 +17,6 @@ discussions: []
 **Scope:** Aggiornamento completo issues e discussions
 
 ---
-
-title: "github interaction log"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "github interaction log"
-issues: []
-discussions: []
 ## Issues Aggiornate
 
 ### STORY-123 — Cluster Stability

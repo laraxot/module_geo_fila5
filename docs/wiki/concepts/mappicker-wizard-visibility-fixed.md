@@ -7,6 +7,7 @@ qmd: "mappicker wizard visibility fixed"
 issues: []
 discussions: []
 title: Wizard Map Visibility Fixed
+status: draft
 ---
 
 ## Problem

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map test"
 issues: []
 discussions: []
+status: draft
 ---
 
 https://github.com/bresam/ivory-google-map/blob/master/tests/MapTest.php

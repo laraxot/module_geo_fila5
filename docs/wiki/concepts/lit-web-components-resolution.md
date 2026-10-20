@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "lit web components resolution"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Lit Web Components Resolution — Build & Runtime Fix
@@ -16,15 +17,6 @@ discussions: []
 **Argomento:** Risoluzione errore build + integrazione runtime MyMap component
 
 ---
-
-title: "lit web components resolution"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "lit web components resolution"
-issues: []
-discussions: []
 ## Problema Iniziale
 
 Importare il componente `my-map-lit.js` (definito in Geo module) da Sixteen theme causava due errori:

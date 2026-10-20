@@ -8,11 +8,12 @@ discussions: []
 title: Playwright — Visual Testing MapPicker
 description: Guida definitiva al testing visivo per componenti mappa (Geo Module) nel 2026
 tags: [playwright, puppeteer, visual-testing, map-picker, leaflet, laravel, pest]
+status: draft
 ---
 
 # Playwright — Visual Testing MapPicker
 
-Per verificare visualmente i componenti del modulo Geo (Leaflet + Lit Web Components), seguire gli standard di [Visual Control Mastery](../../../../../docs/wiki/concepts/visual-control-mastery.md).
+Per verificare visualmente i componenti del modulo Geo (Leaflet + Lit Web Components), seguire gli standard di [Visual Control Mastery](../../../../../../docs/wiki/concepts/visual-control-mastery.md).
 
 ## 1. Setup per Geo Module
 
@@ -66,5 +67,5 @@ test('map renders with markers', async ({ page }) => {
 
 ---
 *Vedi anche:*
-- [Visual Control Mastery](../../../../../docs/wiki/concepts/visual-control-mastery.md)
+- [Visual Control Mastery](../../../../../../docs/wiki/concepts/visual-control-mastery.md)
 - [Coordinate Picker Rule](./coordinate-picker-lit-wizard-fullscreen-rule.md)

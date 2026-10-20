@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "lit leaflet light dom fix"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Lit + Leaflet: Light DOM Fix

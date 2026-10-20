@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "ListRecords"
 issues: []
 discussions: []
+status: draft
 ---
 
 # List Records in Filament

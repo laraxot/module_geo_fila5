@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "livewire"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Livewire Integration

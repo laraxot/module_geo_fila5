@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "server setup"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Setup del Progetto Laravel

@@ -9,6 +9,7 @@ discussions: []
 name: Testing Location Policy
 description: Where to place Playwright and other tests — modules and themes
 type: concept
+status: draft
 ---
 
 # Testing Location Policy

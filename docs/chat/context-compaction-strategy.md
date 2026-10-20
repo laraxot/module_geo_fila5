@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "context compaction strategy"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Context Compaction Strategy

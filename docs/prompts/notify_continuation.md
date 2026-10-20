@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "notify continuation"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Notify Continuation
@@ -72,7 +73,7 @@ Illuminate\Database\Eloquent\Model
 ## Collegamenti Chiave
 - [Architettura Modelli](../../docs/architecture/models.md)
 - [Struttura Moduli](../../docs/architecture/modules.md)
-- [BaseModel Notify](../../laravel/Modules/Notify/docs/base-model.md)
+- [BaseModel Notify](../../../Notify/docs/base-model.md)
 - [BaseModel Xot](../../laravel/Modules/Xot/docs/base-model.md)
 
 ## Prossimi Passi

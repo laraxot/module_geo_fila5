@@ -9,6 +9,7 @@ discussions: []
 name: coordinate-picker-fullscreen-wizard-contract
 description: Geo CoordinatePicker fullscreen contract inside wizard layouts
 type: concept
+status: draft
 ---
 
 # Coordinate Picker Fullscreen Wizard Contract

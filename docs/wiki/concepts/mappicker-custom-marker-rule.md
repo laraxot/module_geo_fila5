@@ -13,7 +13,8 @@ sources:
   - laravel/Modules/Geo/resources/js/components/map-picker-marker-config.js
 related:
   - ./map-picker-runtime-asset-governance.md
-  - ../../../docs/rules/xotbasefield-mandatory.md
+  - ../../../../../../docs/rules/xotbasefield-mandatory.md
+status: draft
 ---
 
 # MapPicker Custom Marker Rule

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "vision"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Visione - Geo Module

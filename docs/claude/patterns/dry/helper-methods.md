@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "helper methods"
 issues: []
 discussions: []
+status: draft
 ---
 
 # DRY Patterns - Helper Methods
@@ -107,15 +108,6 @@ private function buildBaseQuery(): Builder
 ```
 
 ---
-
-title: "helper methods"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "helper methods"
-issues: []
-discussions: []
 **Pattern**: Helper Method Extraction
 **Purpose**: Eliminate code duplication
 **Result**: Single, testable, maintainable methods

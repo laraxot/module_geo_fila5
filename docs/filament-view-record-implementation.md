@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "filament view record implementation"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Filament ViewRecord Implementation - Geo Module
@@ -286,9 +287,9 @@ protected function getInfolistSchema()
 
 - [Filament ViewRecord Errors (Root Docs)](../../../docs/filament-view-record-errors.md)
 - [Testing Analysis Documentation](../../../docs/testing-analysis.md)
-- [XotBaseViewRecord Source Code](../../../Xot/app/Filament/Resources/Pages/XotBaseViewRecord.php)
-- [Location Model](../../app/Models/Location.php)
-- [LocationResource](../../app/Filament/Resources/LocationResource.php)
+- [XotBaseViewRecord Source Code](../../Xot/app/Filament/Resources/Pages/XotBaseViewRecord.php)
+- [Location Model](../app/Models/Location.php)
+- [LocationResource](../app/Filament/Resources/LocationResource.php)
 
 ## Note di Manutenzione
 
@@ -299,13 +300,4 @@ protected function getInfolistSchema()
 - **Ultimo Aggiornamento**: [DATE]
 
 ---
-
-title: "filament view record implementation"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "filament view record implementation"
-issues: []
-discussions: []
 **IMPORTANTE**: Ricorda sempre di implementare il metodo `getInfolistSchema()` quando si estende `XotBaseViewRecord`. Questo errore è comune e può essere facilmente evitato seguendo i pattern documentati sopra.

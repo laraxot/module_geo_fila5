@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "RELATIONSHIP METHODS DUPLICATE LIST"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Elenco metodi relazione duplicate

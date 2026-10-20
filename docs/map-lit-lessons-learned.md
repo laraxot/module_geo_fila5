@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map lit lessons learned"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Map-Lit: Lessons Learned & Error Resolution
@@ -19,15 +20,6 @@ discussions: []
 **Ricostruzione da docs:** [wiki/concepts/geo-map-lit-reconstruction-guide.md](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
 
 ---
-
-title: "map lit lessons learned"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "map lit lessons learned"
-issues: []
-discussions: []
 ## Problemi Risolti
 
 ### 1. Marker Cluster che "Scappano" al Hover (STORY-123)
@@ -215,9 +207,9 @@ return L.divIcon({
 ## Collegamenti
 
 - [geo-map-lit-reconstruction-guide.md](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
-- [map-lit-it-incidents-2026-06.md](./wiki/troubleshooting/map-lit-it-incidents-2026-06.md)
-- [map-lit-lat-lng-gps-default-pattern.md](../../../docs/wiki/memories/map-lit-lat-lng-gps-default-pattern.md)
-- [STORY-121](../../../docs/stories/STORY-121-map-lit-non-visibile-verifica-fix.md)
-- [STORY-122](../../../docs/stories/STORY-122-map-lit-marker-scomparsa-gps-center.md)
-- [STORY-123](../../../docs/stories/STORY-123-map-lit-cluster-hover-escape-fix.md)
-- [STORY-129](../../../docs/stories/STORY-129-map-marker-icon-first-popup-ux.md)
+- [map-lit-it-incidents-2026.md](./wiki/troubleshooting/map-lit-it-incidents-2026.md)
+- [map-lit-lat-lng-gps-default-pattern.md](../../../../docs/wiki/memories/map-lit-lat-lng-gps-default-pattern.md)
+- [STORY-121](../../../../docs/stories/STORY-121-map-lit-non-visibile-verifica-fix.md)
+- [STORY-122](../../../../docs/stories/STORY-122-map-lit-marker-scomparsa-gps-center.md)
+- [STORY-123](../../../../docs/stories/STORY-123-map-lit-cluster-hover-escape-fix.md)
+- [STORY-129](../../../../docs/stories/STORY-129-map-marker-icon-first-popup-ux.md)

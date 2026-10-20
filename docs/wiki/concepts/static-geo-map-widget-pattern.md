@@ -12,6 +12,7 @@ sources:
   - ../../../../../../docs/quality-tools-setup.md
 confidence: high
 updated: 2026-04-16
+status: draft
 ---
 
 # Static Geo Map Widget Pattern

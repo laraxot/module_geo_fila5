@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: comune-unificazione-analysis
 canonical: ../../../Themes/docs/shared-components/comune-unification-analysis.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/comune-unification-analysis.md

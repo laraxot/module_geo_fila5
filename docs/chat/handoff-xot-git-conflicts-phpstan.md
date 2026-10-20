@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "handoff xot git conflicts phpstan"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Handoff — conflitti Git Xot + PHPStan

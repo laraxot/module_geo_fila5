@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "business logic consolidated"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 🏥 Business Logic Consolidata - Progetto <nome progetto>
@@ -251,11 +252,11 @@ User (base)
 ### Documentazione Moduli
 - [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
 - [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
-- [User](../modules/user/docs/readme.md)
-- [Geo](../modules/geo/docs/readme.md)
-- [Media](../modules/media/docs/readme.md)
-- [UI](../modules/ui/docs/readme.md)
-- [Xot](../modules/xot/docs/readme.md)
+- [User](../../User/docs/readme.md)
+- [Geo](README.md)
+- [Media](../../Media/docs/readme.md)
+- [UI](../../UI/docs/README.md)
+- [Xot](../../Xot/docs/README.md)
 
 ### Documentazione Tecnica
 - [Architettura](../laraxot-architecture-principles.md)
@@ -264,15 +265,6 @@ User (base)
 - [Factory e Seeder](../factory-best-practices.md)
 
 ---
-
-title: "business logic consolidated"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "business logic consolidated"
-issues: []
-discussions: []
 **Versione**: 2.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Rifattorizzata

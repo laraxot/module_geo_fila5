@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan fixes uppercase"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Fixes for Geo Module

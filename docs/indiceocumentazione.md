@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: indiceocumentazione
 canonical: ../../../Themes/docs/shared-components/indice-documentazione.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/indice-documentazione.md

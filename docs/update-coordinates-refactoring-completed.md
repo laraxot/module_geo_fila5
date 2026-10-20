@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "update coordinates refactoring completed"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Refactoring Update Coordinates Bulk Action
@@ -125,13 +126,4 @@ This refactoring aligns with:
 - Action can be configured with additional options for different use cases
 
 ---
-
-title: "update coordinates refactoring completed"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "update coordinates refactoring completed"
-issues: []
-discussions: []
 *Documento conforme agli standard Laraxot - DRY + KISS + SOLID*

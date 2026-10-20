@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "sushi implementation"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Implementazione di Sushi nel Modulo Geo

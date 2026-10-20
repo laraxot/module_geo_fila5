@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "filament version"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Filament Version Declaration — {ModuleOrThemeName}

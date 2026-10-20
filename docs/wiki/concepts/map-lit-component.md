@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map lit component"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Componente: map-lit
@@ -63,12 +64,4 @@ npx playwright test Modules/Geo/tests/Playwright/ticket-list.spec.js
 Smoke browser: `map-lit` definito, elemento 1108x522, Leaflet container presente, 15 tile caricate, 2 marker e 2 cluster.
 
 ---
-title: "map lit component"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "map lit component"
-issues: []
-discussions: []
 *Ultimo aggiornamento: 2026-05-08*

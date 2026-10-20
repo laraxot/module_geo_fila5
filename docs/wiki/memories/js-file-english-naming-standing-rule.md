@@ -12,6 +12,7 @@ related:
   - ../rules/js-file-english-naming-rule.md
   - ../concepts/map-js-module-naming-rule.md
   - ../../../../../docs/stories/STORY-132-rename-popup-segnalazione-js-english.md
+status: draft
 ---
 
 # Memoria — JS Geo: mai italiano nel filename

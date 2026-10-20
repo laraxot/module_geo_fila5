@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "blade icons registration rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Blade Icons Registration Rule (XotBaseServiceProvider Handles It)

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "README"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 🏗️ LARAXOT Documentation Framework
@@ -31,15 +32,6 @@ Framework completo per la gestione centralizzata, automatizzata e qualitativa de
 - **🚀 LARAXOT**: Standard nativi, integrazione ecosystem, qualità enterprise
 
 ---
-
-title: "README"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "README"
-issues: []
-discussions: []
 ## 📂 Struttura Framework
 
 ```
@@ -542,7 +534,7 @@ class CustomModuleGenerator extends BaseDocumentationGenerator
 ## 📚 Risorse & Links
 
 ### **Framework Resources**
-- [**LARAXOT Framework**](../../laravel/docs/) - Documentazione framework principale
+- [**LARAXOT Framework**](../../../../docs) - Documentazione framework principale
 - [**Module Standards**](../../laravel/docs/module-standards.md) - Standard sviluppo moduli
 - [**Best Practices**](../../laravel/docs/best-practices.md) - Best practices architetturali
 

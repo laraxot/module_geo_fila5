@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "address resource"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Risorsa Filament per il Modello Address

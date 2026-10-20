@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "context compression mcp"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Context Compression MCP Setup

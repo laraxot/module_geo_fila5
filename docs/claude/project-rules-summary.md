@@ -191,7 +191,7 @@ Document the why, code shows the how
 - [Git Forward-Only](../../.cursor/rules/git-forward-only.mdc)
 - [Scripts Location](../../.cursor/rules/scripts-location-mandatory.mdc)
 - [Documentation Naming](../../.cursor/rules/documentation-naming.mdc)
-- [Documentation Philosophy](./documentation-philosophy.md)
+- [Documentation Philosophy](../rules/documentation-philosophy.md)
 - [Architecture Rules](./architecture-rules.md)
 
 ---

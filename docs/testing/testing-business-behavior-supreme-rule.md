@@ -159,7 +159,7 @@ Quando sistemo un test esistente che non funziona:
 
 - [Testing Priority Rule](testing-priority-rule.md)
 - [Model Testing Philosophy](model-testing-philosophy.md)
-- [Anti-patterns](anti-patterns.md)
+- [Anti-patterns](../anti-patterns.md)
 - [Laravel Boost Guidelines](../laravel/.ai/guidelines/testing-business-behavior.md)
 - [Testing Fundamental Rule](../laravel/.ai/guidelines/testing-fundamental-rule.md)
 

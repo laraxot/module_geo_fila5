@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "windsurf rules update"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Windsurf Rules Update - Forbidden Documentation Directories

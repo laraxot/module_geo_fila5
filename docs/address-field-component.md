@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "address field component"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module — AddressInput Component

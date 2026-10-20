@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map loading fix in wizard"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Map Loading Fix for Wizard Interface

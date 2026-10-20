@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map picker"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Map Picker

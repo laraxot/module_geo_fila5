@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map wizard blank tiles fix"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Fix: Map Blank Tiles in Wizard Steps

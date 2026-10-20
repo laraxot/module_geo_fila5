@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "filament integration"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Integrazione con Filament
@@ -194,7 +195,7 @@ class AddressPage extends XotBasePage
 ```
 
 ## Collegamenti
-- [README del Modulo](../readme.md)
+- [README del Modulo](../README.md)
 - [Documentazione JSON Database](json-database.md)
 - [Best Practices Filament](../../../../docs/project/filament-best-practices.md)
 - [Clean Code](../../../../docs/project/clean-code.md) 

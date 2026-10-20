@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "scripts location"
 issues: []
 discussions: []
+status: draft
 ---
 
 # REGOLA CRITICA: Posizione Scripts
@@ -16,15 +17,6 @@ discussions: []
 **Updated**: 2025-01-02
 
 ---
-
-title: "scripts location"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "scripts location"
-issues: []
-discussions: []
 ## 📜 LA REGOLA
 
 **TUTTI gli script** (.sh, .php, .py, .js, etc.) DEVONO essere posizionati in:

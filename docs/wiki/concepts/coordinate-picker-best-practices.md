@@ -13,6 +13,7 @@ related:
   - concepts/coordinate-picker-state-binding-rule.md
   - concepts/coordinate-picker-field.md
   - concepts/filament5-custom-field-entangle-contract.md
+status: draft
 ---
 
 # CoordinatePicker Best Practices

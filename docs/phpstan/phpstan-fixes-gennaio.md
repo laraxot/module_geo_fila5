@@ -391,7 +391,7 @@ cd /var/www/html/_bases/base_<nome progetto>/laravel
 - [Services Architecture](../services/README.md)
 - [Geographic Data Handling](../geo_entities.md)
 - [PHPStan Level 9 Guide](../../../docs/phpstan-level9-guide.md)
-- [Filament Best Practices](../filament/filament-best-practices.md)
+- [Filament Best Practices](../raw/history/filament-best-practices.md)
 
 ---
 

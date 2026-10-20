@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "update coordinates action"
 issues: []
 discussions: []
+status: draft
 ---
 
 # `UpdateCoordinatesAction` (Spatie Queueable Action)

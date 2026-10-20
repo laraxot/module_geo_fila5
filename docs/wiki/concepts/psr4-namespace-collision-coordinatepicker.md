@@ -7,6 +7,7 @@ title: PSR-4 / namespace collision - CoordinatePicker (Geo)
 type: concept
 updated: 2026-04-23
 tags: [phpstan, psr-4, autoload, geo, filament, forms, best-practices, false-friends]
+status: draft
 ---
 
 # Sintomo

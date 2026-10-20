@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "testing principles"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Principi di Testing
@@ -170,14 +171,6 @@ test('patient inherits user functionality', function () {
 - [Testing Guidelines](../laravel/.ai/guidelines/testing-guidelines.md)
 
 ---
-title: "testing principles"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "testing principles"
-issues: []
-discussions: []
 **Ultima modifica**: [DATE]
 **Priorità**: CRITICA
 **Applicazione**: SEMPRE, TUTTI I TEST

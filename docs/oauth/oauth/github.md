@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "github"
 issues: []
 discussions: []
+status: draft
 ---
 
 Go to GitHub Developer Settings.(https://github.com/settings/developers)

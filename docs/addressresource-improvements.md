@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "addressresource improvements"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Suggerimenti di Miglioramento per AddressResource.php

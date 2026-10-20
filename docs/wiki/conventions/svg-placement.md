@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "svg placement"
 issues: []
 discussions: []
+status: draft
 ---
 
 # SVG File Placement Convention

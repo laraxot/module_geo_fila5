@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: advanced-features
 canonical: ../../../Themes/docs/shared-components/ADVANCED_FEATURES.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/ADVANCED_FEATURES.md

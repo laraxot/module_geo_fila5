@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "merge conflicts resolution"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Risoluzione Conflitti di Merge - Modulo Geo
@@ -115,5 +116,5 @@ Strategia: DRY, KISS, analisi contestuale
 ## Collegamenti
 - [Geo Module Architecture](architecture.md)
 - [Geo Models Documentation](models/)
-- [Geo Actions Documentation](../app/Actions/)
+- [Geo Actions Documentation](../../app/Actions)
 - [Merge Conflict Best Practices](../../Xot/project_docs/conflicts/)

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "quality"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Checklist qualità - Geo Module

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "STORY"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Story: Laravel 13 Upgrade

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "address model italian"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Modello Address per Indirizzi Italiani

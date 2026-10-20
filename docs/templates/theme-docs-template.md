@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "theme docs template"
 issues: []
 discussions: []
+status: draft
 ---
 
 # {ThemeName} Theme

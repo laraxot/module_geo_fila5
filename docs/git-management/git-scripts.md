@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "git scripts"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Git Scripts
@@ -173,4 +174,4 @@ Questo script sincronizza i repository remoti con i sottoprogetti locali definit
 
 Questa strategia è generalmente migliore per ridurre i conflitti rispetto all'uso di `git merge`, specialmente quando si lavora con sottoprogetti che vengono aggiornati frequentemente. Il rebase mantiene una storia più pulita e lineare.
 
-[Torna alla documentazione principale](../../docs/maintenance.md#git-management) 
+[Torna alla documentazione principale](../../../../../docs/maintenance.md#git-management) 

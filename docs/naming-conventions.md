@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "naming conventions"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Convenzioni di Naming nel Modulo Geo

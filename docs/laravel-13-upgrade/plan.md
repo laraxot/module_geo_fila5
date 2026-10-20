@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "plan"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Plan: Laravel 13 Upgrade

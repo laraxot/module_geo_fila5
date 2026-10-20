@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "commands"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Automation & commands

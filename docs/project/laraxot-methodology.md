@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "laraxot methodology"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Laraxot Methodology (Super Mucca)

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map geolocation fallback rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Map Geolocation Fallback Rule (Golden Rule)

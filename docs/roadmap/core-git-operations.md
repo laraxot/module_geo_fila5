@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "core git operations"
 issues: []
 discussions: []
+status: draft
 ---
 
 
@@ -7386,15 +7387,6 @@ Questa fase si concentra sulle operazioni fondamentali di Git necessarie per la 
 - Risoluzione conflitti
 
 ---
-
-title: "core git operations"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "core git operations"
-issues: []
-discussions: []
 **Esempio pratico di sincronizzazione tra organizzazioni:**
 
 ```bash

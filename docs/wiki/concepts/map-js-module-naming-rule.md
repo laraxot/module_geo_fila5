@@ -13,7 +13,8 @@ related:
   - geo-map-controls-unification-rule.md
   - map-picker-family-architecture.md
   - geo-map-controls-shared-implementation.md
-  - ../../../../Themes/Sixteen/docs/wiki/concepts/theme-geo-js-boundary.md
+  - ../../../../../Themes/Sixteen/docs/wiki/concepts/theme-geo-js-boundary.md
+status: draft
 ---
 
 # Regola: moduli JS mappa in `components/map/`
@@ -113,4 +114,4 @@ npm run copy
 
 - [geo-map-controls-unification-rule](./geo-map-controls-unification-rule.md)
 - [geo-map-controls-shared-implementation](./geo-map-controls-shared-implementation.md)
-- [theme-geo-js-boundary](../../../../Themes/Sixteen/docs/wiki/concepts/theme-geo-js-boundary.md)
+- [theme-geo-js-boundary](../../../../../Themes/Sixteen/docs/wiki/concepts/theme-geo-js-boundary.md)

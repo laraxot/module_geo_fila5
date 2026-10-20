@@ -7,12 +7,14 @@ namespace Modules\Geo\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Models\ComuneJson;
+
 use function Safe\json_decode;
 use function Safe\json_encode;
 
 /**
  * Geo JSON Seeder — saves new JSON data for the map.
  * Uses SushiToJson trait (saveToJson automatically on create/update/delete).
+ *
  * @see BMAD STORY-371 (Second Brain) · Issue #387 · Discussion #392
  */
 class GeoJsonExportSeeder extends Seeder
@@ -25,6 +27,7 @@ class GeoJsonExportSeeder extends Seeder
 
         if (! is_array($data)) {
             $this->command?->error('GeoJsonExportSeeder: comuni.json non valido');
+
             return;
         }
 

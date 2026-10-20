@@ -73,10 +73,10 @@ class ComuneSeeder extends Seeder
                 'updated_at' => now()->toISOString(),
             ];
 
-            $count++;
+            ++$count;
 
             // Salva batch intermedi per evitare problemi di memoria
-            if ($count % $batchSize === 0) {
+            if (0 === $count % $batchSize) {
                 $this->command?->info("ComuneSeeder: processati {$count}/{$total} comuni...");
             }
         }
@@ -98,7 +98,7 @@ class ComuneSeeder extends Seeder
     protected function saveToTenantJson(string $table, array $data): void
     {
         $tenant = config('tenant.current', 'central');
-        $tenant = is_string($tenant) && $tenant !== '' ? $tenant : 'central';
+        $tenant = is_string($tenant) && '' !== $tenant ? $tenant : 'central';
         $path = config_path("{$tenant}/database/content/{$table}.json");
 
         $dir = dirname($path);
@@ -109,6 +109,6 @@ class ComuneSeeder extends Seeder
         $jsonContent = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         file_put_contents($path, $jsonContent);
 
-        $this->command?->info("ComuneSeeder: salvato {$table}.json in {$path} (".count($data)." record)");
+        $this->command?->info("ComuneSeeder: salvato {$table}.json in {$path} (".count($data).' record)');
     }
 }

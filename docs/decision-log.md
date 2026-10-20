@@ -2,6 +2,10 @@
 type: decision-log
 title: "Decision Log — Geo"
 links: {github_issue: #XXX, discussion: #XXX}
+status: draft
+updated: 2026-10-20
+tags: [docs, geo]
+qmd: "decision log   geo geo"
 ---
 # Decision Log — Geo
 
@@ -32,5 +36,28 @@ links: {github_issue: #XXX, discussion: #XXX}
 - **Because**: Il merge `10076511` ha preso per 113 file di codice il lato `bfd4966a`, una copia di lavoro ferma al 28/09 (tutti identici alla base `f0ca6e67`). I file scelti sono quelli dei file gravi e le loro dipendenze dirette, mai toccati dopo il merge; le fixture erano già state rimosse su linea buona da `d1cedf07` ("rimossi i probe PHPStan tornati") e da Marco il 05/10.
 - **Lasciato fuori di proposito**: gli altri ~70 file ancora alla copia del 28/09 e i 23 modificati dopo il merge da Marco l'08/10 (`b112b61b`, `f9e8b556`, `e46ede56`: servizi eliminati, action `GeoData` riscritte). Il merge a tre vie dà 12 file in conflitto tra due progetti diversi della stessa parte: da decidere con Marco.
 - **Verifica**: `php -l`; PHPStan su `Modules/Geo` senza errori; test prima/dopo identici.
+
+### 2026-10-14: INDEX.md come ingresso unico e mappa di migrazione della radice (proposta)
+- **Choose**: `docs/INDEX.md` e l'unico punto d'ingresso; `00-INDEX.md` e `00-index.md` portano in testa "Superseded: vedi INDEX.md" e restano per cronologia; `docs/DOCS-MIGRATION-MAP.md` ha una riga (vecchio, nuovo proposto, scopo, nota, stato `proposto`) per ognuno dei 622 file della radice; `wiki/concepts/INDEX.md` elenca tutti i 148 concept.
+- **Over**: spostare o cancellare subito i file della radice; fondere i tre indici cancellando due.
+- **Because**: il progetto vieta spostamenti senza mappa e senza decisione. La radice ha 622 file (575 `.md`, 47 di configurazione o senza estensione), 62 copie byte-identiche e 1933 link relativi non risolvibili: spostare prima di decidere moltiplicherebbe i link rotti. Le destinazioni proposte sono cartelle gia esistenti di `docs/` (nessuna cartella nuova di primo livello).
+- **Verifica** (strumento `bashscripts/tools/docs/docs-organizer.py links`, escluse `raw/` e `stories/`): prima 2275 eventi (1933 irrisolti + 342 correggibili); dopo 1933 eventi (0 correggibili): 340 link riparati dallo strumento, tutti con bersaglio esistente (verificato uno per uno), piu 9 riparati a mano con bersaglio unico (`leaflet-marker-map-input.md`, `../config/config.php`, `map-lit-it-incidents-2026.md` in due file, `../coordinate-picker.md`, 4 profondita `../` sbagliate: 3 in `wiki/index.md` e 1 nel campo `sources` del concept `coordinate-picker-design-comuni-runtime-rule.md`). Gli irrisolti puntano a file inesistenti: non riparati, nessun bersaglio inventato. Il confronto non e al pelo: la prima misura saltava i file toccati da meno di 10 minuti.
+- **Aperto**: approvazione gruppo per gruppo della mappa (poi `git mv` e `links --fix`); `docs/wiki/.gitignore` ignora `concepts/`, quindi i concept nuovi (es. `picker-marker-and-controls-on-host-pages.md`) vanno aggiunti con `git add -f`; `wiki/index.md` ha ancora un link rotto senza bersaglio (`ai-harness-module-discipline.md`); `geo-map-lit.js` importa ancora `leaflet.heat` senza usarlo (cambio di codice, fuori da questa revisione).
+
+### 2026-10-20: Regressione PHPStan da pull, lane geo (483 errori a 0)
+- **Choose**: Correggere alla sorgente le tre cause (alias `@phpstan-type` usati come tipo nativo, docblock `/** @var */` degradati, test riespansi) e ripristinare i test dai blob di `HEAD` con `git show`, senza `checkout` ne' `restore`.
+- **Over**: Correggere riga per riga i 483 errori, o aggiungere ignore e baseline.
+- **Because**: Il pull delle 08:57 ha riscritto la working copy con una versione diversa da `HEAD` (`6fde33ea`). I blob di `HEAD` sono lo stato dell'8 ottobre, a 0 errori. Gli alias erano un `TypeError` a runtime, non solo un errore statico.
+- **Verifica**: PHPStan JSON a 0 su 29 file; Pest verde su `LookupPlaceActionTest` (nuovo, 5 test) e sui due test del dataset mappa (6 test).
+- **Aperto**: quattro servizi di `app/Services` risorti dal pull (tipizzati sul posto, non cancellati) e quattro test del widget rossi. Dettagli: [phpstan-test-wave-geo.story.md](./stories/phpstan-test-wave-geo.story.md).
+
+
+### 2026-10-20: Services Geo di nuovo a zero (wave services-to-actions)
+
+- **Choose**: eliminare i residui riesumati; Actions gia' in `Actions/Here|GeoData|GoogleMaps|Distance|Polygon`.
+- **Because**: no-services; i cinque `*Service` erano zombie (0 chiamanti produzione). In questa sessione i 5 erano gia' spariti; rimosso anche `GeoDataValidator` (successore `ValidateGeoDataIntegrityAction`). Cartella `app/Services` vuota/rimossa.
+- **Verifica**: `rg --files Modules -g '*Service.php'` → solo `TermsOfService` Livewire User.
+
 ## Open Questions
 
+- (2026-10-14, studio degli ingressi) Quale file e' l'indice canonico del modulo? Il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` dice `00-INDEX.md`; la decisione del 2026-10-14 sopra dice `INDEX.md` e marca `00-INDEX.md` e `00-index.md` come superseded (due nomi che differiscono solo per le maiuscole). Nessuna rinomina fatta. Vedi la story `stories/studio-docs-geo-ingressi-verificati.story.md`.

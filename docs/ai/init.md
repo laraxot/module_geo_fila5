@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "init"
 issues: []
 discussions: []
+status: draft
 ---
 
 # AI Tools - Setup Iniziale
@@ -14,15 +15,6 @@ discussions: []
 **Ultimo aggiornamento**: 2026-01-12
 
 ---
-
-title: "init"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "init"
-issues: []
-discussions: []
 ## Panoramica
 
 Questa guida descrive il setup iniziale per tutti gli AI tools utilizzati nel progetto PTVX.

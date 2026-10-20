@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: philosophy
 canonical: ../../../Themes/docs/shared-components/philosophy.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/philosophy.md

@@ -7,6 +7,7 @@ qmd: "showsearch redundant"
 issues: []
 discussions: []
 title: ShowSearch Redundancy in GeopointPicker
+status: draft
 ---
 
 ## Problem

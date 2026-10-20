@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "dependabot security policy"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Dependabot & Security Policy
@@ -23,15 +24,6 @@ Ogni modulo e tema deve:
 5. ✅ Avere auto-merge configurato per patch (non-breaking)
 
 ---
-
-title: "dependabot security policy"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "dependabot security policy"
-issues: []
-discussions: []
 ## Configuration
 
 ### `.github/dependabot.yml` per root repo

@@ -9,6 +9,7 @@ discussions: []
 name: final-constructor-rule
 description: Prevent overriding final __construct() from Filament Field base class.
 type: concept
+status: draft
 ---
 
 # Final Constructor Rule

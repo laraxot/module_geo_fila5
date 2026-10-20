@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "tasks index"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Indice task - Modulo Geo

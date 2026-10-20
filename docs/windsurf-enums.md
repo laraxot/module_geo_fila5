@@ -10,6 +10,7 @@ discussions: []
 description: 
 globs: 
 alwaysApply: true
+status: draft
 ---
 # Regole per gli Enum nel Modulo Geo (Windsurf)
 

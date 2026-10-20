@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "backup disk"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Funzione backup_disk

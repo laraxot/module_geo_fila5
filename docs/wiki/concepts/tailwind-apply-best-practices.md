@@ -11,6 +11,7 @@ name: Tailwind @apply Best Practices for Geo Module
 description: Guida all'uso di @apply per mantenere compatibilità Bootstrap Italia nel modulo Geo
 metadata:
   type: decision
+status: draft
 ---
 
 # Tailwind @apply Best Practices - Geo Module

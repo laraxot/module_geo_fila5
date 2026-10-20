@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "laravel"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 🔄 Laravel Core Patterns - Implementazione PTVX

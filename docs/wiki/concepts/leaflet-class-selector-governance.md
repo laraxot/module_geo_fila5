@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "leaflet class selector governance"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Leaflet Class Selector Governance

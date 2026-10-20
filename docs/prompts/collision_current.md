@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "collision current"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Collision Current

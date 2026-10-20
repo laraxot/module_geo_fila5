@@ -7,4 +7,5 @@ updated: 2026-09-26
 qmd: "AGENT GUIDE"
 issues: []
 discussions: []
+status: draft
 ---

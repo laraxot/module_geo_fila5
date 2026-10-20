@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "product strategy template"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Product Strategy Document Template
@@ -21,15 +22,6 @@ discussions: []
 > **Owner:** {Product Strategy Team}
 
 ---
-
-title: "product strategy template"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "product strategy template"
-issues: []
-discussions: []
 ## Missione
 
 Portare **{Module/Theme Name}** a uno stato in cui il progetto ottiene un vantaggio netto e misurabile su questa area: {clear statement of product domain and purpose}.

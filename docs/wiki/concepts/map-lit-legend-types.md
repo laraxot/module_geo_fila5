@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map lit legend types"
 issues: []
 discussions: []
+status: draft
 ---
 
 > **OBSOLETO (STORY-125):** legenda tipologie errata. Vedi [map-legend-status-semantics.md](./map-legend-status-semantics.md).

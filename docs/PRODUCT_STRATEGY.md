@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "PRODUCT STRATEGY"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module - Product Strategy
@@ -16,15 +17,6 @@ discussions: []
 **Owner:** Product Team
 
 ---
-
-title: "PRODUCT STRATEGY"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "PRODUCT STRATEGY"
-issues: []
-discussions: []
 ## Executive Summary
 
 The Geo module provides location-based services essential for compliance, localization, and fraud prevention across global markets.

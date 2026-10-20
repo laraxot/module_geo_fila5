@@ -12,6 +12,7 @@ category: geo-patterns
 deprecated: true
 deprecated_in: 2026-05-08
 deprecated_reason: "Element name <geo-map-lit> superseded by canonical <map-lit>. See concepts/map-lit-canonical-name.md."
+status: draft
 ---
 
 > ⚠️ **DEPRECATED — Custom element naming**

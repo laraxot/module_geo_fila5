@@ -12,6 +12,7 @@ updated: 2026-04-30
 stories:
   - 8-81-geo-map-lit-farmshops-parity
   - 8-78-ticket-list-polish
+status: draft
 ---
 
 # `data-url` Property — `map-lit` Component

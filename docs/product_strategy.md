@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: product_strategy
 canonical: ../../../Themes/docs/shared-components/PRODUCT_STRATEGY.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/PRODUCT_STRATEGY.md

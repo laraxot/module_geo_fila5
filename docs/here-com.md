@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "here com"
 issues: []
 discussions: []
+status: draft
 ---
 
 Depending on your authentication method you either need to add an Authorization header with a Bearer token or a query parameter 

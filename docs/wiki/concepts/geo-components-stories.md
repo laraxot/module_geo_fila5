@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo components stories"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Components: The Stories

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "02 maintenance"
 issues: []
 discussions: []
+status: draft
 ---
 
 
@@ -119,15 +120,6 @@ Questa fase si concentra sulla manutenzione e ottimizzazione del sistema, garant
 - Bash
 
 ---
-
-title: "02 maintenance"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "02 maintenance"
-issues: []
-discussions: []
 **Esempio pratico di schedulazione manutenzione automatica:**
 
 ```bash

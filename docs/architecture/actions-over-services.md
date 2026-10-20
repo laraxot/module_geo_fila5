@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "actions over services"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Migrazione da Services ad Actions

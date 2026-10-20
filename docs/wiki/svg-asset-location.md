@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "svg asset location"
 issues: []
 discussions: []
+status: draft
 ---
 
 # SVG Asset Location Rule

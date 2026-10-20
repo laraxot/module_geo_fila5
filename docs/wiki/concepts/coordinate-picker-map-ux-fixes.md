@@ -13,7 +13,8 @@ tags: [geo, coordinate-picker, map, geolocation, search, fixcity, wizard, steppe
 related:
   - ../concepts/location-capture-map-wizard.md
   - ../concepts/map-controls-visibility-issue.md
-  - ../../../Themes/Sixteen/resources/css/components/filament-wizard-parity.css
+  - ../../../../../Themes/Sixteen/resources/css/components/filament-wizard-parity.css
+status: draft
 ---
 
 # Coordinate Picker Map UX Fixes (2026-05-13 / Updated 2026-05-15)

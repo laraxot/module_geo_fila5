@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo json vs sushi comparison"
 issues: []
 discussions: []
+status: draft
 ---
 
 # GeoJsonModel vs Laravel Sushi: Analisi e Confronto
