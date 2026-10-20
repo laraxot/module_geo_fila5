@@ -3,7 +3,7 @@ type: decision-log
 title: "Decision Log — Geo"
 links: {github_issue: #XXX, discussion: #XXX}
 status: draft
-updated: 2026-10-14
+updated: 2026-10-20
 tags: [docs, geo]
 qmd: "decision log   geo geo"
 ---
@@ -44,7 +44,49 @@ qmd: "decision log   geo geo"
 - **Verifica** (strumento `bashscripts/tools/docs/docs-organizer.py links`, escluse `raw/` e `stories/`): prima 2275 eventi (1933 irrisolti + 342 correggibili); dopo 1933 eventi (0 correggibili): 340 link riparati dallo strumento, tutti con bersaglio esistente (verificato uno per uno), piu 9 riparati a mano con bersaglio unico (`leaflet-marker-map-input.md`, `../config/config.php`, `map-lit-it-incidents-2026.md` in due file, `../coordinate-picker.md`, 4 profondita `../` sbagliate: 3 in `wiki/index.md` e 1 nel campo `sources` del concept `coordinate-picker-design-comuni-runtime-rule.md`). Gli irrisolti puntano a file inesistenti: non riparati, nessun bersaglio inventato. Il confronto non e al pelo: la prima misura saltava i file toccati da meno di 10 minuti.
 - **Aperto**: approvazione gruppo per gruppo della mappa (poi `git mv` e `links --fix`); `docs/wiki/.gitignore` ignora `concepts/`, quindi i concept nuovi (es. `picker-marker-and-controls-on-host-pages.md`) vanno aggiunti con `git add -f`; `wiki/index.md` ha ancora un link rotto senza bersaglio (`ai-harness-module-discipline.md`); `geo-map-lit.js` importa ancora `leaflet.heat` senza usarlo (cambio di codice, fuori da questa revisione).
 
+### 2026-10-20: Regressione PHPStan da pull, lane geo (483 errori a 0)
+- **Choose**: Correggere alla sorgente le tre cause (alias `@phpstan-type` usati come tipo nativo, docblock `/** @var */` degradati, test riespansi) e ripristinare i test dai blob di `HEAD` con `git show`, senza `checkout` ne' `restore`.
+- **Over**: Correggere riga per riga i 483 errori, o aggiungere ignore e baseline.
+- **Because**: Il pull delle 08:57 ha riscritto la working copy con una versione diversa da `HEAD` (`6fde33ea`). I blob di `HEAD` sono lo stato dell'8 ottobre, a 0 errori. Gli alias erano un `TypeError` a runtime, non solo un errore statico.
+- **Verifica**: PHPStan JSON a 0 su 29 file; Pest verde su `LookupPlaceActionTest` (nuovo, 5 test) e sui due test del dataset mappa (6 test).
+- **Aperto**: quattro servizi di `app/Services` risorti dal pull (tipizzati sul posto, non cancellati) e quattro test del widget rossi. Dettagli: [phpstan-test-wave-geo.story.md](./stories/phpstan-test-wave-geo.story.md).
+
+
+### 2026-10-20: Services Geo di nuovo a zero (wave services-to-actions)
+
+- **Choose**: eliminare i residui riesumati; Actions gia' in `Actions/Here|GeoData|GoogleMaps|Distance|Polygon`.
+- **Because**: no-services; i cinque `*Service` erano zombie (0 chiamanti produzione). In questa sessione i 5 erano gia' spariti; rimosso anche `GeoDataValidator` (successore `ValidateGeoDataIntegrityAction`). Cartella `app/Services` vuota/rimossa.
+- **Verifica**: `rg --files Modules -g '*Service.php'` → solo `TermsOfService` Livewire User.
+
+### 2026-10-20: Services Geo, equivalenza dimostrata prima di chiudere
+
+- **Choose**: non creare Action nuove; confrontare con un probe i blob originali contro i successori e correggere solo cio' che il confronto smentisce.
+- **Over**: fidarsi dei nomi ("Sostituisce GeoService::haversine()") o ricreare le classi come Action.
+- **Because**: il probe ha dato 330 confronti uguali e 20 diversi, tutti spiegati. Uno era un difetto vero: `Distance/BuildHaversineSqlAction` produceva SQL con una parentesi in meno e nessuno se n'era accorto perche' non ha chiamanti. Corretto con test rosso poi verde.
+- **Non appianato**: `getCities` ha cambiato forma (lista di coppie nel Service, mappa `codice => nome` nelle Action), `comuni.json` reale non ha la struttura `regions` che il codice GeoData richiede, `GeoServiceFacade` ha accessor `geo.service` senza binding. Tutte in [services-to-actions-geo.story.md](./stories/services-to-actions-geo.story.md) come decisioni per l'owner.
+
+### 2026-10-20: Religione cartella `app/Services` assente (delete-again)
+
+- **Choose**: path `Modules/Geo/app/Services/` assente; ratchet `archAllowedServicesDirs()` = `[]`; merge riesuma → delete-again senza nuove Actions.
+- **Over**: allowlist Geo o ricreazione Service «temporanea».
+- **Because**: mid-sessione cinque PHP riesumati con 0 `use Modules\Geo\Services\`. Hub: [brainstorming-services-to-actions-wave](../../Xot/docs/bmad/brainstorming-services-to-actions-wave.md).
+- **Verifica**: `find` dirs/files Services = 0; PHPStan Modules OK (`--memory-limit=2G` post-SIGKILL).
+
 ## Open Questions
 
 - (2026-10-14, studio degli ingressi) Quale file e' l'indice canonico del modulo? Il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` dice `00-INDEX.md`; la decisione del 2026-10-14 sopra dice `INDEX.md` e marca `00-INDEX.md` e `00-index.md` come superseded (due nomi che differiscono solo per le maiuscole). Nessuna rinomina fatta. Vedi la story `stories/studio-docs-geo-ingressi-verificati.story.md`.
+## 2026-10-20 — Iniezione esplicita nelle Queueable Actions Geo
 
+`FilterCoordinatesInRadiusAction` riceve `CalculateDistanceActionContract` nel
+costruttore invece di risolverlo con `app()` dentro `execute()`. Lo scopo è
+rendere visibile la dipendenza, mantenere il caso d'uso testabile e impedire che
+il comportamento dipenda da binding globali nascosti. Il contratto resta
+sincrono per le letture usate dalla UI; il trait Spatie rimane disponibile per
+il dispatch esplicito.
+
+## 2026-10-20 — Contratti delle Actions risolti dal container
+
+`FilterCoordinatesInRadiusAction`, `ClusterLocationsAction` e `OptimizeRouteAction`
+dipendono da `CalculateDistanceActionContract`. `GeoServiceProvider` registra ora il
+binding verso `CalculateDistanceAction`, così la composizione applicativa resta
+testabile tramite contratto e non fallisce quando Laravel costruisce l'Action.

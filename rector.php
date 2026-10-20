@@ -33,10 +33,9 @@ return static function (RectorConfig $rectorConfig): void {
         // PHP 8.1 compatibility
         LevelSetList::UP_TO_PHP_81,
 
-        // Code quality improvements
+        // Code quality improvements (early-return rules vivono in CODE_QUALITY)
         SetList::CODE_QUALITY,
         SetList::DEAD_CODE,
-        SetList::EARLY_RETURN,
 
         // Type declarations (commented - enable carefully)
         // SetList::TYPE_DECLARATION,

@@ -6,14 +6,13 @@ namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GoogleMaps\GetAddressFromGoogleMapsAction;
-use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
-    $action = new GetAddressFromGoogleMapsAction();
+    $action = new GetAddressFromGoogleMapsAction;
 
     config(['services.google.maps_api_key' => null]);
 
@@ -27,7 +26,7 @@ it('throws exception when api key is not configured', function (): void {
 });
 
 it('throws exception when api key is empty', function (): void {
-    $action = new GetAddressFromGoogleMapsAction();
+    $action = new GetAddressFromGoogleMapsAction;
 
     config(['services.google.maps_api_key' => '']);
 
@@ -40,7 +39,7 @@ it('throws exception when api key is empty', function (): void {
 });
 
 it('throws exception when api response is not successful', function (): void {
-    $action = new GetAddressFromGoogleMapsAction();
+    $action = new GetAddressFromGoogleMapsAction;
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -58,7 +57,7 @@ it('throws exception when api response is not successful', function (): void {
 });
 
 it('throws exception when no results found', function (): void {
-    $action = new GetAddressFromGoogleMapsAction();
+    $action = new GetAddressFromGoogleMapsAction;
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -78,7 +77,7 @@ it('throws exception when no results found', function (): void {
 });
 
 it('returns address data for valid address', function (): void {
-    $action = new GetAddressFromGoogleMapsAction();
+    $action = new GetAddressFromGoogleMapsAction;
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -108,8 +107,6 @@ it('returns address data for valid address', function (): void {
 
     $result = $action->execute('Via Roma 1, Milano, Italia');
 
-    Assert::assertInstanceOf(AddressData::class, $result);
-
     Assert::assertSame(45.4642, $result->latitude);
 
     Assert::assertSame(9.1900, $result->longitude);
@@ -134,7 +131,7 @@ it('returns address data for valid address', function (): void {
 });
 
 it('handles missing optional address components', function (): void {
-    $action = new GetAddressFromGoogleMapsAction();
+    $action = new GetAddressFromGoogleMapsAction;
 
     config(['services.google.maps_api_key' => 'test_key']);
 
@@ -155,8 +152,6 @@ it('handles missing optional address components', function (): void {
     ]);
 
     $result = $action->execute('Italia');
-
-    Assert::assertInstanceOf(AddressData::class, $result);
 
     Assert::assertSame(45.4642, $result->latitude);
 

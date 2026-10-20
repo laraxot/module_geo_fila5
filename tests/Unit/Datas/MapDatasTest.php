@@ -17,7 +17,8 @@ test('IconData can be instantiated', function (): void {
         'url' => 'https://example.com/icon.png',
         'size' => ['width' => 32, 'height' => 32],
     ]);
-    Assert::assertInstanceOf(IconData::class, $icon);
+
+    Assert::assertSame('https://example.com/icon.png', $icon->url);
 });
 
 test('MarkerData can be instantiated', function (): void {
@@ -26,7 +27,8 @@ test('MarkerData can be instantiated', function (): void {
         'title' => 'Test Marker',
         'icon' => ['url' => 'https://example.com/icon.png'],
     ]);
-    Assert::assertInstanceOf(MarkerData::class, $marker);
+
+    Assert::assertSame('Test Marker', $marker->title);
 });
 
 test('PositionData can be instantiated', function (): void {
@@ -34,7 +36,8 @@ test('PositionData can be instantiated', function (): void {
         'lat' => 41.9028,
         'lng' => 12.4964,
     ]);
-    Assert::assertInstanceOf(PositionData::class, $position);
+
+    Assert::assertSame(41.9028, $position->lat);
 });
 
 test('SizeData can be instantiated', function (): void {
@@ -42,5 +45,6 @@ test('SizeData can be instantiated', function (): void {
         'width' => 100,
         'height' => 100,
     ]);
-    Assert::assertInstanceOf(SizeData::class, $size);
+
+    Assert::assertSame(100, $size->width);
 });

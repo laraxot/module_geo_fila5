@@ -19,7 +19,10 @@ canonical: ../../../Themes/docs/shared-components/.gitkeep-Modules
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/.gitkeep-Modules
+<<<<<<< .merge_file_zCmh4J
 
+=======
+>>>>>>> .merge_file_4TfppY
 --- BMAD + Second Brain ---
 - Scopo: documentazione tecnica del modulo.
 - Utilità: riferimento sviluppatori/audit.

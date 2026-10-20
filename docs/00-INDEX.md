@@ -1,18 +1,22 @@
 ---
-title: "00 INDEX"
-type: note
-tags: [documentation]
+title: "Geo — indice operativo"
+type: index
+tags: [documentation, geo]
 created: 2026-09-26
-updated: 2026-09-26
-qmd: "00 INDEX"
+updated: 2026-10-20
+qmd: "geo indice operativo scopo geocoding indirizzi comuni filament phpstan wave"
 issues: []
 discussions: []
-status: draft
+status: active
 ---
 
 > **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
 
 # Geo Module — Documentation Index
+
+Indice canonico per contratto moduli (`00-INDEX.md`). Catalogo esteso storico: [INDEX.md](./INDEX.md). `00-index.md` e' stub verso qui.
+
+**Perche' esiste:** [scopo.md](./scopo.md). Wave PHPStan: [stories/phpstan-wave-coord.story.md](./stories/phpstan-wave-coord.story.md) · [stories/phpstan-test-wave-geo.story.md](./stories/phpstan-test-wave-geo.story.md) (TSV `.cursor-scratch/phpstan-wave/Geo.tsv`). Gate: solo [laravel/phpstan.neon](../../../phpstan.neon); neon in `Geo/` e `Geo/docs/` = legacy (vedi [memoria Xot](../../Xot/docs/wiki/memories/phpstan-single-neon-config.md)).
 
 ## Architecture
 
@@ -44,6 +48,7 @@ status: draft
 
 - Da Services a Queueable Actions _(target mancante, verificato 2026-10-14: `wiki/concepts/no-app-support-queueable-actions.md` non esiste)_ — contratto `QueueableAction`, `execute()` e composizione tra use case.
 - [Geo no-services architecture](./wiki/concepts/geo-no-services-migration.md) — responsabilità migrate da `app/Services` ad Actions e Adapters.
+- [Services Geo eliminata: ogni metodo mappato su Action o Adapter, con prova](./stories/services-to-actions-geo.story.md): decisioni reuse/relocate/retire, probe prima/dopo (330 uguali, 20 spiegati), difetto corretto in `BuildHaversineSqlAction`, duplicati e decisioni aperte.
 
 
 | Action | Path | Descrizione |

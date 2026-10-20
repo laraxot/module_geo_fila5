@@ -42,10 +42,9 @@ describe('Province Business Logic', function () {
     });
 
     test('province model can be instantiated without errors', function () {
-        $province = new Province();
+        $province = new Province;
 
-        Assert::assertInstanceOf(Province::class, $province);
-        Assert::assertInstanceOf(BaseModel::class, $province);
+        Assert::assertFalse($province->exists);
     });
 
     test('province can be queried by name', function () {

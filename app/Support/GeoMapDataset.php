@@ -36,7 +36,7 @@ final class GeoMapDataset
     /**
      * @return GeoDataset
      */
-    public function toArray(): GeoDataset
+    public function toArray(): array
     {
         return [
             'type' => 'FeatureCollection',
@@ -72,7 +72,7 @@ final class GeoMapDataset
     /**
      * @return GeoDatasetStats
      */
-    public function getStats(): GeoDatasetStats
+    public function getStats(): array
     {
         $points = 0;
         $zones = 0;
@@ -163,7 +163,7 @@ final class GeoMapDataset
      *
      * @return GeoFeature|null
      */
-    private function normalizeFeature(array $feature): ?GeoFeature
+    private function normalizeFeature(array $feature): ?array
     {
         $type = $feature['type'] ?? null;
         $properties = $feature['properties'] ?? null;
@@ -201,7 +201,7 @@ final class GeoMapDataset
      *
      * @return GeoProperties|null
      */
-    private function normalizeProperties(array $properties): ?GeoProperties
+    private function normalizeProperties(array $properties): ?array
     {
         $normalized = [];
 
