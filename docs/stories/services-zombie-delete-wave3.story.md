@@ -23,7 +23,7 @@ I cinque file in `app/Services/` erano copie riesumate dal merge dopo che
 
 | Service rimosso | Caso d'uso | Action canonica |
 |-----------------|------------|-----------------|
-| `HereService` | route/summary HERE | `Actions/Here/*` |
+| `GeoDataValidator` | struttura e integrità del JSON geografico | `Actions/GeoData/ValidateGeoDataIntegrityAction` |
 | `GeoDataService` | gerarchia regioni/province/citta/CAP | `Actions/GeoData/LoadGeoHierarchyAction` (+ GetCities/Regions) |
 | `GoogleMapsService` | HTTP Google Maps | `Actions/GoogleMaps/*` |
 | `GeoService` / `BaseGeoService` | distanza / polygon / facade naming | `Actions/Distance/*`, `Actions/Polygon/*`; facade `GeoServiceFacade` punta ad Action |
@@ -32,5 +32,5 @@ I cinque file in `app/Services/` erano copie riesumate dal merge dopo che
 
 ## Verifica
 
-- File assenti sotto `app/Services/*Service.php`
+- Directory `app/Services/` assente, inclusi placeholder e backup
 - `phpstan analyse Modules` resta a 0 (remeasure coordinatore)
