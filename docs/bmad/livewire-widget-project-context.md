@@ -10,6 +10,7 @@ type: constitution
 module: Geo
 related:
   - ./livewire-inventory.md
+status: draft
 ---
 
 # Context Geo

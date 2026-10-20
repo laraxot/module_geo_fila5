@@ -10,6 +10,7 @@ type: pointer
 module: Geo
 related:
   - ./livewire-inventory.md
+status: draft
 ---
 
 # Geo — canone

@@ -16,14 +16,14 @@ related:
   - ./livewire-widget-architecture.md
   - ./livewire-widget-epics.md
   - ../stories/12.1.retire-geo-test-livewire.story.md
-  - ../../Cms/docs/bmad/livewire-inventory.md
+  - ../../../Cms/docs/bmad/livewire-inventory.md
 ---
 
 # Inventario: Livewire HTTP → Filament — modulo Geo
 
 **Solo documentazione. Nessun PHP toccato in questo audit.**
 
-SSoT del modulo Geo per la campagna Livewire → Filament widget. Formato e metodo ripresi da [Modules/Cms/docs/bmad/livewire-inventory.md](../../Cms/docs/bmad/livewire-inventory.md).
+SSoT del modulo Geo per la campagna Livewire → Filament widget. Formato e metodo ripresi da [Modules/Cms/docs/bmad/livewire-inventory.md](../../../Cms/docs/bmad/livewire-inventory.md).
 
 > **Stato post 12.1:** `Test.php`, vista `livewire/test.blade.php` e copie `.test` assenti. `_components.json` tiene solo `form-search-address-categories`. `FormSearchAddressCategories` resta HTTP FO (non widget KPI).
 
