@@ -32,8 +32,6 @@ Generated: [DATE] 16:28
 | GeoTrait | n/a | n/a |
 | HasAddress | n/a | n/a |
 | HasPlaceTrait | n/a | n/a |
-| GeographicalScopes | n/a | n/a |
-| SushiToJsons | n/a | n/a |
 
 Seeder: `database/seeders/GeoDatabaseSeeder.php`
 

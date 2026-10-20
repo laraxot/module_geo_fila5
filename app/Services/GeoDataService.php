@@ -7,6 +7,7 @@ namespace Modules\Geo\Services;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 use function Safe\json_decode;
 
@@ -23,23 +24,23 @@ class GeoDataService
     /**
      * Chiavi di cache.
      */
-    private const CACHE_KEY_REGIONS = 'geo.regions';
+    private const string CACHE_KEY_REGIONS = 'geo.regions';
 
-    private const CACHE_KEY_PROVINCES = 'geo.provinces.%s';
+    private const string CACHE_KEY_PROVINCES = 'geo.provinces.%s';
 
-    private const CACHE_KEY_CITIES = 'geo.cities.%s';
+    private const string CACHE_KEY_CITIES = 'geo.cities.%s';
 
-    private const CACHE_KEY_CAP = 'geo.cap.%s.%s';
+    private const string CACHE_KEY_CAP = 'geo.cap.%s.%s';
 
     /**
      * Tempo di cache in secondi (24 ore).
      */
-    private const CACHE_TTL = 86400;
+    private const int CACHE_TTL = 86400;
 
     /**
      * Percorso del file JSON.
      */
-    private const JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
+    private const string JSON_PATH = 'Modules/Geo/resources/json/comuni.json';
 
     /**
      * Validatore dei dati.
@@ -88,8 +89,10 @@ class GeoDataService
             $region = $this->loadData()->firstWhere('code', $regionCode);
 
             if (! $region || ! \is_array($region) || ! isset($region['provinces']) || ! \is_array($region['provinces'])) {
-                /* @var Collection<int, array{name: string, code: string}> */
-                return new Collection();
+                /** @var Collection<int, array{name: string, code: string}> $empty */
+                $empty = new Collection();
+
+                return $empty;
             }
 
             /** @var array<int, array<string, mixed>> $provinces */
@@ -98,8 +101,18 @@ class GeoDataService
             /** @var Collection<int, array<string, mixed>> $provincesCollection */
             $provincesCollection = new Collection($provinces);
 
-            /** @var Collection<string, string> $provinceResult */
-            $provinceResult = $provincesCollection->pluck('name', 'code');
+            /** @var Collection<int, array{name: string, code: string}> $provinceResult */
+            $provinceResult = $provincesCollection
+                ->map(static function (array $province): array {
+                    $name = $province['name'] ?? '';
+                    $code = $province['code'] ?? '';
+
+                    return [
+                        'name' => SafeStringCastAction::cast($name),
+                        'code' => SafeStringCastAction::cast($code),
+                    ];
+                })
+                ->values();
 
             return $provinceResult;
         });
@@ -126,8 +139,10 @@ class GeoDataService
                 : [])->firstWhere('code', $provinceCode);
 
             if (! $province || ! \is_array($province) || ! isset($province['cities']) || ! \is_array($province['cities'])) {
-                /* @var Collection<int, array{name: string, code: string}> */
-                return new Collection();
+                /** @var Collection<int, array{name: string, code: string}> $empty */
+                $empty = new Collection();
+
+                return $empty;
             }
 
             /** @var array<int, array<string, mixed>> $cities */
@@ -136,8 +151,15 @@ class GeoDataService
             /** @var Collection<int, array<string, mixed>> $citiesCollection */
             $citiesCollection = new Collection($cities);
 
-            /** @var Collection<string, string> $cityResult */
-            $cityResult = $citiesCollection->pluck('name', 'code');
+            /** @var Collection<int, array{name: string, code: string}> $cityResult */
+            $cityResult = $citiesCollection
+                ->map(static function (array $city): array {
+                    return [
+                        'name' => SafeStringCastAction::cast($city['name'] ?? ''),
+                        'code' => SafeStringCastAction::cast($city['code'] ?? ''),
+                    ];
+                })
+                ->values();
 
             return $cityResult;
         });
@@ -220,8 +242,11 @@ class GeoDataService
             throw new \RuntimeException('Regioni mancanti nel file JSON');
         }
 
+        /** @var array<int, array<string, mixed>> $regions */
+        $regions = $data['regions'];
+
         /** @var Collection<int, array<string, mixed>> $result */
-        $result = new Collection($data['regions']);
+        $result = (new Collection($regions))->values();
 
         return $result;
     }

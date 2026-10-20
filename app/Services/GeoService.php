@@ -156,10 +156,12 @@ class GeoService
 
     /**
      * Undocumented function.
+     *
+     * @param array<mixed> $polygon
      */
     public static function is_in_polygon(float $latitude, float $longitude, array $polygon): bool
     {
-        $i = $j = $c = 0;
+        $c = false;
         $points_polygon = \count($polygon) - 1;
 
         // dddx([$latitude, $longitude, $polygon]);
@@ -192,7 +194,7 @@ class GeoService
             }
         }
 
-        return (bool) $c;
+        return $c;
     }
 
     public static function pointInPolygon(float $lat, float $lng, ?string $polygon): bool

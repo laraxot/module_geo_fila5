@@ -41,7 +41,7 @@ final class GeoMapWidget extends XotBaseWidget
     /**
      * @return GeoDataset
      */
-    public function getDataset(): GeoDataset
+    public function getDataset(): array
     {
         return app(LoadGeoMapDatasetAction::class)->execute($this->getDatasetPath());
     }
@@ -57,7 +57,7 @@ final class GeoMapWidget extends XotBaseWidget
     /**
      * @return GeoMapConfig
      */
-    public function getMapConfig(): GeoMapConfig
+    public function getMapConfig(): array
     {
         return [
             'defaultZoom' => $this->defaultZoom,
