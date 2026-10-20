@@ -1,19 +1,71 @@
 ---
 title: "INDEX"
 type: note
+module: Geo
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-09-26
-qmd: "INDEX"
+updated: 2026-10-20
+qmd: "Geo modulo indice canonico docs geocoding mappe location"
 issues: []
 discussions: []
-status: draft
+status: stable
 ---
 
 # Geo Module Documentation Index
 
-<!-- p4-docs-geo: ingresso unico -->
-**Punto d'ingresso unico della documentazione del modulo Geo.** `00-INDEX.md` e `00-index.md` sono superseded da questo file (restano per cronologia, non vengono aggiornati).
+**Spine navigabile.** Ingresso attivo: [README.md](./README.md) (scopo e mappa).
+Questo `INDEX.md` cataloga; i duplicati (`00-INDEX.md`, `index.md`, …) restano
+solo per compatibilita' storica. Convenzione:
+[docs-organization](../../Xot/docs/conventions/docs-organization.md).
+
+## Panoramica
+
+Modulo **Geo** per geocoding, mappe, posizioni e coordinate (Nominatim, Google
+Maps, Mapbox, Bing, …). Consumo da altri moduli: **Queueable Actions**, mai
+`app/Services/`. Perche': [scopo.md](./scopo.md).
+
+## Struttura
+
+File indice storici (mantenuti per compatibilità, non aggiornati):
+- [`00-INDEX.md`](./00-INDEX.md) · [`00-index.md`](./00-index.md)
+- [`index.md`](./index.md) · [`documentation-index.md`](./documentation-index.md)
+- [`modules-optimization-index.md`](./modules-optimization-index.md) · [`testing-supreme-index.md`](./testing-supreme-index.md)
+- [`CHANGELOG.md`](./CHANGELOG.md) · [`changelog.md`](./changelog.md)
+- [`README.md`](./README.md)
+- [`rules-index.md`](./rules-index.md)
+
+Sottocartelle principali (per la mappa completa vedi "Classificazione delle directory" più avanti):
+- [`bmad/`](./bmad/) (20 md)
+- [`stories/`](./stories/) (43 md)
+- [`concepts/`](./concepts/) (3 md)
+- [`wiki/`](./wiki/) (215 md, con sotto `concepts/`, `rules/`, `decisions/`, `troubleshooting/`, `memories/`)
+- [`phpstan/`](./phpstan/) (86 md)
+- [`merge-conflicts/`](./merge-conflicts/)
+- [`git-conflicts/`](./git-conflicts/)
+- [`raw/`](./raw/) (evidenza, immutabile)
+- [`roadmap/`](./roadmap/) (72 md)
+- [`analysis/`](./analysis/)
+- [`models/`](./models/)
+- [`performance/`](./performance/)
+- [`testing/`](./testing/)
+- [`tasks/`](./tasks/)
+- [`prompts/`](./prompts/)
+- [`architecture/`](./architecture/)
+- [`conventions/`](./conventions/)
+- [`investigation/`](./investigation/)
+
+## Qualità / PHPStan
+
+Rapporti PHPStan dedicati (folder `phpstan/`): `phpstan.md`, `phpstan-compliance.md`, `phpstan-roadmap.md`, `phpstan-report.md`, e altri numerosi `phpstan-*.md` (oltre 40 file). Vedi il log della sessione ([stories/phpstan-test-wave-geo.story.md](./stories/phpstan-test-wave-geo.story.md)) per le cause e le correzioni attive al pull del 2026-10-20.
+
+## Riferimenti
+
+- Convenzione organizzazione docs: [`../Xot/docs/conventions/docs-organization.md`](../Xot/docs/conventions/docs-organization.md)
+- Stato: `stable` — entrata canonica aggiornata 2026-10-20 (scope disgiunto: solo Geo, nessun altro modulo alterato)
+
+## Nota storica
+
+Tutti gli indici storici elencati sopra (`00-INDEX.md`, `00-index.md`, `index.md`, `documentation-index.md`, `modules-optimization-index.md`, `testing-supreme-index.md`, `CHANGELOG.md`, `changelog.md`, `README.md`, `rules-index.md`) sono mantenuti per compatibilità e non devono essere cancellati né aggiornati. Solo questo `INDEX.md` documenta lo stato attuale del modulo.
 
 > Nota 2026-10-14 (studio degli ingressi): il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` indica `00-INDEX.md` come indice canonico dei moduli, mentre la decisione del [decision-log](./decision-log.md) (2026-10-14) fa di questo `INDEX.md` l'ingresso unico e lascia `00-INDEX.md` e `00-index.md` come superseded. Le due regole divergono: non e' stato rinominato nulla, resta da decidere (vedi la story `studio-docs-geo-ingressi-verificati.story.md`). `00-INDEX.md` e `00-index.md` sono anche due nomi che differiscono solo per le maiuscole (collisione su filesystem insensibili alle maiuscole).
 
@@ -31,6 +83,7 @@ status: draft
 - [Mappa di migrazione della radice](./DOCS-MIGRATION-MAP.md) - dove andrebbe ognuno dei 622 file della radice di `docs/` (proposta, nessuno spostamento eseguito)
 - [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo
 - [PHPStan Geo dopo il pull del 2026-10-20](./stories/phpstan-test-wave-geo.story.md) - cause, correzioni e decisioni aperte (gemelli `ComuneTest.php` / `comunetest.php`, trait morti, ignore residui)
+- [Services Geo eliminata, metodo per metodo](./stories/services-to-actions-geo.story.md) - dove vive oggi ogni metodo di `GeoService`, `GeoDataService`, `GeoDataValidator`, `GoogleMapsService`, `BaseGeoService`, con prova di equivalenza
 - [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting; indice dei concept in [wiki/concepts/INDEX.md](./wiki/concepts/INDEX.md)
 - [Log del wiki](./wiki/log.md) - cronologia dei cambiamenti alla conoscenza del modulo
 - [Registro decisioni](./decision-log.md) - decisioni di struttura e di allineamento

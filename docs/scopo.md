@@ -24,6 +24,7 @@ In una riga:
 | E' | Non e' |
 |----|--------|
 | Dispatcher geocoding (`GetAddressDataFromFullAddressAction`, `config('geo.driver')`) | Un `GeocodingService` monolitico (policy no-services) |
+| Queueable Actions in `app/Actions/**` (HTTP maps, gerarchia comuni, distanza) | Cartella `app/Services/` (vietata; delete-again se merge riesuma) |
 | Modelli Address / Location / Place / Comune | Il dominio HR o anagrafica utente |
 | Campi Filament (`AddressInput`, mappe Leaflet, …) | Layout/CSS del tema |
 

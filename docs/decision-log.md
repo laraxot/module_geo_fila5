@@ -58,6 +58,35 @@ qmd: "decision log   geo geo"
 - **Because**: no-services; i cinque `*Service` erano zombie (0 chiamanti produzione). In questa sessione i 5 erano gia' spariti; rimosso anche `GeoDataValidator` (successore `ValidateGeoDataIntegrityAction`). Cartella `app/Services` vuota/rimossa.
 - **Verifica**: `rg --files Modules -g '*Service.php'` → solo `TermsOfService` Livewire User.
 
+### 2026-10-20: Services Geo, equivalenza dimostrata prima di chiudere
+
+- **Choose**: non creare Action nuove; confrontare con un probe i blob originali contro i successori e correggere solo cio' che il confronto smentisce.
+- **Over**: fidarsi dei nomi ("Sostituisce GeoService::haversine()") o ricreare le classi come Action.
+- **Because**: il probe ha dato 330 confronti uguali e 20 diversi, tutti spiegati. Uno era un difetto vero: `Distance/BuildHaversineSqlAction` produceva SQL con una parentesi in meno e nessuno se n'era accorto perche' non ha chiamanti. Corretto con test rosso poi verde.
+- **Non appianato**: `getCities` ha cambiato forma (lista di coppie nel Service, mappa `codice => nome` nelle Action), `comuni.json` reale non ha la struttura `regions` che il codice GeoData richiede, `GeoServiceFacade` ha accessor `geo.service` senza binding. Tutte in [services-to-actions-geo.story.md](./stories/services-to-actions-geo.story.md) come decisioni per l'owner.
+
+### 2026-10-20: Religione cartella `app/Services` assente (delete-again)
+
+- **Choose**: path `Modules/Geo/app/Services/` assente; ratchet `archAllowedServicesDirs()` = `[]`; merge riesuma → delete-again senza nuove Actions.
+- **Over**: allowlist Geo o ricreazione Service «temporanea».
+- **Because**: mid-sessione cinque PHP riesumati con 0 `use Modules\Geo\Services\`. Hub: [brainstorming-services-to-actions-wave](../../Xot/docs/bmad/brainstorming-services-to-actions-wave.md).
+- **Verifica**: `find` dirs/files Services = 0; PHPStan Modules OK (`--memory-limit=2G` post-SIGKILL).
+
 ## Open Questions
 
 - (2026-10-14, studio degli ingressi) Quale file e' l'indice canonico del modulo? Il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` dice `00-INDEX.md`; la decisione del 2026-10-14 sopra dice `INDEX.md` e marca `00-INDEX.md` e `00-index.md` come superseded (due nomi che differiscono solo per le maiuscole). Nessuna rinomina fatta. Vedi la story `stories/studio-docs-geo-ingressi-verificati.story.md`.
+## 2026-10-20 — Iniezione esplicita nelle Queueable Actions Geo
+
+`FilterCoordinatesInRadiusAction` riceve `CalculateDistanceActionContract` nel
+costruttore invece di risolverlo con `app()` dentro `execute()`. Lo scopo è
+rendere visibile la dipendenza, mantenere il caso d'uso testabile e impedire che
+il comportamento dipenda da binding globali nascosti. Il contratto resta
+sincrono per le letture usate dalla UI; il trait Spatie rimane disponibile per
+il dispatch esplicito.
+
+## 2026-10-20 — Contratti delle Actions risolti dal container
+
+`FilterCoordinatesInRadiusAction`, `ClusterLocationsAction` e `OptimizeRouteAction`
+dipendono da `CalculateDistanceActionContract`. `GeoServiceProvider` registra ora il
+binding verso `CalculateDistanceAction`, così la composizione applicativa resta
+testabile tramite contratto e non fallisce quando Laravel costruisce l'Action.

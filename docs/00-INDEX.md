@@ -48,6 +48,7 @@ Indice canonico per contratto moduli (`00-INDEX.md`). Catalogo esteso storico: [
 
 - Da Services a Queueable Actions _(target mancante, verificato 2026-10-14: `wiki/concepts/no-app-support-queueable-actions.md` non esiste)_ — contratto `QueueableAction`, `execute()` e composizione tra use case.
 - [Geo no-services architecture](./wiki/concepts/geo-no-services-migration.md) — responsabilità migrate da `app/Services` ad Actions e Adapters.
+- [Services Geo eliminata: ogni metodo mappato su Action o Adapter, con prova](./stories/services-to-actions-geo.story.md): decisioni reuse/relocate/retire, probe prima/dopo (330 uguali, 20 spiegati), difetto corretto in `BuildHaversineSqlAction`, duplicati e decisioni aperte.
 
 
 | Action | Path | Descrizione |
