@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "tool chain setup"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Tool Chain Setup: Type Checking, Metrics, Quality & Visual Testing

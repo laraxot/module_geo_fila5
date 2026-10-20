@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan sushitojson contract"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan: SushiToJsonContract per Comune
@@ -36,5 +37,5 @@ class Comune extends BaseModel implements SushiToJsonContract
 
 ## Riferimenti
 
-- [SushiToJsonContract](../../Tenant/app/Contracts/SushiToJsonContract.php)
+- [SushiToJsonContract](../../../Tenant/app/Contracts/SushiToJsonContract.php)
 - [00-index](00-index.md)

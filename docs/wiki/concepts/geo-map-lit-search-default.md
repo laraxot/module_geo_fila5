@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo map lit search default"
 issues: []
 discussions: []
+status: draft
 ---
 
 # GeoMapLit Search Visibility Default

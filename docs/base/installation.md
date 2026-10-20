@@ -10,6 +10,7 @@ title: Installazione
 description: Come Installare la Base
 extends: _layouts.documentation
 section: content
+status: draft
 ---
 
 # Installazione {#installation}

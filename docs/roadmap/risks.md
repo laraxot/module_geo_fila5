@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: risks
 canonical: ../../../../Themes/docs/shared-components/04-risks-Modules.md
+status: stub
 ---
 
 See canonical documentation: ../../../../Themes/docs/shared-components/04-risks-Modules.md

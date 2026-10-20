@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan bing maps action fix roadmap"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Fix Roadmap - GetAddressFromBingMapsAction - Gennaio 2026

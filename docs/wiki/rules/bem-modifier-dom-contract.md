@@ -11,6 +11,7 @@ confidence: high
 updated: 2026-06-03
 related:
   - ../concepts/geo-map-popup-bem.md
+status: draft
 ---
 
 # BEM — modifier e DOM (religione Geo map UI)

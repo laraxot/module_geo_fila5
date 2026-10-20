@@ -10,6 +10,7 @@ title: Destroy Action
 description: Destroy Model with Queuable Action
 extends: _layouts.documentation
 section: content
+status: draft
 ---
 # Destroy Action {#destroy-action}
 

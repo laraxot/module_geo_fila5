@@ -14,9 +14,6 @@ use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
 
-/**
- * @param FetchIPLocationAction $fetchAction
- */
 function makeGetLocationFromIPAction(FetchIPLocationAction $fetchAction): GetLocationFromIPAction
 {
     app()->instance(FetchIPLocationAction::class, $fetchAction);

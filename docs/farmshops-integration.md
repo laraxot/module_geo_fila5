@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "farmshops integration"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 🗺️ FARMSHOPS.EU - INTEGRATION GUIDE
@@ -15,15 +16,6 @@ discussions: []
 **Purpose**: Integrare tecnologie e pattern da farmshops.eu in FixCity
 
 ---
-
-title: "farmshops integration"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "farmshops integration"
-issues: []
-discussions: []
 ## 📊 ANALISI PROGETTO FARMSHOPS.EU
 
 ### Scopo

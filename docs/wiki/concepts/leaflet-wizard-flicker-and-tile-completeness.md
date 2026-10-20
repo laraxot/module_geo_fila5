@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "leaflet wizard flicker and tile completeness"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Leaflet Wizard Flicker & Tile Completeness Rule

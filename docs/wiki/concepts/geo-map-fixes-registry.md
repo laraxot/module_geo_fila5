@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo map fixes registry"
 issues: []
 discussions: []
+status: draft
 ---
 
 # geo-map-lit — registro correzioni e ricostruzione
@@ -18,15 +19,6 @@ Indice **cronologico e funzionale** di ogni correzione significativa su mappa `/
 **Quando usarlo:** post-mortem, onboarding, o rebuild dopo perdita repository parziale.
 
 ---
-
-title: "geo map fixes registry"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "geo map fixes registry"
-issues: []
-discussions: []
 ## legenda colonne
 
 | Campo | Significato |
@@ -102,7 +94,7 @@ flowchart TD
 | Tema — leak header | [global-header-css-leak-leaflet-popup.md](../../../../../Themes/Sixteen/docs/wiki/troubleshooting/global-header-css-leak-leaflet-popup.md) |
 | Tema — confine marker | [geo-map-marker-civic-pin-theme-boundary.md](../../../../../Themes/Sixteen/docs/wiki/concepts/geo-map-marker-civic-pin-theme-boundary.md) |
 | Tema — integrazione pagina | [ticket-list-map-integration.md](../../../../../Themes/Sixteen/docs/wiki/concepts/ticket-list-map-integration.md) |
-| Root progetto | [map-lit-reconstruction-hub.md](../../../../../docs/wiki/memories/map-lit-reconstruction-hub.md) |
+| Root progetto | [map-lit-reconstruction-hub.md](../../../../../../docs/wiki/memories/map-lit-reconstruction-hub.md) |
 | JSON + filtri | [map-lit-tickets-json-ssot.md](../../../../../Themes/docs/shared-components/map-lit-tickets-json-ssot.md) |
 
 ---

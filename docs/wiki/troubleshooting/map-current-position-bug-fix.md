@@ -11,6 +11,7 @@ tags: [map-lit, geolocation, fullscreen, search-control, coordinate-picker]
 related:
   - concepts/ticket-list-map-visibility-issue.md
   - concepts/ticket-location-json-architecture.md
+status: draft
 ---
 
 # Map Current Position Bug Fix

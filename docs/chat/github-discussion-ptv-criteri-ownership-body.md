@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "github discussion ptv criteri ownership body"
 issues: []
 discussions: []
+status: draft
 ---
 
 ## Domanda

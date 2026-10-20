@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "sync subtrees"
 issues: []
 discussions: []
+status: draft
 ---
 
 # GitHub Action: Sync Subtrees

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "coordinate picker purpose"
 issues: []
 discussions: []
+status: draft
 ---
 
 # CoordinatePicker Purpose in Admin Ticket Creation

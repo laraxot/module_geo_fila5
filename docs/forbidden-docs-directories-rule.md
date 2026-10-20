@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "forbidden docs directories rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Forbidden Documentation Directories Rule

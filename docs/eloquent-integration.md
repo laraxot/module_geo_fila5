@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "eloquent integration"
 issues: []
 discussions: []
+status: draft
 ---
 
 # __eloquent

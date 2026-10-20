@@ -7,6 +7,7 @@ namespace Modules\Geo\Providers;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
+use Illuminate\Support\Facades\Blade;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
 use function Safe\file_get_contents;
@@ -24,6 +25,10 @@ class GeoServiceProvider extends XotBaseServiceProvider
     {
         parent::boot();
 
+        // GeoServiceProvider non ridefinisce $module_ns: la base lo deriva da Xot e registrerebbe `geo` su
+        // Modules\Xot\View\Components. Senza questa riga `<x-geo::point-map>` non trova la classe.
+        Blade::componentNamespace('Modules\\Geo\\View\\Components', 'geo');
+
         // $this->registerMapAssets();
     }
 
@@ -37,13 +42,13 @@ class GeoServiceProvider extends XotBaseServiceProvider
 
         $sixteenBundleUrl = $this->getSixteenThemeAppBundleUrl();
 
-        if ($sixteenBundleUrl !== null) {
+        if (null !== $sixteenBundleUrl) {
             // Admin Filament non carica automaticamente il bundle frontoffice del tema,
             // ma il CoordinatePicker Lit e i suoi controlli sono definiti li'.
             $assets[] = Js::make('sixteen-coordinate-picker-bundle', $sixteenBundleUrl)->module();
         }
 
-        if ($assets !== []) {
+        if ([] !== $assets) {
             FilamentAsset::register($assets, 'geo');
         }
     }
@@ -63,7 +68,7 @@ class GeoServiceProvider extends XotBaseServiceProvider
 
         $entry = $manifest['resources/js/app.js']['file'] ?? null;
 
-        if (! is_string($entry) || $entry === '') {
+        if (! is_string($entry) || '' === $entry) {
             return null;
         }
 

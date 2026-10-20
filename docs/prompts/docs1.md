@@ -833,12 +833,12 @@ protected function casts(): array
 - [Architecture Overview](../../docs/architecture-overview.md)
 - [Coding Standards](../../docs/coding-standards.md)
 - [Testing Guidelines](../../docs/testing-guidelines.md)
-- [Filament Best Practices](../../docs/filament-best-practices.md)
+- [Filament Best Practices](../raw/history/filament-best-practices.md)
 
 ### 13.2 Moduli Principali
-- [Xot Module](../../laravel/Modules/Xot/docs/README.md)
-- [User Module](../../laravel/Modules/User/docs/README.md)
-- [UI Module](../../laravel/Modules/UI/docs/README.md)
+- [Xot Module](../../../Xot/docs/README.md)
+- [User Module](../../../User/docs/README.md)
+- [UI Module](../../../UI/docs/README.md)
 - [{MainModule} Module](../../laravel/Modules/{MainModule}/docs/README.md)
 
 ### 13.3 Tools e Script

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "correzioni effettuate"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Correzioni Effettuate per Errori PHPStan

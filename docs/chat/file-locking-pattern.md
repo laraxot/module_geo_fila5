@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "file locking pattern"
 issues: []
 discussions: []
+status: draft
 ---
 
 # File Locking Pattern for Concurrent File Modifications

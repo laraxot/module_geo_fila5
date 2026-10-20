@@ -10,6 +10,7 @@ updated: "2026-05-27"
 related:
   - ../wiki/how-to/module-theme-github-issues.md
   - ../../laravel/Modules/Ptv/docs/wiki/redundancy-audit.md
+status: draft
 ---
 
 # Remotes — campagna ridondanza Ptv / Sigma

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "installation"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Guida all'Installazione Base PTVX

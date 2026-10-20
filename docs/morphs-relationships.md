@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: morphs-relationships
 canonical: ../../../Themes/docs/shared-components/morphs-relationship-patterns.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/morphs-relationship-patterns.md

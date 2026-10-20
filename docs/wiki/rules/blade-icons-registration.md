@@ -9,6 +9,7 @@ issues: []
 discussions: []
 name: Blade Icons Registration Rule
 description: Ensure that Blade UI Icons are only registered in XotBaseServiceProvider to avoid duplicate registrations.
+status: draft
 ---
 
 # Blade Icons Registration Rule

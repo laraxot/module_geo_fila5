@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "migrations philosophy"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Migration Philosophy — 1 Migrazione per Modello

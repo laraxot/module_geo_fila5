@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "map livewire integration"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Map-Livewire Integration Guide
@@ -14,15 +15,6 @@ discussions: []
 > How to properly integrate Leaflet maps with Filament v5 + Livewire v3
 
 ---
-
-title: "map livewire integration"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "map livewire integration"
-issues: []
-discussions: []
 ## The Golden Rule
 
 ```

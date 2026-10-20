@@ -13,6 +13,7 @@ related:
   - concepts/coordinate-picker-best-practices.md
   - concepts/svg-asset-architecture.md
   - concepts/leaflet-class-selector-governance.md
+status: draft
 ---
 
 # Geo Module Best Practices

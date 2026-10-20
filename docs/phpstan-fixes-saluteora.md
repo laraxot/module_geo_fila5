@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan fixes saluteora"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Correzioni PHPStan <nome progetto> - Uso Azioni Cast Xot
@@ -312,11 +313,3 @@ use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 - [Memorie: Casting Actions](.cursor/memories/casting-actions.mdc)
 
 ---
-title: "phpstan fixes saluteora"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan fixes saluteora"
-issues: []
-discussions: []

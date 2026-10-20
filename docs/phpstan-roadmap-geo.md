@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan roadmap geo"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PHPStan Level 10 - Roadmap Modulo Geo

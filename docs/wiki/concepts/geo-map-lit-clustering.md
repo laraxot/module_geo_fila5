@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo map lit clustering"
 issues: []
 discussions: []
+status: draft
 ---
 
 # geo-map-lit Clustering Specification

@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: merges
 canonical: ../../../Themes/docs/shared-components/merge-conflicts-analysis.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/merge-conflicts-analysis.md

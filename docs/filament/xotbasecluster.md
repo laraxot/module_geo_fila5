@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "xotbasecluster"
 issues: []
 discussions: []
+status: draft
 ---
 
 # XotBaseCluster

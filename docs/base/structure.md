@@ -10,6 +10,7 @@ title: Struttura
 description: Struttura della base e dei moduli
 extends: _layouts.documentation
 section: content
+status: draft
 ---
 
 # Struttura {#structure}

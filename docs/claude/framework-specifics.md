@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "framework specifics"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Framework Specifics
@@ -306,14 +307,5 @@ return [
 - [ ] Appropriate actions for relationships
 
 ---
-
-title: "framework specifics"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "framework specifics"
-issues: []
-discussions: []
 **Version**: 2.0 (Refactor DRY + KISS)  
 **File**: framework-specifics.md - Framework specific guidelines

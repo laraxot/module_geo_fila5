@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "pulse"
 issues: []
 discussions: []
+status: draft
 ---
 
 https://bitbucket.org/modcreative/wayble-pulse/src/main/filament/Widgets/Charts/SignalHitsByCategory.php

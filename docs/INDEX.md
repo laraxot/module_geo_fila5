@@ -7,9 +7,34 @@ updated: 2026-09-26
 qmd: "INDEX"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module Documentation Index
+
+<!-- p4-docs-geo: ingresso unico -->
+**Catalogo esteso** della documentazione Geo. Ingresso operativo canonico (contratto moduli): [00-INDEX.md](./00-INDEX.md). Scopo: [scopo.md](./scopo.md).
+
+> Nota 2026-10-20 (docs-guardian): allineamento al contratto — `00-INDEX.md` e' di nuovo l'ingresso canonico; questo `INDEX.md` resta catalogo. `00-index.md` e' stub. Story storica sulla divergenza: `studio-docs-geo-ingressi-verificati.story.md`.
+
+## Classificazione delle directory (verificata il 2026-10-14)
+
+| Classe | Cartelle e file | Come usarli |
+|---|---|---|
+| Canonica | `stories/` (33 file), `wiki/` (238 file: `concepts/` 148 concept, `rules/`, `decisions/`, `troubleshooting/`, `memories/`), [decision-log.md](./decision-log.md), [README.md](./README.md) | Intento, regole e decisioni del modulo. Le story non si cancellano ne' si rinumerano |
+| Evidence | `raw/` (477 file, immutabile), `phpstan/` (124 file di rapporti), `chat/` (86, solo passaggio di consegne), `git/`, `git-management/`, `claude/`, `prompts/` | Cronologia di un momento passato: non descrivono lo stato corrente |
+| Legacy | file `.md` della radice (622 file, vedi [DOCS-MIGRATION-MAP.md](./DOCS-MIGRATION-MAP.md)), `index.md` (indice PTVX, `stale`), wiki stale (`ProjectHome.md`, …) | Ricercabili, non attendibili finche' una story non li richiama. **Non** legacy: [00-INDEX.md](./00-INDEX.md) (ingresso canonico) e [scopo.md](./scopo.md) |
+| Non verificate in questa passata | le altre sottocartelle (`roadmap/` 72, `testing/` 39, `utils/` 41, `pdf/`, `scripts/`, `ai/`, `filament/`, `models/`, ...) | Non e' stato confrontato il contenuto con il codice |
+
+## Navigazione rapida
+
+- [Mappa di migrazione della radice](./DOCS-MIGRATION-MAP.md) - dove andrebbe ognuno dei 622 file della radice di `docs/` (proposta, nessuno spostamento eseguito)
+- [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo
+- [PHPStan Geo dopo il pull del 2026-10-20](./stories/phpstan-test-wave-geo.story.md) - cause, correzioni e decisioni aperte (gemelli `ComuneTest.php` / `comunetest.php`, trait morti, ignore residui)
+- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting; indice dei concept in [wiki/concepts/INDEX.md](./wiki/concepts/INDEX.md)
+- [Log del wiki](./wiki/log.md) - cronologia dei cambiamenti alla conoscenza del modulo
+- [Registro decisioni](./decision-log.md) - decisioni di struttura e di allineamento
+- [Panoramica del modulo](./README.md)
 
 ## Documentation Structure
 
@@ -24,16 +49,17 @@ discussions: []
 
 - [**Address Implementation**](./address-implementation.md) - Address handling and validation
 - [**Address Autocomplete**](./address-autocomplete.md) - Smart address suggestions
-- [**Map Components**](./leaflet_marker_map_input.md) - Interactive map components
+- [**Map Components**](./leaflet-marker-map-input.md) - Interactive map components
 - [**Advanced Features**](./ADVANCED_FEATURES.md) - Power user features
 - [**Product Roadmap**](./PRODUCT_ROADMAP.md) - Future development plans
 
 ### 🔧 Integration & Usage
 
 - [**Coordinate Picker Purpose & Architecture**](./coordinate-picker-purpose.md) - Scopo, utilità e implementazione del componente mappa per wizard ticket
+- [**Mappa di sola lettura (`<x-geo::point-map>`, `CoordinatePicker::readOnly()`)**](./wiki/concepts/point-map-readonly.md) - Mostrare un punto senza poterlo modificare (riepilogo wizard, DCP-33)
 - [**SVG Icon Architecture**](./coordinate-picker-purpose.md#-svg-icon-architecture-no-hardcoded-svg) - Regola DRY: SVG separati in `resources/svg/`, no inline hardcoded
 - [**Filament Components**](./filament-forms-components.md) - Filament forms components, web components (Lit.dev), and integration patterns
-- [**Filament Integration**](./FILAMENT_EXTENSION_RULES.md) - Filament PHP integration patterns
+- [**Filament Integration**](./filament_extension_rules.md) - Filament PHP integration patterns
 
 ### 🎨 Assets & Icons
 
@@ -54,7 +80,7 @@ discussions: []
 - [**Model Analysis**](./analisi-modelli-doppi.md) - Duplicate models analysis and recommendations
 - [**Code Quality Analysis**](./analysis/code-quality-analysis.md) - Code quality metrics and improvements
 - [**User Research**](./USER_RESEARCH.md) - User experience research findings
-- [**Domain Research**](./_integration/archive/here-com.md) - Geographic domain research
+- [**Domain Research**](./_integration/here-com.md) - Geographic domain research _(link corretto il 2026-10-14: `_integration/archive/` non esiste, il file e' in `_integration/`)_
 
 ### 🛠️ Development & Tools
 
@@ -62,16 +88,16 @@ discussions: []
 - [**Project Management**](./PROJECT.md) - Project management documentation
 - [**PHPStan Fixes**](./PHPSTAN_FIXES.md) - Code quality fixes and improvements
 - [**Vite Build Configuration**](./vite-build-configuration.md) - Vite 7.x + Tailwind 4.x setup per moduli
-- [**Configuration**](./config/config.php) - Module configuration
+- [**Configuration**](../config/config.php) - Module configuration
 
 ### 📁 Stories & Tasks
 
-- [**Map Component Enhancement Story**](../../_bmad/bmm/4-implementation/bmad-create-story/story-map-ticket-wizard.md) - Enhanced map component for ticket wizard
-- [**Address Input Story**](../../_bmad/bmm/4-implementation/bmad-create-story/discover-inputs.md) - Address input implementation
+- Map Component Enhancement Story - Enhanced map component for ticket wizard _(target mancante, verificato 2026-10-14: la cartella `_bmad/` non esiste nel repo; le story attuali del modulo sono in [stories/index.md](./stories/index.md))_
+- Address Input Story - Address input implementation _(target mancante, verificato 2026-10-14: stessa causa)_
 
 ### 📋 Guidelines & Best Practices
 
-- [**Design Rules**](./FILAMENT_EXTENSION_RULES.md) - Filament component design rules
+- [**Design Rules**](./filament_extension_rules.md) - Filament component design rules
 - [**Consolidation Analysis**](./analisi-moduli-ottimizzazioni.md) - Module consolidation guidelines
 - [**Performance Guidelines**](./TECHNICAL.md#performance) - Performance optimization patterns
 
@@ -79,7 +105,7 @@ discussions: []
 
 - **Fixcity Module** - Main application module using Geo components
   - [Ticket Wizard Implementation](../../Fixcity/docs/ticket-wizard-frontoffice.md)
-  - [Address Integration](../../Fixcity/docs/address-implementation.md)
+  - Address Integration _(target mancante, verificato 2026-10-14: `Fixcity/docs/address-implementation.md` non esiste; il documento omonimo di questo modulo e' [address-implementation.md](./address-implementation.md))_
 
 ## Quick Reference
 
@@ -89,7 +115,7 @@ discussions: []
 | **Location Spinner UX** | [location-spinner-ux.md](./location-spinner-ux.md) | ✅ Active |
 | AddressField Component (legacy) | [address-field-component.md](./address-field-component.md) | ⚠️ Legacy |
 | AddressResource | [address-resource.md](./filament/address-resource.md) | ✅ Active |
-| Module Boundary Philosophy | [../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md](../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md) | ✅ Active |
+| Module Boundary Philosophy | [../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md](../../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md) | ✅ Active |
 | README / Overview | [README.md](./README.md) | ✅ Active |
 
 ## Filament Components
@@ -118,7 +144,7 @@ discussions: []
 
 | Action | File |
 |--------|------|
-| GetCoordinatesFromAddressAction | `app/Actions/GetCoordinatesByAddressAction.php` |
+| GetCoordinatesByAddressAction | `app/Actions/GetCoordinatesByAddressAction.php` _(nome classe corretto il 2026-10-14: prima `GetCoordinatesFromAddressAction`, che non esiste)_ |
 | GetAddressFromNominatimAction | `app/Actions/Nominatim/GetAddressFromNominatimAction.php` |
 | GetAddressFromGoogleMapsAction | `app/Actions/GoogleMaps/GetAddressFromGoogleMapsAction.php` |
 | GetAddressFromMapboxAction | `app/Actions/Mapbox/GetAddressFromMapboxAction.php` |
@@ -140,18 +166,11 @@ discussions: []
 - English: `lang/en/address.php`
 
 ---
-
-title: "INDEX"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "INDEX"
-issues: []
-discussions: []
 ## 📋 DEDUPLICATION NOTICE
 
 This module has many duplicate files in docs/. Key actions taken:
+
+> Nota 2026-10-14: questa sezione e' del 2026-06 e non e' piu' vera nei fatti. Nessun file `*backup.md` o `*--*.md` e' stato cancellato (la policy vieta di cancellare) e la radice di `docs/` ha 622 file, di cui 62 copie byte-identiche (misura in [DOCS-MIGRATION-MAP.md](./DOCS-MIGRATION-MAP.md)). Le azioni "Delete (git preserves)" della tabella sotto sono da leggere come proposte non eseguite.
 
 ### Consolidated Documents
 - ✅ **Model Analysis** - [analisi-modelli-doppi.md](./analisi-modelli-doppi.md) - Single source of truth
@@ -171,13 +190,13 @@ This module has many duplicate files in docs/. Key actions taken:
 
 1. **Architecture**: Start with [architecture overview](./architecture.md)
 2. **Components**: Learn about [address components](./address-implementation.md) and [map components](./story-map-component-analysis.md)
-3. **Integration**: Follow [Filament integration guide](./FILAMENT_EXTENSION_RULES.md)
+3. **Integration**: Follow [Filament integration guide](./filament_extension_rules.md)
 4. **Examples**: Check [app integration](./app-integration.md)
 
 ### 🤝 Contributing
 
-- Follow the [BMad methodology](../../../_bmad/README.md) for development
-- Maintain [design system compliance](../../DesignComuni/README.md)
+- Follow the BMad methodology for development _(target mancante, verificato 2026-10-14: `_bmad/README.md` non esiste; vedi [BMad Method](../../../../docs/wiki/concepts/bmad-method.md))_
+- Maintain design system compliance _(target mancante, verificato 2026-10-14: il modulo `DesignComuni` non esiste in `laravel/Modules/`; il tema e' [Sixteen](../../../Themes/Sixteen/docs/README.md))_
 - Ensure [accessibility standards](./USER_RESEARCH.md#accessibility) are met
 - Run quality checks with [PHPStan](./PHPSTAN_FIXES.md)
 
@@ -185,7 +204,7 @@ This module has many duplicate files in docs/. Key actions taken:
 
 - For technical questions: Check [architecture](./architecture.md) and [technical docs](./TECHNICAL.md)
 - For implementation issues: Review [code quality analysis](./analysis/code-quality-analysis.md)
-- For integration help: See [app integration](./app-integration.md) and [Filament rules](./FILAMENT_EXTENSION_RULES.md)
+- For integration help: See [app integration](./app-integration.md) and [Filament rules](./filament_extension_rules.md)
 ---
 
 ## ⚠️ Architectural Rules

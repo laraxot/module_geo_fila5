@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "reusable search ui component rule"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Reusable search ui component rule

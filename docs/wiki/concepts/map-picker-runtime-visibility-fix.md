@@ -95,7 +95,7 @@ Replace the current timeout-based approach with a robust `ResizeObserver` combin
 
 ## Related Rules
 - [Leaflet Wizard invalidateSize Rule](leaflet-wizard-invalidate-size.md)
-- [SVG Asset Location](svg-asset-location.md)
+- [SVG Asset Location](../svg-asset-location.md)
 - [Design Comuni Theme CSS Build Workflow](theme-css-build-workflow.md)
 
 ## References

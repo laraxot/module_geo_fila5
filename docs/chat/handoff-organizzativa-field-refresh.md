@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "handoff organizzativa field refresh"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Handoff: FieldRefresh su `gg_presenza_dalal` (Organizzativa / Ptv)

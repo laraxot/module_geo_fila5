@@ -9,6 +9,7 @@ discussions: []
 name: geo-map-data-source
 description: Data source configuration for Geo map components
 type: concept
+status: draft
 ---
 
 # Geo Map Data Source

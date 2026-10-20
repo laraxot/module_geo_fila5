@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "summary of all fixes"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Riepilogo Fix PHPStan per Filament/Laraxot

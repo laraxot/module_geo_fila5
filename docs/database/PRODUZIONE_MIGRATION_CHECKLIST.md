@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "PRODUZIONE MIGRATION CHECKLIST"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 📋 Produzione Migration Checklist
@@ -26,15 +27,6 @@ discussions: []
 ```
 
 ---
-
-title: "PRODUZIONE MIGRATION CHECKLIST"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "PRODUZIONE MIGRATION CHECKLIST"
-issues: []
-discussions: []
 ## Procedura Step-by-Step
 
 ### Step 1: Test in Locale

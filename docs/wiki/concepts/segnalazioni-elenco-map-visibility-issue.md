@@ -12,6 +12,7 @@ related:
   - concepts/geo-map-controls-unification-rule.md
   - concepts/static-geo-map-widget-pattern.md
   - entities/geo-map-lit.md
+status: draft
 ---
 
 # Segnalazioni Elenco — Mappa e Cluster: Diagnosi e Fix

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "documentation index"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Indice della Documentazione del Modulo Geo
@@ -28,7 +29,7 @@ Questo documento fornisce un indice completo e organizzato di tutta la documenta
 
 Documenti che forniscono una panoramica generale del modulo Geo, della sua architettura e dei suoi componenti principali.
 
-- [README.md](readme.md) - Introduzione generale al modulo Geo
+- [README.md](README.md) - Introduzione generale al modulo Geo
 - [module_geo.md](module_geo.md) - Panoramica dettagliata del modulo
 - [architecture.md](architecture.md) - Architettura del modulo Geo
 - [structure.md](structure.md) - Struttura del modulo e organizzazione dei file
@@ -157,14 +158,5 @@ Alcuni documenti potrebbero avere nomi simili ma contenuti diversi, in particola
 - Documenti con prefisso lingua (es. `en-` o `it-`) contengono versioni in lingue specifiche
 
 ---
-
-title: "documentation index"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "documentation index"
-issues: []
-discussions: []
 *Documento creato il: 28/05/2025*
 *Autore: Team <main module>*

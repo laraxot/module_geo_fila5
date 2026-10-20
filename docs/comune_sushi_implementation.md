@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "comune sushi implementation"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Implementazione Sushi per il Modello Comune

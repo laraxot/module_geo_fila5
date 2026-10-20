@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "leaflet wizard invalidate size"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Leaflet Map in Wizard - InvalidateSize Rule

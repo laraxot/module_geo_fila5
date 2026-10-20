@@ -10,6 +10,7 @@ discussions: []
 module: theme
 topic: gestioneati-geografici-compendio
 canonical: ../../../Themes/docs/shared-components/gestione-dati-geografici-compendio.md
+status: stub
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/gestione-dati-geografici-compendio.md

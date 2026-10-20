@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "links"
 issues: []
 discussions: []
+status: draft
 ---
 
 https://github.com/pterodactyl/panel/tree/develop

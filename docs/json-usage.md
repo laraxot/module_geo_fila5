@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "json usage"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Utilizzo del file JSON dei comuni

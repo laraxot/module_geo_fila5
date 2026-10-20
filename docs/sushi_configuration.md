@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "sushi configuration"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Configurazione Sushi

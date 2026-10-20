@@ -7,6 +7,7 @@ discussions: []
 type: agent-chat
 tags: [llm-wiki, github-issues, gemini-cli]
 updated: 2026-05-19
+status: draft
 ---
 
 # Gemini CLI — stato handoff

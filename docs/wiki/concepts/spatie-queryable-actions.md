@@ -9,6 +9,7 @@ discussions: []
 name: Spatie Queryable actions for view calculation
 description: Use Spatie Queryable actions to resolve view paths and other runtime data for XotBaseField subclasses.
 type: concept
+status: draft
 ---
 
 # Spatie Queryable Actions Pattern
@@ -74,4 +75,4 @@ class AddressPicker extends XotBaseField
 
 ## Related Rules
 - [XotBaseField view rule](xotbasefield-view-rule.md)
-- [Coordinate picker field](../../Modules/Geo/docs/wiki/concepts/coordinate-picker-field.md)
+- [Coordinate picker field](coordinate-picker-field.md)

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "patterns"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Design Patterns and Architecture

@@ -9,6 +9,7 @@ issues: []
 discussions: []
 name: map-picker-troubleshooting
 description: Guide for diagnosing and fixing MapPicker issues in the Geo module
+status: draft
 ---
 
 # MapPicker Troubleshooting Guide

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "filament class"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Filament Class

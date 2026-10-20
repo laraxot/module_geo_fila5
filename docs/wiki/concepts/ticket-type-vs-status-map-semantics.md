@@ -17,6 +17,7 @@ updated: 2026-06-03
 related:
   - ../../../../../../docs/stories/STORY-125-map-legend-status-semantics-collapsible.md
   - ../../../../../../docs/stories/STORY-127-map-gps-filtri-legenda-farmshops.md
+status: draft
 ---
 
 # Semantica type vs status (mappa `/it`)
@@ -41,7 +42,7 @@ Il colore in `ticket_type_enum` (es. `#fbc02d`) serve ad altri contesti (admin F
 }
 ```
 
-- `type`: **solo** `iconUrl` — file `Modules/Fixcity/resources/svg/{value-kebab}.svg`, riferimento `fixcity::svg/{value-kebab}.svg` ([regola icona](../../../Fixcity/docs/wiki/concepts/ticket-type-icon-fixcity-svg.md)).
+- `type`: **solo** `iconUrl` — file `Modules/Fixcity/resources/svg/{value-kebab}.svg`, riferimento `fixcity::svg/{value-kebab}.svg` ([regola icona](../../../../Fixcity/docs/wiki/concepts/ticket-type-icon-fixcity-svg.md)).
 - `status.color`: **sempre hex** (`ResolveTicketStatusMarkerPropertiesAction::resolveMapHexColor`).
 - Vietato: `type.icon` heroicon + `iconUrl` UI in parallelo.
 

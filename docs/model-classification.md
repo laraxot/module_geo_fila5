@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "model classification"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module - Model Classification
@@ -31,7 +32,8 @@ discussions: []
 - **GeoTrait** - Geographical functionality trait
 - **HasAddress** - Address relationship trait
 - **HasPlaceTrait** - Place functionality trait
-- **GeographicalScopes** - Geographical query scopes
+
+`GeographicalScopes` non esiste piu' (zero chiamanti, sostituito da `GeoTrait::scopeWithDistance`, vedi [decision-log](./decision-log.md)).
 
 ### 📊 Static Data Models
 - **GeoJsonModel** - JSON-based geographical data

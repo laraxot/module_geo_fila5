@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "property type fixes"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Property Type Fixes for Xot Module

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "github discussion sigma gg calcoli refactor body"
 issues: []
 discussions: []
+status: draft
 ---
 
 ## Domanda

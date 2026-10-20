@@ -12,6 +12,7 @@ updated: 2026-04-30
 stories:
   - 8-78-ticket-list-polish
   - 8-79-geo-map-controls-unification
+status: draft
 ---
 
 # Playwright Test Location Policy

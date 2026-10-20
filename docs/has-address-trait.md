@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "has address trait"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Trait HasAddress

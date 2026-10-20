@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "modules factory seeder analysis"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Complete Modules Factory & Seeder Analysis

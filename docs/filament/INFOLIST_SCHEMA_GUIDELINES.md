@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "INFOLIST SCHEMA GUIDELINES"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Linee Guida per l'Implementazione di getInfolistSchema

@@ -17,6 +17,7 @@ related:
   - map-js-module-naming-rule.md
 sources:
   - story 8-79
+status: draft
 ---
 
 # Regola: Unificazione Controlli Mappa

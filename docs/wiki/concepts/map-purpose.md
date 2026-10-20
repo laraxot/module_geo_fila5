@@ -9,6 +9,7 @@ issues: []
 discussions: []
 name: map-purpose
 description: Purpose and functionality of the map component in the FixCity admin ticket creation wizard.
+status: draft
 ---
 
 # Map Component Purpose in FixCity Admin Ticket Wizard

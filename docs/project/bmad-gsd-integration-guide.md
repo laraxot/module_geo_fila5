@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "bmad gsd integration guide"
 issues: []
 discussions: []
+status: draft
 ---
 
 # BMAD + GSD Integration Guide

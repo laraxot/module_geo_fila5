@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "squire integration"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Integrazione con Squire per dati geografici

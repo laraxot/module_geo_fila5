@@ -10,6 +10,7 @@ title: Proiettore
 description: Proiettore
 extends: _layouts.documentation
 section: content
+status: draft
 ---
 
 # Proiettore {#proiettore}
