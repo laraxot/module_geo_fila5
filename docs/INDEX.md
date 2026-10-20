@@ -30,6 +30,7 @@ status: draft
 
 - [Mappa di migrazione della radice](./DOCS-MIGRATION-MAP.md) - dove andrebbe ognuno dei 622 file della radice di `docs/` (proposta, nessuno spostamento eseguito)
 - [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo
+- [PHPStan Geo dopo il pull del 2026-10-20](./stories/phpstan-test-wave-geo.story.md) - cause, correzioni e decisioni aperte (gemelli `ComuneTest.php` / `comunetest.php`, trait morti, ignore residui)
 - [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting; indice dei concept in [wiki/concepts/INDEX.md](./wiki/concepts/INDEX.md)
 - [Log del wiki](./wiki/log.md) - cronologia dei cambiamenti alla conoscenza del modulo
 - [Registro decisioni](./decision-log.md) - decisioni di struttura e di allineamento
