@@ -236,7 +236,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Geo\Models\Traits\SushiToJsons;
+use Modules\Tenant\Models\Traits\SushiToJsons;
 
 class Comune extends Model
 {

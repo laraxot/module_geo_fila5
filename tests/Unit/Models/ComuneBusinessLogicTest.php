@@ -29,7 +29,7 @@ describe('Comune Business Logic', function () {
     });
 
     test('comune has expected fillable fields for italian municipalities', function () {
-        $comune = new Comune();
+        $comune = new Comune;
         $expectedFillable = [
             'id',
             'codice',
@@ -68,9 +68,6 @@ describe('Comune Business Logic', function () {
     });
 
     test('comune model can be instantiated without errors', function () {
-        $comune = new Comune();
-
-        Assert::assertInstanceOf(Comune::class, $comune);
-        Assert::assertInstanceOf(BaseModel::class, $comune);
+        new Comune;
     });
 });

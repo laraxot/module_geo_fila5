@@ -4,7 +4,7 @@ type: filament-blueprint
 status: active
 module: Geo
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-20
 tags: [bmad, filament, blueprint, geo]
 qmd: "filament blueprint geo xotbase resource widget"
 related:
@@ -38,6 +38,10 @@ cresce oltre pochi campi. Enum tipizzati al posto di option array.
 
 Ogni query Filament rispetta tenant + policy del modello owner. Nessun elenco
 cross-tenant per comodita admin.
+
+## PHPStan
+
+Actions al posto di `*Service` (cartella assente): errori statici si risolvono su `app/Actions/` e test, mai ricreando Service. Gate unico e ordine permanente: [phpstan-modules-zero-standing-order](../../Xot/docs/wiki/memories/phpstan-modules-zero-standing-order.md).
 
 ## Related
 

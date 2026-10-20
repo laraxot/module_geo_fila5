@@ -105,7 +105,7 @@ class GeoJsonDownloader
         $features = [];
         foreach ($data['features'] as $feature) {
             if (is_array($feature)) {
-                /* @var array<string, mixed> $feature */
+                /** @var array<string, mixed> $feature */
                 $features[] = $feature;
             }
         }
@@ -130,7 +130,7 @@ class GeoJsonDownloader
 
             $props = $feature['properties'];
             $geometry = $feature['geometry'];
-            /* @var array<string, mixed> $geometry */
+            /** @var array<string, mixed> $geometry */
 
             $regions[] = [
                 'id' => $this->intValue($props['reg_istat_code_num'] ?? null),
