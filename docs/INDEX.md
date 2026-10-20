@@ -13,9 +13,9 @@ status: draft
 # Geo Module Documentation Index
 
 <!-- p4-docs-geo: ingresso unico -->
-**Catalogo esteso** della documentazione Geo. Ingresso operativo canonico (contratto moduli): [00-INDEX.md](./00-INDEX.md). Scopo: [scopo.md](./scopo.md).
+**Punto d'ingresso unico della documentazione del modulo Geo.** `00-INDEX.md` e `00-index.md` sono superseded da questo file (restano per cronologia, non vengono aggiornati).
 
-> Nota 2026-10-20 (docs-guardian): allineamento al contratto — `00-INDEX.md` e' di nuovo l'ingresso canonico; questo `INDEX.md` resta catalogo. `00-index.md` e' stub. Story storica sulla divergenza: `studio-docs-geo-ingressi-verificati.story.md`.
+> Nota 2026-10-14 (studio degli ingressi): il contratto `bmad-output/docs-architecture/module-theme-docs-contract.md` indica `00-INDEX.md` come indice canonico dei moduli, mentre la decisione del [decision-log](./decision-log.md) (2026-10-14) fa di questo `INDEX.md` l'ingresso unico e lascia `00-INDEX.md` e `00-index.md` come superseded. Le due regole divergono: non e' stato rinominato nulla, resta da decidere (vedi la story `studio-docs-geo-ingressi-verificati.story.md`). `00-INDEX.md` e `00-index.md` sono anche due nomi che differiscono solo per le maiuscole (collisione su filesystem insensibili alle maiuscole).
 
 ## Classificazione delle directory (verificata il 2026-10-14)
 
@@ -23,7 +23,7 @@ status: draft
 |---|---|---|
 | Canonica | `stories/` (33 file), `wiki/` (238 file: `concepts/` 148 concept, `rules/`, `decisions/`, `troubleshooting/`, `memories/`), [decision-log.md](./decision-log.md), [README.md](./README.md) | Intento, regole e decisioni del modulo. Le story non si cancellano ne' si rinumerano |
 | Evidence | `raw/` (477 file, immutabile), `phpstan/` (124 file di rapporti), `chat/` (86, solo passaggio di consegne), `git/`, `git-management/`, `claude/`, `prompts/` | Cronologia di un momento passato: non descrivono lo stato corrente |
-| Legacy | file `.md` della radice (622 file, vedi [DOCS-MIGRATION-MAP.md](./DOCS-MIGRATION-MAP.md)), `index.md` (indice PTVX, `stale`), wiki stale (`ProjectHome.md`, …) | Ricercabili, non attendibili finche' una story non li richiama. **Non** legacy: [00-INDEX.md](./00-INDEX.md) (ingresso canonico) e [scopo.md](./scopo.md) |
+| Legacy | file `.md` della radice (622 file nella radice, vedi [DOCS-MIGRATION-MAP.md](./DOCS-MIGRATION-MAP.md)), `00-INDEX.md`, `00-index.md`, `index.md` (indice PTVX, segnato `stale`), `wiki/ProjectHome.md`, `wiki/projecthome.md`, `wiki/reflective.md`, `wiki/method-name-homonym-census.md` (segnati `stale`) | Ricercabili, non attendibili finche' una story non li richiama. Molti descrivono classi che non esistono (`GeocodingService`, `MapProviderService`) |
 | Non verificate in questa passata | le altre sottocartelle (`roadmap/` 72, `testing/` 39, `utils/` 41, `pdf/`, `scripts/`, `ai/`, `filament/`, `models/`, ...) | Non e' stato confrontato il contenuto con il codice |
 
 ## Navigazione rapida

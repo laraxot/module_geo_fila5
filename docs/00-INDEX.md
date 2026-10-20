@@ -10,6 +10,8 @@ discussions: []
 status: active
 ---
 
+> **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
+
 # Geo Module — Documentation Index
 
 Indice canonico per contratto moduli (`00-INDEX.md`). Catalogo esteso storico: [INDEX.md](./INDEX.md). `00-index.md` e' stub verso qui.
@@ -20,9 +22,8 @@ Indice canonico per contratto moduli (`00-INDEX.md`). Catalogo esteso storico: [
 
 | Documento | Descrizione |
 |-----------|-------------|
-| [scopo.md](./scopo.md) | Perche' Geo possiede geolocalizzazione e confini |
-| [Filament Forms Components](./filament-forms-components.md) | Guida componenti form: AddressInput, AddressSection, MapInput, ecc. |
-| [architectural-philosophy.md](./architectural-philosophy.md) | Pattern Actions / UI (draft) |
+| [Filament Forms Components](./filament-forms-components.md) | **Guida principale** per componenti form: AddressInput, AddressSection, MapInput, ecc. |
+| Module Philosophy _(target mancante, verificato 2026-10-14: `module-philosophy.md` non esiste; vedi [philosophy.md](./philosophy.md) e [architectural-philosophy.md](./architectural-philosophy.md))_ | Perché Geo possiede la geolocalizzazione e come i moduli la consumano |
 
 ## Components
 

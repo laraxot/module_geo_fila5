@@ -164,9 +164,9 @@ Cache::remember("geocode:{$address}", 3600, function() use ($address) {
 
 ## 🔗 Collegamenti
 
-- [← Geo Module README](../readme.md)
-- [← Fixcity Integration](../../fixcity/docs/roadmap-and-issues.md)
-- [← Root Documentation](../../../../docs/index.md)
+- [← Geo Module README](../README.md)
+- [← Fixcity Integration](../../roadmap-and-issues.md)
+- [← Root Documentation](../../index.md)
 
 ---
 
