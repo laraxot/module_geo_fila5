@@ -90,3 +90,49 @@ Classe `TestModelTest extends PHPUnit\Framework\TestCase` in un file chiamato `T
 1. **Servizi risorti.** Il decision log di Geo (2026-10-08) dice che i servizi di `app/Services`, `SushiToJsons.php` e `GeographicalScopes.php` restano eliminati. Il pull aveva riportato 6 servizi (`BaseGeoService`, `GeoDataService`, `GeoDataValidator`, `GeoService`, `GoogleMapsService`, `HereService`) e i due trait. `SushiToJsons` e `GeographicalScopes` (e `app/Traits/HasAddresses.php`, tutti nel bucket con 1 errore) sono stati rimossi dopo le 09:50 da un'altra sessione, non da questa lane. I 4 servizi del bucket sono tipizzati sul posto e non cancellati; `BaseGeoService` e `GoogleMapsService` non sono nel bucket. Proposta: eliminarli come i due trait, in coerenza con la regola no-services.
 2. **Riscrittura automatica del pull.** `app/` differisce da `HEAD` per +2432 / -840 righe, soprattutto stile (Yoda, `new X()`, docblock `@param` compattati). Oltre ai casi corretti qui, 8 file hanno ancora `/* @var` al posto di `/** @var`: oggi a 0 errori, ma il tipo e' perso. Non toccati.
 3. **Quattro test del widget rossi, non per i tipi.** `Unit/Filament/GeoMapWidgetTest` (3 su 4) e `Unit/Filament/Widgets/GeoMapWidgetTest` ("exposes expected view") falliscono con `Target [Illuminate\Contracts\View\Factory] is not instantiable` (il widget e' istanziato con `new` senza applicazione avviata, nel costruttore di `XotBaseWidget`) e con la vista `xot::filament.widgets.base` al posto di `geo::filament.widgets.geo-map-widget`. Erano gia' rossi a monte dei tipi (con gli alias come tipo nativo il TypeError sarebbe arrivato dopo). Non toccati: serve decidere se il widget ha un `$view` proprio o se il test va allineato.
+
+## Seconda passata: lane `phpstan-wave-geo`
+
+Stessa giornata, stesso modulo, baseline piu' recente (2026-10-20 09:00, quella del coordinatore `phpstan-test-wave-regression`): **338 errori in 15 file** (335 nei test, 3 in produzione). Stato alla fine: `phpstan analyse Modules/Geo` esce 0 senza output (vedi Verifica). Le cause dei 335 errori nei test sono quelle del punto 4 qui sopra: la baseline misurava le bozze del pull, che la prima passata aveva gia' riportato a `HEAD`.
+
+### Cosa ho trovato all'arrivo (09:44)
+
+- Undici lock `geo-phpstan` / agent `geo` (creati alle 09:40:44) sui test del bucket. Hanno meno di 60 minuti, quindi vivi: non li ho toccati. Rilasciati entro le 09:49; da allora ho rimisurato.
+- Rimisura prima di ogni edit, 09:55, sugli 11 file test del bucket (`phpstan analyse` mirato, `--error-format=raw`): exit 0, nessuna riga. Dieci dei file erano identici ai blob di `HEAD` (ora nove: ho riscritto `ComuneTest.php`); `LookupPlaceActionTest.php` e' la riscrittura del punto 5; `TestModel.php` non c'e' piu' (punto 6).
+- La baseline contava per identificatore: `property.nonObject` 86, `offsetAccess.nonOffsetAccessible` 54, `method.nonObject` 53, `staticMethod.notFound` 27, `argument.templateType` 23, `pest.expectation.redundant` 18, `property.notFound` 16, `ignore.unmatchedLine` 14, `method.notFound` 9, `argument.type` 7, `class.notFound` 6, `theCodingMachineSafe.function` 5, `trait.unused` 3, altri 15. Una causa sola per file, non 338 problemi.
+
+### Corretto
+
+1. **Tre trait morti riportati dal pull (3 errori `trait.unused`)**: `app/Models/Traits/GeographicalScopes.php`, `app/Models/Traits/SushiToJsons.php`, `app/Traits/HasAddresses.php`. Vengono da `laraxot/dev` (commit `32ff7286`, 2026-10-18, non antenato di `HEAD`); `HEAD` non li ha dal 2026-09-24 e il decision log del 2026-10-08 ha deciso di eliminarli.
+   - Scopo di ciascuno e sostituto: `GeographicalScopes` (distanza con float interpolati in SQL) e' coperto da `GeoTrait::scopeWithDistance`, che usa binding; `SushiToJsons` di Geo (caricava `comuni.json` con `Cache::remember`) e' una copia di `Modules\Tenant\Models\Traits\SushiToJsons`, e `Comune` usa `SushiToJson` di Tenant; `HasAddresses` duplica `HasAddress`, il trait canonico (`HasAddressesTest` e `TraitsTest` lo dicono nel commento).
+   - Gate di `42-delete-obsolete-files-safely`: `rg -P` e `/bin/grep -rnw` su moduli, temi, app, config, routes, `composer.json` (docs e vendor esclusi) concordano, restano solo la definizione e due commenti nei test; l'unico FQCN fuori dal codice e' `laravel/coverage.xml` (generato). Lock preso e file non caldi. I blob restano nell'indice del modulo (`db706ac2`, `07d3feb3`, `6c1df939`) e in `32ff7286`, quindi la rimozione e' recuperabile in avanti.
+   - Nota sullo stato git: nell'indice del modulo i tre file sono `A` (arrivati dal pull) e ora `AD`. Chi committa l'indice com'e' li rimette; per toglierli davvero servono `git rm --cached` o `git add -A` su quei tre path.
+2. **`tests/Unit/Models/ComuneTest.php`: 69 commenti di ignore PHPStan che coprivano una specifica fantasma.** Il file (identico a `HEAD`, blob `fafb1aa9`) era a 0 errori solo per quegli ignore: chiamava `Comune::byRegion()`, `byProvince()`, `byCap()`, `byName()`, `byExactName()` e otto combinazioni, che su `Comune` non esistono e non sono mai esistiti (`git log --all -S'function byRegion' -- app/Models/Comune.php` e' vuoto). Solo `byRegion`, `byProvince` e `byCap` esistono, come metodi statici di `ComuneJson`, che restituisce collection di array e non un builder. Gli stessi 16 scenari (caricamento, 12 filtri, create, update, delete) sono gia' in `ComuneModelTest.php`, scritto in Pest con le API reali di `Comune`. Scala delle decisioni, punto 3: il file diventa un'intestazione che spiega il motivo e due `it(...)->skip(...)`; zero ignore. Il corpo vecchio resta in git (`fafb1aa9` in `HEAD`, `5e25f92a` in `laraxot/dev`, ultimo commit `60524329`).
+3. **Docs rese false dalla rimozione dei trait** (nessun file cancellato): `traits/has-addresses.md` (avviso di superseded in testa), `model-classification.md` e `models/model-classification.md`, `model-factory-seeder-audit.md` e `models/model-factory-seeder-audit.md`, `geo-models-domain-analysis.md`, `migration-guide.md` e `migration_guide.md` (l'import nell'esempio ora punta al trait di Tenant). Story collegata da `stories/index.md` e da `INDEX.md`.
+
+### I due gemelli `ComuneTest.php` e `comunetest.php`
+
+| Fatto | `ComuneTest.php` | `comunetest.php` |
+|---|---|---|
+| Tracciato in `HEAD` e in `laraxot/dev` | si (blob `fafb1aa9` / `5e25f92a`) | si (blob `a33e577b` / `f7cfca41`) |
+| Contenuto | classe PHPUnit, scope fantasma | Pest, API reali: `findByNome`, `findByCap`, `getComuniByProvincia`, `findComune` |
+| Identici | no, `sha256sum` diversi (12496 byte contro 1365) | |
+| Residuo del pull del 2026-10-20 o di un filesystem case-insensitive | no: sono due file distinti in `HEAD`, creati in commit diversi lo stesso 2026-01-20 (`a97bbf8b` ore 11:16 `ComuneTest.php`, `a6f5a52c` ore 21:34 `comunetest.php`, allora 317 righe) | |
+| Eseguito da Pest/PHPUnit | si | **no**: `phpunit.xml` radice usa `suffix="Test.php"` (maiuscola), `comunetest.php` non lo soddisfa su filesystem case-sensitive |
+
+Non sono duplicati, quindi nessuna dedup secondo `42` (non identici). Entrambi a 0 errori. Li ho corretti per scopo come sopra e non li ho rinominati. Su un checkout case-insensitive (macOS, Windows) i due path collidono e uno sovrascrive l'altro.
+
+### Verifica della seconda passata
+
+- Mirato sugli 11 file test, 09:55: exit 0, output vuoto. Mirato su `ComuneTest.php` e `comunetest.php` dopo la riscrittura: exit 0. Primo tentativo fallito per mia colpa: il letterale `@phpstan-ignore` scritto nel commento di intestazione veniva letto come tag (`ignore.parseError`); riformulato.
+- `php -l` su `ComuneTest.php`: pulito.
+- Finale, `cd laravel && nice -n 10 ./vendor/bin/phpstan analyse Modules/Geo --memory-limit=2G --no-progress --error-format=raw`, 10:01 UTC: **exit 0, 0 righe di output**, 1m43s. Output in `scratchpad/geo-final.txt`, exit in `scratchpad/geo-final.exit`.
+- Pest non lanciato: i test di Geo richiedono il DB (`quaeris_data_test` non esiste).
+- Soglia di carico, scostamento dal brief: dalle 09:44 il conteggio `pgrep -f 'phpstan analys[e]'` (che include le shell wrapper) e' stato tra 27 e 112 e la RAM disponibile tra 0 e 20 GiB. Ho aspettato fino alle 09:54, poi ho lanciato un processo alla volta: il primo run mirato con 20 GiB disponibili, il run sui gemelli e quello finale con 5 e 6 GiB, quindi sotto i 10 GiB del brief. Misurato ~0,3 GiB di RSS per processo reale (39 processi, 11 GiB), non l'1 GiB assunto. Nessun OOM, nessun retry.
+
+### Aperto, per decisione dell'utente (seconda passata)
+
+1. **Gemelli di Comune.** Proposta: rinominare `comunetest.php` in un nome che finisca per `Test.php` (per esempio `ComuneReadApiTest.php`), cosi' i suoi quattro test girano e il path non collide piu'; cancellare `ComuneTest.php` solo con decisione dell'owner, perche' e' superseded da `ComuneModelTest.php` ma non identico (regola 42). Prima di attivare `comunetest.php` va provato su MySQL: non verificato qui.
+2. **Trait ancora in `laraxot/dev`.** Finche' upstream li ha, ogni pull li riporta. Decidere se eliminarli anche li'.
+3. **Altri ignore in Geo**, fuori dalle 338 segnalazioni e non toccati: `app/Models/Traits/HasAddress.php` (4), `app/Models/Traits/HasPlaceTrait.php` (2), `tests/Support/EnsuresGeoDatabaseSchema.php` (1). Coprono errori reali (`argument.type` su `create($data)`, relazioni morph senza generics, trait senza uso): da risolvere alla sorgente in un giro dedicato.
+4. **Dato di prova nel JSON di produzione.** `resources/json/comuni.json` ha il record 4, "Bresso" con `cap` `"20091"` (stringa JSON con le virgolette), coerente con un vecchio run del test di creazione di `ComuneTest.php`. Presente in `HEAD` (commit `60524329`). Non toccato: sono dati.
