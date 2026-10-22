@@ -74,5 +74,6 @@ Wave PHPStan: report in `docs/phpstan/`; gate unico `laravel/phpstan.neon` (neon
 - [Decision log Geo](docs/bmad/decision-log.md) — decisioni correnti
 - [Story services-to-actions-geo](stories/services-to-actions-geo.story.md) — probe prima/dopo (330 uguali, 20 spiegati), duplicati, decisioni aperte
 - [Story PHPStan wave Geo](stories/phpstan-test-wave-geo.story.md) + [phpstan-wave-coord](stories/phpstan-wave-coord.story.md) — gate e coordinamento wave
+- [Story datas-test-geodata-always-true-assertion](stories/datas-test-geodata-always-true-assertion.story.md): `DatasTest` su `GeoData` con asserzione sempre vera (PHPStan `alreadyNarrowedType`) sostituita da controlli sui campi; 4 test Data che falliscono gia' (Address, Location, Geocoding, TimeZone) annotati come fuori scope
 - Riferimento `google-oauth-redirect-fix.md` (User/docs/decisions/) — non applicabile a Geo (nessun auth/OAuth nel modulo); indicato come esempio di forma canonica di una decisione BMAD in `docs/decisions/`
 - Convenzione docs: [`Xot/docs/conventions/docs-organization.md`](../../Xot/docs/conventions/docs-organization.md)
