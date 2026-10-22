@@ -690,7 +690,7 @@ Motivo del gruppo: architettura/guida concettuale: casa naturale architecture/. 
 | `dependency-intelligence.md` | `architecture/dependency-intelligence.md` | Dependency Intelligence - Module Geo | link in ingresso: 1 | proposto |
 | `eloquent-integration.md` | `architecture/eloquent-integration.md` | __eloquent | link in ingresso: 0 | proposto |
 | `eloquent.md` | `architecture/eloquent.md` | eloquent | stub (<200 caratteri); omonimo con contenuto diverso: `eloquent.md`; link in ingresso: 0 | proposto |
-| `implementation-summary-1.md` | `architecture/implementation-summary-1.md` | Riepilogo Implementazione AddressesField | nome corrotto o sospetto; link in ingresso: 0 | proposto |
+| `implementation-summary.md` | `architecture/implementation-summary.md` | Riepilogo Implementazione AddressesField | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 | `implementation-summary.md` | `architecture/implementation-summary.md` | Riepilogo Implementazione AddressesField | omonimo con contenuto diverso: `implementation-summary.md`; link in ingresso: 0 | proposto |
 | `implementation-sumy.md` | `architecture/implementation-sumy.md` | Riepilogo Implementazione AddressesField | canonico delle copie byte-identiche; nome corrotto o sospetto; link in ingresso: 0 | proposto |
 | `implementation.md` | `architecture/implementation.md` | implementation | stub (<200 caratteri); link in ingresso: 0 | proposto |
