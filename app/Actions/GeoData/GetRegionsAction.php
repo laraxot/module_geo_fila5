@@ -6,7 +6,7 @@ namespace Modules\Geo\Actions\GeoData;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use Modules\Geo\Support\GeoDataConfig;
+use Modules\Geo\Infrastructure\Config\GeoDataConfig;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 use Spatie\QueueableAction\QueueableAction;
 

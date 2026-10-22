@@ -9,7 +9,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\TravelTimeData;
-use Modules\Geo\Support\GeoApiEndpoints;
+use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 
 use function Safe\json_decode;
 

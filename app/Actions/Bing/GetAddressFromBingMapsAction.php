@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\MapPlatforms\BingMapData;
 use Modules\Geo\Exceptions\InvalidLocationException;
-use Modules\Geo\Support\GeoApiEndpoints;
+use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Spatie\QueueableAction\QueueableAction;
 

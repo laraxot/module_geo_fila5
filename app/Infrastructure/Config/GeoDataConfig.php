@@ -2,14 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Modules\Geo\Support;
+namespace Modules\Geo\Infrastructure\Config;
 
 /**
- * Configurazione condivisa dei dati geografici (JSON comuni + cache).
- *
- * Unica fonte per sorgente JSON, TTL e chiavi di cache usati da
- * LoadGeoDataAction, Get{Regions,Provinces,Cities,Cap}Action e
- * LoadGeoHierarchyAction.
+ * Config condivisa dati geografici (JSON comuni + cache).
+ * Non e' una QueueableAction: costanti infrastrutturali (ex app/Support).
  */
 final class GeoDataConfig
 {

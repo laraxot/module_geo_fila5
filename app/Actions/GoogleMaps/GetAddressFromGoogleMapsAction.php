@@ -12,7 +12,7 @@ use Modules\Geo\Datas\GoogleMaps\GoogleMapAddressComponentData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResponseData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResultData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
-use Modules\Geo\Support\GeoApiEndpoints;
+use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 use Spatie\LaravelData\DataCollection;
 use Spatie\QueueableAction\QueueableAction;
 

@@ -31,7 +31,7 @@ Una riscrittura automatica ha sostituito `: array` con il nome dell'alias dichia
 
 Scopo del codice: normalizzare il GeoJSON del widget mappa (`resources/data/geo-map-widget.geojson`) in un dataset tipizzato e calcolarne categorie e statistiche. Il tipo preciso vive nel docblock, quello nativo deve restare `array`.
 
-Corretto in quattro file, solo le firme: `app/Support/GeoMapDataset.php`, `app/Actions/Maps/LoadGeoMapDatasetAction.php`, `app/Actions/Geo/Support/GeoMapDatasetAction.php`, `app/Filament/Widgets/GeoMapWidget.php`. Le firme native sono di nuovo identiche a `HEAD`. Spariscono anche gli errori nei cinque test che leggono quei valori (`GeoMapDatasetTest`, `GeoMapDatasetActionsTest`, `Unit/Filament/GeoMapWidgetTest`, `Unit/Filament/Widgets/GeoMapWidgetTest`, `GetAddressDataFromFullAddressActionTest`).
+Corretto in quattro file, solo le firme: `app/Support/GeoMapDataset.php`, `app/Actions/Maps/LoadGeoMapDatasetAction.php`, `app/Actions/Geo/GeoMapDatasetAction.php`, `app/Filament/Widgets/GeoMapWidget.php`. Le firme native sono di nuovo identiche a `HEAD`. Spariscono anche gli errori nei cinque test che leggono quei valori (`GeoMapDatasetTest`, `GeoMapDatasetActionsTest`, `Unit/Filament/GeoMapWidgetTest`, `Unit/Filament/Widgets/GeoMapWidgetTest`, `GetAddressDataFromFullAddressActionTest`).
 
 ### 2. Docblock `/** @var */` degradati e tipo di ritorno stretto (2 errori)
 

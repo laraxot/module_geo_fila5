@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Modules\Geo\Support;
+namespace Modules\Geo\Infrastructure\Config;
 
 /**
  * Endpoint dei provider di geocoding/routing usati da piu' Actions/Adapters.
  *
- * Unica fonte per gli URL condivisi: le classi che ne hanno bisogno li
- * referenziano da qui invece di duplicare il letterale.
- * Gli endpoint usati da una sola classe restano costanti locali della classe.
+ * Unica fonte per gli URL condivisi. Non e' una QueueableAction:
+ * costanti infrastrutturali (ex app/Support).
  */
 final class GeoApiEndpoints
 {

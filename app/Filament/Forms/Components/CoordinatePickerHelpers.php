@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Modules\Geo\Filament\Forms\Components\Support;
+namespace Modules\Geo\Filament\Forms\Components;
 
 use Illuminate\Support\Facades\Http;
-use Modules\Geo\Filament\Forms\Components\XotBaseCoordinateField;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
- * Typed helpers for {@see XotBaseCoordinateField}.
+ * Typed UI helpers for {@see XotBaseCoordinateField}.
  *
- * ponytail: extracted from trait so PHPStan L10 sees array generics on a concrete class.
+ * Extracted from the field trait so PHPStan L10 sees array generics on a
+ * concrete coordinate-picker helper without turning UI behavior into an
+ * application action.
  */
 final class CoordinatePickerHelpers
 {

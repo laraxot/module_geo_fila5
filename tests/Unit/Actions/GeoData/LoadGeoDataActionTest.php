@@ -7,7 +7,7 @@ namespace Modules\Geo\Tests\Unit\Actions\GeoData;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Actions\GeoData\LoadGeoDataAction;
-use Modules\Geo\Support\GeoDataConfig;
+use Modules\Geo\Infrastructure\Config\GeoDataConfig;
 use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 use Safe\Exceptions\JsonException;

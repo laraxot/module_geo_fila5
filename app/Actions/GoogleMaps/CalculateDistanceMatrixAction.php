@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
-use Modules\Geo\Support\GeoApiEndpoints;
+use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 use Spatie\QueueableAction\QueueableAction;
 
 /**

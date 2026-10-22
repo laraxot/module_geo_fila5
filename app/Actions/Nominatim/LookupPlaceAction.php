@@ -7,7 +7,7 @@ namespace Modules\Geo\Actions\Nominatim;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Modules\Geo\Datas\LocationData;
-use Modules\Geo\Support\GeoApiEndpoints;
+use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 
 use function Safe\json_decode;
 

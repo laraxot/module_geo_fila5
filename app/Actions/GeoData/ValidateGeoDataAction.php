@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\GeoData;
 
+use Modules\Geo\Infrastructure\Validation\GeoDataValidationRules;
+
 use Illuminate\Support\Facades\Validator;
 use Spatie\QueueableAction\QueueableAction;
 
