@@ -43,7 +43,7 @@ Modulo **Geo** — proprietario di tutto ciò che è geo-spaziale: geocoding, ma
 - [`docs/bmad/filament-blueprint.md`](docs/bmad/filament-blueprint.md) — blueprint Filament
 - [`docs/decisions/services-retirement.md`](docs/decisions/services-retirement.md) — **decisione BMAD: ritiro `app/Services/`** (Services → Actions, wave3)
 - [`decisions/services-retirement.md`](decisions/services-retirement.md) — canon No-Services Geo (wave3)
-- [`CORRECTION-NoServices-Geo-2026-10-20.md`](CORRECTION-NoServices-Geo-2026-10-20.md) — correzione Hindsight (nome storico; contenuto allineato a services-retirement)
+- [`CORRECTION-NoServices-Geo.md`](CORRECTION-NoServices-Geo.md) — correzione Hindsight (nome storico; contenuto allineato a services-retirement)
 - [`wiki/decisions/geo-geocoding-driver-consolidation.md`](wiki/decisions/geo-geocoding-driver-consolidation.md) — ADR: driver geocoding configurabile (`config('geo.driver')`) e pulizia duplicati orfani
 
 ## Struttura
