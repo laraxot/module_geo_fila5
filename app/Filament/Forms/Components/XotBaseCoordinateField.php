@@ -7,7 +7,7 @@ namespace Modules\Geo\Filament\Forms\Components;
 use Filament\Support\Components\Attributes\ExposedLivewireMethod;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Renderless;
-use Modules\Geo\Filament\Forms\Components\Support\CoordinatePickerHelpers;
+use Modules\Geo\Filament\Forms\Components\CoordinatePickerHelpers;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
 /**

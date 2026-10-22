@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\WithFaker;
-use Modules\Geo\Actions\GeoData\GeoDataValidationRules;
+use Modules\Geo\Infrastructure\Validation\GeoDataValidationRules;
 use Modules\Geo\Actions\GeoData\ValidateGeoDataAction;
 use Tests\TestCase;
 

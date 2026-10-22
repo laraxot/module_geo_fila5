@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Adapters;
 
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
-use Modules\Geo\Support\GeoApiEndpoints;
+use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 
 /**
  * Adapter per le interazioni con l'API di Google Maps (geocoding, distance matrix, elevation).

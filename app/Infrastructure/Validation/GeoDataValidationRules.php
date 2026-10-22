@@ -2,17 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Modules\Geo\Actions\GeoData;
-
-use Spatie\QueueableAction\QueueableAction;
+namespace Modules\Geo\Infrastructure\Validation;
 
 /**
  * Regole condivise per la validazione del JSON comuni.
+ *
+ * Infrastruttura (ex faux-Action in Actions/): costanti + payload tipizzato,
+ * non un use-case Spatie Queueable.
  */
 final class GeoDataValidationRules
 {
-    use QueueableAction;
-
     /** Regole di validazione della struttura regioni/province/città. */
     public const array RULES = [
         'regions' => 'required|array',
