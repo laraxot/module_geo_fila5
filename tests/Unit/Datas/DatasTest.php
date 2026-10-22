@@ -67,9 +67,19 @@ test('PlaceData can be instantiated', function () {
 test('GeoData can be instantiated', function () {
     Assert::assertTrue(class_exists(GeoData::class));
 
-    $geoData = GeoData::from([]);
+    $geoData = GeoData::from([
+        'latlng' => [41.9028, 12.4964],
+        'route' => 'Via del Corso',
+        'street_number' => '1',
+        'postal_code' => '00186',
+        'administrative_area_level_3' => 'Roma',
+        'administrative_area_level_2_short' => 'RM',
+        'value' => 'Via del Corso 1, Roma',
+    ]);
 
-    Assert::assertIsArray($geoData->toArray());
+    Assert::assertSame('Via del Corso', $geoData->route);
+    Assert::assertSame('00186', $geoData->postal_code);
+    Assert::assertSame([41.9028, 12.4964], $geoData->toArray()['latlng']);
 });
 
 test('ElevationData can be instantiated', function () {
