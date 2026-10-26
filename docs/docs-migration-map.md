@@ -2,7 +2,7 @@
 title: "Mappa di migrazione della radice di docs"
 type: migration-map
 status: proposed
-updated: 2026-10-14
+updated: 2026-10-25
 tags: [docs, migration-map, geo, p4-docs-geo]
 qmd: "geo docs migration map root cleanup"
 ---
@@ -14,6 +14,26 @@ Fase BMAD: documentazione/qualita. Questa mappa e una **proposta**: nessun file 
 File lungo per costruzione (una riga per ognuno dei 622 file della radice): e una tabella di dati, non prosa.
 
 Punto d ingresso: [INDEX.md](./index.md). Registro decisioni: [decision-log.md](./decision-log.md).
+
+## Stato reale al 2026-10-25 (riconciliazione)
+
+Le tabelle sotto sono lo **snapshot del 2026-10-14**: le coppie case-twin che elencano sono state chiuse. Stato misurato il 2026-10-25:
+
+- `docs/` radice: **0 gruppi** case-twin. Canonico = nome minuscolo, gemello archiviato come `*.old` (eccezione ammessa: `LICENSE` senza estensione).
+- `docs/raw/` (archivio storico, non indicizzato): **16 gruppi** invariati — `raw/history` 15, `raw/errors` 1.
+- `docs/wiki`, `docs/schema`, `docs/llm-wiki`: `AGENTS.md`/`agents.md` (3 gruppi, aperti).
+
+Nomi finali delle coppie di radice:
+
+| Coppia | Canonico | Archiviato / rinominato |
+|---|---|---|
+| `DOCS-MIGRATION-MAP.md` / `docs-migration-map.md` | `docs-migration-map.md` | `DOCS-MIGRATION-MAP.md.old` |
+| `PHILOSOPHY.md` / `philosophy.md` (stub) | `philosophy.md` (corpo pieno v2.0, puntatore al tema integrato) | `philosophy.md.old` |
+| `PRD.md` / `prd.md` (PRD free-OSM) | `prd.md` (PRD completo) | `prd-geo-maps.md` |
+| `ROADMAP.md` / `roadmap.md` (indice di `roadmap/`) | `roadmap.md` (roadmap piena) | `roadmap-indice.md` |
+| `LICENSE` / `license` | `LICENSE` | `license.old` |
+| `CHANGELOG.md` / `changelog.md` | `changelog.md` | `CHANGELOG.md.old` |
+| `LICENSE.md` / `license.md` | `license.md` | `LICENSE.md.old` |
 
 ## Misura di partenza
 
