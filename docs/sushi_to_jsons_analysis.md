@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "sushi to jsons analysis"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: sushi-to-jsons-analysis.md
 ---
 
 # Analisi di SushiToJsons per il Modello Comune

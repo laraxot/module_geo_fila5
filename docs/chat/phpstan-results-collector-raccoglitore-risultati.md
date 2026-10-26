@@ -7,7 +7,8 @@ type: chat
 tags: [phpstan, results, coordination, swarm]
 created: 2026-06-15T14:15:00Z
 updated: 2026-06-15T14:15:00Z
-status: draft
+status: superseded
+superseded_by: phpstan-results-collector.md
 ---
 
 # Raccoglitore Risultati PHPStan — Swarm Parallelo

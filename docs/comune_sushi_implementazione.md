@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "comune sushi implementazione"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: comune-sushi-implementazione.md
 ---
 
 # Implementazione di Comune.php con Laravel Sushi

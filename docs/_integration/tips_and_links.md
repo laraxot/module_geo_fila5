@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "tips and links"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: tips-and-links.md
 ---
 
 # tips_and_links

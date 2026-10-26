@@ -7,6 +7,8 @@ updated: 2026-09-26
 qmd: "modules optimization summary"
 issues: []
 discussions: []
+status: superseded
+superseded_by: modules-optimization-sumy.md
 ---
 
 # Riepilogo Analisi Ottimizzazione - Tutti i Moduli <nome progetto>

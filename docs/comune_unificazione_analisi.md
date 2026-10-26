@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "comune unificazione analisi"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: comune-unificazione-analisi.md
 ---
 
 # Analisi: Unificazione dei modelli geografici in Comune.php

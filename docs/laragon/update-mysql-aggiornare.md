@@ -10,7 +10,8 @@ title: Aggiornare Mysql a 8.0
 description: Aggiornare Mysql a 8.0
 extends: _layouts.documentation
 section: content
-status: draft
+status: superseded
+superseded_by: update-mysql.md
 ---
 
 # Aggiornare Mysql a 8.0 {#update-mysql-to-8-0}

@@ -7,6 +7,8 @@ start_errors: 59
 module: Geo
 updated: 2026-10-20
 qmd: "geo phpstan variable.unused assertCount impossibleType swarm bucket"
+type: story
+tags: [docs, geo, bmad]
 ---
 
 # Geo — PHPStan swarm (bucket grandi)

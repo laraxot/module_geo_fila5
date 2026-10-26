@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "enums implementation"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: enums-implementation.md
 ---
 
 # Implementazione degli Enum nel Modulo Geo

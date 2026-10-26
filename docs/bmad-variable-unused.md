@@ -1,3 +1,11 @@
+---
+title: "Geo — PHPStan variable.unused BMAD"
+type: note
+status: draft
+updated: 2026-10-20
+tags: [docs, geo]
+qmd: "geo   phpstan variable.unused bmad geo"
+---
 # Geo — PHPStan variable.unused BMAD
 
 **Module purpose:** Geolocation/address data, Google Maps integration; production = actions/models, tests = action + data/unit tests.

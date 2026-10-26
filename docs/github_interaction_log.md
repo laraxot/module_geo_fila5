@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "github interaction log"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: github-interaction-log.md
 ---
 
 # GitHub Interaction Log — Module Geo

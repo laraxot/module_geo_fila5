@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "upgrade guide"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: upgrade-guide.md
 ---
 
 # Guida all'Upgrade Laravel 13

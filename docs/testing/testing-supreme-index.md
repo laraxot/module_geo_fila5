@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "testing supreme index"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../testing-supreme-index.md
 ---
 
 # 🎯 INDICE SUPREMO: Testing Business Behavior Rules

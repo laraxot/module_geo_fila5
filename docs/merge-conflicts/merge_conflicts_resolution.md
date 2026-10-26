@@ -6,6 +6,7 @@ superseded_by: ../merge-conflicts-resolution.md
 canonical: ../merge-conflicts-resolution.md
 updated: 2026-10-20
 qmd: "alias merge-conflicts verso radice docs geo"
+tags: [docs, geo, merge-conflicts]
 ---
 
 # Alias — merge conflicts resolution Geo

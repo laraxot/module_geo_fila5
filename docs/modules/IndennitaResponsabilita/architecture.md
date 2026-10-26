@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "architecture"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../indennitaresponsabilita/architecture.md
 ---
 
 # Architettura del modulo `IndennitaResponsabilita`

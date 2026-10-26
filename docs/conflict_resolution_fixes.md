@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "conflict resolution fixes"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: conflict-resolutiones.md
 ---
 
 # Risoluzione Conflitti Git - Modulo Geo

@@ -1,3 +1,11 @@
+---
+title: "Geo Module - Code Quality Analysis Report"
+type: note
+status: draft
+updated: 2026-10-22
+tags: [docs, geo, analysis]
+qmd: "geo module - code quality analysis report geo"
+---
 # 🌍 Geo Module - Code Quality Analysis Report
 
 **Date**: 2025-11-11

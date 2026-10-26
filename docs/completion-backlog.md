@@ -1,3 +1,11 @@
+---
+title: "Geo — completion backlog"
+type: note
+status: draft
+updated: 2026-10-26
+tags: [docs, geo]
+qmd: "geo   completion backlog geo"
+---
 # Geo — completion backlog
 
 Status: partial and evidence-driven. This file is the canonical owner-local list for future work.
