@@ -8,8 +8,8 @@ tags: [docs, geo, readme]
 qmd: "geo modulo geocoding indirizzi comuni mappe actions no-services scopo"
 related:
   - ./scopo.md
-  - ./INDEX.md
-  - ./00-INDEX.md
+  - ./index.md
+  - ./00-index.md
   - ./decision-log.md
   - ./architecture/actions-over-services.md
   - ./stories/services-zombie-delete-wave3.story.md
@@ -33,8 +33,8 @@ Dettaglio: [scopo.md](./scopo.md).
 | Percorso | Ruolo |
 |----------|--------|
 | [scopo.md](./scopo.md) | perche' esiste |
-| [INDEX.md](./INDEX.md) | spine catalogo |
-| [00-INDEX.md](./00-INDEX.md) | indice operativo storico (alias) |
+| [INDEX.md](./index.md) | spine catalogo |
+| [00-INDEX.md](./00-index.md) | indice operativo storico (alias) |
 | [decision-log.md](./decision-log.md) | decisioni |
 | [architecture/actions-over-services.md](./architecture/actions-over-services.md) | Actions > Services |
 | [stories/services-zombie-delete-wave3.story.md](./stories/services-zombie-delete-wave3.story.md) | delete-again Services |

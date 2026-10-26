@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "unified comune model analysis"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: unified-comune-model-analysis.md
 ---
 
 # Analisi: Unificazione Modelli Geografici in Comune

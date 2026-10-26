@@ -10,7 +10,8 @@ discussions: []
 module: theme
 topic: tomtom_com
 canonical: ../../../Themes/docs/shared-components/.gitkeep-Modules
-status: stub
+status: superseded
+superseded_by: qmd-setup.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/.gitkeep-Modules

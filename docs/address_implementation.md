@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "address implementation"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: address-implementation.md
 ---
 
 # Implementazione del Modello Address

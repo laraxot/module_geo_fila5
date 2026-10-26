@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "duplicate method analysis"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: duplicate-method-analysis.md
 ---
 
 # Analisi delle duplicazioni di metodi PHP nel codebase

@@ -89,7 +89,7 @@ status: draft
 - [Audit Generale Traduzioni Navigation](../../../docs/navigation-translations-audit.md)
 - [Documentazione Modulo Geo](README.md)
 - [Struttura Geo](structure.md)
-- [Regole Traduzioni Laraxot](../xot/docs/translation-rules.md)
+- [Regole Traduzioni Laraxot](../../Xot/docs/translation-rules.md)
 
 ## Note Tecniche
 

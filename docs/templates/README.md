@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "README"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Product Documentation Templates
@@ -16,15 +17,6 @@ discussions: []
 > Questa cartella contiene i template standardizzati per la documentazione product, basati sulle best practices di Notion.
 
 ---
-
-title: "README"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "README"
-issues: []
-discussions: []
 ## Template Disponibili
 
 | Template | File | Categoria Notion | Templates Available |

@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "scripts location convention"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: scripts-location-convention.md
 ---
 
 # Convenzione Posizione Script

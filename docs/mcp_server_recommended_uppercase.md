@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "mcp server recommended uppercase"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: mcp_server_recommended.md
 ---
 
 # MCP Server Consigliati per il Modulo Geo

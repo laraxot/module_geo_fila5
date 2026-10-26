@@ -9,6 +9,8 @@ tags: [bmad, geo, module, stories, remaining-work]
 related:
   - ../../docs/second-brain/project/bmad-architecture.md
   - ../../docs/second-brain/project/bmad-stories.md
+status: draft
+qmd: "geo module   bmad stories & remaining work geo"
 ---
 
 # Geo Module — BMAD Stories & Remaining Work

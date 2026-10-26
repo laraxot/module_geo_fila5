@@ -1,3 +1,11 @@
+---
+title: "Correzione Sintassi Obsoleta Array() - Modulo Geo"
+type: note
+status: draft
+updated: 2026-10-22
+tags: [docs, geo]
+qmd: "correzione sintassi obsoleta array() - modulo geo geo"
+---
 # Correzione Sintassi Obsoleta Array() - Modulo Geo
 
 **Data**: 6 Gennaio 2025  

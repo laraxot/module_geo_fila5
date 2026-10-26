@@ -237,7 +237,7 @@ If you find violations in existing code:
 ## 📚 Related Documentation
 
 - [XotBaseResource Documentation](../../../../../Xot/docs/README.md)
-- [Filament Extension Patterns](../../Xot/docs/filament-extension-pattern.md)
+- [Filament Extension Patterns](../../../../../Xot/docs/filament-extension-pattern.md)
 - [LangServiceProvider](../../Lang/docs/service-provider.md)
 - [Spatie QueueableAction](https://github.com/spatie/laravel-queueable-action)
 

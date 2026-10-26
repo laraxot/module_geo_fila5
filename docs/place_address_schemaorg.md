@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "place address schemaorg"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: place-address-schemaorg.md
 ---
 
 # Place, Address e la separazione Regione/Provincia negli indirizzi italiani

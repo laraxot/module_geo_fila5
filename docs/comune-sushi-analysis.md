@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "comune sushi analysis"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: comune-sushi-analisi.md
 ---
 
 # Analisi: Comune.php come modello Laravel Sushi

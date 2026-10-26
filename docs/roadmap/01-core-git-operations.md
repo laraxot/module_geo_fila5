@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "01 core git operations"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: core-git-operations.md
 ---
 
 

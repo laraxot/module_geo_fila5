@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "merge conflicts analysis"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: merge-conflicts-analysis.md
 ---
 
 # Analisi Conflitti di Merge - Modulo Geo

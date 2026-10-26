@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "merge conflict marker cleanup"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../merge-conflict-marker-cleanup.md
 ---
 
 # Merge Conflict Marker Cleanup

@@ -249,7 +249,7 @@ Line 52: Returns value
 ## 🔗 Related
 
 - [Documentation Naming Rules](../../.cursor/rules/documentation-naming.mdc)
-- [Git Forward-Only](../../.cursor/rules/git-forward-only.mdc)
+- [Git Forward-Only](../../../../../.cursor/rules/git-forward-only.mdc)
 - [Scripts Location](../../.cursor/rules/scripts-location-mandatory.mdc)
 
 ---

@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan error resolution roadmap"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-error-resolution-roadmap.md
 ---
 
 # PHPStan Error Resolution Roadmap - Modulo Geo - Gennaio 2026

@@ -7,6 +7,8 @@ updated: 2026-09-26
 qmd: "base readme template"
 issues: []
 discussions: []
+status: superseded
+superseded_by: base-readme-template.md
 ---
 
 # {{module_name}} Module

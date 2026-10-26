@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "consolidamento modelli geografici"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: geographic-models-consolidation.md
 ---
 
 # Analisi del Consolidamento dei Modelli Geografici

@@ -1,3 +1,11 @@
+---
+title: "Correzioni PHPStan Modulo Geo - 2025-01-27"
+type: note
+status: draft
+updated: 2026-10-22
+tags: [docs, geo]
+qmd: "correzioni phpstan modulo geo - 2025-01-27 geo"
+---
 # Correzioni PHPStan Modulo Geo - 2025-01-27
 
 **Data**: 2025-01-27  

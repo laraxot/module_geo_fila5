@@ -10,7 +10,8 @@ discussions: []
 module: theme
 topic: product_launch_plan
 canonical: ../../../Themes/docs/shared-components/PRODUCT_LAUNCH_PLAN-Modules.md
-status: stub
+status: superseded
+superseded_by: product-launch-plan.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/PRODUCT_LAUNCH_PLAN-Modules.md

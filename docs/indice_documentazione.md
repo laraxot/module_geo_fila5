@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "indice documentazione"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: documentation-index.md
 ---
 
 # Indice della Documentazione del Modulo Geo

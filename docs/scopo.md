@@ -28,7 +28,7 @@ In una riga:
 | Modelli Address / Location / Place / Comune | Il dominio HR o anagrafica utente |
 | Campi Filament (`AddressInput`, mappe Leaflet, …) | Layout/CSS del tema |
 
-Navigazione componenti: [00-INDEX.md](./00-INDEX.md). Catalogo esteso (storico): [INDEX.md](./INDEX.md). Analisi modelli: [geo-models-domain-analysis.md](./geo-models-domain-analysis.md).
+Navigazione componenti: [00-INDEX.md](./00-index.md). Catalogo esteso (storico): [INDEX.md](./index.md). Analisi modelli: [geo-models-domain-analysis.md](./geo-models-domain-analysis.md).
 
 ## Wave PHPStan
 
@@ -38,6 +38,6 @@ Ground truth: `.cursor-scratch/phpstan-wave/Geo.tsv`. Coordinator-owned; **non**
 
 ## Collegamenti
 
-- [00-INDEX.md](./00-INDEX.md) — indice canonico (contratto moduli)
+- [00-INDEX.md](./00-index.md) — indice canonico (contratto moduli)
 - [README.md](./README.md)
 - [Cms — scopo](../../Cms/docs/scopo.md) · [User — scopo](../../User/docs/scopo.md)

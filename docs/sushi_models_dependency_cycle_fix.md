@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "sushi models dependency cycle fix"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: sushi-models-dependency-cycle-fix.md
 ---
 
 # Sushi Models - Dependency Cycle Fix

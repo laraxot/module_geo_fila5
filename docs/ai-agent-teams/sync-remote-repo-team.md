@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "sync remote repo team"
 issues: []
 discussions: []
+status: draft
 ---
 
 # AI Agent Team: Sync Remote Repo
@@ -19,15 +20,6 @@ discussions: []
 > **Status:** Active
 
 ---
-
-title: "sync remote repo team"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "sync remote repo team"
-issues: []
-discussions: []
 ## Team Members
 
 ### Agent Roles

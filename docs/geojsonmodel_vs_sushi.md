@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "geojsonmodel vs sushi"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: geojsonmodel-vs-sushi.md
 ---
 
 # Analisi Comparativa: GeoJsonModel vs Laravel Sushi

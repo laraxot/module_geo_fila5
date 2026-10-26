@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan compliance status"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-compliance-status.md
 ---
 
 # PHPStan Level 10 Compliance Status

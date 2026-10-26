@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "comprehensive guide backup"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: comprehensive_guide.md
 ---
 
 # Comprehensive Guide for Geo Module

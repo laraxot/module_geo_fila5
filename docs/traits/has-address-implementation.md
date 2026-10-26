@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "has address implementation"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: hasaddress-implementation.md
 ---
 
 # Trait HasAddress

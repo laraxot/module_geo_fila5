@@ -252,9 +252,9 @@ User (base)
 ### Documentazione Moduli
 - [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
 - [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
-- [User](../../User/docs/readme.md)
+- [User](../../User/docs/README.md)
 - [Geo](README.md)
-- [Media](../../Media/docs/readme.md)
+- [Media](../../Media/docs/README.md)
 - [UI](../../UI/docs/README.md)
 - [Xot](../../Xot/docs/README.md)
 

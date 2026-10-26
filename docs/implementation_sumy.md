@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "implementation sumy"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: implementation-sumy.md
 ---
 
 # Riepilogo Implementazione AddressesField

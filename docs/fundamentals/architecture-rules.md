@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "architecture rules"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Critical Architecture Rules
@@ -119,14 +120,5 @@ class ProcessUserDataAction {
 - [Eloquent Properties](../claude/eloquent-properties.md) - Model best practices
 
 ---
-
-title: "architecture rules"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "architecture rules"
-issues: []
-discussions: []
 **Priority**: 🔴 Critical (Read First)  
 **Version**: 3.0 (DRY + KISS Refactor)

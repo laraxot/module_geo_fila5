@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "inheritance violations fixed"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: inheritance-violations-fixed.md
 ---
 
 # Violazioni Ereditarietà Corrette - Modulo Geo

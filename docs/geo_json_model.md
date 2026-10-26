@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "geo json model"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: geo-json-model-modello-geojsonmodel.md
 ---
 
 # Modello GeoJsonModel (ispirato a Squire) per Laravel

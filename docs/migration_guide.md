@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "migration guide"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: migration-guide.md
 ---
 
 # Migration Guide: Moving from <main module> to Geo Module

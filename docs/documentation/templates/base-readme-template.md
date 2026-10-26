@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "base readme template"
 issues: []
 discussions: []
+status: draft
 ---
 
 # {{module_name}} Module
@@ -53,15 +54,6 @@ discussions: []
 - **Enterprise-grade**: Qualità enterprise per progetti professionali
 
 ---
-
-title: "base readme template"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "base readme template"
-issues: []
-discussions: []
 ## 🏗️ Panoramica
 
 Il modulo **{{module_name}}** implementa {{business_domain}} seguendo i principi architetturali Laraxot per garantire:

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "custom marker governance"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Custom Marker Implementation for Geo Module

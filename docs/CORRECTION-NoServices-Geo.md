@@ -4,6 +4,7 @@ type: correction
 updated: 2026-10-20
 tags: [geo, docs, no-services, bmad, phpstan]
 qmd: "correzione 3 servizi rimossi geo 2026-10-20"
+status: draft
 ---
 
 ## Cosa affermava la memoria precedente

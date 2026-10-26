@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "README"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 📦 Modulo User - Documentazione DRY + KISS
@@ -14,15 +15,6 @@ discussions: []
 > **MODULO USER**: Sistema completo di autenticazione, autorizzazione e gestione utenti per PTVX.
 
 ---
-
-title: "README"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "README"
-issues: []
-discussions: []
 ## 🎯 **Scopo e Responsabilità**
 
 ### Business Logic

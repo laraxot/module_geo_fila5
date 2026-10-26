@@ -1,3 +1,11 @@
+---
+title: "Correzioni Traduzioni Address - Gennaio 2025"
+type: note
+status: draft
+updated: 2026-10-22
+tags: [docs, geo]
+qmd: "correzioni traduzioni address - gennaio 2025 geo"
+---
 # Correzioni Traduzioni Address - Gennaio 2025
 
 ## Problema Identificato

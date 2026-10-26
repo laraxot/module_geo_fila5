@@ -5,9 +5,10 @@ issues: []
 discussions: []
 title: PHPStan Swarm - Clean Kitchen Session 2026
 type: swarm-coordination
-status: active
 created: 2026-06-17
 updated: 2026-06-17
+status: superseded
+superseded_by: swarm-phpstan-clean-kitchen.md
 ---
 
 # PHPStan Swarm Coordination — Clean Kitchen Session

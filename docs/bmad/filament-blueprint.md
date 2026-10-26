@@ -41,7 +41,7 @@ cross-tenant per comodita admin.
 
 ## PHPStan
 
-Actions al posto di `*Service` (cartella assente): errori statici si risolvono su `app/Actions/` e test, mai ricreando Service. Gate unico e ordine permanente: [phpstan-modules-zero-standing-order](../../Xot/docs/wiki/memories/phpstan-modules-zero-standing-order.md).
+Actions al posto di `*Service` (cartella assente): errori statici si risolvono su `app/Actions/` e test, mai ricreando Service. Gate unico e ordine permanente: [phpstan-modules-zero-standing-order](../../../Xot/docs/wiki/memories/phpstan-modules-zero-standing-order.md).
 
 ## Related
 

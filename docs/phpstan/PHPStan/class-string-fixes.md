@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "class string fixes"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../class-string-fixes.md
 ---
 
 # Class-String Return Type Fixes for Xot Module

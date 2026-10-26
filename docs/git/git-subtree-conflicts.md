@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "git subtree conflicts"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Risoluzione dei Conflitti negli Script Git Subtree
