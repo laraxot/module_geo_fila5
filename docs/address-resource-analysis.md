@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "address resource analysis"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: addressresource-analysis.md
 ---
 
 # Analisi AddressResource.php
@@ -160,11 +161,3 @@ Regione → Province → Località → CAP
 - **Complessità ciclomatica**: Media-Alta (per le closure nei Select)
 - **Dipendenze**: 11 import
 - **Modelli coinvolti**: 5
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

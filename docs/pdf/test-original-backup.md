@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "test original backup"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: test.md
 ---
 
 # Event Sourcing in Laravel

@@ -7,6 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan return type errors"
 issues: []
 discussions: []
+status: superseded
+superseded_by: phpstan-return-type-errors.md
 ---
 
 # PHPStan Return Type Mismatch Errors

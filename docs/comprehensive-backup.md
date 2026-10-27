@@ -10,15 +10,8 @@ discussions: []
 module: theme
 topic: comprehensive-backup
 canonical: ../../../Themes/docs/shared-components/COMPREHENSIVE_GUIDE.md
-status: stub
+status: superseded
+superseded_by: comprehensive.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/COMPREHENSIVE_GUIDE.md
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

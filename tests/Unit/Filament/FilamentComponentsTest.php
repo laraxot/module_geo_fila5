@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Filament;
+namespace Modules\Geo\Tests\Unit\Filament;
 
 use Modules\Geo\Filament\Actions\UpdateCoordinatesBulkAction;
 use Modules\Geo\Filament\Forms\Components\AddressField;
@@ -10,8 +10,8 @@ use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Filament\Widgets\GeoMapWidget;
 use Modules\Geo\Filament\Widgets\LatLngWidget;
 use Modules\Geo\Filament\Widgets\LocationWidget;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
 
 uses(TestCase::class);
 test('AddressField can be instantiated', function () {

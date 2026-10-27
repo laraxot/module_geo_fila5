@@ -145,12 +145,4 @@ Gli attributi fillable definiscono quali campi possono essere assegnati in massa
 ## Documentazione Correlata
 - [Sushi Documentation](https://github.com/calebporzio/sushi)
 - [Comune Model](comune-model.md)
-<<<<<<< HEAD
 - [Sushi Command](sushi-command.md) 
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
-- [Sushi Command](sushi-command.md) 
->>>>>>> laraxot/dev

@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan roadmap"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-roadmap.md
 ---
 
 # PHPStan Roadmap - Geo Module

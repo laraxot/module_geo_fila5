@@ -154,9 +154,9 @@ $gsd-help
 4. **Crea roadmap** — Mappa requirements a fasi eseguibili
 
 **File creati**:
-- `project.md` — Vision del progetto
+- `PROJECT.md` — Vision del progetto
 - `REQUIREMENTS.md` — Requirements scoped con traceability
-- `roadmap.md` — Fasi mappate ai requirements
+- `ROADMAP.md` — Fasi mappate ai requirements
 - `STATE.md` — Documento living per decisioni e blockers
 - `.planning/research/` — Research findings
 

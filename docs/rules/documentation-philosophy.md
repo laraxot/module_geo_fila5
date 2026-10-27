@@ -190,7 +190,7 @@ Example: [IndennitaResponsabilita](../laravel/Modules/IndennitaResponsabilita/do
 
 ```markdown
 <!-- In permanent doc -->
-For historical changes, see [CHANGELOG.md](./changelog.md)
+For historical changes, see [CHANGELOG.md](./CHANGELOG.md)
 
 <!-- In CHANGELOG.md -->
 ## [2024-12-10]
@@ -249,7 +249,7 @@ Line 52: Returns value
 ## 🔗 Related
 
 - [Documentation Naming Rules](../../.cursor/rules/documentation-naming.mdc)
-- [Git Forward-Only](../../.cursor/rules/git-forward-only.mdc)
+- [Git Forward-Only](../../../../../.cursor/rules/git-forward-only.mdc)
 - [Scripts Location](../../.cursor/rules/scripts-location-mandatory.mdc)
 
 ---

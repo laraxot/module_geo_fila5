@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions\IPGeolocation;
+namespace Modules\Geo\Tests\Unit\Actions\IPGeolocation;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
@@ -10,8 +10,8 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\IPGeolocation\FetchIPLocationAction;
 use Modules\Geo\Datas\Location\IPLocationData;
+use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\LightTestCase;
 
 use function Safe\json_encode;
 
@@ -21,9 +21,9 @@ uses(LightTestCase::class);
  */
 function createFetchIPLocationActionWithMock(): array
 {
-    $mockHandler = new MockHandler;
+    $mockHandler = new MockHandler();
     $client = new Client(['handler' => HandlerStack::create($mockHandler)]);
-    $action = new FetchIPLocationAction;
+    $action = new FetchIPLocationAction();
 
     $reflection = new \ReflectionClass($action);
     $property = $reflection->getProperty('client');

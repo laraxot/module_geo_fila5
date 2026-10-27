@@ -32,8 +32,6 @@ Generated: [DATE] 16:28
 | GeoTrait | n/a | n/a |
 | HasAddress | n/a | n/a |
 | HasPlaceTrait | n/a | n/a |
-| GeographicalScopes | n/a | n/a |
-| SushiToJsons | n/a | n/a |
 
 Seeder: `database/seeders/GeoDatabaseSeeder.php`
 
@@ -43,11 +41,3 @@ Seeder: `database/seeders/GeoDatabaseSeeder.php`
 
 ## Likely non-business-critical
 - Trait/utility classes listed above; not direct domain entities.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

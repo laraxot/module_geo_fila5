@@ -12,9 +12,7 @@ status: draft
 
 # PHPStan Level 10 Roadmap - Geo Module
 
-**Status**: ✅ Completato  
-**Errori Totali**: 9 → 0  
-**Priorità**: Media
+**Stato 2026-10-20**: ⚠️ Roadmap storica. I 3 file mancanti (`app/Services/BaseGeoService.php`, `app/Services/GoogleMapsService.php`, `app/Models/Traits/GeographicalScopes.php`) **non sono stati ricreati**: sono eliminati per la regola **No-Services** e sostituiti dalle Actions in `app/Actions/`. Lo stato verificato oggi: `Modules/Geo/app/Services/` assente, `Modules/Geo/app/Models/Traits/` contiene solo `GeoTrait.php`, `HasAddress.php`, `HasPlaceTrait.php`; zero riferimenti residui a `BaseGeoService`/`GoogleMapsService`/`GeographicalScopes` in `app/` e `tests/`. Vedi [services-to-actions-geo.story.md](./stories/services-to-actions-geo.story.md) e [decision-log](./decision-log.md).
 
 ## Errori Identificati e Risolti
 
@@ -67,6 +65,8 @@ return $this->state(function (array $attributes, ?\Illuminate\Database\Eloquent\
 
 ### BaseGeoService Retry Pattern
 
+> `BaseGeoService` e' stato ritirato. Lo stesso codice vive in `app/Adapters/GeoHttpClientBase.php` (vedi [la story](./stories/services-to-actions-geo.story.md)).
+
 ```php
 // ❌ ERRATO
 return Http::timeout($timeout)->retry($retryTimes, $retrySleep, function ($exception) use ($whenTypes) {
@@ -101,11 +101,3 @@ return Http::timeout($timeout)->retry($retryTimes, $retrySleep, function (\Throw
 
 - [Laravel Factory State Documentation](https://laravel.com/docs/12.x/database-testing#factory-states)
 - [PHPStan Closure Type Hints](https://phpstan.org/writing-php-code/phpdoc-types#callable-types)
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

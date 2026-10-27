@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions\IPGeolocation;
+namespace Modules\Geo\Tests\Unit\Actions\IPGeolocation;
 
 use Modules\Geo\Actions\IPGeolocation\FetchIPLocationAction;
 use Modules\Geo\Actions\IPGeolocation\GetLocationFromIPAction;
 use Modules\Geo\Datas\Location\IPLocationData;
+use Modules\Geo\Tests\Fixtures\FetchIPLocationReturningStub;
+use Modules\Geo\Tests\Fixtures\FetchIPLocationThrowingStub;
+use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\Fixtures\FetchIPLocationReturningStub;
-use Tests\Modules\Geo\Fixtures\FetchIPLocationThrowingStub;
-use Tests\Modules\Geo\LightTestCase;
 
 uses(LightTestCase::class);
 
@@ -18,7 +18,7 @@ function makeGetLocationFromIPAction(FetchIPLocationAction $fetchAction): GetLoc
 {
     app()->instance(FetchIPLocationAction::class, $fetchAction);
 
-    return new GetLocationFromIPAction;
+    return new GetLocationFromIPAction();
 }
 
 it('delegates to fetch action and returns result', function (): void {

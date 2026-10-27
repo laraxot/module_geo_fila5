@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions;
+namespace Modules\Geo\Tests\Unit\Actions;
 
 use Modules\Geo\Actions\ClusterLocationsAction;
 use Modules\Geo\Actions\FormatCoordinatesAction;
@@ -10,8 +10,8 @@ use Modules\Geo\Actions\GetAddressDataFromFullAddressAction;
 use Modules\Geo\Actions\OptimizeRouteAction;
 use Modules\Geo\Actions\UpdateCoordinatesAction;
 use Modules\Geo\Actions\ValidateCoordinatesAction;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
 
 uses(TestCase::class);
 test('UpdateCoordinatesAction can be instantiated', function () {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions;
+namespace Modules\Geo\Tests\Unit\Actions;
 
 use Illuminate\Support\Collection;
 use Modules\Geo\Actions\OptimizeRouteAction;
 use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Tests\Fixtures\RouteDistanceStub;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\Fixtures\RouteDistanceStub;
-use Tests\Modules\Geo\TestCase;
 
 uses(TestCase::class);
 
@@ -48,8 +48,7 @@ it('handles empty collection', function (): void {
 
     $result = (new OptimizeRouteAction(new RouteDistanceStub))->execute($emptyLocations);
 
-    Assert::assertInstanceOf(Collection::class, $result);
-    Assert::assertSame(0, $result->count());
+    Assert::assertCount(0, $result);
 });
 
 it('handles route optimization with multiple locations', function (): void {

@@ -18,11 +18,3 @@ Use the tracked secret-free `.env.testing` template, MySQL/MariaDB `_test` datab
 credentials injected through dedicated `FIXCITY_TEST_DB_*` environment variables. Never
 copy `.env` or reuse development credentials. Do not run migrations until an authorized DBA
 has provisioned and granted access to the isolated test databases.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

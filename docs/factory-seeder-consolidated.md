@@ -327,7 +327,7 @@ Ho creato uno script intelligente (`smart_populate_models.php`) che:
 - [<nome progetto> Factory](../modules/<nome progetto>/docs/factory-issues-analysis.md)
 - [User Factory](../../User/docs/factory-audit-lessons-learned.md)
 - [Geo Factory](factory-creation-geo-module.md)
-- [Media Factory](../../Media/docs/readme.md)
+- [Media Factory](../../Media/docs/README.md)
 
 ### Documentazione Tecnica
 - [Business Logic](../business-logic-consolidated.md)
@@ -339,11 +339,3 @@ Ho creato uno script intelligente (`smart_populate_models.php`) che:
 **Versione**: 2.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Completa
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

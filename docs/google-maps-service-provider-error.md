@@ -92,11 +92,3 @@ Il ServiceProvider deve essere registrato nel `composer.json` del modulo:
 - Testare funzionalità di mappe dopo installazione
 - Aggiornare documentazione se si cambia pacchetto
 
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

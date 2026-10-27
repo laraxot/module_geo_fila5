@@ -12,7 +12,7 @@ use Modules\Geo\Datas\GoogleMaps\GoogleMapAddressComponentData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResponseData;
 use Modules\Geo\Datas\GoogleMaps\GoogleMapResultData;
 use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
-use Modules\Geo\Support\GeoApiEndpoints;
+use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 use Spatie\LaravelData\DataCollection;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -75,7 +75,7 @@ final class GetAddressFromGoogleMapsAction
         /** @var GoogleMapResponseData $responseData */
         $responseData = GoogleMapResponseData::from($response->json());
 
-        if ($responseData->results->count() === 0) {
+        if (0 === $responseData->results->count()) {
             throw GoogleMapsApiException::noResultsFound();
         }
 
@@ -115,8 +115,8 @@ final class GetAddressFromGoogleMapsAction
     }
 
     /**
-     * @param  DataCollection<int, GoogleMapAddressComponentData>  $components
-     * @param  array<string>  $types
+     * @param DataCollection<int, GoogleMapAddressComponentData> $components
+     * @param array<string>                                      $types
      */
     private function getComponent(DataCollection $components, array $types, bool $short = false): ?string
     {

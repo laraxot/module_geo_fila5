@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions\GoogleMaps;
+namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -11,9 +11,8 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\GoogleMaps\GetGeocodingDataAction;
-use Modules\Geo\Datas\Geocoding\GeocodingData;
+use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\LightTestCase;
 
 use function Safe\json_encode;
 
@@ -80,7 +79,6 @@ it('returns error geocoding data for guzzle exception', function (): void {
 
     $result = $action->execute('Milano, Italia');
 
-    Assert::assertInstanceOf(GeocodingData::class, $result);
     Assert::assertNotNull($result->error);
     Assert::assertSame('REQUEST_FAILED', $result->error);
 });
@@ -100,7 +98,6 @@ it('returns error geocoding data for invalid status', function (): void {
 
     $result = $action->execute('NonExistentPlace');
 
-    Assert::assertInstanceOf(GeocodingData::class, $result);
     Assert::assertNotNull($result->error);
     Assert::assertSame('ZERO_RESULTS', $result->error);
 });
@@ -132,7 +129,6 @@ it('returns geocoding data for valid address', function (): void {
 
     $result = $action->execute('Via Roma, Milano, Italia');
 
-    Assert::assertInstanceOf(GeocodingData::class, $result);
     Assert::assertNull($result->error);
     Assert::assertSame(45.4642, $result->latitude);
     Assert::assertSame(9.1900, $result->longitude);

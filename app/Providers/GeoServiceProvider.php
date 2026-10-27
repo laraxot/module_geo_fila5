@@ -8,6 +8,8 @@ use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\Facades\Blade;
+use Modules\Geo\Actions\CalculateDistanceAction;
+use Modules\Geo\Contracts\CalculateDistanceActionContract;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
 use function Safe\file_get_contents;
@@ -20,6 +22,13 @@ class GeoServiceProvider extends XotBaseServiceProvider
     protected string $moduleName = 'Geo';
 
     protected string $namespace = 'geo';
+
+    public function register(): void
+    {
+        parent::register();
+
+        $this->app->bind(CalculateDistanceActionContract::class, CalculateDistanceAction::class);
+    }
 
     public function boot(): void
     {

@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Models;
+namespace Modules\Geo\Tests\Unit\Models;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Models\Comune;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
 
 use function Safe\json_encode;
 
@@ -43,10 +42,10 @@ function comuneModelFixtures(): array
     ];
 }
 
-uses(TestCase::class);
+uses(\Modules\Geo\Tests\TestCase::class);
 
 beforeEach(function (): void {
-    /* @var \Tests\Modules\Geo\TestCase $this */
+    /* @var \Modules\Geo\Tests\TestCase $this */
     File::put(
         base_path('database/content/comuni.json'),
         json_encode(comuneModelFixtures(), JSON_PRETTY_PRINT)

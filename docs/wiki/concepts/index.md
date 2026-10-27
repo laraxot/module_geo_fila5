@@ -9,6 +9,7 @@ discussions: []
 name: concepts
 description: Central hub for geo module architectural rules and patterns.
 type: directory
+status: draft
 ---
 
 # Geolocation Component Rules

@@ -123,11 +123,3 @@ context-mode ctx-stats
 
 ---
 *Status: Ottimizzato | Token risparmiati: ~48K per session*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "03 verification"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: verification.md
 ---
 
 

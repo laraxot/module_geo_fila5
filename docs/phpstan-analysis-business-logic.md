@@ -327,11 +327,3 @@ Al completamento di questo audit e delle correzioni:
 **Priorità**: <nome progetto> Factory (CRITICO)
 **Priorità**: <nome progetto> Factory (CRITICO)
 **Responsabile**: AI Assistant
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

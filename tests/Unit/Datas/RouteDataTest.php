@@ -2,60 +2,56 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Modules\Geo\Datas\RouteData;
-use Tests\TestCase;
+namespace Modules\Geo\Tests\Unit\Datas;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+use Illuminate\Support\Collection;
+use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Datas\Routing\RouteData;
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-describe('RouteData DTO', function () {
-    it('creates with all fields', function () {
-        $dto = new RouteData(
-            distance: 570000, // meters
-            duration: 19800,  // seconds
-            polyline: 'encoded_polyline_string',
-            legs: [
-                ['distance' => 10000, 'duration' => 1200, 'start_location' => ['lat' => 45.4642, 'lng' => 9.1900]],
-                ['distance' => 15000, 'duration' => 1800, 'start_location' => ['lat' => 44.4949, 'lng' => 11.3426]],
+uses(TestCase::class);
+
+test('RouteData formats distance and duration for long routes', function (): void {
+    /** @var Collection<int, LocationData> $waypoints */
+    $waypoints = collect([
+        new LocationData(45.4642, 9.1900, name: 'Milano'),
+        new LocationData(41.9028, 12.4964, name: 'Roma'),
+    ]);
+
+    $dto = new RouteData(
+        waypoints: $waypoints,
+        originalWaypoints: $waypoints,
+        totalDistance: 570000,
+        totalDuration: 19800,
+        steps: [],
+    );
+
+    Assert::assertSame('570.0 km', $dto->getFormattedDistance());
+    Assert::assertSame('5 ore 30 min', $dto->getFormattedDuration());
+});
+
+test('RouteData getSummary counts steps and waypoints', function (): void {
+    /** @var Collection<int, LocationData> $waypoints */
+    $waypoints = collect([new LocationData(45.0, 9.0)]);
+
+    $dto = new RouteData(
+        waypoints: $waypoints,
+        originalWaypoints: $waypoints,
+        totalDistance: 500,
+        totalDuration: 120,
+        steps: [
+            [
+                'distance' => ['value' => 500, 'text' => '500 m'],
+                'duration' => ['value' => 120, 'text' => '2 min'],
+                'instructions' => 'Prosegui dritto',
             ],
-            waypointOrder: [1, 0],
-            travelMode: 'driving',
-        );
+        ],
+    );
 
-        expect($dto->distance)->toBe(570000);
-        expect($dto->duration)->toBe(19800);
-        expect($dto->polyline)->toBe('encoded_polyline_string');
-        expect($dto->legs)->toHaveCount(2);
-        expect($dto->waypointOrder)->toBe([1, 0]);
-        expect($dto->travelMode)->toBe('driving');
-    });
+    $summary = $dto->getSummary();
 
-    it('gets formatted distance', function () {
-        $dto = new RouteData(
-            distance: 570000,
-            duration: 19800,
-        );
-
-        expect($dto->getFormattedDistance())->toBe('570 km');
-    });
-
-    it('gets formatted duration', function () {
-        $dto = new RouteData(
-            distance: 570000,
-            duration: 19800, // 5h 30m
-        );
-
-        expect($dto->getFormattedDuration())->toBe('5h 30m');
-    });
-
-    it('converts to array', function () {
-        $dto = new RouteData(
-            distance: 1000,
-            duration: 600,
-        );
-        $array = $dto->toArray();
-
-        expect($array)->toHaveKeys(['distance', 'duration', 'formatted_distance', 'formatted_duration']);
-    });
+    Assert::assertSame(1, $summary['steps']);
+    Assert::assertSame(1, $summary['waypoints']);
+    Assert::assertSame('500 m', $summary['distance']);
 });

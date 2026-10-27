@@ -1,29 +1,16 @@
 ---
-title: "TECHNICAL"
+title: "technical"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "TECHNICAL"
+qmd: "technical"
 issues: []
 discussions: []
-status: draft
+module: theme
+topic: technical
+canonical: ../../../Themes/docs/shared-components/TECHNICAL.md
+status: stub
 ---
 
-
-# Documentazione Tecnica Modulo Geo
-
-## Architettura del Sistema
-
-### 1. Layer Actions
-Il modulo è strutturato secondo il pattern Action, dove ogni operazione è incapsulata in una classe dedicata:
-
-<<<<<<< HEAD
-#### Gerarchia delle Actions 
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
-#### Gerarchia delle Actions 
->>>>>>> laraxot/dev
+See canonical documentation: ../../../Themes/docs/shared-components/TECHNICAL.md

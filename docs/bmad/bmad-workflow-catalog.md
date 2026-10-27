@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "bmad workflow catalog"
 issues: []
 discussions: []
+status: draft
 ---
 
 # BMAD Workflow Catalog — PTVX Edition
@@ -16,15 +17,6 @@ discussions: []
 > **Totale Workflow**: 42 (243 file)
 
 ---
-
-title: "bmad workflow catalog"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "bmad workflow catalog"
-issues: []
-discussions: []
 ## 📑 Indice
 
 - [Phase 1: Analysis](#phase-1-analysis)
@@ -57,9 +49,9 @@ Definisci COSA costruire e per CHI.
 
 | Code | Workflow | Skill | Agente | Output | PTVX Use Case |
 |------|----------|-------|--------|--------|---------------|
-| **CP** | [Create PRD](#create-prd) | `bmad-create-prd` | John 📋 | `prd.md` | **NUOVI MODULI** |
+| **CP** | [Create PRD](#create-prd) | `bmad-create-prd` | John 📋 | `PRD.md` | **NUOVI MODULI** |
 | **VP** | [Validate PRD](#validate-prd) | `bmad-validate-prd` | John 📋 | `validation-report.md` | Quality gate PRD |
-| **EP** | [Edit PRD](#edit-prd) | `bmad-edit-prd` | John 📋 | `prd.md` | Aggiornamento PRD |
+| **EP** | [Edit PRD](#edit-prd) | `bmad-edit-prd` | John 📋 | `PRD.md` | Aggiornamento PRD |
 | **CU** | [Create UX](#create-ux) | `bmad-create-ux-design` | Sally 🎨 | `ux-spec.md` | UI Filament, dashboard |
 
 ---

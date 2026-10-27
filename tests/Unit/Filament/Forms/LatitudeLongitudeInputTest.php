@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Filament\Forms;
+namespace Modules\Geo\Tests\Unit\Filament\Forms;
 
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
 
 uses(TestCase::class);
 /*

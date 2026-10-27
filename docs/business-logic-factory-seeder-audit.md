@@ -427,11 +427,3 @@ Al completamento di questo audit:
 **Stato**: <nome progetto> completato, altri moduli in corso
 **Priorità**: User e Geo Factory (ALTA)
 **Responsabile**: AI Assistant
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

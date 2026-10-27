@@ -15,9 +15,9 @@ related:
 ## Technical Plan
 
 1. Tipizzare tutte le costanti (`const string|int|array`), centralizzando i duplicati:
-   - `Modules\Geo\Support\GeoApiEndpoints` (nuovo): `GOOGLE_{GEOCODING,DISTANCE_MATRIX,ELEVATION,DIRECTIONS,TIMEZONE}`,
+   - `Modules\Geo\Infrastructure\Config\GeoApiEndpoints`: `GOOGLE_{GEOCODING,DISTANCE_MATRIX,ELEVATION,DIRECTIONS,TIMEZONE}`,
      `NOMINATIM_{BASE,SEARCH,REVERSE,LOOKUP}`, `MAPBOX_PLACES`, `BING_LOCATIONS`.
-   - `Modules\Geo\Support\GeoDataConfig` (nuovo): `JSON_PATH`, `CACHE_TTL`, `CACHE_KEY_{REGIONS,PROVINCES,CITIES,CAP}`.
+   - `Modules\Geo\Infrastructure\Config\GeoDataConfig`: `JSON_PATH`, `CACHE_TTL`, `CACHE_KEY_{REGIONS,PROVINCES,CITIES,CAP}`.
    - Regole di validazione: `GeoDataValidationRules::RULES|MESSAGES` come unica fonte.
    - Le classi con costanti locali lette dai test via reflection (`GoogleMapsService`, `GoogleMapsAction`) le
      mantengono come alias tipizzato (`private const string GEOCODING_URL = GeoApiEndpoints::GOOGLE_GEOCODING;`).
@@ -33,7 +33,7 @@ Here,LocationIQ,OpenCage,Photon,IPGeolocation,Elevation,TimeZone,Weather}/*` (16
 `Adapters/GoogleMapsClient`, `Services/{GoogleMapsService,GeoDataService,GeoDataValidator,GeoService}`,
 `Models/{Locality,ComuneJson,Policies/GeoBasePolicy}`, `Filament/Widgets/LocationMapWidget`,
 `database/seeders/{GeoJsonDownloader,RegionSeeder}`.
-Nuovi: `app/Support/GeoApiEndpoints.php`, `app/Support/GeoDataConfig.php`.
+Canonicali: `app/Infrastructure/Config/GeoApiEndpoints.php`, `app/Infrastructure/Config/GeoDataConfig.php`.
 Test (10): `Unit/{GeocodingBusinessLogicTest,Models/AddressBusinessLogicTest,Actions/{GetCoordinatesActionTest,
 GetBoundingBoxActionTest,GetAddressDataFromFullAddressActionTest,GoogleMapsActionTest,FormatCoordinatesActionTest,
 Maps/BuildGeoMapWidgetPayloadActionTest},Filament/Forms/LatitudeLongitudeInputTest}`, `Feature/AddressIntegrationTest`.

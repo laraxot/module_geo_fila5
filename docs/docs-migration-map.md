@@ -2,7 +2,7 @@
 title: "Mappa di migrazione della radice di docs"
 type: migration-map
 status: proposed
-updated: 2026-10-14
+updated: 2026-10-25
 tags: [docs, migration-map, geo, p4-docs-geo]
 qmd: "geo docs migration map root cleanup"
 ---
@@ -14,6 +14,26 @@ Fase BMAD: documentazione/qualita. Questa mappa e una **proposta**: nessun file 
 File lungo per costruzione (una riga per ognuno dei 622 file della radice): e una tabella di dati, non prosa.
 
 Punto d ingresso: [INDEX.md](./index.md). Registro decisioni: [decision-log.md](./decision-log.md).
+
+## Stato reale al 2026-10-25 (riconciliazione)
+
+Le tabelle sotto sono lo **snapshot del 2026-10-14**: le coppie case-twin che elencano sono state chiuse. Stato misurato il 2026-10-25:
+
+- `docs/` radice: **0 gruppi** case-twin. Canonico = nome minuscolo, gemello archiviato come `*.old` (eccezione ammessa: `LICENSE` senza estensione).
+- `docs/raw/` (archivio storico, non indicizzato): **16 gruppi** invariati — `raw/history` 15, `raw/errors` 1.
+- `docs/wiki`, `docs/schema`, `docs/llm-wiki`: `AGENTS.md`/`agents.md` (3 gruppi, aperti).
+
+Nomi finali delle coppie di radice:
+
+| Coppia | Canonico | Archiviato / rinominato |
+|---|---|---|
+| `DOCS-MIGRATION-MAP.md` / `docs-migration-map.md` | `docs-migration-map.md` | `DOCS-MIGRATION-MAP.md.old` |
+| `PHILOSOPHY.md` / `philosophy.md` (stub) | `philosophy.md` (corpo pieno v2.0, puntatore al tema integrato) | `philosophy.md.old` |
+| `PRD.md` / `prd.md` (PRD free-OSM) | `prd.md` (PRD completo) | `prd-geo-maps.md` |
+| `ROADMAP.md` / `roadmap.md` (indice di `roadmap/`) | `roadmap.md` (roadmap piena) | `roadmap-indice.md` |
+| `LICENSE` / `license` | `LICENSE` | `license.old` |
+| `CHANGELOG.md` / `changelog.md` | `changelog.md` | `CHANGELOG.md.old` |
+| `LICENSE.md` / `license.md` | `license.md` | `LICENSE.md.old` |
 
 ## Misura di partenza
 
@@ -232,7 +252,7 @@ Motivo del gruppo: report puntuale di una sessione di correzione: obsoleto, stor
 | `phpstan-errors.md` | `phpstan/phpstan-errors.md` | PHPStan Errors - Geo Module | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-errors.md`; link in ingresso: 0 | proposto |
 | `phpstan-fixes.md` | `phpstan/phpstan-fixes-.md` | Correzioni PHPStan Modulo Geo - 2025-01-27 | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-fixes-.md`; omonimo con contenuto diverso: `phpstan-fixes.md`; link in ingresso: 0 | proposto |
 | `phpstan-fixes.md` | `phpstan/phpstan-fixes.md` | PHPStan Fixes for Geo Module | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-fixes.md`; link in ingresso: 0 | proposto |
-| `phpstan-fixes-3.md` | `phpstan/phpstan-fixes-3.md` | Correzioni PHPStan Modulo Geo - (DATE) | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-fixes-3.md`; link in ingresso: 0 | proposto |
+| `phpstan-fixes-early.md` | `phpstan/phpstan-fixes-early.md` | Correzioni PHPStan Modulo Geo - (DATE) | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-fixes-early.md`; link in ingresso: 0 | proposto |
 | `phpstan-fixes-gennaio-2025.md` | `phpstan/phpstan-fixes-gennaio-2025.md` | PHPStan Fixes - Modulo Geo - Gennaio 2025 | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-fixes-gennaio-2025.md`; link in ingresso: 1 | proposto |
 | `phpstan-fixes-gennaio.md` | `phpstan/phpstan-fixes-gennaio.md` | PHPStan Fixes - Modulo Geo - Gennaio 2025 | DESTINAZIONE GIA OCCUPATA da un file diverso: confrontare prima di spostare; link in ingresso: 0 | proposto |
 | `phpstan-fixes-january.md` | `phpstan/phpstan-fixes-january.md` | PHPStan Fixes - Modulo Geo - Gennaio 2025 | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-fixes-january.md`; link in ingresso: 0 | proposto |
@@ -690,7 +710,7 @@ Motivo del gruppo: architettura/guida concettuale: casa naturale architecture/. 
 | `dependency-intelligence.md` | `architecture/dependency-intelligence.md` | Dependency Intelligence - Module Geo | link in ingresso: 1 | proposto |
 | `eloquent-integration.md` | `architecture/eloquent-integration.md` | __eloquent | link in ingresso: 0 | proposto |
 | `eloquent.md` | `architecture/eloquent.md` | eloquent | stub (<200 caratteri); omonimo con contenuto diverso: `eloquent.md`; link in ingresso: 0 | proposto |
-| `implementation-summary-1.md` | `architecture/implementation-summary-1.md` | Riepilogo Implementazione AddressesField | nome corrotto o sospetto; link in ingresso: 0 | proposto |
+| `implementation-summary.md` | `architecture/implementation-summary.md` | Riepilogo Implementazione AddressesField | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 | `implementation-summary.md` | `architecture/implementation-summary.md` | Riepilogo Implementazione AddressesField | omonimo con contenuto diverso: `implementation-summary.md`; link in ingresso: 0 | proposto |
 | `implementation-sumy.md` | `architecture/implementation-sumy.md` | Riepilogo Implementazione AddressesField | canonico delle copie byte-identiche; nome corrotto o sospetto; link in ingresso: 0 | proposto |
 | `implementation.md` | `architecture/implementation.md` | implementation | stub (<200 caratteri); link in ingresso: 0 | proposto |

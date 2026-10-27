@@ -1,10 +1,10 @@
 ---
-title: "GITHUB INTERACTION LOG"
+title: "github interaction log"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "GITHUB INTERACTION LOG"
+qmd: "github interaction log"
 issues: []
 discussions: []
 status: draft
@@ -93,11 +93,3 @@ curl -s -X POST "https://api.github.com/graphql" \
 1. Chiudere issues risolte (#28, #27, #25, #24, etc.)
 2. Aggiornare labels (add `resolved`, `verified`)
 3. Creare milestone per STORY-121/122/123
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

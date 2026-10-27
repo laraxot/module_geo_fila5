@@ -154,11 +154,3 @@ Rispondi per punti (anche solo «OK 1», «skip 3», «domanda su 2»):
 7. Docs — modulo first?
 
 Nessun commit codice finché non allineiamo almeno **Punto 1**.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

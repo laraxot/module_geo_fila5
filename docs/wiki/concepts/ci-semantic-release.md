@@ -21,7 +21,7 @@ Il modulo Geo partecipa al release monorepo con tag dedicati `geo-v*`.
 | File | Ruolo |
 |------|--------|
 | `.releaserc.json` | tagFormat `geo-v${version}`, changelog, github release |
-| `changelog.md` | Generato/aggiornato da semantic-release |
+| `CHANGELOG.md` | Generato/aggiornato da semantic-release |
 
 ## workflow (eseguito dalla root)
 

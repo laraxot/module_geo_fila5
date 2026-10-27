@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan analysis geo"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-analysis-geo.md
 ---
 
 # PHPStan Analysis - Geo Module

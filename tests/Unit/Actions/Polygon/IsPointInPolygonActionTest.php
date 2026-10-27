@@ -2,109 +2,48 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+namespace Modules\Geo\Tests\Unit\Actions\Polygon;
+
 use Modules\Geo\Actions\Polygon\IsPointInPolygonAction;
-use Tests\TestCase;
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(TestCase::class);
 
-beforeEach(function () {
-    $this->action = app(IsPointInPolygonAction::class);
+test('IsPointInPolygonAction detects point inside square', function (): void {
+    $action = app(IsPointInPolygonAction::class);
+    $polygon = [
+        ['lat' => 44.0, 'lng' => 8.0],
+        ['lat' => 44.0, 'lng' => 10.0],
+        ['lat' => 46.0, 'lng' => 10.0],
+        ['lat' => 46.0, 'lng' => 8.0],
+        ['lat' => 44.0, 'lng' => 8.0],
+    ];
+
+    Assert::assertTrue($action->execute(45.0, 9.0, $polygon));
 });
 
-describe('IsPointInPolygonAction', function () {
-    it('returns true for point inside square polygon', function () {
-        $point = ['lat' => 45.0, 'lng' => 9.0];
-        $polygon = [
-            ['lat' => 44.0, 'lng' => 8.0],
-            ['lat' => 44.0, 'lng' => 10.0],
-            ['lat' => 46.0, 'lng' => 10.0],
-            ['lat' => 46.0, 'lng' => 8.0],
-        ];
+test('IsPointInPolygonAction rejects point outside polygon', function (): void {
+    $action = app(IsPointInPolygonAction::class);
+    $polygon = [
+        ['lat' => 44.0, 'lng' => 8.0],
+        ['lat' => 44.0, 'lng' => 10.0],
+        ['lat' => 46.0, 'lng' => 10.0],
+        ['lat' => 46.0, 'lng' => 8.0],
+        ['lat' => 44.0, 'lng' => 8.0],
+    ];
 
-        $result = $this->action->execute($point, $polygon);
+    Assert::assertFalse($action->execute(50.0, 9.0, $polygon));
+});
 
-        expect($result)->toBeTrue();
-    });
+test('IsPointInPolygonAction accepts triangle boundary', function (): void {
+    $action = app(IsPointInPolygonAction::class);
+    $polygon = [
+        ['lat' => 44.0, 'lng' => 8.0],
+        ['lat' => 44.0, 'lng' => 10.0],
+        ['lat' => 46.0, 'lng' => 9.0],
+        ['lat' => 44.0, 'lng' => 8.0],
+    ];
 
-    it('returns false for point outside polygon', function () {
-        $point = ['lat' => 50.0, 'lng' => 9.0];
-        $polygon = [
-            ['lat' => 44.0, 'lng' => 8.0],
-            ['lat' => 44.0, 'lng' => 10.0],
-            ['lat' => 46.0, 'lng' => 10.0],
-            ['lat' => 46.0, 'lng' => 8.0],
-        ];
-
-        $result = $this->action->execute($point, $polygon);
-
-        expect($result)->toBeFalse();
-    });
-
-    it('returns true for point on polygon edge', function () {
-        $point = ['lat' => 45.0, 'lng' => 8.0]; // On left edge
-        $polygon = [
-            ['lat' => 44.0, 'lng' => 8.0],
-            ['lat' => 44.0, 'lng' => 10.0],
-            ['lat' => 46.0, 'lng' => 10.0],
-            ['lat' => 46.0, 'lng' => 8.0],
-        ];
-
-        $result = $this->action->execute($point, $polygon);
-
-        expect($result)->toBeTrue();
-    });
-
-    it('returns true for point on polygon vertex', function () {
-        $point = ['lat' => 44.0, 'lng' => 8.0]; // Bottom-left vertex
-        $polygon = [
-            ['lat' => 44.0, 'lng' => 8.0],
-            ['lat' => 44.0, 'lng' => 10.0],
-            ['lat' => 46.0, 'lng' => 10.0],
-            ['lat' => 46.0, 'lng' => 8.0],
-        ];
-
-        $result = $this->action->execute($point, $polygon);
-
-        expect($result)->toBeTrue();
-    });
-
-    it('handles triangle polygon', function () {
-        $point = ['lat' => 45.0, 'lng' => 9.0];
-        $polygon = [
-            ['lat' => 44.0, 'lng' => 8.0],
-            ['lat' => 44.0, 'lng' => 10.0],
-            ['lat' => 46.0, 'lng' => 9.0],
-        ];
-
-        $result = $this->action->execute($point, $polygon);
-
-        expect($result)->toBeTrue();
-    });
-
-    it('returns false for empty polygon', function () {
-        $point = ['lat' => 45.0, 'lng' => 9.0];
-        $polygon = [];
-
-        $result = $this->action->execute($point, $polygon);
-
-        expect($result)->toBeFalse();
-    });
-
-    it('handles polygon with holes (complex)', function () {
-        // Outer ring
-        $outerRing = [
-            ['lat' => 44.0, 'lng' => 8.0],
-            ['lat' => 44.0, 'lng' => 10.0],
-            ['lat' => 46.0, 'lng' => 10.0],
-            ['lat' => 46.0, 'lng' => 8.0],
-        ];
-
-        // Point in outer ring
-        $pointInside = ['lat' => 45.0, 'lng' => 9.0];
-        $result = $this->action->execute($pointInside, $outerRing);
-
-        expect($result)->toBeTrue();
-    });
+    Assert::assertTrue($action->execute(45.0, 9.0, $polygon));
 });

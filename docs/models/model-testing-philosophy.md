@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "model testing philosophy"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../model-testing-philosophy.md
 ---
 
 # Filosofia dei Test: Modelli "Slim" - NO Test Inutili

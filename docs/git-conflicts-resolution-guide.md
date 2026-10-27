@@ -368,11 +368,3 @@ git log --oneline --grep="conflict" | head -20
 ---
 **Versione**: 1.0
 **Compatibilità**: Git 2.x+, Laravel 12.x, PHP 8.3+
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

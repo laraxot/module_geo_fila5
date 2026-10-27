@@ -13,6 +13,7 @@ discussions: []
 
 > **Backlink:** [README globale](./README.md) · [scripts_conflict_resolution.md](./scripts_conflict_resolution.md)
 
+status: draft
 ---
 
 ## Obiettivo

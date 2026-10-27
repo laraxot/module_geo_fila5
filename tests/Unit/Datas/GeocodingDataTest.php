@@ -2,74 +2,62 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Modules\Geo\Datas\GeocodingData;
-use Tests\TestCase;
+namespace Modules\Geo\Tests\Unit\Datas;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+use Modules\Geo\Datas\Geocoding\GeocodingData;
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-describe('GeocodingData DTO', function () {
-    it('creates with all fields', function () {
-        $dto = new GeocodingData(
-            placeId: 'place-123',
-            formattedAddress: 'Via Roma 1, 20100 Milano MI, Italia',
-            coordinates: new \Modules\Geo\Datas\CoordinatesData(45.4642, 9.1900),
-            addressComponents: [
-                'street' => 'Via Roma',
-                'city' => 'Milano',
-                'province' => 'MI',
-                'postal_code' => '20100',
-                'country' => 'Italia',
+uses(TestCase::class);
+
+test('GeocodingData fromGoogleResponse extracts coordinates and components', function (): void {
+    $response = [
+        'status' => 'OK',
+        'results' => [
+            [
+                'geometry' => [
+                    'location' => ['lat' => 45.4642, 'lng' => 9.1900],
+                ],
+                'formatted_address' => 'Via Roma 1, Milano MI, Italia',
+                'address_components' => [
+                    [
+                        'long_name' => '1',
+                        'short_name' => '1',
+                        'types' => ['street_number'],
+                    ],
+                    [
+                        'long_name' => 'Via Roma',
+                        'short_name' => 'Via Roma',
+                        'types' => ['route'],
+                    ],
+                    [
+                        'long_name' => 'Milano',
+                        'short_name' => 'Milano',
+                        'types' => ['locality'],
+                    ],
+                    [
+                        'long_name' => 'Italia',
+                        'short_name' => 'IT',
+                        'types' => ['country'],
+                    ],
+                ],
             ],
-            placeType: 'street_address',
-            confidence: 0.95,
-        );
+        ],
+    ];
 
-        expect($dto->placeId)->toBe('place-123');
-        expect($dto->formattedAddress)->toBe('Via Roma 1, 20100 Milano MI, Italia');
-        expect($dto->coordinates)->toBeInstanceOf(\Modules\Geo\Datas\CoordinatesData::class);
-        expect($dto->addressComponents['city'])->toBe('Milano');
-        expect($dto->placeType)->toBe('street_address');
-        expect($dto->confidence)->toBe(0.95);
-    });
+    $dto = GeocodingData::fromGoogleResponse($response);
 
-    it('creates with minimal fields', function () {
-        $dto = new GeocodingData(
-            placeId: 'place-123',
-            formattedAddress: 'Milano, Italia',
-        );
+    Assert::assertSame(45.4642, $dto->latitude);
+    Assert::assertSame(9.1900, $dto->longitude);
+    Assert::assertSame('Via Roma 1, Milano MI, Italia', $dto->formatted_address);
+    Assert::assertSame('Via Roma', $dto->route);
+    Assert::assertSame('Milano', $dto->locality);
+    Assert::assertNull($dto->error);
+});
 
-        expect($dto->placeId)->toBe('place-123');
-        expect($dto->coordinates)->toBeNull();
-        expect($dto->confidence)->toBe(1.0); // default
-    });
+test('GeocodingData error factory sets message and null coordinates', function (): void {
+    $dto = GeocodingData::error('ZERO_RESULTS');
 
-    it('creates from API response array', function () {
-        $apiResponse = [
-            'place_id' => 'api-123',
-            'formatted_address' => 'Test Address',
-            'geometry' => [
-                'location' => ['lat' => 45.0, 'lng' => 9.0],
-            ],
-            'address_components' => [],
-            'types' => ['locality'],
-        ];
-
-        $dto = GeocodingData::fromApiResponse($apiResponse);
-
-        expect($dto->placeId)->toBe('api-123');
-        expect($dto->coordinates->latitude)->toBe(45.0);
-    });
-
-    it('converts to array', function () {
-        $dto = new GeocodingData(
-            placeId: 'test',
-            formattedAddress: 'Test',
-            coordinates: new \Modules\Geo\Datas\CoordinatesData(45.0, 9.0),
-        );
-        $array = $dto->toArray();
-
-        expect($array)->toHaveKeys(['place_id', 'formatted_address', 'coordinates']);
-    });
+    Assert::assertNull($dto->latitude);
+    Assert::assertSame('ZERO_RESULTS', $dto->error);
 });

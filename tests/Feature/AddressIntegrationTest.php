@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Feature;
+namespace Modules\Geo\Tests\Feature;
 
 use Modules\Geo\Enums\AddressTypeEnum;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
 
 uses(TestCase::class);
 

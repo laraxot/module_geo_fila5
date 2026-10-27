@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions\GoogleMaps;
+namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use Modules\Geo\Actions\GoogleMaps\GoogleMapsHttpAction;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
 
 uses(TestCase::class);
 

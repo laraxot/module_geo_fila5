@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan immediate fixes"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-immediate-fixes.md
 ---
 
 # Geo Module - Immediate PHPStan Fixes

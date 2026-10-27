@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions\Mapbox;
+namespace Modules\Geo\Tests\Unit\Actions\Mapbox;
 
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\Mapbox\GetAddressFromMapboxLatLngAction;
-use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Exceptions\InvalidLocationException;
+use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\LightTestCase;
 
 uses(LightTestCase::class);
 it('throws exception for invalid latitude below -90', function (): void {
@@ -154,8 +153,6 @@ it('returns address data for valid coordinates', function (): void {
 
     $result = $action->execute(45.4642, 9.1900);
 
-    Assert::assertInstanceOf(AddressData::class, $result);
-
     Assert::assertSame(45.4642, $result->latitude);
 
     Assert::assertSame(9.1900, $result->longitude);
@@ -200,8 +197,6 @@ it('handles boundary coordinate values', function (): void {
 
     $result = $action->execute(90.0, 180.0);
 
-    Assert::assertInstanceOf(AddressData::class, $result);
-
     Assert::assertSame(90.0, $result->latitude);
 
     Assert::assertSame(180.0, $result->longitude);
@@ -222,8 +217,6 @@ it('handles missing context items', function (): void {
     ]);
 
     $result = $action->execute(45.4642, 9.1900);
-
-    Assert::assertInstanceOf(AddressData::class, $result);
 
     Assert::assertNull($result->country);
 

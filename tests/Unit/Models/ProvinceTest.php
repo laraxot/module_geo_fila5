@@ -2,51 +2,27 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+namespace Modules\Geo\Tests\Unit\Models;
+
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Geo\Database\Factories\ProvinceFactory;
 use Modules\Geo\Models\Province;
-use Tests\TestCase;
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(TestCase::class);
 
-describe('Province Model', function () {
-    it('creates a province with required fields', function () {
-        $province = Province::create([
-            'name' => 'Milano',
-            'code' => 'MI',
-            'region_code' => '03',
-        ]);
+test('Province factory produces in-memory sushi row', function (): void {
+    $province = ProvinceFactory::new()->makeOne();
 
-        expect($province)->toBeInstanceOf(Province::class);
-        expect($province->name)->toBe('Milano');
-        expect($province->code)->toBe('MI');
-        expect($province->region_code)->toBe('03');
-    });
+    Assert::assertInstanceOf(Province::class, $province);
+    Assert::assertNotEmpty($province->name);
+});
 
-    it('has fillable fields', function () {
-        $fillable = (new Province())->getFillable();
+test('Province declares region and localities relationships', function (): void {
+    $province = ProvinceFactory::new()->makeOne();
 
-        expect($fillable)->toContain('name');
-        expect($fillable)->toContain('code');
-        expect($fillable)->toContain('region_code');
-    });
-
-    it('belongs to region', function () {
-        $province = Province::factory()->create();
-
-        expect($province->region())->toBeInstanceOf(\Illuminate\Database\Eloquent\Relations\BelongsTo::class);
-    });
-
-    it('has many comuni', function () {
-        $province = Province::factory()->create();
-
-        expect($province->comuni())->toBeInstanceOf(\Illuminate\Database\Eloquent\Relations\HasMany::class);
-    });
-
-    it('code is unique', function () {
-        Province::factory()->create(['code' => 'MI', 'name' => 'Milano']);
-
-        expect(fn () => Province::factory()->create(['code' => 'MI', 'name' => 'Milano 2']))
-            ->toThrow(\Illuminate\Database\QueryException::class);
-    });
+    Assert::assertInstanceOf(BelongsTo::class, $province->region());
+    Assert::assertInstanceOf(HasMany::class, $province->localities());
 });

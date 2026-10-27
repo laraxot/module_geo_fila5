@@ -10,13 +10,14 @@ tags: [redundancy, casing, frontend-assets, docs]
 created: 2026-05-21
 related:
   - https://github.com/laraxot/base_fixcity_fila5/issues/89
-status: draft
+status: superseded
+superseded_by: redundancy-audit.md
 ---
 
 # Geo redundancy audit 2026-05-21
 
 High-risk findings:
-- Large case-only duplicate set across docs: `product-strategy.md` vs `product-strategy.md`, `prd.md` vs `prd.md`, `index.md` vs `index.md`, and similar files.
+- Large case-only duplicate set across docs: `PRODUCT_STRATEGY.md` vs `product_strategy.md`, `PRD.md` vs `prd.md`, `INDEX.md` vs `index.md`, and similar files.
 - Case-only Vue/component/resource duplicates: `MapPane.vue` vs `mappane.vue`, `MapComponent.vue` vs `mapcomponent.vue`, `MyMap.vue` vs `mymap.vue`.
 - Leaflet asset duplicates with case-only names: `MarkerCluster.css` vs `markercluster.css`, `L.Control.Locate.min.js` vs `l.control.locate.min.js`.
 - Some map assets are duplicated under both `resources/js` and `resources/views/maps/...`.
@@ -30,11 +31,3 @@ Suggested cleanup order:
 2. Canonicalize frontend component names to one casing convention.
 3. Keep external vendor map assets in one directory and reference them from views/build config.
 4. Normalize docs to lowercase-kebab-case after code paths are stable.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

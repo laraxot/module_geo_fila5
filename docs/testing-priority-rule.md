@@ -101,11 +101,3 @@ find . -name "*.php" -path "*/tests/*" | grep -E "(Test\.php|test\.php)"
 
 ---
 **Questa regola è CRITICA e va applicata SEMPRE prima di qualsiasi sviluppo di nuovi test.**
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

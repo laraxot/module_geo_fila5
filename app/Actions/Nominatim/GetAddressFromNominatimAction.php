@@ -8,7 +8,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
-use Modules\Geo\Support\GeoApiEndpoints;
+use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -23,7 +23,8 @@ class GetAddressFromNominatimAction
     /**
      * Esegue la ricerca dell'indirizzo su Nominatim.
      *
-     * @param  string  $address  L'indirizzo da cercare
+     * @param string $address L'indirizzo da cercare
+     *
      * @return AddressData|null I dati dell'indirizzo trovato o null se non trovato
      */
     public function execute(string $address): ?AddressData

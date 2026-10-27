@@ -234,7 +234,7 @@ php bashscripts/database/seeding/<nome progetto>-1000-records.php
 
 ## Collegamenti e Riferimenti
 
-- [README BashScripts](../bashscripts/readme.md)
+- [README BashScripts](../../../../bashscripts/README.md)
 - [Quick Start Seeding](../bashscripts/database/seeding/quick_start.md)
 - [Documentazione Modulo <nome progetto>](../laravel/Modules/<nome progetto>/docs/)
 - [Documentazione Modulo <nome modulo>](../laravel/Modules/<nome modulo>/docs/)
@@ -245,11 +245,3 @@ php bashscripts/database/seeding/<nome progetto>-1000-records.php
 **Versione**: 2.0
 **Compatibilità**: Laravel 10+, Moduli <nome progetto>/<nome modulo>
 **Compatibilità**: Laravel 10+, Moduli <nome progetto>/<nome progetto>
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

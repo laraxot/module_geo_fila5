@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "scripts conflict resolution"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Script di Risoluzione dei Conflitti

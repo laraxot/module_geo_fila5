@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions;
+namespace Modules\Geo\Tests\Unit\Actions;
 
-use Illuminate\Support\Collection;
 use Modules\Geo\Actions\GetAddressDataFromFullAddressAction;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
 
 uses(TestCase::class);
 it('returns AddressData when first service succeeds', function (): void {
@@ -15,16 +14,13 @@ it('returns AddressData when first service succeeds', function (): void {
 
     // As this action depends on multiple external services which are difficult to mock,
     // we can test that it at least has the correct structure and properties
-    Assert::assertInstanceOf(GetAddressDataFromFullAddressAction::class, $action);
-    Assert::assertInstanceOf(Collection::class, $action->getErrors());
-    Assert::assertSame(0, $action->getErrors()->count());
+    Assert::assertCount(0, $action->getErrors());
 });
 
 it('initializes with empty errors collection', function (): void {
     $action = new GetAddressDataFromFullAddressAction;
 
-    Assert::assertInstanceOf(Collection::class, $action->getErrors());
-    Assert::assertSame(0, $action->getErrors()->count());
+    Assert::assertCount(0, $action->getErrors());
 });
 
 it('executes without throwing error for basic call', function (): void {
@@ -40,5 +36,4 @@ it('executes without throwing error for basic call', function (): void {
     Assert::assertNull($result);
 
     // And should have set error messages
-    Assert::assertInstanceOf(Collection::class, $action->getErrors());
 });

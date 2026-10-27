@@ -92,7 +92,7 @@ trait HasCoordinatePicker
      * Set the initial map center.
      * Supports both center(lat, lng) and center(['lat' => ..., 'lng' => ...]).
      *
-     * @param  float|array<string, float>  $latitude
+     * @param float|array<string, float> $latitude
      */
     public function center(float|array $latitude, ?float $longitude = null): static
     {
@@ -183,7 +183,7 @@ trait HasCoordinatePicker
         $rawZoom = \is_array($view) ? ($view['zoom'] ?? null) : null;
         $zoom = is_numeric($rawZoom) ? (float) $rawZoom : null;
 
-        if ($lat === null || $lng === null || $zoom === null
+        if (null === $lat || null === $lng || null === $zoom
             || abs($lat) > 90 || abs($lng) > 180 || $zoom !== floor($zoom) || $zoom < 1 || $zoom > 19) {
             return ['lat' => 42.5, 'lng' => 12.5, 'zoom' => 6];
         }
@@ -361,14 +361,14 @@ trait HasCoordinatePicker
     }
 
     /**
-     * @param  array<string, mixed>  $data
-     * @param  array<int, string>  $keys
+     * @param array<string, mixed> $data
+     * @param array<int, string>   $keys
      */
     private static function firstString(array $data, array $keys): string
     {
         foreach ($keys as $key) {
             $value = $data[$key] ?? null;
-            if (\is_string($value) && trim($value) !== '') {
+            if (\is_string($value) && '' !== trim($value)) {
                 return $value;
             }
         }
@@ -377,7 +377,8 @@ trait HasCoordinatePicker
     }
 
     /**
-     * @param  array<string, mixed>  $data
+     * @param array<string, mixed> $data
+     *
      * @return array<string, mixed>
      */
     public static function extractCoordinates(array $data, string $field = 'coordinates', string $latColumn = 'latitude', string $lngColumn = 'longitude'): array
@@ -393,7 +394,7 @@ trait HasCoordinatePicker
 
     private static function normalizeCoordinate(mixed $value): ?float
     {
-        if ($value === null || $value === '') {
+        if (null === $value || '' === $value) {
             return null;
         }
 

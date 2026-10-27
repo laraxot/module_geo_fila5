@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Traits;
+namespace Modules\Geo\Tests\Unit\Traits;
 
 use Modules\Geo\Models\Traits\HasAddress;
 use Modules\Geo\Models\Traits\HasPlaceTrait;

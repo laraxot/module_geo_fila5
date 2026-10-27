@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Database\Seeders;
 
-use Exception;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 
@@ -75,13 +74,14 @@ class GeoJsonDownloader
 
         if (File::exists($cachePath)) {
             $content = File::get($cachePath);
+
             return $this->featuresFromData(json_decode($content, true), $cacheFile);
         }
 
         $response = Http::timeout(120)->get($url);
 
         if (! $response->successful()) {
-            throw new Exception("Failed to download {$url}: {$response->status()}");
+            throw new \Exception("Failed to download {$url}: {$response->status()}");
         }
 
         $data = $response->json();
@@ -99,7 +99,7 @@ class GeoJsonDownloader
     private function featuresFromData(mixed $data, string $source): array
     {
         if (! is_array($data) || ! isset($data['features']) || ! is_array($data['features'])) {
-            throw new Exception("Invalid GeoJSON structure from {$source}");
+            throw new \Exception("Invalid GeoJSON structure from {$source}");
         }
 
         $features = [];
@@ -241,6 +241,7 @@ class GeoJsonDownloader
      * Calculate centroid of a geometry.
      *
      * @param array<string, mixed> $geometry
+     *
      * @return array{lat: float, lng: float}|null
      */
     protected function calculateCentroid(array $geometry): ?array
@@ -259,7 +260,7 @@ class GeoJsonDownloader
         foreach ($coords as $coord) {
             $sumLng += $coord[0];
             $sumLat += $coord[1];
-            $count++;
+            ++$count;
         }
 
         return [
@@ -272,6 +273,7 @@ class GeoJsonDownloader
      * Extract all coordinates from a geometry recursively.
      *
      * @param array<string, mixed> $geometry
+     *
      * @return array<int, array{0: float, 1: float}>
      */
     protected function extractCoordinates(array $geometry): array

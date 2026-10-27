@@ -156,12 +156,4 @@ La strategia migliore è:
 1. Mantenere i modelli specifici e ben implementati
 2. Rimuovere i modelli ridondanti
 3. Standardizzare le interfacce comuni
-<<<<<<< HEAD
 4. Migliorare i modelli minimalisti
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
-4. Migliorare i modelli minimalisti
->>>>>>> laraxot/dev

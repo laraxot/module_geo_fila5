@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions;
+namespace Modules\Geo\Tests\Unit\Actions;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GetCoordinatesByAddressAction;
+use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\LightTestCase;
 
 uses(LightTestCase::class);
 it('returns null for empty address', function (): void {
-    $action = new GetCoordinatesByAddressAction;
+    $action = new GetCoordinatesByAddressAction();
 
     // Without API keys configured, should return null
     $result = $action->execute('');
@@ -21,7 +21,7 @@ it('returns null for empty address', function (): void {
 });
 
 it('returns null when google api key not configured', function (): void {
-    $action = new GetCoordinatesByAddressAction;
+    $action = new GetCoordinatesByAddressAction();
 
     Config::set('services.google.maps_api_key', null);
     Config::set('services.bing.maps_api_key', null);
@@ -33,7 +33,7 @@ it('returns null when google api key not configured', function (): void {
 });
 
 it('returns null for non-existent address with mock', function (): void {
-    $action = new GetCoordinatesByAddressAction;
+    $action = new GetCoordinatesByAddressAction();
 
     Config::set('services.google.maps_api_key', 'fake-key');
     Config::set('services.bing.maps_api_key', null);

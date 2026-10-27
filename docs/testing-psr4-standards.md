@@ -270,16 +270,8 @@ Prima di committare file di test:
 
 ## Collegamenti ai Moduli
 
-- [Testing PSR-4 Compliance - Modulo Xot](../modules/xot/docs/testing-psr4-compliance.md)
+- [Testing PSR-4 Compliance - Modulo Xot](../../Xot/docs/testing-psr4-compliance.md)
 - [Testing Guide - Modulo <nome modulo>](../modules/<nome modulo>/docs/testing.md)
 
 ---
 *Standard: PSR-4, PHPStan livello 9+, Laraxot conventions*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

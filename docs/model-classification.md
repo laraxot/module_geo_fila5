@@ -32,7 +32,8 @@ status: draft
 - **GeoTrait** - Geographical functionality trait
 - **HasAddress** - Address relationship trait
 - **HasPlaceTrait** - Place functionality trait
-- **GeographicalScopes** - Geographical query scopes
+
+`GeographicalScopes` non esiste piu' (zero chiamanti, sostituito da `GeoTrait::scopeWithDistance`, vedi [decision-log](./decision-log.md)).
 
 ### 📊 Static Data Models
 - **GeoJsonModel** - JSON-based geographical data
@@ -48,11 +49,3 @@ status: draft
 - Traits and base classes should not have factories
 - Static data models (JSON/Sushi) don't need factories as they use static data
 - Test geographical business logic, not infrastructure classes
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

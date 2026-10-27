@@ -234,11 +234,3 @@ La cartella bashscripts è ora veramente condivisibile tra progetti diversi, ris
 *Intervento completato: Gennaio 2025*
 *Validato: PHPStan livello 9, documentazione completa*
 *Status: ✅ Produzione ready*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

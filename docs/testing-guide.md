@@ -262,11 +262,3 @@ vendor/bin/pest --filter="test_name" --verbose
 ---
 **Versione Pest**: 3.8
 **Versione PHPUnit**: 11.x
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

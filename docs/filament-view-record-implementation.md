@@ -301,11 +301,3 @@ protected function getInfolistSchema()
 
 ---
 **IMPORTANTE**: Ricorda sempre di implementare il metodo `getInfolistSchema()` quando si estende `XotBaseViewRecord`. Questo errore è comune e può essere facilmente evitato seguendo i pattern documentati sopra.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "phpstan fixes"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Correzioni PHPStan Modulo Geo - 2025-01-27
@@ -75,7 +76,7 @@ Il widget utilizza la vista `geo::filament.widgets.webbingbrasil-map-stub` che m
 
 ### Integrazione con Filament 4.x
 Il widget fa parte del piano di migrazione a Filament 4.x documentato in:
-- `filament-4x-compatibility.md`
+- `filament_4x_compatibility.md`
 - Piano di riattivazione graduale quando i pacchetti saranno compatibili
 
 ### Pacchetti Coinvolti
@@ -101,15 +102,6 @@ Il widget fa parte del piano di migrazione a Filament 4.x documentato in:
 - [Piano Migrazione Filament](../../../docs/filament_4x_migration_plan.md)
 
 ---
-
-title: "phpstan fixes"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "phpstan fixes"
-issues: []
-discussions: []
 # PHPStan Zero Errors Achievement - 2026-06-13
 
 **Data**: 2026-06-13  

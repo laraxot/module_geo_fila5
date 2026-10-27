@@ -351,11 +351,3 @@ Per supportare gli indirizzi italiani in un contesto multilingua:
 ## Conclusione
 
 La corretta gestione degli indirizzi italiani richiede una struttura dedicata che rispetti la suddivisione amministrativa del paese. Il modello `Address` proposto, con i campi e le relazioni specifiche per regioni, province e comuni italiani, fornisce una base solida per implementare un sistema di indirizzi completo e conforme agli standard italiani.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

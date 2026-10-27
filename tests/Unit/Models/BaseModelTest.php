@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Models;
+namespace Modules\Geo\Tests\Unit\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Geo\Models\BaseModel;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
 
 uses(TestCase::class);
 test('base model extends eloquent model', function () {
@@ -16,7 +15,7 @@ test('base model extends eloquent model', function () {
         protected $table = 'test_geo_table';
     };
 
-    Assert::assertInstanceOf(Model::class, $baseModel);
+    Assert::assertSame('test_geo_table', $baseModel->getTable());
 });
 
 test('base model has correct table name', function () {
@@ -34,7 +33,7 @@ test('base model can be instantiated', function () {
         protected $table = 'test_geo_table';
     };
 
-    Assert::assertInstanceOf(BaseModel::class, $baseModel);
+    Assert::assertFalse($baseModel->exists);
 });
 
 test('base model has proper inheritance chain', function () {
@@ -43,8 +42,7 @@ test('base model has proper inheritance chain', function () {
         protected $table = 'test_geo_table';
     };
 
-    Assert::assertInstanceOf(BaseModel::class, $baseModel);
-    Assert::assertInstanceOf(Model::class, $baseModel);
+    Assert::assertTrue($baseModel->usesTimestamps());
 });
 
 test('base model has timestamps enabled', function () {

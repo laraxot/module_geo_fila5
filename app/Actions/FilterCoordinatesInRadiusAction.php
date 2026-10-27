@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions;
 
+use Modules\Geo\Contracts\CalculateDistanceActionContract;
 use Modules\Geo\Datas\LocationData;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -22,6 +23,10 @@ use Spatie\QueueableAction\QueueableAction;
 class FilterCoordinatesInRadiusAction
 {
     use QueueableAction;
+
+    public function __construct(
+        private readonly CalculateDistanceActionContract $distanceCalculator,
+    ) {}
 
     /**
      * @param  array<array{latitude: string, longitude: string}>  $coordinates
@@ -42,7 +47,7 @@ class FilterCoordinatesInRadiusAction
                 address: null,
             );
 
-            $distance = app(CalculateDistanceAction::class)->execute($centerLocation, $targetLocation)['distance']['value'];
+            $distance = $this->distanceCalculator->execute($centerLocation, $targetLocation)['distance']['value'];
 
             return $distance <= $radius;
         });

@@ -6,7 +6,7 @@ namespace Modules\Geo\Actions\GeoData;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use Modules\Geo\Support\GeoDataConfig;
+use Modules\Geo\Infrastructure\Config\GeoDataConfig;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -19,7 +19,8 @@ class GetCitiesAction
     /**
      * Città della provincia come mappa codice => nome.
      *
-     * @param  string  $provinceCode  Codice della provincia
+     * @param string $provinceCode Codice della provincia
+     *
      * @return Collection<string, string>
      */
     public function execute(string $provinceCode): Collection
@@ -42,7 +43,7 @@ class GetCitiesAction
             : [])->firstWhere('code', $provinceCode);
 
         if (! $province || ! \is_array($province) || ! isset($province['cities']) || ! \is_array($province['cities'])) {
-            return new Collection;
+            return new Collection();
         }
 
         /** @var array<int, array<string, mixed>> $cities */

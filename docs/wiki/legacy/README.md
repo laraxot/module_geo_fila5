@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "README"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../_archive/README.md
 ---
 
 # Geo Wiki Archive

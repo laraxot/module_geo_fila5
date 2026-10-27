@@ -9,6 +9,7 @@ discussions: []
 name: Map Visibility Fix
 description: Fixes for map not appearing in wizard steps (FixCreateTicketWizard)
 type: concept
+status: draft
 ---
 
 # Map Visibility Fix Guide
