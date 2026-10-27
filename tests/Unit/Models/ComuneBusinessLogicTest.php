@@ -5,8 +5,11 @@ declare(strict_types=1);
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Comune;
+use Modules\Geo\Tests\TestCase;
 use Modules\Tenant\Models\Traits\SushiToJson;
 use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 
 /**
  * Behaviour under test: contratto di dominio del modello Geo\Comune

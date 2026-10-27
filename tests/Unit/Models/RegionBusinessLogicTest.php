@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Region;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use Sushi\Sushi;
+
+uses(TestCase::class);
 
 /**
  * Contratto di dominio Region (Sushi da comuni.json, chiave intera, schema colonne).
