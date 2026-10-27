@@ -132,3 +132,6 @@ graphify-out/
 .claude-audit/
 test-results/
 geo.code-workspace
+
+# Forbidden parallel documentation archive
+docs/archive/
