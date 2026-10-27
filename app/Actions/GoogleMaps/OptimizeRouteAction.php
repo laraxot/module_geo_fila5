@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\RouteData;
-use Modules\Geo\Support\GeoApiEndpoints;
+use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -29,11 +29,12 @@ class OptimizeRouteAction
     /**
      * Ottimizza il percorso tra i punti specificati.
      *
-     * @param  array<LocationData>  $locations  Lista di punti da visitare
-     * @param  LocationData  $origin  Punto di partenza
-     * @param  LocationData  $destination  Punto di arrivo
-     * @param  string  $mode  Modalità di trasporto (driving, walking, bicycling, transit)
-     * @param  string  $optimize  Criterio di ottimizzazione (distance, time)
+     * @param array<LocationData> $locations   Lista di punti da visitare
+     * @param LocationData        $origin      Punto di partenza
+     * @param LocationData        $destination Punto di arrivo
+     * @param string              $mode        Modalità di trasporto (driving, walking, bicycling, transit)
+     * @param string              $optimize    Criterio di ottimizzazione (distance, time)
+     *
      * @return array<RouteData> Lista di percorsi ottimizzati
      */
     public function execute(
@@ -84,7 +85,8 @@ class OptimizeRouteAction
     /**
      * Formatta una lista di punti nel formato richiesto dall'API.
      *
-     * @param  array<LocationData>  $locations
+     * @param array<LocationData> $locations
+     *
      * @return array<string>
      */
     private function formatWaypoints(array $locations): array
@@ -123,7 +125,8 @@ class OptimizeRouteAction
      *     warnings: array<int, string>,
      *     waypoint_order: array<int, int>
      * }> $routes
-     * @param  Collection<int, LocationData>  $originalLocations
+     * @param Collection<int, LocationData> $originalLocations
+     *
      * @return array<RouteData>
      */
     private function parseRoutes(array $routes, Collection $originalLocations): array

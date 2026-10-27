@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Geo\Actions\Maps\BuildGeoMapWidgetPayloadAction;
-use Modules\Geo\Datas\Map\GeoMapWidgetData;
 use Modules\Geo\Models\Place;
 use Modules\Geo\Models\PlaceType;
+use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\LightTestCase;
 
 uses(LightTestCase::class);
 
@@ -48,8 +47,6 @@ test('build geo map widget payload action returns widget data contract', functio
     };
 
     $payload = $action->execute();
-
-    Assert::assertInstanceOf(GeoMapWidgetData::class, $payload);
 
     $geoJson = $payload->geoJson;
     Assert::assertArrayHasKey('type', $geoJson);

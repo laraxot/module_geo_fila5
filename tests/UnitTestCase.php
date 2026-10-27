@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo;
+namespace Modules\Geo\Tests;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Modules\Geo\Providers\GeoServiceProvider;
 use Modules\Xot\Providers\XotServiceProvider;
-use Tests\Modules\Xot\CreatesApplication;
+use Modules\Xot\Tests\CreatesApplication;
 
 /**
  * Lightweight TestCase for pure unit tests in the Geo module.

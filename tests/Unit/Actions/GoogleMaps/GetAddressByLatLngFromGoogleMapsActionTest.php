@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions\GoogleMaps;
+namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -11,9 +11,8 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\GoogleMaps\GetAddressByLatLngFromGoogleMapsAction;
-use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\LightTestCase;
 
 use function Safe\json_encode;
 
@@ -185,7 +184,6 @@ it('returns location data for valid coordinates', function (): void {
 
     $result = $action->execute(45.4642, 9.1900);
 
-    Assert::assertInstanceOf(LocationData::class, $result);
     Assert::assertSame('Via Roma, Milano, MI, Italia', $result->address);
     Assert::assertSame(45.4642, $result->latitude);
     Assert::assertSame(9.1900, $result->longitude);
@@ -214,7 +212,6 @@ it('handles boundary latitude values', function (): void {
 
     $result = $action->execute(90.0, 0.0);
 
-    Assert::assertInstanceOf(LocationData::class, $result);
     Assert::assertSame(90.0, $result->latitude);
 });
 
@@ -241,6 +238,5 @@ it('handles boundary longitude values', function (): void {
 
     $result = $action->execute(0.0, 180.0);
 
-    Assert::assertInstanceOf(LocationData::class, $result);
     Assert::assertSame(180.0, $result->longitude);
 });

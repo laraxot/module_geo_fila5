@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions;
+namespace Modules\Geo\Tests\Unit\Actions;
 
 use Modules\Geo\Actions\Distance\CalculateGeoDistanceAction;
 use Modules\Geo\Actions\GoogleMapsAction;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
 
 uses(TestCase::class);
 
 test('CalculateGeoDistanceAction can be resolved', function (): void {
     $action = app(CalculateGeoDistanceAction::class);
 
-    Assert::assertInstanceOf(CalculateGeoDistanceAction::class, $action);
+    Assert::assertSame(CalculateGeoDistanceAction::class, $action::class);
 });
 
 test('GoogleMapsAction can be instantiated', function (): void {
     $service = new GoogleMapsAction;
 
-    Assert::assertInstanceOf(GoogleMapsAction::class, $service);
+    Assert::assertSame(GoogleMapsAction::class, $service::class);
 });

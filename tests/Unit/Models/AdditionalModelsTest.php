@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Models;
+namespace Modules\Geo\Tests\Unit\Models;
 
 use Modules\Geo\Models\County;
 use Modules\Geo\Models\GeoNamesCap;
@@ -10,42 +10,42 @@ use Modules\Geo\Models\Locality;
 use Modules\Geo\Models\Place;
 use Modules\Geo\Models\PlaceType;
 use Modules\Geo\Models\State;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
 
 uses(TestCase::class);
 test('State model can be instantiated', function () {
     $state = new State;
 
-    Assert::assertInstanceOf(State::class, $state);
+    Assert::assertFalse($state->exists);
 });
 
 test('County model can be instantiated', function () {
     $county = new County;
 
-    Assert::assertInstanceOf(County::class, $county);
+    Assert::assertFalse($county->exists);
 });
 
 test('Locality model can be instantiated', function () {
     $locality = new Locality;
 
-    Assert::assertInstanceOf(Locality::class, $locality);
+    Assert::assertFalse($locality->exists);
 });
 
 test('Place model can be instantiated', function () {
     $place = new Place;
 
-    Assert::assertInstanceOf(Place::class, $place);
+    Assert::assertFalse($place->exists);
 });
 
 test('PlaceType model can be instantiated', function () {
     $placeType = new PlaceType;
 
-    Assert::assertInstanceOf(PlaceType::class, $placeType);
+    Assert::assertFalse($placeType->exists);
 });
 
 test('GeoNamesCap model can be instantiated', function () {
     $geoNamesCap = new GeoNamesCap;
 
-    Assert::assertInstanceOf(GeoNamesCap::class, $geoNamesCap);
+    Assert::assertSame('geonames_cap', $geoNamesCap->getTable());
 });

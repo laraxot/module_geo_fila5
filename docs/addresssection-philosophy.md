@@ -181,11 +181,3 @@ class ClientAddressSection extends AddressSection
 ## Conclusione
 
 AddressSection embodies the philosophy of **intelligent delegation**: rather than duplicating code, it adapts existing functionality for specific use cases while maintaining a single source of truth. This creates a maintainable, consistent, and evolving address system that scales with the application.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

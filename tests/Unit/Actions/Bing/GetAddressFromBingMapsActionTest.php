@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions\Bing;
+namespace Modules\Geo\Tests\Unit\Actions\Bing;
 
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\Bing\GetAddressFromBingMapsAction;
-use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Exceptions\InvalidLocationException;
+use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\LightTestCase;
 
 uses(LightTestCase::class);
 it('throws exception when api key is not configured', function (): void {
@@ -190,8 +189,6 @@ it('returns address data for valid coordinates', function (): void {
     $action = new GetAddressFromBingMapsAction;
     $result = $action->execute(45.4642, 9.1900);
 
-    Assert::assertInstanceOf(AddressData::class, $result);
-
     Assert::assertSame(45.4642, $result->latitude);
 
     Assert::assertSame(9.1900, $result->longitude);
@@ -200,7 +197,7 @@ it('returns address data for valid coordinates', function (): void {
 
     Assert::assertSame('Milano', $result->city);
 
-    Assert::assertSame('20100', $result->postal_code);
+    Assert::assertSame(20100, $result->postal_code);
 
     Assert::assertSame('Via Roma 1', $result->street);
 

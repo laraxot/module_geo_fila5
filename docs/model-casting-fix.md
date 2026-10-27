@@ -159,7 +159,7 @@ protected function casts(): array
 
 ### Documentazione Correlata
 - [Regola: Proprietà $casts Deprecata](../../.cursor/rules/deprecated-casts-property.md)
-- [Memoria: Errore Proprietà $casts Deprecata](../../.cursor/memories/deprecated-casts-error.md)
+- [Memoria: Errore Proprietà $casts Deprecata](../../../../.cursor/memories/deprecated-casts-error.md)
 - [Model Casting Best Practices](./model-casting-best-practices.md)
 
 ### File Correlati
@@ -208,11 +208,3 @@ protected function casts(): array
 - [ ] **Altri moduli**: Ricerca globale
 
 ## Ultimo aggiornamento
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

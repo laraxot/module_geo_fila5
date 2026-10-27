@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Http;
 use Modules\Geo\Datas\Geocoding\AddressData;
 use Modules\Geo\Datas\MapPlatforms\MapboxMapData;
 use Modules\Geo\Exceptions\InvalidLocationException;
-use Modules\Geo\Support\GeoApiEndpoints;
+use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 use Spatie\QueueableAction\QueueableAction;
 
 /**
@@ -91,7 +91,7 @@ class GetAddressFromMapboxLatLngAction
     }
 
     /**
-     * @param  array<mixed>  $response
+     * @param array<mixed> $response
      */
     private function parseResponse(array $response): MapboxMapData
     {

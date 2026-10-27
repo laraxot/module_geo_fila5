@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan critical rule"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-critical-rule.md
 ---
 
 # Regola Critica PHPStan - NON Modificare phpstan.neon

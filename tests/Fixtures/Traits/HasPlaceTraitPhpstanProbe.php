@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Fixtures\Traits;
+namespace Modules\Geo\Tests\Fixtures\Traits;
 
 use Modules\Geo\Models\Traits\HasPlaceTrait;
 

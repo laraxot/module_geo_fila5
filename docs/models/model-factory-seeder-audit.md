@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "model factory seeder audit"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../model-factory-seeder-audit.md
 ---
 
 # Model/Factory/Seeder Audit
@@ -32,8 +33,6 @@ Generated: [DATE] 16:28
 | GeoTrait | n/a | n/a |
 | HasAddress | n/a | n/a |
 | HasPlaceTrait | n/a | n/a |
-| GeographicalScopes | n/a | n/a |
-| SushiToJsons | n/a | n/a |
 
 Seeder: `database/seeders/GeoDatabaseSeeder.php`
 

@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: " eloquent"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: eloquent.md
 ---
 
 # __eloquent

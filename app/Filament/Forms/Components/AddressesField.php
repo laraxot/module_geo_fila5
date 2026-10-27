@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Component;
@@ -12,6 +11,7 @@ use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
 use Modules\Geo\Filament\Resources\AddressResource;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
+use Modules\Xot\Filament\Forms\Components\XotBaseRepeater;
 
 use function Safe\preg_match;
 
@@ -30,7 +30,7 @@ use function Safe\preg_match;
  *     ->minItems(1)
  *     ->addActionLabel('Aggiungi Indirizzo')
  */
-class AddressesField extends Repeater
+class AddressesField extends XotBaseRepeater
 {
     // protected string $view = 'geo::filament.forms.components.addresses-field';
 

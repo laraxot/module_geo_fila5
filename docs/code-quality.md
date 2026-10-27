@@ -12,6 +12,8 @@ status: draft
 
 # 🌍 Geo Module - Code Quality Analysis Report
 
+> **Nota stato 2026-10-20**: Questo report cita file storici (`BaseGeoService.php`, `GoogleMapsService.php`) che non esistono più (No-Services, vedi `decision-log.md`). Non rappresenta lo stato attuale del codice (`app/Services/` assente, Actions sostitutive attive).
+
 **Date**: [DATE]
 **Tools Used**: PHPStan Level 10, PHPMD
 **Status**: PHPStan blocked by external syntax error, PHPMD shows significant violations
@@ -115,12 +117,4 @@ PHPStan analysis was blocked by a syntax error in the Cms module, but PHPMD anal
 
 ---
 **Report Generated**: [DATE]
-<<<<<<< HEAD
 **Target Completion**: [DATE]
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
-**Target Completion**: [DATE]
->>>>>>> laraxot/dev

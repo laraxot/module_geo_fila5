@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan fixes renamed"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-fixes-renamed.md
 ---
 
 # 🔧 PHPStan Fixes - Modulo Geo - Gennaio 2025

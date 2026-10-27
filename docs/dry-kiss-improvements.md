@@ -165,11 +165,3 @@ $this->tableCreate(function (Blueprint $table): void {
 ## Conclusion
 
 The Geo module has a solid foundation with AddressItemEnum but needs migration pattern improvements. By implementing the suggested helpers and templates, we can achieve significant DRY + KISS improvements while maintaining the Laraxot philosophy.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

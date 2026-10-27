@@ -2,92 +2,144 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
+
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GoogleMaps\OptimizeRouteAction;
-use Tests\TestCase;
+use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Datas\Routing\RouteData;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(LightTestCase::class);
+it('throws exception when api key is not configured', function (): void {
+    $action = new OptimizeRouteAction();
 
-beforeEach(function () {
-    $this->action = app(OptimizeRouteAction::class);
-    Http::fake();
+    config(['services.google.maps.key' => null]);
+
+    $locations = [
+        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
+    ];
+    $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+    $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
+
+    try {
+        $action->execute($locations, $origin, $destination);
+
+        Assert::fail('Expected RuntimeException was not thrown');
+    } catch (\RuntimeException $exception) {
+        Assert::assertSame('API key not found', $exception->getMessage());
+    }
 });
 
-afterEach(function () {
-    Http::assertNothingSent();
+it('returns empty array for empty locations', function (): void {
+    $action = new OptimizeRouteAction();
+
+    config(['services.google.maps.key' => 'test_key']);
+
+    $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+    $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
+
+    $result = $action->execute([], $origin, $destination);
+    Assert::assertEmpty($result);
 });
 
-describe('OptimizeRouteAction', function () {
-    it('optimizes route for multiple waypoints', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/directions/json*' => Http::response([
-                'routes' => [
+it('returns empty array when api returns no routes', function (): void {
+    $action = new OptimizeRouteAction();
+
+    config(['services.google.maps.key' => 'test_key']);
+
+    Http::fake([
+        '*' => Http::response(['routes' => []], 200),
+    ]);
+
+    $locations = [
+        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
+    ];
+    $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+    $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
+
+    $result = $action->execute($locations, $origin, $destination);
+    Assert::assertEmpty($result);
+});
+
+it('returns route data for valid request', function (): void {
+    $action = new OptimizeRouteAction();
+
+    config(['services.google.maps.key' => 'test_key']);
+
+    Http::fake([
+        '*' => Http::response([
+            'routes' => [[
+                'legs' => [
                     [
-                        'legs' => [
-                            ['distance' => ['value' => 10000], 'duration' => ['value' => 1200]],
-                            ['distance' => ['value' => 15000], 'duration' => ['value' => 1800]],
+                        'distance' => ['text' => '572 km', 'value' => 572000],
+                        'duration' => ['text' => '5h 30m', 'value' => 19800],
+                        'start_location' => ['lat' => 45.4642, 'lng' => 9.1900],
+                        'end_location' => ['lat' => 44.4056, 'lng' => 8.9463],
+                        'steps' => [
+                            [
+                                'distance' => ['text' => '100 km', 'value' => 100000],
+                                'duration' => ['text' => '1h', 'value' => 3600],
+                                'start_location' => ['lat' => 45.4642, 'lng' => 9.1900],
+                                'end_location' => ['lat' => 44.4056, 'lng' => 8.9463],
+                                'html_instructions' => 'Head north',
+                                'travel_mode' => 'DRIVING',
+                            ],
                         ],
-                        'waypoint_order' => [1, 0],
-                        'overview_polyline' => ['points' => 'encoded_polyline'],
+                    ],
+                    [
+                        'distance' => ['text' => '472 km', 'value' => 472000],
+                        'duration' => ['text' => '4h 30m', 'value' => 16200],
+                        'start_location' => ['lat' => 44.4056, 'lng' => 8.9463],
+                        'end_location' => ['lat' => 41.9028, 'lng' => 12.4964],
+                        'steps' => [],
                     ],
                 ],
-                'status' => 'OK',
-            ], 200),
-        ]);
+                'overview_polyline' => ['points' => 'encoded_polyline'],
+                'summary' => 'Via A7',
+                'warnings' => [],
+                'waypoint_order' => [0],
+            ]],
+        ], 200),
+    ]);
 
-        $origin = 'Milano, Italia';
-        $destination = 'Roma, Italia';
-        $waypoints = ['Bologna, Italia', 'Firenze, Italia'];
+    $locations = [
+        new LocationData(latitude: 44.4056, longitude: 8.9463, address: 'Genova'),
+    ];
+    $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+    $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-        $result = $this->action->execute($origin, $destination, $waypoints);
+    $result = $action->execute($locations, $origin, $destination);
+    Assert::assertCount(1, $result);
 
-        expect($result)->toBeArray()
-            ->toHaveKeys(['routes', 'waypoint_order']);
-        expect($result['waypoint_order'])->toBe([1, 0]); // Optimized order
-    });
+    Assert::assertInstanceOf(RouteData::class, $result[0]);
 
-    it('handles single waypoint', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/directions/json*' => Http::response([
-                'routes' => [[
-                    'legs' => [['distance' => ['value' => 5000], 'duration' => ['value' => 600]]],
-                    'waypoint_order' => [0],
-                ]],
-                'status' => 'OK',
-            ], 200),
-        ]);
+    Assert::assertSame(1044000, $result[0]->totalDistance);
 
-        $result = $this->action->execute('A', 'B', ['C']);
+    Assert::assertSame(36000, $result[0]->totalDuration);
+});
 
-        expect($result['waypoint_order'])->toBe([0]);
-    });
+it('throws exception when api request fails', function (): void {
+    $action = new OptimizeRouteAction();
 
-    it('throws exception for ZERO_RESULTS', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/directions/json*' => Http::response([
-                'status' => 'ZERO_RESULTS',
-            ], 200),
-        ]);
+    config(['services.google.maps.key' => 'test_key']);
 
-        expect(fn () => $this->action->execute('Invalid', 'Invalid', []))
-            ->toThrow(\Exception::class);
-    });
+    Http::fake([
+        '*' => Http::response(null, 500),
+    ]);
 
-    it('supports optimize:true parameter', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/directions/json*' => Http::response([
-                'routes' => [[
-                    'legs' => [['distance' => ['value' => 10000], 'duration' => ['value' => 1200]]],
-                    'waypoint_order' => [0],
-                ]],
-                'status' => 'OK',
-            ], 200),
-        ]);
+    $locations = [
+        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
+    ];
+    $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+    $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-        $result = $this->action->execute('A', 'B', ['C'], true);
+    try {
+        $action->execute($locations, $origin, $destination);
 
-        expect($result)->toHaveKey('waypoint_order');
-    });
+        Assert::fail('Expected RuntimeException was not thrown');
+    } catch (\RuntimeException $exception) {
+        Assert::assertSame('Failed to get directions', $exception->getMessage());
+    }
 });

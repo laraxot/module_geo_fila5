@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "index"
 issues: []
 discussions: []
+status: draft
 ---
 
 {nome-progetto}
@@ -108,15 +109,6 @@ discussions: []
 - [**Laravel Boost Guidelines**](laravel-boost-guidelines.md) - Linee guida Laravel Boost
 
 ---
-
-title: "index"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "index"
-issues: []
-discussions: []
 **Versione**: 3.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Aggiornata

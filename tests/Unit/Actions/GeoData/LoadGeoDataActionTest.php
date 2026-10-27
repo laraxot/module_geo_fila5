@@ -2,179 +2,110 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+namespace Modules\Geo\Tests\Unit\Actions\GeoData;
+
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Actions\GeoData\LoadGeoDataAction;
-use Tests\TestCase;
+use Modules\Geo\Infrastructure\Config\GeoDataConfig;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
+use Safe\Exceptions\JsonException;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+use function Safe\json_encode;
 
-beforeEach(function () {
-    $this->action = app(LoadGeoDataAction::class);
+uses(LightTestCase::class);
+
+/**
+ * Regione valida per le regole di GeoDataValidationRules: codice regione e sigla provincia a 2 caratteri, CAP a 5.
+ *
+ * @return array<string, mixed>
+ */
+function geoRegionFixture(string $name, string $code): array
+{
+    return [
+        'name' => $name,
+        'code' => $code,
+        'provinces' => [
+            [
+                'name' => 'Milano',
+                'code' => 'MI',
+                'cities' => [
+                    ['name' => 'Milano', 'code' => 'F205', 'cap' => '20100'],
+                ],
+            ],
+        ],
+    ];
+}
+
+/**
+ * Fa leggere all'action il contenuto dato al posto di Modules/Geo/resources/json/comuni.json.
+ */
+function geoJsonFileContains(string $contents): void
+{
+    $path = base_path(GeoDataConfig::JSON_PATH);
+
+    File::shouldReceive('exists')->once()->with($path)->andReturnTrue();
+    File::shouldReceive('get')->once()->with($path)->andReturn($contents);
+}
+
+test('LoadGeoDataAction returns the regions of the JSON file as a re-indexed collection', function (): void {
+    geoJsonFileContains(json_encode([
+        'regions' => [geoRegionFixture('Lombardia', '03'), geoRegionFixture('Lazio', '12')],
+    ]));
+
+    $regions = app(LoadGeoDataAction::class)->execute();
+
+    Assert::assertInstanceOf(Collection::class, $regions);
+    Assert::assertSame(['Lombardia', 'Lazio'], $regions->pluck('name')->all());
+    Assert::assertSame([0, 1], $regions->keys()->all());
 });
 
-describe('LoadGeoDataAction', function () {
-    it('loads geo data from JSON file with correct structure', function () {
-        $mockData = [
-            'regions' => [
-                [
-                    'name' => 'Lombardia',
-                    'code' => '03',
-                    'provinces' => [
-                        [
-                            'name' => 'Milano',
-                            'code' => 'MI',
-                            'cities' => [
-                                ['name' => 'Milano', 'code' => '20100'],
-                                ['name' => 'Sesto San Giovanni', 'code' => '20099'],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'name' => 'Lazio',
-                    'code' => '12',
-                    'provinces' => [
-                        [
-                            'name' => 'Roma',
-                            'code' => 'RM',
-                            'cities' => [
-                                ['name' => 'Roma', 'code' => '00100'],
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-        ];
+test('LoadGeoDataAction keeps the region to province to city hierarchy intact', function (): void {
+    geoJsonFileContains(json_encode(['regions' => [geoRegionFixture('Lombardia', '03')]]));
 
-        File::shouldReceive('exists')
-            ->with(base_path('Modules/Geo/resources/json/comuni.json'))
-            ->andReturnTrue();
+    $region = app(LoadGeoDataAction::class)->execute()->firstOrFail();
 
-        File::shouldReceive('get')
-            ->with(base_path('Modules/Geo/resources/json/comuni.json'))
-            ->andReturn(json_encode($mockData));
-
-        $result = $this->action->execute();
-
-        expect($result)->toBeInstanceOf(\Illuminate\Support\Collection::class);
-        expect($result)->toHaveCount(2);
-        expect($result->first())->toHaveKeys(['name', 'code', 'provinces']);
-    });
-
-    it('returns collection with regions', function () {
-        $mockData = [
-            'regions' => [
-                ['name' => 'Test Region', 'code' => 'TR', 'provinces' => []],
-            ],
-        ];
-
-        File::shouldReceive('exists')->andReturnTrue();
-        File::shouldReceive('get')->andReturn(json_encode($mockData));
-
-        $result = $this->action->execute();
-
-        expect($result->first()['name'])->toBe('Test Region');
-    });
-
-    it('each region has provinces', function () {
-        $mockData = [
-            'regions' => [
-                [
-                    'name' => 'Lombardia',
-                    'code' => '03',
-                    'provinces' => [
-                        ['name' => 'Milano', 'code' => 'MI', 'cities' => []],
-                    ],
-                ],
-            ],
-        ];
-
-        File::shouldReceive('exists')->andReturnTrue();
-        File::shouldReceive('get')->andReturn(json_encode($mockData));
-
-        $result = $this->action->execute();
-
-        $result->each(function ($region) {
-            expect($region)->toHaveKey('provinces');
-            expect($region['provinces'])->toBeArray();
-        });
-    });
-
-    it('each province has cities', function () {
-        $mockData = [
-            'regions' => [
-                [
-                    'name' => 'Lombardia',
-                    'code' => '03',
-                    'provinces' => [
-                        [
-                            'name' => 'Milano',
-                            'code' => 'MI',
-                            'cities' => [['name' => 'Milano', 'code' => '20100']],
-                        ],
-                    ],
-                ],
-            ],
-        ];
-
-        File::shouldReceive('exists')->andReturnTrue();
-        File::shouldReceive('get')->andReturn(json_encode($mockData));
-
-        $result = $this->action->execute();
-
-        $result->each(function ($region) {
-            collect($region['provinces'])->each(function ($province) {
-                expect($province)->toHaveKey('cities');
-                expect($province['cities'])->toBeArray();
-            });
-        });
-    });
-
-    it('throws exception if JSON file missing', function () {
-        File::shouldReceive('exists')->andReturnFalse();
-
-        expect(fn () => $this->action->execute())
-            ->toThrow(\RuntimeException::class, 'Il file JSON dei comuni non esiste');
-    });
-
-    it('throws exception for invalid JSON structure', function () {
-        File::shouldReceive('exists')->andReturnTrue();
-        File::shouldReceive('get')->andReturn('invalid json');
-
-        expect(fn () => $this->action->execute())
-            ->toThrow(\RuntimeException::class, 'Il file JSON dei comuni non è valido');
-    });
-
-    it('throws exception for missing regions key', function () {
-        File::shouldReceive('exists')->andReturnTrue();
-        File::shouldReceive('get')->andReturn(json_encode(['provinces' => []]));
-
-        expect(fn () => $this->action->execute())
-            ->toThrow(\RuntimeException::class, 'Regioni mancanti nel file JSON');
-    });
-
-    it('throws exception for non-array regions', function () {
-        File::shouldReceive('exists')->andReturnTrue();
-        File::shouldReceive('get')->andReturn(json_encode(['regions' => 'not-array']));
-
-        expect(fn () => $this->action->execute())
-            ->toThrow(\RuntimeException::class, 'Regioni mancanti nel file JSON');
-    });
-
-    it('throws exception when integrity check fails', function () {
-        // Missing city code - should fail integrity
-        $mockData = [
-            'regions' => [
-                ['name' => 'Lombardia', 'code' => '03', 'provinces' => []],
-            ],
-        ];
-
-        File::shouldReceive('exists')->andReturnTrue();
-        File::shouldReceive('get')->andReturn(json_encode($mockData));
-
-        expect(fn () => $this->action->execute())
-            ->toThrow(\RuntimeException::class, 'Il file JSON dei comuni non è valido');
-    });
+    Assert::assertSame([
+        [
+            'name' => 'Milano',
+            'code' => 'MI',
+            'cities' => [['name' => 'Milano', 'code' => 'F205', 'cap' => '20100']],
+        ],
+    ], $region['provinces']);
 });
+
+test('LoadGeoDataAction throws when the JSON file is missing and never reads it', function (): void {
+    File::shouldReceive('exists')->once()->with(base_path(GeoDataConfig::JSON_PATH))->andReturnFalse();
+    File::shouldReceive('get')->never();
+
+    expect(fn (): Collection => app(LoadGeoDataAction::class)->execute())
+        ->toThrow(\RuntimeException::class, 'Il file JSON dei comuni non esiste');
+});
+
+test('LoadGeoDataAction does not swallow a JSON syntax error', function (): void {
+    geoJsonFileContains('invalid json');
+
+    expect(fn (): Collection => app(LoadGeoDataAction::class)->execute())
+        ->toThrow(JsonException::class);
+});
+
+test('LoadGeoDataAction rejects a document that is not a valid geo hierarchy', function (string $contents): void {
+    geoJsonFileContains($contents);
+
+    expect(fn (): Collection => app(LoadGeoDataAction::class)->execute())
+        ->toThrow(\RuntimeException::class, 'Il file JSON dei comuni non è valido');
+})->with([
+    'valore scalare' => ['123'],
+    'senza chiave regions' => [json_encode(['provinces' => []])],
+    'regions non e un array' => [json_encode(['regions' => 'not-array'])],
+    'regione senza province' => [json_encode(['regions' => [['name' => 'Lombardia', 'code' => '03', 'provinces' => []]]])],
+    'comune senza CAP' => [json_encode(['regions' => [[
+        'name' => 'Lombardia',
+        'code' => '03',
+        'provinces' => [['name' => 'Milano', 'code' => 'MI', 'cities' => [['name' => 'Milano', 'code' => 'F205']]]],
+    ]]])],
+    'codice regione duplicato' => [json_encode([
+        'regions' => [geoRegionFixture('Lombardia', '03'), geoRegionFixture('Lazio', '03')],
+    ])],
+]);

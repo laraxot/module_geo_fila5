@@ -71,7 +71,7 @@ After every change:
 ## Documentation
 
 - [GSD Methodology](../../docs/project/gsd-methodology.md)
-- [UI Components](../../laravel/Modules/UI/docs/components.md)
+- [UI Components](../../../UI/docs/components.md)
 - [AGENTS.md](../../AGENTS.md)
 
 ## Roadmap

@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "04 advanced automation"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: advanced-automation.md
 ---
 
 

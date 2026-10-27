@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "consolidamento modelli geografici"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: geographic-models-consolidation.md
 ---
 
 # Analisi del Consolidamento dei Modelli Geografici
@@ -277,11 +278,3 @@ In sintesi, il modello `Comune` implementato rappresenta un caso di studio posit
 
 ---
 *Documento creato il: 27/05/2025*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

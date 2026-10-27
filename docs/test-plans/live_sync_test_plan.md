@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "live sync test plan"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: live-sync-test-plan.md
 ---
 
 # Live Sync Test Plan

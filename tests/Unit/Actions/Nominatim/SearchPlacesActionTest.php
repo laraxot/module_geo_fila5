@@ -2,101 +2,129 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Http;
+namespace Modules\Geo\Tests\Unit\Actions\Nominatim;
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Collection;
 use Modules\Geo\Actions\Nominatim\SearchPlacesAction;
-use Tests\TestCase;
+use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+use function Safe\json_encode;
 
-beforeEach(function () {
-    $this->action = app(SearchPlacesAction::class);
-    Http::fake();
+uses(LightTestCase::class);
+
+/**
+ * L'action costruisce da se' il client Guzzle: lo si sostituisce con uno che risponde dalla coda, senza rete.
+ *
+ * @return array{0: SearchPlacesAction, 1: MockHandler}
+ */
+function searchPlacesActionWithQueue(Response ...$queue): array
+{
+    $mockHandler = new MockHandler(array_values($queue));
+    $action = new SearchPlacesAction('FixCity');
+
+    (new \ReflectionProperty($action, 'client'))->setValue($action, new Client(['handler' => HandlerStack::create($mockHandler)]));
+
+    return [$action, $mockHandler];
+}
+
+/**
+ * @param list<array<string, mixed>> $places
+ */
+function nominatimSearchResponse(array $places): Response
+{
+    return new Response(200, [], json_encode($places));
+}
+
+/**
+ * Query string dell'ultima richiesta inviata a Nominatim.
+ *
+ * @return array<int|string, mixed>
+ */
+function lastSearchQuery(MockHandler $mockHandler): array
+{
+    $request = $mockHandler->getLastRequest();
+    if (null === $request) {
+        Assert::fail('Nominatim e stato chiamato zero volte');
+    }
+    parse_str($request->getUri()->getQuery(), $query);
+
+    return $query;
+}
+
+test('SearchPlacesAction maps every Nominatim place to a LocationData, in order', function (): void {
+    [$action] = searchPlacesActionWithQueue(nominatimSearchResponse([
+        ['lat' => '45.4642', 'lon' => '9.1900', 'display_name' => 'Milano, Lombardia, Italia', 'type' => 'city'],
+        ['lat' => '41.9028', 'lon' => '12.4964', 'display_name' => 'Roma, Lazio, Italia', 'type' => 'city'],
+    ]));
+
+    $places = $action->execute('Italia');
+
+    Assert::assertInstanceOf(Collection::class, $places);
+    Assert::assertCount(2, $places);
+    Assert::assertContainsOnlyInstancesOf(LocationData::class, $places);
+    Assert::assertSame([45.4642, 41.9028], $places->pluck('latitude')->all());
+    Assert::assertSame([9.19, 12.4964], $places->pluck('longitude')->all());
+    Assert::assertSame(['Milano, Lombardia, Italia', 'Roma, Lazio, Italia'], $places->pluck('address')->all());
 });
 
-afterEach(function () {
-    Http::assertNothingSent();
+test('SearchPlacesAction asks Nominatim for ten Italian results by default, without a country filter', function (): void {
+    [$action, $mockHandler] = searchPlacesActionWithQueue(nominatimSearchResponse([
+        ['lat' => '45.4642', 'lon' => '9.1900', 'display_name' => 'Milano'],
+    ]));
+
+    $action->execute('Milano');
+
+    Assert::assertSame([
+        'q' => 'Milano',
+        'format' => 'json',
+        'addressdetails' => '1',
+        'limit' => '10',
+        'accept-language' => 'it',
+    ], lastSearchQuery($mockHandler));
 });
 
-describe('SearchPlacesAction', function () {
-    it('returns places for valid query', function () {
-        Http::fake([
-            'nominatim.openstreetmap.org/search*' => Http::response([
-                [
-                    'place_id' => 12345,
-                    'licence' => 'Data © OpenStreetMap contributors',
-                    'osm_type' => 'node',
-                    'osm_id' => 123456,
-                    'lat' => '45.4642',
-                    'lon' => '9.1900',
-                    'display_name' => 'Milano, Lombardia, Italia',
-                    'class' => 'place',
-                    'type' => 'city',
-                    'importance' => 0.8,
-                ],
-                [
-                    'place_id' => 12346,
-                    'lat' => '41.9028',
-                    'lon' => '12.4964',
-                    'display_name' => 'Roma, Lazio, Italia',
-                    'class' => 'place',
-                    'type' => 'city',
-                    'importance' => 0.9,
-                ],
-            ], 200),
-        ]);
+test('SearchPlacesAction forwards the country and the limit to Nominatim and identifies the application', function (): void {
+    [$action, $mockHandler] = searchPlacesActionWithQueue(nominatimSearchResponse([
+        ['lat' => '45.4642', 'lon' => '9.1900', 'display_name' => 'Milano'],
+    ]));
 
-        $result = $this->action->execute('Milano');
+    $action->execute('Milano', 'it', 3);
 
-        expect($result)->toBeArray()->not->toBeEmpty();
-        expect($result[0])->toHaveKeys(['display_name', 'lat', 'lon', 'type']);
-        expect($result[0]['display_name'])->toContain('Milano');
-    });
+    $query = lastSearchQuery($mockHandler);
+    Assert::assertSame('it', $query['countrycodes']);
+    Assert::assertSame('3', $query['limit']);
+    Assert::assertSame('FixCity Application', $mockHandler->getLastRequest()?->getHeaderLine('User-Agent'));
+});
 
-    it('returns empty array for no results', function () {
-        Http::fake([
-            'nominatim.openstreetmap.org/search*' => Http::response([], 200),
-        ]);
+test('SearchPlacesAction sends apostrophes and accents in the query intact', function (string $query): void {
+    [$action, $mockHandler] = searchPlacesActionWithQueue(nominatimSearchResponse([
+        ['lat' => '45.0', 'lon' => '9.0', 'display_name' => 'Risultato'],
+    ]));
 
-        $result = $this->action->execute('NonExistentPlace12345');
+    $action->execute($query);
 
-        expect($result)->toBeArray()->toBeEmpty();
-    });
+    Assert::assertSame($query, lastSearchQuery($mockHandler)['q']);
+})->with([
+    'apostrofo' => ["Sant'Antonio"],
+    'accento' => ["Piazza dell'Unità"],
+]);
 
-    it('limits results to specified count', function () {
-        Http::fake([
-            'nominatim.openstreetmap.org/search*' => Http::response(array_fill(0, 10, [
-                'place_id' => 1,
-                'lat' => '45.0',
-                'lon' => '9.0',
-                'display_name' => 'Test',
-                'class' => 'place',
-                'type' => 'city',
-            ]), 200),
-        ]);
+test('SearchPlacesAction throws when Nominatim finds nothing', function (): void {
+    [$action] = searchPlacesActionWithQueue(nominatimSearchResponse([]));
 
-        $result = $this->action->execute('Test', 3);
+    expect(fn (): Collection => $action->execute('NonExistentPlace12345'))
+        ->toThrow(\RuntimeException::class, 'No results found for query');
+});
 
-        expect(count($result))->toBe(3);
-    });
+test('SearchPlacesAction wraps a Nominatim HTTP failure in a RuntimeException', function (): void {
+    [$action] = searchPlacesActionWithQueue(new Response(503));
 
-    it('handles special characters in query', function () {
-        Http::fake([
-            'nominatim.openstreetmap.org/search*' => Http::response([], 200),
-        ]);
-
-        $result = $this->action->execute("Sant'Antonio");
-
-        expect($result)->toBeArray();
-    });
-
-    it('handles network error', function () {
-        Http::fake([
-            'nominatim.openstreetmap.org/search*' => Http::response(null, 503),
-        ]);
-
-        expect(fn () => $this->action->execute('Test'))
-            ->toThrow(\Exception::class);
-    });
+    expect(fn (): Collection => $action->execute('Test'))
+        ->toThrow(\RuntimeException::class, 'Failed to search places:');
 });

@@ -2,90 +2,65 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Modules\Geo\Datas\TravelTimeData;
-use Tests\TestCase;
+namespace Modules\Geo\Tests\Unit\Datas;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+use Modules\Geo\Datas\Routing\TravelTimeData;
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-describe('TravelTimeData DTO', function () {
-    it('creates with all fields', function () {
-        $dto = new TravelTimeData(
-            origin: 'Milano, Italia',
-            destination: 'Roma, Italia',
-            distance: 570000,
-            duration: 19800,
-            durationInTraffic: 22500,
-            travelMode: 'driving',
-            departureTime: time() + 3600,
-        );
+uses(TestCase::class);
 
-        expect($dto->origin)->toBe('Milano, Italia');
-        expect($dto->destination)->toBe('Roma, Italia');
-        expect($dto->distance)->toBe(570000);
-        expect($dto->duration)->toBe(19800);
-        expect($dto->durationInTraffic)->toBe(22500);
-        expect($dto->travelMode)->toBe('driving');
-    });
+test('TravelTimeData fromGoogleResponse maps duration distance and status', function (): void {
+    $response = [
+        'status' => 'OK',
+        'rows' => [
+            [
+                'elements' => [
+                    [
+                        'duration' => ['value' => 19800, 'text' => '5 ore 30 min'],
+                        'duration_in_traffic' => ['value' => 22500, 'text' => '6 ore 15 min'],
+                        'distance' => ['value' => 570000, 'text' => '570 km'],
+                        'status' => 'OK',
+                    ],
+                ],
+            ],
+        ],
+    ];
 
-    it('creates with minimal fields', function () {
-        $dto = new TravelTimeData(
-            origin: 'A',
-            destination: 'B',
-            distance: 1000,
-            duration: 600,
-        );
+    $dto = TravelTimeData::fromGoogleResponse($response);
 
-        expect($dto->durationInTraffic)->toBeNull();
-        expect($dto->travelMode)->toBe('driving'); // default
-    });
+    Assert::assertSame(19800, $dto->duration_seconds);
+    Assert::assertSame(22500, $dto->duration_in_traffic_seconds);
+    Assert::assertSame(570000, $dto->distance_meters);
+    Assert::assertSame('5 ore 30 min', $dto->formatted_duration);
+    Assert::assertSame('OK', $dto->status);
+});
 
-    it('calculates traffic delay', function () {
-        $dto = new TravelTimeData(
-            origin: 'A',
-            destination: 'B',
-            distance: 10000,
-            duration: 600,
-            durationInTraffic: 900, // 50% longer
-        );
+test('TravelTimeData error factory returns zeroed metrics', function (): void {
+    $dto = TravelTimeData::error('ZERO_RESULTS');
 
-        expect($dto->getTrafficDelay())->toBe(300); // seconds
-        expect($dto->getTrafficDelayPercentage())->toBe(50.0);
-    });
+    Assert::assertSame(0, $dto->duration_seconds);
+    Assert::assertSame('N/D', $dto->formatted_duration);
+    Assert::assertSame('ZERO_RESULTS', $dto->status);
+});
 
-    it('returns zero delay if no traffic data', function () {
-        $dto = new TravelTimeData(
-            origin: 'A',
-            destination: 'B',
-            distance: 10000,
-            duration: 600,
-        );
+test('TravelTimeData fromGoogleResponse uses duration when traffic missing', function (): void {
+    $response = [
+        'status' => 'OK',
+        'rows' => [
+            [
+                'elements' => [
+                    [
+                        'duration' => ['value' => 600, 'text' => '10 min'],
+                        'distance' => ['value' => 1000, 'text' => '1 km'],
+                        'status' => 'OK',
+                    ],
+                ],
+            ],
+        ],
+    ];
 
-        expect($dto->getTrafficDelay())->toBe(0);
-        expect($dto->getTrafficDelayPercentage())->toBe(0.0);
-    });
+    $dto = TravelTimeData::fromGoogleResponse($response);
 
-    it('gets formatted duration', function () {
-        $dto = new TravelTimeData(
-            origin: 'A',
-            destination: 'B',
-            distance: 1000,
-            duration: 3661, // 1h 1m 1s
-        );
-
-        expect($dto->getFormattedDuration())->toBe('1h 1m');
-    });
-
-    it('converts to array', function () {
-        $dto = new TravelTimeData(
-            origin: 'A',
-            destination: 'B',
-            distance: 1000,
-            duration: 600,
-        );
-        $array = $dto->toArray();
-
-        expect($array)->toHaveKeys(['origin', 'destination', 'distance', 'duration', 'formatted_duration']);
-    });
+    Assert::assertSame(600, $dto->duration_in_traffic_seconds);
 });

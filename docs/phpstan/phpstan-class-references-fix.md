@@ -12,6 +12,8 @@ status: draft
 
 # PHPStan Class References Fix - Geo Module
 
+> **Nota stato 2026-10-20**: i fix ai punti 3 e 4 riguardavano `Geo/app/Services/GoogleMapsService.php`, file **eliminato** (No-Services). Non va riapplicato: l'equivalente oggi è `Geo/app/Actions/GoogleMaps/*` (in particolare `GoogleMapsHttpAction.php`, che sostituisce `GoogleMapsService` + `BaseGeoService`). Vedi [services-to-actions-geo.story.md](../stories/services-to-actions-geo.story.md) e [decision-log](../decision-log.md).
+
 ## Overview
 
 Questo documento descrive la risoluzione degli errori PHPStan relativi a classi non trovate, proprietà non esistenti, metodi duplicati e proprietà non definite nel modulo Geo.

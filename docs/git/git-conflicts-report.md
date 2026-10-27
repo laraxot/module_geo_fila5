@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "git conflicts report"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../git-conflicts-report.md
 ---
 
 # Global Git Conflict Report

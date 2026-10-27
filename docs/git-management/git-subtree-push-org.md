@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "git subtree push org"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../git/git-subtree-push-org.md
 ---
 
 # Script Push Subtree per Organizzazioni

@@ -120,12 +120,4 @@ All documentation has been updated to reflect:
 - [AddressInput Component Docs](../../../Modules/Geo/docs/address-input-component.md)
 - [Address Components Overview](../../../Modules/Geo/docs/address-field-component.md)
 - [Module Boundary Philosophy](../../../Modules/Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md)
-- [Geo Components Index](../../../Modules/Geo/docs/components/INDEX.md)
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev
+- [Geo Components Index](components/index.md)

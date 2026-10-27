@@ -185,9 +185,9 @@ Tutti i file factory devono essere validati con PHPStan livello 9:
 ## Collegamenti
 
 ### Documentazione Correlata
-- [Geo JSON Model](./geo-json-model.md)
-- [Comune Unificazione](./comune-unificazione-analisi.md)
-- [Consolidamento Modelli](./consolidamento-modelli-geografici.md)
+- [Geo JSON Model](./geo_json_model.md)
+- [Comune Unificazione](./comune_unificazione_analisi.md)
+- [Consolidamento Modelli](./consolidamento_modelli_geografici.md)
 - [Cache Strategy](./cache_strategy.md)
 
 ### Moduli Collegati
@@ -202,11 +202,3 @@ Tutti i file factory devono essere validati con PHPStan livello 9:
 
 *Analisi completa di 12 modelli attivi, 1 modello obsoleto identificato*
 *Sistema geografico completo per Italia con supporto internazionale*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

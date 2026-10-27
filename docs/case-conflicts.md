@@ -3,7 +3,7 @@ title: "case conflicts"
 type: note
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-25
 qmd: "case conflicts"
 issues: []
 discussions: []
@@ -14,8 +14,8 @@ status: draft
 
 Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dalla capitalizzazione. Va mantenuta una singola variante conforme agli standard Laraxot, aggiornando successivamente i riferimenti.
 
-- `Modules/Geo`: `changelog.md`, `changelog.md`
-- `Modules/Geo`: `license.md`, `license.md`
+- `Modules/Geo`: risolto — resta `CHANGELOG.md`, variante `changelog.md` archiviata come `.old`
+- `Modules/Geo`: risolto — resta `LICENSE.md`, variante `license.md` archiviata come `.old`
 - `Modules/Geo/.github`: `CONTRIBUTING.md`, `contributing.md`
 - `Modules/Geo/.github`: `FUNDING.yml`, `funding.yml`
 - `Modules/Geo/.github`: `SECURITY.md`, `security.md`
@@ -24,12 +24,9 @@ Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dal
 - `Modules/Geo/app/Filament/Widgets`: `ImprovedLocationMapWidget.wip`, `improvedlocationmapwidget.wip`
 - `Modules/Geo/app/Http/Livewire`: `Test.test`, `test.test`
 - `Modules/Geo/app/View/Components/Card`: `Place.json`, `place.json`
-- `Modules/Geo/docs`: `phpstan-fixes.md`, `phpstan-fixes.md`
-- `Modules/Geo/docs`: `project.md`, `project.md`
-- `Modules/Geo/docs`: `advanced-features.md`, `advanced-features.md`
-- `Modules/Geo/docs`: `mcp-server-recommended.md`, `mcp-server-recommended.md`
-- `Modules/Geo/docs`: `comprehensive-guide.md`, `comprehensive-guide.md`
-- `Modules/Geo/docs`: `technical.md`, `technical.md`
+- `Modules/Geo/docs` (radice): **0 gruppi** al 2026-10-25 — nessuna coppia case-twin residua: resta il canonico minuscolo, il gemello e archiviato come `*.old` (eccezione ammessa: `LICENSE` senza estensione)
+- `Modules/Geo/docs/raw` (archivio storico, non indicizzato): **16 gruppi** invariati — `raw/history` 15, `raw/errors` 1
+- `Modules/Geo/docs/wiki`, `Modules/Geo/docs/schema`, `Modules/Geo/docs/llm-wiki`: `AGENTS.md`/`agents.md` (3 gruppi, aperti)
 - `Modules/Geo/resources/css`: `MarkerCluster.Default.css`, `markercluster.default.css`
 - `Modules/Geo/resources/css`: `MarkerCluster.css`, `markercluster.css`
 - `Modules/Geo/resources/css`: `L.Control.Locate.mapbox.min.css`, `l.control.locate.mapbox.min.css`
@@ -63,11 +60,3 @@ Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dal
 - `Modules/Geo/tests/Unit`: `PlaceTest.test`, `placetest.test`
 
 **Nota**: uniformare i nomi (ad es. mantenendo PascalCase per classi/Livewire, maiuscolo per file di policy/README) e rimuovere i duplicati non necessari.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

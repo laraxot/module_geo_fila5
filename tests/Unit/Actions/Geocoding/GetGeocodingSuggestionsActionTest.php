@@ -2,40 +2,26 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+namespace Modules\Geo\Tests\Unit\Actions\Geocoding;
+
 use Modules\Geo\Actions\Geocoding\GetGeocodingSuggestionsAction;
-use Tests\TestCase;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(LightTestCase::class);
 
-beforeEach(function () {
-    $this->action = app(GetGeocodingSuggestionsAction::class);
+test('GetGeocodingSuggestionsAction returns an empty list for an empty query', function (): void {
+    Assert::assertSame([], app(GetGeocodingSuggestionsAction::class)->execute(''));
 });
 
-describe('GetGeocodingSuggestionsAction', function () {
-    it('returns empty array for empty query', function () {
-        $result = $this->action->execute('');
+test('GetGeocodingSuggestionsAction stub answers an empty list, never an error, whatever the query', function (string $query): void {
+    Assert::assertSame([], app(GetGeocodingSuggestionsAction::class)->execute($query));
+})->with([
+    'indirizzo' => ['Via Roma'],
+    'apostrofo e accento' => ["Piazza dell'Unità"],
+    'stringa lunga' => [str_repeat('Milano ', 50)],
+]);
 
-        expect($result)->toBeArray()->toBeEmpty();
-    });
+it('SENZA SORGENTE: returns address suggestions for a valid query (the action is a stub that always returns [])')->todo();
 
-    it('returns suggestions for valid query', function () {
-        $result = $this->action->execute('Via Roma');
-
-        expect($result)->toBeArray();
-    });
-
-    it('limits results to maximum count', function () {
-        $result = $this->action->execute('Milano', 5);
-
-        expect($result)->toBeArray();
-        expect(count($result))->toBeLessThanOrEqual(5);
-    });
-
-    it('handles special characters in query', function () {
-        $result = $this->action->execute("Piazza dell'Unità");
-
-        expect($result)->toBeArray();
-    });
-});
+it('SENZA SORGENTE: returns at most the requested number of suggestions (execute() has no limit parameter)')->todo();

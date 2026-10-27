@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Filament\Forms\Components;
+namespace Modules\Geo\Tests\Unit\Filament\Forms\Components;
 
 use Modules\Geo\Filament\Forms\Components\CoordinatePicker;
+use Modules\Geo\Filament\Forms\Components\CoordinatePickerHelpers;
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
+use Modules\Geo\Tests\UnitTestCase;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\UnitTestCase;
 
 uses(UnitTestCase::class);
 
@@ -81,4 +82,9 @@ test('CoordinatePicker is not dehydrated by default', function (): void {
     $field = CoordinatePicker::make('test');
 
     Assert::assertFalse($field->isDehydrated());
+});
+
+test('coordinate picker helpers stay in the semantic UI namespace', function (): void {
+    Assert::assertSame(45.4642, CoordinatePickerHelpers::normalizeCoordinate('45.4642'));
+    Assert::assertNull(CoordinatePickerHelpers::normalizeCoordinate('invalid'));
 });

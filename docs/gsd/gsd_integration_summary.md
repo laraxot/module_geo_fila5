@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "gsd integration summary"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: gsd-integration-summary.md
 ---
 
 # GSD (Get Shit Done) Integration Summary
@@ -198,9 +199,9 @@ bmad-laravel-module-dev --module=Scheda
 4. **Crea roadmap** — Mappa requirements a fasi eseguibili
 
 **File creati**:
-- `project.md` — Vision del progetto
+- `PROJECT.md` — Vision del progetto
 - `REQUIREMENTS.md` — Requirements scoped
-- `roadmap.md` — Fasi mappate
+- `ROADMAP.md` — Fasi mappate
 - `STATE.md` — Decisioni e blockers
 - `.planning/research/` — Research findings
 

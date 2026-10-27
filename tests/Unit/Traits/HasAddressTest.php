@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Traits;
+namespace Modules\Geo\Tests\Unit\Traits;
 
 use Modules\Geo\Models\Traits\HasAddress;
+use Modules\Geo\Tests\Fixtures\Traits\HasAddressTestModel;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\Fixtures\Traits\HasAddressTestModel;
 
 /*
  * Pest: verifica API del trait HasAddress sulla fixture canonica HasAddressTestModel.

@@ -2,84 +2,178 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Http;
+namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\GoogleMaps\CalculateTravelTimeAction;
-use Tests\TestCase;
+use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Datas\Routing\TravelTimeData;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+use function Safe\json_encode;
 
-beforeEach(function () {
-    $this->action = app(CalculateTravelTimeAction::class);
-    Http::fake();
+uses(LightTestCase::class);
+
+it('throws exception when api key is not configured', function (): void {
+    $mockHandler = new MockHandler;
+    $handlerStack = HandlerStack::create($mockHandler);
+    $client = new Client(['handler' => $handlerStack]);
+    $action = new CalculateTravelTimeAction($client);
+
+    config(['services.google.maps_api_key' => null]);
+
+    $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+    $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
+
+    try {
+        $action->execute($origin, $destination);
+
+        Assert::fail('Expected RuntimeException was not thrown');
+    } catch (\RuntimeException $exception) {
+        Assert::assertSame('Google Maps API key not configured', $exception->getMessage());
+    }
 });
 
-afterEach(function () {
-    Http::assertNothingSent();
+it('throws exception when origin and destination are the same', function (): void {
+    $mockHandler = new MockHandler;
+    $handlerStack = HandlerStack::create($mockHandler);
+    $client = new Client(['handler' => $handlerStack]);
+    $action = new CalculateTravelTimeAction($client);
+
+    config(['services.google.maps_api_key' => 'test_key']);
+
+    $location = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+
+    expect(fn (): TravelTimeData => $action->execute($location, $location))
+        ->toThrow(\InvalidArgumentException::class);
 });
 
-describe('CalculateTravelTimeAction', function () {
-    it('returns travel time between two points', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/distancematrix/json*' => Http::response([
-                'destination_addresses' => ['Roma, Italia'],
-                'origin_addresses' => ['Milano, Italia'],
-                'rows' => [[
-                    'elements' => [[
-                        'distance' => ['text' => '570 km', 'value' => 570000],
-                        'duration' => ['text' => '5 hours 30 mins', 'value' => 19800],
-                        'duration_in_traffic' => ['text' => '6 hours 15 mins', 'value' => 22500],
-                        'status' => 'OK',
-                    ]],
-                ]],
-                'status' => 'OK',
-            ], 200),
-        ]);
+it('returns error travel time data for failed api request', function (): void {
+    $mockHandler = new MockHandler;
+    $handlerStack = HandlerStack::create($mockHandler);
+    $client = new Client(['handler' => $handlerStack]);
+    $action = new CalculateTravelTimeAction($client);
 
-        $result = $this->action->execute('Milano, Italia', 'Roma, Italia');
+    config(['services.google.maps_api_key' => 'test_key']);
 
-        expect($result)->toBeArray()
-            ->toHaveKeys(['distance', 'duration', 'duration_in_traffic']);
-        expect($result['duration']['value'])->toBe(19800);
-        expect($result['duration_in_traffic']['value'])->toBe(22500);
-    });
+    $mockHandler->append(new Response(500, [], 'Server Error'));
 
-    it('supports different travel modes', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/distancematrix/json*' => Http::response([
-                'rows' => [[['elements' => [['duration' => ['value' => 3600], 'status' => 'OK']]]]],
-                'status' => 'OK',
-            ], 200),
-        ]);
+    $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+    $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
 
-        $result = $this->action->execute('A', 'B', 'transit');
+    $result = $action->execute($origin, $destination);
 
-        expect($result)->toHaveKey('duration');
-    });
+    Assert::assertSame('REQUEST_FAILED', $result->status);
+});
 
-    it('supports departure time for traffic', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/distancematrix/json*' => Http::response([
-                'rows' => [[['elements' => [['duration_in_traffic' => ['value' => 7200], 'status' => 'OK']]]]],
-                'status' => 'OK',
-            ], 200),
-        ]);
+it('returns error for invalid response status', function (): void {
+    $mockHandler = new MockHandler;
+    $handlerStack = HandlerStack::create($mockHandler);
+    $client = new Client(['handler' => $handlerStack]);
+    $action = new CalculateTravelTimeAction($client);
 
-        $departureTime = time() + 3600; // 1 hour from now
-        $result = $this->action->execute('A', 'B', 'driving', $departureTime);
+    config(['services.google.maps_api_key' => 'test_key']);
 
-        expect($result)->toHaveKey('duration_in_traffic');
-    });
+    $mockHandler->append(new Response(200, [], json_encode([
+        'status' => 'INVALID_REQUEST',
+    ])));
 
-    it('handles ZERO_RESULTS', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/distancematrix/json*' => Http::response([
+    $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+    $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
+
+    $result = $action->execute($origin, $destination);
+
+    Assert::assertSame('INVALID_RESPONSE', $result->status);
+});
+
+it('returns error when no route found', function (): void {
+    $mockHandler = new MockHandler;
+    $handlerStack = HandlerStack::create($mockHandler);
+    $client = new Client(['handler' => $handlerStack]);
+    $action = new CalculateTravelTimeAction($client);
+
+    config(['services.google.maps_api_key' => 'test_key']);
+
+    $mockHandler->append(new Response(200, [], json_encode([
+        'status' => 'OK',
+        'rows' => [[
+            'elements' => [[
                 'status' => 'ZERO_RESULTS',
-            ], 200),
-        ]);
+            ]],
+        ]],
+    ])));
 
-        expect(fn () => $this->action->execute('Invalid', 'Invalid'))
-            ->toThrow(\Exception::class);
-    });
+    $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+    $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
+
+    $result = $action->execute($origin, $destination);
+
+    Assert::assertSame('NO_ROUTE', $result->status);
+});
+
+it('returns travel time data for valid route', function (): void {
+    $mockHandler = new MockHandler;
+    $handlerStack = HandlerStack::create($mockHandler);
+    $client = new Client(['handler' => $handlerStack]);
+    $action = new CalculateTravelTimeAction($client);
+
+    config(['services.google.maps_api_key' => 'test_key']);
+
+    $mockHandler->append(new Response(200, [], json_encode([
+        'status' => 'OK',
+        'rows' => [[
+            'elements' => [[
+                'duration' => ['value' => 19800, 'text' => '5 hours 30 mins'],
+                'duration_in_traffic' => ['value' => 21000, 'text' => '5 hours 50 mins'],
+                'distance' => ['value' => 572000, 'text' => '572 km'],
+            ]],
+        ]],
+    ])));
+
+    $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+    $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
+
+    $result = $action->execute($origin, $destination);
+
+    Assert::assertSame(19800, $result->duration_seconds);
+
+    Assert::assertSame(21000, $result->duration_in_traffic_seconds);
+
+    Assert::assertSame(572000, $result->distance_meters);
+
+    Assert::assertSame('5 hours 30 mins', $result->formatted_duration);
+
+    Assert::assertSame('572 km', $result->formatted_distance);
+
+    Assert::assertSame('OK', $result->status);
+});
+
+it('uses duration as fallback for duration in traffic', function (): void {
+    $mockHandler = new MockHandler;
+    $handlerStack = HandlerStack::create($mockHandler);
+    $client = new Client(['handler' => $handlerStack]);
+    $action = new CalculateTravelTimeAction($client);
+
+    config(['services.google.maps_api_key' => 'test_key']);
+
+    $mockHandler->append(new Response(200, [], json_encode([
+        'status' => 'OK',
+        'rows' => [[
+            'elements' => [[
+                'duration' => ['value' => 19800, 'text' => '5 hours 30 mins'],
+                'distance' => ['value' => 572000, 'text' => '572 km'],
+            ]],
+        ]],
+    ])));
+
+    $origin = new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano');
+    $destination = new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma');
+
+    $result = $action->execute($origin, $destination);
+
+    Assert::assertSame(19800, $result->duration_in_traffic_seconds);
 });

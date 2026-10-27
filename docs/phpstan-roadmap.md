@@ -87,11 +87,3 @@ return $this->state(
 ---
 **Status**: ✅ Fully Compliant (Level 10)
 **Next**: Monitor for any future regressions
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

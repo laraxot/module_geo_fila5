@@ -89,7 +89,7 @@ Risolti sistematicamente 9 errori PHPStan critici attraverso l'analisi del codic
 ## Collegamenti Tecnici
 
 - [Correzioni Dettagliate](../laravel/modules/xot/docs/phpstan-fixes-[date].md)
-- [Regole PHPStan Critiche](../laravel/modules/xot/docs/phpstan-critical-rules.md)
+- [Regole PHPStan Critiche](../../Xot/docs/phpstan-critical-rules.md)
 - [Linee Guida Livello 10](../laravel/modules/xot/docs/phpstan-level10-guidelines.md)
 - [Chart Model Fixes](../laravel/modules/chart/docs/phpstan/chart-model-fixes.md)
 
@@ -99,11 +99,3 @@ Questo intervento consolida l'approccio sistematico alla risoluzione di errori P
 
 *Documento aggiornato: 8 Gennaio 2025*
 *Conformità: PHPStan Level 9+, Laraxot Conventions*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

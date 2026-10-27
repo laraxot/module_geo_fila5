@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan compliance"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-compliance.md
 ---
 
 # PHPStan Compliance - Geo Module

@@ -313,11 +313,3 @@ use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 - [Memorie: Casting Actions](.cursor/memories/casting-actions.mdc)
 
 ---
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

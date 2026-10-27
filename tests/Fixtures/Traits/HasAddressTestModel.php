@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Fixtures\Traits;
+namespace Modules\Geo\Tests\Fixtures\Traits;
 
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Traits\HasAddress;
@@ -26,7 +26,7 @@ final class HasAddressTestModel extends BaseModel
     {
         parent::boot();
 
-        self::creating(static function (): void {
+        static::creating(static function (): void {
             if (! app()->environment('testing')) {
                 throw new \Exception('HasAddressTestModel should only be used in tests.');
             }

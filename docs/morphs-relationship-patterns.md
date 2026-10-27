@@ -156,11 +156,3 @@ In una visione zen, la corretta implementazione delle relazioni polimorfiche rap
 La rimozione della duplicazione dei timestamps riflette il principio di semplicità e non-ridondanza, creando uno schema più pulito, coerente e manutenibile.
 
 Questa implementazione non è solo tecnicamente corretta, ma riflette una comprensione profonda dei principi architetturali, filosofici e persino spirituali che guidano lo sviluppo di software di qualità.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

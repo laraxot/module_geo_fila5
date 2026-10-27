@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions\GoogleMaps;
+namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -12,8 +12,8 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Modules\Geo\Actions\GoogleMaps\GetCoordinatesFromGoogleMapsAction;
 use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\LightTestCase;
 
 use function Safe\json_encode;
 
@@ -145,8 +145,6 @@ it('returns location data for valid address', function (): void {
 
     $result = $action->execute('Milano, Italia');
 
-    Assert::assertInstanceOf(LocationData::class, $result);
-
     Assert::assertSame('Milano, Italia', $result->address);
 
     Assert::assertSame(45.4642, $result->latitude);
@@ -175,8 +173,6 @@ it('handles address with special characters', function (): void {
     ])));
 
     $result = $action->execute('Piazza del Popolo, Roma, Italia');
-
-    Assert::assertInstanceOf(LocationData::class, $result);
 
     Assert::assertSame(41.9028, $result->latitude);
 

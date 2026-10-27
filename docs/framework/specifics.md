@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "specifics"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Framework Specifics and Integrations
@@ -280,13 +281,4 @@ class SendWelcomeEmail
 ```
 
 ---
-
-title: "specifics"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "specifics"
-issues: []
-discussions: []
 **See Also**: [Eloquent Properties](../claude/eloquent-properties.md) | [Schemaless Attributes](schemaless-attributes.md)

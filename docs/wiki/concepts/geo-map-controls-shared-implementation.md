@@ -13,6 +13,7 @@ stories:
   - 8-78-ticket-list-polish
   - 8-79-geo-map-controls-unification
   - 8-80-geo-map-lit-shared-modules
+status: draft
 ---
 
 # Geo Map Controls — Shared Implementation Pattern

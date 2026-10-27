@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan fixes 2"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-fixes-geo-module.md
 ---
 
 # PHPStan Fixes for Geo Module

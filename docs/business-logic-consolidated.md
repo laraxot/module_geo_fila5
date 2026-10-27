@@ -252,9 +252,9 @@ User (base)
 ### Documentazione Moduli
 - [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
 - [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
-- [User](../../User/docs/readme.md)
+- [User](../../User/docs/README.md)
 - [Geo](README.md)
-- [Media](../../Media/docs/readme.md)
+- [Media](../../Media/docs/README.md)
 - [UI](../../UI/docs/README.md)
 - [Xot](../../Xot/docs/README.md)
 
@@ -268,11 +268,3 @@ User (base)
 **Versione**: 2.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Rifattorizzata
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

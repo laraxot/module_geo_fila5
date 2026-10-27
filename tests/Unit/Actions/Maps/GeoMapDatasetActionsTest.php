@@ -5,8 +5,8 @@ declare(strict_types=1);
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetCategoriesAction;
 use Modules\Geo\Actions\Maps\GetGeoMapDatasetStatsAction;
 use Modules\Geo\Actions\Maps\LoadGeoMapDatasetAction;
+use Modules\Geo\Tests\Support\GeoMapDatasetFixture;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\Support\GeoMapDatasetFixture;
 
 test('load geo map dataset normalizes feature collection', function (): void {
     $normalized = app(LoadGeoMapDatasetAction::class)->execute(GeoMapDatasetFixture::path());

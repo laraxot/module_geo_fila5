@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Feature\Filament\Forms\Components;
+namespace Modules\Geo\Tests\Feature\Filament\Forms\Components;
 
 use Modules\Geo\Filament\Forms\Components\MapPicker;
+use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\LightTestCase;
 
 uses(LightTestCase::class);
 

@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions;
+namespace Modules\Geo\Tests\Unit\Actions;
 
 use Modules\Geo\Actions\GoogleMapsAction;
 use PHPUnit\Framework\Assert;
 
 it('can be instantiated', function (): void {
     $service = new GoogleMapsAction;
-    Assert::assertInstanceOf(GoogleMapsAction::class, $service);
+
+    Assert::assertSame(GoogleMapsAction::class, $service::class);
 });
 
 it('has correct constants defined', function (): void {

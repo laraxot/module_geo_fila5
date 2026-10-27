@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "architecture"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module Architecture
@@ -126,15 +127,6 @@ Per tutti gli indirizzi italiani è obbligatorio:
 - Documentare sempre la scelta e aggiornarla in caso di evoluzione di Laravel.
 
 ---
-
-title: "architecture"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "architecture"
-issues: []
-discussions: []
 ## Perché non usare $table->timestamps() ma updateTimestamps($table, true)?
 
 - La funzione custom `updateTimestamps($table, true)` aggiunge sia i timestamps standard (`created_at`, `updated_at`) sia (se configurato) i soft deletes (`deleted_at`), e può gestire anche colonne custom come `created_by`, `updated_by`.
@@ -144,11 +136,3 @@ discussions: []
 ---
 
 > Vedi anche: Xot/docs/standards/coding-standards.md, Xot/docs/filosofia.md, Xot/docs/zen.md
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

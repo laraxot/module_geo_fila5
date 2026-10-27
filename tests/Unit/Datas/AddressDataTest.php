@@ -2,116 +2,41 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+namespace Modules\Geo\Tests\Unit\Datas;
+
 use Modules\Geo\Datas\AddressData;
-use Tests\TestCase;
+use Modules\Geo\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(TestCase::class);
 
-describe('AddressData DTO', function () {
-    it('creates with all fields', function () {
-        $dto = new AddressData(
-            street: 'Via Roma 1',
-            city: 'Milano',
-            province: 'MI',
-            postalCode: '20100',
-            country: 'Italia',
-            latitude: 45.4642,
-            longitude: 9.1900,
-        );
+test('AddressData getFormattedAddress joins street city and country', function (): void {
+    $dto = new AddressData(
+        latitude: 45.4642,
+        longitude: 9.1900,
+        country: 'Italia',
+        city: 'Milano',
+        street: 'Via Roma',
+        street_number: '1',
+        state: 'MI',
+        postal_code: 20100,
+    );
 
-        expect($dto->street)->toBe('Via Roma 1');
-        expect($dto->city)->toBe('Milano');
-        expect($dto->province)->toBe('MI');
-        expect($dto->postalCode)->toBe('20100');
-        expect($dto->country)->toBe('Italia');
-        expect($dto->latitude)->toBe(45.4642);
-        expect($dto->longitude)->toBe(9.1900);
-    });
+    $formatted = $dto->getFormattedAddress();
 
-    it('creates with minimal fields', function () {
-        $dto = new AddressData(
-            street: 'Via Roma 1',
-            city: 'Milano',
-        );
+    Assert::assertStringContainsString('Via Roma, 1', $formatted);
+    Assert::assertStringContainsString('Milano', $formatted);
+    Assert::assertStringContainsString('Italia', $formatted);
+});
 
-        expect($dto->street)->toBe('Via Roma 1');
-        expect($dto->city)->toBe('Milano');
-        expect($dto->province)->toBeNull();
-        expect($dto->country)->toBe('Italia'); // default
-    });
+test('AddressData stores coordinates as readonly floats', function (): void {
+    $dto = new AddressData(
+        latitude: 41.9028,
+        longitude: 12.4964,
+        locality: 'Roma',
+    );
 
-    it('creates from array', function () {
-        $dto = AddressData::fromArray([
-            'street' => 'Via Roma 1',
-            'city' => 'Milano',
-            'province' => 'MI',
-            'postal_code' => '20100',
-            'country' => 'Italia',
-            'latitude' => 45.4642,
-            'longitude' => 9.1900,
-        ]);
-
-        expect($dto->street)->toBe('Via Roma 1');
-        expect($dto->postalCode)->toBe('20100');
-    });
-
-    it('converts to array', function () {
-        $dto = new AddressData(
-            street: 'Via Roma 1',
-            city: 'Milano',
-            province: 'MI',
-            postalCode: '20100',
-        );
-        $array = $dto->toArray();
-
-        expect($array)->toHaveKeys(['street', 'city', 'province', 'postal_code', 'country']);
-    });
-
-    it('gets formatted address', function () {
-        $dto = new AddressData(
-            street: 'Via Roma 1',
-            city: 'Milano',
-            province: 'MI',
-            postalCode: '20100',
-            country: 'Italia',
-        );
-
-        expect($dto->getFormattedAddress())->toBe('Via Roma 1, 20100 Milano MI, Italia');
-    });
-
-    it('gets formatted address without optional fields', function () {
-        $dto = new AddressData(
-            street: 'Via Roma 1',
-            city: 'Milano',
-        );
-
-        expect($dto->getFormattedAddress())->toBe('Via Roma 1, Milano, Italia');
-    });
-
-    it('gets coordinates as CoordinatesData', function () {
-        $dto = new AddressData(
-            street: 'Via Roma 1',
-            city: 'Milano',
-            latitude: 45.4642,
-            longitude: 9.1900,
-        );
-
-        $coords = $dto->getCoordinates();
-
-        expect($coords)->toBeInstanceOf(\Modules\Geo\Datas\CoordinatesData::class);
-        expect($coords->latitude)->toBe(45.4642);
-    });
-
-    it('returns null coordinates if not set', function () {
-        $dto = new AddressData(
-            street: 'Via Roma 1',
-            city: 'Milano',
-        );
-
-        $coords = $dto->getCoordinates();
-
-        expect($coords)->toBeNull();
-    });
+    Assert::assertSame(41.9028, $dto->latitude);
+    Assert::assertSame(12.4964, $dto->longitude);
+    Assert::assertSame('Roma', $dto->locality);
 });

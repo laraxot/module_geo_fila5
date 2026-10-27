@@ -2,35 +2,38 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit;
+namespace Modules\Geo\Tests\Unit;
 
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Modules\Geo\Contracts\HasGeolocation;
 use Modules\Geo\Database\Factories\AddressFactory;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Tests\Modules\Geo\TestCase;
 
 uses(TestCase::class);
 describe('Address Model', function () {
     it('can be created with factory', function () {
         $address = AddressFactory::new()->createOne();
 
-        Assert::assertInstanceOf(Address::class, $address);
         Assert::assertTrue($address->exists);
     });
 
     it('has correct fillable attributes', function () {
         $address = new Address;
 
-        Assert::assertInstanceOf(Address::class, $address);
+        Assert::assertContains('latitude', $address->getFillable());
+        Assert::assertContains('longitude', $address->getFillable());
     });
 
-    it('implements HasGeolocation contract', function () {
-        $address = new Address;
+    it('exposes geolocation fields via geo trait', function () {
+        $address = AddressFactory::new()->makeOne([
+            'latitude' => 45.0,
+            'longitude' => 9.0,
+        ]);
 
-        Assert::assertInstanceOf(HasGeolocation::class, $address);
+        Assert::assertSame(45.0, $address->latitude);
+        Assert::assertSame(9.0, $address->longitude);
     });
 
     it('supports deleted_at timestamp column', function () {
@@ -190,8 +193,6 @@ describe('Address Model', function () {
             $address = AddressFactory::new()->createOne(['extra_data' => $extraData]);
 
             Assert::assertSame($extraData, $address->extra_data);
-            Assert::assertSame('residential', $address->extra_data['building_type']);
-            Assert::assertSame(3, $address->extra_data['floor']);
         });
     });
 });

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "docs1"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Docs1
@@ -31,15 +32,6 @@ discussions: []
 ### 13. RIFERIMENTI E COLLEGAMENTI
 
 ---
-
-title: "docs1"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "docs1"
-issues: []
-discussions: []
 ## 1. ARCHITETTURA E STRUTTURA
 
 ### 1.1 Stack Tecnologico Laraxot

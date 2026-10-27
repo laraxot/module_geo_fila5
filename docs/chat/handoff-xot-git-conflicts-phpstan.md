@@ -45,5 +45,5 @@ cd laravel && ./vendor/bin/phpstan analyse Modules/Xot
 
 ## Canon
 
-- [conflict-resolution-progress](../../laravel/Modules/Xot/docs/git/logs/conflict-resolution-progress.md)
+- [conflict-resolution-progress](../../../Xot/docs/git/logs/conflict-resolution-progress.md)
 - [git-merge-conflict-inventory](../../laravel/Modules/Xot/docs/wiki/troubleshooting/git-merge-conflict-inventory.md)

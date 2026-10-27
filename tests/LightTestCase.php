@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo;
+namespace Modules\Geo\Tests;
 
-use Tests\Modules\Xot\XotBaseTestCase;
+use Modules\Xot\Tests\XotBaseTestCase;
 
 /**
  * LightTestCase - Base test class for Geo module.
  * Extends XotBaseTestCase for common test functionality.
  */
-abstract class LightTestCase extends XotBaseTestCase {}
+abstract class LightTestCase extends XotBaseTestCase
+{
+}

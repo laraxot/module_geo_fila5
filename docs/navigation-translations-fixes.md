@@ -89,7 +89,7 @@ status: draft
 - [Audit Generale Traduzioni Navigation](../../../docs/navigation-translations-audit.md)
 - [Documentazione Modulo Geo](README.md)
 - [Struttura Geo](structure.md)
-- [Regole Traduzioni Laraxot](../xot/docs/translation-rules.md)
+- [Regole Traduzioni Laraxot](../../Xot/docs/translation-rules.md)
 
 ## Note Tecniche
 
@@ -106,11 +106,3 @@ status: draft
 
 *Intervento completato il: [DATE]*
 *Conforme alle regole DRY + KISS*
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

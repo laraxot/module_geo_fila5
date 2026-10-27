@@ -172,11 +172,3 @@ issues: []
 discussions: []
 **Module Version**: Latest
 **Business Logic Status**: Core functionality implemented
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

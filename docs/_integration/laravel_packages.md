@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "laravel packages"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: laravel-packages.md
 ---
 
 # laravel_packages

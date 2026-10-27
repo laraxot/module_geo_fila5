@@ -2,109 +2,249 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+namespace Modules\Geo\Tests\Unit\Actions\GoogleMaps;
+
 use Illuminate\Support\Facades\Http;
 use Modules\Geo\Actions\GoogleMaps\CalculateDistanceMatrixAction;
-use Tests\TestCase;
+use Modules\Geo\Datas\LocationData;
+use Modules\Geo\Exceptions\GoogleMaps\GoogleMapsApiException;
+use Modules\Geo\Tests\LightTestCase;
+use PHPUnit\Framework\Assert;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(LightTestCase::class);
+it('throws exception when google maps api key is not configured', function (): void {
+    $action = new CalculateDistanceMatrixAction();
 
-beforeEach(function () {
-    $this->action = app(CalculateDistanceMatrixAction::class);
-    Http::fake();
+    config(['services.google.maps_api_key' => null]);
+
+    $origins = collect([
+        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
+    ]);
+
+    $destinations = collect([
+        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
+    ]);
+
+    try {
+        $action->execute($origins, $destinations);
+
+        Assert::fail('Expected GoogleMapsApiException was not thrown');
+    } catch (GoogleMapsApiException $exception) {
+        Assert::assertSame('API key non configurata', $exception->getMessage());
+    }
 });
 
-afterEach(function () {
-    Http::assertNothingSent();
+it('throws exception when api key is empty string', function (): void {
+    $action = new CalculateDistanceMatrixAction();
+
+    config(['services.google.maps_api_key' => '']);
+
+    $origins = collect([
+        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
+    ]);
+
+    $destinations = collect([
+        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
+    ]);
+
+    try {
+        $action->execute($origins, $destinations);
+
+        Assert::fail('Expected GoogleMapsApiException was not thrown');
+    } catch (GoogleMapsApiException) {
+    }
 });
 
-describe('CalculateDistanceMatrixAction', function () {
-    it('returns distance matrix for multiple origins and destinations', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/distancematrix/json*' => Http::response([
-                'destination_addresses' => ['Roma, Italia', 'Napoli, Italia'],
-                'origin_addresses' => ['Milano, Italia'],
-                'rows' => [
-                    [
-                        'elements' => [
-                            [
-                                'distance' => ['text' => '570 km', 'value' => 570000],
-                                'duration' => ['text' => '5 hours 30 mins', 'value' => 19800],
-                                'status' => 'OK',
-                            ],
-                            [
-                                'distance' => ['text' => '770 km', 'value' => 770000],
-                                'duration' => ['text' => '7 hours 15 mins', 'value' => 26100],
-                                'status' => 'OK',
-                            ],
-                        ],
+it('throws exception when api response is not successful', function (): void {
+    $action = new CalculateDistanceMatrixAction();
+
+    config(['services.google.maps_api_key' => 'test_key']);
+
+    Http::fake([
+        '*' => Http::response(['status' => 'REQUEST_DENIED'], 403),
+    ]);
+
+    $origins = collect([
+        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
+    ]);
+
+    $destinations = collect([
+        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
+    ]);
+
+    try {
+        $action->execute($origins, $destinations);
+
+        Assert::fail('Expected GoogleMapsApiException was not thrown');
+    } catch (GoogleMapsApiException $exception) {
+        Assert::assertSame('Richiesta fallita', $exception->getMessage());
+    }
+});
+
+it('throws exception when response status is not OK', function (): void {
+    $action = new CalculateDistanceMatrixAction();
+
+    config(['services.google.maps_api_key' => 'test_key']);
+
+    Http::fake([
+        '*' => Http::response(['status' => 'ZERO_RESULTS'], 200),
+    ]);
+
+    $origins = collect([
+        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
+    ]);
+
+    $destinations = collect([
+        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
+    ]);
+
+    try {
+        $action->execute($origins, $destinations);
+
+        Assert::fail('Expected GoogleMapsApiException was not thrown');
+    } catch (GoogleMapsApiException $exception) {
+        Assert::assertSame('Stato della risposta non valido', $exception->getMessage());
+    }
+});
+
+it('throws exception when response has no rows', function (): void {
+    $action = new CalculateDistanceMatrixAction();
+
+    config(['services.google.maps_api_key' => 'test_key']);
+
+    Http::fake([
+        '*' => Http::response(['status' => 'OK', 'rows' => []], 200),
+    ]);
+
+    $origins = collect([
+        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
+    ]);
+
+    $destinations = collect([
+        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
+    ]);
+
+    try {
+        $action->execute($origins, $destinations);
+
+        Assert::fail('Expected GoogleMapsApiException was not thrown');
+    } catch (GoogleMapsApiException $exception) {
+        Assert::assertSame('Nessun risultato', $exception->getMessage());
+    }
+});
+
+it('returns distance matrix for valid locations', function (): void {
+    $action = new CalculateDistanceMatrixAction();
+
+    config(['services.google.maps_api_key' => 'test_key']);
+
+    Http::fake([
+        '*' => Http::response([
+            'status' => 'OK',
+            'rows' => [[
+                'elements' => [[
+                    'distance' => ['text' => '572 km', 'value' => 572000],
+                    'duration' => ['text' => '5h 30m', 'value' => 19800],
+                    'status' => 'OK',
+                ]],
+            ]],
+        ], 200),
+    ]);
+
+    $origins = collect([
+        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
+    ]);
+
+    $destinations = collect([
+        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
+    ]);
+
+    $result = $action->execute($origins, $destinations);
+    Assert::assertCount(1, $result);
+
+    Assert::assertSame('572 km', $result[0][0]['distance']['text']);
+
+    Assert::assertSame(572000, $result[0][0]['distance']['value']);
+
+    Assert::assertSame('5h 30m', $result[0][0]['duration']['text']);
+
+    Assert::assertSame('OK', $result[0][0]['status']);
+});
+
+it('handles multiple origins and destinations', function (): void {
+    $action = new CalculateDistanceMatrixAction();
+
+    config(['services.google.maps_api_key' => 'test_key']);
+
+    Http::fake([
+        '*' => Http::response([
+            'status' => 'OK',
+            'rows' => [
+                [
+                    'elements' => [
+                        ['distance' => ['text' => '100 km', 'value' => 100000], 'duration' => ['text' => '1h', 'value' => 3600], 'status' => 'OK'],
+                        ['distance' => ['text' => '200 km', 'value' => 200000], 'duration' => ['text' => '2h', 'value' => 7200], 'status' => 'OK'],
                     ],
                 ],
-                'status' => 'OK',
-            ], 200),
-        ]);
+                [
+                    'elements' => [
+                        ['distance' => ['text' => '150 km', 'value' => 150000], 'duration' => ['text' => '1h 30m', 'value' => 5400], 'status' => 'OK'],
+                        ['distance' => ['text' => '250 km', 'value' => 250000], 'duration' => ['text' => '2h 30m', 'value' => 9000], 'status' => 'OK'],
+                    ],
+                ],
+            ],
+        ], 200),
+    ]);
 
-        $origins = ['Milano, Italia'];
-        $destinations = ['Roma, Italia', 'Napoli, Italia'];
+    $origins = collect([
+        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
+        new LocationData(latitude: 44.4056, longitude: 8.9463, address: 'Genova'),
+    ]);
 
-        $result = $this->action->execute($origins, $destinations);
+    $destinations = collect([
+        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
+        new LocationData(latitude: 40.8518, longitude: 14.2681, address: 'Napoli'),
+    ]);
 
-        expect($result)->toBeArray()
-            ->toHaveKeys(['rows', 'origin_addresses', 'destination_addresses']);
-        expect($result['rows'][0]['elements'][0]['distance']['value'])->toBe(570000);
-        expect($result['rows'][0]['elements'][1]['distance']['value'])->toBe(770000);
-    });
+    $result = $action->execute($origins, $destinations);
+    Assert::assertCount(2, $result);
 
-    it('handles single origin and destination', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/distancematrix/json*' => Http::response([
-                'destination_addresses' => ['Roma, Italia'],
-                'origin_addresses' => ['Milano, Italia'],
-                'rows' => [[
-                    'elements' => [[
-                        'distance' => ['text' => '570 km', 'value' => 570000],
-                        'duration' => ['text' => '5 hours 30 mins', 'value' => 19800],
-                        'status' => 'OK',
-                    ]],
+    Assert::assertSame(100000, $result[0][0]['distance']['value']);
+
+    Assert::assertSame(200000, $result[0][1]['distance']['value']);
+
+    Assert::assertSame(150000, $result[1][0]['distance']['value']);
+
+    Assert::assertSame(250000, $result[1][1]['distance']['value']);
+});
+
+it('handles zero results status', function (): void {
+    $action = new CalculateDistanceMatrixAction();
+
+    config(['services.google.maps_api_key' => 'test_key']);
+
+    Http::fake([
+        '*' => Http::response([
+            'status' => 'OK',
+            'rows' => [[
+                'elements' => [[
+                    'distance' => ['text' => '0 km', 'value' => 0],
+                    'duration' => ['text' => '0 min', 'value' => 0],
+                    'status' => 'ZERO_RESULTS',
                 ]],
-                'status' => 'OK',
-            ], 200),
-        ]);
+            ]],
+        ], 200),
+    ]);
 
-        $result = $this->action->execute(['Milano'], ['Roma']);
+    $origins = collect([
+        new LocationData(latitude: 45.4642, longitude: 9.1900, address: 'Milano'),
+    ]);
 
-        expect($result['rows'][0]['elements'][0]['status'])->toBe('OK');
-    });
+    $destinations = collect([
+        new LocationData(latitude: 41.9028, longitude: 12.4964, address: 'Roma'),
+    ]);
 
-    it('throws exception for invalid request', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/distancematrix/json*' => Http::response([
-                'status' => 'INVALID_REQUEST',
-                'error_message' => 'Missing required parameter.',
-            ], 200),
-        ]);
+    $result = $action->execute($origins, $destinations);
 
-        expect(fn () => $this->action->execute([], []))
-            ->toThrow(\Exception::class);
-    });
-
-    it('handles NOT_FOUND status for elements', function () {
-        Http::fake([
-            'maps.googleapis.com/maps/api/distancematrix/json*' => Http::response([
-                'destination_addresses' => ['Invalid Place'],
-                'origin_addresses' => ['Milano, Italia'],
-                'rows' => [[
-                    'elements' => [[
-                        'status' => 'NOT_FOUND',
-                    ]],
-                ]],
-                'status' => 'OK',
-            ], 200),
-        ]);
-
-        $result = $this->action->execute(['Milano'], ['Invalid Place']);
-
-        expect($result['rows'][0]['elements'][0]['status'])->toBe('NOT_FOUND');
-    });
+    Assert::assertSame('ZERO_RESULTS', $result[0][0]['status']);
 });

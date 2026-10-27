@@ -133,7 +133,7 @@ check-scripts-location:
 
 ## 📚 Riferimenti
 
-- [bashscripts/README.md](../../bashscripts/README.md) - Complete guide
+- [bashscripts/README.md](../../../../../bashscripts/README.md) - Complete guide
 - [.cursor/rules/scripts-location-mandatory.mdc](../../.cursor/rules/scripts-location-mandatory.mdc)
 - [docs/BASHSCRIPTS_ORGANIZATION_RULE.md](../BASHSCRIPTS_ORGANIZATION_RULE.md)
 

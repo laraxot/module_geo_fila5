@@ -46,12 +46,4 @@ status: draft
 
 1. ❌ Rimuovere `use Qua00k1Relationship;` duplicato da Sto00f
 2. ❌ Consolidare metodi Repart() in Rep00f
-<<<<<<< HEAD
 3. ❌ Creare trait per Wmen00f/Wstr02f relazioni duplicate
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
-3. ❌ Creare trait per Wmen00f/Wstr02f relazioni duplicate
->>>>>>> laraxot/dev

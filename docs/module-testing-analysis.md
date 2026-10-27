@@ -371,9 +371,9 @@ Questo documento fornisce un'analisi completa dello stato attuale di factory, se
 - [Lang](../laravel/modules/lang/docs/module-analysis-complete.md)
 - [Gdpr](../laravel/modules/gdpr/docs/module-analysis-complete.md)
 - [Tenant](../laravel/modules/tenant/docs/module-analysis-complete.md)
-- [Xot](../laravel/modules/xot/docs/module-analysis-complete.md)
+- [Xot](../../Xot/docs/module-analysis-complete.md)
 - [User](../../User/docs/module-analysis-complete.md)
-- [UI](../laravel/modules/ui/docs/module-analysis-complete.md)
+- [UI](../../UI/docs/module-analysis-complete.md)
 - [Geo](module-analysis-complete.md)
 - [Cms](../../Cms/docs/module-analysis-complete.md)
 - [Notify](../../Notify/docs/module-analysis-complete.md)
@@ -387,11 +387,3 @@ Questo documento fornisce un'analisi completa dello stato attuale di factory, se
 **Stato**: 100% moduli completati (14/14) ✅
 **Copertura Media**: 85%
 **Prossimo obiettivo**: Completamento factories e test unitari
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

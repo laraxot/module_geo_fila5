@@ -92,7 +92,7 @@ Tabella dedicata ma classe **senza logica**: non è duplicato di `Comune`/`cap` 
 
 ## 3. Trait e basi
 
-- `Traits/HasAddress`, `HasPlaceTrait`, `GeoTrait`, `GeographicalScopes`, `SushiToJsons`: incapsulano comportamento condiviso; non sono “modelli doppi”.
+- `Traits/HasAddress`, `HasPlaceTrait`, `GeoTrait`: incapsulano comportamento condiviso; non sono “modelli doppi”. `GeographicalScopes`, `SushiToJsons` (copia di Geo) e `HasAddresses` erano doppioni morti di `GeoTrait`, di `Modules\Tenant\Models\Traits\SushiToJsons` e di `HasAddress`: tolti, vedi [decision-log](./decision-log.md).
 
 ---
 
@@ -108,11 +108,3 @@ Tabella dedicata ma classe **senza logica**: non è duplicato di `Comune`/`cap` 
 - [Indice modulo](./00-index.md)
 - [Filosofia modulo](./module-philosophy.md)
 - Documentazione storica su comuni (molti file con nomi simili): preferire un **unico** documento canonico in un refactor successivo della cartella `docs/`.
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

@@ -3,14 +3,16 @@ title: "PHILOSOPHY"
 type: note
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-25
 qmd: "PHILOSOPHY"
 issues: []
 discussions: []
-status: draft
+status: active
 ---
 
 # Geo Module Philosophy
+
+> Sintesi condivisa lato tema: `Themes/*/docs/shared-components/philosophy.md`. Questo file resta il riferimento pieno del modulo Geo (v2.0).
 
 **Platform**: FixCity  
 **Language**: Italiano/English (bilingual)  
@@ -1049,11 +1051,3 @@ Welcome to the geographic heart of FixCity.
 **Last Updated**: 2026-09-06  
 **Maintainer**: FixCity Geo Team  
 **License**: By the module's license (check LICENSE file)  
-<<<<<<< HEAD
-
---- BMAD + Second Brain ---
-- Scopo: documentazione tecnica del modulo.
-- Utilità: riferimento sviluppatori/audit.
-- Funzionalità: struttura, dipendenze, convenzioni (no date .md, git avanti).
-=======
->>>>>>> laraxot/dev

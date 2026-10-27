@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\Modules\Geo\Unit\Actions\GeoData;
+namespace Modules\Geo\Tests\Unit\Actions\GeoData;
 
-use Modules\Geo\Actions\GeoData\GeoDataValidationRules;
+use Modules\Geo\Infrastructure\Validation\GeoDataValidationRules;
 use PHPUnit\Framework\Assert;
 
 it('returns validation rules and messages with string keys', function (): void {
