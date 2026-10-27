@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Province;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 use Sushi\Sushi;
+
+uses(TestCase::class);
 
 /**
  * Contratto di dominio Province (Sushi da comuni.json, gerarchia regione → province).

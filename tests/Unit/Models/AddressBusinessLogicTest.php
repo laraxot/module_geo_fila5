@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Builder;
 use Modules\Geo\Enums\AddressTypeEnum;
 use Modules\Geo\Models\Address;
 use Modules\Geo\Models\BaseModel;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 
 /*
  * Contratto di dominio Address (PostalAddress / Schema.org, geolocalizzazione, scope query).
