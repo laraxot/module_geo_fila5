@@ -76,7 +76,7 @@ tipizzate (8.3+) sono segnalate `classConstant.nativeTypeNotSupported` (61 in Ge
 scendere `constantTypeCoverage` (rule attiva solo con analisi dei path completi `Modules/`, i `@var` non contano).
 Le due regole sono inconciliabili con `^8.2`: serve `"php": "^8.3"` (o `config.platform.php`) nel `composer.json`
 radice, fuori dallo scope Geo. Lo stesso problema e' stato rilevato dal gruppo Lang e in
-`docs/bmad/incidenti/2026-10-06-const-to-enum-initiative.md`.
+`docs/bmad/incidenti/const-to-enum-initiative.md`.
 
 ## Suspicious / non toccato
 
