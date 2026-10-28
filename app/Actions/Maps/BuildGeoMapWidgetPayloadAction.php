@@ -148,8 +148,9 @@ class BuildGeoMapWidgetPayloadAction
             return ['lat' => 45.4642, 'lng' => 9.1900];
         }
 
-        $latitudes = $places->pluck('latitude')->filter(static fn ($value): bool => \is_float($value) || \is_int($value));
-        $longitudes = $places->pluck('longitude')->filter(static fn ($value): bool => \is_float($value) || \is_int($value));
+        $isNumber = static fn (mixed $value): bool => \is_float($value) || \is_int($value);
+        $latitudes = $places->pluck('latitude')->filter($isNumber);
+        $longitudes = $places->pluck('longitude')->filter($isNumber);
 
         return [
             'lat' => SafeFloatCastAction::cast($latitudes->average() ?? 45.4642),
