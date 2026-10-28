@@ -10,7 +10,7 @@ discussions: []
 status: stale
 ---
 
-> Nota 2026-10-14 (docs-audit): Indice del progetto PTVX, non del modulo Geo: dei suoi link relativi 41 non hanno bersaglio in questa cartella (installation.md, themes/, ../laravel/Modules/Performance/docs e altri). L'ingresso del modulo e' INDEX.md. Contenuto non riscritto, verificare prima di usarlo.
+> Nota 2026-10-14 (docs-audit): Indice del progetto PTVX, non del modulo Geo: dei suoi link relativi 41 non hanno bersaglio in questa cartella (installation.md, themes/, ../laravel/Modules/Performance/docs e altri). L'ingresso del modulo e' README.md. Contenuto non riscritto, verificare prima di usarlo.
 
 # PTVX - Documentazione Completa
 

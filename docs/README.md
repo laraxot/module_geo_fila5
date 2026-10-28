@@ -33,8 +33,9 @@ Dettaglio: [scopo.md](./scopo.md).
 | Percorso | Ruolo |
 |----------|--------|
 | [scopo.md](./scopo.md) | perche' esiste |
-| [INDEX.md](./index.md) | spine catalogo |
-| [00-INDEX.md](./00-index.md) | indice operativo storico (alias) |
+| [documentation-index.md](./documentation-index.md) | catalogo esteso del modulo |
+| [index.md](./index.md) | indice PTVX (stale, non del modulo) |
+| [00-index.md](./00-index.md) | alias storico verso questo README |
 | [decision-log.md](./decision-log.md) | decisioni |
 | [architecture/actions-over-services.md](./architecture/actions-over-services.md) | Actions > Services |
 | [stories/services-zombie-delete-wave3.story.md](./stories/services-zombie-delete-wave3.story.md) | delete-again Services |
