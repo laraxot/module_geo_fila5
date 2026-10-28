@@ -328,7 +328,7 @@ Motivo del gruppo: analisi di duplicati e ridondanza: casa naturale analysis/. S
 | `business-logic-consolidated.md` | `analysis/business-logic-consolidated.md` | Business Logic Consolidata - Progetto nome progetto | link in ingresso: 0 | proposto |
 | `business-logic-factory-seeder-audit.md` | `analysis/business-logic-factory-seeder-audit.md` | Business Logic Factory & Seeder Audit Completo | link in ingresso: 1 | proposto |
 | `business-logic-overview.md` | `analysis/business-logic-overview.md` | Geo Module - Business Logic Overview | link in ingresso: 0 | proposto |
-| `copilot-redundancy-audit-2026-05-25.md` | `analysis/copilot-redundancy-audit-2026-05-25.md` | copilot redundancy audit 2026 05 25 | link in ingresso: 0 | proposto |
+| `copilot-redundancy-audit.md` | `analysis/copilot-redundancy-audit-2026-05-25.md` | copilot redundancy audit 2026 05 25 | link in ingresso: 0 | proposto |
 | `copilot-redundancy-audit.md` | `analysis/copilot-redundancy-audit.md` | copilot redundancy audit | link in ingresso: 0 | proposto |
 | `data-consolidation-geo-module-classes-completed.md` | `analysis/DATA-CONSOLIDATION-geo-module-classes-completed.md` | Geo Module - Data Consolidation Report | link in ingresso: 0 | proposto |
 | `data-consolidation.md` | `analysis/DATA-CONSOLIDATION.md` | Geo Module - Data Consolidation Report | omonimo con contenuto diverso: `data-consolidation.md`; collisione di maiuscole nella destinazione; link in ingresso: 0 | proposto |

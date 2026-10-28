@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-use Filament\Support\Components\Attributes\ExposedLivewireMethod;
+use Filament\Support\Components\Attributes\Exposed;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Renderless;
 use Modules\Geo\Filament\Forms\Components\CoordinatePickerHelpers;
@@ -201,7 +201,7 @@ abstract class XotBaseCoordinateField extends XotBaseField
     /**
      * @return list<array<string, mixed>>
      */
-    #[ExposedLivewireMethod]
+    #[Exposed]
     #[Renderless]
     public function searchAddress(string $query): array
     {
@@ -211,7 +211,7 @@ abstract class XotBaseCoordinateField extends XotBaseField
     /**
      * @return array<string, mixed>|null
      */
-    #[ExposedLivewireMethod]
+    #[Exposed]
     #[Renderless]
     public function reverseGeocode(float $latitude, float $longitude): ?array
     {

@@ -7,14 +7,14 @@ updated: 2026-09-26
 qmd: "git scripts"
 issues: []
 discussions: []
+status: draft
+---
+
 # 📝 Documentazione Script Git
 
 > **Revisione manuale:** File rivisto per eliminare duplicazioni, conflitti e marker. Strutturato per massima chiarezza, con esempi pratici e riferimenti architetturali.
 
 > **Backlink:** [README globale](./README.md) · [scripts_conflict_resolution.md](./scripts_conflict_resolution.md)
-
-status: draft
----
 
 ## Obiettivo
 Fornire una panoramica aggiornata e priva di conflitti sugli script bash per la gestione avanzata di Git e subtree nel progetto.
