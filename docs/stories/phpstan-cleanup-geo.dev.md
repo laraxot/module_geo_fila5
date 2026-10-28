@@ -4,7 +4,7 @@ type: dev
 module: Geo
 status: done-with-open-decision
 created: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-28
 tags: [phpstan, geo, constants, bmad]
 related:
   - ./phpstan-cleanup-geo.story.md
@@ -104,3 +104,11 @@ radice, fuori dallo scope Geo. Lo stesso problema e' stato rilevato dal gruppo L
   un file con altro nome ha 0 errori. Il test e' stato comunque riscritto con proprieta' esplicita (neutro).
 - **Un test che istanzia e non asserta e' un test mancante**: la variabile "mai letta" indicava l'assert dimenticato
   (`$patient['type']` mai usato -> `model_type` hardcoded), non codice da cancellare.
+
+## Round 2026-10-28 — paramTypeCoverage
+
+File: `Actions/GoogleMaps/GetAddressFromGoogleMapsAction`, `Actions/Maps/BuildGeoMapWidgetPayloadAction`,
+`Filament/Forms/Components/AddressesField`, `Filament/Widgets/OSMMapWidget`, `Models/{ComuneJson,Locality}`,
+`Rules/FilterCoordinatesInRadius`. Dettaglio per file nella Analysis della story. Verifica:
+`cd laravel && ./vendor/bin/phpstan analyse Modules --memory-limit=-1 --no-progress --error-format=raw | grep Modules/Geo/` (vuoto).
+
