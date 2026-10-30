@@ -19,4 +19,7 @@ return [
     'use_my_location' => 'Meinen Standort verwenden',
     'zoom_in' => 'Vergrößern',
     'zoom_out' => 'Verkleinern',
+    'latitude_abbr' => 'Lat',
+    'longitude_abbr' => 'Lng',
+    'city' => 'Stadt',
 ];

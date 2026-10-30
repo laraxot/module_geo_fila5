@@ -39,6 +39,7 @@ Dettaglio: [scopo.md](./scopo.md).
 | [decision-log.md](./decision-log.md) | decisioni |
 | [architecture/actions-over-services.md](./architecture/actions-over-services.md) | Actions > Services |
 | [stories/services-zombie-delete-wave3.story.md](./stories/services-zombie-delete-wave3.story.md) | delete-again Services |
+| [stories/blade-i18n-no-hardcoded-text.story.md](./stories/blade-i18n-no-hardcoded-text.story.md) | niente testi fissi nelle Blade (it, en, de, es) |
 | [best-practices.md](./best-practices.md) | pratiche (canon kebab; stub `BEST_PRACTICES.md`) |
 | [json-database.md](./json-database.md) / [json-usage.md](./json-usage.md) | JSON comuni |
 | [address-resource-improvements.md](./address-resource-improvements.md) | AddressResource (stub sugli alias underscore/camel) |

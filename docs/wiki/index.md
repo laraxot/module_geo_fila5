@@ -24,6 +24,7 @@ status: draft
 - [coordinate-picker-field](./concepts/coordinate-picker-field.md) - il campo Filament del picker e il suo componente Lit
 - [coordinate-picker-design-comuni-runtime-rule](./concepts/coordinate-picker-design-comuni-runtime-rule.md) - regola runtime del picker nelle pagine Design Comuni
 - [geo-map-lit](./concepts/geo-map-lit.md) - il componente mappa `geo-map-lit`
+- [mobile-viewport-zoom-contract](./concepts/mobile-viewport-zoom-contract.md) - zoom pagina accessibile sulle mappe statiche
 - [Elenco completo dei concept](./concepts/index.md) - tutti i 148 concept della cartella, uno per riga
 
 ## AI / second brain

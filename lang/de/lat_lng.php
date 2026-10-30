@@ -33,4 +33,9 @@ return [
     ],
     'label' => 'Missing Label',
     'plural_label' => 'Missing Plural label',
+    'widget' => [
+        'locating' => [
+            'label' => 'Standort wird ermittelt...',
+        ],
+    ],
 ];
