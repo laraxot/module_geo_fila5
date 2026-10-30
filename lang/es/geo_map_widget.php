@@ -7,6 +7,9 @@ return [
         'description' => [
             'description' => 'Port en Lit del comportamiento y del lenguaje visual originales de farmshops.eu.',
         ],
+        'title' => [
+            'title' => 'Réplica de farmshops.eu',
+        ],
     ],
     'stats' => [
         'features' => [

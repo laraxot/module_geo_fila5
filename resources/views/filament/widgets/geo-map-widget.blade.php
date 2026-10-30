@@ -11,7 +11,7 @@ $widgetId = 'geo-map-widget-'.spl_object_id($this);
         <div class="space-y-4">
             <div class="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                    <h3 class="text-base font-semibold text-gray-950 dark:text-white">farmshops.eu Replica</h3>
+                    <h3 class="text-base font-semibold text-gray-950 dark:text-white">{{ __('geo::geo_map_widget.sections.title.title') }}</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-400">
                         {{ __('geo::geo_map_widget.sections.description.description') }}
                     </p>

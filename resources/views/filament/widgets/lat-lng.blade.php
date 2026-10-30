@@ -16,11 +16,11 @@ declare(strict_types=1);
         </template>
         <template x-if="!loading">
             <div>
-                Lat-lng <br/>
-                lat:{{ $lat }}<br/>
-                lng:{{ $lng }}<br/>
+                {{ __('geo::lat_lng.widget.heading.title') }} <br/>
+                {{ __('geo::lat_lng.widget.latitude.label') }}:{{ $lat }}<br/>
+                {{ __('geo::lat_lng.widget.longitude.label') }}:{{ $lng }}<br/>
                 <template x-if="$wire.err_code">
-                    <span>err_code:{{ $err_code }}<br/>err_message:{{ $err_message }}<br/></span>
+                    <span>{{ __('geo::lat_lng.widget.error_code.label') }}:{{ $err_code }}<br/>{{ __('geo::lat_lng.widget.error_message.label') }}:{{ $err_message }}<br/></span>
                 </template>
             </div>
         </template>
