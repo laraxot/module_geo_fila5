@@ -33,4 +33,9 @@ return [
     ],
     'label' => 'Lat Lng',
     'plural_label' => 'Lat Lng (Plurale)',
+    'widget' => [
+        'locating' => [
+            'label' => 'Recupero posizione...',
+        ],
+    ],
 ];

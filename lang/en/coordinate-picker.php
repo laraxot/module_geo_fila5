@@ -29,4 +29,6 @@ return [
         'satellite' => 'Satellite (Esri)',
         'topographic' => 'Topographic (Esri)',
     ],
+    'latitude_abbr' => 'Lat',
+    'longitude_abbr' => 'Lng',
 ];
