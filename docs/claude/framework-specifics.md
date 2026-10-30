@@ -223,7 +223,7 @@ use Modules\NomeModulo\Models\User;
 
 class StatsOverviewWidget extends BaseWidget
 {
-    protected static ?bool $isLazy = true;
+    protected static ?bool $isLazyLoaded = true;
     
     /**
      * @return array<Stat>
