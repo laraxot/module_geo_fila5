@@ -37,5 +37,20 @@ return [
         'locating' => [
             'label' => 'Recupero posizione...',
         ],
+        'heading' => [
+            'title' => 'Lat-lng',
+        ],
+        'latitude' => [
+            'label' => 'lat',
+        ],
+        'longitude' => [
+            'label' => 'lng',
+        ],
+        'error_code' => [
+            'label' => 'err_code',
+        ],
+        'error_message' => [
+            'label' => 'err_message',
+        ],
     ],
 ];

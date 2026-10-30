@@ -7,6 +7,9 @@ return [
         'description' => [
             'description' => 'Lit port of the original farmshops.eu behaviour and visual language.',
         ],
+        'title' => [
+            'title' => 'farmshops.eu Replica',
+        ],
     ],
     'stats' => [
         'features' => [
