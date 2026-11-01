@@ -1,3 +1,15 @@
+---
+title: "visual tools"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "visual tools"
+issues: []
+discussions: []
+status: draft
+---
+
 # Visual Regression & Documentation Tool (Playwright)
 
 ## Overview

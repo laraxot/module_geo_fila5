@@ -9,6 +9,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\TravelTimeData;
+use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 
 use function Safe\json_decode;
 
@@ -25,7 +26,7 @@ class CalculateTravelTimeAction
 {
     use QueueableAction;
 
-    private const string API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+    private const string API_URL = GeoApiEndpoints::GOOGLE_DISTANCE_MATRIX;
 
     public function __construct(
         private readonly Client $client,
@@ -119,12 +120,12 @@ class CalculateTravelTimeAction
          * } $data */
         $data = json_decode($response, true);
 
-        if (($data['status']) !== 'OK') {
+        if ('OK' !== $data['status']) {
             return TravelTimeData::error($data['status']);
         }
 
         $element = $data['rows'][0]['elements'][0];
-        if (! $element || ($element['status']) !== 'OK') {
+        if (! $element || 'OK' !== $element['status']) {
             return TravelTimeData::error($element['status']);
         }
 

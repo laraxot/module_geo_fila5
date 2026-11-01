@@ -19,7 +19,8 @@ class FilterCoordinatesInRadius implements ValidationRule
         private readonly float $centerLatitude,
         private readonly float $centerLongitude,
         private readonly int $radius,
-    ) {}
+    ) {
+    }
 
     public function validate(string $attribute, mixed $value, \Closure $fail): void
     {
@@ -31,8 +32,8 @@ class FilterCoordinatesInRadius implements ValidationRule
     /**
      * Determina se le coordinate passate sono all'interno del raggio specificato.
      *
-     * @param  mixed  $_attribute  Nome dell'attributo
-     * @param  mixed  $value  Valore da validare
+     * @param mixed $_attribute Nome dell'attributo
+     * @param mixed $value      Valore da validare
      */
     public function passes(mixed $_attribute, mixed $value): bool
     {
@@ -43,7 +44,7 @@ class FilterCoordinatesInRadius implements ValidationRule
         }
 
         /** @var array<array{latitude: string, longitude: string}> $coordinates */
-        $coordinates = array_map(static function ($coordinate): array {
+        $coordinates = array_map(static function (mixed $coordinate): array {
             if (! \is_array($coordinate)) {
                 return ['latitude' => '', 'longitude' => ''];
             }

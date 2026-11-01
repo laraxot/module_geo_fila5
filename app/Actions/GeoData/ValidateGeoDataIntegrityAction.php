@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Actions\GeoData;
 
+use Modules\Geo\Infrastructure\Validation\GeoDataValidationRules;
+
 use Illuminate\Support\Facades\Validator;
 use Spatie\QueueableAction\QueueableAction;
 
@@ -15,19 +17,6 @@ use Spatie\QueueableAction\QueueableAction;
 final class ValidateGeoDataIntegrityAction
 {
     use QueueableAction;
-
-    private const array VALIDATION_RULES = [
-        'regions' => 'required|array',
-        'regions.*.name' => 'required|string',
-        'regions.*.code' => 'required|string|size:2',
-        'regions.*.provinces' => 'required|array',
-        'regions.*.provinces.*.name' => 'required|string',
-        'regions.*.provinces.*.code' => 'required|string|size:2',
-        'regions.*.provinces.*.cities' => 'required|array',
-        'regions.*.provinces.*.cities.*.name' => 'required|string',
-        'regions.*.provinces.*.cities.*.code' => 'required|string',
-        'regions.*.provinces.*.cities.*.cap' => 'required|string|size:5',
-    ];
 
     /**
      * @param array<string, mixed> $data
@@ -63,7 +52,7 @@ final class ValidateGeoDataIntegrityAction
      */
     public function getErrors(array $data): array
     {
-        $validator = Validator::make($data, self::VALIDATION_RULES);
+        $validator = Validator::make($data, GeoDataValidationRules::RULES);
 
         /** @var array<string, array<int, string>> $errors */
         $errors = $validator->errors()->toArray();
@@ -76,7 +65,7 @@ final class ValidateGeoDataIntegrityAction
      */
     private function validate(array $data): bool
     {
-        $validator = Validator::make($data, self::VALIDATION_RULES);
+        $validator = Validator::make($data, GeoDataValidationRules::RULES);
 
         return ! $validator->fails();
     }
