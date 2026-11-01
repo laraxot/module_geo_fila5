@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "comune sushi conversion"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: comune-sushi-conversion.md
 ---
 
 # Analisi: Conversione del Modello Comune a Laravel Sushi

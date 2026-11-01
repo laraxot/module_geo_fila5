@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "gsd integration summary"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: gsd-integration-summary.md
 ---
 
 # GSD (Get Shit Done) Integration Summary

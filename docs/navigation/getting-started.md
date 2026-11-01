@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "getting started"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 🚀 Guida Rapida - Entry Point PTVX
@@ -30,15 +31,6 @@ Prima di tutto, **leggi [Regole Fondamentali](./core.md)** - sono essenziali per
 Quando sei bloccato, consulta [Quick Reference](./../quick-reference/errors.md) per soluzioni rapide.
 
 ---
-
-title: "getting started"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "getting started"
-issues: []
-discussions: []
 ## 📂 Navigazione Principale
 
 ### 🏗️ Architettura e Struttura

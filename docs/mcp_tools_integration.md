@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "mcp tools integration"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: mcp-tools-integration.md
 ---
 
 # MCP Tools Integration — Geo Module

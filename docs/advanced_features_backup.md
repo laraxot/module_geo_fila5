@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "advanced features backup"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: advanced_features.md
 ---
 
 # Funzionalità Avanzate del Modulo Geo

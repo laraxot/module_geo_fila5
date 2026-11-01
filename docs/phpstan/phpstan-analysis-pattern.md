@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan analysis pattern"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-analysis-pattern.md
 ---
 
 # PHPStan Analysis Pattern — Lock & Dispatch

@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "testing resolution"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../testing-resolution.md
 ---
 
 # Testing Error Resolution Guide - <nome progetto> Project

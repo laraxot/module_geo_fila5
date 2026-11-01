@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "documentation policy"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Documentation Policy
@@ -88,14 +89,5 @@ Start with fundamental concepts and progressively introduce more complex topics.
 Each module should maintain its own detailed documentation in its `docs/` directory, following the same principles as the main documentation.
 
 ---
-
-title: "documentation policy"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "documentation policy"
-issues: []
-discussions: []
 **Version**: 2.0 (Refactor DRY + KISS)  
 **File**: documentation-policy.md - Documentation standards and policies

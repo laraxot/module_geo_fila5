@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "github"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../github.md
 ---
 
 Go to GitHub Developer Settings.(https://github.com/settings/developers)

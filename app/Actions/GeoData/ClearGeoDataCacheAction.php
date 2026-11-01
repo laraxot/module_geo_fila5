@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Actions\GeoData;
 
 use Illuminate\Support\Facades\Cache;
-use Modules\Geo\Support\GeoDataConfig;
+use Modules\Geo\Infrastructure\Config\GeoDataConfig;
 use Spatie\QueueableAction\QueueableAction;
 
 /**

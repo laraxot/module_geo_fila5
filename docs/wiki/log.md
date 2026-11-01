@@ -10,6 +10,15 @@ discussions: []
 status: draft
 ---
 
+## [2026-10-26] git + second-brain | collisioni frontoffice risolte con soluzione 3 (non current/incoming)
+
+- Studio entrambi i lati (current `0ffbcc9a` pulito ma con difetto `uses()` mancante; incoming `41c00823` con marker ma senza variabili `$schema`/`$rows`).
+- **Decisione 3 applicata:** rimuovere marker prendendo il primo lato per le variabili; aggiungere `uses(Tests\TestCase::class);` ai 5 test modelli (`Comune`, `Province`, `Region`, `Address`, `Location` BusinessLogic) — il difetto era nascostto dai marker e avrebbe rotto i test anche dopo la pulizia.
+- File modificati: `tests/Unit/Models/*BusinessLogicTest.php` (5).
+- Documentazione creata: `docs/wiki/collisioni-git-fo-decision.md` (SSoT della decisione).
+- Verifica sintassi PHP: passata (`php -l`).
+- Prossimo: PHPStan L10 + Pest sui test modificati; aggiornare `docs/wiki/index.md` con riferimento al nuovo doc.
+
 ## [2026-10-20] git | marker di conflitto in quattro test, rimessi da un merge
 
 Il merge `41c00823` ha rimesso marker di conflitto (`<<<<<<<`) in `GeocodingBusinessLogicTest`, `ComuneBusinessLogicTest`, `ProvinceBusinessLogicTest`, `RegionBusinessLogicTest`, gia' tolti da `0ffbcc9a` il 2026-09-24: PHPStan non leggeva i file. Risolti in avanti con il primo lato in tutti e sei i blocchi, l'unico che definisce le variabili usate dopo (`$schema`, `$rows`). Trappola: un merge dal remoto puo' rimettere marker gia' tolti; dopo ogni pull lanciare `bash bashscripts/tools/check-conflict-markers.sh`. I test ora partono e mostrano un difetto che i marker nascondevano: i tre test dei modelli non dichiarano `uses(TestCase::class)` e girano senza applicazione (`Container::storagePath()` non esiste). Story: [conflict-markers-business-logic-tests](../stories/conflict-markers-business-logic-tests.story.md).
@@ -120,3 +129,9 @@ module: "Geo"
 
 - Aggiunta `concepts/geo-data-and-map-boundary.md`.
 - Documentati ordine GeoJSON, ownership geocoding e separazione da Fixcity/Sixteen.
+
+## 2026-10-26: test di modello allineati al TestCase del modulo
+
+- I 5 `*BusinessLogicTest.php` in `tests/Unit/Models` non avevano `uses(...)`; ora `uses(TestCase::class)` con `Modules\Geo\Tests\TestCase` (convenzione di 42 test del modulo).
+- Marker di merge: 0 (la prima versione di `collisioni-git-fo-decision.md` ne descriveva e citava un file `Geocoding*` che non esiste: pagina riscritta con le misure).
+- Esito identico col `Tests\TestCase` radice; restano 13 test rossi per contratto test/modello non coincidente (Address 4, Comune 6, Location 1, Province 1, Region 1), da decidere uno per uno.

@@ -6,7 +6,7 @@ namespace Modules\Geo\Actions\GeoData;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
-use Modules\Geo\Support\GeoDataConfig;
+use Modules\Geo\Infrastructure\Config\GeoDataConfig;
 
 use function Safe\json_decode;
 

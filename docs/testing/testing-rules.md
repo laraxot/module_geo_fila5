@@ -10,7 +10,8 @@ discussions: []
 module: theme
 topic: testing-rules
 canonical: ../../../Themes/docs/shared-components/testing-rules-Modules.md
-status: stub
+status: superseded
+superseded_by: ../testing-rules.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/testing-rules-Modules.md

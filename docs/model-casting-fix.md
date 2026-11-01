@@ -159,7 +159,7 @@ protected function casts(): array
 
 ### Documentazione Correlata
 - [Regola: Proprietà $casts Deprecata](../../.cursor/rules/deprecated-casts-property.md)
-- [Memoria: Errore Proprietà $casts Deprecata](../../.cursor/memories/deprecated-casts-error.md)
+- [Memoria: Errore Proprietà $casts Deprecata](../../../../.cursor/memories/deprecated-casts-error.md)
 - [Model Casting Best Practices](./model-casting-best-practices.md)
 
 ### File Correlati

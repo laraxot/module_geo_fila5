@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan session 4 5 fixes complete"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-session-4-5-fixes-complete.md
 ---
 
 # Geo Module - PHPStan Session 4 & 5 Fixes Complete

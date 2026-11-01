@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "gestione dati geografici compendio"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: gestione-dati-geografici-compendio.md
 ---
 
 # Compendio sulla Gestione dei Dati Geografici in <main module>

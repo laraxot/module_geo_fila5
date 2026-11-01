@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "address resource sumy"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: addressresource-sumy.md
 ---
 
 # Sintesi Analisi AddressResource - Modulo Geo

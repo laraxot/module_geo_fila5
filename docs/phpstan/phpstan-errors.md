@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "phpstan errors"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../phpstan-errors.md
 ---
 
 # PHPStan Errors - Geo Module

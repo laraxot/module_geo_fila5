@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "testing psr4 standards"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../testing-psr4-standards.md
 ---
 
 # Standard PSR-4 per i Test in Laraxot <nome progetto>

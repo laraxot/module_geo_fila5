@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "project rules summary"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Project Rules Summary - Quick Reference
@@ -15,15 +16,6 @@ discussions: []
 **Status**: MANDATORY - Non-negotiable
 
 ---
-
-title: "project rules summary"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "project rules summary"
-issues: []
-discussions: []
 ## 🔴 The 7 Cardinal Rules
 
 ### 1. Forward-Only (Git & Migrations)
