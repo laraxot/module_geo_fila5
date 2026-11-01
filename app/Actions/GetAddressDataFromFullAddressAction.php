@@ -38,7 +38,7 @@ class GetAddressDataFromFullAddressAction
      *
      * @throws \RuntimeException Se la richiesta fallisce o l'indirizzo non viene trovato
      *
-     * @return AddressData I dati dell'indirizzo trovato
+     * @return AddressData|null I dati dell'indirizzo trovato, null se nessun provider risponde
      */
     public function execute(string $fullAddress): ?AddressData
     {

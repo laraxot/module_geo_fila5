@@ -164,8 +164,8 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
      */
     public static function columnsWithLegacy(Blueprint $table, ?XotBaseMigration $migration = null): void
     {
-        static::columns($table, $migration);
-        static::addLegacyColumns($table, $migration);
+        self::columns($table, $migration);
+        self::addLegacyColumns($table, $migration);
     }
 
     /**
@@ -173,7 +173,7 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
      */
     public static function updateColumnsWithLegacy(Blueprint $table, XotBaseMigration $migration): void
     {
-        static::columnsWithLegacy($table, $migration);
+        self::columnsWithLegacy($table, $migration);
     }
 
     /**

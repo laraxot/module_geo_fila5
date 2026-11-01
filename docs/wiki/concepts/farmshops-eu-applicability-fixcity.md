@@ -1,4 +1,9 @@
 ---
+tags: [documentation]
+created: 2026-09-26
+qmd: "farmshops eu applicability fixcity"
+issues: []
+discussions: []
 title: "farmshops.eu — cosa riusare in Fixcity (studio 2026)"
 type: concept
 module: Geo
@@ -8,12 +13,13 @@ sources:
   - https://github.com/CodeforKarlsruhe/farmshops.eu/blob/master/js/popupcontent.js
   - https://github.com/CodeforKarlsruhe/farmshops.eu/blob/master/update_data.js
   - ./geo-map-widget-farmshops-pattern.md
-  - ../../../farmshops-integration-analysis.md
+  - ../../farmshops-integration-analysis.md
 confidence: high
 updated: 2026-06-10
 related:
   - ../../../../Fixcity/docs/wiki/concepts/ticket-list-map-architecture.md
-  - ../../../../../docs/stories/STORY-064-farmshops-eu-study-second-brain.md
+  - ../../../../../../docs/stories/STORY-064-farmshops-eu-study-second-brain.md
+status: draft
 ---
 
 # farmshops.eu — applicabilità Fixcity
@@ -25,7 +31,7 @@ related:
 Documenti correlati (non duplicare qui l’analisi lunga):
 
 - [geo-map-widget-farmshops-pattern.md](./geo-map-widget-farmshops-pattern.md) — decisione architetturale Geo
-- [farmshops-integration-analysis.md](../../../farmshops-integration-analysis.md) — analisi estesa
+- [farmshops-integration-analysis.md](../../farmshops-integration-analysis.md) — analisi estesa
 - [ticket-list-map-architecture.md](../../../../Fixcity/docs/wiki/concepts/ticket-list-map-architecture.md) — flusso `tickets.json` + `map-lit`
 
 ## Architettura farmshops (verificata su repo)

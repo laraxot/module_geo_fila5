@@ -29,7 +29,9 @@ class AdminPanelProvider extends XotBasePanelProvider
 
         FilamentAsset::register([
             Js::make('coordinate-picker', Vite::asset('resources/js/components/coordinate-picker-lit.js', 'assets/geo'))->module(),
-            Css::make('coordinate-picker', Vite::asset('resources/css/app.css', 'assets/geo')),
+            // app.css is intentionally an empty Vite entry; the map styles
+            // are emitted next to the Lit entry and must be registered as CSS.
+            Css::make('coordinate-picker', asset('assets/geo/assets/coordinate-picker-lit.css')),
         ]);
 
         return $panel;

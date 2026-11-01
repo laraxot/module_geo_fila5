@@ -124,8 +124,6 @@ class Locality extends BaseModel
             return [];
         }
 
-        $city = $get('locality');
-
         $keys = [];
         $values = [];
 
@@ -158,7 +156,7 @@ class Locality extends BaseModel
         $city = $get('locality');
         $res = self::where('region_id', $region)
             ->where('province_id', $province)
-            ->when(null !== $city, static fn ($query) => $query->where('id', $city))
+            ->when(null !== $city, static fn (Builder $query) => $query->where('id', $city))
             ->select('postal_code')
             ->distinct()
             ->orderBy('postal_code')
