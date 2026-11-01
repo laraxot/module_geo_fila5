@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "models analysis"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: ../models-analysis.md
 ---
 
 # Models Analysis - Geo Module

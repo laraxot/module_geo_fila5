@@ -7,7 +7,7 @@ namespace Modules\Geo\Actions\GeoData;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
-use Modules\Geo\Support\GeoDataConfig;
+use Modules\Geo\Infrastructure\Config\GeoDataConfig;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 use function Safe\json_decode;

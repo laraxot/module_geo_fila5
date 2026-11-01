@@ -580,8 +580,8 @@ Prima di creare una nuova classe Filament:
 
 ## 🔗 Collegamenti Utili
 
-- [XotBaseResource Documentation](../../laravel/Modules/Xot/docs/consolidated/filament/resources/xot-base-resource.md)
-- [Base Classes Documentation](../../laravel/Modules/Xot/docs/consolidated/base-classes.md)
+- [XotBaseResource Documentation](../../../Xot/docs/consolidated/filament/resources/xot-base-resource.md)
+- [Base Classes Documentation](../../../Xot/docs/consolidated/base-classes.md)
 - [Spatie Queueable Actions](https://github.com/spatie/laravel-queueable-action)
 - [Filament v4 Documentation](https://filamentphp.com/docs/4.x)
 

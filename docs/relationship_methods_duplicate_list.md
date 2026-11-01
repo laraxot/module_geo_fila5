@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "relationship methods duplicate list"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: relationship-methods-duplicate-list.md
 ---
 
 # Elenco metodi relazione duplicate

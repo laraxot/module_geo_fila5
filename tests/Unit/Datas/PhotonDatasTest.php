@@ -17,50 +17,50 @@ test('PhotonAddressData can be instantiated', function (): void {
         'city' => 'Rome',
         'country' => 'Italy',
     ]);
-    Assert::assertInstanceOf(PhotonAddressData::class, $address);
+
+    Assert::assertSame('Rome', $address->city);
 });
 
 test('PhotonFeatureData can be instantiated', function (): void {
     $feature = PhotonFeatureData::from([
-        'type' => 'Feature',
         'geometry' => [
-            'type' => 'Point',
-            'coordinates' => [12.4964, 41.9028],
+            'lat' => 41.9028,
+            'lng' => 12.4964,
         ],
         'properties' => [
-            'name' => 'Rome',
             'city' => 'Rome',
             'country' => 'Italy',
         ],
     ]);
-    Assert::assertInstanceOf(PhotonFeatureData::class, $feature);
+
+    Assert::assertSame('Rome', $feature->properties->city);
 });
 
 test('PhotonPropertiesData can be instantiated', function (): void {
     $properties = PhotonPropertiesData::from([
-        'name' => 'Rome',
         'city' => 'Rome',
         'country' => 'Italy',
     ]);
-    Assert::assertInstanceOf(PhotonPropertiesData::class, $properties);
+
+    Assert::assertSame('Rome', $properties->city);
 });
 
 test('PhotonResponseData can be instantiated', function (): void {
     $response = PhotonResponseData::from([
         'features' => [
             [
-                'type' => 'Feature',
                 'geometry' => [
-                    'type' => 'Point',
-                    'coordinates' => [12.4964, 41.9028],
+                    'lat' => 41.9028,
+                    'lng' => 12.4964,
                 ],
                 'properties' => [
-                    'name' => 'Rome',
                     'city' => 'Rome',
                     'country' => 'Italy',
                 ],
             ],
         ],
     ]);
-    Assert::assertInstanceOf(PhotonResponseData::class, $response);
+
+    Assert::assertNotNull($response->features);
+    Assert::assertCount(1, $response->features);
 });

@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "module geo"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: module-geo.md
 ---
 
 # Modulo Geo

@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Geo\Actions\GeoData\CheckGeoDataIntegrityAction;
 use Tests\TestCase;
 
-uses(TestCase::class, RefreshDatabase::class, WithFaker::class);
+uses(TestCase::class, WithFaker::class);
 
 beforeEach(function () {
     $this->action = app(CheckGeoDataIntegrityAction::class);

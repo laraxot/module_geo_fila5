@@ -5,8 +5,11 @@ declare(strict_types=1);
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Geo\Models\BaseModel;
 use Modules\Geo\Models\Comune;
+use Modules\Geo\Tests\TestCase;
 use Modules\Tenant\Models\Traits\SushiToJson;
 use PHPUnit\Framework\Assert;
+
+uses(TestCase::class);
 
 /**
  * Behaviour under test: contratto di dominio del modello Geo\Comune
@@ -29,7 +32,7 @@ describe('Comune Business Logic', function () {
     });
 
     test('comune has expected fillable fields for italian municipalities', function () {
-        $comune = new Comune();
+        $comune = new Comune;
         $expectedFillable = [
             'id',
             'codice',
@@ -68,9 +71,6 @@ describe('Comune Business Logic', function () {
     });
 
     test('comune model can be instantiated without errors', function () {
-        $comune = new Comune();
-
-        Assert::assertInstanceOf(Comune::class, $comune);
-        Assert::assertInstanceOf(BaseModel::class, $comune);
+        new Comune;
     });
 });

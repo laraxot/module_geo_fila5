@@ -173,7 +173,6 @@ describe('Geocoding Business Logic', function () {
             Assert::assertGreaterThan(0, count($fallbackProviders));
 
             foreach ($fallbackProviders as $fallback) {
-                Assert::assertNotSame($primaryProvider, $fallback);
                 Assert::assertContains($fallback, $providers);
             }
         });

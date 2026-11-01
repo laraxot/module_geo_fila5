@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "prd template"
 issues: []
 discussions: []
+status: draft
 ---
 
 # PRD Template (Product Requirements Document)
@@ -21,15 +22,6 @@ discussions: []
 > **Owner:** {Product Manager/Team}
 
 ---
-
-title: "prd template"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "prd template"
-issues: []
-discussions: []
 ## Executive Summary
 
 ### Panoramica Prodotto

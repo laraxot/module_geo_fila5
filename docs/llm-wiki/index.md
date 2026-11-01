@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "index"
 issues: []
 discussions: []
+status: draft
 ---
 
 # Geo Module Wiki Index
@@ -16,15 +17,6 @@ discussions: []
 > **Created**: 2026-04-15
 
 ---
-
-title: "index"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "index"
-issues: []
-discussions: []
 ## Concepts
 
 - [Litelement in JS only rule](../wiki/concepts/litelement-in-js-only-rule.md)

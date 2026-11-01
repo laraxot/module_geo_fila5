@@ -93,7 +93,7 @@ Creato file `optimization_recommendations.md` in ogni modulo con:
 
 1. **Xot PathHelper** (2 ore)
    - Problema: Path hardcoded bloccano framework
-   - Soluzione: [Xot optimization_recommendations.md](../laravel/modules/xot/docs/optimization_recommendations.md)
+   - Soluzione: [Xot optimization_recommendations.md](../../Xot/docs/optimization_recommendations.md)
 
 2. **Notify Riusabilità** (2 giorni)
    - Problema: 336 occorrenze bloccano notifiche

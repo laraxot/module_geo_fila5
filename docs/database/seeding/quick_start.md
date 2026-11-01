@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "quick start"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: quick-start.md
 ---
 
 # Quick Start per Script di Seeding Database

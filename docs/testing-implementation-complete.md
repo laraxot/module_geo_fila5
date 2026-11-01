@@ -314,7 +314,7 @@ jobs:
 - [Test Autenticazione](../../../tests/Feature/Auth) - Pattern di riferimento esistenti
 - [Documentazione <nome progetto>](../modules/<nome progetto>/docs/readme.md) - Funzionalità business
 - [Documentazione <nome progetto>](../modules/<nome progetto>/docs/readme.md) - Funzionalità business
-- [Documentazione User](../../User/docs/readme.md) - Modulo core
+- [Documentazione User](../../User/docs/README.md) - Modulo core
 
 ## Stato Implementazione
 

@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "morphs relationship patterns"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: morphs-relationship-patterns.md
 ---
 
 # Pattern di Relazioni Polimorfiche nell'Ecosistema <main module>

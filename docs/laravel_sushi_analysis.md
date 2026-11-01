@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "laravel sushi analysis"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: laravel-sushi-analysis.md
 ---
 
 # Laravel Sushi: Analisi Approfondita

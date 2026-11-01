@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "guide"
 issues: []
 discussions: []
+status: draft
 ---
 
 # 🧭 Navigation Guide - Trova Quello Che Ti Serve
@@ -119,15 +120,6 @@ docs/
 3. **Esempi** → [Patterns](../patterns/) o [Best Practices](../best-practices/)
 
 ---
-
-title: "guide"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "guide"
-issues: []
-discussions: []
 **💡 Suggerimento**: Usa [Quick Reference](../quick-reference/errors.md) per problemi urgenti!
 
 *Ultimo aggiornamento: Dicembre 2025*

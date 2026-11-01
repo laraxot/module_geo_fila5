@@ -7,7 +7,8 @@ updated: 2026-09-26
 qmd: "geo sushi comparison"
 issues: []
 discussions: []
-status: draft
+status: superseded
+superseded_by: geo-sushi-comparison.md
 ---
 
 # Confronto: GeoJsonModel (readonly JSON) vs Laravel Sushi
