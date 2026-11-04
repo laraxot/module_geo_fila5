@@ -218,7 +218,7 @@ trait HasAddress
      * @param array<string, mixed> $data
      * @param bool                 $setPrimary Se impostare questo indirizzo come principale
      */
-    public function addAddress(array $data, bool $setPrimary = false): Address // @phpstan-ignore missingType.iterableValue
+    public function addAddress(array $data, bool $setPrimary = false): Address
     {// Se è il primo indirizzo o è richiesto esplicitamente, impostalo come principale
                 if ($setPrimary || 0 === $this->addresses()->count()) {
                     $data['is_primary'] = true;
@@ -229,7 +229,7 @@ trait HasAddress
                     }
                 }
 
-        $address = $this->addresses()->create($data); // @phpstan-ignore argument.type
+        $address = $this->addresses()->create($data);
         Assert::isInstanceOf($address, Address::class);
 
         return $address;
@@ -240,13 +240,13 @@ trait HasAddress
      *
      * @param array<string, mixed> $data
      */
-    public function updatePrimaryAddress(array $data): ?Address // @phpstan-ignore missingType.iterableValue
+    public function updatePrimaryAddress(array $data): ?Address
     {$primaryAddress = $this->primaryAddress();
         if (! $primaryAddress) {
             return $this->addAddress($data, true);
         }
 
-        $primaryAddress->update($data); // @phpstan-ignore argument.type
+        $primaryAddress->update($data);
 
         return $primaryAddress;
     }
