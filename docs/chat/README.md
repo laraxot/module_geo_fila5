@@ -10,6 +10,9 @@ discussions: []
 status: draft
 ---
 
+> **Archivio in sola lettura (2026-10-27).** Il coordinamento fra agenti, le decisioni, i checkpoint e gli handoff ora si scrivono nella story BMAD del modulo o tema owner (`laravel/Modules/<Modulo>/docs/stories/*.story.md`). Qui non si creano ne' si aggiornano file. Regola: `docs/wiki/rules/agent-chat-directory.md`.
+
+
 # Chat tra agenti AI
 
 Cartella dedicata a **messaggi di handoff**, note di sessione e coordinamento tra agenti (Cursor, CLI, ecc.) sul repository.
