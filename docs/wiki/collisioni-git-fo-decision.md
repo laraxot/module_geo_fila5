@@ -10,7 +10,7 @@ status: verified
 tags: [git-merge, geo, test, pest, testcase, bmad]
 related:
   - ./log.md
-  - ../../../../Themes/Sixteen/docs/MERGE_CONFLICT_RESOLUTION_LOG.md
+  - ../../../../Themes/Sixteen/docs/merge-conflict-resolution-log.md
 ---
 
 # Test Geo di modello: nessun marker, mancava il TestCase
