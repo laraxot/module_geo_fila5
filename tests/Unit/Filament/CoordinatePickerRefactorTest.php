@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Filament;
 
+use Filament\Support\Components\Attributes\ExposedLivewireMethod;
 use Modules\Geo\Filament\Forms\Components\CoordinatePicker;
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
+use Modules\Geo\Filament\Forms\Components\XotBaseCoordinateField;
 use PHPUnit\Framework\Assert;
 
 use function Safe\file;
@@ -69,4 +71,17 @@ test('LatitudeLongitudeInput::setUp NON chiama dehydrated', function (): void {
     $ref = new \ReflectionMethod(LatitudeLongitudeInput::class, 'setUp');
 
     Assert::assertStringContainsString('dehydrated', geoReadMethodBody($ref));
+});
+
+// Filament 5 esegue un metodo di componente chiamato dal browser solo se porta #[ExposedLivewireMethod]
+// (InteractsWithSchemas::callSchemaComponentMethod); senza, risponde null in silenzio. Il vecchio nome
+// #[Exposed] non esiste in Filament 5: la ricerca indirizzo e il reverse geocoding restavano muti.
+test('searchAddress e reverseGeocode sono esposti a Livewire', function (): void {
+    foreach ([HasCoordinatePicker::class, XotBaseCoordinateField::class] as $class) {
+        foreach (['searchAddress', 'reverseGeocode'] as $method) {
+            $ref = new \ReflectionMethod($class, $method);
+
+            Assert::assertCount(1, $ref->getAttributes(ExposedLivewireMethod::class), $class.'::'.$method);
+        }
+    }
 });
