@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace ModulesGeoProvidersFilament;
+namespace Modules\Geo\Providers\Filament;
 
-use FilamentPanel;
-use FilamentSupportAssetsCss;
-use FilamentSupportAssetsJs;
-use FilamentSupportFacadesFilamentAsset;
-use IlluminateSupportFacadesFile;
-use IlluminateSupportFacadesLog;
-use IlluminateSupportFacadesVite;
-use ModulesXotProvidersFilamentXotBasePanelProvider;
+use Filament\Panel;
+use Filament\Support\Assets\Css;
+use Filament\Support\Assets\Js;
+use Filament\Support\Facades\FilamentAsset;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Vite;
+use Modules\Xot\Providers\Filament\XotBasePanelProvider;
 
 /**
  * Pannello Filament del modulo Geo.
@@ -24,7 +24,7 @@ class AdminPanelProvider extends XotBasePanelProvider
 
     protected string $module = 'Geo';
 
-    #[Override]
+    #[\Override]
     public function panel(Panel $panel): Panel
     {
         $panel = parent::panel($panel);
