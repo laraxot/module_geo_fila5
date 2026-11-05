@@ -93,3 +93,30 @@ Filament 5.11 depreca `Widget::isLazy()` (sostituto `isLazyLoaded()`): 3 nuovi e
 `staticMethod.deprecated` nei test di Quaeris (`QuestionChartDataTableWidgetTest.php:247`,
 `QuestionChartItemWidgetTest.php:483`, `QuestionChartStatsOverviewWidgetTest.php:156`). Fuori dal
 modulo Geo.
+
+## 2026-11-05: ritorno di `ExposedLivewireMethod` e vincolo `^5.11`
+
+Il rischio dell'opzione 2 si e' avverato al contrario. Il commit upstream `d14913d0` (Marco Xot, 2026-11-05,
+"#[Exposed] inesistente (Filament 5)") ha rimesso `#[ExposedLivewireMethod]` nei 4 punti: sul suo ambiente
+Filament e' sotto 5.11, dove `Exposed` non esiste. Qui (filament 5.11.0) PHPStan ha dato 45 errori
+`attribute.deprecated`/`attribute.deprecatedClass` piu' 1 `classConstant.deprecatedClass` nella guardia
+aggiunta in `CoordinatePickerRefactorTest`.
+
+Causa vera: i `composer.json` dichiaravano `filament/filament: ^5.0`, quindi un ambiente sotto 5.11 era
+"valido" anche se il codice (Geo, Xot `XotBaseChartWidget`, widget Quaeris) usa le API di 5.11.
+
+Correzione:
+- `Modules/Xot/composer.json`: `filament/filament` da `^5.0` a `^5.11` (Xot possiede la dipendenza; Livewire
+  `^4.4.8` arriva da `filament/support`). Composer ora chiede l'aggiornamento invece di lasciare un vendor
+  vecchio dove `#[Exposed]` spegne in silenzio `searchAddress()`/`reverseGeocode()`.
+- `#[Exposed]` di nuovo in `HasCoordinatePicker` (235, 293) e `XotBaseCoordinateField` (203, 213); tenuta la
+  formattazione Pint di `d14913d0`.
+- Guardia nel test: `getAttributes(Exposed::class, ReflectionAttribute::IS_INSTANCEOF)`, lo stesso controllo
+  di `InteractsWithSchemas.php:107`. Sotto 5.11 il test fallisce di proposito con la cura nel commento.
+
+Verifica: PHPStan Geo/Notify/Quaeris 0 errori, PHPStan dell'intero progetto 0 errori; Pest
+`CoordinatePickerRefactorTest` 8/8; Pint passed; PHPMD solo finding preesistenti gia' documentati in
+[quality-gate-closure](./quality-gate-closure.story.md) (`BooleanArgumentFlag`, `CyclomaticComplexity`).
+
+Da fare fuori da qui: chi ha Filament sotto 5.11 lancia `composer update "filament/*" livewire/livewire`;
+la produzione deve avere filament >= 5.11 e livewire >= 4.4.8 prima del deploy.

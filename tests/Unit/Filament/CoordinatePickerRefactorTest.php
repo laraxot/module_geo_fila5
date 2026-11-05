@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Tests\Unit\Filament;
 
-use Filament\Support\Components\Attributes\ExposedLivewireMethod;
+use Filament\Support\Components\Attributes\Exposed;
 use Modules\Geo\Filament\Forms\Components\CoordinatePicker;
 use Modules\Geo\Filament\Forms\Components\LatitudeLongitudeInput;
 use Modules\Geo\Filament\Forms\Components\MapPicker;
@@ -73,15 +73,22 @@ test('LatitudeLongitudeInput::setUp NON chiama dehydrated', function (): void {
     Assert::assertStringContainsString('dehydrated', geoReadMethodBody($ref));
 });
 
-// Filament 5 esegue un metodo di componente chiamato dal browser solo se porta #[ExposedLivewireMethod]
-// (InteractsWithSchemas::callSchemaComponentMethod); senza, risponde null in silenzio. Il vecchio nome
-// #[Exposed] non esiste in Filament 5: la ricerca indirizzo e il reverse geocoding restavano muti.
+// Filament esegue un metodo di componente chiamato dal browser solo se porta l'attributo di esposizione
+// (InteractsWithSchemas::callSchemaComponentMethod); senza, risponde null in silenzio e la ricerca indirizzo
+// e il reverse geocoding restano muti. Da Filament 5.11 l'attributo e' #[Exposed] e #[ExposedLivewireMethod]
+// e' deprecato (lo estende): il controllo qui sotto e' lo stesso di Filament. Il progetto richiede
+// filament/filament ^5.11 (Modules/Xot/composer.json); sotto quella versione Exposed non esiste e questo
+// test fallisce di proposito: la cura e' `composer update "filament/*" livewire/livewire`, non il vecchio nome.
 test('searchAddress e reverseGeocode sono esposti a Livewire', function (): void {
     foreach ([HasCoordinatePicker::class, XotBaseCoordinateField::class] as $class) {
         foreach (['searchAddress', 'reverseGeocode'] as $method) {
             $ref = new \ReflectionMethod($class, $method);
 
-            Assert::assertCount(1, $ref->getAttributes(ExposedLivewireMethod::class), $class.'::'.$method);
+            Assert::assertCount(
+                1,
+                $ref->getAttributes(Exposed::class, \ReflectionAttribute::IS_INSTANCEOF),
+                $class.'::'.$method,
+            );
         }
     }
 });
