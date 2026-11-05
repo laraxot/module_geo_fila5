@@ -102,8 +102,8 @@ $labels = [
             x-transition:leave="transition ease-in duration-150"
         >
             <div class="flex flex-wrap gap-x-4 gap-y-1">
-                <span>Lat: <strong class="text-gray-700" x-text="(state && (state.latitude != null || state.latitude === 0)) ? Number(state.latitude).toFixed(6) : '--'"></strong></span>
-                <span>Lng: <strong class="text-gray-700" x-text="(state && (state.longitude != null || state.longitude === 0)) ? Number(state.longitude).toFixed(6) : '--'"></strong></span>
+                <span>{{ __('geo::coordinate-picker.latitude_abbr') }}: <strong class="text-gray-700" x-text="(state && (state.latitude != null || state.latitude === 0)) ? Number(state.latitude).toFixed(6) : '--'"></strong></span>
+                <span>{{ __('geo::coordinate-picker.longitude_abbr') }}: <strong class="text-gray-700" x-text="(state && (state.longitude != null || state.longitude === 0)) ? Number(state.longitude).toFixed(6) : '--'"></strong></span>
             </div>
             <div class="truncate max-w-full sm:max-w-[400px]" x-show="state?.address" :title="state?.address || ''">
                 <span x-text="state?.address || ''"></span>
