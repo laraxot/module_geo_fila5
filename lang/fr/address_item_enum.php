@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 return [
+    'values' => [
     'phone' => [
         'label' => 'Téléphone',
         'description' => 'Numéro de téléphone',
@@ -128,6 +129,7 @@ return [
         'description' => 'Notes supplémentaires sur l\'adresse',
         'icon' => 'heroicon-o-document-text',
         'color' => 'gray',
+    ],
     ],
     'navigation' => [
         'label' => 'Missing Navigation Label',
