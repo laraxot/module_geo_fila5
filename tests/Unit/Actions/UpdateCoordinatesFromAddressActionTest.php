@@ -17,7 +17,7 @@ use Modules\Geo\Tests\LightTestCase;
 uses(LightTestCase::class);
 
 it('updates model coordinates when geocoding succeeds', function (): void {
-    $address = Mockery::mock(Address::class)->makePartial();
+    $address = \Mockery::mock(Address::class)->makePartial();
     $address->route = 'Via Dante';
     $address->street_number = '10';
     $address->locality = 'Milano';
@@ -34,7 +34,7 @@ it('updates model coordinates when geocoding succeeds', function (): void {
 
     $addressData = new AddressData(latitude: 41.1111, longitude: 12.2222);
 
-    $getAddressDataAction = Mockery::mock(GetAddressDataFromFullAddressAction::class);
+    $getAddressDataAction = \Mockery::mock(GetAddressDataFromFullAddressAction::class);
     $getAddressDataAction->shouldReceive('execute')->once()->andReturn($addressData);
 
     $action = new UpdateCoordinatesFromAddressAction($getAddressDataAction);
@@ -48,13 +48,13 @@ it('updates model coordinates when geocoding succeeds', function (): void {
 });
 
 it('fails and records errors when geocoding cannot resolve the address', function (): void {
-    $address = Mockery::mock(Address::class)->makePartial();
+    $address = \Mockery::mock(Address::class)->makePartial();
     $address->route = 'Via Inesistente';
     $address->street_number = '999';
     $address->locality = 'Nowhere';
     $address->shouldNotReceive('update');
 
-    $getAddressDataAction = Mockery::mock(GetAddressDataFromFullAddressAction::class);
+    $getAddressDataAction = \Mockery::mock(GetAddressDataFromFullAddressAction::class);
     $getAddressDataAction->shouldReceive('execute')->once()->andReturn(null);
     $getAddressDataAction->shouldReceive('getErrors')->once()->andReturn(new SupportCollection(['Nessun risultato trovato']));
 
@@ -67,7 +67,7 @@ it('fails and records errors when geocoding cannot resolve the address', functio
 });
 
 it('fails fast without calling geocoding when the model has an empty address', function (): void {
-    $address = Mockery::mock(Address::class)->makePartial();
+    $address = \Mockery::mock(Address::class)->makePartial();
     $address->route = null;
     $address->street_number = null;
     $address->locality = null;
@@ -77,7 +77,7 @@ it('fails fast without calling geocoding when the model has an empty address', f
     $address->country = null;
     $address->shouldNotReceive('update');
 
-    $getAddressDataAction = Mockery::mock(GetAddressDataFromFullAddressAction::class);
+    $getAddressDataAction = \Mockery::mock(GetAddressDataFromFullAddressAction::class);
     $getAddressDataAction->shouldNotReceive('execute');
 
     $action = new UpdateCoordinatesFromAddressAction($getAddressDataAction);

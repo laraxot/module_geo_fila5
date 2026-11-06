@@ -23,7 +23,7 @@ beforeEach(function () {
 });
 
 it('updates coordinates and counts successes when geocoding succeeds', function (): void {
-    $address = Mockery::mock(Address::class)->makePartial();
+    $address = \Mockery::mock(Address::class)->makePartial();
     $address->full_address = 'Via Roma 1, Milano';
     $address->shouldReceive('update')->once()->with(['latitude' => 45.1234, 'longitude' => 9.5678])
         ->andReturnUsing(function (array $attributes) use ($address): bool {
@@ -36,7 +36,7 @@ it('updates coordinates and counts successes when geocoding succeeds', function 
 
     $addressData = new AddressData(latitude: 45.1234, longitude: 9.5678);
 
-    $getAddressDataAction = Mockery::mock(GetAddressDataFromFullAddressAction::class);
+    $getAddressDataAction = \Mockery::mock(GetAddressDataFromFullAddressAction::class);
     $getAddressDataAction->shouldReceive('execute')->once()->andReturn($addressData);
     $getAddressDataAction->shouldReceive('getErrors')->andReturn(new SupportCollection());
 
@@ -53,12 +53,12 @@ it('updates coordinates and counts successes when geocoding succeeds', function 
 });
 
 it('collects an error message when geocoding fails for an address', function (): void {
-    $address = Mockery::mock(Address::class)->makePartial();
+    $address = \Mockery::mock(Address::class)->makePartial();
     $address->name = 'Sede Centrale';
     $address->full_address = 'Indirizzo Inesistente XYZ';
     $address->shouldNotReceive('update');
 
-    $getAddressDataAction = Mockery::mock(GetAddressDataFromFullAddressAction::class);
+    $getAddressDataAction = \Mockery::mock(GetAddressDataFromFullAddressAction::class);
     $getAddressDataAction->shouldReceive('execute')->once()->andReturn(null);
     $getAddressDataAction->shouldReceive('getErrors')->once()->andReturn(new SupportCollection(['Servizio non disponibile']));
 
@@ -75,7 +75,7 @@ it('collects an error message when geocoding fails for an address', function ():
 });
 
 it('returns zero success and no errors for an empty collection', function (): void {
-    $getAddressDataAction = Mockery::mock(GetAddressDataFromFullAddressAction::class);
+    $getAddressDataAction = \Mockery::mock(GetAddressDataFromFullAddressAction::class);
     $getAddressDataAction->shouldNotReceive('execute');
 
     $action = new UpdateClientCoordinatesBulkAction($getAddressDataAction);
