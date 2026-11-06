@@ -62,6 +62,17 @@ trait GeoTrait
     }
 
     /**
+     * Espone `distance` come attributo (prodotto da `scopeWithDistance`)
+     * invece di relation: senza questo accessor, `$model->distance` cada
+     * nel ramo relation di Eloquent e `distance()` — che non e' una
+     * relation — fa fallire il boot delle tabelle Filament.
+     */
+    public function getDistanceAttribute(mixed $value): ?float
+    {
+        return is_numeric($value) ? (float) $value : null;
+    }
+
+    /**
      * Ordina per distanza Haversine da un punto (colonna distance in select).
      *
      * @param  Builder<static>  $query

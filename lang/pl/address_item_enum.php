@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 return [
+    'values' => [
     'phone' => [
         'label' => 'Telefon',
         'icon' => 'heroicon-o-phone',
@@ -107,6 +108,7 @@ return [
         'label' => 'Notatki',
         'icon' => 'heroicon-o-document-text',
         'description' => 'Notatki',
+    ],
     ],
     'navigation' => [
         'label' => 'Missing Navigation Label',

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 return [
+    'values' => [
     'phone' => [
         'label' => 'Telefono',
         'description' => 'Numero di telefono',
@@ -128,6 +129,7 @@ return [
         'description' => 'Note aggiuntive sull\'indirizzo',
         'icon' => 'heroicon-o-document-text',
         'color' => 'gray',
+    ],
     ],
     'label' => 'Address Item Enum',
     'plural_label' => 'Address Item Enum (Plurale)',
