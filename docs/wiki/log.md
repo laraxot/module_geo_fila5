@@ -10,6 +10,16 @@ discussions: []
 status: draft
 ---
 
+## [2026-11-19] test-infra + sushi data | fix bootstrap suite e bug production-ready
+
+- `tests/TestCase.php`: `$connectionsToTransact` reimpostata a `['sqlite','geo']` — le voci `fixcity`/`mariadb`/`user` non esistono o puntano a mysql senza credenziali in `.env.testing` e facevano fallire OGNI test del modulo in `setUp`.
+- `tests/Pest.php`: aggiunto helper `geo_mockery_expect()` (stessa tecnica di `mockeryExpect()` di Activity/User) per tipizzare le expectation Mockery 1.6 CompositeExpectation.
+- `tests/Unit/Actions/UpdateCoordinatesFromAddressActionTest.php`: nuovo test di regressione (3 casi: indirizzo vuoto, errori provider propagati, successo) — verificato il fix `$this->errors->merge()`.
+- `Modules/Tenant/app/Models/Traits/SushiToJson.php`: `getSchema()` override tipizzato `@return array<string,string>` — il vendor Sushi non dichiara il tipo e PHPStan vedeva `mixed` (4 errori in `ComuneBusinessLogicTest`).
+- `resources/json/comuni.json`: riga Bresso (id 4) normalizzata allo schema completo delle altre righe — le chiavi mancanti rompevano l'INSERT Sushi multi-riga (`all VALUES must have the same number of terms`) in OGNI query `Comune`, anche in produzione.
+- Test modelli (`Comune`/`Location`/`Province`/`Region` BusinessLogic): assertion `HasFactory` → `HasXotFactory` (trait reale del modello).
+- Stato suite `Modules/Geo/tests/Unit`: 552 passati; restano ~90 failure preesistenti non correlate (mock HTTP Bing/Google/Elevation, scritture file Sushi, schema assente in sqlite :memory:).
+
 ## [2026-10-26] git + second-brain | collisioni frontoffice risolte con soluzione 3 (non current/incoming)
 
 - Studio entrambi i lati (current `0ffbcc9a` pulito ma con difetto `uses()` mancante; incoming `41c00823` con marker ma senza variabili `$schema`/`$rows`).
