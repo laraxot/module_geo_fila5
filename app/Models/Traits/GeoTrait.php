@@ -86,7 +86,7 @@ trait GeoTrait
 
         return $query
             ->selectRaw(
-                '*, (6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) * 1.1515 AS distance',
+                '*, 6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude))) AS distance',
                 [$lat, $lng, $lat],
             )
             ->orderBy('distance');
