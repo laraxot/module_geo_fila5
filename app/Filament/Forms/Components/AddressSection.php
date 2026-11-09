@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
-use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Component;
 use Modules\Geo\Enums\AddressItemEnum;
 use Modules\Xot\Filament\Schemas\Components\XotBaseSection;
@@ -39,7 +38,7 @@ class AddressSection extends XotBaseSection
     }
 
     /**
-     * @return array<int|string, TextInput>
+     * @return array<int|string, Component>
      */
     public function getFormSchema(): array
     {
@@ -55,8 +54,8 @@ class AddressSection extends XotBaseSection
         // Contact values belong to Notify\ContactSection, not to the address block.
         // 'notes' è esclusa perché i form che usano questa section definiscono
         // il proprio campo note canonico: senza, due input condividono lo
-        // stesso state path. 'latitude'/'longitude' sono gestite dalla sezione
-        // dedicata del form (con azione di geocoding), non dal blocco indirizzo.
+        // stesso state path. 'latitude'/'longitude' non sono più appiattite nei
+        // campi: AddressItemEnum le fornisce come CoordinatesSection + mappa.
         return array_diff_key($schema, array_flip([
             'phone',
             'mobile',
@@ -65,8 +64,6 @@ class AddressSection extends XotBaseSection
             'whatsapp',
             'email',
             'notes',
-            'latitude',
-            'longitude',
         ]));
     }
 

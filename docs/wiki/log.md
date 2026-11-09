@@ -155,3 +155,4 @@ module: "Geo"
 - **Trappola documentata**: widget custom senza `<x-filament-widgets::widget>` perde columnSpan → metà larghezza.
 - Verificato headless Chrome: 1216px full width, cluster/controlli/popup/wire OK, 0 errori. PHPStan 0, Pint ok.
 - 2026-11-09 — Log audit: fix GeoTrait::scopeWithDistance + Address::scopeNearby (no star duplicato con colonne preselezionate — syntax error MariaDB). Test: tests/Unit/Models/GeoTraitWithDistanceSqlTest.php. Rimossi dal log errori gia risolti (widget lazy, Livewire root tag, distance SQL, controls table, reminder_sent_at, xot:theme-link).
+- 2026-11-09 — Convenzione i18n widget: chiavi spostate da `geo::map.widget.*` a `geo::widgets.base_map.*` (widgets.php it/en/de/es). Stessa migrazione in TechPlanner (`client_map_widget.php`) e User (`user_overview_widget.php`, da `user::user.widgets.overview.*`).

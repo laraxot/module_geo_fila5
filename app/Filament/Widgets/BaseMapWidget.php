@@ -71,11 +71,11 @@ abstract class BaseMapWidget extends XotBaseWidget
     protected function getMapStrings(int $markerCount): array
     {
         return [
-            'aria_label' => (string) trans('geo::map.widget.aria_label'),
-            'fullscreen' => (string) trans('geo::map.widget.fullscreen'),
-            'locate' => (string) trans('geo::map.widget.locate'),
-            'layer_satellite' => (string) trans('geo::map.widget.layer_satellite'),
-            'footer' => (string) trans('geo::map.widget.markers_shown', ['count' => $markerCount]),
+            'aria_label' => (string) trans('geo::widgets.base_map.aria_label'),
+            'fullscreen' => (string) trans('geo::widgets.base_map.fullscreen'),
+            'locate' => (string) trans('geo::widgets.base_map.locate'),
+            'layer_satellite' => (string) trans('geo::widgets.base_map.layer_satellite'),
+            'footer' => (string) trans('geo::widgets.base_map.markers_shown', ['count' => $markerCount]),
         ];
     }
 
