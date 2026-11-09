@@ -28,11 +28,4 @@ return [
     'actions' => ['add_marker' => 'Aggiungi Marcatore', 'draw_polygon' => 'Disegna Poligono', 'measure_distance' => 'Misura Distanza', 'export' => 'Esporta'],
     'label' => 'Map',
     'plural_label' => 'Map (Plurale)',
-    'widget' => [
-        'aria_label' => 'Mappa interattiva',
-        'fullscreen' => 'Schermo intero',
-        'locate' => 'Centra sulla mia posizione',
-        'layer_satellite' => 'Satellite',
-        'markers_shown' => 'Mostrati :count marker',
-    ],
 ];
