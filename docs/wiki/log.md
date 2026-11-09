@@ -145,3 +145,12 @@ module: "Geo"
 - I 5 `*BusinessLogicTest.php` in `tests/Unit/Models` non avevano `uses(...)`; ora `uses(TestCase::class)` con `Modules\Geo\Tests\TestCase` (convenzione di 42 test del modulo).
 - Marker di merge: 0 (la prima versione di `collisioni-git-fo-decision.md` ne descriveva e citava un file `Geocoding*` che non esiste: pagina riscritta con le misure).
 - Esito identico col `Tests\TestCase` radice; restano 13 test rossi per contratto test/modello non coincidente (Address 4, Comune 6, Location 1, Province 1, Region 1), da decidere uno per uno.
+## 2026-11-19 — BaseMapWidget: mappa Leaflet condivisa per widget Filament
+
+- **Nuovo** `app/Filament/Widgets/BaseMapWidget.php` (XotBaseWidget): contratto marker/origin/strings/assetBase + vista `geo::filament.widgets.base-map`.
+- **Vista** `resources/views/filament/widgets/base-map.blade.php`: cluster adaptive, layer OSM+satellite Esri, scala, geolocate, permalink `#map=`, fullscreen, azioni Livewire via `data-map-method`/`data-map-arg` → `$wire` registry.
+- **i18n**: `geo::map.widget.*` in it/en/de (es/fr/pl via fallback).
+- **Asset contract**: `Modules/Geo/public/` canonica, servita da symlink `public_html/assets/geo`; script `copy` in package.json neutralizzato (ridondante col symlink); rimossa `geo.bak-*` stale.
+- **Primeira figlia**: `ClientMapWidget` (TechPlanner) estende BaseMapWidget — popup server-side escaped, origine da sessione/cookie.
+- **Trappola documentata**: widget custom senza `<x-filament-widgets::widget>` perde columnSpan → metà larghezza.
+- Verificato headless Chrome: 1216px full width, cluster/controlli/popup/wire OK, 0 errori. PHPStan 0, Pint ok.

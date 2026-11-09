@@ -85,4 +85,11 @@ return [
     ],
     'label' => 'Missing Label',
     'plural_label' => 'Missing Plural label',
+    'widget' => [
+        'aria_label' => 'Interactive map',
+        'fullscreen' => 'Fullscreen',
+        'locate' => 'Center on my location',
+        'layer_satellite' => 'Satellite',
+        'markers_shown' => 'Showing :count markers',
+    ],
 ];
