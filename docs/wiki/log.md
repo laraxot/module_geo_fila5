@@ -10,6 +10,14 @@ discussions: []
 status: draft
 ---
 
+## [2026-11-09] base-map-widget | fullscreen come L.Control nativo + fix asset git-ignored
+
+- `base-map.blade.php`: fullscreen spostato da `<button>` absolute custom (sovrapposto ai pulsanti zoom, icona bruttta) a `L.Control` in `.leaflet-bar` — Leaflet lo impila nella corner senza overlap; icona SVG commuta expand/contract, label `fullscreen`/`fullscreen_exit` con `aria-pressed`.
+- `getMapStrings()` (Base + ClientMapWidget): aggiunta chiave `fullscreen_exit` in geo::widgets.base_map e techplanner::client_map_widget (it/en/de/es).
+- **Bug deploy**: `public/` in `.gitignore` escludeva `Modules/Geo/public/assets/{leaflet.markercluster.js,images/layers*.png}` → mai deployati → 404 in produzione. Fix: `git add -f` dei 3 file. Verificato `git ls-files --others --ignored` sugli altri moduli: nessun altro caso.
+- Asset contract confermato: `public_html/assets/geo` → symlink `Modules/Geo/public` → URL `/assets/geo/assets/*`; `asset('modules/geo/assets')` NON esiste (public_html/modules è legacy).
+- Verifica headless Chrome: fs-btn in `.leaflet-bar` topright, nessun overlap con zoom, `fullscreenElement=base-map-stage`, toggle icona/label ok, 0 errori console.
+
 ## [2026-11-19] test-infra + sushi data | fix bootstrap suite e bug production-ready
 
 - `tests/TestCase.php`: `$connectionsToTransact` reimpostata a `['sqlite','geo']` — le voci `fixcity`/`mariadb`/`user` non esistono o puntano a mysql senza credenziali in `.env.testing` e facevano fallire OGNI test del modulo in `setUp`.

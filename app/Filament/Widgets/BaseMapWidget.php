@@ -66,13 +66,14 @@ abstract class BaseMapWidget extends XotBaseWidget
      * Stringhe UI della mappa (aria, controlli, footer).
      * Le figlie possono sovrascrivere per chiavi di traduzione custom.
      *
-     * @return array{aria_label: string, fullscreen: string, locate: string, layer_satellite: string, footer: string}
+     * @return array{aria_label: string, fullscreen: string, fullscreen_exit: string, locate: string, layer_satellite: string, footer: string}
      */
     protected function getMapStrings(int $markerCount): array
     {
         return [
             'aria_label' => (string) trans('geo::widgets.base_map.aria_label'),
             'fullscreen' => (string) trans('geo::widgets.base_map.fullscreen'),
+            'fullscreen_exit' => (string) trans('geo::widgets.base_map.fullscreen_exit'),
             'locate' => (string) trans('geo::widgets.base_map.locate'),
             'layer_satellite' => (string) trans('geo::widgets.base_map.layer_satellite'),
             'footer' => (string) trans('geo::widgets.base_map.markers_shown', ['count' => $markerCount]),
