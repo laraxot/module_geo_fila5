@@ -113,7 +113,7 @@ Incidenti: [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incid
 
 ## Aggiornamento 2026-06-10 — confronto fine sorgente + verifica empirica popup
 
-Studio architettura BMAD: `_bmad-output/architecture-map-farmshops-parity-2026-06-10.md` (decisioni A1–A5 con trade-off e traceability — non duplicare qui).
+Studio architettura BMAD: `_bmad-output/architecture-map-farmshops-parity.md` (decisioni A1–A5 con trade-off e traceability — non duplicare qui).
 
 **CSS farmshops verificato** (`css/style.css`): `#offen` verde / `#geschlossen` rosso; `a.button` blu `#4ca7ce`; `.leaflet-popup-content-wrapper` border-radius 0, Verdana 10px; resize popup su `popupopen` con `maxHeight = 0.8 * mapH`, `maxWidth = 0.95 * mapW` (Fixcity: 0.4 / 0.9).
 
