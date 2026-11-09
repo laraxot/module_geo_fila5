@@ -154,3 +154,4 @@ module: "Geo"
 - **Primeira figlia**: `ClientMapWidget` (TechPlanner) estende BaseMapWidget — popup server-side escaped, origine da sessione/cookie.
 - **Trappola documentata**: widget custom senza `<x-filament-widgets::widget>` perde columnSpan → metà larghezza.
 - Verificato headless Chrome: 1216px full width, cluster/controlli/popup/wire OK, 0 errori. PHPStan 0, Pint ok.
+- 2026-11-09 — Log audit: fix GeoTrait::scopeWithDistance + Address::scopeNearby (no star duplicato con colonne preselezionate — syntax error MariaDB). Test: tests/Unit/Models/GeoTraitWithDistanceSqlTest.php. Rimossi dal log errori gia risolti (widget lazy, Livewire root tag, distance SQL, controls table, reminder_sent_at, xot:theme-link).
