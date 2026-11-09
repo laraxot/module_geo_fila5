@@ -455,7 +455,7 @@ $mapId = 'geo-map-'.\Illuminate\Support\Str::random(8);
             }
 
             const FullscreenControl = window.L.Control.extend({
-                options: { position: 'topright' },
+                options: { position: 'bottomright' },
                 onAdd: function () {
                     const bar = window.L.DomUtil.create('div', 'leaflet-bar');
                     link = window.L.DomUtil.create('a', 'base-map-fs-btn', bar);

@@ -10,6 +10,11 @@ discussions: []
 status: draft
 ---
 
+- Update successivo: fullscreen spostato in `bottomright` come `L.Control` (stackato sotto "centra su di me", no overlap); rimosso il vecchio `<button data-fs-btn>` fixed risurgito da un secondo merge — era dead code (JS non lo wiring). Verificato: 1 solo bottone, fullscreen nativo ok, 0 errori.
+- Errore produzione `resources/views/vendor/filament/components/icon-button.blade.php` mancante su `/techplanner/admin/clients`: file esiste in locale → causa probabile view cache stale o publish parziale su prod; fix lato server `php artisan view:clear && php artisan optimize:clear`.
+
+- `GeoTrait::scopeWithDistance`: aggiunto `orderByRaw('distance IS NULL')` prima di `orderBy('distance')` — MySQL ordina gli NULL prima in ASC, quindi i record senza coordinate dominavano la lista "ordinata per distanza" e la colonna `distance` appariva vuota. Verificato: `withDistance` ora ritorna distance numeriche ascendenti; test `GeoTraitWithDistanceSqlTest` esteso con assert `distance IS NULL`.
+
 ## [2026-11-09] base-map-widget | fullscreen come L.Control nativo + fix asset git-ignored
 
 - `base-map.blade.php`: fullscreen spostato da `<button>` absolute custom (sovrapposto ai pulsanti zoom, icona bruttta) a `L.Control` in `.leaflet-bar` — Leaflet lo impila nella corner senza overlap; icona SVG commuta expand/contract, label `fullscreen`/`fullscreen_exit` con `aria-pressed`.

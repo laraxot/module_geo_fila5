@@ -22,7 +22,10 @@ it('adds the distance expression without duplicating the select star when column
     expect($sql)->toContain('AS distance')
         ->and($sql)->not->toContain('*, 6371')
         ->and($sql)->toContain('order by')
-        ->and($sql)->toContain('distance');
+        ->and($sql)->toContain('distance')
+        // NULL (record senza coordinate) vanno in coda: in MySQL `ORDER BY
+        // distance ASC` mette i NULL primi e la lista apparirebbe non ordinata.
+        ->and($sql)->toContain('distance IS NULL');
 });
 
 it('keeps the select star when the query has no columns yet', function () {

@@ -94,6 +94,10 @@ trait GeoTrait
 
         return $query
             ->selectRaw($prefix.$expression, $bindings)
+            // Senza coords `distance` e' NULL: in MySQL gli NULL vengono
+            // prima in ASC → i record senza coordinate_DOMINANO la lista.
+            // `distance IS NULL` ordina 0/1: prima i calcolati, poi gli altri.
+            ->orderByRaw('distance IS NULL')
             ->orderBy('distance');
     }
 
