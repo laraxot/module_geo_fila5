@@ -84,11 +84,16 @@ trait GeoTrait
             return $query;
         }
 
+        /*
+         * `*` va aggiunto solo se la query non ha gia' colonne selezionate:
+         * con `clients.*, <subselect>, *, 6371...` MariaDB rifiuta la sintassi.
+         */
+        $expression = '6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude))) AS distance';
+        $bindings = [$lat, $lng, $lat];
+        $prefix = $query->getQuery()->columns === null ? '*, ' : '';
+
         return $query
-            ->selectRaw(
-                '*, 6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude))) AS distance',
-                [$lat, $lng, $lat],
-            )
+            ->selectRaw($prefix.$expression, $bindings)
             ->orderBy('distance');
     }
 
