@@ -73,7 +73,6 @@ return [
             'label' => ' tpl',
             'placeholder' => '',
             'helper_text' => '',
-            'description' => '_tpl',
         ],
     ],
     'map_types' => [

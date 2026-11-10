@@ -20,10 +20,6 @@ return [
     ],
     'label' => 'Missing Label',
     'plural_label' => 'Missing Plural label',
-    'fields' => [
-    ],
-    'actions' => [
-    ],
     'base_map' => [
         'aria_label' => 'Interactive map',
         'fullscreen' => 'Fullscreen',
