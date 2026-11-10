@@ -120,21 +120,3 @@ Verifica: PHPStan Geo/Notify/Quaeris 0 errori, PHPStan dell'intero progetto 0 er
 
 Da fare fuori da qui: chi ha Filament sotto 5.11 lancia `composer update "filament/*" livewire/livewire`;
 la produzione deve avere filament >= 5.11 e livewire >= 4.4.8 prima del deploy.
-
-## 2026-11-05: i 22 errori residui sono il vendor vecchio, non il codice (swarm PHPStan, moduli piccoli)
-
-Scopo: `searchAddress()` e `reverseGeocode()` devono poter essere chiamati dal browser (ricerca indirizzo e
-geocodifica inversa della mappa). Filament lo permette solo ai metodi col suo attributo di esposizione.
-
-Causa dei 22 errori (`attribute.notFound` x20 nel trait e in `XotBaseCoordinateField`, `class.notFound` x1 nella guardia
-di `CoordinatePickerRefactorTest`): in questa copia di lavoro `laravel/vendor` e' **Filament 5.9.0 / Livewire 4.4.7**
-(`vendor/composer/installed.json` del 2026-10-05), sotto il `composer.lock` (5.10.3) e molto sotto il vincolo
-`filament/filament: ^5.11` di `Modules/Xot/composer.json`. In 5.9.0 esiste solo `ExposedLivewireMethod`: `Exposed` nasce in 5.11.
-
-Fix: **nessuna modifica al codice**. `#[Exposed]` e' gia' la scelta documentata sopra (opzione 1, vincolo `^5.11`);
-tornare a `#[ExposedLivewireMethod]` rifarebbe i 45 `attribute.deprecated` visti con 5.11 e sposterebbe la guardia del test
-sul nome vecchio. La cura e' allineare il vendor: `composer update "filament/*" livewire/livewire` (serve anche per `laravel/head`).
-Non l'ho eseguito: il vendor su NAS e' condiviso con gli altri agenti dello swarm e cambiarlo a meta' run falserebbe le loro misure.
-
-Verifica: PHPStan sui 3 file Geo ripete gli stessi errori sul vendor 5.9.0 (nessuno e' nuovo); con 5.11 la misura registrata sopra
-e' 0 errori in Geo. Non riverificato qui per lo stesso motivo.
