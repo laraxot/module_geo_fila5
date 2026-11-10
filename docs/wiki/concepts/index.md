@@ -31,3 +31,4 @@ status: draft
 ## Related Resources
 - Livewire widget architecture: [wiki/heroku/…](wiki/heroku)
 - Database schema documentation: [wiki/heroku/…](wiki/heroku)
+- [base-map-widget.md](./base-map-widget.md)
