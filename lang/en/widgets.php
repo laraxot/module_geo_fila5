@@ -20,9 +20,13 @@ return [
     ],
     'label' => 'Missing Label',
     'plural_label' => 'Missing Plural label',
-    'fields' => [
-    ],
-    'actions' => [
+    'base_map' => [
+        'aria_label' => 'Interactive map',
+        'fullscreen' => 'Fullscreen',
+        'fullscreen_exit' => 'Exit fullscreen',
+        'locate' => 'Center on my location',
+        'layer_satellite' => 'Satellite',
+        'markers_shown' => 'Showing :count markers',
     ],
     'base_map' => [
         'aria_label' => 'Interactive map',
