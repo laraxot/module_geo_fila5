@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Geo\Infrastructure\Validation\GeoDataValidationRules;
 use Modules\Geo\Actions\GeoData\ValidateGeoDataAction;
-use Tests\TestCase;
+use Modules\Geo\Tests\TestCase;
 
 uses(TestCase::class, WithFaker::class);
 

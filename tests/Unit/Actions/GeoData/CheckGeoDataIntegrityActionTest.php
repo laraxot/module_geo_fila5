@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Geo\Actions\GeoData\CheckGeoDataIntegrityAction;
-use Tests\TestCase;
+use Modules\Geo\Tests\TestCase;
 
 uses(TestCase::class, WithFaker::class);
 
