@@ -4,7 +4,7 @@ type: dev
 module: Geo
 status: done-with-open-decision
 created: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-28
 tags: [phpstan, geo, constants, bmad]
 related:
   - ./phpstan-cleanup-geo.story.md
@@ -76,7 +76,7 @@ tipizzate (8.3+) sono segnalate `classConstant.nativeTypeNotSupported` (61 in Ge
 scendere `constantTypeCoverage` (rule attiva solo con analisi dei path completi `Modules/`, i `@var` non contano).
 Le due regole sono inconciliabili con `^8.2`: serve `"php": "^8.3"` (o `config.platform.php`) nel `composer.json`
 radice, fuori dallo scope Geo. Lo stesso problema e' stato rilevato dal gruppo Lang e in
-`docs/bmad/incidenti/2026-10-06-const-to-enum-initiative.md`.
+`docs/bmad/incidenti/const-to-enum-initiative.md`.
 
 ## Suspicious / non toccato
 
@@ -104,3 +104,11 @@ radice, fuori dallo scope Geo. Lo stesso problema e' stato rilevato dal gruppo L
   un file con altro nome ha 0 errori. Il test e' stato comunque riscritto con proprieta' esplicita (neutro).
 - **Un test che istanzia e non asserta e' un test mancante**: la variabile "mai letta" indicava l'assert dimenticato
   (`$patient['type']` mai usato -> `model_type` hardcoded), non codice da cancellare.
+
+## Round 2026-10-28 — paramTypeCoverage
+
+File: `Actions/GoogleMaps/GetAddressFromGoogleMapsAction`, `Actions/Maps/BuildGeoMapWidgetPayloadAction`,
+`Filament/Forms/Components/AddressesField`, `Filament/Widgets/OSMMapWidget`, `Models/{ComuneJson,Locality}`,
+`Rules/FilterCoordinatesInRadius`. Dettaglio per file nella Analysis della story. Verifica:
+`cd laravel && ./vendor/bin/phpstan analyse Modules --memory-limit=-1 --no-progress --error-format=raw | grep Modules/Geo/` (vuoto).
+

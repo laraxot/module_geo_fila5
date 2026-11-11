@@ -30,6 +30,6 @@ test('geo policy classes are concrete and instantiable', function (): void {
         $reflection = new ReflectionClass($policyClass);
 
         Assert::assertTrue($reflection->isInstantiable());
-        Assert::assertNotNull($reflection->newInstance());
+        Assert::assertInstanceOf($policyClass, $reflection->newInstance());
     }
 });
