@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Tests\Unit;
 
 use PHPUnit\Framework\Assert;
-use Tests\TestCase;
+use Modules\Geo\Tests\TestCase;
 
 uses(TestCase::class);
 
