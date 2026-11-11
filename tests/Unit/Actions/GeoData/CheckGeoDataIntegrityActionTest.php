@@ -24,7 +24,7 @@ describe('CheckGeoDataIntegrityAction', function () {
                             'name' => 'Milano',
                             'code' => 'MI',
                             'cities' => [
-                                ['name' => 'Milano', 'cap' => '20100'],
+                                ['name' => 'Milano', 'code' => '015146', 'cap' => '20100'],
                             ],
                         ],
                     ],

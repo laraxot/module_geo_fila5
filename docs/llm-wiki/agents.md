@@ -12,7 +12,7 @@ related:
 status: draft
 ---
 
-# Geo {{TYPE^}} LLM Wiki Agent Instructions
+# Geo Module LLM Wiki Agent Instructions
 
 > **Module/Theme:** Geo
 > **Scope:** Geo-specific knowledge only

@@ -1,7 +1,7 @@
 ---
 issues: []
 discussions: []
-title: "Geo — mai Filament\*, sempre XotBase*"
+title: "Geo — mai Filament*, sempre XotBase*"
 type: concept
 module: Geo
 tags: [geo, filament, xotbase, architecture]

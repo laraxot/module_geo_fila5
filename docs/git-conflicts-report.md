@@ -86,13 +86,13 @@ Generated on: Wed Apr 22 14:04:36 CEST 2026
 * ./Themes/TwentyOne/docs/merge-conflicts-list.md
 * ./Themes/Meetup/docs/merge-conflicts-list.md
 * ./Themes/Sixteen/docs/css-js-parity.md
-* ./Themes/Sixteen/docs/design-comuni/SEGNALAZIONE-FIX-SESSION.md
-* ./Themes/Sixteen/docs/design-comuni/HTML_PARITY_COMPLETE.md
+* ./Themes/Sixteen/docs/design-comuni/segnalazione-fix-session.md
+* ./Themes/Sixteen/docs/design-comuni/html-parity-complete.md
 * ./Themes/Sixteen/docs/design-comuni/screenshots/comparison/POST-FIX-VERIFICATION.md
 * ./Themes/Sixteen/docs/design-comuni/screenshots/ref-homepage.png
 * ./Themes/Sixteen/docs/design-comuni/screenshots/reference/homepage-desktop.png
 * ./Themes/Sixteen/docs/design-comuni/screenshots/local-homepage-full.png
-* ./Themes/Sixteen/docs/MERGE_CONFLICT_RESOLUTION_LOG.md
+* ./Themes/Sixteen/docs/merge-conflict-resolution-log.md
 * ./Themes/Sixteen/docs/00-INDEX.md
 * ./Themes/Sixteen/docs/merge-conflicts-list.md
 * ./Themes/Sixteen/docs/screenshots/homepage/reference-full-2026-04-07.png

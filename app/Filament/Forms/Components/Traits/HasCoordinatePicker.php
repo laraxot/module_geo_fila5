@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components\Traits;
 
-use Filament\Support\Components\Attributes\ExposedLivewireMethod;
+use Filament\Support\Components\Attributes\Exposed;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\Renderless;
@@ -92,7 +92,7 @@ trait HasCoordinatePicker
      * Set the initial map center.
      * Supports both center(lat, lng) and center(['lat' => ..., 'lng' => ...]).
      *
-     * @param float|array<string, float> $latitude
+     * @param  float|array<string, float>  $latitude
      */
     public function center(float|array $latitude, ?float $longitude = null): static
     {
@@ -183,7 +183,7 @@ trait HasCoordinatePicker
         $rawZoom = \is_array($view) ? ($view['zoom'] ?? null) : null;
         $zoom = is_numeric($rawZoom) ? (float) $rawZoom : null;
 
-        if (null === $lat || null === $lng || null === $zoom
+        if ($lat === null || $lng === null || $zoom === null
             || abs($lat) > 90 || abs($lng) > 180 || $zoom !== floor($zoom) || $zoom < 1 || $zoom > 19) {
             return ['lat' => 42.5, 'lng' => 12.5, 'zoom' => 6];
         }
@@ -232,7 +232,7 @@ trait HasCoordinatePicker
      *
      * @return list<array<string, mixed>>
      */
-    #[ExposedLivewireMethod]
+    #[Exposed]
     #[Renderless]
     public function searchAddress(string $query): array
     {
@@ -290,7 +290,7 @@ trait HasCoordinatePicker
      *
      * @return array<string, mixed>|null
      */
-    #[ExposedLivewireMethod]
+    #[Exposed]
     #[Renderless]
     public function reverseGeocode(float $latitude, float $longitude): ?array
     {
@@ -361,14 +361,14 @@ trait HasCoordinatePicker
     }
 
     /**
-     * @param array<string, mixed> $data
-     * @param array<int, string>   $keys
+     * @param  array<string, mixed>  $data
+     * @param  array<int, string>  $keys
      */
     private static function firstString(array $data, array $keys): string
     {
         foreach ($keys as $key) {
             $value = $data[$key] ?? null;
-            if (\is_string($value) && '' !== trim($value)) {
+            if (\is_string($value) && trim($value) !== '') {
                 return $value;
             }
         }
@@ -377,8 +377,7 @@ trait HasCoordinatePicker
     }
 
     /**
-     * @param array<string, mixed> $data
-     *
+     * @param  array<string, mixed>  $data
      * @return array<string, mixed>
      */
     public static function extractCoordinates(array $data, string $field = 'coordinates', string $latColumn = 'latitude', string $lngColumn = 'longitude'): array
@@ -394,7 +393,7 @@ trait HasCoordinatePicker
 
     private static function normalizeCoordinate(mixed $value): ?float
     {
-        if (null === $value || '' === $value) {
+        if ($value === null || $value === '') {
             return null;
         }
 
