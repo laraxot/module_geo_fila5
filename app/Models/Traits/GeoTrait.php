@@ -73,7 +73,9 @@ trait GeoTrait
     }
 
     /**
-     * Ordina per distanza Haversine da un punto (colonna distance in select).
+     * Ordina per distanza Haversine da un punto (colonna `distance` in km nella select).
+     *
+     * Le righe senza coordinate hanno `distance` NULL e vanno in fondo, non in cima.
      *
      * @param  Builder<static>  $query
      * @return Builder<static>
@@ -93,10 +95,17 @@ trait GeoTrait
         $prefix = empty($query->getQuery()->columns) ? '*, ' : '';
 
         return $query
+<<<<<<< .merge_file_lHEMWS
             ->selectRaw($prefix.$expression, $bindings)
             // Senza coords `distance` e' NULL: in MySQL gli NULL vengono
             // prima in ASC → i record senza coordinate_DOMINANO la lista.
             // `distance IS NULL` ordina 0/1: prima i calcolati, poi gli altri.
+=======
+            ->selectRaw(
+                '*, 6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude))) AS distance',
+                [$lat, $lng, $lat],
+            )
+>>>>>>> .merge_file_IJYmcy
             ->orderByRaw('distance IS NULL')
             ->orderBy('distance');
     }
