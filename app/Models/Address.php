@@ -97,7 +97,6 @@ use Modules\Xot\Contracts\ProfileContract;
 class Address extends BaseModel
 {
     use GeoTrait;
-    use SoftDeletes;
 
     /** @var list<string> */
     protected $fillable = [
