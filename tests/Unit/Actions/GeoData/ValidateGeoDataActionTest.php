@@ -4,10 +4,23 @@ declare(strict_types=1);
 
 use Illuminate\Foundation\Testing\WithFaker;
 use Modules\Geo\Actions\GeoData\ValidateGeoDataAction;
+<<<<<<< .merge_file_oLmurf
+use Modules\Geo\Infrastructure\Validation\GeoDataValidationRules;
+use Tests\TestCase;
+
+uses(TestCase::class, WithFaker::class);
+
+beforeEach(function () {
+    $this->action = app(ValidateGeoDataAction::class);
+    $this->rules = new GeoDataValidationRules;
+});
+
+=======
 use Modules\Geo\Tests\TestCase;
 
 uses(TestCase::class, WithFaker::class);
 
+>>>>>>> .merge_file_s8kieq
 describe('ValidateGeoDataAction', function () {
     it('validates correct geo data structure', function () {
         $validData = [

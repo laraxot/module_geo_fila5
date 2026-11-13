@@ -13,6 +13,11 @@ use Modules\Geo\Models\Place;
  * Modules\Geo\Models\Traits\HasPlaceTrait.
  *
  * @phpstan-require-extends Model
+<<<<<<< .merge_file_UEUgFy
+ *
+ * @phpstan-ignore trait.unused
+=======
+>>>>>>> .merge_file_a99ko7
  */
 trait HasPlaceTrait
 {

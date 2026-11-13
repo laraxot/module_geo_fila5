@@ -7,6 +7,7 @@ namespace Modules\Geo\Tests\Unit\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Modules\Geo\Models\Comune;
+use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\json_encode;
@@ -50,12 +51,16 @@ function comuneModelFixtures(): array
     ];
 }
 
+<<<<<<< .merge_file_RPJx5y
+uses(TestCase::class);
+=======
 function comuneModelFixturePath(): string
 {
     return storage_path('framework/testing/geo/comuni-model-test.json');
 }
 
 uses(\Modules\Geo\Tests\TestCase::class);
+>>>>>>> .merge_file_qCJ9yn
 
 beforeEach(function (): void {
     File::ensureDirectoryExists(\dirname(comuneModelFixturePath()));
