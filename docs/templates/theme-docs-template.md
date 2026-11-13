@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "theme docs template"
 issues: []
 discussions: []
-status: draft
 ---
 
 # {ThemeName} Theme
@@ -71,7 +70,7 @@ After every change:
 ## Documentation
 
 - [GSD Methodology](../../docs/project/gsd-methodology.md)
-- [UI Components](../../../UI/docs/components.md)
+- [UI Components](../../laravel/Modules/UI/docs/components.md)
 - [AGENTS.md](../../AGENTS.md)
 
 ## Roadmap
