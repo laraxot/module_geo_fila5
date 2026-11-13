@@ -123,7 +123,7 @@ final class GeoMapWidget extends XotBaseWidget
     }
 
     /**
-     * @param array<string, mixed> $payload
+     * @param  array<string, mixed>  $payload
      */
     private function encodeJson(array $payload, string $message): string
     {
