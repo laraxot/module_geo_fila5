@@ -1,4 +1,5 @@
 ---
+<<<<<<< .merge_file_bA10Cg
 type: note
 tags: [documentation]
 created: 2026-09-26
@@ -6,6 +7,8 @@ updated: 2026-09-26
 qmd: "code duplication"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_hcKXV9
 title: Duplicazione del codice
 description: Duplicazione del codice
 extends: _layouts.documentation

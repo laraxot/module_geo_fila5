@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_rwvDbB
 ---
 title: "sigma phpstan analysis 2026 06 15"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_KuwEsb
 # Analisi PHPStan Modulo Sigma — 2026-06-15
 
 **Status:** ❌ ERRORE CRITICO  
@@ -69,6 +72,7 @@ interface DateRangeFieldsContract
 
 ---
 
+<<<<<<< .merge_file_rwvDbB
 title: "sigma phpstan analysis 2026 06 15"
 type: note
 tags: [documentation]
@@ -77,4 +81,6 @@ updated: 2026-09-26
 qmd: "sigma phpstan analysis 2026 06 15"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_KuwEsb
 **Nota:** PHPStan non riesce a procedere fino al completamento di questo errore interno.

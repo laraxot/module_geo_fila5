@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_536TDc
 ---
 title: "00 INDEX"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_ZJy7YX
 # Geo Module - Roadmap
 
 > Geolocalizzazione: indirizzi, coordinate, mappe, geocoding, provider agnostici.

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_nvmORK
 ---
 title: "FALSE FRIENDS"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_iwZdjc
 # False Friends – Geo Module
 
 | Concetto | Interpretazione errata | Corretto |

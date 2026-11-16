@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_EkDSbR
 ---
 title: "INFOLIST SCHEMA GUIDELINES"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_gz90pW
 # Linee Guida per l'Implementazione di getInfolistSchema
 
 ## Requisiti Fondamentali

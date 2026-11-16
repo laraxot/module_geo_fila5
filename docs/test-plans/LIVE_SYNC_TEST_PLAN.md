@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_77nvgr
 ---
 title: "LIVE SYNC TEST PLAN"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_L5usmj
 # Live Sync Test Plan
 
 > **Test:** Real module sync with GitHub remote
@@ -21,6 +24,7 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_77nvgr
 title: "LIVE SYNC TEST PLAN"
 type: note
 tags: [documentation]
@@ -29,6 +33,8 @@ updated: 2026-09-26
 qmd: "LIVE SYNC TEST PLAN"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_L5usmj
 ## Objective
 
 Execute a **real-world test** of `sync_remote_repo.sh` on an actual GitHub repository to verify:

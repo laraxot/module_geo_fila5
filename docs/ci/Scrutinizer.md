@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_Y1JFZq
 ---
 title: "Scrutinizer"
 type: note
@@ -9,5 +10,7 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_dx9bKN
 https://scrutinizer-ci.com/
 

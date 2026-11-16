@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_vucpwT
 ---
 title: "phpstan errors roadmap 2026 01 12"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_3GrF6V
 # PHPStan Level Max Errors Roadmap - Geo Module
 
 **Data**: 2026-01-12
@@ -18,6 +21,7 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_vucpwT
 title: "phpstan errors roadmap 2026 01 12"
 type: note
 tags: [documentation]
@@ -26,6 +30,8 @@ updated: 2026-09-26
 qmd: "phpstan errors roadmap 2026 01 12"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_3GrF6V
 ## 📊 Errori Identificati
 
 ### Totale Errori: 8

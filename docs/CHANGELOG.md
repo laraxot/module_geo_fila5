@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_rZaQer
 ---
 title: "CHANGELOG"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_23uc5y
 # Changelog
 
 All notable changes to `:package_name` will be documented in this file.

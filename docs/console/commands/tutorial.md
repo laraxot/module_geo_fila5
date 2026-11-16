@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_qGOs1Q
 ---
 title: "tutorial"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_CrRNQD
 https://fly.io/laravel-bytes/console-applications-with-laravel-zero/
 
 # Comandi Console in Moduli Laraxot

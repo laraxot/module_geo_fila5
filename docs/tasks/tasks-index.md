@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_bbUZRD
 ---
 title: "tasks index"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_q31VuR
 # Indice task - Modulo Geo
 
 Lista dei task del modulo con link ai file .md separati. Ogni task è un file nella cartella `tasks/`. Dettagli dalla [roadmap](../roadmap.md).

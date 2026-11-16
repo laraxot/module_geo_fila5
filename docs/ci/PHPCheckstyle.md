@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_tROSnc
 ---
 title: "PHPCheckstyle"
 type: note
@@ -9,4 +10,6 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_0lsADu
 https://github.com/PHPCheckstyle/phpcheckstyle

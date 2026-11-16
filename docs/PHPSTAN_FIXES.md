@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_RPf70p
 ---
 title: "PHPSTAN FIXES"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_0vIjZJ
 # PHPStan Fixes for Geo Module
 
 This document outlines the PHPStan-related fixes and improvements made to the Geo module to ensure type safety and code quality at PHPStan level 9.

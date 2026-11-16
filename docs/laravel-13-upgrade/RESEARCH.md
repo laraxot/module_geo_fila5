@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_T1HkEc
 ---
 title: "RESEARCH"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_0Z6YFY
 # Research: Laravel 13 Upgrade for Modular Project
 
 ## Overview

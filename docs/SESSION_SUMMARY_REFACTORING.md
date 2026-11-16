@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_j7lTsW
 ---
 title: "SESSION SUMMARY REFACTORING"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_fNwH0j
 # SESSION SUMMARY — Refactoring Module Inheritance
 
 ## Completato

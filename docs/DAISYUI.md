@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_TnBmoI
 ---
 title: "DAISYUI"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_fRUTIK
 # Geo Module — daisyUI Documentation
 
 ## Panoramica
@@ -26,6 +29,7 @@ Nel contesto del modulo **Geo**, daisyUI **non è attualmente installato**.
 
 ---
 
+<<<<<<< .merge_file_TnBmoI
 title: "DAISYUI"
 type: note
 tags: [documentation]
@@ -34,6 +38,8 @@ updated: 2026-09-26
 qmd: "DAISYUI"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_fRUTIK
 ## Perché Geo non usa daisyUI (e perché non serve)
 
 Il modulo **Geo** gestisce asset pubblici autonomi: `coordinate-picker-lit`, `map-lit`, widget mappa Leaflet.

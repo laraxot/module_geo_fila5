@@ -1,4 +1,5 @@
 ---
+<<<<<<< .merge_file_iF3JSF
 title: "REDUNDANCY ANALYSIS"
 type: note
 tags: [documentation]
@@ -7,6 +8,8 @@ updated: 2026-09-26
 qmd: "REDUNDANCY ANALYSIS"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_lCbiAQ
 module: theme
 topic: REDUNDANCY_ANALYSIS
 canonical: ../../../Themes/docs/shared-components/REDUNDANCY_ANALYSIS.md

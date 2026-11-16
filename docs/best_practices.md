@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_b4BHO5
 ---
 title: "best practices"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_wMEeHQ
 # Best Practices – Geo Module
 
 ## Principi DRY/KISS

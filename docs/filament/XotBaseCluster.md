@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_zIPWB5
 ---
 title: "XotBaseCluster"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_3LwGW7
 # XotBaseCluster
 
 ## Descrizione

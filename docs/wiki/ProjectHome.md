@@ -1,4 +1,5 @@
 ---
+<<<<<<< .merge_file_lbyaYE
 title: "ProjectHome"
 type: note
 tags: [documentation]
@@ -6,6 +7,8 @@ created: 2026-09-26
 updated: 2026-09-26
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_sxvXpu
 concept: Project Home
 last_updated: 2026-05-20
 qmd: "project home, ptvx-project, getting started, overview, module structure"
@@ -17,11 +20,19 @@ Welcome to the central knowledge base for the **PTVX** project. This wiki is aut
 
 ## Core Modules
 
+<<<<<<< .merge_file_lbyaYE
 - [Xot](../../../Xot/docs/wiki): Core framework wrappers and shared utilities.
 - [User](../../../User/docs/wiki): Identity, authentication, and profiles.
 - [Tenant](../../../Tenant/docs/wiki): Multi-tenancy and data isolation.
 - [UI](../../../UI/docs/wiki): Shared Blade and Filament components.
 - [Lang](../../../Lang/docs/wiki): Internationalization and translation logic.
+=======
+- [Xot](../../laravel/Modules/Xot/docs/wiki/): Core framework wrappers and shared utilities.
+- [User](../../laravel/Modules/User/docs/wiki/): Identity, authentication, and profiles.
+- [Tenant](../../laravel/Modules/Tenant/docs/wiki/): Multi-tenancy and data isolation.
+- [UI](../../laravel/Modules/UI/docs/wiki/): Shared Blade and Filament components.
+- [Lang](../../laravel/Modules/Lang/docs/wiki/): Internationalization and translation logic.
+>>>>>>> .merge_file_sxvXpu
 
 ## Architectural Principles
 

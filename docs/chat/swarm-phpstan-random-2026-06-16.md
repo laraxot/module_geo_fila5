@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_eR4MAd
 ---
 title: "swarm phpstan random 2026 06 16"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_7NwDgY
 # Swarm PHPStan Random Analysis — 2026-06-16
 
 **Scopo:** Validare PHPStan level-max su 34 moduli in ordine casuale con coordinamento multi-agente.  
@@ -17,6 +20,7 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_eR4MAd
 title: "swarm phpstan random 2026 06 16"
 type: note
 tags: [documentation]
@@ -25,6 +29,8 @@ updated: 2026-09-26
 qmd: "swarm phpstan random 2026 06 16"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_7NwDgY
 ## Ordine Random dei Moduli (34 totali)
 
 ```

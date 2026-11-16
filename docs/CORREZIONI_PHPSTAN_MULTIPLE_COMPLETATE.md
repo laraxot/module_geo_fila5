@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_G4soSx
 ---
 title: "CORREZIONI PHPSTAN MULTIPLE COMPLETATE"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_bs1LwK
 # ✅ CORREZIONI PHPStan MULTIPLE COMPLETATE
 
 ## 🎯 Sessione di Bug Fixing Completata
@@ -154,6 +157,7 @@ array_merge(
 
 ---
 
+<<<<<<< .merge_file_G4soSx
 title: "CORREZIONI PHPSTAN MULTIPLE COMPLETATE"
 type: note
 tags: [documentation]
@@ -162,6 +166,8 @@ updated: 2026-09-26
 qmd: "CORREZIONI PHPSTAN MULTIPLE COMPLETATE"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_bs1LwK
 ## ✅ SESSIONE BUG FIXING COMPLETATA
 
 **17 errori PHPStan risolti** attraverso 3 moduli con implementazione di:

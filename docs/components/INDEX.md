@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_JZFQjP
 ---
 title: "INDEX"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_r5RweM
 # Geo Module — Components
 
 ## Filament Form Components
@@ -18,7 +21,10 @@ discussions: []
 | **AddressInput** | `app/Filament/Forms/Components/AddressInput.php` | Address input field with geolocation button (Filament Field component) |
 | **AddressField** | `app/Filament/Forms/Components/AddressField.php` | Full address section with cascading region/province/locality selects |
 | **AddressSection** | `app/Filament/Forms/Components/AddressSection.php` | Legacy section-based address form |
+<<<<<<< .merge_file_JZFQjP
 | **LocationSelector** | `app/Filament/Forms/Components/LocationSelector.php` | Cascading region / province / postal code selector backed by the `Comune` model (moved here from UI, which must not import Geo) |
+=======
+>>>>>>> .merge_file_r5RweM
 
 ### Usage: AddressInput (Recommended for simple address + geolocation)
 
@@ -55,6 +61,7 @@ AddressField::make('address')
     ->disableLiveUpdates(); // Use in wizards to prevent infinite loops
 ```
 
+<<<<<<< .merge_file_JZFQjP
 ### Usage: LocationSelector (Region, province, postal code)
 
 ```php
@@ -69,6 +76,8 @@ LocationSelector::make()
 
 Province and postal code options depend on the selected region and province. Validation messages: `geo::location_selector.validation.*`.
 
+=======
+>>>>>>> .merge_file_r5RweM
 ## Blade Components (Legacy)
 
 | Component | Path | Description |

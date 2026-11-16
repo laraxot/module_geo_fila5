@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_RkGvvw
 ---
 title: "INDEX"
 type: note
@@ -23,6 +24,10 @@ discussions: []
 - [Registro decisioni](./decision-log.md) - decisioni di struttura e di allineamento
 - [Panoramica del modulo](./README.md)
 
+=======
+# Geo Module Documentation Index
+
+>>>>>>> .merge_file_1wtmCQ
 ## Documentation Structure
 
 ### 📚 Core Documentation
@@ -36,17 +41,27 @@ discussions: []
 
 - [**Address Implementation**](./address-implementation.md) - Address handling and validation
 - [**Address Autocomplete**](./address-autocomplete.md) - Smart address suggestions
+<<<<<<< .merge_file_RkGvvw
 - [**Map Components**](./leaflet-marker-map-input.md) - Interactive map components
+=======
+- [**Map Components**](./leaflet_marker_map_input.md) - Interactive map components
+>>>>>>> .merge_file_1wtmCQ
 - [**Advanced Features**](./ADVANCED_FEATURES.md) - Power user features
 - [**Product Roadmap**](./PRODUCT_ROADMAP.md) - Future development plans
 
 ### 🔧 Integration & Usage
 
 - [**Coordinate Picker Purpose & Architecture**](./coordinate-picker-purpose.md) - Scopo, utilità e implementazione del componente mappa per wizard ticket
+<<<<<<< .merge_file_RkGvvw
 - [**Mappa di sola lettura (`<x-geo::point-map>`, `CoordinatePicker::readOnly()`)**](./wiki/concepts/point-map-readonly.md) - Mostrare un punto senza poterlo modificare (riepilogo wizard, DCP-33)
 - [**SVG Icon Architecture**](./coordinate-picker-purpose.md#-svg-icon-architecture-no-hardcoded-svg) - Regola DRY: SVG separati in `resources/svg/`, no inline hardcoded
 - [**Filament Components**](./filament-forms-components.md) - Filament forms components, web components (Lit.dev), and integration patterns
 - [**Filament Integration**](./filament_extension_rules.md) - Filament PHP integration patterns
+=======
+- [**SVG Icon Architecture**](./coordinate-picker-purpose.md#-svg-icon-architecture-no-hardcoded-svg) - Regola DRY: SVG separati in `resources/svg/`, no inline hardcoded
+- [**Filament Components**](./filament-forms-components.md) - Filament forms components, web components (Lit.dev), and integration patterns
+- [**Filament Integration**](./FILAMENT_EXTENSION_RULES.md) - Filament PHP integration patterns
+>>>>>>> .merge_file_1wtmCQ
 
 ### 🎨 Assets & Icons
 
@@ -75,7 +90,11 @@ discussions: []
 - [**Project Management**](./PROJECT.md) - Project management documentation
 - [**PHPStan Fixes**](./PHPSTAN_FIXES.md) - Code quality fixes and improvements
 - [**Vite Build Configuration**](./vite-build-configuration.md) - Vite 7.x + Tailwind 4.x setup per moduli
+<<<<<<< .merge_file_RkGvvw
 - [**Configuration**](../config/config.php) - Module configuration
+=======
+- [**Configuration**](./config/config.php) - Module configuration
+>>>>>>> .merge_file_1wtmCQ
 
 ### 📁 Stories & Tasks
 
@@ -84,7 +103,11 @@ discussions: []
 
 ### 📋 Guidelines & Best Practices
 
+<<<<<<< .merge_file_RkGvvw
 - [**Design Rules**](./filament_extension_rules.md) - Filament component design rules
+=======
+- [**Design Rules**](./FILAMENT_EXTENSION_RULES.md) - Filament component design rules
+>>>>>>> .merge_file_1wtmCQ
 - [**Consolidation Analysis**](./analisi-moduli-ottimizzazioni.md) - Module consolidation guidelines
 - [**Performance Guidelines**](./TECHNICAL.md#performance) - Performance optimization patterns
 
@@ -102,7 +125,11 @@ discussions: []
 | **Location Spinner UX** | [location-spinner-ux.md](./location-spinner-ux.md) | ✅ Active |
 | AddressField Component (legacy) | [address-field-component.md](./address-field-component.md) | ⚠️ Legacy |
 | AddressResource | [address-resource.md](./filament/address-resource.md) | ✅ Active |
+<<<<<<< .merge_file_RkGvvw
 | Module Boundary Philosophy | [../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md](../../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md) | ✅ Active |
+=======
+| Module Boundary Philosophy | [../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md](../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md) | ✅ Active |
+>>>>>>> .merge_file_1wtmCQ
 | README / Overview | [README.md](./README.md) | ✅ Active |
 
 ## Filament Components
@@ -154,6 +181,7 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_RkGvvw
 title: "INDEX"
 type: note
 tags: [documentation]
@@ -162,6 +190,8 @@ updated: 2026-09-26
 qmd: "INDEX"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_1wtmCQ
 ## 📋 DEDUPLICATION NOTICE
 
 This module has many duplicate files in docs/. Key actions taken:
@@ -184,7 +214,11 @@ This module has many duplicate files in docs/. Key actions taken:
 
 1. **Architecture**: Start with [architecture overview](./architecture.md)
 2. **Components**: Learn about [address components](./address-implementation.md) and [map components](./story-map-component-analysis.md)
+<<<<<<< .merge_file_RkGvvw
 3. **Integration**: Follow [Filament integration guide](./filament_extension_rules.md)
+=======
+3. **Integration**: Follow [Filament integration guide](./FILAMENT_EXTENSION_RULES.md)
+>>>>>>> .merge_file_1wtmCQ
 4. **Examples**: Check [app integration](./app-integration.md)
 
 ### 🤝 Contributing
@@ -198,7 +232,11 @@ This module has many duplicate files in docs/. Key actions taken:
 
 - For technical questions: Check [architecture](./architecture.md) and [technical docs](./TECHNICAL.md)
 - For implementation issues: Review [code quality analysis](./analysis/code-quality-analysis.md)
+<<<<<<< .merge_file_RkGvvw
 - For integration help: See [app integration](./app-integration.md) and [Filament rules](./filament_extension_rules.md)
+=======
+- For integration help: See [app integration](./app-integration.md) and [Filament rules](./FILAMENT_EXTENSION_RULES.md)
+>>>>>>> .merge_file_1wtmCQ
 ---
 
 ## ⚠️ Architectural Rules

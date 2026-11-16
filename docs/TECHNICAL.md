@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_dBuIrP
 ---
 title: "TECHNICAL"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_Rtf2dG
 
 # Documentazione Tecnica Modulo Geo
 

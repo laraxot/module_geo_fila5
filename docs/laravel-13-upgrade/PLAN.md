@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_2IaGH4
 ---
 title: "PLAN"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_bSFKmh
 # Plan: Laravel 13 Upgrade
 
 ## Phase 1: Global Documentation

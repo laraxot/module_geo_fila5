@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_KOXsfg
 ---
 title: "base README template"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_CdNqTW
 # {{module_name}} Module
 
 [![Laravel 11.x](https://img.shields.io/badge/Laravel-11.x-red.svg)](https://laravel.com/)
@@ -54,6 +57,7 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_KOXsfg
 title: "base README template"
 type: note
 tags: [documentation]
@@ -62,6 +66,8 @@ updated: 2026-09-26
 qmd: "base README template"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_CdNqTW
 ## 🏗️ Panoramica
 
 Il modulo **{{module_name}}** implementa {{business_domain}} seguendo i principi architetturali Laraxot per garantire:

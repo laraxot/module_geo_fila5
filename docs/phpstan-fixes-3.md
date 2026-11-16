@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_w0fhep
 ---
 title: "phpstan fixes 3"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_mvnWft
 # Correzioni PHPStan Modulo Geo - [DATE]
 
 **Versione PHPStan**: 1.12.x

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_9i9tX4
 ---
 title: "MCP TOOLS INTEGRATION"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_dHtYN3
 # MCP Tools Integration — Geo Module
 
 **Data:** 2026-06-03  
@@ -17,6 +20,7 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_9i9tX4
 title: "MCP TOOLS INTEGRATION"
 type: note
 tags: [documentation]
@@ -25,6 +29,8 @@ updated: 2026-09-26
 qmd: "MCP TOOLS INTEGRATION"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_dHtYN3
 ## Overview
 
 This document describes how MCP (Model Context Protocol) tools integrate with the Geo module for enhanced UI/UX development.

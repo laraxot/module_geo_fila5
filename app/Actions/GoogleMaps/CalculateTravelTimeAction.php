@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Log;
 use Modules\Geo\Datas\LocationData;
 use Modules\Geo\Datas\Routing\TravelTimeData;
 use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
-
-use function Safe\json_decode;
-
 use Spatie\QueueableAction\QueueableAction;
 use Webmozart\Assert\Assert;
+
+use function Safe\json_decode;
 
 /**
  * Action per calcolare il tempo di percorrenza tra due punti tramite Google Maps.
@@ -30,14 +29,13 @@ class CalculateTravelTimeAction
 
     public function __construct(
         private readonly Client $client,
-    ) {
-    }
+    ) {}
 
     /**
      * Calcola il tempo di percorrenza tra due punti.
      *
      * @throws \InvalidArgumentException Se i dati di input non sono validi
-     * @throws \RuntimeException         Se la chiave API non è configurata o la richiesta fallisce
+     * @throws \RuntimeException Se la chiave API non è configurata o la richiesta fallisce
      */
     public function execute(LocationData $origin, LocationData $destination): TravelTimeData
     {
@@ -62,7 +60,7 @@ class CalculateTravelTimeAction
      * Valida i dati di input.
      *
      * @throws \InvalidArgumentException Se i dati di input non sono validi
-     * @throws \RuntimeException         Se la chiave API non è configurata o i dati non sono validi
+     * @throws \RuntimeException Se la chiave API non è configurata o i dati non sono validi
      */
     private function validateInput(LocationData $origin, LocationData $destination): void
     {
@@ -107,6 +105,7 @@ class CalculateTravelTimeAction
     {
         $data = json_decode($response, true);
 
+<<<<<<< .merge_file_j6dVdl
         if (! \is_array($data) || ! \is_string($data['status'] ?? null)) {
             return TravelTimeData::error('INVALID_RESPONSE');
         }
@@ -117,6 +116,26 @@ class CalculateTravelTimeAction
             return TravelTimeData::error($status);
         }
 
+=======
+<<<<<<< .merge_file_6f9sEl
+        if ($data['status'] !== 'OK') {
+            return TravelTimeData::error($data['status']);
+        }
+
+        $element = $data['rows'][0]['elements'][0];
+        if (! $element || $element['status'] !== 'OK') {
+=======
+        if (! \is_array($data) || ! \is_string($data['status'] ?? null)) {
+            return TravelTimeData::error('INVALID_RESPONSE');
+        }
+
+        /** @var string $status */
+        $status = $data['status'];
+        if ('OK' !== $status) {
+            return TravelTimeData::error($status);
+        }
+
+>>>>>>> .merge_file_AJUf8V
         $rows = $data['rows'] ?? null;
         $firstRow = \is_array($rows) ? ($rows[0] ?? null) : null;
         $elements = \is_array($firstRow) ? ($firstRow['elements'] ?? null) : null;
@@ -127,6 +146,10 @@ class CalculateTravelTimeAction
         }
 
         if ('OK' !== $element['status']) {
+<<<<<<< .merge_file_j6dVdl
+=======
+>>>>>>> .merge_file_7pIkDx
+>>>>>>> .merge_file_AJUf8V
             return TravelTimeData::error($element['status']);
         }
 

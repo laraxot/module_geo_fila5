@@ -1,7 +1,10 @@
 ---
+<<<<<<< .merge_file_sqN64P
 qmd: "handoff phpstan random scan 2026 06 15"
 issues: []
 discussions: []
+=======
+>>>>>>> .merge_file_p1WNAE
 title: "Handoff — PHPStan scan random 2026-06-15"
 type: handoff
 tags: [phpstan, gate, swarm, coordination]

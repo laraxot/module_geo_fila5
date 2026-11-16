@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_nHWmXB
 ---
 title: "LARAXOT RULES"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_YcxS2d
 # LARAXOT FRAMEWORK RULES
 
 ## CLASS EXTENSION

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_rIBEDJ
 ---
 title: "squire integration 1"
 type: note
@@ -9,6 +10,8 @@ issues: []
 discussions: []
 ---
 
+=======
+>>>>>>> .merge_file_eajPgR
 # Integrazione con Squire per dati geografici
 
 ## Contesto
