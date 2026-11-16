@@ -165,7 +165,7 @@ class GeoService
      */
     public static function is_in_polygon(float $latitude, float $longitude, array $polygon): bool
     {
-        $i = $j = $c = 0;
+        $c = 0;
         $points_polygon = \count($polygon) - 1;
 
         // dddx([$latitude, $longitude, $polygon]);

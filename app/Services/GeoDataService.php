@@ -120,38 +120,18 @@ class GeoDataService
     }
 
     /**
-     * Ottiene le città di una provincia.
+     * Ottiene le città di una provincia come mappa codice => nome.
      *
      * @param string $provinceCode Codice della provincia
      *
-     * @return Collection<int, array{name: string, code: string}>
+     * @return Collection<string, string>
      */
     public function getCities(string $provinceCode): Collection
     {
         $cacheKey = \sprintf(self::CACHE_KEY_CITIES, $provinceCode);
 
-        /** @var Collection<int, array{name: string, code: string}> $result */
-        $result = Cache::remember($cacheKey, self::CACHE_TTL, function () use ($provinceCode): Collection {
-            /** @var array<string, mixed>|null $province */
-            $province = $this->loadData()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
-                ? $region['provinces']
-                : [])->firstWhere('code', $provinceCode);
-
-            if (! $province || ! \is_array($province) || ! isset($province['cities']) || ! \is_array($province['cities'])) {
-                return new Collection();
-            }
-
-            /** @var array<int, array<string, mixed>> $cities */
-            $cities = $province['cities'];
-
-            /** @var Collection<int, array<string, mixed>> $citiesCollection */
-            $citiesCollection = new Collection($cities);
-
-            /** @var Collection<string, string> $cityResult */
-            $cityResult = $citiesCollection->pluck('name', 'code');
-
-            return $cityResult;
-        });
+        /** @var Collection<string, string> $result */
+        $result = Cache::remember($cacheKey, self::CACHE_TTL, fn (): Collection => $this->loadCities($provinceCode));
 
         return $result;
     }
@@ -201,6 +181,31 @@ class GeoDataService
 
         // Nota: forgetPattern non esiste in Laravel Cache, usiamo forget per le chiavi specifiche
         // In un'implementazione reale, dovremmo mantenere traccia delle chiavi create
+    }
+
+    /**
+     * Carica le città di una provincia come mappa codice => nome.
+     *
+     * @return Collection<string, string>
+     */
+    private function loadCities(string $provinceCode): Collection
+    {
+        /** @var array<string, mixed>|null $province */
+        $province = $this->loadData()->flatMap(static fn (array $region): array => \is_array($region['provinces'] ?? null)
+            ? $region['provinces']
+            : [])->firstWhere('code', $provinceCode);
+
+        if (! $province || ! \is_array($province) || ! isset($province['cities']) || ! \is_array($province['cities'])) {
+            return new Collection();
+        }
+
+        /** @var array<int, array<string, mixed>> $cities */
+        $cities = $province['cities'];
+
+        /** @var Collection<string, string> $cityResult */
+        $cityResult = (new Collection($cities))->pluck('name', 'code');
+
+        return $cityResult;
     }
 
     /**
