@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_fx6TKA
 ---
 title: "bmad integration summary"
 type: note
@@ -7,9 +8,10 @@ updated: 2026-09-26
 qmd: "bmad integration summary"
 issues: []
 discussions: []
-status: draft
 ---
 
+=======
+>>>>>>> .merge_file_jKm619
 # bmad integration summary
 
 ## Scopo

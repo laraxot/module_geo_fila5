@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_GFuv8m
 ---
 title: "bmad workflow catalog"
 type: note
@@ -7,9 +8,10 @@ updated: 2026-09-26
 qmd: "bmad workflow catalog"
 issues: []
 discussions: []
-status: draft
 ---
 
+=======
+>>>>>>> .merge_file_G61hiP
 # BMAD Workflow Catalog — PTVX Edition
 
 > **Versione**: 6.2.0 | **Progetto**: Laraxot PTVX  
@@ -17,6 +19,18 @@ status: draft
 > **Totale Workflow**: 42 (243 file)
 
 ---
+
+<<<<<<< .merge_file_GFuv8m
+title: "bmad workflow catalog"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "bmad workflow catalog"
+issues: []
+discussions: []
+=======
+>>>>>>> .merge_file_G61hiP
 ## 📑 Indice
 
 - [Phase 1: Analysis](#phase-1-analysis)
@@ -708,7 +722,7 @@ bmad-generate-project-context  # Genera regole AI
 ## 🔗 Link Utili
 
 - [Quick Start Guide](./bmad-quickstart-guide.md)
-- [BMAD Method Integration](../project/bmad-method-integration.md)
+- [BMAD Method Integration](./bmad-method-integration.md)
 - [Project Context](../../_bmad-output/project-context.md)
 - [Official Docs](https://docs.bmad-method.org)
 - [Workflow Map](https://docs.bmad-method.org/reference/workflow-map/)

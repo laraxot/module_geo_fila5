@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_7rAwB9
 ---
 title: "bmad quickstart guide"
 type: note
@@ -7,15 +8,28 @@ updated: 2026-09-26
 qmd: "bmad quickstart guide"
 issues: []
 discussions: []
-status: draft
 ---
 
+=======
+>>>>>>> .merge_file_TwqvSE
 # BMAD Method — Quick Start Guide
 
 > **Versione**: 6.2.0 | **Ultimo aggiornamento**: 2026-03-31  
 > **Progetto**: Laraxot PTVX | **Stack**: Laravel 12 + Filament v5 + Pest v4
 
 ---
+
+<<<<<<< .merge_file_7rAwB9
+title: "bmad quickstart guide"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "bmad quickstart guide"
+issues: []
+discussions: []
+=======
+>>>>>>> .merge_file_TwqvSE
 ## 🚀 Introduzione
 
 **BMAD Method** (Build More Architect Dreams) è un framework di sviluppo AI-driven con agenti specializzati per trasformare idee vaghe in specifiche tecniche rigorose e codice di qualità.

@@ -1,3 +1,4 @@
+<<<<<<< .merge_file_ePIEfc
 ---
 title: "sutree"
 type: note
@@ -7,9 +8,10 @@ updated: 2026-09-26
 qmd: "sutree"
 issues: []
 discussions: []
-status: draft
 ---
 
+=======
+>>>>>>> .merge_file_truJ8V
 # Sutree
 
 git subtree pull -P bashscripts git@github.com:aurmich/bashscripts_fila5.git dev
