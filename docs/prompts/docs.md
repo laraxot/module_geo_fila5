@@ -519,7 +519,7 @@ Ogni documento deve includere:
 - [Architecture Overview](../../docs/architecture-overview.md)
 - [Coding Standards](../../docs/coding-standards.md)
 - [Testing Guidelines](../../docs/testing-guidelines.md)
-- [Filament Best Practices](../../docs/filament-best-practices.md)
+- [Filament Best Practices](../raw/history/filament-best-practices.md)
 - [Translation Rules](../../docs/translation-rules.md)
 - [Frontend Guidelines](../../docs/frontend-guidelines.md)
 ```
@@ -528,7 +528,7 @@ Ogni documento deve includere:
 ```markdown
 ## Documentazione Modulo {ModuleName}
 - [README](../../laravel/Modules/{ModuleName}/docs/README.md)
-- [Implementation Guide](../../laravel/Modules/{ModuleName}/docs/implementation.md)
+- [Implementation Guide](../implementation.md)
 - [API Reference](../../laravel/Modules/{ModuleName}/docs/api.md)
 ```
 
@@ -538,7 +538,7 @@ Ogni documento deve includere:
 - [Naming Convention Audit](../../bashscripts/naming-convention-audit.sh)
 - [Translation Check](../../bashscripts/translation-check.sh)
 - [Documentation Sync](../../bashscripts/documentation-sync.sh)
-- [Laraxot Workflow](../../.windsurf/workflows/laraxot.md)
+- [Laraxot Workflow](../raw/history/laraxot.md)
 ```
 
 ---
@@ -590,10 +590,10 @@ find docs/ -name "*" | grep '[A-Z]' | grep -v "README.md"
 - [Architecture Overview](../../docs/architecture-overview.md)
 - [Coding Standards](../../docs/coding-standards.md)
 - [Testing Guidelines](../../docs/testing-guidelines.md)
-- [Filament Best Practices](../../docs/filament-best-practices.md)
+- [Filament Best Practices](../raw/history/filament-best-practices.md)
 - [Translation Rules](../../docs/translation-rules.md)
 - [Frontend Guidelines](../../docs/frontend-guidelines.md)
-- [Database Migrations](../../docs/database-migrations.md)
+- [Database Migrations](../raw/history/database-migrations.md)
 - [Enum Management](../../docs/enum-management.md)
 - [HTML2PDF Guidelines](../../docs/html2pdf-guidelines.md)
 
@@ -607,7 +607,7 @@ find docs/ -name "*" | grep '[A-Z]' | grep -v "README.md"
 - [Naming Convention Audit](../../bashscripts/naming-convention-audit.sh)
 - [Translation Check](../../bashscripts/translation-check.sh)
 - [Documentation Sync](../../bashscripts/documentation-sync.sh)
-- [Laraxot Workflow](../../.windsurf/workflows/laraxot.md)
+- [Laraxot Workflow](../raw/history/laraxot.md)
 
 ---
 

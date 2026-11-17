@@ -851,7 +851,7 @@ find docs/ -name "*" | grep '[A-Z]' | grep -v "README.md"
 - [Architecture Overview](../../docs/architecture-overview.md)
 - [Coding Standards](../../docs/coding-standards.md)
 - [Testing Guidelines](../../docs/testing-guidelines.md)
-- [Filament Best Practices](../../docs/filament-best-practices.md)
+- [Filament Best Practices](../raw/history/filament-best-practices.md)
 
 ### 16.2 Moduli Principali
 - [Xot Module](../../../Xot/docs/README.md)
@@ -863,7 +863,7 @@ find docs/ -name "*" | grep '[A-Z]' | grep -v "README.md"
 - [Naming Convention Audit](../../bashscripts/naming-convention-audit.sh)
 - [Translation Check](../../bashscripts/translation-check.sh)
 - [Documentation Sync](../../bashscripts/documentation-sync.sh)
-- [Laraxot Workflow](../../.windsurf/workflows/laraxot.md)
+- [Laraxot Workflow](../raw/history/laraxot.md)
 
 ---
 

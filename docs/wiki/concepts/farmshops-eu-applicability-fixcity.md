@@ -25,7 +25,7 @@ related:
 Documenti correlati (non duplicare qui l’analisi lunga):
 
 - [geo-map-widget-farmshops-pattern.md](./geo-map-widget-farmshops-pattern.md) — decisione architetturale Geo
-- [farmshops-integration-analysis.md](../../../farmshops-integration-analysis.md) — analisi estesa
+- [farmshops-integration-analysis.md](../../farmshops-integration-analysis.md) — analisi estesa
 - [ticket-list-map-architecture.md](../../../../Fixcity/docs/wiki/concepts/ticket-list-map-architecture.md) — flusso `tickets.json` + `map-lit`
 
 ## Architettura farmshops (verificata su repo)

@@ -199,9 +199,9 @@ validate-workspace:
 
 ## Related Documentation
 
-- [Workspace Naming Convention](docs/conventions/workspace-naming.md)
+- [Workspace Naming Convention](../../conventions/workspace-naming.md)
 - [Module Workspace Rule](laravel/Modules/Xot/docs/workspace-file-rule.md)
-- [Agent Memory](.agents/memories/workspace-naming.md)
+- [Agent Memory](../../conventions/workspace-naming.md)
 - [Critical Rules](.agents/docs/agents-guide/04-architecture/critical-rules-summary.md)
 
 ---

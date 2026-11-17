@@ -2,7 +2,7 @@
 
 > Index: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)
 
-**Project**: PTVX Fila5 Mono  
+**Project**: PTVX fila5
 **AI Framework**: BMAD-METHOD v6.2.0
 
 ## Quick Reference
@@ -13,7 +13,7 @@
 | Action Pattern | `app(ActionClass::class)->execute($data)` |
 | Short array | `[]` - MAI `array()` |
 | BMAD Workflows | [docs/bmad/README.md](docs/bmad/README.md) |
-| AI Coordination | [docs/ai-agent-coordination.md](docs/ai-agent-coordination.md) |
+| AI Coordination | [docs/ai-agent-coordination.md](../raw/history/ai-agent-coordination.md) |
 
 ## Key Rules
 
@@ -85,9 +85,9 @@ bmad-document-project
 | github | GitHub API |
 | ollama | Ollama AI |
 
-→ [docs/mcp/mcp-overview.md](docs/mcp/mcp-overview.md)
+→ [docs/mcp/mcp-overview.md](../mcp/mcp-overview.md)
 
 ---
 
-*Full documentation: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)*  
+*Full documentation: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)*
 *BMAD Documentation: [docs/bmad/README.md](docs/bmad/README.md)*

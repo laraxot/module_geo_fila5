@@ -305,7 +305,7 @@ vendor/bin/pest
 ## 📚 Riferimenti
 
 - [Translation Standards](docs/translation-standards.md) - Guida completa
-- [Fix Plan](docs/translation-errors-fix-plan.md) - Piano correzioni
+- [Fix Plan](translation-errors-fix-plan.md) - Piano correzioni
 - [Spatie Translatable](https://spatie.be/docs/laravel-translatable/v6) - Docs ufficiali
 - [Zeus Spatie Translatable](https://github.com/lara-zeus/spatie-translatable) - Filament integration
 - [Laravel Localization](https://github.com/mcamara/laravel-localization) - Routing multilingua

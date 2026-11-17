@@ -88,9 +88,9 @@ $ php artisan tinker --execute="Rating::withExtraAttributes('anno', 2025)->count
 
 ## 📚 Correct Documentation
 
-- [CORRECT Solution](./CORRECT-SCHEMALESS-SOLUTION.md)
+- [CORRECT Solution](correct-schemaless-solution.md)
 - [Database Fix](./laravel/Modules/Rating/docs/COLLATION-FIX-DATABASE-SOLUTION.md)
-- [My Mistakes](./docs/MY-MISTAKES-AND-CORRECTIONS.md)
+- [My Mistakes](my-mistakes-and-corrections.md)
 - [Apology](./APOLOGY-AND-CORRECT-SOLUTION.txt)
 
 ---

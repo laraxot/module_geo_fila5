@@ -101,7 +101,7 @@ discussions: []
 
 - [Regola Naming Standards](.cursor/rules/model_naming_standards.md)
 - [Memoria Prevenzione](.cursor/memories/model_naming_english_only.md)
-- [Script Verifica](bashscripts/utils/check_italian_model_names.sh)
+- [Script Verifica](../../utils/check_italian_model_names.sh)
 - [Laravel Naming Conventions](https://laravel.com/docs/10.x/eloquent#model-conventions)
 
 ## Note Importanti

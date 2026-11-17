@@ -198,7 +198,7 @@ done
 
 ### Documentazione
 
-- [Workspace Naming Convention](conventions/workspace-naming.md)
+- [Workspace Naming Convention](../../conventions/workspace-naming.md)
 - [AGENTS.md](../../AGENTS.md)
 - [Project Structure](project/structure.md)
 

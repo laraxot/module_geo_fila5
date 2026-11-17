@@ -329,8 +329,8 @@ Ho creato uno script intelligente (`smart_populate_models.php`) che:
 - [Media Factory](../../Media/docs/readme.md)
 
 ### Documentazione Tecnica
-- [Business Logic](../business-logic-consolidated.md)
-- [Factory Best Practices](../factory-best-practices.md)
+- [Business Logic](business-logic-consolidated.md)
+- [Factory Best Practices](factory-best-practices.md)
 - [Testing Strategy](../testing-strategy-modules.md)
 - [PHPStan Analysis](../phpstan-analysis-business-logic.md)
 

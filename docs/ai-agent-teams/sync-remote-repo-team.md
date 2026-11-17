@@ -244,8 +244,8 @@ bashscripts/git/subtrees/
 ### Related Documentation
 
 - [Git Subtrees Guide](../../docs/git/subtrees.md)
-- [GitHub Actions Guide](../../docs/github/actions.md)
-- [AI Agent Coordination](../../docs/ai-agent-coordination.md)
+- [GitHub Actions Guide](../raw/history/actions.md)
+- [AI Agent Coordination](../raw/history/ai-agent-coordination.md)
 
 ### External Resources
 

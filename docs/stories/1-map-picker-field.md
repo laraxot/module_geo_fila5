@@ -76,17 +76,17 @@ Campo Filament v5 personalizzato `MapPicker` che gestisce una mappa interattiva 
 
 ## GitHub (tracciamento)
 
-Repository letto da frontmatter `github.repository` o `git remote -v` (se assente: repo root **`laraxot/base_quaeris_fila5`**): **`laraxot/base_quaeris_fila5`**.
+Repository letto da frontmatter `github.repository` o `git remote -v` (se assente: repo root **`laraxot/base_<nome progetto>_fila5`**): **`laraxot/base_<nome progetto>_fila5`**.
 
 | Risorsa | Stato | Link |
 |---|---|---|
-| Issue | **DA CREARE** | https://github.com/laraxot/base_quaeris_fila5/issues |
-| Discussion | **DA CREARE** | https://github.com/laraxot/base_quaeris_fila5/discussions |
+| Issue | **DA CREARE** | https://github.com/laraxot/base_<nome progetto>_fila5/issues |
+| Discussion | **DA CREARE** | https://github.com/laraxot/base_<nome progetto>_fila5/discussions |
 
 Il numero non e' scritto perche' non esiste ancora: `gh` non e' autenticato in questa sessione e i repo sono privati. Appena disponibile, creare con:
 
 ```bash
-gh issue create --repo laraxot/base_quaeris_fila5 \
+gh issue create --repo laraxot/base_<nome progetto>_fila5 \
   --title "Story 1-1: MapPicker Field per Filament" --body-file <FILE>
-gh api repos/laraxot/base_quaeris_fila5/discussions -f title="Story 1-1: MapPicker Field per Filament" -f body="vedi la story"
+gh api repos/laraxot/base_<nome progetto>_fila5/discussions -f title="Story 1-1: MapPicker Field per Filament" -f body="vedi la story"
 ```
