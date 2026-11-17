@@ -1,3 +1,7 @@
+<<<<<<< .merge_file_lTL1mX
+=======
+<<<<<<< .merge_file_M0zNb6
+>>>>>>> .merge_file_1r4BwN
 ---
 title: "GITHUB INTERACTION LOG"
 type: note
@@ -9,6 +13,11 @@ issues: []
 discussions: []
 ---
 
+<<<<<<< .merge_file_lTL1mX
+=======
+=======
+>>>>>>> .merge_file_IrjrMB
+>>>>>>> .merge_file_1r4BwN
 # GitHub Interaction Log — Module Geo
 
 **Data:** 2026-06-03  
@@ -17,6 +26,10 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_lTL1mX
+=======
+<<<<<<< .merge_file_M0zNb6
+>>>>>>> .merge_file_1r4BwN
 title: "GITHUB INTERACTION LOG"
 type: note
 tags: [documentation]
@@ -25,6 +38,11 @@ updated: 2026-09-26
 qmd: "GITHUB INTERACTION LOG"
 issues: []
 discussions: []
+<<<<<<< .merge_file_lTL1mX
+=======
+=======
+>>>>>>> .merge_file_IrjrMB
+>>>>>>> .merge_file_1r4BwN
 ## Issues Aggiornate
 
 ### STORY-123 — Cluster Stability

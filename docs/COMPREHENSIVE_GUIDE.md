@@ -1,3 +1,7 @@
+<<<<<<< .merge_file_KCyZ4x
+=======
+<<<<<<< .merge_file_Qume59
+>>>>>>> .merge_file_JECg2g
 ---
 title: "COMPREHENSIVE GUIDE"
 type: note
@@ -9,6 +13,11 @@ issues: []
 discussions: []
 ---
 
+<<<<<<< .merge_file_KCyZ4x
+=======
+=======
+>>>>>>> .merge_file_xaCxWu
+>>>>>>> .merge_file_JECg2g
 # Comprehensive Guide for Geo Module
 
 ## Table of Contents

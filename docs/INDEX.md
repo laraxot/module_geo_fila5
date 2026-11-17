@@ -1,3 +1,7 @@
+<<<<<<< .merge_file_AnCbMU
+=======
+<<<<<<< .merge_file_RkGvvw
+>>>>>>> .merge_file_6sNXzE
 ---
 title: "INDEX"
 type: note
@@ -9,6 +13,7 @@ issues: []
 discussions: []
 ---
 
+<<<<<<< .merge_file_AnCbMU
 # Geo Module Documentation Index
 
 <!-- p4-docs-geo: ingresso unico -->
@@ -23,6 +28,26 @@ discussions: []
 - [Registro decisioni](./decision-log.md) - decisioni di struttura e di allineamento
 - [Panoramica del modulo](./README.md)
 
+=======
+# Geo Module Documentation Index
+
+<!-- p4-docs-geo: ingresso unico -->
+**Punto d'ingresso unico della documentazione del modulo Geo.** `00-INDEX.md` e `00-index.md` sono superseded da questo file (restano per cronologia, non vengono aggiornati).
+
+## Navigazione rapida
+
+- [Mappa di migrazione della radice](./DOCS-MIGRATION-MAP.md) - dove andrebbe ognuno dei 622 file della radice di `docs/` (proposta, nessuno spostamento eseguito)
+- [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo
+- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting; indice dei concept in [wiki/concepts/INDEX.md](./wiki/concepts/INDEX.md)
+- [Log del wiki](./wiki/log.md) - cronologia dei cambiamenti alla conoscenza del modulo
+- [Registro decisioni](./decision-log.md) - decisioni di struttura e di allineamento
+- [Panoramica del modulo](./README.md)
+
+=======
+# Geo Module Documentation Index
+
+>>>>>>> .merge_file_1wtmCQ
+>>>>>>> .merge_file_6sNXzE
 ## Documentation Structure
 
 ### 📚 Core Documentation
@@ -36,17 +61,38 @@ discussions: []
 
 - [**Address Implementation**](./address-implementation.md) - Address handling and validation
 - [**Address Autocomplete**](./address-autocomplete.md) - Smart address suggestions
+<<<<<<< .merge_file_AnCbMU
 - [**Map Components**](./leaflet-marker-map-input.md) - Interactive map components
+=======
+<<<<<<< .merge_file_RkGvvw
+- [**Map Components**](./leaflet-marker-map-input.md) - Interactive map components
+=======
+- [**Map Components**](./leaflet_marker_map_input.md) - Interactive map components
+>>>>>>> .merge_file_1wtmCQ
+>>>>>>> .merge_file_6sNXzE
 - [**Advanced Features**](./ADVANCED_FEATURES.md) - Power user features
 - [**Product Roadmap**](./PRODUCT_ROADMAP.md) - Future development plans
 
 ### 🔧 Integration & Usage
 
 - [**Coordinate Picker Purpose & Architecture**](./coordinate-picker-purpose.md) - Scopo, utilità e implementazione del componente mappa per wizard ticket
+<<<<<<< .merge_file_AnCbMU
 - [**Mappa di sola lettura (`<x-geo::point-map>`, `CoordinatePicker::readOnly()`)**](./wiki/concepts/point-map-readonly.md) - Mostrare un punto senza poterlo modificare (riepilogo wizard, DCP-33)
 - [**SVG Icon Architecture**](./coordinate-picker-purpose.md#-svg-icon-architecture-no-hardcoded-svg) - Regola DRY: SVG separati in `resources/svg/`, no inline hardcoded
 - [**Filament Components**](./filament-forms-components.md) - Filament forms components, web components (Lit.dev), and integration patterns
 - [**Filament Integration**](./filament_extension_rules.md) - Filament PHP integration patterns
+=======
+<<<<<<< .merge_file_RkGvvw
+- [**Mappa di sola lettura (`<x-geo::point-map>`, `CoordinatePicker::readOnly()`)**](./wiki/concepts/point-map-readonly.md) - Mostrare un punto senza poterlo modificare (riepilogo wizard, DCP-33)
+- [**SVG Icon Architecture**](./coordinate-picker-purpose.md#-svg-icon-architecture-no-hardcoded-svg) - Regola DRY: SVG separati in `resources/svg/`, no inline hardcoded
+- [**Filament Components**](./filament-forms-components.md) - Filament forms components, web components (Lit.dev), and integration patterns
+- [**Filament Integration**](./filament_extension_rules.md) - Filament PHP integration patterns
+=======
+- [**SVG Icon Architecture**](./coordinate-picker-purpose.md#-svg-icon-architecture-no-hardcoded-svg) - Regola DRY: SVG separati in `resources/svg/`, no inline hardcoded
+- [**Filament Components**](./filament-forms-components.md) - Filament forms components, web components (Lit.dev), and integration patterns
+- [**Filament Integration**](filament_extension_rules.md) - Filament PHP integration patterns
+>>>>>>> .merge_file_1wtmCQ
+>>>>>>> .merge_file_6sNXzE
 
 ### 🎨 Assets & Icons
 
@@ -75,7 +121,15 @@ discussions: []
 - [**Project Management**](./PROJECT.md) - Project management documentation
 - [**PHPStan Fixes**](./PHPSTAN_FIXES.md) - Code quality fixes and improvements
 - [**Vite Build Configuration**](./vite-build-configuration.md) - Vite 7.x + Tailwind 4.x setup per moduli
+<<<<<<< .merge_file_AnCbMU
 - [**Configuration**](../config/config.php) - Module configuration
+=======
+<<<<<<< .merge_file_RkGvvw
+- [**Configuration**](../config/config.php) - Module configuration
+=======
+- [**Configuration**](./config/config.php) - Module configuration
+>>>>>>> .merge_file_1wtmCQ
+>>>>>>> .merge_file_6sNXzE
 
 ### 📁 Stories & Tasks
 
@@ -84,7 +138,15 @@ discussions: []
 
 ### 📋 Guidelines & Best Practices
 
+<<<<<<< .merge_file_AnCbMU
 - [**Design Rules**](./filament_extension_rules.md) - Filament component design rules
+=======
+<<<<<<< .merge_file_RkGvvw
+- [**Design Rules**](./filament_extension_rules.md) - Filament component design rules
+=======
+- [**Design Rules**](filament_extension_rules.md) - Filament component design rules
+>>>>>>> .merge_file_1wtmCQ
+>>>>>>> .merge_file_6sNXzE
 - [**Consolidation Analysis**](./analisi-moduli-ottimizzazioni.md) - Module consolidation guidelines
 - [**Performance Guidelines**](./TECHNICAL.md#performance) - Performance optimization patterns
 
@@ -102,7 +164,15 @@ discussions: []
 | **Location Spinner UX** | [location-spinner-ux.md](./location-spinner-ux.md) | ✅ Active |
 | AddressField Component (legacy) | [address-field-component.md](./address-field-component.md) | ⚠️ Legacy |
 | AddressResource | [address-resource.md](./filament/address-resource.md) | ✅ Active |
+<<<<<<< .merge_file_AnCbMU
 | Module Boundary Philosophy | [../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md](../../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md) | ✅ Active |
+=======
+<<<<<<< .merge_file_RkGvvw
+| Module Boundary Philosophy | [../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md](../../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md) | ✅ Active |
+=======
+| Module Boundary Philosophy | [../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md](../Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md) | ✅ Active |
+>>>>>>> .merge_file_1wtmCQ
+>>>>>>> .merge_file_6sNXzE
 | README / Overview | [README.md](./README.md) | ✅ Active |
 
 ## Filament Components
@@ -154,6 +224,10 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_AnCbMU
+=======
+<<<<<<< .merge_file_RkGvvw
+>>>>>>> .merge_file_6sNXzE
 title: "INDEX"
 type: note
 tags: [documentation]
@@ -162,6 +236,11 @@ updated: 2026-09-26
 qmd: "INDEX"
 issues: []
 discussions: []
+<<<<<<< .merge_file_AnCbMU
+=======
+=======
+>>>>>>> .merge_file_1wtmCQ
+>>>>>>> .merge_file_6sNXzE
 ## 📋 DEDUPLICATION NOTICE
 
 This module has many duplicate files in docs/. Key actions taken:
@@ -184,7 +263,15 @@ This module has many duplicate files in docs/. Key actions taken:
 
 1. **Architecture**: Start with [architecture overview](./architecture.md)
 2. **Components**: Learn about [address components](./address-implementation.md) and [map components](./story-map-component-analysis.md)
+<<<<<<< .merge_file_AnCbMU
 3. **Integration**: Follow [Filament integration guide](./filament_extension_rules.md)
+=======
+<<<<<<< .merge_file_RkGvvw
+3. **Integration**: Follow [Filament integration guide](./filament_extension_rules.md)
+=======
+3. **Integration**: Follow [Filament integration guide](filament_extension_rules.md)
+>>>>>>> .merge_file_1wtmCQ
+>>>>>>> .merge_file_6sNXzE
 4. **Examples**: Check [app integration](./app-integration.md)
 
 ### 🤝 Contributing
@@ -198,7 +285,15 @@ This module has many duplicate files in docs/. Key actions taken:
 
 - For technical questions: Check [architecture](./architecture.md) and [technical docs](./TECHNICAL.md)
 - For implementation issues: Review [code quality analysis](./analysis/code-quality-analysis.md)
+<<<<<<< .merge_file_AnCbMU
 - For integration help: See [app integration](./app-integration.md) and [Filament rules](./filament_extension_rules.md)
+=======
+<<<<<<< .merge_file_RkGvvw
+- For integration help: See [app integration](./app-integration.md) and [Filament rules](./filament_extension_rules.md)
+=======
+- For integration help: See [app integration](./app-integration.md) and [Filament rules](filament_extension_rules.md)
+>>>>>>> .merge_file_1wtmCQ
+>>>>>>> .merge_file_6sNXzE
 ---
 
 ## ⚠️ Architectural Rules

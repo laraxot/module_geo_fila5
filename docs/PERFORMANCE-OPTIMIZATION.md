@@ -1,14 +1,31 @@
 ---
+<<<<<<< .merge_file_xeGoY5
 qmd: "PERFORMANCE OPTIMIZATION"
 issues: []
 discussions: []
+=======
+<<<<<<< .merge_file_jdJKly
+qmd: "PERFORMANCE OPTIMIZATION"
+issues: []
+discussions: []
+=======
+>>>>>>> .merge_file_FtreIR
+>>>>>>> .merge_file_bVPfeP
 title: "Performance Optimization — Module Geo"
 type: documentation
 created: 2026-05-11
 updated: 2026-05-11
 tags: [performance, optimization, tokens, context]
 related:
+<<<<<<< .merge_file_xeGoY5
   - ../../../../docs/wiki/concepts/llm-wiki-operational-discipline.md
+=======
+<<<<<<< .merge_file_jdJKly
+  - ../../../../docs/wiki/concepts/llm-wiki-operational-discipline.md
+=======
+  - ../../docs/wiki/concepts/llm-wiki-operational-discipline.md
+>>>>>>> .merge_file_FtreIR
+>>>>>>> .merge_file_bVPfeP
 ---
 
 # Performance Optimization — Module **Geo**

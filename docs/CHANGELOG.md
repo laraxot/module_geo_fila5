@@ -1,3 +1,7 @@
+<<<<<<< .merge_file_fDLRO9
+=======
+<<<<<<< .merge_file_rZaQer
+>>>>>>> .merge_file_Wmz7g7
 ---
 title: "CHANGELOG"
 type: note
@@ -9,6 +13,11 @@ issues: []
 discussions: []
 ---
 
+<<<<<<< .merge_file_fDLRO9
+=======
+=======
+>>>>>>> .merge_file_23uc5y
+>>>>>>> .merge_file_Wmz7g7
 # Changelog
 
 All notable changes to `:package_name` will be documented in this file.

@@ -1,4 +1,8 @@
 ---
+<<<<<<< .merge_file_rYfE0X
+=======
+<<<<<<< .merge_file_ciBZkM
+>>>>>>> .merge_file_wGx4bx
 type: note
 tags: [documentation]
 created: 2026-09-26
@@ -6,6 +10,11 @@ updated: 2026-09-26
 qmd: "DATA CONSOLIDATION 2026 06 30"
 issues: []
 discussions: []
+<<<<<<< .merge_file_rYfE0X
+=======
+=======
+>>>>>>> .merge_file_Z5Wcs1
+>>>>>>> .merge_file_wGx4bx
 title: Geo Module - Data Classes Consolidation Completed
 date: 2026-06-30
 status: COMPLETED
