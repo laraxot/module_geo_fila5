@@ -1,9 +1,4 @@
 ---
-title: "geo map lit data url property"
-tags: [documentation]
-qmd: "geo map lit data url property"
-issues: []
-discussions: []
 type: concept
 module: Geo
 component: map-lit
@@ -12,7 +7,6 @@ updated: 2026-04-30
 stories:
   - 8-81-geo-map-lit-farmshops-parity
   - 8-78-ticket-list-polish
-status: draft
 ---
 
 # `data-url` Property — `map-lit` Component

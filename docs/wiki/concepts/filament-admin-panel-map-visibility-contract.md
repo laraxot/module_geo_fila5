@@ -1,15 +1,3 @@
----
-title: "filament admin panel map visibility contract"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "filament admin panel map visibility contract"
-issues: []
-discussions: []
-status: draft
----
-
 # Filament admin panel map visibility contract
 
 ## Scopo
@@ -60,4 +48,4 @@ Conclusione: la mappa dipende ancora da catena fallback non pienamente allineata
 
 - [leaflet wizard step invalidate size](./leaflet-wizard-step-invalidate-size.md)
 - [coordinate picker lit wizard fullscreen rule](./coordinate-picker-lit-wizard-fullscreen-rule.md)
-- [fixcity admin ticket create map visual contract](../../../../Fixcity/docs/wiki/concepts/admin-ticket-create-map-visual-contract.md)
+- [fixcity admin ticket create map visual contract](../../../Fixcity/docs/wiki/concepts/admin-ticket-create-map-visual-contract.md)

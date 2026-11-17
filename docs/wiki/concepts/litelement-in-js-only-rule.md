@@ -1,15 +1,3 @@
----
-title: "litelement in js only rule"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "litelement in js only rule"
-issues: []
-discussions: []
-status: draft
----
-
 # litelement in js only rule
 
 ## Regola

@@ -1,7 +1,4 @@
 ---
-qmd: "coordinate picker state binding rule"
-issues: []
-discussions: []
 title: "Coordinate Picker State Binding Rule"
 type: concept
 sources: ["https://filamentphp.com/docs/5.x/forms/custom-fields"]
@@ -12,7 +9,6 @@ tags: [coordinate-picker, state-binding, filament-5, alpine, livewire]
 related:
   - concepts/coordinate-picker-comprehensive-guide.md
   - concepts/coordinate-picker-filament5-save-pattern.md
-status: draft
 ---
 
 # Coordinate Picker State Binding Rule

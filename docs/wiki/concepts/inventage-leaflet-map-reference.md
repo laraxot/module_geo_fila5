@@ -1,15 +1,3 @@
----
-title: "inventage leaflet map reference"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "inventage leaflet map reference"
-issues: []
-discussions: []
-status: draft
----
-
 # Riferimento: inventage/leaflet-map (Lit + Leaflet)
 
 **Tipo:** concept / ricerca esterna  
@@ -17,6 +5,7 @@ status: draft
 **Sorgente:** [github.com/inventage/leaflet-map](https://github.com/inventage/leaflet-map), pacchetto npm [`@inventage/leaflet-map`](https://www.npmjs.com/package/@inventage/leaflet-map)
 
 ---
+
 ## Scopo business
 
 Capire come un progetto **open source maturo** incapsula Leaflet in un Web Component Lit, quali **eventi**, **lifecycle** e **resize** usa, e cosa è riusabile o diverso rispetto al nostro `MapPicker` / `map-picker-lit` (Filament, wizard, Livewire).

@@ -1,14 +1,3 @@
----
-title: "skills configuration report"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "skills configuration report"
-issues: []
-discussions: []
----
-
 # Skills Configuration Report
 
 > **Report: Optimal Skills Configuration for AI Agents**
@@ -19,14 +8,6 @@ discussions: []
 
 ---
 
-title: "skills configuration report"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "skills configuration report"
-issues: []
-discussions: []
 ## Executive Summary
 
 Configurato un completo set di skills ottimizzate per lavorare al meglio sul progetto Laraxot PTVX con focus su:

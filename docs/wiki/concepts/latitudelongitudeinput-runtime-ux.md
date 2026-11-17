@@ -1,15 +1,3 @@
----
-title: "latitudelongitudeinput runtime ux"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "latitudelongitudeinput runtime ux"
-issues: []
-discussions: []
-status: draft
----
-
 # LatitudeLongitudeInput Runtime UX
 
 ## Regola

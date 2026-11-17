@@ -1,7 +1,4 @@
 ---
-qmd: "coordinate picker map ux fixes"
-issues: []
-discussions: []
 title: "Coordinate Picker Map UX Fixes"
 description: "Fixes for map centering, search UX, wizard stepper, form fields, and geolocation on segnalazione-crea page"
 type: concept
@@ -13,8 +10,7 @@ tags: [geo, coordinate-picker, map, geolocation, search, fixcity, wizard, steppe
 related:
   - ../concepts/location-capture-map-wizard.md
   - ../concepts/map-controls-visibility-issue.md
-  - ../../../../../Themes/Sixteen/resources/css/components/filament-wizard-parity.css
-status: draft
+  - ../../../Themes/Sixteen/resources/css/components/filament-wizard-parity.css
 ---
 
 # Coordinate Picker Map UX Fixes (2026-05-13 / Updated 2026-05-15)

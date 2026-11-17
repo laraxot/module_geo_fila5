@@ -1,7 +1,4 @@
 ---
-qmd: "mappicker custom marker rule"
-issues: []
-discussions: []
 title: "MapPicker Custom Marker Rule"
 type: decision
 confidence: high
@@ -13,8 +10,7 @@ sources:
   - laravel/Modules/Geo/resources/js/components/map-picker-marker-config.js
 related:
   - ./map-picker-runtime-asset-governance.md
-  - ../../../../../../docs/rules/xotbasefield-mandatory.md
-status: draft
+  - ../../../docs/rules/xotbasefield-mandatory.md
 ---
 
 # MapPicker Custom Marker Rule

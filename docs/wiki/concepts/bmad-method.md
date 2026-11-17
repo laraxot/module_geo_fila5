@@ -1,8 +1,4 @@
 ---
-updated: 2026-09-26
-qmd: "bmad method"
-issues: []
-discussions: []
 title: "BMad Method in Geo Module"
 type: concept
 sources:
@@ -11,7 +7,6 @@ sources:
 confidence: high
 created: 2026-04-22
 tags: [bmad, geo, workflow, antigravity]
-status: draft
 ---
 
 # BMad Method in Geo Module

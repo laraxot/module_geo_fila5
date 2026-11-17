@@ -1,9 +1,4 @@
 ---
-title: "geo map lit reference"
-tags: [documentation]
-qmd: "geo map lit reference"
-issues: []
-discussions: []
 type: entity
 module: Geo
 component: geo-map-lit

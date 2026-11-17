@@ -1,7 +1,4 @@
 ---
-qmd: "coordinate picker filament5 save pattern"
-issues: []
-discussions: []
 title: "CoordinatePicker Filament 5 — Pattern salvataggio campo composito"
 type: concept
 confidence: high
@@ -11,10 +8,9 @@ tags: [coordinate-picker, filament5, eloquent, mutator, composite-field, latitud
 related:
   - ./coordinate-picker-architecture.md
   - ./coordinate-picker-best-practices.md
-  - ../../../../Fixcity/docs/wiki/troubleshooting/ticket-location-not-saved-mass-assignment.md
+  - ../../../Fixcity/docs/wiki/troubleshooting/ticket-location-not-saved-mass-assignment.md
 supersedes:
   - story 8-64 (root cause errata)
-status: draft
 ---
 
 # CoordinatePicker Filament 5 — Pattern salvataggio campo composito

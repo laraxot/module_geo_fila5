@@ -1,15 +1,3 @@
----
-title: "admin map magnifier and controls visibility"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "admin map magnifier and controls visibility"
-issues: []
-discussions: []
-status: draft
----
-
 # Admin map magnifier and controls visibility
 
 ## Problema

@@ -1,13 +1,5 @@
 ---
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "showsearch redundant"
-issues: []
-discussions: []
 title: ShowSearch Redundancy in GeopointPicker
-status: draft
 ---
 
 ## Problem

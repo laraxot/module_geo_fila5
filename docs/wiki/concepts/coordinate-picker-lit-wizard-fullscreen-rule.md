@@ -1,15 +1,3 @@
----
-title: "coordinate picker lit wizard fullscreen rule"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "coordinate picker lit wizard fullscreen rule"
-issues: []
-discussions: []
-status: draft
----
-
 # Coordinate Picker Lit: Wizard, Boolean Attributes, Fullscreen
 
 ## Regola

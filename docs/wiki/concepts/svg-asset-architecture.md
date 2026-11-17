@@ -1,15 +1,3 @@
----
-title: "svg asset architecture"
-type: note
-tags: [documentation]
-created: 2026-09-26
-updated: 2026-09-26
-qmd: "svg asset architecture"
-issues: []
-discussions: []
-status: draft
----
-
 # SVG Asset Architecture — Geo Module
 
 ## REGOLA PERMANENTE (2026-04-20)
