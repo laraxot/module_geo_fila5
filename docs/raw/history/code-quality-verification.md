@@ -411,7 +411,7 @@ laravel/Themes/
 
 ### For Architecture
 - [Trait Consolidation](../laravel/Modules/Rating/docs/trait-consolidation-plan.md)
-- [Schemaless Final Guide](./claude/schemaless-attributes-final.md)
+- [Schemaless Final Guide](../../claude/schemaless-attributes-final.md)
 
 ### For Quality
 - [Code Quality Analysis](../laravel/Modules/IndennitaResponsabilita/docs/code-quality-analysis.md)

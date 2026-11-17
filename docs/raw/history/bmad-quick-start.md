@@ -337,8 +337,8 @@ bmad-distillator                # Compress documents
 
 ## Documenti Correlati
 
-- [BMAD Method Integration](./project/bmad-method-integration.md) — Documentazione completa
-- [GSD Methodology](./project/gsd-methodology.md) — Framework alternativo
+- [BMAD Method Integration](../../project/bmad-method-integration.md) — Documentazione completa
+- [GSD Methodology](../../project/gsd-methodology.md) — Framework alternativo
 - [AGENTS.md](../AGENTS.md) — Regole progetto
 - [Workflow Map Online](https://docs.bmad-method.org/reference/workflow-map/)
 
@@ -357,7 +357,7 @@ bmad-distillator                # Compress documents
 
 1. ✅ Leggi questo file — **Fatto!**
 2. 🔄 Usa `bmad-help` per iniziare il tuo primo workflow
-3. 📚 Consulta [bmad-method-integration.md](./project/bmad-method-integration.md) per dettagli
+3. 📚 Consulta [bmad-method-integration.md](../../project/bmad-method-integration.md) per dettagli
 4. 🎯 Scegli il track giusto per il tuo task (Quick / BMad / Enterprise)
 
 **Ready to build more architect dreams?** 🚀

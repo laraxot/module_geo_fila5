@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "docs2"
 issues: []
 discussions: []
-status: draft
 ---
 
 # Docs2
@@ -26,6 +25,15 @@ status: draft
 ### 8. WORKFLOW E TOOLS
 
 ---
+
+title: "docs2"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "docs2"
+issues: []
+discussions: []
 ## 1. ARCHITETTURA E STRUTTURA
 
 ### 1.1 Struttura del Progetto
@@ -855,7 +863,7 @@ find docs/ -name "*" | grep '[A-Z]' | grep -v "README.md"
 - [Naming Convention Audit](../../bashscripts/naming-convention-audit.sh)
 - [Translation Check](../../bashscripts/translation-check.sh)
 - [Documentation Sync](../../bashscripts/documentation-sync.sh)
-- [Laraxot Workflow](../../.windsurf/workflows/laraxot.md)
+- [Laraxot Workflow](../raw/history/laraxot.md)
 
 ---
 

@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "docs1"
 issues: []
 discussions: []
-status: draft
 ---
 
 # Docs1
@@ -32,6 +31,15 @@ status: draft
 ### 13. RIFERIMENTI E COLLEGAMENTI
 
 ---
+
+title: "docs1"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "docs1"
+issues: []
+discussions: []
 ## 1. ARCHITETTURA E STRUTTURA
 
 ### 1.1 Stack Tecnologico Laraxot
@@ -837,7 +845,7 @@ protected function casts(): array
 - [Naming Convention Audit](../../bashscripts/naming-convention-audit.sh)
 - [Translation Check](../../bashscripts/translation-check.sh)
 - [Documentation Sync](../../bashscripts/documentation-sync.sh)
-- [Laraxot Workflow](../../.windsurf/workflows/laraxot.md)
+- [Laraxot Workflow](../raw/history/laraxot.md)
 
 ---
 

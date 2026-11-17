@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "bmad workflow catalog"
 issues: []
 discussions: []
-status: draft
 ---
 
 # BMAD Workflow Catalog — PTVX Edition
@@ -17,6 +16,15 @@ status: draft
 > **Totale Workflow**: 42 (243 file)
 
 ---
+
+title: "bmad workflow catalog"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "bmad workflow catalog"
+issues: []
+discussions: []
 ## 📑 Indice
 
 - [Phase 1: Analysis](#phase-1-analysis)

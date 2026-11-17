@@ -134,3 +134,15 @@ geo.code-workspace
 
 # Forbidden parallel documentation archive
 docs/archive/
+.git/
+
+# Laraxot module hygiene (wiki module-theme-root-hygiene)
+.agents/
+.codex/
+.opencode/
+.qwen/
+audit-coverage/
+rector.php
+phpinsights.php
+.php-cs-fixer.php
+.php-cs-fixer.dist.php

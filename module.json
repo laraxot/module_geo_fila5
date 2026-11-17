@@ -1,14 +1,17 @@
 {
     "name": "Geo",
     "alias": "geo",
-    "description": "Servizi geografici per geocoding, mappe e gestione posizioni con integrazione provider esterni",
+    "description": "Servizi geografici: comuni, indirizzi, coordinate, mappe e selettori di posizione",
     "keywords": ["geo", "geocoding", "maps", "locations", "coordinates"],
     "priority": 0,
+    "active": 1,
+    "order": 0,
     "providers": [
         "Modules\\Geo\\Providers\\GeoServiceProvider",
         "Modules\\Geo\\Providers\\Filament\\AdminPanelProvider"
     ],
-    "aliases": [],
+    "aliases": {},
     "files": [],
-    "requires": []
+    "requires": ["Xot"],
+    "phpVersion": "^8.3"
 }

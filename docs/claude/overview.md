@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "overview"
 issues: []
 discussions: []
-status: draft
 ---
 
 # Overview e Technology Stack
@@ -56,5 +55,14 @@ Modules/{ModuleName}/
 - **For Quality**: Consult [Code Quality](code-quality.md) for testing and PHPStan
 
 ---
+
+title: "overview"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "overview"
+issues: []
+discussions: []
 **Version**: 2.0 (Refactor DRY + KISS)  
 **File**: overview.md - Overview and quick start

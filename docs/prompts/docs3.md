@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "docs3"
 issues: []
 discussions: []
-status: draft
 ---
 
 # Docs3
@@ -28,6 +27,15 @@ status: draft
 ### 10. CROSS-REFERENCES E VALIDAZIONE
 
 ---
+
+title: "docs3"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "docs3"
+issues: []
+discussions: []
 ## 1. STRUTTURA GERARCHICA E MODULARITÀ
 
 ### 1.1 Struttura delle Cartelle
@@ -82,11 +90,11 @@ status: draft
 # Da Modules/User/docs/authentication.md
 - [Coding Standards](../../../../docs/coding-standards.md)
 - [Xot Module](../../Xot/docs/README.md)
-- [UI Components](../../UI/docs/components.md)
+- [UI Components](../raw/history/components.md)
 
 # Da docs/README.md
 - [User Authentication](./laravel/Modules/User/docs/authentication.md)
-- [Filament Best Practices](./laravel/Modules/Xot/docs/filament-best-practices.md)
+- [Filament Best Practices](../raw/history/filament-best-practices.md)
 ```
 
 ### 2.3 Tag e Categorizzazione
@@ -423,8 +431,8 @@ Ogni documento deve avere collegamenti ai documenti correlati:
 - [Coding Standards](../../../../docs/coding-standards.md)
 - [Xot Module](../../Xot/docs/README.md)
 - [User Module](../../User/docs/authentication.md)
-- [UI Components](../../UI/docs/components.md)
-- [Filament Best Practices](../../Xot/docs/filament-best-practices.md)
+- [UI Components](../raw/history/components.md)
+- [Filament Best Practices](../raw/history/filament-best-practices.md)
 - [Testing Guidelines](../../../../docs/testing-guidelines.md)
 - [Documentation Rules](../../../../docs/documentation-rules.md)
 

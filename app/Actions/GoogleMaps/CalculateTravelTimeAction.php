@@ -105,14 +105,6 @@ class CalculateTravelTimeAction
     {
         $data = json_decode($response, true);
 
-<<<<<<< .merge_file_6f9sEl
-        if ($data['status'] !== 'OK') {
-            return TravelTimeData::error($data['status']);
-        }
-
-        $element = $data['rows'][0]['elements'][0];
-        if (! $element || $element['status'] !== 'OK') {
-=======
         if (! \is_array($data) || ! \is_string($data['status'] ?? null)) {
             return TravelTimeData::error('INVALID_RESPONSE');
         }
@@ -133,7 +125,6 @@ class CalculateTravelTimeAction
         }
 
         if ('OK' !== $element['status']) {
->>>>>>> .merge_file_7pIkDx
             return TravelTimeData::error($element['status']);
         }
 

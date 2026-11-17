@@ -246,7 +246,7 @@ When you create a file:
 ## Related Documentation
 
 - [Script Location Rule](bashscripts/docs/script-location-rule.md)
-- [Workspace Naming](docs/conventions/workspace-naming.md)
+- [Workspace Naming](../../conventions/workspace-naming.md)
 - [Backup Files Cleanup](laravel/Modules/Xot/docs/backup-copy-files-cleanup-rule.md)
 - [Module Directory Structure](laravel/Modules/Xot/docs/module-directory-structure-rule.md)
 - [Multi-Agent Coordination](docs/MULTI_AGENT_COORDINATION.md)

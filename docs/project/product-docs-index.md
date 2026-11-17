@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "product docs index"
 issues: []
 discussions: []
-status: draft
 ---
 
 # Product Documentation Index
@@ -21,6 +20,15 @@ status: draft
 > **Owner:** Product Development Team
 
 ---
+
+title: "product docs index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "product docs index"
+issues: []
+discussions: []
 ## Overview
 
 This index centralizes all product documentation across the project's modules and themes, following Notion's 6 core product template categories:
@@ -42,14 +50,14 @@ This index centralizes all product documentation across the project's modules an
 
 | Theme | PRD | Roadmap | Strategy | Launch Plan | User Research | Sprint Planning |
 |-------|-----|---------|----------|-------------|---------------|-----------------|
-| **Zero** | [PRD](../../laravel/Themes/Zero/docs/prd.md) | [Roadmap](../../laravel/Themes/Zero/docs/product-roadmap.md) | [Strategy](../../laravel/Themes/Zero/docs/product-strategy.md) | [Launch](../../laravel/Themes/Zero/docs/product-launch-plan.md) | [Research](../../laravel/Themes/Zero/docs/user-research.md) | [Sprint](../../laravel/Themes/Zero/docs/sprint-planning-meeting.md) |
+| **Zero** | [PRD](../../laravel/Themes/Zero/docs/prd.md) | [Roadmap](../product-roadmap.md) | [Strategy](../product-strategy.md) | [Launch](../product-launch-plan.md) | [Research](../../laravel/Themes/Zero/docs/user-research.md) | [Sprint](../../laravel/Themes/Zero/docs/sprint-planning-meeting.md) |
 | **One** | [PRD](../../laravel/Themes/One/docs/prd.md) | [Roadmap](../../laravel/Themes/One/docs/roadmap.md) | [Strategy](../../laravel/Themes/One/docs/product-requirements.md) | [Launch](../../laravel/Themes/One/docs/README.md) | [Research](../../laravel/Themes/One/docs/README.md) | [Sprint](../../laravel/Themes/One/docs/README.md) |
 
 ### Core Modules
 
 | Module | PRD | Roadmap | Strategy | Launch Plan | User Research | Sprint Planning |
 |--------|-----|---------|----------|-------------|---------------|-----------------|
-| **Xot** | [PRD](../../laravel/Modules/Xot/docs/prd.md) | [Roadmap](../../laravel/Modules/Xot/docs/product-roadmap.md) | [Strategy](../../laravel/Modules/Xot/docs/product-strategy.md) | [Launch](../../laravel/Modules/Xot/docs/product-launch-plan.md) | [Research](../../laravel/Modules/Xot/docs/user-research.md) | [Sprint](../../laravel/Modules/Xot/docs/sprint-planning-meeting.md) |
+| **Xot** | [PRD](../../laravel/Modules/Xot/docs/prd.md) | [Roadmap](../product-roadmap.md) | [Strategy](../product-strategy.md) | [Launch](../product-launch-plan.md) | [Research](../../laravel/Modules/Xot/docs/user-research.md) | [Sprint](../../laravel/Modules/Xot/docs/sprint-planning-meeting.md) |
 
 ### Business Modules
 

@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "optimization sumy report"
 issues: []
 discussions: []
-status: draft
 ---
 
 # Report di Sintesi - Analisi e Ottimizzazioni Moduli
@@ -262,7 +261,7 @@ jobs:
 
 - [Piano Implementazione Dettagliato](module_reusability_implementation_plan.md)
 - [Linee Guida Riusabilità](module_reusability_guidelines.md)
-- [Script di Controllo](../bashscripts/check_module_reusability.sh)
+- [Script di Controllo](raw/analysis/check_module_reusability.sh)
 
 *Report compilato: gennaio 2025*
 *Analista: AI Assistant seguendo metodologia DRY+KISS*

@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "index"
 issues: []
 discussions: []
-status: draft
 ---
 
 {nome-progetto}
@@ -53,7 +52,7 @@ status: draft
 - [**Modules Factory Seeder Analysis**](../modules-factory-seeder-analysis.md) - Analisi factory e seeder per moduli
 
 ### Audit e Analisi
-- [**Factory Email Rule**](../factory-email-rule.md) - Regole per email nelle factory
+- [**Factory Email Rule**](factory-email-rule.md) - Regole per email nelle factory
 - [**Factory Email Rules**](factory-email-rules.md) - Regole complete per email
 - [**Cast Actions Centralized**](../cast-actions-centralized.md) - Centralizzazione delle azioni di cast
 - [**Cast Actions Usage**](cast-actions-usage.md) - Utilizzo delle azioni di cast
@@ -84,7 +83,7 @@ status: draft
 
 ### Organizzazione e Struttura
 - [**Script Organization**](../script-organization.md) - Organizzazione degli script
-- [**Boy Scout Rule**](../boy-scout-rule.md) - Regola del boy scout
+- [**Boy Scout Rule**](boy-scout-rule.md) - Regola del boy scout
 - [**Boy Scout Rule Implementation**](boy-scout-rule-implementation.md) - Implementazione della regola
 
 ## 📁 Directory Testing
@@ -109,6 +108,15 @@ status: draft
 - [**Laravel Boost Guidelines**](laravel-boost-guidelines.md) - Linee guida Laravel Boost
 
 ---
+
+title: "index"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "index"
+issues: []
+discussions: []
 **Versione**: 3.0
 **Autore**: AI Assistant
 **Stato**: Consolidata e Aggiornata

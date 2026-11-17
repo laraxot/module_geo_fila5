@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "business logic factory seeder audit"
 issues: []
 discussions: []
-status: draft
 ---
 
 # Business Logic Factory & Seeder Audit Completo
@@ -407,9 +406,9 @@ Analizzare tutti i moduli del progetto <nome progetto>, verificare l'esistenza d
 ## 📚 **Documentazione Correlata**
 
 - [PHPStan Analysis Business Logic](../phpstan-analysis-business-logic.md)
-- [Factory Best Practices](../factory-best-practices.md)
+- [Factory Best Practices](factory-best-practices.md)
 - [Testing Business Behavior Supreme Rule](../testing-business-behavior-supreme-rule.md)
-- [Modules Factory Seeder Analysis](../modules-factory-seeder-analysis.md)
+- [Modules Factory Seeder Analysis](modules-factory-seeder-analysis.md)
 
 ## 🏆 **Risultati Attesi**
 
@@ -423,6 +422,15 @@ Al completamento di questo audit:
 6. **Business Logic Integrity** garantita
 
 ---
+
+title: "business logic factory seeder audit"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "business logic factory seeder audit"
+issues: []
+discussions: []
 **Stato**: <nome progetto> completato, altri moduli in corso
 **Stato**: <nome progetto> completato, altri moduli in corso
 **Priorità**: User e Geo Factory (ALTA)

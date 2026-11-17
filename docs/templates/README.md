@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "README"
 issues: []
 discussions: []
-status: draft
 ---
 
 # Product Documentation Templates
@@ -17,6 +16,15 @@ status: draft
 > Questa cartella contiene i template standardizzati per la documentazione product, basati sulle best practices di Notion.
 
 ---
+
+title: "README"
+type: note
+tags: [documentation]
+created: 2026-09-26
+updated: 2026-09-26
+qmd: "README"
+issues: []
+discussions: []
 ## Template Disponibili
 
 | Template | File | Categoria Notion | Templates Available |
@@ -68,11 +76,11 @@ Assicurati che tutti i documenti product siano collegati tra loro:
 ## Collegamenti
 
 - [PRD](prd.md)
-- [Product Roadmap](product-roadmap.md)
-- [Product Strategy](product-strategy.md)
+- [Product Roadmap](../product-roadmap.md)
+- [Product Strategy](../product-strategy.md)
 - [User Research](user-research.md)
 - [Sprint Planning](sprint-planning-meeting.md)
-- [Product Launch Plan](product-launch-plan.md)
+- [Product Launch Plan](../product-launch-plan.md)
 ```
 
 ---

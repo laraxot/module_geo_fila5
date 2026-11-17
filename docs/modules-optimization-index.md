@@ -7,7 +7,6 @@ updated: 2026-09-26
 qmd: "modules optimization index"
 issues: []
 discussions: []
-status: draft
 ---
 
 # Indice Completo - Analisi e Ottimizzazioni Moduli
@@ -21,13 +20,13 @@ status: draft
 
 ### 🔧 Linee Guida e Regole
 - **[Linee Guida Riusabilità](module_reusability_guidelines.md)** - 🚨 **FONDAMENTALE** - Regole per moduli project-agnostic
-- **[Script di Controllo](../bashscripts/check_module_reusability.sh)** - Tool automatico per verifica riusabilità
+- **[Script di Controllo](raw/analysis/check_module_reusability.sh)** - Tool automatico per verifica riusabilità
 
 ## 🏗️ Raccomandazioni per Modulo
 
 ### 🔴 PRIORITÀ CRITICA
 
-#### [Modulo Xot](../../Xot/docs/optimization_recommendations.md)
+#### [Modulo Xot](../laravel/modules/xot/docs/optimization_recommendations.md)
 **Problema**: PathHelper hardcoded compromette framework base
 **Azione**: Refactoring PathHelper con configurazioni dinamiche
 **Tempo**: 2 ore | **Impatto**: Sblocca riusabilità framework
@@ -51,7 +50,7 @@ status: draft
 
 ### 🟢 PRIORITÀ NORMALE
 
-#### [Modulo UI](../../UI/docs/optimization_recommendations.md)
+#### [Modulo UI](../laravel/modules/ui/docs/optimization_recommendations.md)
 **Stato**: Già eccellente (PHPStan Level 9, 50+ componenti)
 **Azione**: Solo path generalization + README optimization
 **Tempo**: 1 ora | **Impatto**: Mantenimento eccellenza
@@ -170,7 +169,7 @@ cp -r laravel/Modules/*/docs laravel/Modules-docs-backup-$(date +%Y%m%d)
 
 - [Linee Guida Riusabilità](module_reusability_guidelines.md)
 - [Report Sintesi](optimization_summary_report.md)
-- [Script Controlli](../bashscripts/check_module_reusability.sh)
+- [Script Controlli](raw/analysis/check_module_reusability.sh)
 
 *Metodologia: Analisi sistematica seguendo principi DRY+KISS*
 *Validazione: Script automatici + review manuale*
