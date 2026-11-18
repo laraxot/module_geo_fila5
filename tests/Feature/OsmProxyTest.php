@@ -29,9 +29,9 @@ beforeEach(function (): void {
     RateLimiter::clear(QueryNominatimAction::RATE_LIMIT_KEY);
     Sleep::fake();
     config([
-        'app.name' => 'FixCity',
-        'app.url' => 'https://fixcity.example',
-        'geo.config.osm_proxy.contact' => 'ops@fixcity.example',
+        'app.name' => 'CivicApp',
+        'app.url' => 'https://civic.example',
+        'geo.config.osm_proxy.contact' => 'ops@civic.example',
         'geo.config.osm_proxy.nominatim.enabled' => true,
     ]);
 });
@@ -48,7 +48,7 @@ function osmPng(): string
 it('serves a tile from our domain with a contactable User-Agent, the forwarded Referer and no cookie', function (): void {
     Http::fake(['tile.openstreetmap.org/*' => Http::response(osmPng(), 200, ['Content-Type' => 'image/png', 'ETag' => '"abc"', 'Cache-Control' => 'max-age=3600'])]);
 
-    $response = $this->get('/api/geo/tiles/osm/13/4350/2985.png', ['Referer' => 'https://fixcity.example/it/tickets']);
+    $response = $this->get('/api/geo/tiles/osm/13/4350/2985.png', ['Referer' => 'https://civic.example/it/tickets']);
 
     $response->assertOk()
         ->assertHeader('Content-Type', 'image/png')
@@ -56,8 +56,8 @@ it('serves a tile from our domain with a contactable User-Agent, the forwarded R
         ->assertHeaderMissing('Set-Cookie');
     expect($response->getContent())->toBe(osmPng());
     Http::assertSent(fn (Request $request): bool => $request->url() === 'https://tile.openstreetmap.org/13/4350/2985.png'
-        && $request->header('User-Agent')[0] === 'FixCity/osm-proxy (+https://fixcity.example; ops@fixcity.example)'
-        && $request->header('Referer')[0] === 'https://fixcity.example/it/tickets');
+        && $request->header('User-Agent')[0] === 'CivicApp/osm-proxy (+https://civic.example; ops@civic.example)'
+        && $request->header('Referer')[0] === 'https://civic.example/it/tickets');
 });
 
 it('keeps a tile at least 7 days even when OSM says one hour, then revalidates it with a conditional request', function (): void {
@@ -116,7 +116,7 @@ it('proxies an address search in json, in the page language, and caches it', fun
         && $request['limit'] === '10'
         && ! isset($request['polygon_geojson'])
         && is_string($userAgent = $request->header('User-Agent')[0] ?? null)
-        && str_starts_with($userAgent, 'FixCity/osm-proxy'));
+        && str_starts_with($userAgent, 'CivicApp/osm-proxy'));
 });
 
 it('rejects invalid geocoding requests without calling Nominatim', function (string $path, int $status): void {
