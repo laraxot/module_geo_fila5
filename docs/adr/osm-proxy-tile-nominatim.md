@@ -10,9 +10,9 @@ status: accepted
 issues:
   - "https://github.com/laraxot/theme_sixteen_fila5/issues/106"
 related:
-  - ../../../../Gdpr/docs/stories/dcp-454-terze-parti-prima-del-consenso-gravatar-e-openstreetmap.story.md
-  - ../../../app/Actions/Osm/FetchOsmTileAction.php
-  - ../../../app/Actions/Osm/QueryNominatimAction.php
+  - ../../../Gdpr/docs/stories/dcp-454-terze-parti-prima-del-consenso-gravatar-e-openstreetmap.story.md
+  - ../../app/Actions/Osm/FetchOsmTileAction.php
+  - ../../app/Actions/Osm/QueryNominatimAction.php
 ---
 
 # ADR: tile e geocoding OpenStreetMap passano dal nostro server

@@ -21,14 +21,8 @@ use function Safe\preg_match;
  * possible», servizio spegnibile senza aggiornare il software (`geo.config.osm_proxy.nominatim.enabled`). Solo i
  * parametri ammessi passano; il formato e' sempre `json`, come lo leggono le mappe.
  *
- * Contratto di comportamento (Modules/Xot/docs/rules/action-behavioral-contract.md):
- * - Input: endpoint (`search` o `reverse`), parametri della richiesta, lingua della pagina.
- * - Output: `{status, data}`: 200 con i risultati di Nominatim, oppure 422, 429, 502 o 503 con un messaggio.
- * - Invarianti: al massimo 1 richiesta al secondo a Nominatim per tutto il sito; solo i parametri ammessi; `limit` <= 10.
- * - Effetti collaterali: risultati in cache per `cache_days`; una richiesta HTTP a Nominatim se non in cache.
- * - Errori: nessuna eccezione verso il chiamante: query corta o coordinate fuori range = 422; servizio spento = 503; posto
- *   occupato dopo un secondo di attesa = 429; Nominatim irraggiungibile o in errore = 502.
- * - Non fa: non completa mentre si digita (vietato dalla policy); non geocodifica in blocco; non salva l'IP del richiedente.
+ * Contratto di comportamento: docs/contracts/query-nominatim-action.md (sei sezioni: input, output, invarianti, effetti
+ * collaterali, errori, non fa).
  */
 final class QueryNominatimAction
 {

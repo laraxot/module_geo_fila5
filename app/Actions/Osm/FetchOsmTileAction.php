@@ -29,15 +29,8 @@ use function Safe\strtotime;
  *
  * Il chiamante valida z/x/y (OsmTileController); qui si assume un tile esistente.
  *
- * Contratto di comportamento (Modules/Xot/docs/rules/action-behavioral-contract.md):
- * - Input: z, x, y del tile; Referer della pagina che lo chiede (facoltativo).
- * - Output: corpo PNG con ETag e Last-Modified, oppure null se il tile non c'e' ne' in cache ne' da OSM.
- * - Invarianti: mai piu' di una richiesta a OSM per tile prima della scadenza; scadenza mai sotto i 7 giorni; User-Agent
- *   sempre identificabile con contatto.
- * - Effetti collaterali: scrive tile e metadati in `storage/app/geo/osm-tiles`; richiesta HTTP a OSM solo a cache scaduta o
- *   vuota (condizionale se c'e' una copia).
- * - Errori: nessuna eccezione verso il chiamante: OSM irraggiungibile o in errore = copia scaduta se c'e', altrimenti null.
- * - Non fa: non valida le coordinate (OsmTileController); non pulisce la cache; non pre-scarica zone (vietato dalla policy).
+ * Contratto di comportamento: docs/contracts/fetch-osm-tile-action.md (sei sezioni: input, output, invarianti, effetti
+ * collaterali, errori, non fa).
  */
 final class FetchOsmTileAction
 {
