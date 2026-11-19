@@ -98,10 +98,11 @@ graph TD
 ## Riferimenti Globali
 
 - [Project Wiki Root](../../docs/wiki/)
-- [Global Rules](wiki/rules)
-- [Global Skills](wiki/skills)
-- [Global Commands](wiki/commands)
-- [Global Memories](wiki/memories)
+- [Global Rules](../../../../docs/wiki/rules/)
+- [Global Skills](../../../../bashscripts/ai/wiki/skills/)
+- [Global Commands](../../../../bashscripts/ai/wiki/commands/)
+- [Global Memories](../../../../docs/wiki/memories/)
+- Indici locali del modulo: [rules](wiki/rules) · [skills](wiki/skills) · [commands](wiki/commands) · [memories](wiki/memories)
 
 ## Setup Iniziale (per nuovi moduli)
 

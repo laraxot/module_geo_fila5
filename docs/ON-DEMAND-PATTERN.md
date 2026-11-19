@@ -14,7 +14,7 @@ related:
 
 # On-Demand Pattern — Module **Geo**
 
-**Fonte canonica**: [../../docs/wiki/rules/on-demand-pattern.md](../../../../docs/wiki/rules/on-demand-pattern.md)
+**Fonte canonica**: [docs/wiki/rules/on-demand-pattern.md](../../../../docs/wiki/rules/on-demand-pattern.md)
 
 ## Principio
 
