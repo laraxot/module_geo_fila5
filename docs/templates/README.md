@@ -76,11 +76,19 @@ Assicurati che tutti i documenti product siano collegati tra loro:
 ## Collegamenti
 
 - [PRD](prd.md)
+<<<<<<< HEAD
 - [Product Roadmap](product-roadmap.md)
 - [Product Strategy](product-strategy.md)
 - [User Research](user-research.md)
 - [Sprint Planning](sprint-planning-meeting.md)
 - [Product Launch Plan](product-launch-plan.md)
+=======
+- [Product Roadmap](../product-roadmap.md)
+- [Product Strategy](../product-strategy.md)
+- [User Research](user-research.md)
+- [Sprint Planning](sprint-planning-meeting.md)
+- [Product Launch Plan](../product-launch-plan.md)
+>>>>>>> laraxot/dev
 ```
 
 ---
@@ -141,9 +149,15 @@ Prima di pubblicare/aggiornare:
 | Template | Esempio Reale |
 |----------|---------------|
 | [prd-template.md](./prd-template.md) | [Xot PRD](../Modules/Xot/docs/prd.md) |
+<<<<<<< HEAD
 | [product-roadmap-template.md](./product-roadmap-template.md) | [Zero Roadmap](../Themes/Zero/docs/product-roadmap.md) |
 | [product-strategy-template.md](./product-strategy-template.md) | [Xot Strategy](../Modules/Xot/docs/product-strategy.md) |
 | [product-launch-plan-template.md](./product-launch-plan-template.md) | [One Launch](../Themes/One/docs/product-launch-plan.md) |
+=======
+| [product-roadmap-template.md](./product-roadmap-template.md) | [Zero Roadmap](../product-roadmap.md) |
+| [product-strategy-template.md](./product-strategy-template.md) | [Xot Strategy](../product-strategy.md) |
+| [product-launch-plan-template.md](./product-launch-plan-template.md) | [One Launch](../product-launch-plan.md) |
+>>>>>>> laraxot/dev
 | [user-research-template.md](./user-research-template.md) | [Xot Research](../Modules/Xot/docs/user-research.md) |
 | [sprint-planning-template.md](./sprint-planning-template.md) | [Xot Sprint](../Modules/Xot/docs/sprint-planning-meeting.md) |
 

@@ -2,7 +2,11 @@
 
 > Index: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)
 
+<<<<<<< HEAD
 **Project**: PTVX Fila5 Mono  
+=======
+**Project**: PTVX fila5
+>>>>>>> laraxot/dev
 **AI Framework**: BMAD-METHOD v6.2.0
 
 ## Quick Reference
@@ -13,7 +17,11 @@
 | Action Pattern | `app(ActionClass::class)->execute($data)` |
 | Short array | `[]` - MAI `array()` |
 | BMAD Workflows | [docs/bmad/README.md](docs/bmad/README.md) |
+<<<<<<< HEAD
 | AI Coordination | [docs/ai-agent-coordination.md](docs/ai-agent-coordination.md) |
+=======
+| AI Coordination | [docs/ai-agent-coordination.md](../raw/history/ai-agent-coordination.md) |
+>>>>>>> laraxot/dev
 
 ## Key Rules
 
@@ -85,9 +93,17 @@ bmad-document-project
 | github | GitHub API |
 | ollama | Ollama AI |
 
+<<<<<<< HEAD
 → [docs/mcp/mcp-overview.md](docs/mcp/mcp-overview.md)
 
 ---
 
 *Full documentation: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)*  
+=======
+→ [docs/mcp/mcp-overview.md](../mcp/mcp-overview.md)
+
+---
+
+*Full documentation: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)*
+>>>>>>> laraxot/dev
 *BMAD Documentation: [docs/bmad/README.md](docs/bmad/README.md)*

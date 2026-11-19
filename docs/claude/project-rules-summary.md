@@ -191,7 +191,11 @@ Document the why, code shows the how
 - [Git Forward-Only](../../.cursor/rules/git-forward-only.mdc)
 - [Scripts Location](../../.cursor/rules/scripts-location-mandatory.mdc)
 - [Documentation Naming](../../.cursor/rules/documentation-naming.mdc)
+<<<<<<< HEAD
 - [Documentation Philosophy](./documentation-philosophy.md)
+=======
+- [Documentation Philosophy](../rules/documentation-philosophy.md)
+>>>>>>> laraxot/dev
 - [Architecture Rules](./architecture-rules.md)
 
 ---

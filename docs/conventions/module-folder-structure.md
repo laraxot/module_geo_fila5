@@ -369,7 +369,11 @@ laravel/Modules/Gdpr/
 
 ### Documenti Correlati
 
+<<<<<<< HEAD
 - [Workspace Naming Convention](conventions/workspace-naming.md)
+=======
+- [Workspace Naming Convention](workspace-naming.md)
+>>>>>>> laraxot/dev
 - [Project Structure](../../docs/project/structure.md)
 - [AGENTS.md](../../AGENTS.md)
 

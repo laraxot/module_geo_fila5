@@ -6,15 +6,25 @@ updated: 2026-09-26
 qmd: "about"
 issues: []
 discussions: []
+<<<<<<< HEAD
 title: About BashScripts Fila3
+=======
+title: About BashScripts fila5
+>>>>>>> laraxot/dev
 description: Toolkit di automazione Git per progetti Laravel
 extends: _layouts.documentation
 section: content
 ---
 
+<<<<<<< HEAD
 # BashScripts Fila3
 
 BashScripts Fila3 è un toolkit completo di automazione per progetti Laravel con architettura modulare. Il progetto fornisce una suite di script bash per automatizzare processi di sviluppo, gestione Git avanzata e deployment.
+=======
+# BashScripts fila5
+
+BashScripts fila5 è un toolkit completo di automazione per progetti Laravel con architettura modulare. Il progetto fornisce una suite di script bash per automatizzare processi di sviluppo, gestione Git avanzata e deployment.
+>>>>>>> laraxot/dev
 
 ## Caratteristiche Principali
 
@@ -55,7 +65,11 @@ Il toolkit è progettato per supportare progetti Laravel con architettura modula
 
 ## Caso d'Uso
 
+<<<<<<< HEAD
 BashScripts Fila3 è ideale per:
+=======
+BashScripts fila5 è ideale per:
+>>>>>>> laraxot/dev
 - Progetti Laravel con architettura modulare
 - Team di sviluppo che lavorano su moduli separati
 - Deployment automatizzato su diversi ambienti
@@ -75,4 +89,8 @@ BashScripts Fila3 è ideale per:
 Per supporto e domande:
 - Documentazione: [docs/](.)
 - Issues: [GitHub Issues](https://github.com/laraxot/bashscripts_fila5/issues)
+<<<<<<< HEAD
 - Contatto: marco76tv@gmail.com
+=======
+- Contatto: marco76tv@gmail.com
+>>>>>>> laraxot/dev

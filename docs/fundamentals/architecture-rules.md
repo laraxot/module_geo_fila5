@@ -116,7 +116,11 @@ class ProcessUserDataAction {
 - [Module Structure](module-structure.md) - How modules should be organized
 - [Code Conventions](../development/conventions.md) - Detailed coding standards
 - [Common Pitfalls](../development/pitfalls.md) - Mistakes to avoid
+<<<<<<< HEAD
 - [Eloquent Properties](../framework/eloquent-properties.md) - Model best practices
+=======
+- [Eloquent Properties](../claude/eloquent-properties.md) - Model best practices
+>>>>>>> laraxot/dev
 
 ---
 

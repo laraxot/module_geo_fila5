@@ -668,7 +668,11 @@ Motivo del gruppo: architettura/guida concettuale: casa naturale architecture/. 
 
 | Vecchio | Nuovo proposto | Scopo | Nota | Stato |
 |---|---|---|---|---|
+<<<<<<< HEAD
 | `about.md` | `architecture/about.md` | BashScripts Fila3 | link in ingresso: 0 | proposto |
+=======
+| `about.md` | `architecture/about.md` | BashScripts fila5 | link in ingresso: 0 | proposto |
+>>>>>>> laraxot/dev
 | `advanced-features-backup.md` | `architecture/advanced-features-backup.md` | advanced features backup | stub (<200 caratteri); omonimo con contenuto diverso: `advanced_features_backup.md`; link in ingresso: 0 | proposto |
 | `advanced-features.md` | `architecture/advanced-features.md` | advanced features | stub (<200 caratteri); omonimo con contenuto diverso: `ADVANCED_FEATURES.md`; link in ingresso: 0 | proposto |
 | `ADVANCED_FEATURES.md` | `architecture/ADVANCED_FEATURES.md` | Funzionalità Avanzate del Modulo Geo | omonimo con contenuto diverso: `advanced-features.md`; collisione di maiuscole nella destinazione; link in ingresso: 1 | proposto |

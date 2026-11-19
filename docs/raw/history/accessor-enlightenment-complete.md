@@ -424,7 +424,11 @@ protected function getAttribute(?float $value): ?float
 | Documento | Livello | Scopo |
 |-----------|---------|-------|
 | [Sigma/docs/accessor-mutator-philosophy.md](laravel/Modules/Sigma/docs/accessor-mutator-philosophy.md) | Livello 1 → 2 | Filosofia base |
+<<<<<<< HEAD
 | [docs/accessor-mutator-fix-summary.md](docs/accessor-mutator-fix-summary.md) | Livello 2 | Correzione errori |
+=======
+| [docs/accessor-mutator-fix-summary.md](accessor-mutator-fix-summary.md) | Livello 2 | Correzione errori |
+>>>>>>> laraxot/dev
 | [docs/accessor-zen-level-3.md](docs/accessor-zen-level-3.md) | Livello 3 | Zen dell'auto-persistenza |
 | **QUESTO FILE** | **Livello 3+** | **Illuminazione totale** |
 

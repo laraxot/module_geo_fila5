@@ -366,6 +366,7 @@ Questo documento fornisce un'analisi completa dello stato attuale di factory, se
 - [<nome modulo>](../laravel/modules/<nome modulo>/docs/module-analysis-complete.md)
 - [<nome progetto>](../laravel/modules/<nome progetto>/docs/module-analysis-complete.md)
 - [<nome progetto>](../laravel/modules/<nome progetto>/docs/module-analysis-complete.md)
+<<<<<<< HEAD
 - [Media](../laravel/modules/media/docs/module-analysis-complete.md)
 - [Lang](../laravel/modules/lang/docs/module-analysis-complete.md)
 - [Gdpr](../laravel/modules/gdpr/docs/module-analysis-complete.md)
@@ -373,6 +374,15 @@ Questo documento fornisce un'analisi completa dello stato attuale di factory, se
 - [Xot](../laravel/modules/xot/docs/module-analysis-complete.md)
 - [User](../../User/docs/module-analysis-complete.md)
 - [UI](../laravel/modules/ui/docs/module-analysis-complete.md)
+=======
+- [Media](module-analysis-complete.md)
+- [Lang](module-analysis-complete.md)
+- [Gdpr](module-analysis-complete.md)
+- [Tenant](module-analysis-complete.md)
+- [Xot](module-analysis-complete.md)
+- [User](../../User/docs/module-analysis-complete.md)
+- [UI](module-analysis-complete.md)
+>>>>>>> laraxot/dev
 - [Geo](module-analysis-complete.md)
 - [Cms](../../Cms/docs/module-analysis-complete.md)
 - [Notify](../../Notify/docs/module-analysis-complete.md)

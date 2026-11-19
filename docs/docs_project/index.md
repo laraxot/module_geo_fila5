@@ -14,6 +14,7 @@ discussions: []
 ## 🏥 Business Logic e Architettura
 
 ### Documentazione Consolidata
+<<<<<<< HEAD
 - [**Business Logic Consolidata**](business-logic-consolidated.md) - Analisi completa della business logic del sistema sanitario
 - [**Factory e Seeder Consolidati**](factory-seeder-consolidated.md) - Stato completo di factory e seeder per tutti i moduli
 - [**Business Logic Analysis**](business-logic-analysis.md) - Analisi dettagliata della business logic
@@ -23,6 +24,17 @@ discussions: []
 - [**Analisi Moduli e Ottimizzazioni**](analisi-moduli-ottimizzazioni.md) - Analisi completa dei moduli esistenti
 - [**Modules Optimization Summary**](modules-optimization-summary.md) - Riepilogo delle ottimizzazioni implementate
 - [**Anti-patterns**](anti-patterns.md) - Pattern da evitare nel progetto
+=======
+- [**Business Logic Consolidata**](../business-logic-consolidated.md) - Analisi completa della business logic del sistema sanitario
+- [**Factory e Seeder Consolidati**](../factory-seeder-consolidated.md) - Stato completo di factory e seeder per tutti i moduli
+- [**Business Logic Analysis**](../business-logic-analysis.md) - Analisi dettagliata della business logic
+- [**Laraxot Architecture Principles**](../laraxot-architecture-principles.md) - Principi architetturali del framework
+
+### Analisi Moduli
+- [**Analisi Moduli e Ottimizzazioni**](../analisi-moduli-ottimizzazioni.md) - Analisi completa dei moduli esistenti
+- [**Modules Optimization Summary**](../modules-optimization-summary.md) - Riepilogo delle ottimizzazioni implementate
+- [**Anti-patterns**](../anti-patterns.md) - Pattern da evitare nel progetto
+>>>>>>> laraxot/dev
 
 ## 🧪 Testing e Qualità
 
@@ -47,14 +59,24 @@ discussions: []
 ## 🔧 Factory e Seeder
 
 ### Best Practices
+<<<<<<< HEAD
 - [**Factory Best Practices**](factory-best-practices.md) - Best practices per factory e seeder
 - [**Database Seeding**](database-seeding.md) - Guida al seeding del database
 - [**Modules Factory Seeder Analysis**](modules-factory-seeder-analysis.md) - Analisi factory e seeder per moduli
+=======
+- [**Factory Best Practices**](../factory-best-practices.md) - Best practices per factory e seeder
+- [**Database Seeding**](../database-seeding.md) - Guida al seeding del database
+- [**Modules Factory Seeder Analysis**](../modules-factory-seeder-analysis.md) - Analisi factory e seeder per moduli
+>>>>>>> laraxot/dev
 
 ### Audit e Analisi
 - [**Factory Email Rule**](factory-email-rule.md) - Regole per email nelle factory
 - [**Factory Email Rules**](factory-email-rules.md) - Regole complete per email
+<<<<<<< HEAD
 - [**Cast Actions Centralized**](cast-actions-centralized.md) - Centralizzazione delle azioni di cast
+=======
+- [**Cast Actions Centralized**](../cast-actions-centralized.md) - Centralizzazione delle azioni di cast
+>>>>>>> laraxot/dev
 - [**Cast Actions Usage**](cast-actions-usage.md) - Utilizzo delle azioni di cast
 
 ## 📊 PHPStan e Qualità Codice
@@ -65,7 +87,11 @@ discussions: []
 {nome-progetto}
 - [**PHPStan Array Types Fixes**](phpstan-array-types-fixes.md) - Fix per tipi array in PHPStan
 - [**PHPStan Error Resolution**](phpstan-error-resolution.md) - Risoluzione errori PHPStan
+<<<<<<< HEAD
 - [**PHPStan Level 10 Fixes**](phpstan-level10-fixes.md) - Fix per PHPStan livello 10
+=======
+- [**PHPStan Level 10 Fixes**](../raw/history/phpstan-level10-fixes.md) - Fix per PHPStan livello 10
+>>>>>>> laraxot/dev
 
 ### Fixes Specifici
 - [**PHPStan Covariance Resolution Summary**](phpstan-covariance-resolution-summary.md) - Risoluzione problemi di covarianza
@@ -79,10 +105,17 @@ discussions: []
 - [**MCP Implementation Guide**](mcp_implementation_guide.md) - Guida all'implementazione MCP
 - [**MCP Errors and Lessons**](mcp_errors_and_lessons.md) - Errori e lezioni apprese con MCP
 - [**Laraxot Conventions**](laraxot_conventions.md) - Convenzioni Laraxot
+<<<<<<< HEAD
 - [**Laraxot Framework**](laraxot-framework.md) - Framework Laraxot
 
 ### Organizzazione e Struttura
 - [**Script Organization**](script-organization.md) - Organizzazione degli script
+=======
+- [**Laraxot Framework**](../raw/history/laraxot-framework.md) - Framework Laraxot
+
+### Organizzazione e Struttura
+- [**Script Organization**](../script-organization.md) - Organizzazione degli script
+>>>>>>> laraxot/dev
 - [**Boy Scout Rule**](boy-scout-rule.md) - Regola del boy scout
 - [**Boy Scout Rule Implementation**](boy-scout-rule-implementation.md) - Implementazione della regola
 

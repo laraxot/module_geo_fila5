@@ -11,7 +11,11 @@ discussions: []
 
 > **Revisione manuale:** File rivisto per eliminare duplicazioni, conflitti e marker. Strutturato per massima chiarezza, con esempi pratici e riferimenti architetturali.
 
+<<<<<<< HEAD
 > **Backlink:** [README globale](./README.md) · [scripts_conflict_resolution.md](./scripts_conflict_resolution.md) · [GitHub Actions](./github-actions.md)
+=======
+> **Backlink:** [README globale](./README.md) · [scripts_conflict_resolution.md](../utils/scripts_conflict_resolution.md) · [GitHub Actions](./github-actions.md)
+>>>>>>> laraxot/dev
 
 ---
 
@@ -50,12 +54,21 @@ Funzione centralizzata (in `custom.sh`) per impostare:
 - Validare i log e aggiornare `gitmodules.ini`
 
 ## Risoluzione conflitti
+<<<<<<< HEAD
 - In caso di merge, usare script di backup e seguire la strategia documentata in [scripts_conflict_resolution.md](./scripts_conflict_resolution.md)
 
 ## Collegamenti
 - [README globale](./README.md)
 - [scripts_conflict_resolution.md](./scripts_conflict_resolution.md)
 - [git_subtree_conflicts.md](./git_subtree_conflicts.md)
+=======
+- In caso di merge, usare script di backup e seguire la strategia documentata in [scripts_conflict_resolution.md](../utils/scripts_conflict_resolution.md)
+
+## Collegamenti
+- [README globale](./README.md)
+- [scripts_conflict_resolution.md](../utils/scripts_conflict_resolution.md)
+- [git_subtree_conflicts.md](../git-management/git_subtree_conflicts.md)
+>>>>>>> laraxot/dev
 - [GitHub Actions](./github-actions.md)
 
 ---

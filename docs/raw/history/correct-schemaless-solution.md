@@ -150,7 +150,11 @@ When using schemaless attributes:
 
 ### Documentation
 
+<<<<<<< HEAD
 - [This Document](./CORRECT-SCHEMALESS-SOLUTION.md) - The truth
+=======
+- [This Document](correct-schemaless-solution.md) - The truth
+>>>>>>> laraxot/dev
 - [Rating README](../laravel/Modules/Rating/docs/README.md) - Updated
 
 ---

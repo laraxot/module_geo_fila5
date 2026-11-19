@@ -31,15 +31,25 @@ discussions: []
 
 1. [📖 Root README](./README.md) - Start here
 2. [🏗️ Architecture Rules](./claude/architecture-rules.md) - **CRITICAL** - Must read
+<<<<<<< HEAD
 3. [📝 Conventions](./claude/conventions.md) - Coding standards
 4. [🚫 Common Pitfalls](./claude/common-pitfalls.md) - Avoid these
+=======
+3. [📝 Conventions](../../development/conventions.md) - Coding standards
+4. [🚫 Common Pitfalls](../../claude/common-pitfalls.md) - Avoid these
+>>>>>>> laraxot/dev
 
 ### For Code Review
 
 1. [✅ Best Practices](./best-practices/README.md)
 2. [🔍 Code Quality](./claude/code-quality.md)
+<<<<<<< HEAD
 3. [⚠️ Critical Issues](./claude/eloquent-properties.md)
 4. [🧬 Schemaless Attributes](./claude/schemaless-attributes-final.md)
+=======
+3. [⚠️ Critical Issues](../../claude/eloquent-properties.md)
+4. [🧬 Schemaless Attributes](../../claude/schemaless-attributes-final.md)
+>>>>>>> laraxot/dev
 
 ### For Refactoring
 
@@ -58,7 +68,11 @@ discussions: []
 - ✅ **15 documents** created (~6,000 lines)
 - ✅ **PHPMD** confirms analysis accuracy (95%+)
 
+<<<<<<< HEAD
 **Master Summary**: [Analysis Complete](./ANALYSIS-COMPLETE.md)
+=======
+**Master Summary**: [Analysis Complete](analysis-complete.md)
+>>>>>>> laraxot/dev
 
 ---
 
@@ -129,7 +143,11 @@ laravel/Themes/
 **Status**: ✅ VERIFIED
 
 **Documentation**:
+<<<<<<< HEAD
 - [Final Correct Guide](./claude/schemaless-attributes-final.md)
+=======
+- [Final Correct Guide](../../claude/schemaless-attributes-final.md)
+>>>>>>> laraxot/dev
 - [Rating Scope Fix](../laravel/Modules/Rating/docs/schemaless-scope-fix.md)
 
 **Quick Rule**:
@@ -145,7 +163,11 @@ Rating::where('extra_attributes->anno', 2024)->get()
 **Impact**: Always returns false for DB fields  
 **Status**: 🔴 CRITICAL
 
+<<<<<<< HEAD
 **Documentation**: [Eloquent Properties](./claude/eloquent-properties.md)
+=======
+**Documentation**: [Eloquent Properties](../../claude/eloquent-properties.md)
+>>>>>>> laraxot/dev
 
 **Quick Rule**:
 ```php
@@ -192,12 +214,21 @@ TextInput::make('name') // Auto-translated
 
 - [Overview](./architecture/README.md)
 - [Module System](./claude/module-structure.md)
+<<<<<<< HEAD
 - [Design Patterns](./architecture/patterns.md)
 - [SOLID Principles](./architecture/solid-principles.md)
 
 ### Development
 
 - [Coding Standards](./claude/conventions.md)
+=======
+- [Design Patterns](../../architecture/patterns.md)
+- [SOLID Principles](../../claude/solid-principles.md)
+
+### Development
+
+- [Coding Standards](../../development/conventions.md)
+>>>>>>> laraxot/dev
 - [Common Tasks](./development/common-tasks.md)
 - [Testing Guide](./testing/README.md)
 - [Best Practices](./best-practices/README.md)
@@ -222,6 +253,7 @@ TextInput::make('name') // Auto-translated
 
 1. **[Root README](./README.md)** - Navigation hub
 2. **[Claude Architecture Rules](./claude/architecture-rules.md)** - ⚠️ CRITICAL rules
+<<<<<<< HEAD
 3. **[Analysis Complete 2025](./ANALYSIS-COMPLETE.md)** - Recent analysis summary
 4. **[Schemaless Final](./claude/schemaless-attributes-final.md)** - Correct schemaless usage
 5. **[Eloquent Properties](./claude/eloquent-properties.md)** - property_exists issue
@@ -229,6 +261,15 @@ TextInput::make('name') // Auto-translated
 7. **[Refactoring Plan](../laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md)** - Action items
 8. **[Rating Module](../laravel/Modules/Rating/docs/README.md)** - Fixed module
 9. **[Common Pitfalls](./claude/common-pitfalls.md)** - Avoid these
+=======
+3. **[Analysis Complete 2025](analysis-complete.md)** - Recent analysis summary
+4. **[Schemaless Final](../../claude/schemaless-attributes-final.md)** - Correct schemaless usage
+5. **[Eloquent Properties](../../claude/eloquent-properties.md)** - property_exists issue
+6. **[IndennitaResponsabilita Analysis](../laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)** - Module analysis
+7. **[Refactoring Plan](../laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md)** - Action items
+8. **[Rating Module](../laravel/Modules/Rating/docs/README.md)** - Fixed module
+9. **[Common Pitfalls](../../claude/common-pitfalls.md)** - Avoid these
+>>>>>>> laraxot/dev
 10. **[Code Quality](./claude/code-quality.md)** - Quality tools
 
 ---
@@ -341,7 +382,11 @@ php artisan test --coverage --min=85
 
 1. Check if topic already covered
 2. Identify appropriate location (module vs root)
+<<<<<<< HEAD
 3. Follow [Documentation Policy](./claude/documentation-policy.md)
+=======
+3. Follow [Documentation Policy](../../claude/documentation-policy.md)
+>>>>>>> laraxot/dev
 4. Create and link properly
 
 ---
@@ -430,11 +475,19 @@ php artisan test --coverage --min=85
 
 | Rule | Link |
 |------|------|
+<<<<<<< HEAD
 | Eloquent property_exists | [Eloquent Properties](./claude/eloquent-properties.md) |
 | Schemaless Attributes | [Schemaless Final](./claude/schemaless-attributes-final.md) |
 | XotBase Extension | [Architecture Rules](./claude/architecture-rules.md) |
 | No Hardcoded Labels | [Architecture Rules](./claude/architecture-rules.md) |
 | Use Actions not Services | [Conventions](./claude/conventions.md) |
+=======
+| Eloquent property_exists | [Eloquent Properties](../../claude/eloquent-properties.md) |
+| Schemaless Attributes | [Schemaless Final](../../claude/schemaless-attributes-final.md) |
+| XotBase Extension | [Architecture Rules](./claude/architecture-rules.md) |
+| No Hardcoded Labels | [Architecture Rules](./claude/architecture-rules.md) |
+| Use Actions not Services | [Conventions](../../development/conventions.md) |
+>>>>>>> laraxot/dev
 
 ### Module Docs
 

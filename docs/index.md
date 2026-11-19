@@ -23,7 +23,11 @@ discussions: []
 
 ### Fondamenti
 - **[Architecture Overview](./architecture/)** - Architettura generale del sistema
+<<<<<<< HEAD
 - **[Directory Structure](./directory-structure.md)** - Struttura cartelle e organizzazione
+=======
+- **[Directory Structure](raw/history/directory-structure.md)** - Struttura cartelle e organizzazione
+>>>>>>> laraxot/dev
 - **[Module System](./development/module-development.md)** - Sistema modulare
 - **[Dependency Management](./dependencies.md)** - Gestione dipendenze
 
@@ -35,9 +39,15 @@ discussions: []
 - **[Lang Module](../../Lang/docs/README.md)** - Gestione traduzioni
 
 ### Design Patterns
+<<<<<<< HEAD
 - **[Service Providers](./service-provider-best-practices.md)** - Pattern service providers
 - **[Data Transfer Objects](./best-practices/dto-pattern.md)** - DTO con Spatie Laravel Data
 - **[Actions Pattern](./actions.md)** - Spatie QueueableActions
+=======
+- **[Service Providers](raw/history/service-provider-best-practices.md)** - Pattern service providers
+- **[Data Transfer Objects](./best-practices/dto-pattern.md)** - DTO con Spatie Laravel Data
+- **[Actions Pattern](raw/history/actions.md)** - Spatie QueueableActions
+>>>>>>> laraxot/dev
 - **[Event Sourcing](../../Activity/docs/event-sourcing.md)** - Event sourcing pattern
 
 ## 💻 Sviluppo
@@ -51,6 +61,7 @@ discussions: []
 ### Framework e Stack
 - **[Laravel](./core/laravel.md)** - Framework Laravel
 - **[Filament](./filament/)** - Admin panel Filament
+<<<<<<< HEAD
 - **[Livewire](./core/livewire.md)** - Componenti reattivi
 - **[Blade Components](./blade-components.md)** - Componenti Blade
 
@@ -59,26 +70,46 @@ discussions: []
 - **[Models](./core/models.md)** - Eloquent models
 - **[Repositories](./repositories.md)** - Pattern repository
 - **[EAV System](./eav-system.md)** - Entity-Attribute-Value
+=======
+- **[Livewire](features/livewire.md)** - Componenti reattivi
+- **[Blade Components](raw/history/blade-components.md)** - Componenti Blade
+
+### Database
+- **[Migrations](raw/history/database-migrations.md)** - Sistema migrazioni
+- **[Models](architecture/models.md)** - Eloquent models
+- **[Repositories](raw/history/repositories.md)** - Pattern repository
+- **[EAV System](raw/history/eav-system.md)** - Entity-Attribute-Value
+>>>>>>> laraxot/dev
 
 ## 🎨 Frontend
 
 ### UI/UX
 - **[UI Components](./ui_components/)** - Componenti UI custom
 - **[Theme System](./themes/)** - Sistema di temi
+<<<<<<< HEAD
 - **[Blade Components](./blade-components.md)** - Componenti Blade
 - **[Forms](./filament/forms.md)** - Form builder
+=======
+- **[Blade Components](raw/history/blade-components.md)** - Componenti Blade
+- **[Forms](features/forms.md)** - Form builder
+>>>>>>> laraxot/dev
 
 ### Filament
 - **[Resources](./filament/resources.md)** - Filament Resources
 - **[Pages](./filament/pages.md)** - Custom pages
 - **[Widgets](./filament/widgets.md)** - Dashboard widgets
+<<<<<<< HEAD
 - **[Actions](./filament/actions.md)** - Custom actions
+=======
+- **[Actions](raw/history/actions.md)** - Custom actions
+>>>>>>> laraxot/dev
 - **[Relation Managers](./filament/relation-managers.md)** - Gestione relazioni
 
 ## 🔒 Sicurezza
 
 ### Autenticazione e Autorizzazione
 - **[Authentication](./core/authentication.md)** - Sistema autenticazione
+<<<<<<< HEAD
 - **[Authorization](./authorization.md)** - Autorizzazione e permessi
 - **[Roles & Permissions](../../User/docs/roles-permissions.md)** - Gestione ruoli
 - **[Teams](./teams.md)** - Gestione team
@@ -86,6 +117,15 @@ discussions: []
 ### Sicurezza Dati
 - **[Security Best Practices](./security.md)** - Sicurezza applicazione
 - **[GDPR Compliance](./gdpr-compliance.md)** - Conformità GDPR
+=======
+- **[Authorization](raw/history/authorization.md)** - Autorizzazione e permessi
+- **[Roles & Permissions](../../User/docs/roles-permissions.md)** - Gestione ruoli
+- **[Teams](raw/history/teams.md)** - Gestione team
+
+### Sicurezza Dati
+- **[Security Best Practices](./security.md)** - Sicurezza applicazione
+- **[GDPR Compliance](raw/history/gdpr-compliance.md)** - Conformità GDPR
+>>>>>>> laraxot/dev
 - **[Audit Log](../../Activity/docs/README.md)** - Logging attività
 
 ## 🧪 Testing
@@ -99,7 +139,11 @@ discussions: []
 ### Qualità del Codice
 - **[PHPStan](./best-practices/phpstan.md)** - Analisi statica
 - **[Code Quality](./best-practices/code-quality.md)** - Qualità del codice
+<<<<<<< HEAD
 - **[Testing Guidelines](./testing/guidelines.md)** - Linee guida testing
+=======
+- **[Testing Guidelines](claude/architecture/guidelines.md)** - Linee guida testing
+>>>>>>> laraxot/dev
 
 ## 📊 Performance
 ## 🗺️ Geo Filament Components
@@ -122,6 +166,7 @@ discussions: []
 
 ### Ottimizzazione
 - **[Performance Optimization](./performance-optimization.md)** - Ottimizzazione generale
+<<<<<<< HEAD
 - **[Cache Management](./cache-management.md)** - Gestione cache
 - **[Queue Management](./queue-management.md)** - Code e job
 - **[Database Optimization](./performance/database.md)** - Ottimizzazione DB
@@ -129,6 +174,15 @@ discussions: []
 ### Monitoring
 - **[Metrics Dashboard](./metrics-dashboard.md)** - Dashboard metriche
 - **[Performance Monitoring](./performance/monitoring.md)** - Monitoraggio performance
+=======
+- **[Cache Management](raw/history/cache-management.md)** - Gestione cache
+- **[Queue Management](raw/history/queue-management.md)** - Code e job
+- **[Database Optimization](./performance/database.md)** - Ottimizzazione DB
+
+### Monitoring
+- **[Metrics Dashboard](raw/history/metrics-dashboard.md)** - Dashboard metriche
+- **[Performance Monitoring](roadmap/monitoring.md)** - Monitoraggio performance
+>>>>>>> laraxot/dev
 
 ## 🌐 Internazionalizzazione
 
@@ -162,7 +216,11 @@ discussions: []
 ## 📚 Riferimenti
 
 ### API e Integrazioni
+<<<<<<< HEAD
 - **[API Development](./api-development.md)** - Sviluppo API
+=======
+- **[API Development](raw/history/api-development.md)** - Sviluppo API
+>>>>>>> laraxot/dev
 - **[External Integrations](./integrations/)** - Integrazioni esterne
 - **[OAuth](./oauth/)** - Autenticazione OAuth
 
@@ -175,8 +233,13 @@ discussions: []
 ## 🗺️ Roadmap
 
 ### Sviluppo Futuro
+<<<<<<< HEAD
 - **[Project Roadmap](./project-roadmap.md)** - Roadmap generale
 - **[Filament 4 Upgrade](./filament-4-upgrade-guide.md)** - Upgrade Filament 4
+=======
+- **[Project Roadmap](raw/history/project-roadmap.md)** - Roadmap generale
+- **[Filament 4 Upgrade](raw/history/filament-4-upgrade-guide.md)** - Upgrade Filament 4
+>>>>>>> laraxot/dev
 - **[Laravel 11 Migration](./core/laravel-11-migration.md)** - Migrazione Laravel 11
 
 ## 📝 Convenzioni e Standard

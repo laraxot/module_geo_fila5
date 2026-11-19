@@ -224,8 +224,13 @@ Gli script bash sono stati organizzati in sottocartelle tematiche per migliorare
 ## Collegamenti Utili
 
 - [README.md](README.md) - Documentazione principale
+<<<<<<< HEAD
 - [utils/organize_scripts.sh](utils/organize_scripts.sh) - Script di organizzazione
 - [utils/organize_remaining.sh](utils/organize_remaining.sh) - Script per file rimanenti
+=======
+- [utils/organize_scripts.sh](../../utils/organize_scripts.sh) - Script di organizzazione
+- [utils/organize_remaining.sh](../../utils/organize_remaining.sh) - Script per file rimanenti
+>>>>>>> laraxot/dev
 
 ---
 

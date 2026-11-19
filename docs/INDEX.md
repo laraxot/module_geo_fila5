@@ -60,7 +60,11 @@ discussions: []
 =======
 - [**SVG Icon Architecture**](./coordinate-picker-purpose.md#-svg-icon-architecture-no-hardcoded-svg) - Regola DRY: SVG separati in `resources/svg/`, no inline hardcoded
 - [**Filament Components**](./filament-forms-components.md) - Filament forms components, web components (Lit.dev), and integration patterns
+<<<<<<< HEAD
 - [**Filament Integration**](./FILAMENT_EXTENSION_RULES.md) - Filament PHP integration patterns
+=======
+- [**Filament Integration**](filament_extension_rules.md) - Filament PHP integration patterns
+>>>>>>> laraxot/dev
 >>>>>>> .merge_file_1wtmCQ
 
 ### 🎨 Assets & Icons
@@ -106,7 +110,11 @@ discussions: []
 <<<<<<< .merge_file_RkGvvw
 - [**Design Rules**](./filament_extension_rules.md) - Filament component design rules
 =======
+<<<<<<< HEAD
 - [**Design Rules**](./FILAMENT_EXTENSION_RULES.md) - Filament component design rules
+=======
+- [**Design Rules**](filament_extension_rules.md) - Filament component design rules
+>>>>>>> laraxot/dev
 >>>>>>> .merge_file_1wtmCQ
 - [**Consolidation Analysis**](./analisi-moduli-ottimizzazioni.md) - Module consolidation guidelines
 - [**Performance Guidelines**](./TECHNICAL.md#performance) - Performance optimization patterns
@@ -217,7 +225,11 @@ This module has many duplicate files in docs/. Key actions taken:
 <<<<<<< .merge_file_RkGvvw
 3. **Integration**: Follow [Filament integration guide](./filament_extension_rules.md)
 =======
+<<<<<<< HEAD
 3. **Integration**: Follow [Filament integration guide](./FILAMENT_EXTENSION_RULES.md)
+=======
+3. **Integration**: Follow [Filament integration guide](filament_extension_rules.md)
+>>>>>>> laraxot/dev
 >>>>>>> .merge_file_1wtmCQ
 4. **Examples**: Check [app integration](./app-integration.md)
 
@@ -235,7 +247,11 @@ This module has many duplicate files in docs/. Key actions taken:
 <<<<<<< .merge_file_RkGvvw
 - For integration help: See [app integration](./app-integration.md) and [Filament rules](./filament_extension_rules.md)
 =======
+<<<<<<< HEAD
 - For integration help: See [app integration](./app-integration.md) and [Filament rules](./FILAMENT_EXTENSION_RULES.md)
+=======
+- For integration help: See [app integration](./app-integration.md) and [Filament rules](filament_extension_rules.md)
+>>>>>>> laraxot/dev
 >>>>>>> .merge_file_1wtmCQ
 ---
 

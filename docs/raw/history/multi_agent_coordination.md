@@ -342,7 +342,11 @@ Other AI agents should:
 - [AGENTS.md](../../AGENTS.md)
 - [AGENT_MEMORY.md](../../AGENT_MEMORY.md)
 - [Script Location Rule](bashscripts/docs/script-location-rule.md)
+<<<<<<< HEAD
 - [Workspace Naming](../../docs/conventions/workspace-naming.md)
+=======
+- [Workspace Naming](../../conventions/workspace-naming.md)
+>>>>>>> laraxot/dev
 
 ---
 

@@ -60,7 +60,11 @@ Seeders for geographical data are provided to populate the database with initial
 
 ## Related Documentation
 - [Geo Module API Reference](./api.md)
+<<<<<<< HEAD
 - [Data Models](./models.md)
+=======
+- [Data Models](architecture/models.md)
+>>>>>>> laraxot/dev
 - [Migrations](./migrations.md)
 
 ## Separazione regione e provincia negli indirizzi italiani

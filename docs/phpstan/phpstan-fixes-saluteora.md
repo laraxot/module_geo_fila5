@@ -307,7 +307,11 @@ use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 5. **Robustezza**: Gestione di tutti i casi edge e valori problematici
 
 ## Collegamenti
+<<<<<<< HEAD
 - [Uso delle Azioni di Cast Xot](casting-actions-usage.md)
+=======
+- [Uso delle Azioni di Cast Xot](../casting-actions-usage.md)
+>>>>>>> laraxot/dev
 - [Regole Cursor: Casting Actions](.cursor/rules/casting-actions-rule.mdc)
 - [Memorie: Casting Actions](.cursor/memories/casting-actions.mdc)
 

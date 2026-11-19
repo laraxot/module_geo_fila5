@@ -35,7 +35,11 @@ return [
      */
     'database' => [
         'connection' => Env::get('SUSHI_DB_CONNECTION', 'mysql'),
+<<<<<<< HEAD
         'database' => Env::get('SUSHI_DB_DATABASE', 'quaeris_data_test'),
+=======
+        'database' => Env::get('SUSHI_DB_DATABASE', '<nome progetto>_data_test'),
+>>>>>>> laraxot/dev
     ],
     /*
      * |--------------------------------------------------------------------------

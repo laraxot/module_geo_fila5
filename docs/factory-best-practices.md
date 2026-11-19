@@ -485,7 +485,11 @@ Al completamento di tutte le best practices:
 ## 📚 **Documentazione Correlata**
 
 - [PHPStan Analysis Business Logic](../phpstan-analysis-business-logic.md)
+<<<<<<< HEAD
 - [Business Logic Factory & Seeder Audit](../business-logic-factory-seeder-audit.md)
+=======
+- [Business Logic Factory & Seeder Audit](business-logic-factory-seeder-audit.md)
+>>>>>>> laraxot/dev
 - [Testing Business Behavior Supreme Rule](../testing-business-behavior-supreme-rule.md)
 - [<nome progetto> Factory Issues Analysis](../laravel/modules/<nome progetto>/docs/factory-issues-analysis.md)
 - [<nome progetto> Factory Issues Analysis](../laravel/modules/<nome progetto>/docs/factory-issues-analysis.md)

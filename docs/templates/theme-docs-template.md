@@ -76,7 +76,11 @@ After every change:
 ## Documentation
 
 - [GSD Methodology](../../docs/project/gsd-methodology.md)
+<<<<<<< HEAD
 - [UI Components](../../laravel/Modules/UI/docs/components.md)
+=======
+- [UI Components](../raw/history/components.md)
+>>>>>>> laraxot/dev
 - [AGENTS.md](../../AGENTS.md)
 
 ## Roadmap

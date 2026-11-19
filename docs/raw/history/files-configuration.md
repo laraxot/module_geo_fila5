@@ -88,4 +88,8 @@ Per aggiungere nuovi pattern di esclusione, si consiglia di:
 
 ## Documentazione Correlata
 - [Gestione dei Repository Git](/docs/bashscripts/gestione_git.md)
+<<<<<<< HEAD
 - [Conflitti di Merge](conflict-resolution-bash.md) 
+=======
+- [Conflitti di Merge](../../utils/conflict-resolution-bash.md) 
+>>>>>>> laraxot/dev

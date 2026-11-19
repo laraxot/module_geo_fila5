@@ -15,8 +15,13 @@ assignees: ""
 
 ## Agent Teams Coordination
 
+<<<<<<< HEAD
 **Team**: {Team Name}  
 **Agents Involved**: {Qwen, Gemini, Claude, etc.}  
+=======
+**Team**: {Team Name}
+**Agents Involved**: {Qwen, Gemini, Claude, etc.}
+>>>>>>> laraxot/dev
 **Priority**: High/Medium/Low
 
 ---
@@ -59,7 +64,11 @@ assignees: ""
 ### Other Bases
 
 - [ ] base_fixcity_fila5 (Gemini)
+<<<<<<< HEAD
 - [ ] base_quaeris_fila5 (Claude)
+=======
+- [ ] base_<nome progetto>_fila5 (Claude)
+>>>>>>> laraxot/dev
 - [ ] base_predict_fila5
 
 ### Decision
@@ -72,5 +81,9 @@ assignees: ""
 
 ---
 
+<<<<<<< HEAD
 **Related Issues**: #{Issue Numbers}  
+=======
+**Related Issues**: #{Issue Numbers}
+>>>>>>> laraxot/dev
 **Related PRs**: #{PR Numbers}

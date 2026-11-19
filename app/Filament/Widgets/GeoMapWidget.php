@@ -33,10 +33,26 @@ final class GeoMapWidget extends XotBaseWidget
      *
      * @var view-string
      */
+<<<<<<< HEAD
     protected string $view = 'geo::filament.widgets.geo-map-widget';
 
     protected int|string|array $columnSpan = 'full';
 
+=======
+    protected string $view;
+
+    protected int|string|array $columnSpan = 'full';
+
+    public function __construct()
+    {
+        /** @var view-string $view */
+        $view = 'geo::filament.widgets.geo-map-widget';
+        $this->view = $view;
+
+        parent::__construct();
+    }
+
+>>>>>>> laraxot/dev
     protected string $datasetRelativePath =
         'resources/data/geo-map-widget.geojson';
 

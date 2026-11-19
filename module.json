@@ -1,14 +1,30 @@
 {
     "name": "Geo",
     "alias": "geo",
+<<<<<<< HEAD
     "description": "Servizi geografici per geocoding, mappe e gestione posizioni con integrazione provider esterni",
     "keywords": ["geo", "geocoding", "maps", "locations", "coordinates"],
     "priority": 0,
+=======
+    "description": "Servizi geografici: comuni, indirizzi, coordinate, mappe e selettori di posizione",
+    "keywords": ["geo", "geocoding", "maps", "locations", "coordinates"],
+    "priority": 0,
+    "active": 1,
+    "order": 0,
+>>>>>>> laraxot/dev
     "providers": [
         "Modules\\Geo\\Providers\\GeoServiceProvider",
         "Modules\\Geo\\Providers\\Filament\\AdminPanelProvider"
     ],
+<<<<<<< HEAD
     "aliases": [],
     "files": [],
     "requires": []
 }
+=======
+    "aliases": {},
+    "files": [],
+    "requires": ["Xot"],
+    "phpVersion": "^8.3"
+}
+>>>>>>> laraxot/dev

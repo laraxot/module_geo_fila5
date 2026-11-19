@@ -37,7 +37,11 @@ Welcome to the central knowledge base for the **PTVX** project. This wiki is aut
 ## Architectural Principles
 
 - [BaseModel Pattern](../../laravel/Modules/Xot/docs/wiki/BaseModel.md): The sacred inheritance chain.
+<<<<<<< HEAD
 - [Actions Over Services](concepts/actions-over-services.md): Preferred business logic pattern.
+=======
+- [Actions Over Services](../architecture/actions-over-services.md): Preferred business logic pattern.
+>>>>>>> laraxot/dev
 - [Database guidelines](rules/database-guidelines.md): Managing connections across modules.
 - [Translation standards](rules/translation-standards.md): Automatic localization rules.
 

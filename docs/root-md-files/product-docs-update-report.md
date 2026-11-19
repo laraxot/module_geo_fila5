@@ -31,12 +31,21 @@ Creati 6 template standardizzati nella cartella `/docs/templates/`:
 
 | Template | File | Status |
 |----------|------|--------|
+<<<<<<< HEAD
 | Product Roadmap | [docs/templates/product-roadmap-template.md](docs/templates/product-roadmap-template.md) | ✅ Complete |
 | PRD | [docs/templates/prd-template.md](docs/templates/prd-template.md) | ✅ Complete |
 | Product Strategy | [docs/templates/product-strategy-template.md](docs/templates/product-strategy-template.md) | ✅ Complete |
 | Product Launch Plan | [docs/templates/product-launch-plan-template.md](docs/templates/product-launch-plan-template.md) | ✅ Complete |
 | User Research | [docs/templates/user-research-template.md](docs/templates/user-research-template.md) | ✅ Complete |
 | Sprint Planning | [docs/templates/sprint-planning-template.md](docs/templates/sprint-planning-template.md) | ✅ Complete |
+=======
+| Product Roadmap | [docs/templates/product-roadmap-template.md](../templates/product-roadmap-template.md) | ✅ Complete |
+| PRD | [docs/templates/prd-template.md](../templates/prd-template.md) | ✅ Complete |
+| Product Strategy | [docs/templates/product-strategy-template.md](../templates/product-strategy-template.md) | ✅ Complete |
+| Product Launch Plan | [docs/templates/product-launch-plan-template.md](../templates/product-launch-plan-template.md) | ✅ Complete |
+| User Research | [docs/templates/user-research-template.md](../templates/user-research-template.md) | ✅ Complete |
+| Sprint Planning | [docs/templates/sprint-planning-template.md](../templates/sprint-planning-template.md) | ✅ Complete |
+>>>>>>> laraxot/dev
 
 **Caratteristiche Template:**
 - Basati su best practices Notion
@@ -52,7 +61,11 @@ Creato indice centrale della documentazione product:
 
 | Documento | File | Status |
 |-----------|------|--------|
+<<<<<<< HEAD
 | Product Docs Index | [docs/project/product-docs-index.md](docs/project/product-docs-index.md) | ✅ Complete |
+=======
+| Product Docs Index | [docs/project/product-docs-index.md](../project/product-docs-index.md) | ✅ Complete |
+>>>>>>> laraxot/dev
 
 **Contenuti:**
 - Panoramica 6 categorie Notion
@@ -69,9 +82,15 @@ Creato indice centrale della documentazione product:
 | Documento | File | Status | Note |
 |-----------|------|--------|------|
 | PRD | [laravel/Themes/Zero/docs/prd.md](laravel/Themes/Zero/docs/prd.md) | ✅ Existing | Già completo |
+<<<<<<< HEAD
 | Roadmap | [laravel/Themes/Zero/docs/product-roadmap.md](laravel/Themes/Zero/docs/product-roadmap.md) | ✅ Existing | Già completo |
 | Strategy | [laravel/Themes/Zero/docs/product-strategy.md](laravel/Themes/Zero/docs/product-strategy.md) | ✅ Existing | Già completo |
 | Launch Plan | [laravel/Themes/Zero/docs/product-launch-plan.md](laravel/Themes/Zero/docs/product-launch-plan.md) | ✅ Existing | Già completo |
+=======
+| Roadmap | [laravel/Themes/Zero/docs/product-roadmap.md](../product-roadmap.md) | ✅ Existing | Già completo |
+| Strategy | [laravel/Themes/Zero/docs/product-strategy.md](../product-strategy.md) | ✅ Existing | Già completo |
+| Launch Plan | [laravel/Themes/Zero/docs/product-launch-plan.md](../product-launch-plan.md) | ✅ Existing | Già completo |
+>>>>>>> laraxot/dev
 | User Research | [laravel/Themes/Zero/docs/user-research.md](laravel/Themes/Zero/docs/user-research.md) | ✅ Existing | Già completo |
 | Sprint Planning | [laravel/Themes/Zero/docs/sprint-planning-meeting.md](laravel/Themes/Zero/docs/sprint-planning-meeting.md) | ✅ Existing | Già completo |
 
@@ -81,8 +100,13 @@ Creato indice centrale della documentazione product:
 |-----------|------|--------|------|
 | PRD | [laravel/Themes/One/docs/prd.md](laravel/Themes/One/docs/prd.md) | ✅ Existing | Già esistente |
 | Roadmap | [laravel/Themes/One/docs/roadmap.md](laravel/Themes/One/docs/roadmap.md) | ✅ Existing | Già esistente |
+<<<<<<< HEAD
 | Strategy | [laravel/Themes/One/docs/product-strategy.md](laravel/Themes/One/docs/product-strategy.md) | ✅ **Created** | Nuovo |
 | Launch Plan | [laravel/Themes/One/docs/product-launch-plan.md](laravel/Themes/One/docs/product-launch-plan.md) | ✅ **Created** | Nuovo |
+=======
+| Strategy | [laravel/Themes/One/docs/product-strategy.md](../product-strategy.md) | ✅ **Created** | Nuovo |
+| Launch Plan | [laravel/Themes/One/docs/product-launch-plan.md](../product-launch-plan.md) | ✅ **Created** | Nuovo |
+>>>>>>> laraxot/dev
 | User Research | [laravel/Themes/One/docs/user-research.md](laravel/Themes/One/docs/user-research.md) | ✅ **Created** | Nuovo |
 | Sprint Planning | [laravel/Themes/One/docs/sprint-planning-meeting.md](laravel/Themes/One/docs/sprint-planning-meeting.md) | ✅ **Created** | Nuovo |
 
@@ -91,9 +115,15 @@ Creato indice centrale della documentazione product:
 | Documento | File | Status | Note |
 |-----------|------|--------|------|
 | PRD | [laravel/Modules/Xot/docs/prd.md](laravel/Modules/Xot/docs/prd.md) | ✅ Existing | Già completo |
+<<<<<<< HEAD
 | Roadmap | [laravel/Modules/Xot/docs/product-roadmap.md](laravel/Modules/Xot/docs/product-roadmap.md) | ✅ Existing | Già esistente |
 | Strategy | [laravel/Modules/Xot/docs/product-strategy.md](laravel/Modules/Xot/docs/product-strategy.md) | ✅ **Updated** | Migliorato |
 | Launch Plan | [laravel/Modules/Xot/docs/product-launch-plan.md](laravel/Modules/Xot/docs/product-launch-plan.md) | ✅ **Created** | Nuovo |
+=======
+| Roadmap | [laravel/Modules/Xot/docs/product-roadmap.md](../product-roadmap.md) | ✅ Existing | Già esistente |
+| Strategy | [laravel/Modules/Xot/docs/product-strategy.md](../product-strategy.md) | ✅ **Updated** | Migliorato |
+| Launch Plan | [laravel/Modules/Xot/docs/product-launch-plan.md](../product-launch-plan.md) | ✅ **Created** | Nuovo |
+>>>>>>> laraxot/dev
 | User Research | [laravel/Modules/Xot/docs/user-research.md](laravel/Modules/Xot/docs/user-research.md) | ✅ **Updated** | Migliorato |
 | Sprint Planning | [laravel/Modules/Xot/docs/sprint-planning-meeting.md](laravel/Modules/Xot/docs/sprint-planning-meeting.md) | ✅ **Updated** | Migliorato |
 
@@ -193,7 +223,11 @@ Per ogni modulo, verificare:
 
 ### Documenti Correlati
 
+<<<<<<< HEAD
 - [Product Documentation Index](docs/project/product-docs-index.md)
+=======
+- [Product Documentation Index](../project/product-docs-index.md)
+>>>>>>> laraxot/dev
 - [Templates README](docs/templates/README.md)
 - [Notion Product Templates](https://www.notion.com/templates/category/product)
 

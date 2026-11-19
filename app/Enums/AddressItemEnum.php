@@ -241,6 +241,12 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
      */
     public static function getFormSchema(): array
     {
+<<<<<<< HEAD
+=======
+        /** @var view-string $locationMapView */
+        $locationMapView = 'geo::filament.forms.components.location-map';
+
+>>>>>>> laraxot/dev
         $schema = self::traitGetFormSchema();
 
         // Le coordinate non sono semplici campi testo: vivono in
@@ -248,7 +254,11 @@ enum AddressItemEnum: string implements HasColor, HasIcon, HasLabel
         unset($schema[self::LATITUDE->value], $schema[self::LONGITUDE->value]);
 
         $schema[] = CoordinatesSection::make();
+<<<<<<< HEAD
         $schema[] = View::make('geo::filament.forms.components.location-map')
+=======
+        $schema[] = View::make($locationMapView)
+>>>>>>> laraxot/dev
             ->viewData(static fn (?Model $record): array => [
                 'record' => $record,
                 'asset_base' => asset('assets/geo/assets'),

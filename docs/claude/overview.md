@@ -26,7 +26,11 @@ This documentation is organized in separate files to:
 1. Read [Architecture Rules](architecture-rules.md) - **CRITICAL**
 2. Study [Module Structure](module-structure.md) - Understand the modular architecture
 3. Consult [Development Tasks](development-tasks.md) for common tasks
+<<<<<<< HEAD
 4. Follow [Conventions](conventions.md) for code consistency
+=======
+4. Follow [Conventions](../development/conventions.md) for code consistency
+>>>>>>> laraxot/dev
 
 ## 🏗️ Technology Stack
 

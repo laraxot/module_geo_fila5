@@ -258,10 +258,17 @@ User (base)
 - [Xot](../../Xot/docs/README.md)
 
 ### Documentazione Tecnica
+<<<<<<< HEAD
 - [Architettura](../laraxot-architecture-principles.md)
 - [Testing](../testing-supreme-index.md)
 - [PHPStan](../phpstan-critical-rule.md)
 - [Factory e Seeder](../factory-best-practices.md)
+=======
+- [Architettura](laraxot-architecture-principles.md)
+- [Testing](../testing-supreme-index.md)
+- [PHPStan](../phpstan-critical-rule.md)
+- [Factory e Seeder](factory-best-practices.md)
+>>>>>>> laraxot/dev
 
 ---
 

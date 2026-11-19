@@ -56,7 +56,11 @@ Queste sono solo **sintesi**: i dettagli stanno nei documenti linkati.
   - Usa sempre le classi `XotBase*` (resource, page, widget, relation manager, ecc.).
   - Non usare `->label()`, `->placeholder()`, `->helperText()` nei componenti Filament: le traduzioni sono risolte automaticamente.
   - Riferimento:
+<<<<<<< HEAD
     - [Filament best practices](../laravel/Modules/Xot/docs/filament-best-practices.md)
+=======
+    - [Filament best practices](filament-best-practices.md)
+>>>>>>> laraxot/dev
     - [Filament 4 Laraxot rules](../laravel/Modules/Xot/docs/filament-4-laraxot-rules.md)
 
 - **Architettura moduli**
@@ -85,8 +89,13 @@ Per ogni modifica **PHP**:
 
 Documenti di riferimento:
 
+<<<<<<< HEAD
 - [PHPStan usage (Xot)](../laravel/Modules/Xot/docs/phpstan-usage.md)
 - [PHPStan livello 10 – linee guida](../laravel/Modules/Xot/docs/phpstan-livello10-linee-guida.md)
+=======
+- [PHPStan usage (Xot)](phpstan-usage.md)
+- [PHPStan livello 10 – linee guida](phpstan-livello10-linee-guida.md)
+>>>>>>> laraxot/dev
 - [Code quality tools guide](../laravel/Modules/Xot/docs/code-quality-tools-guide.md)
 - [Validation post-edit rule](./validation-post-edit-rule.md)
 

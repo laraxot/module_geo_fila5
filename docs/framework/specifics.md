@@ -289,4 +289,8 @@ updated: 2026-09-26
 qmd: "specifics"
 issues: []
 discussions: []
+<<<<<<< HEAD
 **See Also**: [Eloquent Properties](eloquent-properties.md) | [Schemaless Attributes](schemaless-attributes.md)
+=======
+**See Also**: [Eloquent Properties](../claude/eloquent-properties.md) | [Schemaless Attributes](schemaless-attributes.md)
+>>>>>>> laraxot/dev

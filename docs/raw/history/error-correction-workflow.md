@@ -384,11 +384,19 @@ Respira. Ragiona. Agisci.
 
 ## 📚 RIFERIMENTI
 
+<<<<<<< HEAD
 - [docs/ai-agent-coordination.md](docs/ai-agent-coordination.md)
 - [AGENTS.md](AGENTS.md)
 - [docs/bashscripts-philosophy.md](docs/bashscripts-philosophy.md)
 - [laravel/Modules/Activity/docs/errori/MAI_FARE_MIGRATE_REFRESH.md](laravel/Modules/Activity/docs/errori/MAI_FARE_MIGRATE_REFRESH.md)
 - [docs/database/migrations-philosophy.md](docs/database/migrations-philosophy.md)
+=======
+- [docs/ai-agent-coordination.md](ai-agent-coordination.md)
+- [AGENTS.md](AGENTS.md)
+- [docs/bashscripts-philosophy.md](docs/bashscripts-philosophy.md)
+- [laravel/Modules/Activity/docs/errori/MAI_FARE_MIGRATE_REFRESH.md](laravel/Modules/Activity/docs/errori/MAI_FARE_MIGRATE_REFRESH.md)
+- [docs/database/migrations-philosophy.md](../../database/migrations-philosophy.md)
+>>>>>>> laraxot/dev
 
 ---
 

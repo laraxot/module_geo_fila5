@@ -196,7 +196,11 @@ discussions: []
 Per ulteriori informazioni sulla gestione dei repository e l'utilizzo degli script, consultare:
 - [Roadmap del Progetto](roadmap.md)
 - [Documentazione in Italiano](it/README.md)
+<<<<<<< HEAD
 - [Risoluzione dei Conflitti](CONFLICT_RESOLUTION_BASH.md)
+=======
+- [Risoluzione dei Conflitti](../../utils/conflict_resolution_bash.md)
+>>>>>>> laraxot/dev
 
 ## ⚠️ Note Importanti
 
@@ -401,7 +405,11 @@ aurmich/dev
 Per ulteriori informazioni sulla gestione dei repository e l'utilizzo degli script, consultare:
 - [Roadmap del Progetto](roadmap.md)
 - [Documentazione in Italiano](it/README.md)
+<<<<<<< HEAD
 - [Risoluzione dei Conflitti](conflict-resolution-bash.md)
+=======
+- [Risoluzione dei Conflitti](../../utils/conflict-resolution-bash.md)
+>>>>>>> laraxot/dev
 
 ## ⚠️ Note Importanti
 

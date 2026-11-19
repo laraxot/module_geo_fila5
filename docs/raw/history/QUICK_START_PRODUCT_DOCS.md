@@ -386,17 +386,28 @@ Consulta questi moduli come riferimento:
 
 - [PRD](laravel/Themes/One/docs/prd.md)
 - [Roadmap](laravel/Themes/One/docs/roadmap.md)
+<<<<<<< HEAD
 - [Strategy](laravel/Themes/One/docs/product-strategy.md)
 - [Launch Plan](laravel/Themes/One/docs/product-launch-plan.md)
+=======
+- [Strategy](../../product-strategy.md)
+- [Launch Plan](../../product-launch-plan.md)
+>>>>>>> laraxot/dev
 - [User Research](laravel/Themes/One/docs/user-research.md)
 - [Sprint Planning](laravel/Themes/One/docs/sprint-planning-meeting.md)
 
 ### Xot Module (Completo)
 
 - [PRD](laravel/Modules/Xot/docs/prd.md)
+<<<<<<< HEAD
 - [Roadmap](laravel/Modules/Xot/docs/product-roadmap.md)
 - [Strategy](laravel/Modules/Xot/docs/product-strategy.md)
 - [Launch Plan](laravel/Modules/Xot/docs/product-launch-plan.md)
+=======
+- [Roadmap](../../product-roadmap.md)
+- [Strategy](../../product-strategy.md)
+- [Launch Plan](../../product-launch-plan.md)
+>>>>>>> laraxot/dev
 - [User Research](laravel/Modules/Xot/docs/user-research.md)
 - [Sprint Planning](laravel/Modules/Xot/docs/sprint-planning-meeting.md)
 
@@ -406,6 +417,7 @@ Consulta questi moduli come riferimento:
 
 ### Template
 
+<<<<<<< HEAD
 - [PRD Template](docs/templates/prd-template.md)
 - [Roadmap Template](docs/templates/product-roadmap-template.md)
 - [Strategy Template](docs/templates/product-strategy-template.md)
@@ -416,6 +428,18 @@ Consulta questi moduli come riferimento:
 ### Guide
 
 - [Product Documentation Index](docs/project/product-docs-index.md)
+=======
+- [PRD Template](../../templates/prd-template.md)
+- [Roadmap Template](../../templates/product-roadmap-template.md)
+- [Strategy Template](../../templates/product-strategy-template.md)
+- [Launch Plan Template](../../templates/product-launch-plan-template.md)
+- [User Research Template](../../templates/user-research-template.md)
+- [Sprint Planning Template](../../templates/sprint-planning-template.md)
+
+### Guide
+
+- [Product Documentation Index](../../project/product-docs-index.md)
+>>>>>>> laraxot/dev
 - [Templates README](docs/templates/README.md)
 - [Update Report](PRODUCT_DOCS_UPDATE_REPORT.md)
 

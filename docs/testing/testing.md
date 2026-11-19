@@ -12,7 +12,11 @@ discussions: []
 # Testing in the Geo Module
 
 ## Overview
+<<<<<<< HEAD
 This document describes the testing approach for the Geo module in the Quaeris Fila4 Mono project.
+=======
+This document describes the testing approach for the Geo module in the <nome progetto> Fila4 Mono project.
+>>>>>>> laraxot/dev
 
 ## Test Structure
 The Geo module contains the following types of tests:
@@ -60,4 +64,8 @@ To run specific test files:
 ```bash
 ./vendor/bin/pest Modules/Geo/tests/Unit/Actions/CalculateDistanceActionTest.php
 ./vendor/bin/pest Modules/Geo/tests/Unit/Actions/GetCoordinatesActionTest.php
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> laraxot/dev

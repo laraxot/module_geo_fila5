@@ -11,11 +11,16 @@
     ],
     "autoload": {
         "psr-4": {
+<<<<<<< HEAD
             "Laraxot\\BashscriptsFila3\\": "src/"
+=======
+            "Laraxot\\Bashscriptsfila5\\": "src/"
+>>>>>>> laraxot/dev
         }
     },
     "require": {},
     "require-dev": {
+<<<<<<< HEAD
         "larastan/larastan": "*"
         "larastan/larastan": "^3.0"
         "larastan/larastan": "*"
@@ -37,6 +42,9 @@
         "larastan/larastan": "^3.0"
         "larastan/larastan": "*"
         "larastan/larastan": "*"
+=======
+        "larastan/larastan": "*""larastan/larastan": "^3.0""larastan/larastan": "*""larastan/larastan": "^3.0""larastan/larastan": "^3.0""larastan/larastan": "*""larastan/larastan": "*""larastan/larastan": "^3.0""larastan/larastan": "*""larastan/larastan": "*""larastan/larastan": "^3.0""larastan/larastan": "*""larastan/larastan": "^3.0""larastan/larastan": "^3.0""larastan/larastan": "*""larastan/larastan": "*"
+>>>>>>> laraxot/dev
     },
     "config": {
         "sort-packages": true,

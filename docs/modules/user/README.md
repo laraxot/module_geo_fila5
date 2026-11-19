@@ -114,7 +114,11 @@ Modules/User/
 ### 📖 **Guide Principali**
 - **[2FA Implementation](./2fa-guide.md)** - Autenticazione a due fattori
 - **[Traits Guide](./traits/traits-complete-guide.md)** - HasTeams, HasTenants
+<<<<<<< HEAD
 - **[Filament Integration](./filament/filament-best-practices.md)** - Best practices UI
+=======
+- **[Filament Integration](../../raw/history/filament-best-practices.md)** - Best practices UI
+>>>>>>> laraxot/dev
 
 ### 🛠️ **Troubleshooting**
 - **[Login Issues](./troubleshooting-login-component.md)** - Problemi autenticazione

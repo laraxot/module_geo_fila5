@@ -722,7 +722,11 @@ bmad-generate-project-context  # Genera regole AI
 ## 🔗 Link Utili
 
 - [Quick Start Guide](./bmad-quickstart-guide.md)
+<<<<<<< HEAD
 - [BMAD Method Integration](./bmad-method-integration.md)
+=======
+- [BMAD Method Integration](../project/bmad-method-integration.md)
+>>>>>>> laraxot/dev
 - [Project Context](../../_bmad-output/project-context.md)
 - [Official Docs](https://docs.bmad-method.org)
 - [Workflow Map](https://docs.bmad-method.org/reference/workflow-map/)

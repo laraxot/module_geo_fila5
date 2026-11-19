@@ -129,7 +129,11 @@ discussions: []
 ### Q2: "Studia schemaless-attributes"
 
 ✅ **FATTO**: Studiato + Fix collation critico database  
+<<<<<<< HEAD
 📄 [CORRECT-SCHEMALESS-SOLUTION.md](docs/CORRECT-SCHEMALESS-SOLUTION.md)  
+=======
+📄 [CORRECT-SCHEMALESS-SOLUTION.md](correct-schemaless-solution.md)  
+>>>>>>> laraxot/dev
 📄 [Collation Fix](laravel/Modules/Rating/docs/COLLATION-FIX-DATABASE-SOLUTION.md)
 
 ### Q3: "Migration tenants non rispetta filosofia Laraxot"
@@ -199,9 +203,15 @@ discussions: []
 
 ### Essential Reading
 
+<<<<<<< HEAD
 1. **[START-HERE.md](docs/START-HERE.md)** - Entry point
 2. **[MASTER-INDEX.md](docs/MASTER-INDEX.md)** - Complete map
 3. **[CORRECT-SCHEMALESS-SOLUTION.md](docs/CORRECT-SCHEMALESS-SOLUTION.md)** - Critical
+=======
+1. **[START-HERE.md](../../start-here.md)** - Entry point
+2. **[MASTER-INDEX.md](master-index.md)** - Complete map
+3. **[CORRECT-SCHEMALESS-SOLUTION.md](correct-schemaless-solution.md)** - Critical
+>>>>>>> laraxot/dev
 4. **[APOLOGY-AND-CORRECT-SOLUTION.txt](APOLOGY-AND-CORRECT-SOLUTION.txt)** - Lesson
 
 ### By Module
@@ -216,8 +226,13 @@ discussions: []
 
 | Topic | Document |
 |-------|----------|
+<<<<<<< HEAD
 | **Scripts Location** | [Rules](docs/rules/scripts-location.md), [Memory](created), [.cursor/rules](mandatory) |
 | **Schemaless** | [Correct Solution](docs/CORRECT-SCHEMALESS-SOLUTION.md) |
+=======
+| **Scripts Location** | [Rules](../../rules/scripts-location.md), [Memory](created), [.cursor/rules](mandatory) |
+| **Schemaless** | [Correct Solution](correct-schemaless-solution.md) |
+>>>>>>> laraxot/dev
 | **Collation** | [Database Fix](laravel/Modules/Rating/docs/COLLATION-FIX-DATABASE-SOLUTION.md) |
 | **Migrations** | [Violations](laravel/Modules/User/docs/migration-violations-tenants.md) |
 
