@@ -10,7 +10,7 @@ created: 2026-10-13
 updated: 2026-10-13
 tags: [geo, coordinate-picker, geolocalizzazione, http, gdpr, wizard, guardia-clic]
 related:
-  - Modules/Geo/docs/stories/2026-10-13-dcp-93-geo-namespace-blade-e-mappa-sola-lettura-follow-up.story.md
+  - Modules/Geo/docs/stories/dcp-93-geo-namespace-blade-e-mappa-sola-lettura-follow-up.story.md
   - Modules/Fixcity/docs/stories/2026-10-13-dcp-146-wizard-passo-dati-mappa-sempre-funzionante.story.md
   - Themes/Sixteen/docs/bmad/geo-dynamic-user-location.md
   - Themes/Sixteen/docs/bmad/decisions/decision-user-location.md

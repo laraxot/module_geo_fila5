@@ -101,7 +101,7 @@ Verificato su `/it` dopo allineamento a [direktvermarkter.js](https://github.com
 | Hover senza `transform` su marker-icon | `07-map-clusters-and-leaflet.css` | **Tema**, non solo Lit |
 | `removeOutsideVisibleBounds` | `false` su Fixcity | GPS lontano da ticket — STORY-124 |
 
-Incidenti: [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents-2026-06.md)
+Incidenti: [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents.md)
 
 ---
 
