@@ -1,10 +1,10 @@
 ---
-title: "base readme template"
+title: "Base Readme Template"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "base readme template"
+qmd: "Base Readme Template"
 issues: []
 discussions: []
 ---
@@ -54,12 +54,12 @@ discussions: []
 
 ---
 
-title: "base readme template"
+title: "base README template"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "base readme template"
+qmd: "base README template"
 issues: []
 discussions: []
 ## 🏗️ Panoramica

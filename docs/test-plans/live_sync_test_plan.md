@@ -1,10 +1,10 @@
 ---
-title: "live sync test plan"
+title: "Live Sync Test Plan"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "live sync test plan"
+qmd: "Live Sync Test Plan"
 issues: []
 discussions: []
 ---
@@ -21,12 +21,12 @@ discussions: []
 
 ---
 
-title: "live sync test plan"
+title: "LIVE SYNC TEST PLAN"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "live sync test plan"
+qmd: "LIVE SYNC TEST PLAN"
 issues: []
 discussions: []
 ## Objective

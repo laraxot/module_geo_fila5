@@ -50,7 +50,7 @@ bashscripts/documentation/
 ├── validators/                         # Validatori qualità
 │   └── validate-docs.php              # Validatore completo documentazione
 ├── templates/                          # Template riutilizzabili (DRY)
-│   ├── base_README_template.md        # Template README base
+│   ├── base_readme_template.md        # Template README base
 │   ├── getting_started_template.md    # Template getting started
 │   ├── configuration_template.md      # Template configurazione
 │   └── api_reference_template.md      # Template API reference
@@ -453,7 +453,7 @@ Creazione template personalizzati per esigenze specifiche:
 
 ```bash
 # Crea nuovo template
-cp templates/base_README_template.md templates/custom_auth_template.md
+cp templates/base_readme_template.md templates/custom_auth_template.md
 
 # Configura utilizzo
 # config/structure.php:

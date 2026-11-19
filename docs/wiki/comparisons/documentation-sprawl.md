@@ -38,7 +38,7 @@ Multiple files exist for "Implementation Summary" and "Consolidated Business Log
 ### 4. Placeholder and Empty Files
 - `sushi_command.md` (1 byte)
 - `tomtom_com.md` / `tomtom_com.txt` (0 bytes)
-- `QMD-SETUP.md` (0 bytes)
+- `qmd-setup.md` (0 bytes)
 
 ## Recommended Actions
 

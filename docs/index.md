@@ -84,7 +84,7 @@ discussions: []
 - **[Teams](./teams.md)** - Gestione team
 
 ### Sicurezza Dati
-- **[Security Best Practices](./security.md)** - Sicurezza applicazione
+- **[Security Best Practices](./SECURITY.md)** - Sicurezza applicazione
 - **[GDPR Compliance](./gdpr-compliance.md)** - Conformità GDPR
 - **[Audit Log](../../Activity/docs/README.md)** - Logging attività
 

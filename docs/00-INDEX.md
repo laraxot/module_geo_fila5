@@ -9,7 +9,7 @@ issues: []
 discussions: []
 ---
 
-> **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
+> **Superseded: vedi [index.md](./index.md).** Questo file resta per cronologia e non viene aggiornato.
 
 # Geo Module — Documentation Index
 
@@ -94,7 +94,7 @@ discussions: []
 
 | Documento | Descrizione |
 |-----------|-------------|
-| **[DAISYUI.md](./DAISYUI.md)** | DaisyUI nel modulo Geo: perché non è installato, pro/contro, metriche |
+| **[daisyui.md](./daisyui.md)** | DaisyUI nel modulo Geo: perché non è installato, pro/contro, metriche |
 | **[Sixteen/docs/DAISYUI-APPLY.md](../Sixteen/docs/DAISYUI-APPLY.md)** | DaisyUI + `@apply` nel tema Sixteen: guida pratica, percentuali, opinione |
 
 ---

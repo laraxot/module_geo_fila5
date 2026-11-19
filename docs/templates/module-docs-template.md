@@ -79,7 +79,7 @@ After every change:
 
 ## Roadmap
 
-See `.planning/ROADMAP.md` for phases that affect this module.
+See `.planning/roadmap.md` for phases that affect this module.
 
 ## Changelog
 

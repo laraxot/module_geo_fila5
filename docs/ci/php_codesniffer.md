@@ -1,10 +1,10 @@
 ---
-title: "php codesniffer"
+title: "PHP Codesniffer"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "php codesniffer"
+qmd: "PHP Codesniffer"
 issues: []
 discussions: []
 ---

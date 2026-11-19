@@ -1,10 +1,10 @@
 ---
-title: "mcp tools integration"
+title: "MCP Tools Integration"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "mcp tools integration"
+qmd: "MCP Tools Integration"
 issues: []
 discussions: []
 ---
@@ -17,12 +17,12 @@ discussions: []
 
 ---
 
-title: "mcp tools integration"
+title: "MCP TOOLS INTEGRATION"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "mcp tools integration"
+qmd: "MCP TOOLS INTEGRATION"
 issues: []
 discussions: []
 ## Overview
