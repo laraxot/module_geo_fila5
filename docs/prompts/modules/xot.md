@@ -143,11 +143,7 @@ trait HasXotTable
 ```
 
 ## Documentazione Essenziale
-<<<<<<< HEAD
 - [XotBaseModel](../../Xot/docs/models.md)
-=======
-- [XotBaseModel](../../architecture/models.md)
->>>>>>> laraxot/dev
 - [XotBaseResource](../../Xot/docs/resources.md)
 - [XotBaseServiceProvider](../../Xot/docs/providers.md)
 

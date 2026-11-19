@@ -79,11 +79,7 @@ docs/
 ### Per Task
 - **Nuovo Modulo** → [Module Structure](../claude/module-structure.md#new-module)
 - **Fix Bug** → [Common Pitfalls](../claude/common-pitfalls.md), [Troubleshooting](../troubleshooting/)
-<<<<<<< HEAD
 - **Code Review** → [Code Quality](../claude/code-quality.md), [Conventions](../claude/conventions.md)
-=======
-- **Code Review** → [Code Quality](../claude/code-quality.md), [Conventions](../development/conventions.md)
->>>>>>> laraxot/dev
 - **Deploy** → [Development Tasks](../claude/development-tasks.md#deployment)
 
 ## 🔍 Ricerca Avanzata

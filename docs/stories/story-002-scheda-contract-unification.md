@@ -12,32 +12,19 @@ scope: module:Geo
 
 # STORY-002: Unificazione SchedaContract e gerarchia BaseScheda
 
-<<<<<<< HEAD
 **Epic:** Architecture — Module Inheritance & DRY  
 **Priority:** Must Have  
 **Story Points:** 8  
 **Status:** In Progress (Phase 2 completata 2026-06-15)  
 **Sprint:** PHPStan Quality Gate  
-=======
-**Epic:** Architecture — Module Inheritance & DRY
-**Priority:** Must Have
-**Story Points:** 8
-**Status:** In Progress (Phase 2 completata 2026-06-15)
-**Sprint:** PHPStan Quality Gate
->>>>>>> laraxot/dev
 **Created:** 2026-06-15 (BMAD `/bmad/create-story`)
 
 ---
 
 ## User Story
 
-<<<<<<< HEAD
 **As a** architetto Laraxot  
 **I want** un unico `SchedaContract` e `Progressioni\Scheda extends BaseScheda` con `asz()` ereditata  
-=======
-**As a** architetto Laraxot
-**I want** un unico `SchedaContract` e `Progressioni\Scheda extends BaseScheda` con `asz()` ereditata
->>>>>>> laraxot/dev
 **So that** le action Ptv usano `$scheda->asz()->ofRangeDate()` senza duplicare query né contratti paralleli
 
 ---
@@ -46,11 +33,7 @@ scope: module:Geo
 
 ### Cosa è andato storto
 
-<<<<<<< HEAD
 Un agente ha “fixato” PHPStan sostituendo la catena relazione con `Asz00k1::query()->where(matr, ente, aszann)`.  
-=======
-Un agente ha “fixato” PHPStan sostituendo la catena relazione con `Asz00k1::query()->where(matr, ente, aszann)`.
->>>>>>> laraxot/dev
 **Perché è sbagliato:** viola la religione DRY — i filtri vivono in un solo posto (`BaseScheda::asz()`), non nelle action.
 
 ### Visione target
@@ -131,32 +114,17 @@ Ptv\Scheda              ← vuota / minima
 
 ## GitHub (tracciamento)
 
-<<<<<<< HEAD
 Repository letto da frontmatter `github.repository` o `git remote -v` (se assente: repo root **`laraxot/base_quaeris_fila5`**): **`laraxot/base_quaeris_fila5`**.
 
 | Risorsa | Stato | Link |
 |---|---|---|
 | Issue | **DA CREARE** | https://github.com/laraxot/base_quaeris_fila5/issues |
 | Discussion | **DA CREARE** | https://github.com/laraxot/base_quaeris_fila5/discussions |
-=======
-Repository letto da frontmatter `github.repository` o `git remote -v` (se assente: repo root **`laraxot/base_<nome progetto>_fila5`**): **`laraxot/base_<nome progetto>_fila5`**.
-
-| Risorsa | Stato | Link |
-|---|---|---|
-| Issue | **DA CREARE** | https://github.com/laraxot/base_<nome progetto>_fila5/issues |
-| Discussion | **DA CREARE** | https://github.com/laraxot/base_<nome progetto>_fila5/discussions |
->>>>>>> laraxot/dev
 
 Il numero non e' scritto perche' non esiste ancora: `gh` non e' autenticato in questa sessione e i repo sono privati. Appena disponibile, creare con:
 
 ```bash
-<<<<<<< HEAD
 gh issue create --repo laraxot/base_quaeris_fila5 \
   --title "STORY-002: Unificazione SchedaContract e gerarchia BaseScheda" --body-file <FILE>
 gh api repos/laraxot/base_quaeris_fila5/discussions -f title="STORY-002: Unificazione SchedaContract e gerarchia BaseScheda" -f body="vedi la story"
-=======
-gh issue create --repo laraxot/base_<nome progetto>_fila5 \
-  --title "STORY-002: Unificazione SchedaContract e gerarchia BaseScheda" --body-file <FILE>
-gh api repos/laraxot/base_<nome progetto>_fila5/discussions -f title="STORY-002: Unificazione SchedaContract e gerarchia BaseScheda" -f body="vedi la story"
->>>>>>> laraxot/dev
 ```

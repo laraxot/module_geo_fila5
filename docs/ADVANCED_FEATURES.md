@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_gp2ku7
 ---
 title: "ADVANCED FEATURES"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_9fPEHb
 # Funzionalità Avanzate del Modulo Geo
 
 ## Ottimizzazione Percorsi

@@ -272,11 +272,7 @@ $ratings = Rating::withExtraAttributes('anno', $anno)->get();
 
 - **[Xot Schemaless Guide](../../laravel/Modules/Xot/docs/schemaless-attributes.md)** - Guida generale Xot
 - **[Rating README](../../../Rating/docs/README.md)** - Documentazione Rating module
-<<<<<<< HEAD
 - **[HasRatingsTrait](../../laravel/Modules/Rating/docs/has-ratings-trait.md)** - Uso del trait
-=======
-- **[HasRatingsTrait](../best-practices/has-ratings-trait.md)** - Uso del trait
->>>>>>> laraxot/dev
 
 ### Package Documentation
 

@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_Jh4R7p
 ---
 title: "RELATIONSHIP METHODS DUPLICATE LIST"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_apIqgL
 # Elenco metodi relazione duplicate
 
 > Modulo: Sigma + consumer

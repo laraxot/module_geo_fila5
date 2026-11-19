@@ -406,15 +406,9 @@ Analizzare tutti i moduli del progetto <nome progetto>, verificare l'esistenza d
 ## 📚 **Documentazione Correlata**
 
 - [PHPStan Analysis Business Logic](../phpstan-analysis-business-logic.md)
-<<<<<<< HEAD
 - [Factory Best Practices](../factory-best-practices.md)
 - [Testing Business Behavior Supreme Rule](../testing-business-behavior-supreme-rule.md)
 - [Modules Factory Seeder Analysis](../modules-factory-seeder-analysis.md)
-=======
-- [Factory Best Practices](factory-best-practices.md)
-- [Testing Business Behavior Supreme Rule](../testing-business-behavior-supreme-rule.md)
-- [Modules Factory Seeder Analysis](modules-factory-seeder-analysis.md)
->>>>>>> laraxot/dev
 
 ## 🏆 **Risultati Attesi**
 

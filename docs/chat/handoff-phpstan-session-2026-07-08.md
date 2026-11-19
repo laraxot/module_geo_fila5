@@ -1,11 +1,8 @@
 ---
-<<<<<<< .merge_file_sPKXQk
 created: 2026-09-26
 qmd: "handoff phpstan session 2026 07 08"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_CJNQDr
 title: handoff sessione PHPStan 2026-07-08
 type: chat
 tags: [phpstan, session, lang, job, marker-git, blade-component]

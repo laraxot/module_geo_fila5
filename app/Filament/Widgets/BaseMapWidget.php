@@ -32,28 +32,10 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
  */
 abstract class BaseMapWidget extends XotBaseWidget
 {
-<<<<<<< HEAD
     protected string $view = 'geo::filament.widgets.base-map';
 
     protected int|string|array $columnSpan = 'full';
 
-=======
-    /** @var view-string */
-    protected string $view;
-
-    protected int|string|array $columnSpan = 'full';
-
-    public function __construct()
-    {
-        // `??=` preserva un'eventuale $view piu' specifico dichiarato dalle figlie.
-        /** @var view-string $view */
-        $view = 'geo::filament.widgets.base-map';
-        $this->view ??= $view;
-
-        parent::__construct();
-    }
-
->>>>>>> laraxot/dev
     protected int $maxMarkers = 500;
 
     protected string $mapHeight = 'clamp(360px, 55vh, 560px)';

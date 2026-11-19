@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_NruGEs
 ---
 title: "BAD PRACTICES"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_NKgK6K
 # Bad Practices – Geo Module
 
 - ❌ **Evita** `L.Icon.Default` o URL CDN per marker (legge `map-marker-custom-asset.md`)

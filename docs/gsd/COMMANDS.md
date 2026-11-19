@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_FScpYe
 ---
 title: "COMMANDS"
 type: note
@@ -10,22 +9,14 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_gWwJLt
 # GSD (Get Shit Done) - Command Reference
 
-<<<<<<< HEAD
 **Version**: 1.0.0  
 **For**: PTVX Fila5 Mono  
-=======
-**Version**: 1.0.0
-**For**: PTVX fila5
->>>>>>> laraxot/dev
 **Frameworks**: GSD v1.25.1 + BMAD-METHOD v6.2.0
 
 ---
 
-<<<<<<< .merge_file_FScpYe
 title: "COMMANDS"
 type: note
 tags: [documentation]
@@ -34,8 +25,6 @@ updated: 2026-09-26
 qmd: "COMMANDS"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_gWwJLt
 ## 🚀 Essential Commands
 
 ### Project Initialization
@@ -421,9 +410,5 @@ git bisect start
 
 ---
 
-<<<<<<< HEAD
 *GSD Command Reference v1.0.0*  
-=======
-*GSD Command Reference v1.0.0*
->>>>>>> laraxot/dev
 *Last Updated: 2026-03-18*

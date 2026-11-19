@@ -294,11 +294,7 @@ Per evitare "date rot" e duplicazioni di tracking, lo stato operativo dei workfl
 
 ### Documentazione
 
-<<<<<<< HEAD
 - [Accessor Delegation Pattern](laravel/Modules/Sigma/docs/accessor-delegation-pattern.md)
-=======
-- [Accessor Delegation Pattern](../../rules/accessor-delegation-pattern.md)
->>>>>>> laraxot/dev
 - [Accessor Delegation Audit](laravel/Modules/Sigma/docs/accessor-delegation-audit.md)
 - [Accessor/Mutator Philosophy](laravel/Modules/Sigma/docs/accessor-mutator-philosophy.md)
 
@@ -707,11 +703,7 @@ Se uno script diventa produzione:
 ### Documenti Correlati
 
 - [BMAD Guide](bmad/README.md)
-<<<<<<< HEAD
 - [BMAD integration summary](bmad/bmad-integration-summary.md)
-=======
-- [BMAD integration summary](../../bmad/bmad-integration-summary.md)
->>>>>>> laraxot/dev
 - [BMAD project context](../_bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md)
 - [Laravel module skill](../_bmad/core/skills/bmad-laravel-module-dev.md)
 - [Filament page skill](../_bmad/core/skills/bmad-filament-page-dev.md)

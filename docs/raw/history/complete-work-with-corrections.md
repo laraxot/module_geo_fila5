@@ -140,15 +140,9 @@ SHOW CREATE TABLE ratings;
 
 | File | Status | Content |
 |------|--------|---------|
-<<<<<<< HEAD
 | [CORRECT-SCHEMALESS-SOLUTION.md](docs/CORRECT-SCHEMALESS-SOLUTION.md) | ✅ Created | Soluzione vera |
 | [COLLATION-FIX-DATABASE-SOLUTION.md](laravel/Modules/Rating/docs/COLLATION-FIX-DATABASE-SOLUTION.md) | ✅ Created | Database fix |
 | [MY-MISTAKES-AND-CORRECTIONS.md](docs/MY-MISTAKES-AND-CORRECTIONS.md) | ✅ Created | Lesson learned |
-=======
-| [CORRECT-SCHEMALESS-SOLUTION.md](correct-schemaless-solution.md) | ✅ Created | Soluzione vera |
-| [COLLATION-FIX-DATABASE-SOLUTION.md](laravel/Modules/Rating/docs/COLLATION-FIX-DATABASE-SOLUTION.md) | ✅ Created | Database fix |
-| [MY-MISTAKES-AND-CORRECTIONS.md](my-mistakes-and-corrections.md) | ✅ Created | Lesson learned |
->>>>>>> laraxot/dev
 | Migration file | ✅ Created | Fix eseguito |
 | .cursor/rules | ✅ Updated | Pattern corretto |
 | Memories | ✅ Updated | Soluzione corretta |
@@ -249,21 +243,12 @@ SHOW CREATE TABLE ratings;
 ## 🔗 NAVIGATION
 
 ### Start Here
-<<<<<<< HEAD
 - [CORRECT-SCHEMALESS-SOLUTION.md](docs/CORRECT-SCHEMALESS-SOLUTION.md)
 - [APOLOGY-AND-CORRECT-SOLUTION.txt](APOLOGY-AND-CORRECT-SOLUTION.txt)
 
 ### Analysis (Still Valid)
 - [docs/START-HERE.md](docs/START-HERE.md)
 - [docs/MASTER-INDEX.md](docs/MASTER-INDEX.md)
-=======
-- [CORRECT-SCHEMALESS-SOLUTION.md](correct-schemaless-solution.md)
-- [APOLOGY-AND-CORRECT-SOLUTION.txt](APOLOGY-AND-CORRECT-SOLUTION.txt)
-
-### Analysis (Still Valid)
-- [docs/START-HERE.md](../../start-here.md)
-- [docs/MASTER-INDEX.md](master-index.md)
->>>>>>> laraxot/dev
 - [IndennitaResponsabilita Analysis](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)
 - [Refactoring Plan](laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md)
 

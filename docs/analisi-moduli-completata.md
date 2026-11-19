@@ -81,11 +81,7 @@ Creato file `optimization_recommendations.md` in ogni modulo con:
 5. **[module_reusability_implementation_plan.md](module_reusability_implementation_plan.md)** - Piano dettagliato
 
 #### Script Automatici
-<<<<<<< HEAD
 1. **[check_module_reusability.sh](../bashscripts/check_module_reusability.sh)** - Verifica hardcoding
-=======
-1. **[check_module_reusability.sh](raw/analysis/check_module_reusability.sh)** - Verifica hardcoding
->>>>>>> laraxot/dev
 2. **Regole Cursor/Windsurf**: Aggiornate con pattern obbligatori
 3. **Memories AI**: Aggiornate per prevenire errori futuri
 

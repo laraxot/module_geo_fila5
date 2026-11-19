@@ -9,19 +9,11 @@ issues: []
 discussions: []
 ---
 
-<<<<<<< HEAD
 # 🚀 GitHub Actions per la Viralità del Progetto healthcare_app Fila5 Mono
 
 ## 📋 Sommario delle Azioni Virali
 
 Questo documento descrive le GitHub Actions complete per promuovere il progetto healthcare_app Fila5 Mono attraverso strategie di viral marketing automation.
-=======
-# 🚀 GitHub Actions per la Viralità del Progetto healthcare_app fila5
-
-## 📋 Sommario delle Azioni Virali
-
-Questo documento descrive le GitHub Actions complete per promuovere il progetto healthcare_app fila5 attraverso strategie di viral marketing automation.
->>>>>>> laraxot/dev
 
 ---
 
@@ -65,30 +57,18 @@ jobs:
         with:
           type: release
           tag: ${{ github.event.release.tag_name }}
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 🐦 Tweet Announcement
         uses: ./.github/actions/twitter-post@v1
         with:
           content: generated-viral-content.md
           hashtags: "PHP,Laravel,OpenSource,healthcare_app"
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 💼 LinkedIn Professional Post
         uses: ./.github/actions/linkedin-post@v1
         with:
           content: professional-release-announcement.md
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 📱 Reddit Community Share
         uses: ./.github/actions/reddit-post@v1
         with:
@@ -112,39 +92,23 @@ jobs:
     strategy:
       matrix:
         module: [Lang,User,Seo,healthcare_app,Chart,Xot,Job,Meetup,Limesurvey,UI,Geo,Tenant,Cms,Media,Notify,Gdpr,Activity,DbForge,CloudStorage]
-<<<<<<< HEAD
         
-=======
-
->>>>>>> laraxot/dev
     steps:
       - name: 📊 PHPStan Level 10 Check
         run: |
           cd laravel
           vendor/bin/phpstan analyse Modules/${{ matrix.module }}/ --level=10 --no-progress
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 🧪 Test Suite Execution
         run: |
           cd laravel
           php artisan test Modules/${{ matrix.module }}/tests --coverage
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 📚 Documentation Validation
         uses: ./.github/actions/validate-docs@v1
         with:
           module: ${{ matrix.module }}
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 🚨 Block on Critical Issues
         if: failure()
         run: |
@@ -170,31 +134,19 @@ jobs:
         uses: ./.github/actions/classify-content@v1
         with:
           content: ${{ github.event.issue.body || github.event.discussion.body }}
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 🤖 Generate Smart Response
         uses: ./.github/actions/smart-response@v1
         with:
           classification: ${{ steps.classify.outputs.type }}
           context: healthcare_app-project
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 📢 Contextual Reply
         uses: ./.github/actions/contextual-reply@v1
         with:
           content: smart-response.md
           platform: github
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 🏆 Reward Quality Contributions
         uses: ./.github/actions/reward-contribution@v1
         with:
@@ -221,31 +173,19 @@ jobs:
         with:
           platforms: github,reddit,twitter,devto
           timeframe: 7d
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 📝 Generate Technical Content
         uses: ./.github/actions/generate-tech-content@v1
         with:
           topic: ${{ steps.trends.outputs.topic }}
           format: tutorial,showcase,comparison
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 🎨 Create Visual Assets
         uses: ./.github/actions/create-visuals@v1
         with:
           type: infographic,screenshot,demo
           branding: healthcare_app
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 🚀 Multi-Platform Distribution
         uses: ./.github/actions/distribute-content@v1
         with:
@@ -277,32 +217,20 @@ jobs:
         with:
           theme: Zero
           features: responsive,accessible,modern
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 📊 Performance Demo
         uses: ./.github/actions/performance-demo@v1
         with:
           theme: Zero
           metrics: lighthouse,performance
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 🎥 Create Tutorial Video
         uses: ./.github/actions/create-tutorial@v1
         with:
           topic: theme-development
           duration: 120
           format: short-form
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 📈 Update Theme Directory
         uses: ./.github/actions/update-theme-stats@v1
         with:
@@ -378,21 +306,13 @@ jobs:
         uses: ./.github/actions/collect-viral-metrics@v1
         with:
           platforms: twitter,linkedin,reddit,github
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 📋 Generate Report
         uses: ./.github/actions/generate-viral-report@v1
         with:
           metrics: collected-metrics.json
           template: executive-summary
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 📈 Update Dashboard
         uses: ./.github/actions/update-viral-dashboard@v1
         with:
@@ -481,20 +401,12 @@ jobs:
         with:
           timeframe: 30d
           platforms: all
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 🎯 Identify Success Patterns
         uses: ./.github/actions/identify-success-patterns@v1
         with:
           data: performance-analysis.json
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 📝 Update Content Strategy
         uses: ./.github/actions/update-content-strategy@v1
         with:
@@ -526,11 +438,7 @@ jobs:
             engagement_below_2_percent: alert
             no_new_content_24h: warning
             quality_drop: critical
-<<<<<<< HEAD
           
-=======
-
->>>>>>> laraxot/dev
       - name: 🚨 Send Alerts
         if: steps.monitor.outputs.alert_required
         uses: ./.github/actions/send-viral-alert@v1
@@ -542,8 +450,4 @@ jobs:
 
 ---
 
-<<<<<<< HEAD
 **Nota:** Queste azioni sono progettate per essere **modulari e riutilizzabili**. Ogni workflow può essere eseguito indipendentemente o combinato con altri per massimizzare l'impatto virale del progetto healthcare_app Fila5 Mono.
-=======
-**Nota:** Queste azioni sono progettate per essere **modulari e riutilizzabili**. Ogni workflow può essere eseguito indipendentemente o combinato con altri per massimizzare l'impatto virale del progetto healthcare_app fila5.
->>>>>>> laraxot/dev

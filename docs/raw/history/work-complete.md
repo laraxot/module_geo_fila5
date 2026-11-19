@@ -137,11 +137,7 @@ public function scopeWithExtraAttributes(
    - Module-specific usage
    - Examples
 
-<<<<<<< HEAD
 8. **[Quick Start](laravel/Modules/IndennitaResponsabilita/docs/QUICK-START.md)** (~150 lines)
-=======
-8. **[Quick Start](../../database/seeding/quick-start.md)** (~150 lines)
->>>>>>> laraxot/dev
    - Fast onboarding
    - Essential links
 
@@ -177,16 +173,11 @@ public function scopeWithExtraAttributes(
    - Complete navigation hub
    - Updated with all new links
 
-<<<<<<< HEAD
 2. **[Master Index 2025](docs/MASTER-INDEX.md)** (~300 lines)
-=======
-2. **[Master Index 2025](master-index.md)** (~300 lines)
->>>>>>> laraxot/dev
    - Master navigation
    - Documentation tree
    - Quick reference
 
-<<<<<<< HEAD
 3. **[Start Here](docs/START-HERE.md)** (~300 lines)
    - Entry point for all roles
    - Fast tracks by role
@@ -200,21 +191,6 @@ public function scopeWithExtraAttributes(
    - Verification details
 
 6. **[Schemaless Final](docs/claude/schemaless-attributes-final.md)** (~200 lines)
-=======
-3. **[Start Here](../../start-here.md)** (~300 lines)
-   - Entry point for all roles
-   - Fast tracks by role
-
-4. **[Analysis Complete](analysis-complete.md)** (~400 lines)
-   - Summary of all work
-   - Links to everything
-
-5. **[Quality Verification](code-quality-verification.md)** (~350 lines)
-   - PHPMD results
-   - Verification details
-
-6. **[Schemaless Final](../../claude/schemaless-attributes-final.md)** (~200 lines)
->>>>>>> laraxot/dev
    - Correct schemaless guide
 
 **Claude README**: Updated with correct links
@@ -280,21 +256,13 @@ public function scopeWithExtraAttributes(
 
 ### For Immediate Use
 
-<<<<<<< HEAD
 1. **[Quick Start Guide](laravel/Modules/IndennitaResponsabilita/docs/QUICK-START.md)** - Onboarding in 1 hour
-=======
-1. **[Quick Start Guide](../../database/seeding/quick-start.md)** - Onboarding in 1 hour
->>>>>>> laraxot/dev
 2. **[Refactoring Action Plan](laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md)** - Ready to execute
 3. **[Best Practices](laravel/Modules/IndennitaResponsabilita/docs/best-practices.md)** - Reference guide
 
 ### For Long Term
 
-<<<<<<< HEAD
 4. **[Master Index](docs/MASTER-INDEX.md)** - Navigation hub
-=======
-4. **[Master Index](master-index.md)** - Navigation hub
->>>>>>> laraxot/dev
 5. **[Analysis Summary](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)** - Complete overview
 6. **[Trait Consolidation](laravel/Modules/Rating/docs/trait-consolidation-plan.md)** - DRY fix plan
 
@@ -389,26 +357,16 @@ public function scopeWithExtraAttributes(
 
 | Role | Document | Time |
 |------|----------|------|
-<<<<<<< HEAD
 | **New Developer** | [START-HERE](docs/START-HERE.md) | 15 min |
 | **Module Developer** | [Quick Start](laravel/Modules/IndennitaResponsabilita/docs/QUICK-START.md) | 15 min |
-=======
-| **New Developer** | [START-HERE](../../start-here.md) | 15 min |
-| **Module Developer** | [Quick Start](../../database/seeding/quick-start.md) | 15 min |
->>>>>>> laraxot/dev
 | **Tech Lead** | [Analysis Summary](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md) | 20 min |
 | **Code Reviewer** | [Best Practices](laravel/Modules/IndennitaResponsabilita/docs/best-practices.md) | 20 min |
 | **AI Assistant** | [Claude README](docs/claude/README.md) | 15 min |
 
 ### Master Navigation
 
-<<<<<<< HEAD
 - **[Master Index](docs/MASTER-INDEX.md)** - Complete documentation map
 - **[Analysis Complete](docs/ANALYSIS-COMPLETE.md)** - This analysis summary
-=======
-- **[Master Index](master-index.md)** - Complete documentation map
-- **[Analysis Complete](analysis-complete.md)** - This analysis summary
->>>>>>> laraxot/dev
 - **[Root README](docs/README.md)** - Project documentation hub
 
 ---
@@ -485,15 +443,9 @@ public function scopeWithExtraAttributes(
 
 | Priority | Document | Purpose |
 |----------|----------|---------|
-<<<<<<< HEAD
 | 🔴 | [START-HERE](docs/START-HERE.md) | Entry point for everyone |
 | 🔴 | [Master Index](docs/MASTER-INDEX.md) | Find any documentation |
 | 🔴 | [Analysis Complete](docs/ANALYSIS-COMPLETE.md) | Understand this analysis |
-=======
-| 🔴 | [START-HERE](../../start-here.md) | Entry point for everyone |
-| 🔴 | [Master Index](master-index.md) | Find any documentation |
-| 🔴 | [Analysis Complete](analysis-complete.md) | Understand this analysis |
->>>>>>> laraxot/dev
 | 🟡 | [Refactoring Plan](laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md) | Execute refactoring |
 | 🟡 | [Best Practices](laravel/Modules/IndennitaResponsabilita/docs/best-practices.md) | Code correctly |
 
@@ -501,11 +453,7 @@ public function scopeWithExtraAttributes(
 
 | Topic | Document |
 |-------|----------|
-<<<<<<< HEAD
 | **Schemaless** | [Final Guide](docs/claude/schemaless-attributes-final.md) |
-=======
-| **Schemaless** | [Final Guide](../../claude/schemaless-attributes-final.md) |
->>>>>>> laraxot/dev
 | **Rating Fix** | [Scope Fix](laravel/Modules/Rating/docs/schemaless-scope-fix.md) |
 | **Trait Issue** | [Why Move getRatings](laravel/Modules/IndennitaResponsabilita/docs/why-getratings-should-move.md) |
 | **Theme Dev** | [Theme Analysis](laravel/Themes/One/docs/theme-analysis.md) |
@@ -635,13 +583,8 @@ This is **exactly** the kind of feedback that makes code better!
 ## 📞 Support
 
 **Questions?**
-<<<<<<< HEAD
 - Check [Master Index](docs/MASTER-INDEX.md) first
 - Then [START-HERE](docs/START-HERE.md)
-=======
-- Check [Master Index](master-index.md) first
-- Then [START-HERE](../../start-here.md)
->>>>>>> laraxot/dev
 - Still stuck? Slack #dev-help
 
 **Found Issues?**

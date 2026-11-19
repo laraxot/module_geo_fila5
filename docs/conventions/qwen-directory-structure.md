@@ -257,13 +257,8 @@ chown -R zorin:zorin .qwen/
 ### Documenti Correlati
 
 - [AGENTS.md](../../AGENTS.md)
-<<<<<<< HEAD
 - [AI Agent Coordination](../../docs/ai-agent-coordination.md)
 - [Skills Configuration Report](../../docs/reports/skills-configuration-report.md)
-=======
-- [AI Agent Coordination](../raw/history/ai-agent-coordination.md)
-- [Skills Configuration Report](../raw/reports/skills-configuration-report.md)
->>>>>>> laraxot/dev
 
 ### Comandi Utili
 

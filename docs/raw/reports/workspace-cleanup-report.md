@@ -198,11 +198,7 @@ done
 
 ### Documentazione
 
-<<<<<<< HEAD
 - [Workspace Naming Convention](conventions/workspace-naming.md)
-=======
-- [Workspace Naming Convention](../../conventions/workspace-naming.md)
->>>>>>> laraxot/dev
 - [AGENTS.md](../../AGENTS.md)
 - [Project Structure](project/structure.md)
 

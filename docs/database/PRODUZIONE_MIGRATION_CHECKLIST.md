@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_5bt6GC
 ---
 title: "PRODUZIONE MIGRATION CHECKLIST"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_rKSkf3
 # 📋 Produzione Migration Checklist
 
 ## Prima di Eseguire Migration in Produzione
@@ -30,7 +27,6 @@ discussions: []
 
 ---
 
-<<<<<<< .merge_file_5bt6GC
 title: "PRODUZIONE MIGRATION CHECKLIST"
 type: note
 tags: [documentation]
@@ -39,8 +35,6 @@ updated: 2026-09-26
 qmd: "PRODUZIONE MIGRATION CHECKLIST"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_rKSkf3
 ## Procedura Step-by-Step
 
 ### Step 1: Test in Locale

@@ -242,13 +242,8 @@ echo "Check complete!"
 
 ### Documentazione
 
-<<<<<<< HEAD
 - [Module Folder Structure](conventions/module-folder-structure.md)
 - [Workspace Naming Convention](conventions/workspace-naming.md)
-=======
-- [Module Folder Structure](../../conventions/module-folder-structure.md)
-- [Workspace Naming Convention](../../conventions/workspace-naming.md)
->>>>>>> laraxot/dev
 - [AGENTS.md](../../AGENTS.md)
 - [Project Structure](../../docs/project/structure.md)
 

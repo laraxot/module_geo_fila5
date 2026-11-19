@@ -235,11 +235,7 @@ When fixing violations:
 
 - [XotBaseResource](../laravel/Modules/Xot/docs/filament/resources/xot-base-resource.md)
 - [XotBaseListRecords](../laravel/Modules/Xot/docs/filament/pages/xot-base-list-records.md)
-<<<<<<< HEAD
 - [Filament Best Practices](../laravel/Modules/Xot/docs/filament-best-practices.md)
-=======
-- [Filament Best Practices](filament-best-practices.md)
->>>>>>> laraxot/dev
 
 ---
 

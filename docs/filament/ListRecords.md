@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_mlRoT5
 ---
 title: "ListRecords"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_k6vpbL
 # List Records in Filament
 
 ## Estensione Corretta

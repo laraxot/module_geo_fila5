@@ -27,13 +27,8 @@ issues: []
 discussions: []
 ## Concepts
 
-<<<<<<< HEAD
 - [Litelement in JS only rule](concepts/litelement-in-js-only-rule.md)
 - [No docs archive rule](concepts/no-docs-archive-rule.md)
-=======
-- [Litelement in JS only rule](../wiki/concepts/litelement-in-js-only-rule.md)
-- [No docs archive rule](../wiki/concepts/no-docs-archive-rule.md)
->>>>>>> laraxot/dev
 - [Wiki sacred structure rule](concepts/wiki-sacred-structure-rule.md)
 - [CoordinatePicker Architecture](concepts/coordinate-picker-architecture.md)
 

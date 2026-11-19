@@ -378,11 +378,7 @@ php artisan list 2>&1 | grep "does not comply"
 - [Lessons Learned](./Modules/Xot/docs/lessons-learned-2025-11-04-merge-conflicts.md)
 
 **New Rules:**
-<<<<<<< HEAD
 - [File Locking Pattern](./Modules/Xot/docs/file-locking-pattern.md) 🔐
-=======
-- [File Locking Pattern](../../chat/file-locking-pattern.md) 🔐
->>>>>>> laraxot/dev
 - [Project Best Practices 2025](./Modules/Xot/docs/project-best-practices.md)
 
 **Planning:**

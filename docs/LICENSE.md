@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_I7e9h4
 ---
 title: "LICENSE"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_XfpwHW
 The MIT License (MIT)
 
 Copyright (c) :vendor_name <author@domain.com>

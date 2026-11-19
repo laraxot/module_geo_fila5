@@ -160,15 +160,9 @@ Seleziona il backup da ripristinare [1-3]: 1
 
 ## Collegamenti Bidirezionali
 - [backup_disk](backup_disk.md) - Funzione per creare backup
-<<<<<<< HEAD
 - [restore_from_disk](../utils/restore_from_disk.sh) - Script per il ripristino
 - [sync_to_disk](../utils/sync_to_disk.sh) - Script per la sincronizzazione
 - [custom.sh](../lib/custom.sh) - Libreria di funzioni personalizzate
-=======
-- [restore_from_disk](../../utils/restore_from_disk.sh) - Script per il ripristino
-- [sync_to_disk](../utils/sync_to_disk.sh) - Script per la sincronizzazione
-- [custom.sh](../../lib/custom.sh) - Libreria di funzioni personalizzate
->>>>>>> laraxot/dev
 
 ## Vedi Anche
 - [Documentazione Principale](../../docs/INDEX.md) - Indice della documentazione

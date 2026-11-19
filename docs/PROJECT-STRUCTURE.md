@@ -1,10 +1,7 @@
 ---
-<<<<<<< .merge_file_QZPQY6
 qmd: "PROJECT STRUCTURE"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_9fWAEO
 title: "Project Structure — Module Geo"
 type: documentation
 created: 2026-05-11
@@ -101,17 +98,10 @@ graph TD
 ## Riferimenti Globali
 
 - [Project Wiki Root](../../docs/wiki/)
-<<<<<<< .merge_file_QZPQY6
 - [Global Rules](wiki/rules)
 - [Global Skills](wiki/skills)
 - [Global Commands](wiki/commands)
 - [Global Memories](wiki/memories)
-=======
-- [Global Rules](../../docs/wiki/rules/)
-- [Global Skills](../../docs/wiki/skills/)
-- [Global Commands](../../docs/wiki/commands/)
-- [Global Memories](../../docs/wiki/memories/)
->>>>>>> .merge_file_9fWAEO
 
 ## Setup Iniziale (per nuovi moduli)
 

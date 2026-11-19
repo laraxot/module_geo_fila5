@@ -1,10 +1,7 @@
 ---
-<<<<<<< .merge_file_j0Gc3J
 qmd: "phpstan results collector 2026 06 15"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_cVzjtE
 title: "Raccoglitore risultati PHPStan — 2026-06-15"
 type: chat
 tags: [phpstan, results, coordination, swarm]

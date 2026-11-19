@@ -90,19 +90,11 @@ discussions: []
 # Da Modules/User/docs/authentication.md
 - [Coding Standards](../../../../docs/coding-standards.md)
 - [Xot Module](../../Xot/docs/README.md)
-<<<<<<< HEAD
 - [UI Components](../../UI/docs/components.md)
 
 # Da docs/README.md
 - [User Authentication](./laravel/Modules/User/docs/authentication.md)
 - [Filament Best Practices](./laravel/Modules/Xot/docs/filament-best-practices.md)
-=======
-- [UI Components](../raw/history/components.md)
-
-# Da docs/README.md
-- [User Authentication](./laravel/Modules/User/docs/authentication.md)
-- [Filament Best Practices](../raw/history/filament-best-practices.md)
->>>>>>> laraxot/dev
 ```
 
 ### 2.3 Tag e Categorizzazione
@@ -439,13 +431,8 @@ Ogni documento deve avere collegamenti ai documenti correlati:
 - [Coding Standards](../../../../docs/coding-standards.md)
 - [Xot Module](../../Xot/docs/README.md)
 - [User Module](../../User/docs/authentication.md)
-<<<<<<< HEAD
 - [UI Components](../../UI/docs/components.md)
 - [Filament Best Practices](../../Xot/docs/filament-best-practices.md)
-=======
-- [UI Components](../raw/history/components.md)
-- [Filament Best Practices](../raw/history/filament-best-practices.md)
->>>>>>> laraxot/dev
 - [Testing Guidelines](../../../../docs/testing-guidelines.md)
 - [Documentation Rules](../../../../docs/documentation-rules.md)
 

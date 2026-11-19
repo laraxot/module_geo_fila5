@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-<<<<<<< HEAD
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
@@ -52,19 +51,3 @@ export default defineConfig({
         }),
     ],
 });
-=======
-import tailwindcss from '@tailwindcss/vite';
-
-export default defineConfig({
-    plugins: [
-        laravel({
-            input: [
-                'resources/css/app.css',
-                'resources/js/components/coordinate-picker-lit.js',
-            ],
-            refresh: true,
-        }),
-        tailwindcss(),
-    ],
-});
->>>>>>> laraxot/dev

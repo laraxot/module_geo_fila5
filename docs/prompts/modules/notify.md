@@ -138,8 +138,4 @@ Grapesjs::make('grapesjs_data')
 ## Collegamenti
 - [Documentazione GrapesJS](docs/grapesjs.md)
 - [Template Management](docs/templates.md)
-<<<<<<< HEAD
 - [Notification System](docs/notifications.md) 
-=======
-- [Notification System](../../raw/history/notifications.md) 
->>>>>>> laraxot/dev

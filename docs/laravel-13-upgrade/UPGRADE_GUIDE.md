@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_j68PFi
 ---
 title: "UPGRADE GUIDE"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_08nxrE
 # Guida all'Upgrade Laravel 13
 
 ## Introduzione

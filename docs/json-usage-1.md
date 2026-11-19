@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_Ghy9yK
 ---
 title: "json usage 1"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_7t5Nfz
 # Utilizzo del file JSON dei comuni
 
 ## Contesto

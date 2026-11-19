@@ -234,11 +234,7 @@ php bashscripts/database/seeding/<nome progetto>-1000-records.php
 ## Collegamenti e Riferimenti
 
 - [README BashScripts](../bashscripts/readme.md)
-<<<<<<< HEAD
 - [Quick Start Seeding](../bashscripts/database/seeding/quick_start.md)
-=======
-- [Quick Start Seeding](database/seeding/quick_start.md)
->>>>>>> laraxot/dev
 - [Documentazione Modulo <nome progetto>](../laravel/Modules/<nome progetto>/docs/)
 - [Documentazione Modulo <nome modulo>](../laravel/Modules/<nome modulo>/docs/)
 - [Documentazione Modulo <nome progetto>](../laravel/Modules/<nome progetto>/docs/)

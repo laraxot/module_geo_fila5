@@ -1,5 +1,4 @@
 ---
-<<<<<<< .merge_file_OEE864
 type: note
 tags: [documentation]
 created: 2026-09-26
@@ -7,8 +6,6 @@ updated: 2026-09-26
 qmd: "update mysql 8 0"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_e7vYo0
 title: Aggiornare Mysql a 8.0
 description: Aggiornare Mysql a 8.0
 extends: _layouts.documentation

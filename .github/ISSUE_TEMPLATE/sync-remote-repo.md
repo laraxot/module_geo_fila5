@@ -15,15 +15,9 @@ assignees: ""
 
 ## Sync Remote Repo Implementation
 
-<<<<<<< HEAD
 **Script**: `bashscripts/git/subtrees/sync_remote_repo.sh`  
 **Workflow**: `.github/workflows/sync-remote-repo.yml`  
 **Team**: Subtree Sync  
-=======
-**Script**: `bashscripts/git/subtrees/sync_remote_repo.sh`
-**Workflow**: `.github/workflows/sync-remote-repo.yml`
-**Team**: Subtree Sync
->>>>>>> laraxot/dev
 **Agent**: {Agent Name}
 
 ---
@@ -72,11 +66,7 @@ bash bashscripts/git/subtrees/sync_remote_repo.sh --org=laraxot --dry-run
 ### Other Bases
 
 - [ ] base_fixcity_fila5
-<<<<<<< HEAD
 - [ ] base_quaeris_fila5
-=======
-- [ ] base_<nome progetto>_fila5
->>>>>>> laraxot/dev
 
 ### Related Documentation
 

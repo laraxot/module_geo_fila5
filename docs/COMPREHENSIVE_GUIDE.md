@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_Qume59
 ---
 title: "COMPREHENSIVE GUIDE"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_xaCxWu
 # Comprehensive Guide for Geo Module
 
 ## Table of Contents

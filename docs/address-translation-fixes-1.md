@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_IhkVb7
 ---
 title: "address translation fixes 1"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_eg8xCm
 # Correzioni Traduzioni Address - Gennaio 2025
 
 ## Problema Identificato
@@ -135,7 +132,6 @@ Il file `laravel/Modules/Geo/lang/it/address.php` conteneva problemi critici:
 
 ---
 
-<<<<<<< .merge_file_IhkVb7
 title: "address translation fixes 1"
 type: note
 tags: [documentation]
@@ -144,8 +140,6 @@ updated: 2026-09-26
 qmd: "address translation fixes 1"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_eg8xCm
 # CORREZIONI CRITICHE - 6 Agosto 2025
 
 ## Errori Gravissimi Identificati e Corretti
@@ -235,13 +229,8 @@ Le stesse correzioni sono state applicate a:
 
 ## Collegamenti
 
-<<<<<<< .merge_file_IhkVb7
 - [README Modulo Geo](README.md) - Documentazione principale
 - [Translation Standards](../../Lang/docs/translation-helper-text-standards.md) - Standard traduzioni
-=======
-- [README Modulo Geo](readme.md) - Documentazione principale
-- [Translation Standards](../../lang/docs/translation-helper-text-standards.md) - Standard traduzioni
->>>>>>> .merge_file_eg8xCm
 - [Address Implementation](address-implementation.md) - Implementazione indirizzi
 
 ---

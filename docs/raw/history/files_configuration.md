@@ -687,11 +687,7 @@ Per aggiungere nuovi pattern di esclusione, si consiglia di:
 
 - [Conflitti di Merge](/bashscripts/docs/CONFLICT_RESOLUTION_BASH.md) 
 
-<<<<<<< HEAD
 - [Conflitti di Merge](conflict-resolution-bash.md) 
-=======
-- [Conflitti di Merge](../../utils/conflict-resolution-bash.md) 
->>>>>>> laraxot/dev
 
 
 
@@ -701,11 +697,7 @@ Per aggiungere nuovi pattern di esclusione, si consiglia di:
 
 - [Conflitti di Merge](/bashscripts/docs/CONFLICT_RESOLUTION_BASH.md) 
 - [Conflitti di Merge](/bashscripts/docs/CONFLICT_RESOLUTION_BASH.md) 
-<<<<<<< HEAD
 - [Conflitti di Merge](conflict-resolution-bash.md) 
-=======
-- [Conflitti di Merge](../../utils/conflict-resolution-bash.md) 
->>>>>>> laraxot/dev
 - [Conflitti di Merge](/bashscripts/docs/CONFLICT_RESOLUTION_BASH.md) 
 
 

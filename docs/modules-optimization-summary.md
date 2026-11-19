@@ -217,13 +217,8 @@ php artisan docs:validate
 - [<nome progetto> - Core Business](../modules/<nome progetto>/docs/optimization-analysis.md)
 - [<nome progetto> - Core Business](../modules/<nome progetto>/docs/optimization-analysis.md)
 - [User - Authentication](../../User/docs/optimization-analysis.md)
-<<<<<<< HEAD
 - [Xot - Framework Base](../modules/xot/docs/optimization-analysis.md)
 - [UI - Interface Components](../modules/ui/docs/optimization-analysis.md)
-=======
-- [Xot - Framework Base](optimization-analysis.md)
-- [UI - Interface Components](optimization-analysis.md)
->>>>>>> laraxot/dev
 - [Tenant - Multi-Tenancy](../../Tenant/docs/optimization-analysis.md)
 
 ### Moduli di Supporto
@@ -235,11 +230,7 @@ php artisan docs:validate
 - [Notify - Notifications](../../Notify/docs/optimization-analysis.md)
 
 ### Documentazione Generale
-<<<<<<< HEAD
 - [SOLID Principles](./solid-principles.md)
-=======
-- [SOLID Principles](claude/solid-principles.md)
->>>>>>> laraxot/dev
 - [Performance Best Practices](./performance-best-practices.md)
 - [Security Guidelines](./security-guidelines.md)
 - [Testing Strategy](./testing-strategy.md)

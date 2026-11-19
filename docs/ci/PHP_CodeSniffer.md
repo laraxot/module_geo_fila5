@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_DZU9t4
 ---
 title: "PHP CodeSniffer"
 type: note
@@ -10,6 +9,4 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_V6NVg6
 [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)

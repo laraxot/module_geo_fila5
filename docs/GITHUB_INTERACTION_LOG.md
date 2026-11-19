@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_M0zNb6
 ---
 title: "GITHUB INTERACTION LOG"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_IrjrMB
 # GitHub Interaction Log — Module Geo
 
 **Data:** 2026-06-03  
@@ -20,7 +17,6 @@ discussions: []
 
 ---
 
-<<<<<<< .merge_file_M0zNb6
 title: "GITHUB INTERACTION LOG"
 type: note
 tags: [documentation]
@@ -29,8 +25,6 @@ updated: 2026-09-26
 qmd: "GITHUB INTERACTION LOG"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_IrjrMB
 ## Issues Aggiornate
 
 ### STORY-123 — Cluster Stability

@@ -13,11 +13,7 @@ discussions: []
 
 > Index: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)
 
-<<<<<<< HEAD
 **Project**: PTVX Fila5 Mono  
-=======
-**Project**: PTVX fila5
->>>>>>> laraxot/dev
 **AI Framework**: BMAD-METHOD v6.2.0
 
 ## Quick Reference
@@ -28,11 +24,7 @@ discussions: []
 | Action Pattern | `app(ActionClass::class)->execute($data)` |
 | Short array | `[]` - MAI `array()` |
 | BMAD Workflows | [docs/bmad/README.md](docs/bmad/README.md) |
-<<<<<<< HEAD
 | AI Coordination | [docs/ai-agent-coordination.md](docs/ai-agent-coordination.md) |
-=======
-| AI Coordination | [docs/ai-agent-coordination.md](../history/ai-agent-coordination.md) |
->>>>>>> laraxot/dev
 
 ## Key Rules
 
@@ -104,11 +96,7 @@ bmad-document-project
 | github | GitHub API |
 | ollama | Ollama AI |
 
-<<<<<<< HEAD
 → [docs/mcp/mcp-overview.md](docs/mcp/mcp-overview.md)
-=======
-→ [docs/mcp/mcp-overview.md](../../mcp/mcp-overview.md)
->>>>>>> laraxot/dev
 
 ---
 
@@ -120,9 +108,5 @@ updated: 2026-09-26
 qmd: "agent memory 1"
 issues: []
 discussions: []
-<<<<<<< HEAD
 *Full documentation: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)*  
-=======
-*Full documentation: [.agents/docs/agents-guide/00-index.md](.agents/docs/agents-guide/00-index.md)*
->>>>>>> laraxot/dev
 *BMAD Documentation: [docs/bmad/README.md](docs/bmad/README.md)*

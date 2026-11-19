@@ -43,11 +43,7 @@ discussions: []
 - ✅ Minor (1.2.0 → 1.3.0) revisionati prima di merge
 - ✅ Major (1.0.0 → 2.0.0) richiedono revisione manuale
 
-<<<<<<< HEAD
 Vedi [dependabot-security-policy.md](./docs/dependabot-security-policy.md) per dettagli.
-=======
-Vedi [dependabot-security-policy.md](../../dependabot-security-policy.md) per dettagli.
->>>>>>> laraxot/dev
 
 ---
 

@@ -152,11 +152,7 @@ public function scopeWithExtraAttributes(
 
 ### Claude AI Guidelines (2 docs)
 
-<<<<<<< HEAD
 1. **[Schemaless Final Guide](../docs/claude/schemaless-attributes-final.md)** (~200 lines)
-=======
-1. **[Schemaless Final Guide](../../claude/schemaless-attributes-final.md)** (~200 lines)
->>>>>>> laraxot/dev
    - Correct patterns
    - PHPStan requirements
    - Quick reference
@@ -301,13 +297,8 @@ public function scopeWithExtraAttributes(
 - [Rating Module README](../laravel/Modules/Rating/docs/README.md)
 
 ### Critical Topics
-<<<<<<< HEAD
 - [Schemaless Attributes Final](../docs/claude/schemaless-attributes-final.md)
 - [Eloquent Properties](../docs/claude/eloquent-properties.md)
-=======
-- [Schemaless Attributes Final](../../claude/schemaless-attributes-final.md)
-- [Eloquent Properties](../../claude/eloquent-properties.md)
->>>>>>> laraxot/dev
 - [Architecture Rules](../docs/claude/architecture-rules.md)
 
 ---
@@ -524,13 +515,8 @@ laravel/Themes/
 
 ### Critical Topics
 
-<<<<<<< HEAD
 7. **[Schemaless Final](../docs/claude/schemaless-attributes-final.md)** - Correct schemaless usage
 8. **[Eloquent Properties](../docs/claude/eloquent-properties.md)** - property_exists issue
-=======
-7. **[Schemaless Final](../../claude/schemaless-attributes-final.md)** - Correct schemaless usage
-8. **[Eloquent Properties](../../claude/eloquent-properties.md)** - property_exists issue
->>>>>>> laraxot/dev
 9. **[Architecture Rules](../docs/claude/architecture-rules.md)** - Core architecture
 
 ---

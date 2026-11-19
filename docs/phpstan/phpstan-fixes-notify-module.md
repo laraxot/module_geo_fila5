@@ -144,13 +144,8 @@ All fixes have been designed to:
 
 ## Related Documentation
 
-<<<<<<< HEAD
 - [Module Analysis and Optimization Plan](module-analysis-and-optimization-plan.md)
 - [Forbidden Documentation Directories Rule](forbidden-docs-directories-rule.md)
-=======
-- [Module Analysis and Optimization Plan](../module-analysis-and-optimization-plan.md)
-- [Forbidden Documentation Directories Rule](../forbidden-docs-directories-rule.md)
->>>>>>> laraxot/dev
 - [Modular Architecture Principles](modular-architecture-principles.md)
 
 ## Impact Assessment

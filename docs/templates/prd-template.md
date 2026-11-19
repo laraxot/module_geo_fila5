@@ -393,19 +393,11 @@ discussions: []
 
 ### Related Documents
 
-<<<<<<< HEAD
 - [Product Roadmap](./product-roadmap.md)
 - [Product Strategy](./product-strategy.md)
 - [User Research](./user-research.md)
 - [Sprint Planning](./sprint-planning-meeting.md)
 - [Product Launch Plan](./product-launch-plan.md)
-=======
-- [Product Roadmap](../product-roadmap.md)
-- [Product Strategy](../product-strategy.md)
-- [User Research](./user-research.md)
-- [Sprint Planning](./sprint-planning-meeting.md)
-- [Product Launch Plan](../product-launch-plan.md)
->>>>>>> laraxot/dev
 - {Additional relevant documents}
 
 ### Glossary
