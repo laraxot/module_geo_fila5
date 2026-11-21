@@ -21,20 +21,36 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_PFOIBA
 <<<<<<< HEAD
 title: "LIVE SYNC TEST PLAN"
 =======
 title: "live sync test plan"
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_NLdS8b
+title: "live sync test plan"
+=======
+title: "LIVE SYNC TEST PLAN"
+>>>>>>> .merge_file_1ZMoIh
+>>>>>>> .merge_file_WfemxZ
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_PFOIBA
 <<<<<<< HEAD
 qmd: "LIVE SYNC TEST PLAN"
 =======
 qmd: "live sync test plan"
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_NLdS8b
+qmd: "live sync test plan"
+=======
+qmd: "LIVE SYNC TEST PLAN"
+>>>>>>> .merge_file_1ZMoIh
+>>>>>>> .merge_file_WfemxZ
 issues: []
 discussions: []
 ## Objective

@@ -27,20 +27,36 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_vl0AkT
 <<<<<<< HEAD
 title: "PRODUZIONE MIGRATION CHECKLIST"
 =======
 title: "produzione migration checklist"
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_v200zK
+title: "produzione migration checklist"
+=======
+title: "PRODUZIONE MIGRATION CHECKLIST"
+>>>>>>> .merge_file_kBbdyg
+>>>>>>> .merge_file_5XFEH2
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_vl0AkT
 <<<<<<< HEAD
 qmd: "PRODUZIONE MIGRATION CHECKLIST"
 =======
 qmd: "produzione migration checklist"
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_v200zK
+qmd: "produzione migration checklist"
+=======
+qmd: "PRODUZIONE MIGRATION CHECKLIST"
+>>>>>>> .merge_file_kBbdyg
+>>>>>>> .merge_file_5XFEH2
 issues: []
 discussions: []
 ## Procedura Step-by-Step

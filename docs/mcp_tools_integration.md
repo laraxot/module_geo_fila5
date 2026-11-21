@@ -17,20 +17,36 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_KA6wCk
 <<<<<<< HEAD
 title: "MCP TOOLS INTEGRATION"
 =======
 title: "mcp tools integration"
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_jErkJG
+title: "mcp tools integration"
+=======
+title: "MCP TOOLS INTEGRATION"
+>>>>>>> .merge_file_Y3MEiu
+>>>>>>> .merge_file_htDqfm
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_KA6wCk
 <<<<<<< HEAD
 qmd: "MCP TOOLS INTEGRATION"
 =======
 qmd: "mcp tools integration"
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_jErkJG
+qmd: "mcp tools integration"
+=======
+qmd: "MCP TOOLS INTEGRATION"
+>>>>>>> .merge_file_Y3MEiu
+>>>>>>> .merge_file_htDqfm
 issues: []
 discussions: []
 ## Overview

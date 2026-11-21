@@ -373,6 +373,7 @@ class DatabaseHelper
 ## Collegamenti
 
 - [Test Autenticazione Esistenti](../../../../tests/Feature/Auth) - Pattern di riferimento
+<<<<<<< .merge_file_B6gcrd
 <<<<<<< HEAD
 - [Documentazione Modulo <nome progetto>](../modules/<nome progetto>/docs/README.md)
 - [Documentazione Modulo User](../../../User/docs/README.md)
@@ -380,6 +381,15 @@ class DatabaseHelper
 - [Documentazione Modulo <nome progetto>](../modules/<nome progetto>/docs/readme.md)
 - [Documentazione Modulo User](../../../User/docs/readme.md)
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_EbKjJH
+- [Documentazione Modulo <nome progetto>](../modules/<nome progetto>/docs/readme.md)
+- [Documentazione Modulo User](../../../User/docs/readme.md)
+=======
+- [Documentazione Modulo <nome progetto>](../modules/<nome progetto>/docs/README.md)
+- [Documentazione Modulo User](../../../User/docs/README.md)
+>>>>>>> .merge_file_ryDqPg
+>>>>>>> .merge_file_R5ekj5
 - [Configurazione Pest](../../tests/Pest.php)
 
 ---

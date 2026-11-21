@@ -34,20 +34,36 @@ This document tracks the overall progress of the Laravel 13 upgrade for the enti
 4. Run full test suite.
 
 ---
+<<<<<<< .merge_file_lT0io2
 <<<<<<< HEAD
 title: "STATUS"
 =======
 title: "status"
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_jxLe95
+title: "status"
+=======
+title: "STATUS"
+>>>>>>> .merge_file_XL6rpy
+>>>>>>> .merge_file_PFVjTB
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_lT0io2
 <<<<<<< HEAD
 qmd: "STATUS"
 =======
 qmd: "status"
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_jxLe95
+qmd: "status"
+=======
+qmd: "STATUS"
+>>>>>>> .merge_file_XL6rpy
+>>>>>>> .merge_file_PFVjTB
 issues: []
 discussions: []
 **Status**: Ready for final verification.

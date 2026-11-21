@@ -9,11 +9,19 @@ issues: []
 discussions: []
 ---
 
+<<<<<<< .merge_file_CM4xQJ
 <<<<<<< HEAD
 > **Superseded: vedi [index.md](./index.md).** Questo file resta per cronologia e non viene aggiornato.
 =======
 > **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_uzK76V
+> **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
+=======
+> **Superseded: vedi [index.md](./index.md).** Questo file resta per cronologia e non viene aggiornato.
+>>>>>>> .merge_file_PTEXgL
+>>>>>>> .merge_file_nVJAJE
 
 # 📚 **Indice Documentazione Modulo Geo**
 

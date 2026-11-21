@@ -311,6 +311,7 @@ jobs:
 
 - [Strategia di Testing Moduli](testing-strategy-modules.md) - Strategia completa
 - [Test Autenticazione](../../../../tests/Feature/Auth) - Pattern di riferimento esistenti
+<<<<<<< .merge_file_cFazfQ
 <<<<<<< HEAD
 - [Documentazione <nome progetto>](../modules/<nome progetto>/docs/README.md) - Funzionalità business
 - [Documentazione <nome progetto>](../modules/<nome progetto>/docs/README.md) - Funzionalità business
@@ -320,6 +321,17 @@ jobs:
 - [Documentazione <nome progetto>](../modules/<nome progetto>/docs/readme.md) - Funzionalità business
 - [Documentazione User](../../../User/docs/readme.md) - Modulo core
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_G8yavQ
+- [Documentazione <nome progetto>](../modules/<nome progetto>/docs/readme.md) - Funzionalità business
+- [Documentazione <nome progetto>](../modules/<nome progetto>/docs/readme.md) - Funzionalità business
+- [Documentazione User](../../../User/docs/readme.md) - Modulo core
+=======
+- [Documentazione <nome progetto>](../modules/<nome progetto>/docs/README.md) - Funzionalità business
+- [Documentazione <nome progetto>](../modules/<nome progetto>/docs/README.md) - Funzionalità business
+- [Documentazione User](../../../User/docs/README.md) - Modulo core
+>>>>>>> .merge_file_bxWKy0
+>>>>>>> .merge_file_4hdil0
 
 ## Stato Implementazione
 

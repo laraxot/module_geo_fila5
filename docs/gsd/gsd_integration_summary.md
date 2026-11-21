@@ -18,20 +18,36 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_WzKrKS
 <<<<<<< HEAD
 title: "GSD INTEGRATION SUMMARY"
 =======
 title: "gsd integration summary"
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_JlVghK
+title: "gsd integration summary"
+=======
+title: "GSD INTEGRATION SUMMARY"
+>>>>>>> .merge_file_GA8EdE
+>>>>>>> .merge_file_ogzq3a
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_WzKrKS
 <<<<<<< HEAD
 qmd: "GSD INTEGRATION SUMMARY"
 =======
 qmd: "gsd integration summary"
 >>>>>>> d478251a (.)
+=======
+<<<<<<< .merge_file_JlVghK
+qmd: "gsd integration summary"
+=======
+qmd: "GSD INTEGRATION SUMMARY"
+>>>>>>> .merge_file_GA8EdE
+>>>>>>> .merge_file_ogzq3a
 issues: []
 discussions: []
 ## 🎯 What is GSD?
