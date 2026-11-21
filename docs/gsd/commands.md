@@ -17,12 +17,20 @@ discussions: []
 
 ---
 
+<<<<<<< HEAD
 title: "COMMANDS"
+=======
+title: "commands"
+>>>>>>> d478251a (.)
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< HEAD
 qmd: "COMMANDS"
+=======
+qmd: "commands"
+>>>>>>> d478251a (.)
 issues: []
 discussions: []
 ## 🚀 Essential Commands

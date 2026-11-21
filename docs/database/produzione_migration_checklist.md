@@ -27,12 +27,20 @@ discussions: []
 
 ---
 
+<<<<<<< HEAD
 title: "PRODUZIONE MIGRATION CHECKLIST"
+=======
+title: "produzione migration checklist"
+>>>>>>> d478251a (.)
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< HEAD
 qmd: "PRODUZIONE MIGRATION CHECKLIST"
+=======
+qmd: "produzione migration checklist"
+>>>>>>> d478251a (.)
 issues: []
 discussions: []
 ## Procedura Step-by-Step

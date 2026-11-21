@@ -1,10 +1,18 @@
 ---
+<<<<<<< HEAD
 title: "Best Practices"
+=======
+title: "best practices"
+>>>>>>> d478251a (.)
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< HEAD
 qmd: "Best Practices"
+=======
+qmd: "best practices"
+>>>>>>> d478251a (.)
 issues: []
 discussions: []
 ---

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "migration naming pattern"
 issues: []
 discussions: []
+<<<<<<< HEAD
 <<<<<<< .merge_file_YYVQWP
 ---
 
@@ -101,3 +102,11 @@ canonical: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
 
 See canonical documentation: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
 >>>>>>> .merge_file_EQQCdC
+=======
+module: theme
+topic: migration-naming-pattern
+canonical: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
+>>>>>>> d478251a (.)

@@ -21,7 +21,7 @@ return [
         'Modules\Geo\Models\ComuneJson',
         'Modules\Geo\Models\GeoJsonModel',
         'Modules\Geo\Models\Traits\SushiToJsons',
-<<<<<<< .merge_file_dbsI6j
+<<<<<<< HEAD
         'Modules\Geo\View\Components\PointMap',
     ],
     // classi in un namespace Services (regola No Services, DCP-270); NoServicesTest le vede come cartelle
@@ -32,6 +32,8 @@ return [
     // resta per documentare la regola e rendere esplicito lo zero.
     'services' => [],
 =======
+=======
+>>>>>>> d478251a (.)
         'Modules\Geo\Services\BaseGeoService',
         'Modules\Geo\Services\GoogleMapsService',
         'Modules\Geo\View\Components\PointMap',
@@ -47,5 +49,7 @@ return [
         'Modules\Geo\Services\HereService',
         'Modules\Geo\Services\MapService',
     ],
->>>>>>> .merge_file_brZyIW
+<<<<<<< HEAD
+=======
+>>>>>>> d478251a (.)
 ];

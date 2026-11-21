@@ -9,7 +9,11 @@ issues: []
 discussions: []
 module: theme
 topic: comprehensive-guide-backup
+<<<<<<< HEAD
 canonical: ../../../Themes/docs/shared-components/comprehensive_guide.md
+=======
+canonical: ../../../Themes/docs/shared-components/COMPREHENSIVE_GUIDE.md
+>>>>>>> d478251a (.)
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/comprehensive_guide.md

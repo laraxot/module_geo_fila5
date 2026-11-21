@@ -13,9 +13,15 @@ discussions: []
 
 Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dalla capitalizzazione. Va mantenuta una singola variante conforme agli standard Laraxot, aggiornando successivamente i riferimenti.
 
+<<<<<<< HEAD
 - `Modules/Geo`: `CHANGELOG.md`, `CHANGELOG.md`
 - `Modules/Geo`: `LICENSE.md`, `LICENSE.md`
 - `Modules/Geo/.github`: `CONTRIBUTING.md`, `CONTRIBUTING.md`
+=======
+- `Modules/Geo`: `CHANGELOG.md`, `changelog.md`
+- `Modules/Geo`: `LICENSE.md`, `license.md`
+- `Modules/Geo/.github`: `CONTRIBUTING.md`, `contributing.md`
+>>>>>>> d478251a (.)
 - `Modules/Geo/.github`: `FUNDING.yml`, `funding.yml`
 - `Modules/Geo/.github`: `SECURITY.md`, `SECURITY.md`
 - `Modules/Geo/app/Actions`: `ClusterLocationsAction.wip`, `clusterlocationsaction.wip`
@@ -23,11 +29,19 @@ Elenco dei file nel modulo `Geo` che presentano duplicati differenziati solo dal
 - `Modules/Geo/app/Filament/Widgets`: `ImprovedLocationMapWidget.wip`, `improvedlocationmapwidget.wip`
 - `Modules/Geo/app/Http/Livewire`: `Test.test`, `test.test`
 - `Modules/Geo/app/View/Components/Card`: `Place.json`, `place.json`
+<<<<<<< HEAD
 - `Modules/Geo/docs`: `phpstan_fixes.md`, `phpstan_fixes.md`
 - `Modules/Geo/docs`: `PROJECT.md`, `project.md`
 - `Modules/Geo/docs`: `advanced_features.md`, `advanced_features.md`
 - `Modules/Geo/docs`: `mcp_server_recommended.md`, `mcp_server_recommended.md`
 - `Modules/Geo/docs`: `comprehensive_guide.md`, `comprehensive_guide.md`
+=======
+- `Modules/Geo/docs`: `PHPSTAN_FIXES.md`, `phpstan_fixes.md`
+- `Modules/Geo/docs`: `PROJECT.md`, `project.md`
+- `Modules/Geo/docs`: `ADVANCED_FEATURES.md`, `advanced_features.md`
+- `Modules/Geo/docs`: `MCP_SERVER_RECOMMENDED.md`, `mcp_server_recommended.md`
+- `Modules/Geo/docs`: `COMPREHENSIVE_GUIDE.md`, `comprehensive_guide.md`
+>>>>>>> d478251a (.)
 - `Modules/Geo/docs`: `TECHNICAL.md`, `technical.md`
 - `Modules/Geo/resources/css`: `MarkerCluster.Default.css`, `markercluster.default.css`
 - `Modules/Geo/resources/css`: `MarkerCluster.css`, `markercluster.css`

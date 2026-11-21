@@ -17,12 +17,20 @@ discussions: []
 
 ---
 
+<<<<<<< HEAD
 title: "MCP TOOLS INTEGRATION"
+=======
+title: "mcp tools integration"
+>>>>>>> d478251a (.)
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< HEAD
 qmd: "MCP TOOLS INTEGRATION"
+=======
+qmd: "mcp tools integration"
+>>>>>>> d478251a (.)
 issues: []
 discussions: []
 ## Overview

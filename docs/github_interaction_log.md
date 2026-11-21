@@ -17,12 +17,20 @@ discussions: []
 
 ---
 
+<<<<<<< HEAD
 title: "GITHUB INTERACTION LOG"
+=======
+title: "github interaction log"
+>>>>>>> d478251a (.)
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< HEAD
 qmd: "GITHUB INTERACTION LOG"
+=======
+qmd: "github interaction log"
+>>>>>>> d478251a (.)
 issues: []
 discussions: []
 ## Issues Aggiornate

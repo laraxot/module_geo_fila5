@@ -9,7 +9,11 @@ issues: []
 discussions: []
 module: theme
 topic: product_roadmap
+<<<<<<< HEAD
 canonical: ../../../Themes/docs/shared-components/product_roadmap.md
+=======
+canonical: ../../../Themes/docs/shared-components/PRODUCT_ROADMAP.md
+>>>>>>> d478251a (.)
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/product_roadmap.md

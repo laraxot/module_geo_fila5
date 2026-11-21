@@ -26,12 +26,20 @@ Nel contesto del modulo **Geo**, daisyUI **non è attualmente installato**.
 
 ---
 
+<<<<<<< HEAD
 title: "DAISYUI"
+=======
+title: "daisyui"
+>>>>>>> d478251a (.)
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< HEAD
 qmd: "DAISYUI"
+=======
+qmd: "daisyui"
+>>>>>>> d478251a (.)
 issues: []
 discussions: []
 ## Perché Geo non usa daisyUI (e perché non serve)

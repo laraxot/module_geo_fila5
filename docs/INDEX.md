@@ -12,13 +12,21 @@ discussions: []
 # Geo Module Documentation Index
 
 <!-- p4-docs-geo: ingresso unico -->
+<<<<<<< HEAD
 **Punto d'ingresso unico della documentazione del modulo Geo.** `00-index.md` e `00-index.md` sono superseded da questo file (restano per cronologia, non vengono aggiornati).
+=======
+**Punto d'ingresso unico della documentazione del modulo Geo.** `00-INDEX.md` e `00-index.md` sono superseded da questo file (restano per cronologia, non vengono aggiornati).
+>>>>>>> d478251a (.)
 
 ## Navigazione rapida
 
 - [Mappa di migrazione della radice](./DOCS-MIGRATION-MAP.md) - dove andrebbe ognuno dei 622 file della radice di `docs/` (proposta, nessuno spostamento eseguito)
 - [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo
+<<<<<<< HEAD
 - [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting; indice dei concept in [wiki/concepts/index.md](./wiki/concepts/index.md)
+=======
+- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting; indice dei concept in [wiki/concepts/INDEX.md](./wiki/concepts/INDEX.md)
+>>>>>>> d478251a (.)
 - [Log del wiki](./wiki/log.md) - cronologia dei cambiamenti alla conoscenza del modulo
 - [Registro decisioni](./decision-log.md) - decisioni di struttura e di allineamento
 - [Panoramica del modulo](./README.md)
@@ -37,8 +45,13 @@ discussions: []
 - [**Address Implementation**](./address-implementation.md) - Address handling and validation
 - [**Address Autocomplete**](./address-autocomplete.md) - Smart address suggestions
 - [**Map Components**](./leaflet-marker-map-input.md) - Interactive map components
+<<<<<<< HEAD
 - [**Advanced Features**](./advanced_features.md) - Power user features
 - [**Product Roadmap**](./product_roadmap.md) - Future development plans
+=======
+- [**Advanced Features**](./ADVANCED_FEATURES.md) - Power user features
+- [**Product Roadmap**](./PRODUCT_ROADMAP.md) - Future development plans
+>>>>>>> d478251a (.)
 
 ### 🔧 Integration & Usage
 

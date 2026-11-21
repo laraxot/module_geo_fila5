@@ -1,10 +1,18 @@
 ---
+<<<<<<< HEAD
 title: "License"
+=======
+title: "LICENSE"
+>>>>>>> d478251a (.)
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< HEAD
 qmd: "License"
+=======
+qmd: "LICENSE"
+>>>>>>> d478251a (.)
 issues: []
 discussions: []
 ---

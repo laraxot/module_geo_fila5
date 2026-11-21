@@ -23,7 +23,11 @@ related:
 - [coordinate-picker-field](./concepts/coordinate-picker-field.md) - il campo Filament del picker e il suo componente Lit
 - [coordinate-picker-design-comuni-runtime-rule](./concepts/coordinate-picker-design-comuni-runtime-rule.md) - regola runtime del picker nelle pagine Design Comuni
 - [geo-map-lit](./concepts/geo-map-lit.md) - il componente mappa `geo-map-lit`
+<<<<<<< HEAD
 - [Elenco completo dei concept](./concepts/index.md) - tutti i 148 concept della cartella, uno per riga
+=======
+- [Elenco completo dei concept](./concepts/INDEX.md) - tutti i 148 concept della cartella, uno per riga
+>>>>>>> d478251a (.)
 
 ## AI / second brain
 
@@ -35,11 +39,19 @@ related:
 
 
 ## Indices
+<<<<<<< HEAD
 - [Rules](rules/index.md)
 - [Skills](skills/index.md)
 - [Commands](commands/index.md)
 - [Memories](memories/index.md)
 - [Concepts](concepts/index.md)
+=======
+- [Rules](rules/INDEX.md)
+- [Skills](skills/INDEX.md)
+- [Commands](commands/INDEX.md)
+- [Memories](memories/INDEX.md)
+- [Concepts](concepts/INDEX.md)
+>>>>>>> d478251a (.)
 
 ## Nota frontoffice (tema Sixteen)
 

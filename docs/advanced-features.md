@@ -9,7 +9,11 @@ issues: []
 discussions: []
 module: theme
 topic: advanced-features
+<<<<<<< HEAD
 canonical: ../../../Themes/docs/shared-components/advanced_features.md
+=======
+canonical: ../../../Themes/docs/shared-components/ADVANCED_FEATURES.md
+>>>>>>> d478251a (.)
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/advanced_features.md

@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "comune sushi implementation"
 issues: []
 discussions: []
+<<<<<<< HEAD
 <<<<<<< .merge_file_BB82os
 ---
 
@@ -198,3 +199,11 @@ canonical: ../../../Themes/docs/shared-components/comune-sushi-implementation-1.
 
 See canonical documentation: ../../../Themes/docs/shared-components/comune-sushi-implementation-1.md
 >>>>>>> .merge_file_v42IuV
+=======
+module: theme
+topic: comune-sushi-implementation
+canonical: ../../../Themes/docs/shared-components/comune-sushi-implementation-1.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/comune-sushi-implementation-1.md
+>>>>>>> d478251a (.)

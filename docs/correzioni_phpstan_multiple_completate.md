@@ -154,12 +154,20 @@ array_merge(
 
 ---
 
+<<<<<<< HEAD
 title: "CORREZIONI PHPSTAN MULTIPLE COMPLETATE"
+=======
+title: "correzioni phpstan multiple completate"
+>>>>>>> d478251a (.)
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< HEAD
 qmd: "CORREZIONI PHPSTAN MULTIPLE COMPLETATE"
+=======
+qmd: "correzioni phpstan multiple completate"
+>>>>>>> d478251a (.)
 issues: []
 discussions: []
 ## ✅ SESSIONE BUG FIXING COMPLETATA

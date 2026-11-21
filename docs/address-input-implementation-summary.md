@@ -119,4 +119,8 @@ All documentation has been updated to reflect:
 - [AddressInput Component Docs](../../../Modules/Geo/docs/address-input-component.md)
 - [Address Components Overview](../../../Modules/Geo/docs/address-field-component.md)
 - [Module Boundary Philosophy](../../../Modules/Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md)
+<<<<<<< HEAD
 - [Geo Components Index](../../../Modules/Geo/docs/components/index.md)
+=======
+- [Geo Components Index](../../../Modules/Geo/docs/components/INDEX.md)
+>>>>>>> d478251a (.)

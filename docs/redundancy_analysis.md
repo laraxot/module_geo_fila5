@@ -9,7 +9,11 @@ issues: []
 discussions: []
 module: theme
 topic: REDUNDANCY_ANALYSIS
+<<<<<<< HEAD
 canonical: ../../../Themes/docs/shared-components/redundancy_analysis.md
+=======
+canonical: ../../../Themes/docs/shared-components/REDUNDANCY_ANALYSIS.md
+>>>>>>> d478251a (.)
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/redundancy_analysis.md

@@ -21,12 +21,20 @@ discussions: []
 
 ---
 
+<<<<<<< HEAD
 title: "LIVE SYNC TEST PLAN"
+=======
+title: "live sync test plan"
+>>>>>>> d478251a (.)
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< HEAD
 qmd: "LIVE SYNC TEST PLAN"
+=======
+qmd: "live sync test plan"
+>>>>>>> d478251a (.)
 issues: []
 discussions: []
 ## Objective

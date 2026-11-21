@@ -9,6 +9,7 @@ issues: []
 discussions: []
 module: theme
 topic: migration-naming
+<<<<<<< HEAD
 <<<<<<< .merge_file_yILya4
 canonical: ../../../Themes/docs/shared-components/migration-naming-pattern.md
 ---
@@ -20,3 +21,9 @@ canonical: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
 
 See canonical documentation: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
 >>>>>>> .merge_file_whxDCH
+=======
+canonical: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
+>>>>>>> d478251a (.)

@@ -124,7 +124,10 @@ Motivo del gruppo: regola o convenzione normativa: casa naturale rules/. Stato d
 | `migration-naming-pattern.md` | `rules/migration-naming-pattern.md` | Convenzione di Naming e Gestione delle Migrazioni | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 =======
 | `migration-naming-pattern-1.md` | `rules/migration-naming-pattern-1.md` | Convenzione di Naming e Gestione delle Migrazioni | nome corrotto o sospetto; link in ingresso: 0 | proposto |
+<<<<<<< HEAD
 >>>>>>> .merge_file_ZMAuEA
+=======
+>>>>>>> d478251a (.)
 | `migration-naming-pattern.md` | `rules/migration-naming-pattern.md` | migration naming pattern | stub (<200 caratteri); omonimo con contenuto diverso: `migration_naming_pattern.md`; link in ingresso: 0 | proposto |
 | `migration-naming.md` | `rules/migration-naming.md` | migration naming | stub (<200 caratteri); link in ingresso: 0 | proposto |
 | `migration_naming_pattern.md` | `rules/migration_naming_pattern.md` | Convenzione di Naming e Gestione delle Migrazioni | omonimo con contenuto diverso: `migration-naming-pattern.md`; link in ingresso: 0 | proposto |
@@ -237,9 +240,12 @@ Motivo del gruppo: report puntuale di una sessione di correzione: obsoleto, stor
 | `phpstan-fixes-.md` | `phpstan/phpstan-fixes-.md` | Correzioni PHPStan Modulo Geo - 2025-01-27 | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-fixes-.md`; omonimo con contenuto diverso: `phpstan-fixes.md`; link in ingresso: 0 | proposto |
 | `phpstan-fixes-2.md` | `phpstan/phpstan-fixes-2.md` | PHPStan Fixes for Geo Module | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-fixes-2.md`; link in ingresso: 0 | proposto |
 | `phpstan-fixes-3.md` | `phpstan/phpstan-fixes-3.md` | Correzioni PHPStan Modulo Geo - (DATE) | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-fixes-3.md`; link in ingresso: 0 | proposto |
+<<<<<<< HEAD
 <<<<<<< .merge_file_9UwVY0
 | `phpstan-fixes-gennaio.md` | `phpstan/phpstan-fixes-gennaio.md` | PHPStan Fixes - Modulo Geo - Gennaio 2025 | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-fixes-gennaio.md`; link in ingresso: 1 | proposto |
 =======
+=======
+>>>>>>> d478251a (.)
 | `phpstan-fixes-gennaio-2025.md` | `phpstan/phpstan-fixes-gennaio-2025.md` | PHPStan Fixes - Modulo Geo - Gennaio 2025 | destinazione gia occupata da un file IDENTICO: la copia in radice e superflua; identico anche a `phpstan/phpstan-fixes-gennaio-2025.md`; link in ingresso: 1 | proposto |
 >>>>>>> .merge_file_ZMAuEA
 | `phpstan-fixes-gennaio.md` | `phpstan/phpstan-fixes-gennaio.md` | PHPStan Fixes - Modulo Geo - Gennaio 2025 | DESTINAZIONE GIA OCCUPATA da un file diverso: confrontare prima di spostare; link in ingresso: 0 | proposto |
@@ -459,11 +465,15 @@ Motivo del gruppo: modello dati geografico: casa naturale models/. Stato di tutt
 | `address-model-italian.md` | `models/address-model-italian.md` | Modello Address per Indirizzi Italiani | canonico delle copie byte-identiche; link in ingresso: 3 | proposto |
 | `address-relationships.md` | `models/address-relationships.md` | Relazioni del Modello Address | canonico delle copie byte-identiche; link in ingresso: 0 | proposto |
 | `address-translation-fixes-.md` | `models/address-translation-fixes-.md` | Correzioni Traduzioni Address - Gennaio 2025 | omonimo con contenuto diverso: `address-translation-fixes.md`; link in ingresso: 0 | proposto |
+<<<<<<< HEAD
 <<<<<<< .merge_file_9UwVY0
 | `address-translation-fixes.md` | `models/address-translation-fixes.md` | Correzioni Traduzioni Address - Gennaio 2025 | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 =======
 | `address-translation-fixes-1.md` | `models/address-translation-fixes-1.md` | Correzioni Traduzioni Address - Gennaio 2025 | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 >>>>>>> .merge_file_ZMAuEA
+=======
+| `address-translation-fixes-1.md` | `models/address-translation-fixes-1.md` | Correzioni Traduzioni Address - Gennaio 2025 | nome corrotto o sospetto; link in ingresso: 0 | proposto |
+>>>>>>> d478251a (.)
 | `address-translation-fixes.md` | `models/address-translation-fixes.md` | Correzioni Traduzioni Address - Gennaio 2025 | omonimo con contenuto diverso: `address-translation-fixes-.md`; link in ingresso: 1 | proposto |
 | `address-translationes.md` | `models/address-translationes.md` | Correzioni Traduzioni Address - Gennaio 2025 | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 | `address_implementation.md` | `wiki/_archive/duplicates/address_implementation.md` | Implementazione del Modello Address | copia byte-identica di `address-implementation.md`; link in ingresso: 0 | proposto |
@@ -481,7 +491,10 @@ Motivo del gruppo: modello dati geografico: casa naturale models/. Stato di tutt
 | `comune-sushi-implementation.md` | `models/comune-sushi-implementation.md` | Implementazione Sushi per il Modello Comune | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 =======
 | `comune-sushi-implementation-1.md` | `models/comune-sushi-implementation-1.md` | Implementazione Sushi per il Modello Comune | nome corrotto o sospetto; link in ingresso: 0 | proposto |
+<<<<<<< HEAD
 >>>>>>> .merge_file_ZMAuEA
+=======
+>>>>>>> d478251a (.)
 | `comune-sushi-implementation.md` | `models/comune-sushi-implementation.md` | comune sushi implementation | stub (<200 caratteri); omonimo con contenuto diverso: `comune_sushi_implementation.md`; link in ingresso: 3 | proposto |
 | `comune-sushi-implementazione.md` | `models/comune-sushi-implementazione.md` | Implementazione di Comune.php con Laravel Sushi | canonico delle copie byte-identiche; link in ingresso: 12 | proposto |
 | `comune-unification-analysis.md` | `models/comune-unification-analysis.md` | Analisi: Unificazione dei modelli geografici in Comune.php | link in ingresso: 0 | proposto |
@@ -507,11 +520,15 @@ Motivo del gruppo: modello dati geografico: casa naturale models/. Stato di tutt
 | `factory-creation-geo-module.md` | `models/factory-creation-geo-module.md` | Factory Creation - Geo Module | link in ingresso: 1 | proposto |
 | `factory-seeder-consolidated.md` | `models/factory-seeder-consolidated.md` | Factory e Seeder Consolidati - Progetto nome progetto | link in ingresso: 0 | proposto |
 | `geo-entities.md` | `wiki/_archive/duplicates/geo-entities.md` | Entità Geografiche | copia byte-identica di `geo_entities.md`; link in ingresso: 2 | proposto |
+<<<<<<< HEAD
 <<<<<<< .merge_file_9UwVY0
 | `geo-json-model.md` | `models/geo-json-model.md` | Modello GeoJsonModel (ispirato a Squire) per Laravel | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 =======
 | `geo-json-model-1.md` | `models/geo-json-model-1.md` | Modello GeoJsonModel (ispirato a Squire) per Laravel | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 >>>>>>> .merge_file_ZMAuEA
+=======
+| `geo-json-model-1.md` | `models/geo-json-model-1.md` | Modello GeoJsonModel (ispirato a Squire) per Laravel | nome corrotto o sospetto; link in ingresso: 0 | proposto |
+>>>>>>> d478251a (.)
 | `geo-json-model.md` | `models/geo-json-model.md` | geo json model | stub (<200 caratteri); omonimo con contenuto diverso: `geo_json_model.md`; link in ingresso: 33 | proposto |
 | `geo-json-vs-sushi-comparison.md` | `models/geo-json-vs-sushi-comparison.md` | GeoJsonModel vs Laravel Sushi: Analisi e Confronto | canonico delle copie byte-identiche; link in ingresso: 9 | proposto |
 | `geo-sushi-comparison-1.md` | `models/geo-sushi-comparison-1.md` | Confronto: GeoJsonModel (readonly JSON) vs Laravel Sushi | nome corrotto o sospetto; link in ingresso: 0 | proposto |
@@ -728,7 +745,10 @@ Motivo del gruppo: architettura/guida concettuale: casa naturale architecture/. 
 | `module-geo.md` | `architecture/module-geo.md` | Modulo Geo | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 =======
 | `module-geo-1.md` | `architecture/module-geo-1.md` | Modulo Geo | nome corrotto o sospetto; link in ingresso: 0 | proposto |
+<<<<<<< HEAD
 >>>>>>> .merge_file_ZMAuEA
+=======
+>>>>>>> d478251a (.)
 | `module-geo.md` | `wiki/_archive/duplicates/module-geo.md` | Modulo Geo | copia byte-identica di `module_geo.md`; link in ingresso: 0 | proposto |
 | `module-reusability-guidelines.md` | `architecture/module-reusability-guidelines.md` | Linee Guida per la Riusabilità dei Moduli Laraxot | link in ingresso: 0 | proposto |
 | `module-reusability-implementation-plan.md` | `architecture/module-reusability-implementation-plan.md` | Piano di Implementazione Riusabilità Moduli | link in ingresso: 0 | proposto |
@@ -825,11 +845,15 @@ Motivo del gruppo: scratch di prova (file di test vuoti o quasi) o nome malforma
 |---|---|---|---|---|
 | `--eloquent.md` | `wiki/_archive/duplicates/--eloquent.md` | eloquent | copia byte-identica di `__eloquent.md`; nome corrotto o sospetto; link in ingresso: 0 | proposto |
 | `__eloquent.md` | `_integration/__eloquent.md` | eloquent | DESTINAZIONE GIA OCCUPATA da un file diverso: confrontare prima di spostare; canonico delle copie byte-identiche; nome corrotto o sospetto; link in ingresso: 3 | proposto |
+<<<<<<< HEAD
 <<<<<<< .merge_file_9UwVY0
 | `test.md` | `wiki/_archive/unclassified/test-27.md` | test 27 02 2024 | identico anche a `raw/root-import/test-27.md`; stub (<200 caratteri); link in ingresso: 0 | proposto |
 =======
 | `test.md` | `wiki/_archive/unclassified/test-27-02.md` | test 27 02 2024 | identico anche a `raw/root-import/test-27-02.md`; stub (<200 caratteri); link in ingresso: 0 | proposto |
 >>>>>>> .merge_file_ZMAuEA
+=======
+| `test.md` | `wiki/_archive/unclassified/test-27-02.md` | test 27 02 2024 | identico anche a `raw/root-import/test-27-02.md`; stub (<200 caratteri); link in ingresso: 0 | proposto |
+>>>>>>> d478251a (.)
 | `test.md` | `wiki/_archive/unclassified/test.md` | test | identico anche a `raw/root-import/test.md`; stub (<200 caratteri); link in ingresso: 0 | proposto |
 | `test1.md` | `wiki/_archive/unclassified/test1.md` | test1 | identico anche a `raw/root-import/test1.md`; stub (<200 caratteri); link in ingresso: 0 | proposto |
 | `test_27_02_2024.md` | `wiki/_archive/unclassified/test_27_02_2024.md` | Test 27 02 2024 | stub (<200 caratteri); link in ingresso: 0 | proposto |

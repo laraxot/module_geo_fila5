@@ -18,12 +18,20 @@ discussions: []
 
 ---
 
+<<<<<<< HEAD
 title: "GSD INTEGRATION SUMMARY"
+=======
+title: "gsd integration summary"
+>>>>>>> d478251a (.)
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< HEAD
 qmd: "GSD INTEGRATION SUMMARY"
+=======
+qmd: "gsd integration summary"
+>>>>>>> d478251a (.)
 issues: []
 discussions: []
 ## 🎯 What is GSD?
