@@ -167,5 +167,5 @@ Seleziona il backup da ripristinare [1-3]: 1
 ## Vedi Anche
 - [Documentazione Principale](../../docs/INDEX.md) - Indice della documentazione
 - [Best Practices](best-practices.md) - Linee guida e best practices
-- [Testing](testing.md) - Documentazione dei test
+- Testing - Documentazione dei test
 - [Convenzioni di Naming](../../docs/standards/file_naming_conventions.md) - Standard per la nomenclatura dei file

@@ -195,7 +195,7 @@ Remove exclusions progressively:
 
 ### Core Modules
 - [Xot Module Documentation](module-xot.md) ⚠️ *Incomplete - Syntax Errors*
-- [User Module Documentation](module-user.md) ⚠️ *Incomplete - Type Issues*
+- User Module Documentation ⚠️ *Incomplete - Type Issues*
 - [Lang Module Documentation](module-lang.md) ❌ *Blocked - Dependencies*
 
 ### Theme Documentation

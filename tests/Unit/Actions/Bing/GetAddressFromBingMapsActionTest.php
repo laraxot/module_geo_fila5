@@ -26,23 +26,31 @@ it('throws exception when api key is not configured', function (): void {
 it('throws exception for invalid latitude range', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    $action = new GetAddressFromBingMapsAction;
+    Http::fake();
+
     try {
-        $action->execute(91.0, 9.1900);
+        (new GetAddressFromBingMapsAction)->execute(91.0, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
-    } catch (InvalidLocationException) {
+    } catch (InvalidLocationException $exception) {
+        Assert::assertStringStartsWith('Coordinate non valide', $exception->getMessage());
     }
+    // Coordinate fuori range: nessuna chiamata a Bing.
+    Http::assertNothingSent();
 });
 
 it('throws exception for invalid longitude range', function (): void {
     config(['services.bing.maps_api_key' => 'test_key']);
 
-    $action = new GetAddressFromBingMapsAction;
+    Http::fake();
+
     try {
-        $action->execute(45.0, 181.0);
+        (new GetAddressFromBingMapsAction)->execute(45.0, 181.0);
         Assert::fail('Expected InvalidLocationException was not thrown');
-    } catch (InvalidLocationException) {
+    } catch (InvalidLocationException $exception) {
+        Assert::assertStringStartsWith('Coordinate non valide', $exception->getMessage());
     }
+    // Coordinate fuori range: nessuna chiamata a Bing.
+    Http::assertNothingSent();
 });
 
 it('throws exception when api response is not successful', function (): void {

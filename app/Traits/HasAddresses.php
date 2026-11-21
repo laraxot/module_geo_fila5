@@ -20,37 +20,37 @@ trait HasAddresses
     /** @return MorphMany<Address, $this> */
     public function addresses(): MorphMany
     {
-        return $this->morphMany(Address::class, 'model'); // @phpstan-ignore return.type
+        return $this->morphMany(Address::class, 'model');
     }
 
     /** @return MorphOne<Address, $this> */
     public function primaryAddress(): MorphOne
     {
-        return $this->morphOne(Address::class, 'model')->where('is_primary', true); // @phpstan-ignore return.type
+        return $this->morphOne(Address::class, 'model')->where('is_primary', true);
     }
 
     /** @return MorphOne<Address, $this> */
     public function homeAddress(): MorphOne
     {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::HOME->value); // @phpstan-ignore return.type
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::HOME->value);
     }
 
     /** @return MorphOne<Address, $this> */
     public function workAddress(): MorphOne
     {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::WORK->value); // @phpstan-ignore return.type
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::WORK->value);
     }
 
     /** @return MorphOne<Address, $this> */
     public function billingAddress(): MorphOne
     {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::BILLING->value); // @phpstan-ignore return.type
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::BILLING->value);
     }
 
     /** @return MorphOne<Address, $this> */
     public function shippingAddress(): MorphOne
     {
-        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::SHIPPING->value); // @phpstan-ignore return.type
+        return $this->morphOne(Address::class, 'model')->where('type', AddressTypeEnum::SHIPPING->value);
     }
 
     /**

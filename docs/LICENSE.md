@@ -1,7 +1,3 @@
-<<<<<<< .merge_file_nZX5iy
-=======
-<<<<<<< .merge_file_I7e9h4
->>>>>>> .merge_file_3y4VTc
 ---
 title: "LICENSE"
 type: note
@@ -13,11 +9,6 @@ issues: []
 discussions: []
 ---
 
-<<<<<<< .merge_file_nZX5iy
-=======
-=======
->>>>>>> .merge_file_XfpwHW
->>>>>>> .merge_file_3y4VTc
 The MIT License (MIT)
 
 Copyright (c) :vendor_name <author@domain.com>

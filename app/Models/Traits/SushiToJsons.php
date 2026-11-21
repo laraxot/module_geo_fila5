@@ -12,7 +12,6 @@ use function Safe\json_encode;
 
 use Sushi\Sushi;
 
-/** @phpstan-ignore trait.unused */
 trait SushiToJsons
 {
     use Sushi;

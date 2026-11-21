@@ -593,7 +593,7 @@ find docs/ -name "*" | grep '[A-Z]' | grep -v "README.md"
 - [Filament Best Practices](../raw/history/filament-best-practices.md)
 - [Translation Rules](../../docs/translation-rules.md)
 - [Frontend Guidelines](../../docs/frontend-guidelines.md)
-- [Database Migrations](../raw/history/database-migrations.md)
+- Database Migrations
 - [Enum Management](../../docs/enum-management.md)
 - [HTML2PDF Guidelines](../../docs/html2pdf-guidelines.md)
 

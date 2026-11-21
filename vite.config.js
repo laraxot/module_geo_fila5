@@ -1,16 +1,52 @@
 import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import tailwindcss from '@tailwindcss/vite';
+import laravel, { refreshPaths } from 'laravel-vite-plugin';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const nodeModules = resolve(__dirname, '../../node_modules');
 
 export default defineConfig({
+    build: {
+        // Gli asset compilati restano nel modulo (`./public`): la document root li vede con il symlink
+        // public_html/assets/geo -> ../../laravel/Modules/Geo/public, quindi l'URL resta /assets/geo/...
+        // e AdminPanelProvider::BUILD_DIRECTORY ('assets/geo') non cambia. Niente più `npm run copy`.
+        // `outDir` deve coincidere con `publicDirectory` + `buildDirectory` del plugin qui sotto.
+        outDir: './public',
+        emptyOutDir: false,
+        manifest: "manifest.json",
+        rollupOptions: {
+            output: {
+                entryFileNames: `assets/[name].js`,
+                chunkFileNames: `assets/[name].js`,
+                assetFileNames: `assets/[name].[ext]`
+            },
+        }
+    },
+    resolve: {
+        alias: {
+            'lit': path.resolve(nodeModules, 'lit'),
+            'leaflet': path.resolve(nodeModules, 'leaflet'),
+            'leaflet/dist/leaflet.css': path.resolve(nodeModules, 'leaflet/dist/leaflet.css'),
+            'leaflet.markercluster': path.resolve(nodeModules, 'leaflet.markercluster'),
+            'leaflet.markercluster/dist/MarkerCluster.css': path.resolve(nodeModules, 'leaflet.markercluster/dist/MarkerCluster.css'),
+            'leaflet.markercluster/dist/MarkerCluster.Default.css': path.resolve(nodeModules, 'leaflet.markercluster/dist/MarkerCluster.Default.css'),
+            'leaflet.heat': path.resolve(nodeModules, 'leaflet.heat'),
+        }
+    },
     plugins: [
         laravel({
+            publicDirectory: 'public',
+            buildDirectory: '.',
             input: [
-                'resources/css/app.css',
-                'resources/js/components/coordinate-picker-lit.js',
+                resolve(__dirname, 'resources/css/app.css'),
+                resolve(__dirname, 'resources/js/components/coordinate-picker-lit.js'),
             ],
+            ...refreshPaths,
             refresh: true,
         }),
-        tailwindcss(),
     ],
 });

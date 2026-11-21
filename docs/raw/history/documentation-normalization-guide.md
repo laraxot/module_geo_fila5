@@ -160,7 +160,7 @@ Riferimento a [configuration.md](configuration.md)
 
 ## Testing
 
-Riferimento a [testing.md](testing.md)
+Riferimento a testing.md
 
 ## Collegamenti
 

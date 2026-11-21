@@ -1,7 +1,3 @@
-<<<<<<< .merge_file_2mnLWI
-=======
-<<<<<<< .merge_file_u8XKXd
->>>>>>> .merge_file_u5aV0Q
 ---
 title: "MCP SERVER RECOMMENDED"
 type: note
@@ -13,11 +9,6 @@ issues: []
 discussions: []
 ---
 
-<<<<<<< .merge_file_2mnLWI
-=======
-=======
->>>>>>> .merge_file_cEai5d
->>>>>>> .merge_file_u5aV0Q
 # MCP Server Consigliati per il Modulo Geo
 
 ## Scopo del Modulo

@@ -1,7 +1,3 @@
-<<<<<<< .merge_file_ASLZ2L
-=======
-<<<<<<< .merge_file_gp2ku7
->>>>>>> .merge_file_tco9dp
 ---
 title: "ADVANCED FEATURES"
 type: note
@@ -13,11 +9,6 @@ issues: []
 discussions: []
 ---
 
-<<<<<<< .merge_file_ASLZ2L
-=======
-=======
->>>>>>> .merge_file_9fPEHb
->>>>>>> .merge_file_tco9dp
 # Funzionalità Avanzate del Modulo Geo
 
 ## Ottimizzazione Percorsi
