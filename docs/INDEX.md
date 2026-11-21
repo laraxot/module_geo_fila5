@@ -12,13 +12,21 @@ discussions: []
 # Geo Module Documentation Index
 
 <!-- p4-docs-geo: ingresso unico -->
+<<<<<<< .merge_file_RauZlo
 **Punto d'ingresso unico della documentazione del modulo Geo.** `00-INDEX.md` e `00-index.md` sono superseded da questo file (restano per cronologia, non vengono aggiornati).
+=======
+**Punto d'ingresso unico della documentazione del modulo Geo.** `00-index.md` e `00-index.md` sono superseded da questo file (restano per cronologia, non vengono aggiornati).
+>>>>>>> .merge_file_vbkIA6
 
 ## Navigazione rapida
 
 - [Mappa di migrazione della radice](./DOCS-MIGRATION-MAP.md) - dove andrebbe ognuno dei 622 file della radice di `docs/` (proposta, nessuno spostamento eseguito)
 - [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo
+<<<<<<< .merge_file_RauZlo
 - [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting; indice dei concept in [wiki/concepts/INDEX.md](./wiki/concepts/INDEX.md)
+=======
+- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting; indice dei concept in [wiki/concepts/index.md](./wiki/concepts/index.md)
+>>>>>>> .merge_file_vbkIA6
 - [Log del wiki](./wiki/log.md) - cronologia dei cambiamenti alla conoscenza del modulo
 - [Registro decisioni](./decision-log.md) - decisioni di struttura e di allineamento
 - [Panoramica del modulo](./README.md)
@@ -29,7 +37,7 @@ discussions: []
 
 - [**Architecture Overview**](./architecture.md) - Technical architecture and system design
 - [**Component Analysis**](./story-map-component-analysis.md) - Deep dive on map component philosophy and best practices
-- [**Project Strategy**](./PRODUCT_STRATEGY.md) - Strategic vision and roadmap
+- [**Project Strategy**](./product_strategy.md) - Strategic vision and roadmap
 - [**Technical Implementation**](./TECHNICAL.md) - Technical guidelines and patterns
 
 ### 🚀 Features & Capabilities
@@ -37,8 +45,13 @@ discussions: []
 - [**Address Implementation**](./address-implementation.md) - Address handling and validation
 - [**Address Autocomplete**](./address-autocomplete.md) - Smart address suggestions
 - [**Map Components**](./leaflet-marker-map-input.md) - Interactive map components
+<<<<<<< .merge_file_RauZlo
 - [**Advanced Features**](./ADVANCED_FEATURES.md) - Power user features
 - [**Product Roadmap**](./PRODUCT_ROADMAP.md) - Future development plans
+=======
+- [**Advanced Features**](./advanced_features.md) - Power user features
+- [**Product Roadmap**](./product_roadmap.md) - Future development plans
+>>>>>>> .merge_file_vbkIA6
 
 ### 🔧 Integration & Usage
 
@@ -58,7 +71,7 @@ discussions: []
 - `arrows-pointing-out.svg` / `arrows-pointing-in.svg` - Fullscreen toggle
 - `map-icon-plus.svg` / `map-icon-minus.svg` - Zoom controls
 - [**Web Components & Build Architecture**](./filament-forms-components.md#web-components--litdev) - Lit.dev web component pattern, module vs theme asset separation
-- [**MCP Servers**](./MCP_SERVER_RECOMMENDED.md) - Recommended Model Context Protocol servers
+- [**MCP Servers**](./mcp_server_recommended.md) - Recommended Model Context Protocol servers
 - [**App Integration**](./app-integration.md) - Integration with main application
 - [**Address Migration**](./address_migration_guide.md) - Migration guides and patterns
 
@@ -66,14 +79,14 @@ discussions: []
 
 - [**Model Analysis**](./analisi-modelli-doppi.md) - Duplicate models analysis and recommendations
 - [**Code Quality Analysis**](./analysis/code-quality-analysis.md) - Code quality metrics and improvements
-- [**User Research**](./USER_RESEARCH.md) - User experience research findings
+- [**User Research**](./user_research.md) - User experience research findings
 - [**Domain Research**](./_integration/archive/here-com.md) - Geographic domain research
 
 ### 🛠️ Development & Tools
 
-- [**Sprint Planning**](./SPRINT_PLANNING.md) - Sprint planning and tracking
+- [**Sprint Planning**](./sprint_planning.md) - Sprint planning and tracking
 - [**Project Management**](./PROJECT.md) - Project management documentation
-- [**PHPStan Fixes**](./PHPSTAN_FIXES.md) - Code quality fixes and improvements
+- [**PHPStan Fixes**](./phpstan_fixes.md) - Code quality fixes and improvements
 - [**Vite Build Configuration**](./vite-build-configuration.md) - Vite 7.x + Tailwind 4.x setup per moduli
 - [**Configuration**](../config/config.php) - Module configuration
 
@@ -183,8 +196,8 @@ This module has many duplicate files in docs/. Key actions taken:
 
 - Follow the [BMad methodology](../../../_bmad/README.md) for development
 - Maintain [design system compliance](../../DesignComuni/README.md)
-- Ensure [accessibility standards](./USER_RESEARCH.md#accessibility) are met
-- Run quality checks with [PHPStan](./PHPSTAN_FIXES.md)
+- Ensure [accessibility standards](./user_research.md#accessibility) are met
+- Run quality checks with [PHPStan](./phpstan_fixes.md)
 
 ### 📞 Support
 

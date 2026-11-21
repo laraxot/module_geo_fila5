@@ -233,7 +233,11 @@ php bashscripts/database/seeding/<nome progetto>-1000-records.php
 
 ## Collegamenti e Riferimenti
 
+<<<<<<< .merge_file_2zOT29
 - [README BashScripts](../bashscripts/readme.md)
+=======
+- [README BashScripts](../bashscripts/README.md)
+>>>>>>> .merge_file_cqrQn3
 - [Quick Start Seeding](../bashscripts/database/seeding/quick_start.md)
 - [Documentazione Modulo <nome progetto>](../laravel/Modules/<nome progetto>/docs/)
 - [Documentazione Modulo <nome modulo>](../laravel/Modules/<nome modulo>/docs/)

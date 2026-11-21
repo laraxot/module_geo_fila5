@@ -1,10 +1,10 @@
 ---
-title: "github interaction log"
+title: "Github Interaction Log"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "github interaction log"
+qmd: "Github Interaction Log"
 issues: []
 discussions: []
 ---
@@ -17,12 +17,20 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_IbxY2Z
 title: "github interaction log"
+=======
+title: "GITHUB INTERACTION LOG"
+>>>>>>> .merge_file_IsyyDe
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_IbxY2Z
 qmd: "github interaction log"
+=======
+qmd: "GITHUB INTERACTION LOG"
+>>>>>>> .merge_file_IsyyDe
 issues: []
 discussions: []
 ## Issues Aggiornate

@@ -1,10 +1,10 @@
 ---
-title: "infolist schema guidelines"
+title: "Infolist Schema Guidelines"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "infolist schema guidelines"
+qmd: "Infolist Schema Guidelines"
 issues: []
 discussions: []
 ---

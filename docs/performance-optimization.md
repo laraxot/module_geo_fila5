@@ -1,8 +1,8 @@
 ---
-qmd: "performance optimization"
+qmd: "Performance Optimization"
 issues: []
 discussions: []
-title: "Performance Optimization — Module Geo"
+title: "Performance Optimization"
 type: documentation
 created: 2026-05-11
 updated: 2026-05-11
@@ -46,7 +46,7 @@ related:
 
 ### 4. Wiki Indici Locali
 
-Ogni modulo ha i propri `rules/skills/commands/memories/INDEX.md`:
+Ogni modulo ha i propri `rules/skills/commands/memories/index.md`:
 - Ricerca più rapida (scope limitato)
 - Context rilevante per il modulo
 - Non mischia contenuti eterogenei

@@ -9,7 +9,11 @@ issues: []
 discussions: []
 module: theme
 topic: advanced-features
+<<<<<<< .merge_file_EGK3bj
 canonical: ../../../Themes/docs/shared-components/ADVANCED_FEATURES.md
+=======
+canonical: ../../../Themes/docs/shared-components/advanced_features.md
+>>>>>>> .merge_file_Pdc5BE
 ---
 
-See canonical documentation: ../../../Themes/docs/shared-components/ADVANCED_FEATURES.md
+See canonical documentation: ../../../Themes/docs/shared-components/advanced_features.md

@@ -56,7 +56,7 @@ Created a **proper Filament Form Component** `AddressInput` that extends `Field`
 | `Modules/Fixcity/app/Filament/Widgets/CreateTicketWizardWidget.php` | Added `->label()` and `->required()` to AddressInput usage |
 | `Modules/Geo/docs/address-field-component.md` | Updated to document both AddressInput and AddressField |
 | `Modules/Geo/docs/address-input-component.md` | Created detailed component documentation |
-| `Modules/Geo/docs/components/INDEX.md` | Updated component index with new architecture |
+| `Modules/Geo/docs/components/index.md` | Updated component index with new architecture |
 | `Modules/Geo/docs/README.md` | Updated README with component usage |
 
 ### Usage (Correct Pattern)
@@ -119,4 +119,8 @@ All documentation has been updated to reflect:
 - [AddressInput Component Docs](../../../Modules/Geo/docs/address-input-component.md)
 - [Address Components Overview](../../../Modules/Geo/docs/address-field-component.md)
 - [Module Boundary Philosophy](../../../Modules/Fixcity/docs/MODULE-BOUNDARY-PHILOSOPHY.md)
+<<<<<<< .merge_file_Sd96e4
 - [Geo Components Index](../../../Modules/Geo/docs/components/INDEX.md)
+=======
+- [Geo Components Index](../../../Modules/Geo/docs/components/index.md)
+>>>>>>> .merge_file_N94xOK

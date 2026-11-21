@@ -1,10 +1,10 @@
 ---
-title: "produzione migration checklist"
+title: "Produzione Migration Checklist"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "produzione migration checklist"
+qmd: "Produzione Migration Checklist"
 issues: []
 discussions: []
 ---
@@ -27,12 +27,20 @@ discussions: []
 
 ---
 
+<<<<<<< .merge_file_v200zK
 title: "produzione migration checklist"
+=======
+title: "PRODUZIONE MIGRATION CHECKLIST"
+>>>>>>> .merge_file_kBbdyg
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_v200zK
 qmd: "produzione migration checklist"
+=======
+qmd: "PRODUZIONE MIGRATION CHECKLIST"
+>>>>>>> .merge_file_kBbdyg
 issues: []
 discussions: []
 ## Procedura Step-by-Step

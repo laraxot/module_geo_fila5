@@ -76,7 +76,11 @@ protected function getInfolistSchema(): array
 }
 ```
 
+<<<<<<< .merge_file_Uztv0d
 Per linee guida più dettagliate sul metodo `getInfolistSchema`, consultare il documento [INFOLIST_SCHEMA_GUIDELINES.md](../../filament/INFOLIST_SCHEMA_GUIDELINES.md).
+=======
+Per linee guida più dettagliate sul metodo `getInfolistSchema`, consultare il documento [infolist_schema_guidelines.md](../../filament/infolist_schema_guidelines.md).
+>>>>>>> .merge_file_TgxHxy
 
 ## Gestione degli Errori Comuni
 

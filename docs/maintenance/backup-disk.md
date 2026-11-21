@@ -61,7 +61,11 @@ backup_disk() {
 - [GitHub Actions](../git/github-actions.md) - Automazione sync remoto
 
 ## Vedi Anche
+<<<<<<< .merge_file_lrRHIk
 - [Documentazione Principale](../../docs/INDEX.md) - Indice della documentazione
+=======
+- [Documentazione Principale](../../docs/index.md) - Indice della documentazione
+>>>>>>> .merge_file_ms94GR
 - [Best Practices](best-practices.md) - Linee guida e best practices
 - [Testing](testing.md) - Documentazione dei test
 - [Convenzioni di Naming](../../docs/standards/file_naming_conventions.md) - Standard per la nomenclatura dei file

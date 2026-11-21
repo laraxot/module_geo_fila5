@@ -249,9 +249,15 @@ User (base)
 ## 🔗 Collegamenti Documentazione
 
 ### Documentazione Moduli
+<<<<<<< .merge_file_NIpnyf
 - [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
 - [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
 - [User](../../User/docs/readme.md)
+=======
+- [<nome progetto>](../modules/<nome progetto>/docs/README.md)
+- [<nome progetto>](../modules/<nome progetto>/docs/README.md)
+- [User](../../User/docs/README.md)
+>>>>>>> .merge_file_EiQpYA
 - [Geo](README.md)
 - [Media](../../Media/docs/readme.md)
 - [UI](../../UI/docs/README.md)

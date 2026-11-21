@@ -9,7 +9,11 @@ issues: []
 discussions: []
 module: theme
 topic: phpstan-fixes-uppercase
+<<<<<<< .merge_file_hd0XCW
 canonical: ../../../Themes/docs/shared-components/PHPSTAN_FIXES.md
+=======
+canonical: ../../../Themes/docs/shared-components/phpstan_fixes.md
+>>>>>>> .merge_file_q2P1nW
 ---
 
-See canonical documentation: ../../../Themes/docs/shared-components/PHPSTAN_FIXES.md
+See canonical documentation: ../../../Themes/docs/shared-components/phpstan_fixes.md

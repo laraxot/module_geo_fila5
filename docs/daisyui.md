@@ -1,10 +1,10 @@
 ---
-title: "daisyui"
+title: "Daisyui"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "daisyui"
+qmd: "Daisyui"
 issues: []
 discussions: []
 ---
@@ -22,16 +22,24 @@ Nel contesto del modulo **Geo**, daisyUI **non è attualmente installato**.
 | Installato in Geo? | ❌ No (e non serve — vedi sotto) |
 | Tailwind CSS in Geo | ✅ `tailwindcss@^3.4.1` (autonomo, solo utility) |
 | Build pipeline | `vite build` + `copy` → `public_html/assets/geo` |
-| Stack canonico | Tailwind v4 + DaisyUI v5 + Filament v5 + Alpine + Lit (definito nel tema, vedi `laravel/Themes/Sixteen/docs/DAISYUI.md`) |
+| Stack canonico | Tailwind v4 + DaisyUI v5 + Filament v5 + Alpine + Lit (definito nel tema, vedi `laravel/Themes/Sixteen/docs/daisyui.md`) |
 
 ---
 
+<<<<<<< .merge_file_9tfO3E
 title: "daisyui"
+=======
+title: "DAISYUI"
+>>>>>>> .merge_file_IU3Dqh
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_9tfO3E
 qmd: "daisyui"
+=======
+qmd: "DAISYUI"
+>>>>>>> .merge_file_IU3Dqh
 issues: []
 discussions: []
 ## Perché Geo non usa daisyUI (e perché non serve)
@@ -132,4 +140,4 @@ Per il modulo Geo l'implicazione è:
   `resources/css/components/` legano i nomi design-comuni a un cluster di utility
   Tailwind (eventualmente componenti DaisyUI come `btn`, `card`).
 
-Doc canonico (con pro/contro/percentuali completi): `laravel/Themes/Sixteen/docs/DAISYUI.md`.
+Doc canonico (con pro/contro/percentuali completi): `laravel/Themes/Sixteen/docs/daisyui.md`.

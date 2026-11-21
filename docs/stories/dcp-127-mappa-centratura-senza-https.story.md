@@ -15,6 +15,7 @@ related:
   - Themes/Sixteen/docs/bmad/geo-dynamic-user-location.md
   - Themes/Sixteen/docs/bmad/decisions/decision-user-location.md
 qmd: "dcp-127 geo coordinate picker centratura posizione utente gps http https fuso orario default_view guardia clic zoom sonda playwright"
+date_originale_nome_file: 2026-10-13
 ---
 
 # DCP-127: centratura della mappa senza HTTPS

@@ -1,3 +1,15 @@
+---
+title: "Map Controls I18n It En De Es .story"
+type: note
+tags: [documentation]
+created: 2026-10-07
+updated: 2026-11-19
+qmd: "Map Controls I18n It En De Es .story"
+date_originale_nome_file: 2026-10-07
+issues: [122]
+discussions: []
+---
+
 # Controlli e popup della mappa tradotti in it, en, de, es
 
 - Stato: done (2026-10-07)

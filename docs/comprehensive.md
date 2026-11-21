@@ -9,7 +9,11 @@ issues: []
 discussions: []
 module: theme
 topic: comprehensive
+<<<<<<< .merge_file_sGWf5a
 canonical: ../../../Themes/docs/shared-components/COMPREHENSIVE_GUIDE.md
+=======
+canonical: ../../../Themes/docs/shared-components/comprehensive_guide.md
+>>>>>>> .merge_file_4HE7Mn
 ---
 
-See canonical documentation: ../../../Themes/docs/shared-components/COMPREHENSIVE_GUIDE.md
+See canonical documentation: ../../../Themes/docs/shared-components/comprehensive_guide.md

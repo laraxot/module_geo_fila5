@@ -1,10 +1,18 @@
 ---
+<<<<<<< .merge_file_GK4kzs
 title: "LICENSE"
+=======
+title: "License"
+>>>>>>> .merge_file_D2xfgY
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
+<<<<<<< .merge_file_GK4kzs
 qmd: "LICENSE"
+=======
+qmd: "License"
+>>>>>>> .merge_file_D2xfgY
 issues: []
 discussions: []
 ---

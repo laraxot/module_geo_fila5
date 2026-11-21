@@ -1,10 +1,10 @@
 ---
-title: "upgrade guide"
+title: "Upgrade Guide"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "upgrade guide"
+qmd: "Upgrade Guide"
 issues: []
 discussions: []
 ---

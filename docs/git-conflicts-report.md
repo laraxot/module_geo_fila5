@@ -92,7 +92,11 @@ Generated on: Wed Apr 22 14:04:36 CEST 2026
 * ./Themes/Sixteen/docs/design-comuni/screenshots/reference/homepage-desktop.png
 * ./Themes/Sixteen/docs/design-comuni/screenshots/local-homepage-full.png
 * ./Themes/Sixteen/docs/MERGE_CONFLICT_RESOLUTION_LOG.md
+<<<<<<< .merge_file_weMnSV
 * ./Themes/Sixteen/docs/00-INDEX.md
+=======
+* ./Themes/Sixteen/docs/00-index.md
+>>>>>>> .merge_file_PDnbsm
 * ./Themes/Sixteen/docs/merge-conflicts-list.md
 * ./Themes/Sixteen/docs/screenshots/homepage/reference-full-2026-04-07.png
 * ./Themes/Sixteen/docs/screenshots/homepage/reference-viewport-2026-04-07.png

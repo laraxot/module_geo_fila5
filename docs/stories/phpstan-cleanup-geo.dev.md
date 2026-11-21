@@ -8,6 +8,7 @@ updated: 2026-10-06
 tags: [phpstan, geo, constants, bmad]
 related:
   - ./phpstan-cleanup-geo.story.md
+date_originale_nome_file: 2026-10-06
 ---
 
 # [DEV] PHPStan cleanup modulo Geo

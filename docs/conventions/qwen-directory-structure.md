@@ -133,7 +133,7 @@ ls /var/www/_bases/base_ptvx_fila5/bashscripts/ai/.qwen/skills/
 ```
 .qwen/skills/
 ├── README.md              # Skills overview
-├── INDEX.md               # Navigation index
+├── index.md               # Navigation index
 ├── laravel-expert.md      # Laravel development
 ├── documentation-master.md # Documentation standards
 ├── ai-agent-coordination.md # AI coordination

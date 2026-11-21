@@ -10,6 +10,7 @@ created: 2026-10-13
 updated: 2026-10-13
 qmd: "geo point-map readonly coordinate-picker lit GeoServiceProvider componentNamespace module_ns ai activity mobile build"
 related: [dcp-33]
+date_originale_nome_file: 2026-10-13
 ---
 
 # DCP-93: Geo, cosa resta dopo la mappa di sola lettura

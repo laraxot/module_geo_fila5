@@ -43,6 +43,10 @@ Un indirizzo in ingresso → coordinate e dati strutturati. In produzione serve 
 
 ## Collegamenti
 
+<<<<<<< .merge_file_zGwzyv
 - [00-INDEX.md](./00-INDEX.md)
+=======
+- [00-index.md](./00-index.md)
+>>>>>>> .merge_file_mlAPGj
 - [module-philosophy.md](./module-philosophy.md)
 - [Notify audit](../../Notify/docs/ponytail-audit-over-engineering.md) (stesso pattern multi-provider)

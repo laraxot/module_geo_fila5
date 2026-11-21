@@ -9,7 +9,11 @@ issues: []
 discussions: []
 ---
 
+<<<<<<< .merge_file_uzK76V
 > **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
+=======
+> **Superseded: vedi [index.md](./index.md).** Questo file resta per cronologia e non viene aggiornato.
+>>>>>>> .merge_file_PTEXgL
 
 # 📚 **Indice Documentazione Modulo Geo**
 

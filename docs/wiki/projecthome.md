@@ -38,7 +38,7 @@ Welcome to the central knowledge base for the **PTVX** project. This wiki is aut
 
 ## Developer Guide
 
-- [Agents index](agents/INDEX.md): Agent roles and coordination.
+- [Agents index](agents/index.md): Agent roles and coordination.
 - [On-demand pattern](rules/on-demand-pattern.md): How to maintain this wiki.
 - [QMD search guide](how-to/qmd-search-guide.md): Searching and indexing documentation.
 - [Validation post-edit](rules/validation-post-edit-rule.md): PHPStan, PHPMD, PHPInsights, UI checks.
