@@ -27,6 +27,12 @@ it('returns null when google api key not configured', function (): void {
     Config::set('services.bing.maps_api_key', null);
     Config::set('services.opencage.api_key', null);
 
+    // Azzerare le chiavi non spegne la catena: `GetCoordinatesByAddressAction`
+    // prova cinque fornitori, e gli ultimi due — Nominatim e open-meteo — non
+    // vogliono chiavi. Senza questo finto il test uscuiva in rete davvero e
+    // falliva per timeout (base_quaeris_fila5#241).
+    Http::fake(['*' => Http::response([], 200)]);
+
     $result = $action->execute('Fake Address XYZ');
 
     Assert::assertNull($result);
@@ -39,12 +45,15 @@ it('returns null for non-existent address with mock', function (): void {
     Config::set('services.bing.maps_api_key', null);
     Config::set('services.opencage.api_key', null);
 
-    // Mock empty results from Google
+    // Il finto su Google non bastava: una richiesta che nessuna regola
+    // intercetta passa alla rete vera, e la catena arriva fino a open-meteo,
+    // che non vuole chiavi. La regola `*` in coda chiude il buco.
     Http::fake([
         'maps.googleapis.com/*' => Http::response([
             'status' => 'ZERO_RESULTS',
             'results' => [],
         ], 200),
+        '*' => Http::response([], 200),
     ]);
 
     $result = $action->execute('asdfghjklqwertyuizxcvbnm123456789');

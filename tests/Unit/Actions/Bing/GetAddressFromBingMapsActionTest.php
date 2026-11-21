@@ -30,7 +30,13 @@ it('throws exception for invalid latitude range', function (): void {
     try {
         $action->execute(91.0, 9.1900);
         Assert::fail('Expected InvalidLocationException was not thrown');
-    } catch (InvalidLocationException) {
+    } catch (InvalidLocationException $exception) {
+        // Il `catch` era vuoto, quindi il test non registrava nessuna
+        // asserzione e PHPUnit lo segnalava come «risky»: passava per il solo
+        // fatto di non essere arrivato all'`Assert::fail`. Il messaggio
+        // dell'eccezione e' l'unica cosa che l'operatore legge, e deve dire
+        // **quale** coordinata e' sbagliata (base_quaeris_fila5#241).
+        Assert::assertStringContainsString('91', $exception->getMessage());
     }
 });
 
@@ -41,7 +47,9 @@ it('throws exception for invalid longitude range', function (): void {
     try {
         $action->execute(45.0, 181.0);
         Assert::fail('Expected InvalidLocationException was not thrown');
-    } catch (InvalidLocationException) {
+    } catch (InvalidLocationException $exception) {
+        // Vedi il test gemello: un `catch` vuoto non asserisce niente.
+        Assert::assertStringContainsString('181', $exception->getMessage());
     }
 });
 

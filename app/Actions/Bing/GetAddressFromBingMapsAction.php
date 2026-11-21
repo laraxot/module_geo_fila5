@@ -30,12 +30,46 @@ class GetAddressFromBingMapsAction
      */
     public function execute(float $latitude, float $longitude): AddressData
     {
+        $this->assertCoordinatesInRange($latitude, $longitude);
+
         $apiKey = $this->getApiKey();
         /** @var array<string, mixed> $response */
         $response = $this->makeApiRequest($latitude, $longitude, $apiKey);
         $data = $this->parseResponse($response);
 
         return $this->mapResponseToAddressData($data);
+    }
+
+    /**
+     * Rifiuta le coordinate fuori dall'intervallo possibile.
+     *
+     * Latitudine fra -90 e 90, longitudine fra -180 e 180: non e' una
+     * convenzione di Bing, e' la forma della Terra. Una coordinata fuori da
+     * quell'intervallo non e' «un indirizzo che non troveremo», e' un indirizzo
+     * che **non esiste**, e chiederlo a un servizio remoto e' una chiamata di
+     * rete spesa per avere indietro un errore che si sapeva prima di partire.
+     *
+     * Prima mancava, e si vedeva nei test: chiedere la latitudine 91 produceva
+     *
+     *     cURL error 6: Could not resolve host: dev.virtualearth.net
+     *     ... /REST/v1/Locations?point=91%2C9.19&key=test_key
+     *
+     * cioe' l'azione aveva davvero interrogato Bing su un punto impossibile, e
+     * il test — che attendeva `InvalidLocationException` — riceveva un errore di
+     * connessione. In produzione, con la rete, avrebbe ricevuto un errore del
+     * servizio: lo stesso esito, pagato con una chiamata e un tempo di attesa.
+     *
+     * La fabbrica `InvalidLocationException::invalidCoordinates()` esisteva
+     * **gia'**, e il docblock di `execute()` dichiarava gia' questa eccezione:
+     * mancava solo la chiamata (base_quaeris_fila5#241).
+     *
+     * @throws InvalidLocationException
+     */
+    private function assertCoordinatesInRange(float $latitude, float $longitude): void
+    {
+        if ($latitude < -90.0 || $latitude > 90.0 || $longitude < -180.0 || $longitude > 180.0) {
+            throw InvalidLocationException::invalidCoordinates($latitude, $longitude);
+        }
     }
 
     /**
