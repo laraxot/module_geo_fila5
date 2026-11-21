@@ -38,4 +38,4 @@ $data = CoordinatePicker::extractCoordinates($data);
 
 - [geo wiki index](../index.md)
 - [map-picker-filament-field](./map-picker-filament-field.md)
-- [coordinate-picker module docs](../../coordinate-picker.md)
+- [coordinate-picker module docs](../coordinate-picker.md)

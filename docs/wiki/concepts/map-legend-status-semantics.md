@@ -40,4 +40,4 @@ Vedi story: `docs/stories/STORY-125-map-legend-status-semantics-collapsible.md`
 ## Collegamenti
 
 - [map-lit-legend-types.md](./map-lit-legend-types.md) — documentazione STORY-094 (obsoleta per tipologie)
-- [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents-2026-06.md)
+- [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents.md)
