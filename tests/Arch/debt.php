@@ -21,7 +21,6 @@ return [
         'Modules\Geo\Models\ComuneJson',
         'Modules\Geo\Models\GeoJsonModel',
         'Modules\Geo\Models\Traits\SushiToJsons',
-<<<<<<< HEAD
         'Modules\Geo\View\Components\PointMap',
     ],
     // classi in un namespace Services (regola No Services, DCP-270); NoServicesTest le vede come cartelle
@@ -31,25 +30,4 @@ return [
     // docblock quale metodo ha sostituito (base_quaeris_fila5#247). La chiave
     // resta per documentare la regola e rendere esplicito lo zero.
     'services' => [],
-=======
-=======
->>>>>>> d478251a (.)
-        'Modules\Geo\Services\BaseGeoService',
-        'Modules\Geo\Services\GoogleMapsService',
-        'Modules\Geo\View\Components\PointMap',
-    ],
-    // classi in un namespace Services (regola No Services, DCP-270); NoServicesTest le vede come cartelle
-    'services' => [
-        'Modules\Geo\Services\BaseGeoService',
-        'Modules\Geo\Services\GeoDataService',
-        'Modules\Geo\Services\GeoDataValidator',
-        'Modules\Geo\Services\GeoService',
-        'Modules\Geo\Services\GeocodingService',
-        'Modules\Geo\Services\GoogleMapsService',
-        'Modules\Geo\Services\HereService',
-        'Modules\Geo\Services\MapService',
-    ],
-<<<<<<< HEAD
-=======
->>>>>>> d478251a (.)
 ];
