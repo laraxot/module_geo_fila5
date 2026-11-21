@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "migration naming pattern"
 issues: []
 discussions: []
+<<<<<<< .merge_file_YYVQWP
 ---
 
 # Convenzione di Naming e Gestione delle Migrazioni
@@ -92,3 +93,11 @@ $this->tableUpdate(
 - [XotBaseMigration](../../../Xot/database/migrations/XotBaseMigration.php)
 - [Documentazione Laravel sulle Migrazioni](https://laravel.com/project_docs/migrations)
 - [Xot Module Documentation Standards](../../../xot/project_docs/documentation-standards.md)
+=======
+module: theme
+topic: migration-naming-pattern
+canonical: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/migration-naming-pattern-1.md
+>>>>>>> .merge_file_EQQCdC

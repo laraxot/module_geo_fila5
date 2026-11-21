@@ -27,7 +27,11 @@ Many files exist with both naming conventions and nearly identical content:
 
 ### 2. Fragmentation by Detail
 Topics are split into too many small files that should be consolidated:
+<<<<<<< .merge_file_KtbVtj
 - **Address Resource**: `address-resource.md`, `address-resource.md`, `address-resource-analysis.md`, `address-resource-improvements.md`, `address-resource-summary.md`, `address-resource-sumy.md`, `addressresource.md`, etc.
+=======
+- **Address Resource**: `address-resource.md`, `address-resource-1.md`, `address-resource-analysis.md`, `address-resource-improvements.md`, `address-resource-summary.md`, `address-resource-sumy.md`, `addressresource.md`, etc.
+>>>>>>> .merge_file_C6I4P1
 - **Comune Model**: `comune_model.md`, `comune-model.md`, `comune_sushi_analisi.md`, `comune_sushi_conversion.md`, `comune_sushi_implementation.md`, `comune-sushi-analysis.md`, etc.
 
 ### 3. Duplicate Analysis and Summaries

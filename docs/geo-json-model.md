@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "geo json model"
 issues: []
 discussions: []
+<<<<<<< .merge_file_BYHbnE
 ---
 
 # Modello GeoJsonModel (ispirato a Squire) per Laravel
@@ -511,3 +512,11 @@ trait SushiToJsons
 ---
 
 - Vedi anche [geo_entities.md](./geo_entities.md) e [squire-integration.md](./squire-integration.md) per altri confronti e strategie.
+=======
+module: theme
+topic: geo-json-model
+canonical: ../../../Themes/docs/shared-components/geo-json-model-1.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/geo-json-model-1.md
+>>>>>>> .merge_file_dsjt03

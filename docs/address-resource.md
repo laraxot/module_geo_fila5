@@ -7,6 +7,7 @@ updated: 2026-09-26
 qmd: "address resource"
 issues: []
 discussions: []
+<<<<<<< .merge_file_tebemL
 ---
 
 # Risorsa Filament per il Modello Address
@@ -115,3 +116,11 @@ Quando un altro modulo (es. StudioResource) deve gestire indirizzi, è best prac
 - [../../Xot/app/Filament/Resources/XotBaseResource.php](../../Xot/app/Filament/Resources/XotBaseResource.php)
 - [filament.md](./filament.md)
 - [models/address.md](./models/address.md)
+=======
+module: theme
+topic: address-resource
+canonical: ../../../Themes/docs/shared-components/address-resource-1.md
+---
+
+See canonical documentation: ../../../Themes/docs/shared-components/address-resource-1.md
+>>>>>>> .merge_file_Or1PT4
