@@ -3,7 +3,7 @@ title: "Architecture Decision Records"
 type: index
 tags: [adr, decisioni]
 created: 2026-11-18
-updated: 2026-11-18
+updated: 2026-11-23
 ---
 
 # Architecture Decision Records
@@ -40,6 +40,7 @@ Pro, contro, debito che resta, cosa misurare. Chi cambia la decisione scrive un 
 
 ## Decisioni
 
+- [Proxy Geo incluso nella cache delle rotte](route-cache-includes-proxy.md)
 - [ADR — Tile e geocoding OpenStreetMap passano dal nostro server](osm-proxy-tile-nominatim.md)
 
 ## Decisioni precedenti (formato libero, non ancora ADR)
