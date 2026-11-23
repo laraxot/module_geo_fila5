@@ -40,8 +40,10 @@ Pro, contro, debito che resta, cosa misurare. Chi cambia la decisione scrive un 
 
 ## Decisioni
 
+- [Le integrazioni HTTP geografiche sono Actions, non Services](no-service-geo-integrations.md)
 - [Proxy Geo incluso nella cache delle rotte](route-cache-includes-proxy.md)
 - [ADR — Tile e geocoding OpenStreetMap passano dal nostro server](osm-proxy-tile-nominatim.md)
+- [Geocoding e tile OSM passano dal proxy](geo-uses-proxy-for-osm.md)
 
 ## Decisioni precedenti (formato libero, non ancora ADR)
 
