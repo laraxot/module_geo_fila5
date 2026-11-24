@@ -11,25 +11,11 @@ use Modules\Xot\Actions\Cast\SafeStringCastAction;
 /**
  * Single source for Nominatim search/reverse + coordinate normalize/extract.
  *
-<<<<<<< .merge_file_VM81C8
-<<<<<<< .merge_file_WAr3Wf
-<<<<<<< .merge_file_CmZrod
-<<<<<<< .merge_file_nM3F81
  * Used by {@see XotBaseCoordinateField} and {@see HasCoordinatePicker}
-=======
- * Used by {@see XotBaseCoordinateField} and {@see \Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker}
->>>>>>> .merge_file_WN762w
-=======
- * Used by {@see XotBaseCoordinateField} and {@see \Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker}
->>>>>>> .merge_file_WgNspj
-=======
- * Used by {@see XotBaseCoordinateField} and {@see \Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker}
->>>>>>> .merge_file_Nn2oOo
-=======
- * Used by {@see XotBaseCoordinateField} and {@see \Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker}
->>>>>>> .merge_file_YTuvGu
  * (thin #[Exposed] wrappers). Concrete class keeps array generics for PHPStan L10;
  * large trait bodies lose iterable value types.
+ *
+ * @see Modules/Geo/docs/geo-sync-marker-repair.md
  */
 final class CoordinatePickerHelpers
 {
@@ -108,6 +94,8 @@ final class CoordinatePickerHelpers
 
     /**
      * @return array<string, mixed>|null
+     *
+     * @see Modules/Geo/docs/adr/geocoding-preferred-provider-with-fallback.md
      */
     public static function reverseGeocode(float $latitude, float $longitude): ?array
     {
@@ -146,7 +134,7 @@ final class CoordinatePickerHelpers
 
             return [
                 'display_name' => \is_string($data['display_name'] ?? null) ? $data['display_name'] : '',
-                'address' => \is_string($data['display_name'] ?? null) ? $data['display_name'] : '',
+                'address' => $address,
                 'provider' => 'nominatim',
                 'place_id' => $data['place_id'] ?? null,
                 'osm_type' => $data['osm_type'] ?? null,

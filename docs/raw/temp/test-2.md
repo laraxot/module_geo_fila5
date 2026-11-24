@@ -9,6 +9,9 @@ issues: []
 discussions: []
 ---
 
+> Date (from original filename): 2025-02-28
+
+
 # Test 2025 02 28
 
 _File vuoto, nessun contenuto._
