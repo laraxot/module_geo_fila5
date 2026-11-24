@@ -1,0 +1,66 @@
+---
+tags: [documentation]
+<<<<<<< HEAD
+created: 2026-09-26
+=======
+<<<<<<< .merge_file_tUEQR4
+created: 2026-09-11
+=======
+created: 2026-09-26
+>>>>>>> .merge_file_I0nhEH
+>>>>>>> laraxot/dev
+updated: 2026-09-26
+qmd: "continuation 2026 09 11.story"
+issues: []
+discussions: []
+id: story-continuation-geo-module
+title: "Geo Module — Table Audit and $model Property"
+type: continuation
+scope: module:Geo
+github: {issues: "https://github.com/laraxot/module_xot_fila5/issues/115", discussions: "https://github.com/laraxot/module_xot_fila5/discussions/117"}
+<<<<<<< .merge_file_hwT7ub
+<<<<<<< .merge_file_aYEigE
+<<<<<<< .merge_file_2J50FX
+<<<<<<< .merge_file_y3hfNu
+date_originale_nome_file: 2026-09-11
+=======
+=======
+>>>>>>> .merge_file_8FEadQ
+=======
+>>>>>>> .merge_file_uOWYRH
+=======
+>>>>>>> .merge_file_cdJo71
+<<<<<<< HEAD
+date_originale_nome_file: 2026-09-11
+=======
+<<<<<<< .merge_file_tUEQR4
+=======
+date_originale_nome_file: 2026-09-11
+>>>>>>> .merge_file_I0nhEH
+>>>>>>> laraxot/dev
+<<<<<<< .merge_file_hwT7ub
+<<<<<<< .merge_file_aYEigE
+<<<<<<< .merge_file_2J50FX
+>>>>>>> .merge_file_PixxJn
+=======
+>>>>>>> .merge_file_8FEadQ
+=======
+>>>>>>> .merge_file_uOWYRH
+=======
+>>>>>>> .merge_file_cdJo71
+---
+# Geo Module — Continuation Task
+
+## Stato
+Modulo con modifiche non ancora sincronizzate nel proprio .git.
+
+## Task
+1. Aggiungere `protected static string $model =` a tutte le table class mancanti
+2. Audit `getTableColumns()` — verificare campi modello
+3. Migliorare UI/UX (badge, toggleable, sortable)
+4. `php -l` su tutti i file toccati
+5. `git commit -m "BMAD: table audit"`
+
+## Modelli attesi (da verificare)
+- Tabella: `Modules\$m\Filament\Resources\*`
+- Modello: `Modules\$m\Models\*`

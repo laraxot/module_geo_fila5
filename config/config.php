@@ -1,0 +1,158 @@
+<?php
+
+declare(strict_types=1);
+use Illuminate\Support\Env;
+
+return [
+    /*
+     * |--------------------------------------------------------------------------
+     * | API Keys
+     * |--------------------------------------------------------------------------
+     * |
+     * | Chiavi API per i vari servizi di mappe utilizzati dal modulo.
+     * |
+     */
+    'api_keys' => [
+        'google_maps' => Env::get('GOOGLE_MAPS_API_KEY'),
+        'bing_maps' => Env::get('BING_MAPS_API_KEY'),
+        'mapbox' => Env::get('MAPBOX_API_KEY'),
+    ],
+    /*
+     * |--------------------------------------------------------------------------
+     * | Geocoding Driver
+     * |--------------------------------------------------------------------------
+     * |
+     * | Chiave del provider di geocoding preferito, usata da
+     * | GetAddressDataFromFullAddressAction per anteporlo alla catena di
+     * | fallback (google_maps, photon, nominatim, bing_maps, here, mapbox,
+     * | opencage — stesso elenco e stesso ordine dell'array hardcoded
+     * | preesistente). Il default "google_maps" non altera il comportamento
+     * | a runtime; cambiare GEO_DRIVER nell'env permette di preferire un
+     * | altro provider (es. "nominatim", l'unico senza bisogno di API key)
+     * | senza toccare il codice.
+     * |
+     * | La mappa chiave→classe resta letterale dentro
+     * | GetAddressDataFromFullAddressAction (non qui) perché Larastan
+     * | tipizza `app($class)->execute()` solo se `$class` è un
+     * | `class-string<T>` risolto come literal nello stesso scope del
+     * | try/catch che lo consuma: passarlo per config() lo degrada a
+     * | `mixed`. Se la lista provider cambia, va aggiornata in entrambi i
+     * | posti (qui per documentare i driver disponibili, nell'Action per il dispatch).
+     * |
+     */
+    'driver' => Env::get('GEO_DRIVER', 'google_maps'),
+    /*
+     * |--------------------------------------------------------------------------
+     * | Comuni JSON
+     * |--------------------------------------------------------------------------
+     * |
+     * | Percorso del file JSON letto dal modello Sushi Comune. Null = il file
+     * | versionato del modulo (resources/json/comuni.json).
+     * |
+     */
+    'comuni_json_path' => null,
+    /*
+     * |--------------------------------------------------------------------------
+     * | Rate Limiting
+     * |--------------------------------------------------------------------------
+     * |
+     * | Configurazione per il rate limiting delle chiamate API.
+     * |
+     */
+    'rate_limits' => [
+        'google_maps' => [
+            'requests_per_second' => 50,
+            'burst' => 100,
+        ],
+        'bing_maps' => [
+            'requests_per_second' => 50,
+            'burst' => 100,
+        ],
+        'mapbox' => [
+            'requests_per_second' => 50,
+            'burst' => 100,
+        ],
+    ],
+    /*
+     * |--------------------------------------------------------------------------
+     * | Cache
+     * |--------------------------------------------------------------------------
+     * |
+     * | Configurazione per la cache dei risultati.
+     * |
+     */
+    'cache' => [
+        'enabled' => true,
+        'ttl' => 86400, // 24 ore
+        'prefix' => 'geo_',
+    ],
+    /*
+     * |--------------------------------------------------------------------------
+     * | Mappa: vista di partenza del territorio
+     * |--------------------------------------------------------------------------
+     * |
+     * | `default_view` (DCP-146): vista di partenza del territorio dell'ente, usata quando non c'e'
+     * | un punto salvato, un centro del campo e nemmeno il fuso orario del browser. Non e' la
+     * | posizione dell'utente (D19): e' il territorio che l'ente ha configurato, cosi' la mappa non
+     * | si apre mai sul mondo intero, anche senza GPS e senza HTTPS. Default: panoramica d'Italia.
+     * | Env: GEO_MAP_DEFAULT_LAT, GEO_MAP_DEFAULT_LNG, GEO_MAP_DEFAULT_ZOOM (1-19; valori non
+     * | validi ricadono sul default). Chiave completa: `geo.config.map.default_view`.
+     * |
+     */
+    'map' => [
+        'default_view' => [
+            'lat' => Env::get('GEO_MAP_DEFAULT_LAT', 42.5),
+            'lng' => Env::get('GEO_MAP_DEFAULT_LNG', 12.5),
+            'zoom' => Env::get('GEO_MAP_DEFAULT_ZOOM', 6),
+        ],
+    ],
+    /*
+     * |--------------------------------------------------------------------------
+     * | Proxy OpenStreetMap (tile e Nominatim)
+     * |--------------------------------------------------------------------------
+     * |
+     * | Rotte API senza sessione: /api/geo/tiles/osm/{z}/{x}/{y}.png e /api/geo/nominatim/{search|reverse}.
+     * | Il browser non contatta terzi (privacy: niente IP del visitatore a OSMF prima del consenso) e le
+     * | regole di OSMF sono rispettate dal server: User-Agent con contatto, Referer inoltrato, cache di
+     * | almeno 7 giorni con richieste condizionali (tile), 1 richiesta al secondo e cache (Nominatim, che
+     * | raccomanda proprio un proxy con cache). Le mappe usano il proxy solo se il layout lo dichiara
+     * | (`<html data-geo-tile-url data-geo-nominatim-url>`): senza, restano sugli indirizzi pubblici.
+     * | `nominatim.enabled` = false spegne il geocoding senza toccare il codice (richiesto dalla policy).
+     * | Chiave completa: `geo.config.osm_proxy`.
+     * |
+     */
+    'osm_proxy' => [
+        'contact' => Env::get('GEO_OSM_CONTACT'),
+        'timeout' => 10,
+        'tiles' => [
+            'upstream' => 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            'max_zoom' => 19,
+            'min_cache_days' => 7,
+            'browser_max_age' => 86400,
+        ],
+        'nominatim' => [
+            'enabled' => (bool) Env::get('GEO_NOMINATIM_ENABLED', true),
+            'upstream' => 'https://nominatim.openstreetmap.org',
+            'cache_days' => 30,
+        ],
+    ],
+    /*
+     * |--------------------------------------------------------------------------
+     * | Timeout & Retry
+     * |--------------------------------------------------------------------------
+     * |
+     * | Configurazione per timeout e retry delle chiamate API.
+     * |
+     */
+    'http_client' => [
+        'timeout' => 5.0,
+        'retry' => [
+            'times' => 3,
+            'sleep' => 100,
+            'when' => [
+                'ConnectionException',
+                'RequestException',
+            ],
+        ],
+    ],
+];
