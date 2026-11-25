@@ -73,7 +73,7 @@ Illuminate\Database\Eloquent\Model
 - [Architettura Modelli](../../docs/architecture/models.md)
 - [Struttura Moduli](../../docs/architecture/modules.md)
 - [BaseModel Notify](../../../Notify/docs/base-model.md)
-- [BaseModel Xot](../../laravel/Modules/Xot/docs/base-model.md)
+- [BaseModel Xot](../../../Notify/docs/base-model-2.md)
 
 ## Prossimi Passi
 1. Verificare tutti i modelli esistenti nel modulo Notify

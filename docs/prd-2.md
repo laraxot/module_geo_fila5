@@ -468,9 +468,9 @@ CREATE TABLE geo_cache (
 - [OpenStreetMap](https://www.openstreetmap.org/)
 
 ### 12.3 Related PRDs
-- [Predict Module PRD](../Predict/docs/PRD.md)
+- [Predict Module PRD](../Predict/docs/prd-2.md)
 - [User Module PRD](../../User/docs/prd.md)
-- [UI Module PRD](../UI/docs/PRD.md)
+- [UI Module PRD](../UI/docs/prd-2.md)
 
 ---
 

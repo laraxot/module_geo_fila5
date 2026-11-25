@@ -29,7 +29,7 @@ Questo documento fornisce un indice completo e organizzato di tutta la documenta
 Documenti che forniscono una panoramica generale del modulo Geo, della sua architettura e dei suoi componenti principali.
 
 - [README.md](README.md) - Introduzione generale al modulo Geo
-- [module_geo.md](module_geo.md) - Panoramica dettagliata del modulo
+- [module-geo-2.md](module-geo-2.md) - Panoramica dettagliata del modulo
 - [architecture.md](architecture.md) - Architettura del modulo Geo
 - [structure.md](structure.md) - Struttura del modulo e organizzazione dei file
 - [gestione-dati-geografici-compendio.md](gestione-dati-geografici-compendio.md) - Compendio completo sulla gestione dei dati geografici
@@ -38,12 +38,12 @@ Documenti che forniscono una panoramica generale del modulo Geo, della sua archi
 
 Documenti relativi ai modelli dati, alle entità geografiche e alle strutture dati utilizzate nel modulo.
 
-- [geo_entities.md](geo_entities.md) - Entità geografiche principali
+- [geo-entities-2.md](geo-entities-2.md) - Entità geografiche principali
 - [comune-model.md](comune-model.md) - Documentazione del modello Comune
 - [comune-unificazione-analisi.md](comune-unificazione-analisi.md) - Analisi dell'unificazione dei modelli
 - [consolidamento-modelli-geografici.md](consolidamento-modelli-geografici.md) - Documento sul consolidamento
 - [poligon.md](poligon.md) - Gestione dei poligoni geografici
-- [polygon_mysql.md](polygon_mysql.md) - Poligoni in MySQL
+- [polygon-mysql-2.md](polygon-mysql-2.md) - Poligoni in MySQL
 
 ## Strategie Implementative
 
@@ -82,9 +82,9 @@ Documenti che confrontano le diverse strategie implementative e approcci.
 
 Guide tecniche e tutorial per l'utilizzo e l'implementazione delle funzionalità del modulo Geo.
 
-- [comprehensive_guide.md](comprehensive_guide.md) - Guida completa al modulo
-- [TECHNICAL.md](technical.md) - Documentazione tecnica
-- [advanced_features.md](advanced_features.md) - Funzionalità avanzate
+- [comprehensive-guide-3.md](comprehensive-guide-3.md) - Guida completa al modulo
+- [technical-2.md](technical.md) - Documentazione tecnica
+- [advanced-features-3.md](advanced-features-3.md) - Funzionalità avanzate
 - [tutorial.md](tutorial.md) - Tutorial passo-passo
 - [migration-guide.md](migration-guide.md) - Guida alla migrazione
 
@@ -95,7 +95,7 @@ Documenti che descrivono l'integrazione del modulo Geo con altri componenti del 
 - [filament-integration.md](filament-integration.md) - Integrazione con Filament
 - [filament.md](filament.md) - Utilizzo di Filament nel modulo Geo
 - [squire-integration.md](squire-integration.md) - Integrazione con Squire
-- [address_autocomplete.md](address_autocomplete.md) - Autocompletamento indirizzi
+- [address-autocomplete-2.md](address-autocomplete-2.md) - Autocompletamento indirizzi
 - [autocomplete.md](autocomplete.md) - Funzionalità di autocompletamento
 - [location-select.md](location-select.md) - Selezione della posizione
 
@@ -103,25 +103,25 @@ Documenti che descrivono l'integrazione del modulo Geo con altri componenti del 
 
 Documenti specifici per l'analisi e il miglioramento dell'AddressResource.
 
-- [addressresource_analysis.md](addressresource_analysis.md) - Analisi tecnica dettagliata dell'AddressResource
-- [addressresource_improvements.md](addressresource_improvements.md) - Miglioramenti proposti per l'AddressResource
-- [addressresource_summary.md](addressresource_summary.md) - Sintesi completa dell'analisi AddressResource
+- [addressresource-analysis-2.md](addressresource-analysis-2.md) - Analisi tecnica dettagliata dell'AddressResource
+- [addressresource-improvements-2.md](addressresource-improvements-2.md) - Miglioramenti proposti per l'AddressResource
+- [addressresource-summary-2.md](addressresource-summary-2.md) - Sintesi completa dell'analisi AddressResource
 
 ## Servizi Esterni
 
 Documenti relativi all'integrazione con servizi geografici esterni.
 
 - [here.md](here.md) - Integrazione con HERE
-- [here_com.md](here_com.md) - Utilizzo dell'API HERE.com
-- [tomtom_com.md](tomtom_com.md) - Integrazione con TomTom
+- [here-com-2.md](here-com-2.md) - Utilizzo dell'API HERE.com
+- [tomtom-com-2.md](tomtom-com-2.md) - Integrazione con TomTom
 
 ## Best Practices
 
 Guide alle best practices e pattern raccomandati per lo sviluppo nel modulo Geo.
 
-- [__eloquent.md](__eloquent.md) - Best practices per Eloquent
-- [tips_and_links.md](tips_and_links.md) - Suggerimenti e link utili
-- [laravel_packages.md](laravel_packages.md) - Pacchetti Laravel consigliati
+- [eloquent-3.md](eloquent-3.md) - Best practices per Eloquent
+- [tips-and-links-2.md](tips-and-links-2.md) - Suggerimenti e link utili
+- [laravel-packages-2.md](laravel-packages-2.md) - Pacchetti Laravel consigliati
 
 ## Riferimenti API
 
@@ -131,7 +131,7 @@ Documentazione di riferimento per le API e i componenti principali del modulo.
 - [databases.md](databases.md) - Struttura dei database
 - [link2.md](link2.md) - Collegamenti esterni e riferimenti
 - [link3.md](link3.md) - Collegamenti esterni aggiuntivi
-- [map_test.md](map_test.md) - Test delle funzionalità di mappa
+- [map-test-2.md](map-test-2.md) - Test delle funzionalità di mappa
 
 ## Come Utilizzare Questo Indice
 

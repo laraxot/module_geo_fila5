@@ -1148,7 +1148,7 @@ return [
 ### Azioni Correttive
 1. **Aggiornamento delle Icone**: Assicurarsi che tutte le icone di navigazione siano aggiornate allo stile outline.
 2. **Aggiunta di Descrizioni**: Completare le descrizioni mancanti nei campi per migliorare la chiarezza.
-3. **Documentazione degli Errori**: Scrivere appunti nel file `docs/project_notes.md` per evitare errori simili in futuro.
+3. **Documentazione degli Errori**: Scrivere appunti nel file `docs/project-notes-2.md` per evitare errori simili in futuro.
 
 ### Miglioramenti Futuri
 - Implementare un sistema di controllo per verificare che tutte le traduzioni siano aggiornate e coerenti.

@@ -89,8 +89,8 @@ GSD è installato e configurato per **TUTTI gli AI agents**:
 
 **Files Created**:
 - `docs/gsd/README.md` — GSD integration guide
-- `docs/gsd/COMMANDS.md` — Command reference
-- `docs/gsd/GSD_INTEGRATION_SUMMARY.md` — This file
+- `docs/gsd/commands-2.md` — Command reference
+- `docs/gsd/gsd-integration-summary-2.md` — This file
 
 **Contents**:
 - Cos'è GSD e perché usarlo
@@ -177,10 +177,10 @@ bmad-laravel-module-dev --module=Scheda
 │  │    → Cattura decisioni → CONTEXT.md                     │ │
 │  │                                                         │ │
 │  │  /gsd:plan-phase [N]                                    │ │
-│  │    → Research + Plan + Verify → PLAN.md                 │ │
+│  │    → Research + Plan + Verify → plan-2.md                 │ │
 │  │                                                         │ │
 │  │  /gsd:execute-phase [N]                                 │ │
-│  │    → Wave execution → Commit atomici → SUMMARY.md       │ │
+│  │    → Wave execution → Commit atomici → summary-2.md       │ │
 │  │                                                         │ │
 │  │  /gsd:verify-work [N]                                   │ │
 │  │    → UAT → UAT.md                                       │ │
@@ -207,9 +207,9 @@ bmad-laravel-module-dev --module=Scheda
 
 **File creati**:
 - `PROJECT.md` — Vision del progetto
-- `REQUIREMENTS.md` — Requirements scoped
+- `requirements-2.md` — Requirements scoped
 - `ROADMAP.md` — Fasi mappate
-- `STATE.md` — Decisioni e blockers
+- `state-2.md` — Decisioni e blockers
 - `.planning/research/` — Research findings
 
 #### 2. Discuss Phase (`/gsd:discuss-phase [N]`)
@@ -232,7 +232,7 @@ bmad-laravel-module-dev --module=Scheda
 2. **Plan** — Crea 2-3 atomic task plans (XML)
 3. **Verify** — Check against requirements, loops until pass
 
-**Esempio PLAN.md**:
+**Esempio plan-2.md**:
 
 ```xml
 <task type="auto">
@@ -282,7 +282,7 @@ WAVE 1 (parallel)          WAVE 2 (parallel)          WAVE 3
 **Cosa fa**:
 - Archivia milestone
 - Tagga release
-- Aggiorna STATE.md
+- Aggiorna state-2.md
 
 **Next**: `/gsd:new-milestone "v2.0"`
 
@@ -295,8 +295,8 @@ WAVE 1 (parallel)          WAVE 2 (parallel)          WAVE 3
 ```
 docs/gsd/
 ├── README.md                      (Integration guide)
-├── COMMANDS.md                    (Command reference)
-└── GSD_INTEGRATION_SUMMARY.md    (This file)
+├── commands-2.md                    (Command reference)
+└── gsd-integration-summary-2.md    (This file)
 
 .planning/
 ├── config.json                    (GSD settings)
@@ -485,7 +485,7 @@ npx get-shit-done-cc@latest
 ### Internal Documentation
 
 - **GSD Guide**: `docs/gsd/README.md`
-- **Command Reference**: `docs/gsd/COMMANDS.md`
+- **Command Reference**: `docs/gsd/commands-2.md`
 - **BMAD Guide**: `docs/bmad/README.md`
 - **AI Coordination**: `docs/ai-agent-coordination.md`
 - **Project Context**: `_bmad/bmm/workflows/bmad-generate-project-context/project-context-ptvx.md`
@@ -515,8 +515,8 @@ gsd: Install GSD (Get Shit Done) v1.25.1 for all AI agents
 
 Documentation:
 - GSD Guide: docs/gsd/README.md
-- Command Reference: docs/gsd/COMMANDS.md
-- Integration Summary: docs/gsd/GSD_INTEGRATION_SUMMARY.md
+- Command Reference: docs/gsd/commands-2.md
+- Integration Summary: docs/gsd/gsd-integration-summary-2.md
 
 Related: #125, #126
 ```

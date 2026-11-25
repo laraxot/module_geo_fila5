@@ -95,13 +95,13 @@ Modules/<NomeModulo>/docs/phpstan/
 In caso di conflitti durante l'analisi dei moduli:
 1. Verificare che non ci siano modifiche non committate
 2. Eseguire `git status` per identificare i file in conflitto
-3. Risolvere i conflitti manualmente seguendo le linee guida in [CONFLICT_RESOLUTION.md](../../docs/development/CONFLICT_RESOLUTION.md)
+3. Risolvere i conflitti manualmente seguendo le linee guida in [conflict-resolution-2.md](../../conflict-resolution-2.md)
 4. Dopo la risoluzione, rieseguire l'analisi PHPStan
 
 ## Collegamenti
-- [Documentazione PHPStan](../../docs/phpstan/PHPSTAN_WORKFLOW.md)
+- [Documentazione PHPStan](../../../../Xot/docs/consolidated/phpstan/phpstan-workflow-2.md)
 - [Linee Guida Moduli](../../docs/MODULES.md)
-- [Risoluzione Conflitti](../../docs/development/CONFLICT_RESOLUTION.md)
+- [Risoluzione Conflitti](../../conflict-resolution-2.md)
    - Configurazione PHPStan errata
 
 ## Pattern di Risoluzione Errori
@@ -187,5 +187,5 @@ jobs:
 ## Collegamenti Bidirezionali
 - [Configurazione PHPStan](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/docs/phpstan.md)
 - [Struttura dei Moduli](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/Xot/docs/MODULE-STRUCTURE.md)
-- [Best Practices PHPStan](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/Xot/docs/PHPSTAN-LEVEL9-GUIDE.md)
+- [Best Practices PHPStan](/../../../../Xot/docs/consolidated/phpstan/phpstan-level9-guide-2.md)
 - [Script di Automazione](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/scripts.md)

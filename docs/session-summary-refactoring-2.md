@@ -31,7 +31,7 @@ discussions: []
 
 ## Output
 
-- `docs/RELATIONSHIP_METHODS_DUPLICATE_LIST.md`
+- `docs/relationship-methods-duplicate-list-2.md`
 
 ## PHPStan Status
 

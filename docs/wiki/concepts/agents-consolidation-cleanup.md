@@ -140,7 +140,7 @@ find . -type f | wc -l  # Should show ~4,531 files
 
 ## References
 
-- [Root CLAUDE.md](../../../../CLAUDE.md) — Canonical rules location
+- [Root CLAUDE.md](../../root-md-files/claude.md) — Canonical rules location
 - [Context Compression Discipline](../../../../bashscripts/ai/.claude/rules/context-compression-discipline.md)
 - [Geo Module LLM Wiki](../wiki/index.md)
 - [Map Controls Shared Implementation](./geo-map-controls-shared-implementation.md)

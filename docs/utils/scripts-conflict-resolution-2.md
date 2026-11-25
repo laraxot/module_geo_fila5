@@ -207,9 +207,9 @@ Dopo la risoluzione dei conflitti, verranno eseguite le seguenti verifiche:
 ## Collegamenti
 
 - [Documentazione Generale sulla Risoluzione dei Conflitti](../../docs/bashscripts_conflict_resolution.md)
-- [Linee Guida per la Scrittura di Script Bash](./git_scripts.md)
-- [Principio DRY negli Script Bash](./NO_DUPLICATE_FUNCTIONS_IN_SOURCED_SCRIPTS.md)
-- [Risoluzione dei Conflitti Bash](./conflict_resolution_bash.md)
+- [Linee Guida per la Scrittura di Script Bash](./git-scripts-2.md)
+- [Principio DRY negli Script Bash](../raw/history/no-duplicate-functions-in-sourced-scripts-2.md)
+- [Risoluzione dei Conflitti Bash](./conflict-resolution-bash-2.md)
 
 ## Risoluzioni recenti (Aprile 2025)
 
@@ -280,9 +280,9 @@ Dopo la risoluzione dei conflitti, verranno eseguite le seguenti verifiche:
 ## Collegamenti
 
 - [Documentazione Generale sulla Risoluzione dei Conflitti](../../docs/bashscripts_conflict_resolution.md)
-- [Linee Guida per la Scrittura di Script Bash](./git_scripts.md)
-- [Principio DRY negli Script Bash](./NO_DUPLICATE_FUNCTIONS_IN_SOURCED_SCRIPTS.md)
-- [Risoluzione dei Conflitti Bash](./conflict_resolution_bash.md)
+- [Linee Guida per la Scrittura di Script Bash](./git-scripts-2.md)
+- [Principio DRY negli Script Bash](../raw/history/no-duplicate-functions-in-sourced-scripts-2.md)
+- [Risoluzione dei Conflitti Bash](./conflict-resolution-bash-2.md)
 
 ## Risoluzioni recenti (Aprile 2025)
 
@@ -481,7 +481,7 @@ Per pulire un repository con molti conflitti non risolti:
 
 ## Collegamenti Bidirezionali
 
-- [Gestione dei Conflitti Git](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/git_conflicts_resolution.md)
+- [Gestione dei Conflitti Git](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/git-conflicts-resolution-6.md)
 - [Risoluzione Automatica dei Conflitti](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/fix_all_git_conflicts.md)
 - [Conflitti nei File di Configurazione](/var/www/html/_bases/base_ptvx_fila5_mono/bashscripts/docs/config_file_conflicts.md)
 - [Convenzioni di Namespace](/var/www/html/_bases/base_ptvx_fila5_mono/laravel/Modules/Xot/docs/NAMESPACE-CONVENTIONS.md)

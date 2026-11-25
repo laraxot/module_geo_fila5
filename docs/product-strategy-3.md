@@ -9,7 +9,7 @@ issues: []
 discussions: []
 module: theme
 topic: product_strategy
-canonical: ../../../Themes/docs/shared-components/product_strategy.md
+canonical: ../../../Themes/docs/shared-components/product-strategy-3.md
 ---
 
-See canonical documentation: ../../../Themes/docs/shared-components/product_strategy.md
+See canonical documentation: ../../../Themes/docs/shared-components/product-strategy-3.md

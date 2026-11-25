@@ -75,7 +75,7 @@ discussions: []
 ## 7. Collegamenti
 - [geo-json-model.md](geo-json-model.md)
 - [geo-sushi-comparison.md](geo-sushi-comparison.md)
-- [module_geo.md](module_geo.md)
+- [module-geo-2.md](module-geo-2.md)
 - [Xot/module-structure.md](../../xot/project_docs/module-structure.md)
 
 ---

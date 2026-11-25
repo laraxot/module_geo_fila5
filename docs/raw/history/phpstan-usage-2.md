@@ -86,8 +86,8 @@ cd /var/www/html/_bases/base_ptvx_fila5/laravel
 Per una guida dettagliata sulla risoluzione dei problemi comuni segnalati da PHPStan, consulta:
 
 ```
-laravel/Modules/Xot/docs/PHPSTAN-USAGE-GUIDE.md
-laravel/Modules/Xot/docs/PHPSTAN-FIXES-SUMMARY.md
+laravel/Modules/Xot/docs/consolidated/phpstan/phpstan-usage-guide-2.md
+laravel/Modules/Xot/docs/consolidated/phpstan/phpstan-fixes-summary-5.md
 ```
 
 ## Ignorare Temporaneamente Errori

@@ -9,15 +9,15 @@ issues: []
 discussions: []
 module: theme
 topic: METODI_DUPLICATI_ANALISI
-canonical: ../../../Themes/docs/shared-components/METODI_DUPLICATI_ANALISI.md
+canonical: ../../../Themes/docs/shared-components/metodi-duplicati-analisi-2.md
 ---
 
-See canonical documentation: ../../../Themes/docs/shared-components/METODI_DUPLICATI_ANALISI.md
-canonical: ../../../Themes/docs/shared-components/metodi_duplicati_analisi.md
+See canonical documentation: ../../../Themes/docs/shared-components/metodi-duplicati-analisi-2.md
+canonical: ../../../Themes/docs/shared-components/metodi-duplicati-analisi-3.md
 ---
 
-See canonical documentation: ../../../Themes/docs/shared-components/metodi_duplicati_analisi.md
-canonical: ../../../Themes/docs/shared-components/METODI_DUPLICATI_ANALISI.md
+See canonical documentation: ../../../Themes/docs/shared-components/metodi-duplicati-analisi-3.md
+canonical: ../../../Themes/docs/shared-components/metodi-duplicati-analisi-2.md
 ---
 
-See canonical documentation: ../../../Themes/docs/shared-components/METODI_DUPLICATI_ANALISI.md
+See canonical documentation: ../../../Themes/docs/shared-components/metodi-duplicati-analisi-2.md

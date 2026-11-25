@@ -224,7 +224,7 @@ discussions: []
 ```bash
 # 1. Initialize
 /gsd:new-project
-# → Answer questions, get PROJECT.md, REQUIREMENTS.md, ROADMAP.md
+# → Answer questions, get PROJECT.md, requirements-2.md, ROADMAP.md
 
 # 2. Discuss Phase 1
 /gsd:discuss-phase 1
@@ -232,7 +232,7 @@ discussions: []
 
 # 3. Plan Phase 1
 /gsd:plan-phase 1
-# → Research + create PLAN.md with atomic tasks
+# → Research + create plan-2.md with atomic tasks
 
 # 4. Execute Phase 1
 /gsd:execute-phase 1
@@ -332,9 +332,9 @@ project/
 ├── .planning/
 │   ├── config.json
 │   ├── PROJECT.md
-│   ├── REQUIREMENTS.md
+│   ├── requirements-2.md
 │   ├── ROADMAP.md
-│   ├── STATE.md
+│   ├── state-2.md
 │   └── research/
 │       └── 01-RESEARCH.md
 ├── docs/
