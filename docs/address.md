@@ -27,7 +27,9 @@ di `docs/` (originali nel backup `~/backups/laravelpizza-docs-md-before-cap100.t
 - Campi (`$fillable`): `name`, `description`, `route` (via), `street_number`, `locality`, `administrative_area_level_3`
   (comune), `administrative_area_level_2` (provincia), `administrative_area_level_1` (regione), `country` (ISO 2 lettere),
   `postal_code`, `formatted_address`, `place_id`, `latitude`, `longitude`, `type`, `is_primary`, `extra_data` (JSON).
-  Sono i nomi dei componenti Google Places: tutti i provider di geocoding vengono normalizzati su questi campi.
+  Sono i nomi dei componenti Google Places. I provider di geocoding restituiscono invece `Datas\AddressData` (`latitude`,
+  `longitude`, `country`, `city`, `country_code`, `postal_code`, `locality`, `county`, `street`, `street_number`, `district`,
+  `state`): la mappatura verso le colonne di `Address` e' a carico del chiamante.
 - Cast: `latitude`/`longitude` float, `is_primary` bool, `extra_data` array, `type` → `AddressTypeEnum`
   (`home`, `work`, `billing`, `shipping`, `legal`, `other`).
 - Accessor e metodi: `getFullAddress()`, `getStreetAddressAttribute()`, `getFormattedAddress()`, `getRegione()`,
