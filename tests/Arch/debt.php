@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Debito di architettura di Modules\Geo: classi che oggi violano una regola di Modules/Xot/tests/Arch/ArchitectureTest.php.
  * Misurato il 2026-11-18. Solo in discesa: chi corregge una classe la toglie, chi aggiunge una voce lo spiega nella PR.
  * Ogni voce deve stare nel namespace di questo pacchetto (lo verifica ArchitectureTest).
-
+ *
  * ADR: Modules/Xot/docs/adr/architecture-tests-pest-arch.md
  */
 
@@ -21,11 +21,11 @@ return [
         'Modules\Geo\Models\ComuneJson',
         'Modules\Geo\Models\GeoJsonModel',
         'Modules\Geo\Models\Traits\SushiToJsons',
-        'Modules\Geo\Services\BaseGeoService',
-        'Modules\Geo\Services\GoogleMapsService',
         'Modules\Geo\View\Components\PointMap',
     ],
     // classi in un namespace Services (regola No Services, DCP-270); NoServicesTest le vede come cartelle
+    // Wave PHPStan: non mass-delete Services — restano in debito finche' i chiamanti migrano alle Action.
+    // HEAD (2026-11-20) dichiarava services => [] ma i file esistono ancora: elenco allineato al filesystem.
     'services' => [
         'Modules\Geo\Services\BaseGeoService',
         'Modules\Geo\Services\GeoDataService',

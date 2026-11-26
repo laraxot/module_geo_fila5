@@ -12,6 +12,10 @@ use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action to update coordinates for multiple addresses based on their full addresses.
+ *
+ * @see docs/contracts/update-client-coordinates-bulk-action.md
+ *
+ * @contract docs/contracts/update-client-coordinates-bulk-action.md
  */
 class UpdateClientCoordinatesBulkAction
 {

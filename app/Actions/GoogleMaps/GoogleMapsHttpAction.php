@@ -18,6 +18,10 @@ use Spatie\QueueableAction\QueueableAction;
  *
  * Sostituisce GoogleMapsService + BaseGeoService.
  * Usa FetchGoogleMapsElevationAction / GetAddressFromGoogleMapsAction / GoogleMapsHttpAction.
+ *
+ * @see docs/contracts/google-maps-http-action.md
+ *
+ * @contract docs/contracts/google-maps-http-action.md
  */
 class GoogleMapsHttpAction
 {

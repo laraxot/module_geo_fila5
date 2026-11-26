@@ -12,12 +12,24 @@ use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Spatie\QueueableAction\QueueableAction;
 
+/**
+ * Coordinate di un indirizzo provando in cascata Google, Bing, OpenCage, Nominatim e Open-Meteo.
+ *
+ * @see docs/contracts/get-coordinates-by-address-action.md
+ *
+ * @contract docs/contracts/get-coordinates-by-address-action.md
+ */
 class GetCoordinatesByAddressAction
 {
     use QueueableAction;
 
     public function execute(string $address): ?CoordinatesData
     {
+        // Indirizzo vuoto: nessun provider può rispondere, inutile spendere richieste (e quota) per scoprirlo.
+        if (trim($address) === '') {
+            return null;
+        }
+
         // Prova con Google Maps
         $coordinates = $this->getFromGoogle($address)
             ?? $this->getFromBing($address)
@@ -42,11 +54,11 @@ class GetCoordinatesByAddressAction
      *
      * @return array{results: array<int, array{geometry: array{location: array{lat: float, lng: float}}}>}
      */
-    private function getGoogleResponse(string $address): array
+    private function getGoogleResponse(string $address, string $apiKey): array
     {
         $response = $this->makeHttpRequest(GeoApiEndpoints::GOOGLE_GEOCODING, [
             'address' => $address,
-            'key' => config('services.google.maps_api_key'),
+            'key' => $apiKey,
         ]);
 
         if (! $response->successful()) {
@@ -65,7 +77,13 @@ class GetCoordinatesByAddressAction
 
     private function getFromGoogle(string $address): ?CoordinatesData
     {
-        $data = $this->getGoogleResponse($address);
+        // Come per Bing: senza chiave Google rifiuta la richiesta, quindi si passa subito al provider successivo.
+        $apiKey = config('services.google.maps_api_key');
+        if (! is_string($apiKey) || $apiKey === '') {
+            return null;
+        }
+
+        $data = $this->getGoogleResponse($address, $apiKey);
 
         if (empty($data['results'])) {
             return null;

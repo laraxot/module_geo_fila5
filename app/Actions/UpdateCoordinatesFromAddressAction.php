@@ -30,6 +30,10 @@ use Spatie\QueueableAction\QueueableAction;
  * // Utilizzo asincrono
  * $action->onQueue('geo')->execute($client);
  * ```
+ *
+ * @see docs/contracts/update-coordinates-from-address-action.md
+ *
+ * @contract docs/contracts/update-coordinates-from-address-action.md
  */
 class UpdateCoordinatesFromAddressAction
 {

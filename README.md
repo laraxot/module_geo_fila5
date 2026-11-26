@@ -12,14 +12,13 @@ discussions: []
 # 🗺️ Geo
 
 [![Domain-Geo](https://img.shields.io/badge/Domain-Maps%20%26%20Geo-2E7D32.svg)](#)
-[![Laravel 12](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com/)
+[![Laravel 13](https://img.shields.io/badge/Laravel-13-red.svg)](https://laravel.com/)
 [![Filament 5](https://img.shields.io/badge/Filament-5-ffab00.svg)](https://filamentphp.com/)
 [![PHP 8.4+](https://img.shields.io/badge/PHP-8.4+-777BB4.svg)](https://php.net/)
 [![PHPStan Level 10](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg)](https://phpstan.org/)
 [![PSR-12](https://img.shields.io/badge/Code-PSR--12-blue.svg)](https://www.php-fig.org/psr/psr-12/)
 [![Strict Types](https://img.shields.io/badge/PHP-strict__types-1-informational.svg)](#)
 [![Laraxot Modules](https://img.shields.io/badge/Architecture-Modular-purple.svg)](#)
-[![FixCity Platform](https://img.shields.io/badge/Platform-FixCity-008758.svg)](#)
 
 > **Ogni indirizzo ha coordinate. Ogni ticket ha un punto sulla mappa.** Geocoding multi-provider e `map-lit` in Lit — production-grade.
 
@@ -72,4 +71,4 @@ Stack frontoffice: **Tailwind · Alpine · Lit · DaisyUI · Flowbite · Filamen
 
 ---
 
-**Modulo** `geo` · **Laraxot** · **FixCity Platform** · PHPStan 10 · Filament 5
+**Modulo** `geo` · **Laraxot** · PHPStan 10 · Filament 5

@@ -151,6 +151,6 @@ Configurato in `Modules/Geo/vite.config.js`:
 
 ## Regole correlate
 
-- [geo-map-controls-unification-rule](../concepts/geo-map-controls-unification-rule.md) — controlli devono essere visivamente identici a `coordinate-picker-lit`
-- [geo-vite-build-contract](../concepts/geo-vite-build-contract.md)
-- [static-geo-map-widget-pattern](../concepts/static-geo-map-widget-pattern.md)
+- [geo-map-controls-unification-rule](../../../archive/docs-legacy/wiki/concepts/geo-map-controls-unification-rule.md) — controlli devono essere visivamente identici a `coordinate-picker-lit`
+- [geo-vite-build-contract](../../../archive/docs-legacy/wiki/concepts/geo-vite-build-contract.md)
+- [static-geo-map-widget-pattern](../../../archive/docs-legacy/wiki/concepts/static-geo-map-widget-pattern.md)

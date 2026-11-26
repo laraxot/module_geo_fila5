@@ -21,7 +21,7 @@ qmd search "Geo rules" --limit 5
 ## See Also
 - [Root Trigger Map](../../../../../docs/wiki/rules/00-TRIGGER_MAP.md)
 - [Root Wiki](../../../docs/wiki/)
-- [geo-map-popup-bem.md](../concepts/geo-map-popup-bem.md)
+- [geo-map-popup-bem.md](../../../archive/docs-legacy/wiki/concepts/geo-map-popup-bem.md)
 
 ---
 *Updated: 2026-06-03*

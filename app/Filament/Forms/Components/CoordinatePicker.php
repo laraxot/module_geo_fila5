@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Forms\Components;
 
 use Filament\Forms\Components\Concerns\CanBeReadOnly;
+use Modules\Geo\Filament\Forms\Components\Contracts\CoordinatePickerArrayShapes;
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
@@ -15,7 +16,7 @@ use Modules\Xot\Filament\Forms\Components\XotBaseField;
  * Rule: No "Default" prefixes.
  * Rule: Unified state.
  */
-class CoordinatePicker extends XotBaseField
+class CoordinatePicker extends XotBaseField implements CoordinatePickerArrayShapes
 {
     use CanBeReadOnly;
     use HasCoordinatePicker;

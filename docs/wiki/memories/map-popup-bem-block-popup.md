@@ -23,7 +23,7 @@ related:
 
 ## popup header
 
-Usare `<div class="popup__header">` — mai `<header>` (conflitto `min-height: 222px` tema). Vedi [map-popup-header-whitespace-fix.md](../troubleshooting/map-popup-header-whitespace-fix.md).
+Usare `<div class="popup__header">` — mai `<header>` (conflitto `min-height: 222px` tema). Vedi [map-popup-header-whitespace-fix.md](../../../archive/docs-legacy/wiki/troubleshooting/map-popup-header-whitespace-fix.md).
 
 ## STORY
 
@@ -31,4 +31,4 @@ Usare `<div class="popup__header">` — mai `<header>` (conflitto `min-height: 2
 
 ## ricostruzione
 
-[geo-map-lit-reconstruction-guide.md](../concepts/geo-map-lit-reconstruction-guide.md)
+[geo-map-lit-reconstruction-guide.md](../../../archive/docs-legacy/wiki/concepts/geo-map-lit-reconstruction-guide.md)

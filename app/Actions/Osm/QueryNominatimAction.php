@@ -21,7 +21,10 @@ use function Safe\preg_match;
  * possible», servizio spegnibile senza aggiornare il software (`geo.config.osm_proxy.nominatim.enabled`). Solo i
  * parametri ammessi passano; il formato e' sempre `json`, come lo leggono le mappe.
  *
- * Contratto di comportamento: docs/contracts/query-nominatim-action.md (sei sezioni: input, output, invarianti, effetti
+ * @see docs/contracts/query-nominatim-action.md
+ *
+ * @contract docs/contracts/query-nominatim-action.md
+ * Contratto di comportamento (sei sezioni: input, output, invarianti, effetti
  * collaterali, errori, non fa).
  */
 final class QueryNominatimAction

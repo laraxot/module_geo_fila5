@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
+use Modules\Geo\Filament\Forms\Components\Contracts\CoordinatePickerArrayShapes;
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
@@ -13,7 +14,7 @@ use Modules\Xot\Filament\Forms\Components\XotBaseField;
  * Zen: The guide to the specific and the significant.
  * Implementation: Separate Blade and Lit JS.
  */
-class PlacePicker extends XotBaseField
+class PlacePicker extends XotBaseField implements CoordinatePickerArrayShapes
 {
     use HasCoordinatePicker;
 
