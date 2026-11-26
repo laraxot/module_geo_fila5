@@ -8,8 +8,8 @@ related:
   - ../../Xot/docs/lessons/module-sync-merge-conflicts.md
   - stories/13.geo-sync-marker-repair.story.md
   - stories/geo-php-merge-conflict-resolution.story.md
-  - adr/osm-proxy-tile-nominatim.md
-  - adr/geocoding-preferred-provider-with-fallback.md
+  - adr/0003-osm-proxy-tile-nominatim.md
+  - adr/0002-geocoding-preferred-provider-with-fallback.md
 ---
 
 # Geo: riparazione dei marcatori lasciati dal sync
@@ -74,7 +74,7 @@ sync li riporta qui (vedi `../../Xot/docs/lessons/module-sync-merge-conflicts.md
 | `Comune::getJsonFile` | `$path !== ''` | equivalente a Yoda HEAD; `php -l` OK |
 | Bing / Google / Mapbox actions | `ValidateCoordinatesAction`, guard API key, stile `$x !== ''` | DRY + niente chiamata a provider su input impossibile |
 | `GetCoordinatesByAddressAction` | early-return indirizzo vuoto + chiave Google tipizzata | evita quota e rete inutili |
-| `HasCoordinatePicker` | thin wrapper → `CoordinatePickerHelpers` | PHPStan L10 su array shapes; niente Nominatim inline nel trait |
+| `HasCoordinatePicker` | thin wrapper → `CoordinatePickerHelpers`; consumatori `implements CoordinatePickerArrayShapes` | PHPStan L10 perde iterable sul trait «in context of class»; l'interfaccia li ridichiara; `mapDefaultViewInput` negli helpers |
 | `OsmProxyTest` + geocode tests | gruppi `GEO-*-INV-*` | allineati ai contratti del proxy |
 | `tests/Arch/debt.php` | `SushiToJsons` + elenco `services` ancora presenti su disco | HEAD diceva `services => []` ma i file esistono |
 | widget `lat-lng` | Alpine 3 in-component | HEAD chiamava `getLocation()` inesistente |

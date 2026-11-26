@@ -48,7 +48,7 @@ it('returns coordinates for valid address', function (): void {
     Assert::assertSame($expectedLatitude, $result->latitude);
     Assert::assertSame($expectedLongitude, $result->longitude);
     Assert::assertSame($address, $result->address);
-});
+})->group('GEO-GETCOORDS-INV-5');
 
 it('throws exception when api key missing', function (): void {
     $action = new GetCoordinatesAction;
@@ -64,7 +64,7 @@ it('throws exception when api key missing', function (): void {
     } catch (\RuntimeException $exception) {
         Assert::assertSame('Google Maps API key not found', $exception->getMessage());
     }
-});
+})->group('GEO-GETCOORDS-INV-1');
 
 it('throws exception when api request fails', function (): void {
     $action = new GetCoordinatesAction;
@@ -84,7 +84,7 @@ it('throws exception when api request fails', function (): void {
     } catch (\RuntimeException $exception) {
         Assert::assertSame('Failed to get coordinates from Google Maps API', $exception->getMessage());
     }
-});
+})->group('GEO-GETCOORDS-INV-2');
 
 it('returns null for invalid address', function (): void {
     $action = new GetCoordinatesAction;
@@ -107,7 +107,7 @@ it('returns null for invalid address', function (): void {
 
     // Assert
     Assert::assertNull($result);
-});
+})->group('GEO-GETCOORDS-INV-4');
 
 it('returns null for over query limit status', function (): void {
     $action = new GetCoordinatesAction;
@@ -130,7 +130,7 @@ it('returns null for over query limit status', function (): void {
 
     // Assert
     Assert::assertNull($result);
-});
+})->group('GEO-GETCOORDS-INV-4');
 
 it('returns null for request denied status', function (): void {
     $action = new GetCoordinatesAction;
@@ -153,7 +153,7 @@ it('returns null for request denied status', function (): void {
 
     // Assert
     Assert::assertNull($result);
-});
+})->group('GEO-GETCOORDS-INV-4');
 
 it('handles empty results array', function (): void {
     $action = new GetCoordinatesAction;
@@ -176,7 +176,7 @@ it('handles empty results array', function (): void {
 
     // Assert
     Assert::assertNull($result);
-});
+})->group('GEO-GETCOORDS-INV-4');
 
 it('handles multiple results and returns first', function (): void {
     $action = new GetCoordinatesAction;
@@ -220,7 +220,7 @@ it('handles multiple results and returns first', function (): void {
     Assert::assertInstanceOf(LocationData::class, $result);
     Assert::assertSame($expectedLatitude, $result->latitude);
     Assert::assertSame($expectedLongitude, $result->longitude);
-});
+})->group('GEO-GETCOORDS-INV-5');
 
 it('handles special characters in address', function (): void {
     $action = new GetCoordinatesAction;
@@ -382,7 +382,7 @@ it('handles network timeout gracefully', function (): void {
     } catch (\RuntimeException $exception) {
         Assert::assertSame('Failed to get coordinates from Google Maps API', $exception->getMessage());
     }
-});
+})->group('GEO-GETCOORDS-INV-2');
 
 it('handles invalid json response', function (): void {
     $action = new GetCoordinatesAction;
@@ -402,4 +402,4 @@ it('handles invalid json response', function (): void {
     } catch (\RuntimeException $exception) {
         Assert::assertSame('Invalid JSON response from Google Maps API', $exception->getMessage());
     }
-});
+})->group('GEO-GETCOORDS-INV-3');

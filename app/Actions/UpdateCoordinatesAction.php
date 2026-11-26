@@ -9,6 +9,10 @@ use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Action per aggiornare le coordinate di un luogo.
+ *
+ * @see docs/contracts/update-coordinates-action.md
+ *
+ * @contract docs/contracts/update-coordinates-action.md
  */
 class UpdateCoordinatesAction
 {

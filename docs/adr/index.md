@@ -11,9 +11,10 @@ updated: 2026-11-26
 
 Indice operativo della cartella owner-local. Il formato e la governance condivisi sono in [Xot](../../../Xot/docs/adr/README.md).
 
-- [geo-uses-proxy-for-osm.md](geo-uses-proxy-for-osm.md)
-- [geocoding-preferred-provider-with-fallback.md](geocoding-preferred-provider-with-fallback.md)
-- [map-components-lit-light-dom.md](map-components-lit-light-dom.md)
-- [no-service-geo-integrations.md](no-service-geo-integrations.md)
-- [osm-proxy-tile-nominatim.md](osm-proxy-tile-nominatim.md)
-- [route-cache-includes-proxy.md](route-cache-includes-proxy.md)
+- [0001-map-components-lit-light-dom.md](0001-map-components-lit-light-dom.md)
+- [0002-geocoding-preferred-provider-with-fallback.md](0002-geocoding-preferred-provider-with-fallback.md)
+- [0003-osm-proxy-tile-nominatim.md](0003-osm-proxy-tile-nominatim.md)
+- [0004-no-service-geo-integrations.md](0004-no-service-geo-integrations.md)
+- [0005-route-cache-includes-proxy.md](0005-route-cache-includes-proxy.md)
+
+Stub superseded (punta al canonico): [geo-uses-proxy-for-osm.md](geo-uses-proxy-for-osm.md) → `0003-osm-proxy-tile-nominatim.md`.

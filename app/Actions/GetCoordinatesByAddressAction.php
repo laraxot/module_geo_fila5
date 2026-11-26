@@ -12,6 +12,13 @@ use Modules\Geo\Infrastructure\Config\GeoApiEndpoints;
 use Modules\Xot\Actions\Cast\SafeFloatCastAction;
 use Spatie\QueueableAction\QueueableAction;
 
+/**
+ * Coordinate di un indirizzo provando in cascata Google, Bing, OpenCage, Nominatim e Open-Meteo.
+ *
+ * @see docs/contracts/get-coordinates-by-address-action.md
+ *
+ * @contract docs/contracts/get-coordinates-by-address-action.md
+ */
 class GetCoordinatesByAddressAction
 {
     use QueueableAction;

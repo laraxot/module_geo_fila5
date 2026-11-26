@@ -99,7 +99,7 @@ final class CoordinatePickerHelpers
     /**
      * @return array<string, mixed>|null
      *
-     * @see Modules/Geo/docs/adr/geocoding-preferred-provider-with-fallback.md
+     * @see Modules/Geo/docs/adr/0002-geocoding-preferred-provider-with-fallback.md
      */
     public static function reverseGeocode(float $latitude, float $longitude): ?array
     {
@@ -198,6 +198,30 @@ final class CoordinatePickerHelpers
         }
 
         return is_numeric($value) ? (float) $value : null;
+    }
+
+    /**
+     * Validates the configuration boundary before the view is normalized.
+     *
+     * Lives here (not on the trait): PHPStan L10 drops iterable value types on
+     * private trait methods when analysed in class context.
+     *
+     * @param  array<string, mixed>  $view
+     * @return array{lat: float|int|string, lng: float|int|string, zoom: float|int|string}|null
+     *
+     * @see Modules/Geo/docs/coordinate-picker-purpose.md
+     */
+    public static function mapDefaultViewInput(array $view): ?array
+    {
+        $lat = $view['lat'] ?? null;
+        $lng = $view['lng'] ?? null;
+        $zoom = $view['zoom'] ?? null;
+
+        if (! is_numeric($lat) || ! is_numeric($lng) || ! is_numeric($zoom)) {
+            return null;
+        }
+
+        return ['lat' => $lat, 'lng' => $lng, 'zoom' => $zoom];
     }
 
     /**

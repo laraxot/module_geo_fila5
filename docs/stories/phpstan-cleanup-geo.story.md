@@ -66,3 +66,17 @@ Scopo del codice toccato, non solo l'errore:
 
 - Issue: TODO (gh non installato su questa macchina)
 - Discussion: TODO
+
+## Follow-up 2026-11-26
+
+- Contratto `CoordinatePickerArrayShapes`: i 9 picker (`CoordinatePicker`, `GeopointPicker`, `LatitudeLongitudeInput`, `LeafletMarkerMapInput`, `LocationPicker`, `MapLocationInput`, `MapPicker`, `MapPositioner`, `PlacePicker`) implementano l'interfaccia cosi' PHPStan trattiene gli array shape sul consumatore (il trait li perde «in context of class»).
+- `mapDefaultViewInput` spostato in `CoordinatePickerHelpers` (metodo privato del trait: PHPStan L10 perde comunque i tipi iterable).
+- `MapPickerTest`: `Assert::assertIsArray($results[0])` + `@var array<string, mixed>` prima dell'offset access su `searchAddress`.
+- Verifica: `flock storage/phpstan-runs/phpstan-gate.lock -c 'php -d memory_limit=2G ./vendor/bin/phpstan analyse Modules/Geo --no-progress'` → `[OK] No errors`.
+
+## Follow-up 2026-11-26 (PHPDoc sync)
+
+- `HasCoordinatePicker::getMapDefaultView` aveva `@return int` (corruzione sync) incompatibile col native `array` e con `CoordinatePickerArrayShapes` (`array{lat: float, lng: float, zoom: int}`).
+- Fix: PHPDoc allineato all'interfaccia.
+- Verifica: `phpstan analyse Modules` → **0** file_errors.
+

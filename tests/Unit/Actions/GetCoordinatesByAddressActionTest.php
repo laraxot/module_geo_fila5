@@ -34,7 +34,7 @@ it('returns null for empty address', function (): void {
     Assert::assertNull($result);
     // Nessun provider interpellato per un indirizzo vuoto.
     Http::assertNothingSent();
-});
+})->group('GEO-BYADDRESS-INV-1');
 
 it('returns null when google api key not configured', function (): void {
     $action = new GetCoordinatesByAddressAction;
@@ -75,4 +75,4 @@ it('returns null for non-existent address with mock', function (): void {
     $result = $action->execute('asdfghjklqwertyuizxcvbnm123456789');
 
     Assert::assertNull($result);
-});
+})->group('GEO-BYADDRESS-INV-4');

@@ -1,45 +1,49 @@
 ---
-title: "ADR — Geo usa un proxy applicativo per OSM"
+title: "Stub — Geo usa un proxy applicativo per OSM (superseded)"
 type: decision
-status: accepted
+status: superseded
 module: Geo
-tags: [adr, geo, openstreetmap, proxy]
-created: 2026-11-23
-updated: 2026-11-24
+decision-makers: [team back office]
+created: 2026-11-24
+updated: 2026-11-26
+superseded_by: ./0003-osm-proxy-tile-nominatim.md
+qmd: "stub superseded ADR Geo geo-uses-proxy-for-osm → 0003-osm-proxy-tile-nominatim"
 ---
 
-# Geo usa un proxy applicativo per OSM
+# Stub — Geo usa un proxy applicativo per OSM (superseded)
+
+STUB → [0003-osm-proxy-tile-nominatim.md](0003-osm-proxy-tile-nominatim.md)
 
 ## Contesto
 
-Tile e geocoding devono rispettare limiti, privacy e configurazione senza esporre il provider direttamente al browser.
+Esisteva una versione breve della decisione «tile e geocoding OpenStreetMap
+passano dal nostro server». Il canone del modulo usa basename `NNNN-slug.md` e
+un solo ADR vivo per decisione.
 
 ## Driver della decisione
 
-- Centralizzare throttling, cache, validazione e disattivazione del provider.
-
-## Decisione
-
-Le richieste OSM passano dalle route proxy di Geo; il browser non chiama direttamente tile o Nominatim.
+- Un solo ADR vivo per la stessa decisione (DRY): il file breve duplicava
+  `0003-osm-proxy-tile-nominatim.md`, che contiene misure, policy OSMF e link.
+- Path legacy non devono restare ADR completi duplicati.
+- I link storici al kebab devono puntare al canone numerato.
 
 ## Alternative scartate
 
-- Chiamare OSM direttamente dal JavaScript.
-- Distribuire throttling e privacy nei temi.
+- Tenere due ADR vivi sulla stessa decisione: doppia fonte di verità.
+- Cancellare il file senza nota: rompe i link legacy al path kebab.
+
+## Decisione
+
+Questo file è **superseded**. Canonico:
+[0003-osm-proxy-tile-nominatim.md](0003-osm-proxy-tile-nominatim.md), che riporta
+anche la verifica `OsmProxyTest` e il throttle delle rotte.
 
 ## Conseguenze
 
-Il provider è sostituibile e controllabile; mappe e widget devono usare gli endpoint Geo configurati.
+- Pro: un solo ADR da aggiornare (`0003-…`); il kebab resta un puntatore.
+- Contro: chi apre il kebab deve seguire il link al canone.
 
 ## Conferma
 
-Verificare route proxy, throttle, validazione e test OSM del modulo Geo.
-
-## Verifica
-
-- `cd laravel && vendor/bin/pest Modules/Geo/tests/Feature/OsmProxyTest.php` (`Modules/Geo/tests/Feature/OsmProxyTest.php`): tile e
-  Nominatim serviti dal nostro dominio, cache, validazione dei parametri e spegnimento da configurazione.
-- Throttle: le due rotte in `Modules/Geo/routes/api.php` dichiarano `throttle:1200,1` (tile) e `throttle:30,1` (Nominatim).
-- Solo revisione: che nessun componente JS o layout chiami `tile.openstreetmap.org` o `nominatim.openstreetmap.org` senza passare
-  dal proxy (nessun test controlla le richieste del browser). Il dettaglio della decisione, con i numeri misurati e le
-  policy di OSMF, e' in [osm-proxy-tile-nominatim](osm-proxy-tile-nominatim.md).
+- Contenuto decisionale solo in `0003-osm-proxy-tile-nominatim.md`.
+- Frontmatter `status: superseded` e link relativo al canone presenti.

@@ -122,6 +122,8 @@ test('MapPicker searchAddress returns nominatim results on success', function ()
     $results = $field->searchAddress('Milano');
 
     Assert::assertCount(1, $results);
+    Assert::assertIsArray($results[0]);
+    /** @var array<string, mixed> $first */
     $first = $results[0];
     if (! isset($first['lat'], $first['lon'], $first['display_name'])
         || ! is_string($first['lat'])

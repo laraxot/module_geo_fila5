@@ -7,6 +7,7 @@ namespace Modules\Geo\Filament\Forms\Components\Traits;
 use Filament\Support\Components\Attributes\Exposed;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Renderless;
+use Modules\Geo\Filament\Forms\Components\Contracts\CoordinatePickerArrayShapes;
 use Modules\Geo\Filament\Forms\Components\CoordinatePickerHelpers;
 
 /**
@@ -14,7 +15,9 @@ use Modules\Geo\Filament\Forms\Components\CoordinatePickerHelpers;
  *
  * Business logic and typed array shapes live in {@see CoordinatePickerHelpers}
  * (concrete class): PHPStan L10 does not reliably keep iterable value types on
- * large trait method bodies. Keep #[Exposed]/#[Renderless] wrappers here.
+ * large trait method bodies. Consumers implement
+ * {@see CoordinatePickerArrayShapes}
+ * so class-context analysis keeps the shapes. Keep #[Exposed]/#[Renderless] wrappers here.
  *
  * Always `use` CoordinatePickerHelpers: an unqualified call resolves under
  * Traits\ and becomes class.notFound (× every consumer component).
@@ -197,6 +200,7 @@ trait HasCoordinatePicker
      * @return array{lat: float, lng: float, zoom: int}
      *
      * @see ../../../../../docs/coordinate-picker-purpose.md
+     * @see CoordinatePickerArrayShapes::getMapDefaultView()
      */
     public function getMapDefaultView(): array
     {
@@ -205,7 +209,7 @@ trait HasCoordinatePicker
             $view = null;
         } else {
             /** @var array<string, mixed> $configuredView */
-            $view = self::mapDefaultViewInput($configuredView);
+            $view = CoordinatePickerHelpers::mapDefaultViewInput($configuredView);
         }
         $lat = $view === null ? null : CoordinatePickerHelpers::normalizeCoordinate($view['lat']);
         $lng = $view === null ? null : CoordinatePickerHelpers::normalizeCoordinate($view['lng']);
@@ -306,26 +310,5 @@ trait HasCoordinatePicker
     public static function extractCoordinates(array $data, string $field = 'coordinates', string $latColumn = 'latitude', string $lngColumn = 'longitude'): array
     {
         return CoordinatePickerHelpers::extractCoordinates($data, $field, $latColumn, $lngColumn);
-    }
-
-    /**
-     * Validates the configuration boundary before the view is normalized.
-     *
-     * @param  array<string, mixed>  $view
-     * @return array{lat: float|int|string, lng: float|int|string, zoom: float|int|string}|null
-     *
-     * @see ../../../../../docs/coordinate-picker-purpose.md
-     */
-    private static function mapDefaultViewInput(array $view): ?array
-    {
-        $lat = $view['lat'] ?? null;
-        $lng = $view['lng'] ?? null;
-        $zoom = $view['zoom'] ?? null;
-
-        if (! is_numeric($lat) || ! is_numeric($lng) || ! is_numeric($zoom)) {
-            return null;
-        }
-
-        return ['lat' => $lat, 'lng' => $lng, 'zoom' => $zoom];
     }
 }

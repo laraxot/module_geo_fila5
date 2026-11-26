@@ -23,7 +23,7 @@ it('throws exception when api key is not configured', function (): void {
     } catch (GoogleMapsApiException $exception) {
         Assert::assertSame('API key di Google Maps non configurata', $exception->getMessage());
     }
-});
+})->group('GEO-GOOGLEADDR-INV-1');
 
 it('throws exception when api key is empty', function (): void {
     $action = new GetAddressFromGoogleMapsAction;
@@ -36,7 +36,7 @@ it('throws exception when api key is empty', function (): void {
         Assert::fail('Expected GoogleMapsApiException was not thrown');
     } catch (GoogleMapsApiException) {
     }
-});
+})->group('GEO-GOOGLEADDR-INV-1');
 
 it('throws exception when api response is not successful', function (): void {
     $action = new GetAddressFromGoogleMapsAction;
@@ -54,7 +54,7 @@ it('throws exception when api response is not successful', function (): void {
     } catch (GoogleMapsApiException $exception) {
         Assert::assertSame('Richiesta a Google Maps fallita: HTTP 500', $exception->getMessage());
     }
-});
+})->group('GEO-GOOGLEADDR-INV-2');
 
 it('throws exception when no results found', function (): void {
     $action = new GetAddressFromGoogleMapsAction;
@@ -75,7 +75,7 @@ it('throws exception when no results found', function (): void {
     } catch (GoogleMapsApiException $exception) {
         Assert::assertSame('Nessun risultato trovato', $exception->getMessage());
     }
-});
+})->group('GEO-GOOGLEADDR-INV-3');
 
 it('returns address data for valid address', function (): void {
     $action = new GetAddressFromGoogleMapsAction;
@@ -132,7 +132,7 @@ it('returns address data for valid address', function (): void {
     Assert::assertSame('Milano', $result->county);
 
     Assert::assertSame('Lombardia', $result->state);
-});
+})->group('GEO-GOOGLEADDR-INV-4');
 
 it('handles missing optional address components', function (): void {
     $action = new GetAddressFromGoogleMapsAction;
@@ -167,4 +167,4 @@ it('handles missing optional address components', function (): void {
     Assert::assertSame('Italia', $result->country);
 
     Assert::assertSame('', $result->street);
-});
+})->group('GEO-GOOGLEADDR-INV-5');

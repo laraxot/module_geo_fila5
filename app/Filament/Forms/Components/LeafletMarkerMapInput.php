@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Geo\Filament\Forms\Components;
 
+use Modules\Geo\Filament\Forms\Components\Contracts\CoordinatePickerArrayShapes;
 use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Filament\Forms\Components\XotBaseField;
 
@@ -13,7 +14,7 @@ use Modules\Xot\Filament\Forms\Components\XotBaseField;
  * Zen: The technical soul of marker interaction.
  * Implementation: Separate Blade and Lit JS.
  */
-class LeafletMarkerMapInput extends XotBaseField
+class LeafletMarkerMapInput extends XotBaseField implements CoordinatePickerArrayShapes
 {
     use HasCoordinatePicker;
 

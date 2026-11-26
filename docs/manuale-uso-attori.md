@@ -61,7 +61,7 @@ dell'abilità, per esempio `place.viewAny`, `place.view`, `place.create`,
 - `app/Models/Policies/GeoBasePolicy.php:10-27` — bypass di ruolo.
 - `app/Models/Policies/PlacePolicy.php:13-67` e
   `app/Models/Policies/LocationPolicy.php:13-67` — permessi effettivi.
-- `docs/adr/osm-proxy-tile-nominatim.md:31-43` — contratto front office,
+- `docs/adr/0003-osm-proxy-tile-nominatim.md:31-43` — contratto front office,
   privacy e configurazione.
 - `tests/Feature/OsmProxyTest.php:48-60,105-149` — proxy, cache, limiti e
   disattivazione verificati.
