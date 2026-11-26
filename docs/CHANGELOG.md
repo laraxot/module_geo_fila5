@@ -1,17 +1,14 @@
-<<<<<<< .merge_file_rZaQer
 ---
-title: "CHANGELOG"
+title: "Changelog"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "CHANGELOG"
+qmd: "Changelog"
 issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_23uc5y
 # Changelog
 
 All notable changes to `:package_name` will be documented in this file.

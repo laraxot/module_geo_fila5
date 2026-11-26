@@ -130,7 +130,7 @@ Dettaglio: [geo-map-popup-bem.md](./geo-map-popup-bem.md)
 
 | # | Sintomo | Doc |
 |---|---------|-----|
-| 1 | Mappa vuota / 404 bundle | [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents-2026-06.md) §1 |
+| 1 | Mappa vuota / 404 bundle | [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents.md) §1 |
 | 2 | Marker spariscono dopo GPS | idem §2 |
 | 3 | Cluster scappano hover | [marker-cluster-hover-stability.md](../../../../../Themes/Sixteen/docs/wiki/concepts/marker-cluster-hover-stability.md) |
 | 4 | Icona trash gigante in cluster | [map-lit-cluster-type-icons.md](./map-lit-cluster-type-icons.md) |

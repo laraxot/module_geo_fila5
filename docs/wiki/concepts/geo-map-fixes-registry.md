@@ -77,7 +77,7 @@ flowchart TD
 | Layer | Hub |
 |-------|-----|
 | Modulo Geo (SSoT) | [geo-map-lit-reconstruction-guide.md](./geo-map-lit-reconstruction-guide.md) |
-| Incidenti operativi | [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents-2026-06.md) |
+| Incidenti operativi | [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents.md) |
 | Popup spacing | [map-popup-header-whitespace-fix.md](../troubleshooting/map-popup-header-whitespace-fix.md) |
 | Marker stato/tipo | [geo-map-marker-status-background.md](./geo-map-marker-status-background.md) |
 | Tema — leak header | [global-header-css-leak-leaflet-popup.md](../../../../../Themes/Sixteen/docs/wiki/troubleshooting/global-header-css-leak-leaflet-popup.md) |

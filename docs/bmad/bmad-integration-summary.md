@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_fx6TKA
 ---
 title: "bmad integration summary"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_jKm619
 # bmad integration summary
 
 ## Scopo

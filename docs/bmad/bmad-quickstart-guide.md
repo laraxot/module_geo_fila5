@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_7rAwB9
 ---
 title: "bmad quickstart guide"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_TwqvSE
 # BMAD Method — Quick Start Guide
 
 > **Versione**: 6.2.0 | **Ultimo aggiornamento**: 2026-03-31  
@@ -19,7 +16,6 @@ discussions: []
 
 ---
 
-<<<<<<< .merge_file_7rAwB9
 title: "bmad quickstart guide"
 type: note
 tags: [documentation]
@@ -28,8 +24,6 @@ updated: 2026-09-26
 qmd: "bmad quickstart guide"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_TwqvSE
 ## 🚀 Introduzione
 
 **BMAD Method** (Build More Architect Dreams) è un framework di sviluppo AI-driven con agenti specializzati per trasformare idee vaghe in specifiche tecniche rigorose e codice di qualità.

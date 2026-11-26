@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_b0y3LU
 ---
 title: "README"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_LHrgfc
 # bmad method
 
 ## Scopo (business logic)

@@ -26,7 +26,7 @@ Work in progress:
 
 - Harden `bashscripts/tools/prompts/llm-wiki.txt` with verified local links, best practices, bad practices, and false friends.
 - Keep root `docs/wiki/rules/00-TRIGGER_MAP.md` canonical for routing.
-- Keep `docs/wiki/*/INDEX.md` short and route-only.
+- Keep `docs/wiki/*/index.md` short and route-only.
 - Add or improve skill pages only when a workflow is repeatable and verifiable.
 
 Quality bar for agents:

@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_QF7Ab9
 ---
 title: "json database"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_zzcIEZ
 # JSON come Database per Dati Geografici
 
 ## Contesto

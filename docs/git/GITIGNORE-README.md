@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_d1uNof
 ---
 title: "GITIGNORE README"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_gWAaPp
 # Gestione File .gitignore nei Moduli
 
 ## Introduzione

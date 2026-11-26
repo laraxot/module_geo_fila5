@@ -53,6 +53,6 @@ Selettore: `map-lit#block-map .geo-map-legend`
 
 ## Collegamenti
 
-- [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents-2026-06.md)
+- [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents.md)
 - [map-lit-cluster-type-icons.md](./map-lit-cluster-type-icons.md)
 - Tema: [map-lit-legend-theme-boundary.md](../../../../../Themes/Sixteen/docs/wiki/concepts/map-lit-legend-theme-boundary.md)

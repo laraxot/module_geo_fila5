@@ -1,17 +1,14 @@
-<<<<<<< .merge_file_b4BHO5
 ---
-title: "best practices"
+title: "Best Practices"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "best practices"
+qmd: "Best Practices"
 issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_wMEeHQ
 # Best Practices – Geo Module
 
 ## Principi DRY/KISS
@@ -34,5 +31,5 @@ discussions: []
 
 ## Documentazione
 
-- Aggiorna sempre `docs/INDEX.md` quando aggiungi file.
+- Aggiorna sempre `docs/index.md` quando aggiungi file.
 - Riferisciti alle regole in `bashscripts/ai/.claude/rules/` per approfondimenti.

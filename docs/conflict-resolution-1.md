@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_LXSQuG
 ---
 title: "conflict resolution 1"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_qsbPDx
 # Risoluzione Conflitti Git - Modulo Geo
 
 ## Data: 2025-01-06
@@ -165,7 +162,6 @@ php artisan lang:check
 
 ---
 
-<<<<<<< .merge_file_LXSQuG
 title: "conflict resolution 1"
 type: note
 tags: [documentation]
@@ -174,8 +170,6 @@ updated: 2026-09-26
 qmd: "conflict resolution 1"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_qsbPDx
 **Ultimo aggiornamento**: 2025-01-06
 **Autore**: Sistema di correzione automatica
 **Stato**: ✅ Completato

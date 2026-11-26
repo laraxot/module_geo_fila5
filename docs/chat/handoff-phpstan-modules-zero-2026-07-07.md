@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_cuR6WI
 ---
 title: "handoff phpstan modules zero 2026 07 07"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_SDHDpD
 # Handoff — PHPStan Modules zero errori
 
 **Data**: 2026-07-07

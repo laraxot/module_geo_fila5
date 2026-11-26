@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_WXGOav
 ---
 title: "migration naming pattern 1"
 type: note
@@ -10,8 +9,6 @@ issues: []
 discussions: []
 ---
 
-=======
->>>>>>> .merge_file_FdsoBe
 # Convenzione di Naming e Gestione delle Migrazioni
 
 ## Pattern del Progetto <main module>

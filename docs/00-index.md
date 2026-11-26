@@ -9,7 +9,7 @@ issues: []
 discussions: []
 ---
 
-> **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
+> **Superseded: vedi [index.md](./index.md).** Questo file resta per cronologia e non viene aggiornato.
 
 # 📚 **Indice Documentazione Modulo Geo**
 

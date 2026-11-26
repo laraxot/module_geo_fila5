@@ -1,10 +1,10 @@
 ---
-title: "produzione migration checklist"
+title: "Produzione Migration Checklist"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "produzione migration checklist"
+qmd: "Produzione Migration Checklist"
 issues: []
 discussions: []
 ---
@@ -27,12 +27,12 @@ discussions: []
 
 ---
 
-title: "produzione migration checklist"
+title: "PRODUZIONE MIGRATION CHECKLIST"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "produzione migration checklist"
+qmd: "PRODUZIONE MIGRATION CHECKLIST"
 issues: []
 discussions: []
 ## Procedura Step-by-Step

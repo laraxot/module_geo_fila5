@@ -53,7 +53,7 @@ discussions: []
 **Your Guide**:
 1. **[📋 Refactoring Action Plan](../laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md)** (30 min) - Detailed tasks
 2. **[✅ Best Practices](../laravel/Modules/IndennitaResponsabilita/docs/best-practices.md)** (20 min) - How to implement
-3. **[🚀 Quick Start](../laravel/Modules/IndennitaResponsabilita/docs/QUICK-START.md)** (10 min) - Get started fast
+3. **[🚀 Quick Start](../laravel/Modules/IndennitaResponsabilita/docs/quick-start.md)** (10 min) - Get started fast
 
 **Time**: 60 minutes → Ready to refactor!
 
@@ -107,7 +107,7 @@ discussions: []
 | Code Quality | [Quality Analysis](../laravel/Modules/IndennitaResponsabilita/docs/code-quality-analysis.md) | Deep dive needed |
 | Testing | [Testing Guide](./testing/README.md) | Writing tests |
 | Performance | [Performance](./performance-optimization.md) | Optimization needed |
-| Security | [Security](./security.md) | Security review |
+| Security | [Security](./SECURITY.md) | Security review |
 
 ---
 

@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_fe5BxO
 ---
 title: "00 INDEX"
 type: note
@@ -10,10 +9,8 @@ issues: []
 discussions: []
 ---
 
-> **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
+> **Superseded: vedi [index.md](./index.md).** Questo file resta per cronologia e non viene aggiornato.
 
-=======
->>>>>>> .merge_file_kcXBDg
 # Geo Module — Documentation Index
 
 ## Architecture
@@ -45,10 +42,7 @@ discussions: []
 ## Actions
 
 - [Da Services a Queueable Actions](./wiki/concepts/no-app-support-queueable-actions.md) — contratto `QueueableAction`, `execute()` e composizione tra use case.
-<<<<<<< .merge_file_fe5BxO
 - [Geo no-services architecture](./wiki/concepts/geo-no-services-migration.md) — responsabilità migrate da `app/Services` ad Actions e Adapters.
-=======
->>>>>>> .merge_file_kcXBDg
 
 
 | Action | Path | Descrizione |
@@ -100,12 +94,11 @@ discussions: []
 
 | Documento | Descrizione |
 |-----------|-------------|
-| **[DAISYUI.md](./DAISYUI.md)** | DaisyUI nel modulo Geo: perché non è installato, pro/contro, metriche |
+| **[daisyui.md](./daisyui.md)** | DaisyUI nel modulo Geo: perché non è installato, pro/contro, metriche |
 | **[Sixteen/docs/DAISYUI-APPLY.md](../Sixteen/docs/DAISYUI-APPLY.md)** | DaisyUI + `@apply` nel tema Sixteen: guida pratica, percentuali, opinione |
 
 ---
 
-<<<<<<< .merge_file_fe5BxO
 title: "00 INDEX"
 type: note
 tags: [documentation]
@@ -114,8 +107,6 @@ updated: 2026-09-26
 qmd: "00 INDEX"
 issues: []
 discussions: []
-=======
->>>>>>> .merge_file_kcXBDg
 ## Zen: Domain-Driven Design
 
 **Geo possiede tutto ciò che è geo-spaziale.** I moduli consumatori (Fixcity, Municipal, User, etc.) importano i componenti da Geo.
