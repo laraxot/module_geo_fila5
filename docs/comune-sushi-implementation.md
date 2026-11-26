@@ -7,8 +7,9 @@ updated: 2026-09-26
 qmd: "comune sushi implementation"
 issues: []
 discussions: []
-<<<<<<< HEAD
-<<<<<<< .merge_file_BB82os
+module: theme
+topic: comune-sushi-implementation
+canonical: ../../../Themes/docs/shared-components/comune-sushi-implementation-1.md
 ---
 
 # Implementazione Sushi per il Modello Comune
@@ -191,19 +192,15 @@ class Comune extends Model
 
 ## Regola: evitare trait inutili e non riusabili
 Non ha senso creare un trait come ComuneSushiTrait se viene usato solo in un modello. I trait vanno creati solo se riutilizzati in più classi. Se la logica è specifica di un solo modello, va implementata direttamente nella classe. Motivazione: semplicità, KISS, manutenibilità, evitare complessità inutile. Collegamento a docs/structure.md e best practices.
-=======
 module: theme
 topic: comune-sushi-implementation
 canonical: ../../../Themes/docs/shared-components/comune-sushi-implementation-1.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/comune-sushi-implementation-1.md
->>>>>>> .merge_file_v42IuV
-=======
 module: theme
 topic: comune-sushi-implementation
 canonical: ../../../Themes/docs/shared-components/comune-sushi-implementation-1.md
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/comune-sushi-implementation-1.md
->>>>>>> d478251a (.)

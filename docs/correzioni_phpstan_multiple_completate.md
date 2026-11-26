@@ -1,10 +1,10 @@
 ---
-title: "Correzioni Phpstan Multiple Completate"
+title: "correzioni phpstan multiple completate"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "Correzioni Phpstan Multiple Completate"
+qmd: "correzioni phpstan multiple completate"
 issues: []
 discussions: []
 ---
@@ -154,36 +154,12 @@ array_merge(
 
 ---
 
-<<<<<<< .merge_file_NuRhOG
-<<<<<<< HEAD
 title: "CORREZIONI PHPSTAN MULTIPLE COMPLETATE"
-=======
-title: "correzioni phpstan multiple completate"
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_pG71SJ
-title: "correzioni phpstan multiple completate"
-=======
-title: "CORREZIONI PHPSTAN MULTIPLE COMPLETATE"
->>>>>>> .merge_file_a3sBs7
->>>>>>> .merge_file_06SgVR
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-<<<<<<< .merge_file_NuRhOG
-<<<<<<< HEAD
 qmd: "CORREZIONI PHPSTAN MULTIPLE COMPLETATE"
-=======
-qmd: "correzioni phpstan multiple completate"
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_pG71SJ
-qmd: "correzioni phpstan multiple completate"
-=======
-qmd: "CORREZIONI PHPSTAN MULTIPLE COMPLETATE"
->>>>>>> .merge_file_a3sBs7
->>>>>>> .merge_file_06SgVR
 issues: []
 discussions: []
 ## ✅ SESSIONE BUG FIXING COMPLETATA

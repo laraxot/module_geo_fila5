@@ -9,19 +9,10 @@ issues: []
 discussions: []
 ---
 
-<<<<<<< .merge_file_ECT537
-<<<<<<< HEAD
 > **Superseded: vedi [index.md](./index.md).** Questo file resta per cronologia e non viene aggiornato.
-=======
 > **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_pkgqs5
 > **Superseded: vedi [INDEX.md](./INDEX.md).** Questo file resta per cronologia e non viene aggiornato.
-=======
 > **Superseded: vedi [index.md](./index.md).** Questo file resta per cronologia e non viene aggiornato.
->>>>>>> .merge_file_w4Ne9Z
->>>>>>> .merge_file_cvLExo
 
 # Geo Module — Documentation Index
 
@@ -55,7 +46,6 @@ discussions: []
 
 - [Da Services a Queueable Actions](./wiki/concepts/no-app-support-queueable-actions.md) — contratto `QueueableAction`, `execute()` e composizione tra use case.
 - [Geo no-services architecture](./wiki/concepts/geo-no-services-migration.md) — responsabilità migrate da `app/Services` ad Actions e Adapters.
-
 
 | Action | Path | Descrizione |
 |--------|------|-------------|

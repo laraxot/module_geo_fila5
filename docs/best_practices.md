@@ -1,34 +1,10 @@
 ---
-<<<<<<< .merge_file_jYzgVE
-<<<<<<< HEAD
-title: "Best Practices"
-=======
 title: "best practices"
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_PCmNqA
-title: "best practices"
-=======
-title: "Best Practices"
->>>>>>> .merge_file_ERSeq2
->>>>>>> .merge_file_PD2L9P
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-<<<<<<< .merge_file_jYzgVE
-<<<<<<< HEAD
-qmd: "Best Practices"
-=======
 qmd: "best practices"
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_PCmNqA
-qmd: "best practices"
-=======
-qmd: "Best Practices"
->>>>>>> .merge_file_ERSeq2
->>>>>>> .merge_file_PD2L9P
 issues: []
 discussions: []
 ---

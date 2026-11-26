@@ -23,19 +23,7 @@ related:
 - [coordinate-picker-field](./concepts/coordinate-picker-field.md) - il campo Filament del picker e il suo componente Lit
 - [coordinate-picker-design-comuni-runtime-rule](./concepts/coordinate-picker-design-comuni-runtime-rule.md) - regola runtime del picker nelle pagine Design Comuni
 - [geo-map-lit](./concepts/geo-map-lit.md) - il componente mappa `geo-map-lit`
-<<<<<<< .merge_file_ZOMCcZ
-<<<<<<< HEAD
-- [Elenco completo dei concept](./concepts/index.md) - tutti i 148 concept della cartella, uno per riga
-=======
 - [Elenco completo dei concept](./concepts/INDEX.md) - tutti i 148 concept della cartella, uno per riga
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_YAR9IF
-- [Elenco completo dei concept](./concepts/INDEX.md) - tutti i 148 concept della cartella, uno per riga
-=======
-- [Elenco completo dei concept](./concepts/index.md) - tutti i 148 concept della cartella, uno per riga
->>>>>>> .merge_file_12q7dl
->>>>>>> .merge_file_H1bMEM
 
 ## AI / second brain
 
@@ -45,35 +33,16 @@ related:
 - [ai-harness-module-discipline](../../docs/wiki/concepts/ai-harness-module-discipline.md)
 - [second-brain-local-discipline](./concepts/second-brain-local-discipline.md) → canon Xot
 
-
 ## Indices
-<<<<<<< .merge_file_ZOMCcZ
-<<<<<<< HEAD
-=======
-<<<<<<< .merge_file_YAR9IF
 - [Rules](rules/INDEX.md)
 - [Skills](skills/INDEX.md)
 - [Commands](commands/INDEX.md)
 - [Memories](memories/INDEX.md)
 - [Concepts](concepts/INDEX.md)
-=======
->>>>>>> .merge_file_H1bMEM
 - [Rules](rules/index.md)
 - [Skills](skills/index.md)
 - [Commands](commands/index.md)
 - [Memories](memories/index.md)
-- [Concepts](concepts/index.md)
-<<<<<<< .merge_file_ZOMCcZ
-=======
-- [Rules](rules/INDEX.md)
-- [Skills](skills/INDEX.md)
-- [Commands](commands/INDEX.md)
-- [Memories](memories/INDEX.md)
-- [Concepts](concepts/INDEX.md)
->>>>>>> d478251a (.)
-=======
->>>>>>> .merge_file_12q7dl
->>>>>>> .merge_file_H1bMEM
 
 ## Nota frontoffice (tema Sixteen)
 
@@ -91,7 +60,6 @@ related:
 - [geo-map-popup-bem.md](concepts/geo-map-popup-bem.md) — block `popup`, `<div class="popup__header">`
 - [geo-map-marker-status-background.md](concepts/geo-map-marker-status-background.md) — marker stato + pad bianco + punta
 - [bem-modifier-dom-contract.md](rules/bem-modifier-dom-contract.md) — vietato `.popup--loading .popup__footer`
-
 
 Il **guscio** delle pagine pub (Tailwind + [DaisyUI docs](https://daisyui.com/docs/) + parity classi Design Comuni) è di competenza del tema; i componenti **Lit** mappa (`coordinate-picker-lit`, `map-lit`, …) non dipendono da DaisyUI ma convivono nello stesso bundle Vite del tema. Indice stack: [design-comuni-class-mapping](../../../../Themes/Sixteen/docs/wiki/entities/design-comuni-class-mapping.md). **Valutazione DaisyUI** (pro/contro, percentuali): [daisyui-pro-contro-metriche](../../../../Modules/Cms/docs/daisyui-pro-contro-metriche.md).
 

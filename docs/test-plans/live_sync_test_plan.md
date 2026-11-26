@@ -1,10 +1,10 @@
 ---
-title: "Live Sync Test Plan"
+title: "live sync test plan"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "Live Sync Test Plan"
+qmd: "live sync test plan"
 issues: []
 discussions: []
 ---
@@ -21,36 +21,12 @@ discussions: []
 
 ---
 
-<<<<<<< .merge_file_PFOIBA
-<<<<<<< HEAD
 title: "LIVE SYNC TEST PLAN"
-=======
-title: "live sync test plan"
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_NLdS8b
-title: "live sync test plan"
-=======
-title: "LIVE SYNC TEST PLAN"
->>>>>>> .merge_file_1ZMoIh
->>>>>>> .merge_file_WfemxZ
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-<<<<<<< .merge_file_PFOIBA
-<<<<<<< HEAD
 qmd: "LIVE SYNC TEST PLAN"
-=======
-qmd: "live sync test plan"
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_NLdS8b
-qmd: "live sync test plan"
-=======
-qmd: "LIVE SYNC TEST PLAN"
->>>>>>> .merge_file_1ZMoIh
->>>>>>> .merge_file_WfemxZ
 issues: []
 discussions: []
 ## Objective
@@ -118,8 +94,6 @@ Execute a **real-world test** of `sync_remote_repo.sh` on an actual GitHub repos
 
 ### Phase 3: Validation
 
-**Duration:** 2-4 hours
-
 **Tasks:**
 - [ ] Check remote repository
 - [ ] Verify file sync
@@ -130,8 +104,6 @@ Execute a **real-world test** of `sync_remote_repo.sh` on an actual GitHub repos
 **Owner:** Validation Lead
 
 ### Phase 4: Reporting
-
-**Duration:** 2-4 hours
 
 **Tasks:**
 - [ ] Compile test results

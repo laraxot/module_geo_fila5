@@ -1,10 +1,10 @@
 ---
-title: "Daisyui"
+title: "daisyui"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "Daisyui"
+qmd: "daisyui"
 issues: []
 discussions: []
 ---
@@ -26,36 +26,12 @@ Nel contesto del modulo **Geo**, daisyUI **non è attualmente installato**.
 
 ---
 
-<<<<<<< .merge_file_xoAkoy
-<<<<<<< HEAD
 title: "DAISYUI"
-=======
-title: "daisyui"
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_9tfO3E
-title: "daisyui"
-=======
-title: "DAISYUI"
->>>>>>> .merge_file_IU3Dqh
->>>>>>> .merge_file_EO0Nid
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-<<<<<<< .merge_file_xoAkoy
-<<<<<<< HEAD
 qmd: "DAISYUI"
-=======
-qmd: "daisyui"
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_9tfO3E
-qmd: "daisyui"
-=======
-qmd: "DAISYUI"
->>>>>>> .merge_file_IU3Dqh
->>>>>>> .merge_file_EO0Nid
 issues: []
 discussions: []
 ## Perché Geo non usa daisyUI (e perché non serve)

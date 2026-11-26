@@ -9,19 +9,7 @@ issues: []
 discussions: []
 module: theme
 topic: product_strategy
-<<<<<<< .merge_file_9ZKO8z
-<<<<<<< HEAD
-canonical: ../../../Themes/docs/shared-components/product_strategy.md
-=======
 canonical: ../../../Themes/docs/shared-components/PRODUCT_STRATEGY.md
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_vvG44V
-canonical: ../../../Themes/docs/shared-components/PRODUCT_STRATEGY.md
-=======
-canonical: ../../../Themes/docs/shared-components/product_strategy.md
->>>>>>> .merge_file_XkJoyT
->>>>>>> .merge_file_gfulUa
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/product_strategy.md

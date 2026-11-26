@@ -1,10 +1,10 @@
 ---
-title: "Commands"
+title: "commands"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "Commands"
+qmd: "commands"
 issues: []
 discussions: []
 ---
@@ -17,36 +17,12 @@ discussions: []
 
 ---
 
-<<<<<<< .merge_file_NyDpPF
-<<<<<<< HEAD
 title: "COMMANDS"
-=======
-title: "commands"
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_HmrYW6
-title: "commands"
-=======
-title: "COMMANDS"
->>>>>>> .merge_file_omG8pz
->>>>>>> .merge_file_fFVqi4
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-<<<<<<< .merge_file_NyDpPF
-<<<<<<< HEAD
 qmd: "COMMANDS"
-=======
-qmd: "commands"
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_HmrYW6
-qmd: "commands"
-=======
-qmd: "COMMANDS"
->>>>>>> .merge_file_omG8pz
->>>>>>> .merge_file_fFVqi4
 issues: []
 discussions: []
 ## 🚀 Essential Commands
@@ -191,25 +167,7 @@ discussions: []
 
 ### OpenCode
 
-```bash
-/gsd-new-project
-/gsd-discuss-phase
-/gsd-plan-phase
-/gsd-execute-phase
-/gsd-verify-work
-/gsd-help
-```
-
 ### GitHub Copilot
-
-```bash
-/gsd:new-project
-/gsd:discuss-phase
-/gsd:plan-phase
-/gsd:execute-phase
-/gsd:verify-work
-/gsd:help
-```
 
 ---
 
@@ -422,8 +380,6 @@ git bisect start
 /gsd:set-profile balanced   # Default
 /gsd:set-profile budget     # High-volume work
 ```
-
-### Session Management
 
 ```bash
 /gsd:pause-work             # Save state

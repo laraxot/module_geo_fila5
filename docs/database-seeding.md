@@ -16,8 +16,6 @@ discussions: []
 Questa documentazione descrive il processo di popolamento del database per i moduli <nome modulo> e <nome progetto>, utilizzando i seeder e factory esistenti tramite script organizzati nella cartella `bashscripts`.
 # Database Seeding - Moduli <nome progetto> e <nome progetto>
 
-## Panoramica
-
 Questa documentazione descrive il processo di popolamento del database per i moduli <nome progetto> e <nome progetto>, utilizzando i seeder e factory esistenti tramite script organizzati nella cartella `bashscripts`.
 
 ## Struttura Script
@@ -200,7 +198,6 @@ php bashscripts/database/seeding/<nome progetto>-1000-records.php
 
 ### Errori Comuni
 1. **Modulo non trovato**: Verificare installazione modulo <nome progetto>
-1. **Modulo non trovato**: Verificare installazione modulo <nome progetto>
 2. **Factory non trovato**: Controllare esistenza factory nel modulo
 3. **Errore database**: Verificare migrazioni e configurazione
 4. **Memoria insufficiente**: Utilizzare script in batch più piccoli
@@ -233,24 +230,11 @@ php bashscripts/database/seeding/<nome progetto>-1000-records.php
 
 ## Collegamenti e Riferimenti
 
-<<<<<<< .merge_file_padjGS
-<<<<<<< HEAD
 - [README BashScripts](../bashscripts/README.md)
-=======
 - [README BashScripts](../bashscripts/readme.md)
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_2zOT29
-- [README BashScripts](../bashscripts/readme.md)
-=======
-- [README BashScripts](../bashscripts/README.md)
->>>>>>> .merge_file_cqrQn3
->>>>>>> .merge_file_cRaVTw
 - [Quick Start Seeding](../bashscripts/database/seeding/quick_start.md)
 - [Documentazione Modulo <nome progetto>](../laravel/Modules/<nome progetto>/docs/)
 - [Documentazione Modulo <nome modulo>](../laravel/Modules/<nome modulo>/docs/)
-- [Documentazione Modulo <nome progetto>](../laravel/Modules/<nome progetto>/docs/)
-- [Documentazione Modulo <nome progetto>](../laravel/Modules/<nome progetto>/docs/)
 
 ---
 

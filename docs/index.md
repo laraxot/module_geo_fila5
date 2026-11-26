@@ -84,19 +84,8 @@ discussions: []
 - **[Teams](./teams.md)** - Gestione team
 
 ### Sicurezza Dati
-<<<<<<< .merge_file_hmnI2F
-<<<<<<< HEAD
 - **[Security Best Practices](./SECURITY.md)** - Sicurezza applicazione
-=======
 - **[Security Best Practices](./security.md)** - Sicurezza applicazione
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_GTTqKs
-- **[Security Best Practices](./security.md)** - Sicurezza applicazione
-=======
-- **[Security Best Practices](./SECURITY.md)** - Sicurezza applicazione
->>>>>>> .merge_file_qyjaul
->>>>>>> .merge_file_gEVsk4
 - **[GDPR Compliance](./gdpr-compliance.md)** - Conformità GDPR
 - **[Audit Log](../../Activity/docs/README.md)** - Logging attività
 

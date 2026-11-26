@@ -9,19 +9,7 @@ issues: []
 discussions: []
 module: theme
 topic: product_roadmap
-<<<<<<< .merge_file_ETDefg
-<<<<<<< HEAD
-canonical: ../../../Themes/docs/shared-components/product_roadmap.md
-=======
 canonical: ../../../Themes/docs/shared-components/PRODUCT_ROADMAP.md
->>>>>>> d478251a (.)
-=======
-<<<<<<< .merge_file_sWZSHs
-canonical: ../../../Themes/docs/shared-components/PRODUCT_ROADMAP.md
-=======
-canonical: ../../../Themes/docs/shared-components/product_roadmap.md
->>>>>>> .merge_file_GGQ6aw
->>>>>>> .merge_file_giI5YV
 ---
 
 See canonical documentation: ../../../Themes/docs/shared-components/product_roadmap.md
