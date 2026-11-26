@@ -11,68 +11,70 @@ updated: 2026-11-19
 
 <!-- Indice unico della documentazione del modulo Geo (issue #64): index-2.md, 00-index-2.md, 00-index.md e index.md sono stati rimossi. -->
 
-## Navigazione
-
-- [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo; audit qualita' in [stories/audit-qualita.story.md](./stories/audit-qualita.story.md)
-- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting ([log](./wiki/log.md))
-- [Coordinate picker](./wiki/coordinate-picker.md) - componente Lit/Leaflet, build Vite in `public/` servita da `public_html/assets/geo`
-- [Ricostruzione mappa Leaflet/Lit](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
-- [Analisi dei modelli](./geo-models-domain-analysis.md)
-- [Registro decisioni](./decision-log.md)
-- [Mappa di migrazione della radice di docs/](./docs-migration-map.md) - proposta di riordino dei file in radice
-
-### Asset front-end
-
-Gli asset vengono serviti solo da `Modules/Geo/public` (build Vite, link simbolico `public_html/assets/geo`):
-`AssetAction` non copia piu' file da `resources/`. Il vecchio layout `geo::layouts.plane` (con i partial
-`htmlheader`/`scripts`/`sidebar` e la vista `geo::home.index`) caricava `geo::css/geo.css` e `geo::js/*.js`
-da `resources/` e quindi rispondeva 404; nessuna rotta, vista o classe lo usava, ed e' stato rimosso
-insieme a `resources/css/geo.css` e `resources/js/jquery-3.3.1.js`, rimasti senza riferimenti.
-
-updated: 2026-07-14
----
-
-updated: 2026-11-19
----
-
-<!-- Indice unico della documentazione del modulo Geo (issue #64): index-2.md, 00-index-2.md, 00-index.md e index.md sono stati rimossi. -->
-updated: 2026-07-14
----
-
-updated: 2026-07-14
----
-
-updated: 2026-11-19
----
-
-<!-- Indice unico della documentazione del modulo Geo (issue #64): index-2.md, 00-index-2.md, 00-index.md e index.md sono stati rimossi. -->
-updated: 2026-07-14
----
-
-updated: 2026-07-14
----
-
-updated: 2026-11-19
----
-
-<!-- Indice unico della documentazione del modulo Geo (issue #64): index-2.md, 00-index-2.md, 00-index.md e index.md sono stati rimossi. -->
-updated: 2026-07-14
----
-
-updated: 2026-11-19
----
-
-<!-- Indice unico della documentazione del modulo Geo (issue #64): index-2.md, 00-index-2.md, 00-index.md e index.md sono stati rimossi. -->
+> **Archivio (issue #97):** la documentazione storica e' stata spostata in [`../archive/docs-legacy/`](../archive/README.md) per mantenere `docs/` sotto il limite di 100 file `.md`. In questa cartella restano: questo indice, `adr/`, `contracts/`, `rules/`, `architecture/`, le story attive in `stories/` e la parte corrente della wiki in `wiki/`. I link che puntano a `../archive/docs-legacy/...` fanno riferimento a documenti archiviati.
 
 ## Navigazione
 
 - [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo; audit qualita' in [stories/audit-qualita.story.md](./stories/audit-qualita.story.md)
-- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting ([log](./wiki/log.md))
-- [Coordinate picker](./wiki/coordinate-picker.md) - componente Lit/Leaflet, build Vite in `public/` servita da `public_html/assets/geo`
-- [Ricostruzione mappa Leaflet/Lit](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
-- [Analisi dei modelli](./geo-models-domain-analysis.md)
-- [Registro decisioni](./decision-log.md)
-- [Mappa di migrazione della radice di docs/](./docs-migration-map.md) - proposta di riordino dei file in radice
+- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting ([log](../archive/docs-legacy/wiki/log.md))
+- [Coordinate picker](../archive/docs-legacy/wiki/coordinate-picker.md) - componente Lit/Leaflet, build Vite in `public/` servita da `public_html/assets/geo`
+- [Ricostruzione mappa Leaflet/Lit](../archive/docs-legacy/wiki/concepts/geo-map-lit-reconstruction-guide.md)
+- [Analisi dei modelli](../archive/docs-legacy/root/geo-models-domain-analysis.md)
+- [Registro decisioni](../archive/docs-legacy/root/decision-log.md)
+- [Mappa di migrazione della radice di docs/](../archive/docs-legacy/root/DOCS-MIGRATION-MAP.md) - proposta di riordino dei file in radice
+
+### Asset front-end
+
+Gli asset vengono serviti solo da `Modules/Geo/public` (build Vite, link simbolico `public_html/assets/geo`):
+`AssetAction` non copia piu' file da `resources/`. Il vecchio layout `geo::layouts.plane` (con i partial
+`htmlheader`/`scripts`/`sidebar` e la vista `geo::home.index`) caricava `geo::css/geo.css` e `geo::js/*.js`
+da `resources/` e quindi rispondeva 404; nessuna rotta, vista o classe lo usava, ed e' stato rimosso
+insieme a `resources/css/geo.css` e `resources/js/jquery-3.3.1.js`, rimasti senza riferimenti.
+
+updated: 2026-07-14
+---
+
+updated: 2026-11-19
+---
+
+<!-- Indice unico della documentazione del modulo Geo (issue #64): index-2.md, 00-index-2.md, 00-index.md e index.md sono stati rimossi. -->
+updated: 2026-07-14
+---
+
+updated: 2026-07-14
+---
+
+updated: 2026-11-19
+---
+
+<!-- Indice unico della documentazione del modulo Geo (issue #64): index-2.md, 00-index-2.md, 00-index.md e index.md sono stati rimossi. -->
+updated: 2026-07-14
+---
+
+updated: 2026-07-14
+---
+
+updated: 2026-11-19
+---
+
+<!-- Indice unico della documentazione del modulo Geo (issue #64): index-2.md, 00-index-2.md, 00-index.md e index.md sono stati rimossi. -->
+updated: 2026-07-14
+---
+
+updated: 2026-11-19
+---
+
+<!-- Indice unico della documentazione del modulo Geo (issue #64): index-2.md, 00-index-2.md, 00-index.md e index.md sono stati rimossi. -->
+
+## Navigazione
+
+- [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo; audit qualita' in [stories/audit-qualita.story.md](./stories/audit-qualita.story.md)
+- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting ([log](../archive/docs-legacy/wiki/log.md))
+- [Coordinate picker](../archive/docs-legacy/wiki/coordinate-picker.md) - componente Lit/Leaflet, build Vite in `public/` servita da `public_html/assets/geo`
+- [Ricostruzione mappa Leaflet/Lit](../archive/docs-legacy/wiki/concepts/geo-map-lit-reconstruction-guide.md)
+- [Analisi dei modelli](../archive/docs-legacy/root/geo-models-domain-analysis.md)
+- [Registro decisioni](../archive/docs-legacy/root/decision-log.md)
+- [Mappa di migrazione della radice di docs/](../archive/docs-legacy/root/DOCS-MIGRATION-MAP.md) - proposta di riordino dei file in radice
 
 ### Asset front-end
 
@@ -339,10 +341,10 @@ Geo module possiede TUTTE le concern geospaziali:
 
 ## Documenti Correlati
 
-- [Geo Models Domain Analysis](./geo-models-domain-analysis.md)
+- [Geo Models Domain Analysis](../archive/docs-legacy/root/geo-models-domain-analysis.md)
 - [Map Component Architecture](./map-component-architecture.md)
 - [Geocoding Provider Integration](./geocoding-providers.md)
-- [Leaflet/Lit Map Reconstruction](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
+- [Leaflet/Lit Map Reconstruction](../archive/docs-legacy/wiki/concepts/geo-map-lit-reconstruction-guide.md)
 - [PHPStan Configuration](../../../phpstan.neon)
 
 ## Regole Critiche
@@ -367,12 +369,12 @@ Geo module possiede TUTTE le concern geospaziali:
 ---
 
 - [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo; audit qualita' in [stories/audit-qualita.story.md](./stories/audit-qualita.story.md)
-- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting ([log](./wiki/log.md))
-- [Coordinate picker](./wiki/coordinate-picker.md) - componente Lit/Leaflet, build Vite in `public/` servita da `public_html/assets/geo`
-- [Ricostruzione mappa Leaflet/Lit](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
-- [Analisi dei modelli](./geo-models-domain-analysis.md)
-- [Registro decisioni](./decision-log.md)
-- [Mappa di migrazione della radice di docs/](./docs-migration-map.md) - proposta di riordino dei file in radice
+- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting ([log](../archive/docs-legacy/wiki/log.md))
+- [Coordinate picker](../archive/docs-legacy/wiki/coordinate-picker.md) - componente Lit/Leaflet, build Vite in `public/` servita da `public_html/assets/geo`
+- [Ricostruzione mappa Leaflet/Lit](../archive/docs-legacy/wiki/concepts/geo-map-lit-reconstruction-guide.md)
+- [Analisi dei modelli](../archive/docs-legacy/root/geo-models-domain-analysis.md)
+- [Registro decisioni](../archive/docs-legacy/root/decision-log.md)
+- [Mappa di migrazione della radice di docs/](../archive/docs-legacy/root/DOCS-MIGRATION-MAP.md) - proposta di riordino dei file in radice
 
 ### Asset front-end
 
@@ -639,10 +641,10 @@ Geo module possiede TUTTE le concern geospaziali:
 
 ## Documenti Correlati
 
-- [Geo Models Domain Analysis](./geo-models-domain-analysis.md)
+- [Geo Models Domain Analysis](../archive/docs-legacy/root/geo-models-domain-analysis.md)
 - [Map Component Architecture](./map-component-architecture.md)
 - [Geocoding Provider Integration](./geocoding-providers.md)
-- [Leaflet/Lit Map Reconstruction](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
+- [Leaflet/Lit Map Reconstruction](../archive/docs-legacy/wiki/concepts/geo-map-lit-reconstruction-guide.md)
 - [PHPStan Configuration](../../../phpstan.neon)
 
 ## Regole Critiche
@@ -667,12 +669,12 @@ Geo module possiede TUTTE le concern geospaziali:
 ---
 
 - [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo; audit qualita' in [stories/audit-qualita.story.md](./stories/audit-qualita.story.md)
-- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting ([log](./wiki/log.md))
-- [Coordinate picker](./wiki/coordinate-picker.md) - componente Lit/Leaflet, build Vite in `public/` servita da `public_html/assets/geo`
-- [Ricostruzione mappa Leaflet/Lit](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
-- [Analisi dei modelli](./geo-models-domain-analysis.md)
-- [Registro decisioni](./decision-log.md)
-- [Mappa di migrazione della radice di docs/](./docs-migration-map.md) - proposta di riordino dei file in radice
+- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting ([log](../archive/docs-legacy/wiki/log.md))
+- [Coordinate picker](../archive/docs-legacy/wiki/coordinate-picker.md) - componente Lit/Leaflet, build Vite in `public/` servita da `public_html/assets/geo`
+- [Ricostruzione mappa Leaflet/Lit](../archive/docs-legacy/wiki/concepts/geo-map-lit-reconstruction-guide.md)
+- [Analisi dei modelli](../archive/docs-legacy/root/geo-models-domain-analysis.md)
+- [Registro decisioni](../archive/docs-legacy/root/decision-log.md)
+- [Mappa di migrazione della radice di docs/](../archive/docs-legacy/root/DOCS-MIGRATION-MAP.md) - proposta di riordino dei file in radice
 
 ### Asset front-end
 
@@ -939,10 +941,10 @@ Geo module possiede TUTTE le concern geospaziali:
 
 ## Documenti Correlati
 
-- [Geo Models Domain Analysis](./geo-models-domain-analysis.md)
+- [Geo Models Domain Analysis](../archive/docs-legacy/root/geo-models-domain-analysis.md)
 - [Map Component Architecture](./map-component-architecture.md)
 - [Geocoding Provider Integration](./geocoding-providers.md)
-- [Leaflet/Lit Map Reconstruction](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
+- [Leaflet/Lit Map Reconstruction](../archive/docs-legacy/wiki/concepts/geo-map-lit-reconstruction-guide.md)
 - [PHPStan Configuration](../../../phpstan.neon)
 
 ## Regole Critiche
@@ -967,12 +969,12 @@ Geo module possiede TUTTE le concern geospaziali:
 ---
 
 - [Story BMAD](./stories/index.md) - cronologia e backlog delle story del modulo; audit qualita' in [stories/audit-qualita.story.md](./stories/audit-qualita.story.md)
-- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting ([log](./wiki/log.md))
-- [Coordinate picker](./wiki/coordinate-picker.md) - componente Lit/Leaflet, build Vite in `public/` servita da `public_html/assets/geo`
-- [Ricostruzione mappa Leaflet/Lit](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
-- [Analisi dei modelli](./geo-models-domain-analysis.md)
-- [Registro decisioni](./decision-log.md)
-- [Mappa di migrazione della radice di docs/](./docs-migration-map.md) - proposta di riordino dei file in radice
+- [Wiki del modulo](./wiki/index.md) - concept, regole e troubleshooting ([log](../archive/docs-legacy/wiki/log.md))
+- [Coordinate picker](../archive/docs-legacy/wiki/coordinate-picker.md) - componente Lit/Leaflet, build Vite in `public/` servita da `public_html/assets/geo`
+- [Ricostruzione mappa Leaflet/Lit](../archive/docs-legacy/wiki/concepts/geo-map-lit-reconstruction-guide.md)
+- [Analisi dei modelli](../archive/docs-legacy/root/geo-models-domain-analysis.md)
+- [Registro decisioni](../archive/docs-legacy/root/decision-log.md)
+- [Mappa di migrazione della radice di docs/](../archive/docs-legacy/root/DOCS-MIGRATION-MAP.md) - proposta di riordino dei file in radice
 
 ### Asset front-end
 
@@ -1239,10 +1241,10 @@ Geo module possiede TUTTE le concern geospaziali:
 
 ## Documenti Correlati
 
-- [Geo Models Domain Analysis](./geo-models-domain-analysis.md)
+- [Geo Models Domain Analysis](../archive/docs-legacy/root/geo-models-domain-analysis.md)
 - [Map Component Architecture](./map-component-architecture.md)
 - [Geocoding Provider Integration](./geocoding-providers.md)
-- [Leaflet/Lit Map Reconstruction](./wiki/concepts/geo-map-lit-reconstruction-guide.md)
+- [Leaflet/Lit Map Reconstruction](../archive/docs-legacy/wiki/concepts/geo-map-lit-reconstruction-guide.md)
 - [PHPStan Configuration](../../../phpstan.neon)
 
 ## Regole Critiche

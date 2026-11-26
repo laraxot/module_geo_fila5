@@ -65,8 +65,8 @@ find laravel/Modules/Geo/resources/js -name '*segnalazione*' -o -name '*mappa*' 
 
 ## collegamenti
 
-- [map-js-module-naming-rule.md](../concepts/map-js-module-naming-rule.md) — layout cartella `map/`
-- [geo-map-lit-reconstruction-guide.md](../concepts/geo-map-lit-reconstruction-guide.md)
+- [map-js-module-naming-rule.md](../../../archive/docs-legacy/wiki/concepts/map-js-module-naming-rule.md) — layout cartella `map/`
+- [geo-map-lit-reconstruction-guide.md](../../../archive/docs-legacy/wiki/concepts/geo-map-lit-reconstruction-guide.md)
 - [STORY-132](../../../../../docs/stories/STORY-132-rename-popup-segnalazione-js-english.md)
 - [STORY-063](../../../../../docs/stories/STORY-063-naming-convention-ticket-vs-segnalazioni.md)
 - Tema: [no-italian-component-names.md](../../../../../Themes/Sixteen/docs/wiki/rules/no-italian-component-names.md)
