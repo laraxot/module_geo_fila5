@@ -65,7 +65,7 @@ class CalculateTravelTimeAction
     private function validateInput(LocationData $origin, LocationData $destination): void
     {
         $apiKey = config('services.google.maps_api_key');
-        if (! \is_string($apiKey) || '' === $apiKey) {
+        if (! \is_string($apiKey) || $apiKey === '') {
             throw new \RuntimeException('Google Maps API key not configured');
         }
         Assert::notSame(
@@ -111,7 +111,7 @@ class CalculateTravelTimeAction
 
         /** @var string $status */
         $status = $data['status'];
-        if ('OK' !== $status) {
+        if ($status !== 'OK') {
             return TravelTimeData::error($status);
         }
 
@@ -124,7 +124,7 @@ class CalculateTravelTimeAction
             return TravelTimeData::error('INVALID_RESPONSE');
         }
 
-        if ('OK' !== $element['status']) {
+        if ($element['status'] !== 'OK') {
             return TravelTimeData::error($element['status']);
         }
 

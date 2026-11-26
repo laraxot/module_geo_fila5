@@ -134,7 +134,11 @@ geo.code-workspace
 
 # Forbidden parallel documentation archive
 docs/archive/
+
+# Regole portate dal remoto laraxot/dev (sync del 24/11), unite alla base senza perdere nulla
 .git/
+tests/coverage-*.*
+tests/graphify-out/
 
 # screenshot di comparazione visiva (artefatti locali)
 docs/project/visual-comparison/

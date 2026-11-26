@@ -2,10 +2,13 @@
 
 declare(strict_types=1);
 
+use Modules\Geo\Tests\UnitTestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\file_get_contents;
 use function Safe\preg_match_all;
+
+uses(UnitTestCase::class);
 
 /*
  * DCP-146: il centro approssimativo della mappa viene da una tabella fuso orario -> coordinate GENERATA dal database tz di PHP
@@ -54,7 +57,10 @@ it('has valid coordinates for every timezone and covers the whole tz database of
     $missing = [];
     foreach (DateTimeZone::listIdentifiers() as $zone) {
         $location = (new DateTimeZone($zone))->getLocation();
-        $hasPlace = is_array($location) && ($location['latitude'] != 0 || $location['longitude'] != 0);
+        // "??" = fuso senza luogo (es. UTC: PHP 8.4 restituisce -90/-180 come segnaposto), non va nella tabella.
+        $hasPlace = is_array($location)
+            && $location['country_code'] !== '??'
+            && ($location['latitude'] != 0 || $location['longitude'] != 0);
         if ($hasPlace && ! isset($table[$zone])) {
             $missing[] = $zone;
         }

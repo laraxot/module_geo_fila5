@@ -207,8 +207,7 @@ class Address extends BaseModel
      * Il filtro è fatto in PHP e non con json_extract(): i dati Sushi dei comuni possono
      * contenere valori non-JSON (es. "Sicilia") e SQLite fallirebbe con "malformed JSON".
      *
-     * @param 'regione'|'provincia' $column
-     *
+     * @param  'regione'|'provincia'  $column
      * @return array{codice: mixed, nome: mixed}|null
      */
     private function findComuneArea(string $column, mixed $code): ?array

@@ -11,6 +11,20 @@ use Modules\Geo\Tests\LightTestCase;
 use PHPUnit\Framework\Assert;
 
 uses(LightTestCase::class);
+
+/*
+ * L'action prova più provider; gli ultimi (Nominatim, Open-Meteo) non chiedono chiavi, quindi senza fake i test andavano in rete
+ * davvero e fallivano a ogni rallentamento. Nessuna chiamata reale: Nominatim e Open-Meteo rispondono «nessun risultato» e ogni
+ * altra richiesta non prevista fa fallire il test subito.
+ */
+beforeEach(function (): void {
+    Http::preventStrayRequests();
+    Http::fake([
+        'nominatim.openstreetmap.org/*' => Http::response([], 200),
+        'api.open-meteo.com/*' => Http::response(['generationtime_ms' => 0.1], 200),
+    ]);
+});
+
 it('returns null for empty address', function (): void {
     $action = new GetCoordinatesByAddressAction;
 
@@ -18,6 +32,8 @@ it('returns null for empty address', function (): void {
     $result = $action->execute('');
 
     Assert::assertNull($result);
+    // Nessun provider interpellato per un indirizzo vuoto.
+    Http::assertNothingSent();
 });
 
 it('returns null when google api key not configured', function (): void {

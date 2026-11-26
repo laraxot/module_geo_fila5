@@ -63,7 +63,7 @@ class GetCoordinatesFromGoogleMapsAction
     private function validateInput(string $address): void
     {
         $apiKey = config('services.google.maps_api_key');
-        if (! \is_string($apiKey) || '' === $apiKey) {
+        if (! \is_string($apiKey) || $apiKey === '') {
             throw new \RuntimeException('Google Maps API key not configured');
         }
         Assert::notEmpty($address, 'Address cannot be empty');

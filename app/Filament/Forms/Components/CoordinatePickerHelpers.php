@@ -5,14 +5,21 @@ declare(strict_types=1);
 namespace Modules\Geo\Filament\Forms\Components;
 
 use Illuminate\Support\Facades\Http;
+use Modules\Geo\Filament\Forms\Components\Traits\HasCoordinatePicker;
 use Modules\Xot\Actions\Cast\SafeStringCastAction;
 
 /**
- * Typed UI helpers for {@see XotBaseCoordinateField}.
+ * Single source for Nominatim search/reverse + coordinate normalize/extract.
  *
- * Extracted from the field trait so PHPStan L10 sees array generics on a
- * concrete coordinate-picker helper without turning UI behavior into an
- * application action.
+ * Used by {@see XotBaseCoordinateField} and {@see HasCoordinatePicker}
+ * (thin #[Exposed] wrappers). Concrete class keeps array generics for PHPStan L10;
+ * large trait bodies lose iterable value types.
+ *
+ * Nominatim is queried server-side (never from the browser) to respect its
+ * rate-limiting and User-Agent policies. These are UI helpers for the field,
+ * deliberately not an application action.
+ *
+ * @see Modules/Geo/docs/geo-sync-marker-repair.md
  */
 final class CoordinatePickerHelpers
 {
@@ -91,6 +98,8 @@ final class CoordinatePickerHelpers
 
     /**
      * @return array<string, mixed>|null
+     *
+     * @see Modules/Geo/docs/adr/geocoding-preferred-provider-with-fallback.md
      */
     public static function reverseGeocode(float $latitude, float $longitude): ?array
     {
@@ -110,20 +119,26 @@ final class CoordinatePickerHelpers
                 return null;
             }
 
-            $data = $response->json();
-            if (! \is_array($data)) {
+            $json = $response->json();
+            if (! \is_array($json)) {
                 return null;
             }
 
+            /** @var array<string, mixed> $data */
+            $data = $json;
+
+            $rawAddress = $data['address'] ?? [];
             /** @var array<string, mixed> $address */
-            $address = $data['address'] ?? [];
-            if (! \is_array($address)) {
-                $address = [];
-            }
+            $address = \is_array($rawAddress) ? $rawAddress : [];
+
+            /** @var list<mixed>|null $boundingBox */
+            $boundingBox = isset($data['boundingbox']) && \is_array($data['boundingbox'])
+                ? array_values($data['boundingbox'])
+                : null;
 
             return [
                 'display_name' => \is_string($data['display_name'] ?? null) ? $data['display_name'] : '',
-                'address' => \is_string($data['display_name'] ?? null) ? $data['display_name'] : '',
+                'address' => $address,
                 'provider' => 'nominatim',
                 'place_id' => $data['place_id'] ?? null,
                 'osm_type' => $data['osm_type'] ?? null,
@@ -132,7 +147,7 @@ final class CoordinatePickerHelpers
                 'importance' => is_numeric($data['importance'] ?? null) ? (float) $data['importance'] : null,
                 'type' => $data['type'] ?? null,
                 'class' => $data['category'] ?? $data['class'] ?? null,
-                'boundingbox' => isset($data['boundingbox']) && \is_array($data['boundingbox']) ? $data['boundingbox'] : null,
+                'boundingbox' => $boundingBox,
                 'street' => self::firstString($address, ['road', 'pedestrian', 'footway', 'path', 'residential', 'highway']),
                 'street_number' => self::firstString($address, ['house_number', 'street_number']),
                 'zip' => self::firstString($address, ['postcode']),
@@ -168,6 +183,7 @@ final class CoordinatePickerHelpers
     {
         $coordinates = $data[$field] ?? null;
         if (\is_array($coordinates)) {
+            /** @var array<string, mixed> $coordinates */
             $data[$latColumn] = self::normalizeCoordinate($coordinates['latitude'] ?? null);
             $data[$lngColumn] = self::normalizeCoordinate($coordinates['longitude'] ?? null);
         }

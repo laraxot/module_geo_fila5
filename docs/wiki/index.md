@@ -4,7 +4,7 @@ type: index
 module: Geo
 tags: [geo, wiki, index, map-lit, leaflet]
 created: 2026-04-15
-updated: 2026-06-05
+updated: 2026-11-23
 qmd: "geo module wiki index map-lit leaflet marker popup"
 issues:
   - "https://github.com/laraxot/module_geo_fila5/issues/47"

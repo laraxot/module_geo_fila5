@@ -3,7 +3,7 @@ title: "README"
 type: note
 tags: [documentation]
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-11-23
 qmd: "README"
 issues: []
 discussions: []
@@ -149,6 +149,6 @@ Per problemi o miglioramenti, controlla:
 
 ## Collegamenti Utili
 
-- [Documentazione Git Conflicts](../docs/git_conflicts_resolution.md)
+- [Documentazione Git Conflicts](../git-conflicts-resolution.md)
 - [Script Documentation](../docs/fix_all_git_conflicts.md)
-- [Best Practices Git](../docs/git_scripts.md)
+- [Best Practices Git](../git-scripts.md)
