@@ -31,5 +31,5 @@ discussions: []
 
 ## Documentazione
 
-- Aggiorna sempre `docs/INDEX.md` quando aggiungi file.
+- Aggiorna sempre `docs/index.md` quando aggiungi file.
 - Riferisciti alle regole in `bashscripts/ai/.claude/rules/` per approfondimenti.

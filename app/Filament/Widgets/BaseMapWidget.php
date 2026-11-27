@@ -32,20 +32,9 @@ use Modules\Xot\Filament\Widgets\XotBaseWidget;
  */
 abstract class BaseMapWidget extends XotBaseWidget
 {
-    /** @var view-string */
-    protected string $view;
+    protected string $view = 'geo::filament.widgets.base-map';
 
     protected int|string|array $columnSpan = 'full';
-
-    public function __construct()
-    {
-        // `??=` preserva un'eventuale $view piu' specifico dichiarato dalle figlie.
-        /** @var view-string $view */
-        $view = 'geo::filament.widgets.base-map';
-        $this->view ??= $view;
-
-        parent::__construct();
-    }
 
     protected int $maxMarkers = 500;
 

@@ -249,19 +249,19 @@ User (base)
 ## 🔗 Collegamenti Documentazione
 
 ### Documentazione Moduli
-- [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
-- [<nome progetto>](../modules/<nome progetto>/docs/readme.md)
-- [User](../../User/docs/readme.md)
+- [<nome progetto>](../modules/<nome progetto>/docs/README.md)
+- [<nome progetto>](../modules/<nome progetto>/docs/README.md)
+- [User](../../User/docs/README.md)
 - [Geo](README.md)
-- [Media](../../Media/docs/readme.md)
+- [Media](../../Media/docs/README.md)
 - [UI](../../UI/docs/README.md)
 - [Xot](../../Xot/docs/README.md)
 
 ### Documentazione Tecnica
-- [Architettura](laraxot-architecture-principles.md)
+- [Architettura](../laraxot-architecture-principles.md)
 - [Testing](../testing-supreme-index.md)
 - [PHPStan](../phpstan-critical-rule.md)
-- [Factory e Seeder](factory-best-practices.md)
+- [Factory e Seeder](../factory-best-practices.md)
 
 ---
 

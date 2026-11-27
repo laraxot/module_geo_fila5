@@ -1,10 +1,10 @@
 ---
-title: "plan"
+title: "Plan"
 type: note
 tags: [documentation]
 created: 2026-09-26
 updated: 2026-09-26
-qmd: "plan"
+qmd: "Plan"
 issues: []
 discussions: []
 ---
@@ -12,7 +12,7 @@ discussions: []
 # Plan: Laravel 13 Upgrade
 
 ## Phase 1: Global Documentation
-- Create a master upgrade guide in `docs/laravel-13-upgrade/UPGRADE_GUIDE.md`.
+- Create a master upgrade guide in `docs/laravel-13-upgrade/upgrade_guide.md`.
 - Document the R-R-S-U sequence for each module.
 
 ## Phase 2: Root Configuration Update

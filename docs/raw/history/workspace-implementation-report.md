@@ -52,7 +52,7 @@ Successfully implemented and enforced the workspace file naming convention acros
 | Document | Change |
 |----------|--------|
 | `AGENT_MEMORY.md` | Added workspace naming rule to Key Rules section |
-| `GEMINI.md` | Enhanced rule description with examples |
+| `gemini.md` | Enhanced rule description with examples |
 | `.agents/docs/agents-guide/04-architecture/critical-rules-summary.md` | Added as rule #12 |
 
 ### 3. Files Removed (Violations)
@@ -199,9 +199,9 @@ validate-workspace:
 
 ## Related Documentation
 
-- [Workspace Naming Convention](../../conventions/workspace-naming.md)
+- [Workspace Naming Convention](docs/conventions/workspace-naming.md)
 - [Module Workspace Rule](laravel/Modules/Xot/docs/workspace-file-rule.md)
-- [Agent Memory](../../conventions/workspace-naming.md)
+- [Agent Memory](.agents/memories/workspace-naming.md)
 - [Critical Rules](.agents/docs/agents-guide/04-architecture/critical-rules-summary.md)
 
 ---

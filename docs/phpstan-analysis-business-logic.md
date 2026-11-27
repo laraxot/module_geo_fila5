@@ -306,9 +306,9 @@ use function Safe\json_encode;
 
 ## 📚 **Documentazione Correlata**
 
-- [Business Logic Factory & Seeder Audit](business-logic-factory-seeder-audit.md)
+- [Business Logic Factory & Seeder Audit](../business-logic-factory-seeder-audit.md)
 - [PHPStan Critical Rules](../phpstan-critical-rule.md)
-- [Factory Best Practices](factory-best-practices.md)
+- [Factory Best Practices](../factory-best-practices.md)
 - [Testing Business Behavior Supreme Rule](../testing-business-behavior-supreme-rule.md)
 
 ## 🏆 **Risultati Attesi**

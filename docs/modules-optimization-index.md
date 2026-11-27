@@ -20,7 +20,7 @@ discussions: []
 
 ### 🔧 Linee Guida e Regole
 - **[Linee Guida Riusabilità](module_reusability_guidelines.md)** - 🚨 **FONDAMENTALE** - Regole per moduli project-agnostic
-- **[Script di Controllo](raw/analysis/check_module_reusability.sh)** - Tool automatico per verifica riusabilità
+- **[Script di Controllo](../bashscripts/check_module_reusability.sh)** - Tool automatico per verifica riusabilità
 
 ## 🏗️ Raccomandazioni per Modulo
 
@@ -169,7 +169,7 @@ cp -r laravel/Modules/*/docs laravel/Modules-docs-backup-$(date +%Y%m%d)
 
 - [Linee Guida Riusabilità](module_reusability_guidelines.md)
 - [Report Sintesi](optimization_summary_report.md)
-- [Script Controlli](raw/analysis/check_module_reusability.sh)
+- [Script Controlli](../bashscripts/check_module_reusability.sh)
 
 *Metodologia: Analisi sistematica seguendo principi DRY+KISS*
 *Validazione: Script automatici + review manuale*

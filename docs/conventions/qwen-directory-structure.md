@@ -133,7 +133,7 @@ ls /var/www/_bases/base_ptvx_fila5/bashscripts/ai/.qwen/skills/
 ```
 .qwen/skills/
 ├── README.md              # Skills overview
-├── INDEX.md               # Navigation index
+├── index.md               # Navigation index
 ├── laravel-expert.md      # Laravel development
 ├── documentation-master.md # Documentation standards
 ├── ai-agent-coordination.md # AI coordination
@@ -257,8 +257,8 @@ chown -R zorin:zorin .qwen/
 ### Documenti Correlati
 
 - [AGENTS.md](../../AGENTS.md)
-- [AI Agent Coordination](../raw/history/ai-agent-coordination.md)
-- [Skills Configuration Report](../raw/reports/skills-configuration-report.md)
+- [AI Agent Coordination](../../docs/ai-agent-coordination.md)
+- [Skills Configuration Report](../../docs/reports/skills-configuration-report.md)
 
 ### Comandi Utili
 

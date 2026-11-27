@@ -308,9 +308,9 @@ Motivo del gruppo: analisi di duplicati e ridondanza: casa naturale analysis/. S
 | `business-logic-consolidated.md` | `analysis/business-logic-consolidated.md` | Business Logic Consolidata - Progetto nome progetto | link in ingresso: 0 | proposto |
 | `business-logic-factory-seeder-audit.md` | `analysis/business-logic-factory-seeder-audit.md` | Business Logic Factory & Seeder Audit Completo | link in ingresso: 1 | proposto |
 | `business-logic-overview.md` | `analysis/business-logic-overview.md` | Geo Module - Business Logic Overview | link in ingresso: 0 | proposto |
-| `copilot-redundancy-audit-2026-05-25.md` | `analysis/copilot-redundancy-audit-2026-05-25.md` | copilot redundancy audit 2026 05 25 | link in ingresso: 0 | proposto |
+| `copilot-redundancy-audit.md` | `analysis/copilot-redundancy-audit-2026-05-25.md` | copilot redundancy audit 2026 05 25 | link in ingresso: 0 | proposto |
 | `copilot-redundancy-audit.md` | `analysis/copilot-redundancy-audit.md` | copilot redundancy audit | link in ingresso: 0 | proposto |
-| `DATA-CONSOLIDATION-2026-06-30.md` | `analysis/DATA-CONSOLIDATION-2026-06-30.md` | Geo Module - Data Consolidation Report | link in ingresso: 0 | proposto |
+| `DATA-CONSOLIDATION.md` | `analysis/DATA-CONSOLIDATION-2026-06-30.md` | Geo Module - Data Consolidation Report | link in ingresso: 0 | proposto |
 | `DATA-CONSOLIDATION.md` | `analysis/DATA-CONSOLIDATION.md` | Geo Module - Data Consolidation Report | omonimo con contenuto diverso: `data-consolidation.md`; collisione di maiuscole nella destinazione; link in ingresso: 0 | proposto |
 | `data-consolidation.md` | `analysis/data-consolidation.md` | Geo Module - Data Consolidation Report | omonimo con contenuto diverso: `DATA-CONSOLIDATION.md`; collisione di maiuscole nella destinazione; link in ingresso: 0 | proposto |
 | `duplicate-analysis.md` | `analysis/duplicate-analysis.md` | Geo Models Duplicate Analysis | link in ingresso: 0 | proposto |
@@ -344,13 +344,13 @@ Motivo del gruppo: analisi di duplicati e ridondanza: casa naturale analysis/. S
 | `optimization_recommendations.md` | `analysis/optimization_recommendations.md` | Raccomandazioni di Ottimizzazione - Modulo Geo | canonico delle copie byte-identiche; link in ingresso: 1 | proposto |
 | `PERFORMANCE-OPTIMIZATION.md` | `analysis/PERFORMANCE-OPTIMIZATION.md` | Performance Optimization - Module Geo | omonimo con contenuto diverso: `performance-optimization.md`; collisione di maiuscole nella destinazione; link in ingresso: 0 | proposto |
 | `performance-optimization.md` | `analysis/performance-optimization.md` | Performance Optimization - Module Geo | omonimo con contenuto diverso: `PERFORMANCE-OPTIMIZATION.md`; collisione di maiuscole nella destinazione; link in ingresso: 3 | proposto |
-| `ponytail-audit-2026-07-02.md` | `analysis/ponytail-audit-2026-07-02.md` | Ponytail-audit 2026-07-02: Geo module findings | link in ingresso: 0 | proposto |
+| `ponytail-audit.md` | `analysis/ponytail-audit-2026-07-02.md` | Ponytail-audit 2026-07-02: Geo module findings | link in ingresso: 0 | proposto |
 | `ponytail-audit-over-engineering.md` | `analysis/ponytail-audit-over-engineering.md` | Ponytail audit - Geo (over-engineering) | link in ingresso: 2 | proposto |
 | `ponytail-audit-plan.md` | `analysis/ponytail-audit-plan.md` | Ponytail audit - planning | link in ingresso: 4 | proposto |
 | `ponytail-audit-report.md` | `analysis/ponytail-audit-report.md` | Ponytail audit - report | link in ingresso: 2 | proposto |
 | `ponytail-audit.md` | `analysis/ponytail-audit.md` | Ponytail-audit 2026-07-02: Geo module findings | link in ingresso: 0 | proposto |
 | `redundancy-analysis.md` | `analysis/redundancy-analysis.md` | redundancy analysis | canonico delle copie byte-identiche; stub (<200 caratteri); link in ingresso: 0 | proposto |
-| `redundancy-audit-2026-05-21.md` | `analysis/redundancy-audit-2026-05-21.md` | Geo redundancy audit 2026-05-21 | link in ingresso: 0 | proposto |
+| `redundancy-audit.md` | `analysis/redundancy-audit-2026-05-21.md` | Geo redundancy audit 2026-05-21 | link in ingresso: 0 | proposto |
 | `redundancy-audit.md` | `analysis/redundancy-audit.md` | Geo redundancy audit 2026-05-21 | link in ingresso: 0 | proposto |
 | `redundancy-report.md` | `analysis/redundancy-report.md` | Redundancy Report - Geo Module | omonimo con contenuto diverso: `redundancy_report.md`; link in ingresso: 0 | proposto |
 | `REDUNDANCY_ANALYSIS.md` | `analysis/REDUNDANCY_ANALYSIS.md` | REDUNDANCY ANALYSIS | stub (<200 caratteri); omonimo con contenuto diverso: `redundancy-analysis.md`; link in ingresso: 0 | proposto |
@@ -385,7 +385,7 @@ Motivo del gruppo: integrazione con servizio esterno: casa naturale integrations
 | `mappe-integrazione.md` | `integrations/mappe-integrazione.md` | Integrazione Mappe - Geo Module | link in ingresso: 0 | proposto |
 | `mappe-solo-gratuite.md` | `integrations/mappe-solo-gratuite.md` | Regola Critica: Solo Servizi Mappe Gratuiti | link in ingresso: 0 | proposto |
 | `research-farmshops-architecture.md` | `integrations/research-farmshops-architecture.md` | Research: farmshops.eu Architecture Study | link in ingresso: 0 | proposto |
-| `squire-integration-1.md` | `integrations/squire-integration-1.md` | Integrazione con Squire per dati geografici | nome corrotto o sospetto; link in ingresso: 0 | proposto |
+| `squire-integration.md` | `integrations/squire-integration-1.md` | Integrazione con Squire per dati geografici | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 | `squire-integration.md` | `integrations/squire-integration.md` | Integrazione con Squire per dati geografici | canonico delle copie byte-identiche; link in ingresso: 12 | proposto |
 | `squire_integration.md` | `wiki/_archive/duplicates/squire_integration.md` | Integrazione con Squire per dati geografici | copia byte-identica di `squire-integration.md`; link in ingresso: 0 | proposto |
 | `tips-and-links-integration.md` | `integrations/tips-and-links-integration.md` | tips_and_links | link in ingresso: 0 | proposto |
@@ -512,7 +512,7 @@ Motivo del gruppo: modello dati geografico: casa naturale models/. Stato di tutt
 | `has-address-trait.md` | `models/has-address-trait.md` | Trait HasAddress | canonico delle copie byte-identiche; link in ingresso: 3 | proposto |
 | `has_address_trait.md` | `wiki/_archive/duplicates/has_address_trait.md` | Trait HasAddress | copia byte-identica di `has-address-trait.md`; link in ingresso: 0 | proposto |
 | `json-database.md` | `models/json-database.md` | JSON come Database per Dati Geografici | canonico delle copie byte-identiche; link in ingresso: 11 | proposto |
-| `json-usage-1.md` | `models/json-usage-1.md` | Utilizzo del file JSON dei comuni | nome corrotto o sospetto; link in ingresso: 0 | proposto |
+| `json-usage.md` | `models/json-usage-1.md` | Utilizzo del file JSON dei comuni | nome corrotto o sospetto; link in ingresso: 0 | proposto |
 | `json-usage.md` | `models/json-usage.md` | Utilizzo del file JSON dei comuni | canonico delle copie byte-identiche; link in ingresso: 3 | proposto |
 | `json_database.md` | `wiki/_archive/duplicates/json_database.md` | JSON come Database per Dati Geografici | copia byte-identica di `json-database.md`; link in ingresso: 0 | proposto |
 | `json_usage.md` | `wiki/_archive/duplicates/json_usage.md` | Utilizzo del file JSON dei comuni | copia byte-identica di `json-usage.md`; link in ingresso: 0 | proposto |
@@ -668,7 +668,7 @@ Motivo del gruppo: architettura/guida concettuale: casa naturale architecture/. 
 
 | Vecchio | Nuovo proposto | Scopo | Nota | Stato |
 |---|---|---|---|---|
-| `about.md` | `architecture/about.md` | BashScripts fila5 | link in ingresso: 0 | proposto |
+| `about.md` | `architecture/about.md` | BashScripts Fila3 | link in ingresso: 0 | proposto |
 | `advanced-features-backup.md` | `architecture/advanced-features-backup.md` | advanced features backup | stub (<200 caratteri); omonimo con contenuto diverso: `advanced_features_backup.md`; link in ingresso: 0 | proposto |
 | `advanced-features.md` | `architecture/advanced-features.md` | advanced features | stub (<200 caratteri); omonimo con contenuto diverso: `ADVANCED_FEATURES.md`; link in ingresso: 0 | proposto |
 | `ADVANCED_FEATURES.md` | `architecture/ADVANCED_FEATURES.md` | Funzionalità Avanzate del Modulo Geo | omonimo con contenuto diverso: `advanced-features.md`; collisione di maiuscole nella destinazione; link in ingresso: 1 | proposto |
@@ -797,7 +797,7 @@ Motivo del gruppo: scratch di prova (file di test vuoti o quasi) o nome malforma
 |---|---|---|---|---|
 | `--eloquent.md` | `wiki/_archive/duplicates/--eloquent.md` | eloquent | copia byte-identica di `__eloquent.md`; nome corrotto o sospetto; link in ingresso: 0 | proposto |
 | `__eloquent.md` | `_integration/__eloquent.md` | eloquent | DESTINAZIONE GIA OCCUPATA da un file diverso: confrontare prima di spostare; canonico delle copie byte-identiche; nome corrotto o sospetto; link in ingresso: 3 | proposto |
-| `test-27-02.md` | `wiki/_archive/unclassified/test-27-02.md` | test 27 02 2024 | identico anche a `raw/root-import/test-27-02.md`; stub (<200 caratteri); link in ingresso: 0 | proposto |
+| `test.md` | `wiki/_archive/unclassified/test-27-02.md` | test 27 02 2024 | identico anche a `raw/root-import/test-27-02.md`; stub (<200 caratteri); link in ingresso: 0 | proposto |
 | `test.md` | `wiki/_archive/unclassified/test.md` | test | identico anche a `raw/root-import/test.md`; stub (<200 caratteri); link in ingresso: 0 | proposto |
 | `test1.md` | `wiki/_archive/unclassified/test1.md` | test1 | identico anche a `raw/root-import/test1.md`; stub (<200 caratteri); link in ingresso: 0 | proposto |
 | `test_27_02_2024.md` | `wiki/_archive/unclassified/test_27_02_2024.md` | Test 27 02 2024 | stub (<200 caratteri); link in ingresso: 0 | proposto |

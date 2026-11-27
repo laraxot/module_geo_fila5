@@ -2,11 +2,19 @@
 title: "quality gate closure 2026 09 04.story"
 type: note
 tags: [documentation]
+<<<<<<< .merge_file_liitxG
 created: 2026-09-04
+=======
+created: 2026-09-26
+>>>>>>> .merge_file_bKFsva
 updated: 2026-09-26
 qmd: "quality gate closure 2026 09 04.story"
 issues: []
 discussions: []
+<<<<<<< .merge_file_liitxG
+=======
+date_originale_nome_file: 2026-09-04
+>>>>>>> .merge_file_bKFsva
 ---
 
 # Story: Quality-gate closure — Modules/Geo (2026-09-04)
@@ -87,7 +95,15 @@ oggi assenti.
 - `app/Models/Locality.php`
 - `app/Models/Policies/GeoBasePolicy.php`
 - `docs/coverage.md`
+<<<<<<< .merge_file_liitxG
 - `docs/stories/quality-gate-closure.story.md` (questo file)
+=======
+<<<<<<<< HEAD:laravel/Modules/Geo/docs/stories/quality-gate-closure-.story.md
+- `docs/stories/quality-gate-closure-.story.md` (questo file)
+========
+- `docs/stories/quality-gate-closure.story.md` (questo file)
+>>>>>>>> 89a7b91a9c (pull moduli e sync):laravel/Modules/Geo/docs/stories/quality-gate-closure.story.md
+>>>>>>> .merge_file_bKFsva
 
 Non aggiunti (drift di sessioni concorrenti, non toccato da questa sessione): `app/Datas/RouteData.php`,
 `app/Datas/Routing/RouteData.php`, `app/Filament/Forms/Components/AddressInput.php`,

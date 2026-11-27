@@ -63,7 +63,7 @@ BEGIN { skip = 0 }
 
 ## Per-Module Documentation
 
-- [User](../../conflict-resolution.md)
-- [UI](../../conflict-resolution.md)
-- [Notify](../../conflict-resolution.md)
-- [Xot](../../conflict-resolution.md)
+- [User](../laravel/Modules/User/docs/conflict-resolution.md)
+- [UI](../laravel/Modules/UI/docs/conflict-resolution.md)
+- [Notify](../laravel/Modules/Notify/docs/conflict-resolution.md)
+- [Xot](../laravel/Modules/Xot/docs/conflict-resolution.md)

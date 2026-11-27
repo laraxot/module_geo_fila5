@@ -52,5 +52,5 @@ Tutti i dot in cluster: 10–16px rendered.
 ## Collegamenti
 
 - [marker-cluster-hover-stability.md](../../../../../Themes/Sixteen/docs/wiki/concepts/marker-cluster-hover-stability.md)
-- [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents-2026-06.md) — incidente 4
+- [map-lit-it-incidents-2026-06.md](../troubleshooting/map-lit-it-incidents.md) — incidente 4
 - Memoria root: [map-lit-marker-cluster-farmshops-pattern.md](../../../../../../docs/wiki/memories/map-lit-marker-cluster-farmshops-pattern.md)

@@ -48,17 +48,17 @@ npm run playwright test --spec 'module_geo/*.spec.js'
 ```
 ## GitHub (tracciamento)
 
-Repository letto da frontmatter `github.repository` o `git remote -v` (se assente: repo root **`laraxot/base_<nome progetto>_fila5`**): **`laraxot/base_<nome progetto>_fila5`**.
+Repository letto da frontmatter `github.repository` o `git remote -v` (se assente: repo root **`laraxot/base_quaeris_fila5`**): **`laraxot/base_quaeris_fila5`**.
 
 | Risorsa | Stato | Link |
 |---|---|---|
-| Issue | **DA CREARE** | https://github.com/laraxot/base_<nome progetto>_fila5/issues |
-| Discussion | **DA CREARE** | https://github.com/laraxot/base_<nome progetto>_fila5/discussions |
+| Issue | **DA CREARE** | https://github.com/laraxot/base_quaeris_fila5/issues |
+| Discussion | **DA CREARE** | https://github.com/laraxot/base_quaeris_fila5/discussions |
 
 Il numero non e' scritto perche' non esiste ancora: `gh` non e' autenticato in questa sessione e i repo sono privati. Appena disponibile, creare con:
 
 ```bash
-gh issue create --repo laraxot/base_<nome progetto>_fila5 \
+gh issue create --repo laraxot/base_quaeris_fila5 \
   --title "📌 DEVE STORY-1116: FIX MAP CLUSTER MARKERS DISAPPEARANCE" --body-file <FILE>
-gh api repos/laraxot/base_<nome progetto>_fila5/discussions -f title="📌 DEVE STORY-1116: FIX MAP CLUSTER MARKERS DISAPPEARANCE" -f body="vedi la story"
+gh api repos/laraxot/base_quaeris_fila5/discussions -f title="📌 DEVE STORY-1116: FIX MAP CLUSTER MARKERS DISAPPEARANCE" -f body="vedi la story"
 ```

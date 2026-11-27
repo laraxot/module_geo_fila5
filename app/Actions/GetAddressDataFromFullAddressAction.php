@@ -18,6 +18,8 @@ use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere i dati dell'indirizzo utilizzando diversi servizi di geocoding.
+ *
+ * @contract docs/contracts/get-address-data-from-full-address-action.md
  */
 class GetAddressDataFromFullAddressAction
 {

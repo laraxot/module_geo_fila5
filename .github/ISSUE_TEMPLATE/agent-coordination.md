@@ -15,8 +15,8 @@ assignees: ""
 
 ## Agent Teams Coordination
 
-**Team**: {Team Name}
-**Agents Involved**: {Qwen, Gemini, Claude, etc.}
+**Team**: {Team Name}  
+**Agents Involved**: {Qwen, Gemini, Claude, etc.}  
 **Priority**: High/Medium/Low
 
 ---
@@ -59,7 +59,7 @@ assignees: ""
 ### Other Bases
 
 - [ ] base_fixcity_fila5 (Gemini)
-- [ ] base_<nome progetto>_fila5 (Claude)
+- [ ] base_quaeris_fila5 (Claude)
 - [ ] base_predict_fila5
 
 ### Decision
@@ -72,5 +72,5 @@ assignees: ""
 
 ---
 
-**Related Issues**: #{Issue Numbers}
+**Related Issues**: #{Issue Numbers}  
 **Related PRs**: #{PR Numbers}

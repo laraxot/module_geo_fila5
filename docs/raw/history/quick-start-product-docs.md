@@ -386,17 +386,17 @@ Consulta questi moduli come riferimento:
 
 - [PRD](laravel/Themes/One/docs/prd.md)
 - [Roadmap](laravel/Themes/One/docs/roadmap.md)
-- [Strategy](../../product-strategy.md)
-- [Launch Plan](../../product-launch-plan.md)
+- [Strategy](laravel/Themes/One/docs/product-strategy.md)
+- [Launch Plan](laravel/Themes/One/docs/product-launch-plan.md)
 - [User Research](laravel/Themes/One/docs/user-research.md)
 - [Sprint Planning](laravel/Themes/One/docs/sprint-planning-meeting.md)
 
 ### Xot Module (Completo)
 
 - [PRD](laravel/Modules/Xot/docs/prd.md)
-- [Roadmap](../../product-roadmap.md)
-- [Strategy](../../product-strategy.md)
-- [Launch Plan](../../product-launch-plan.md)
+- [Roadmap](laravel/Modules/Xot/docs/product-roadmap.md)
+- [Strategy](laravel/Modules/Xot/docs/product-strategy.md)
+- [Launch Plan](laravel/Modules/Xot/docs/product-launch-plan.md)
 - [User Research](laravel/Modules/Xot/docs/user-research.md)
 - [Sprint Planning](laravel/Modules/Xot/docs/sprint-planning-meeting.md)
 
@@ -406,16 +406,16 @@ Consulta questi moduli come riferimento:
 
 ### Template
 
-- [PRD Template](../../templates/prd-template.md)
-- [Roadmap Template](../../templates/product-roadmap-template.md)
-- [Strategy Template](../../templates/product-strategy-template.md)
-- [Launch Plan Template](../../templates/product-launch-plan-template.md)
-- [User Research Template](../../templates/user-research-template.md)
-- [Sprint Planning Template](../../templates/sprint-planning-template.md)
+- [PRD Template](docs/templates/prd-template.md)
+- [Roadmap Template](docs/templates/product-roadmap-template.md)
+- [Strategy Template](docs/templates/product-strategy-template.md)
+- [Launch Plan Template](docs/templates/product-launch-plan-template.md)
+- [User Research Template](docs/templates/user-research-template.md)
+- [Sprint Planning Template](docs/templates/sprint-planning-template.md)
 
 ### Guide
 
-- [Product Documentation Index](../../project/product-docs-index.md)
+- [Product Documentation Index](docs/project/product-docs-index.md)
 - [Templates README](docs/templates/README.md)
 - [Update Report](PRODUCT_DOCS_UPDATE_REPORT.md)
 

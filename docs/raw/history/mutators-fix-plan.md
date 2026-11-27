@@ -230,8 +230,8 @@ I seguenti mutators **NON** vanno corretti perché sono già corretti:
 
 ## 🔗 Riferimenti
 
-- [docs/accessor-level-4-supreme.md](accessor-level-4-supreme.md) - Pattern Livello 4
-- [docs/accessor-enlightenment-complete.md](accessor-enlightenment-complete.md) - Tutti i livelli
+- [docs/accessor-level-4-supreme.md](docs/accessor-level-4-supreme.md) - Pattern Livello 4
+- [docs/accessor-enlightenment-complete.md](docs/accessor-enlightenment-complete.md) - Tutti i livelli
 - [AGENTS.md](AGENTS.md) - Regole aggiornate
 
 ---

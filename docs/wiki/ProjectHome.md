@@ -22,11 +22,14 @@ Welcome to the central knowledge base for the **PTVX** project. This wiki is aut
 - [Tenant](../../../Tenant/docs/wiki): Multi-tenancy and data isolation.
 - [UI](../../../UI/docs/wiki): Shared Blade and Filament components.
 - [Lang](../../../Lang/docs/wiki): Internationalization and translation logic.
+<<<<<<< .merge_file_SWZIxS
 - [Xot](../../laravel/Modules/Xot/docs/wiki/): Core framework wrappers and shared utilities.
 - [User](../../laravel/Modules/User/docs/wiki/): Identity, authentication, and profiles.
 - [Tenant](../../laravel/Modules/Tenant/docs/wiki/): Multi-tenancy and data isolation.
 - [UI](../../laravel/Modules/UI/docs/wiki/): Shared Blade and Filament components.
 - [Lang](../../laravel/Modules/Lang/docs/wiki/): Internationalization and translation logic.
+=======
+>>>>>>> .merge_file_095sru
 
 ## Architectural Principles
 
@@ -43,7 +46,7 @@ Welcome to the central knowledge base for the **PTVX** project. This wiki is aut
 
 ## Developer Guide
 
-- [Agents index](agents/INDEX.md): Agent roles and coordination.
+- [Agents index](agents/index.md): Agent roles and coordination.
 - [On-demand pattern](rules/on-demand-pattern.md): How to maintain this wiki.
 - [QMD search guide](how-to/qmd-search-guide.md): Searching and indexing documentation.
 - [Validation post-edit](rules/validation-post-edit-rule.md): PHPStan, PHPMD, PHPInsights, UI checks.

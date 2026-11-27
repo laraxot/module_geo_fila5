@@ -12,7 +12,7 @@ discussions: []
 # Testing in the Geo Module
 
 ## Overview
-This document describes the testing approach for the Geo module in the <nome progetto> Fila4 Mono project.
+This document describes the testing approach for the Geo module in the Quaeris Fila4 Mono project.
 
 ## Test Structure
 The Geo module contains the following types of tests:

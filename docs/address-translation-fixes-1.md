@@ -229,8 +229,13 @@ Le stesse correzioni sono state applicate a:
 
 ## Collegamenti
 
+<<<<<<< .merge_file_z46589
 - [README Modulo Geo](readme.md) - Documentazione principale
 - [Translation Standards](../../lang/docs/translation-helper-text-standards.md) - Standard traduzioni
+=======
+- [README Modulo Geo](README.md) - Documentazione principale
+- [Translation Standards](../../Lang/docs/translation-helper-text-standards.md) - Standard traduzioni
+>>>>>>> .merge_file_YIV1SK
 - [Address Implementation](address-implementation.md) - Implementazione indirizzi
 
 ---

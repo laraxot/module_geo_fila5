@@ -76,12 +76,12 @@ After every change:
 ## Documentation
 
 - [GSD Methodology](../../docs/project/gsd-methodology.md)
-- [UI Components](../raw/history/components.md)
+- [UI Components](../../laravel/Modules/UI/docs/components.md)
 - [AGENTS.md](../../AGENTS.md)
 
 ## Roadmap
 
-See `.planning/ROADMAP.md` for phases that affect this theme.
+See `.planning/roadmap.md` for phases that affect this theme.
 
 ## Changelog
 

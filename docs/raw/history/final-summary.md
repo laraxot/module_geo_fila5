@@ -99,7 +99,7 @@ CAST(JSON_UNQUOTE(JSON_EXTRACT(extra_attributes, '$.anno')) AS SIGNED) = ?
 **A**: Studiato approfonditamente + fix collation critico!
 
 **Documented in**:
-- [Schemaless Final Guide](../../claude/schemaless-attributes-final.md)
+- [Schemaless Final Guide](docs/claude/schemaless-attributes-final.md)
 - [Collation Error Fix](laravel/Modules/Rating/docs/collation-error-fix.md)
 - [CRITICAL Fix](laravel/Modules/Rating/docs/CRITICAL-COLLATION-FIX.md)
 
@@ -175,15 +175,15 @@ CAST(JSON_UNQUOTE(JSON_EXTRACT(extra_attributes, '$.anno')) AS SIGNED) = ?
 
 ### Start Points
 
-- 🎯 [START-HERE.md](../../start-here.md) - Entry for all roles
-- 🗺️ [MASTER-INDEX.md](master-index.md) - Complete map
-- ✅ [ANALYSIS-COMPLETE.md](analysis-complete.md)
+- 🎯 [START-HERE.md](docs/START-HERE.md) - Entry for all roles
+- 🗺️ [MASTER-INDEX.md](docs/MASTER-INDEX.md) - Complete map
+- ✅ [ANALYSIS-COMPLETE.md](docs/ANALYSIS-COMPLETE.md)
 
 ### Module Docs
 
 **IndennitaResponsabilita**:
 - [README](laravel/Modules/IndennitaResponsabilita/docs/README.md)
-- [Quick Start](../../database/seeding/quick-start.md)
+- [Quick Start](laravel/Modules/IndennitaResponsabilita/docs/quick-start.md)
 - [Analysis Summary](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)
 - [Refactoring Plan](laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md) - 18 tasks
 - [Best Practices](laravel/Modules/IndennitaResponsabilita/docs/best-practices.md)

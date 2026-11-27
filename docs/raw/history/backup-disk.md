@@ -47,10 +47,10 @@ backup_disk() {
 ## Collegamenti Bidirezionali
 - [restore_disk](restore_disk.md) - Funzione per ripristinare backup
 - [sync_to_disk](../utils/sync_to_disk.sh) - Script per la sincronizzazione
-- [custom.sh](../../lib/custom.sh) - Libreria di funzioni personalizzate
+- [custom.sh](../lib/custom.sh) - Libreria di funzioni personalizzate
 
 ## Vedi Anche
-- [Documentazione Principale](../../docs/INDEX.md) - Indice della documentazione
+- [Documentazione Principale](../../docs/index.md) - Indice della documentazione
 - [Best Practices](best-practices.md) - Linee guida e best practices
 - Testing - Documentazione dei test
 - [Convenzioni di Naming](../../docs/standards/file_naming_conventions.md) - Standard per la nomenclatura dei file

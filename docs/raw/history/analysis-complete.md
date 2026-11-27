@@ -147,9 +147,9 @@ public function scopeWithExtraAttributes(
 
 1. **[Root README](docs/README.md)** - Updated with complete navigation
 2. **[Claude README](docs/claude/README.md)** - Updated links
-3. **[Schemaless Final](../../claude/schemaless-attributes-final.md)** - Correct guide
-4. **[Analysis Corrections](analysis-corrections.md)** - Summary
-5. **[Quality Verification](code-quality-verification.md)** - PHPMD results
+3. **[Schemaless Final](docs/claude/schemaless-attributes-final.md)** - Correct guide
+4. **[Analysis Corrections](docs/analysis-corrections.md)** - Summary
+5. **[Quality Verification](docs/code-quality-verification.md)** - PHPMD results
 
 ---
 
@@ -276,14 +276,14 @@ public function scopeWithExtraAttributes(
 ### For Tech Lead
 
 1. Review [Code Quality Analysis](laravel/Modules/IndennitaResponsabilita/docs/code-quality-analysis.md)
-2. Assess [Quality Verification](code-quality-verification.md)
+2. Assess [Quality Verification](docs/code-quality-verification.md)
 3. Approve [Refactoring Plan](laravel/Modules/IndennitaResponsabilita/docs/refactoring-action-plan.md)
 4. Assign resources
 
 ### For Code Review
 
 1. Check against [Best Practices](laravel/Modules/IndennitaResponsabilita/docs/best-practices.md)
-2. Verify [Schemaless Usage](../../claude/schemaless-attributes-final.md)
+2. Verify [Schemaless Usage](docs/claude/schemaless-attributes-final.md)
 3. Ensure PHPStan Level 10 passes
 4. Confirm test coverage
 
@@ -294,7 +294,7 @@ public function scopeWithExtraAttributes(
 **Central Hub**: [docs/README.md](docs/README.md)
 
 **Key Documents**:
-- Analysis: [This file](analysis-corrections.md)
+- Analysis: [This file](docs/analysis-corrections.md)
 - Module: [IndennitaResponsabilita](laravel/Modules/IndennitaResponsabilita/docs/analysis-summary.md)
 - Rating: [Rating Module](laravel/Modules/Rating/docs/README.md)
 - AI Rules: [Claude Guidelines](docs/claude/README.md)

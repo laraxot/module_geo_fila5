@@ -50,6 +50,6 @@ Eloquents magic attributes are not detected by `property_exists()`.
 - **Icons & Labels**: Do not hardcode. Use translation-driven resolution via `XotBase` classes.
 
 ## 6. Directory Etiquette
-- **README**: Global files must be `README.md`. No lowercase `readme.md` allowed.
+- **README**: Global files must be `README.md`. No lowercase `README.md` allowed.
 - **_docs**: The `_docs` directories are deprecated. Transform content into `.md` files in the module's `docs/` directory.
 - **Scripts**: All scripts (.sh, .py, .php CLI) MUST be in `bashscripts/` subfolders. NEVER in the `laravel/` root.

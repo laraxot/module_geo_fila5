@@ -160,12 +160,12 @@ Seleziona il backup da ripristinare [1-3]: 1
 
 ## Collegamenti Bidirezionali
 - [backup_disk](backup_disk.md) - Funzione per creare backup
-- [restore_from_disk](../../utils/restore_from_disk.sh) - Script per il ripristino
+- [restore_from_disk](../utils/restore_from_disk.sh) - Script per il ripristino
 - [sync_to_disk](../utils/sync_to_disk.sh) - Script per la sincronizzazione
-- [custom.sh](../../lib/custom.sh) - Libreria di funzioni personalizzate
+- [custom.sh](../lib/custom.sh) - Libreria di funzioni personalizzate
 
 ## Vedi Anche
-- [Documentazione Principale](../../docs/INDEX.md) - Indice della documentazione
+- [Documentazione Principale](../../docs/index.md) - Indice della documentazione
 - [Best Practices](best-practices.md) - Linee guida e best practices
 - Testing - Documentazione dei test
 - [Convenzioni di Naming](../../docs/standards/file_naming_conventions.md) - Standard per la nomenclatura dei file
