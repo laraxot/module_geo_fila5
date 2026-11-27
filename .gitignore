@@ -146,3 +146,7 @@ tests/coverage-*.*
 tests/graphify-out/
 # Indice vettoriale locale (non versionare)
 ruvector.db
+
+# Cartelle di archivio (backup di file vecchi): non si versionano
+archive/
+archivio/
