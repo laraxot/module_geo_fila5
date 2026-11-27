@@ -18,18 +18,24 @@ use Modules\Geo\Tests\TestCase;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class);
+<<<<<<< .merge_file_MKKeQu
 it('returns AddressData when first service succeeds', function (): void {
     $action = new GetAddressDataFromFullAddressAction();
+=======
+>>>>>>> .merge_file_JkriFY
 
-    // As this action depends on multiple external services which are difficult to mock,
-    // we can test that it at least has the correct structure and properties
-    Assert::assertCount(0, $action->getErrors());
+it('returns AddressData when first service succeeds', function (): void {
+    Assert::assertCount(0, (new GetAddressDataFromFullAddressAction)->getErrors());
 });
 
 it('initializes with empty errors collection', function (): void {
+<<<<<<< .merge_file_MKKeQu
     $action = new GetAddressDataFromFullAddressAction();
 
     Assert::assertCount(0, $action->getErrors());
+=======
+    Assert::assertCount(0, (new GetAddressDataFromFullAddressAction)->getErrors());
+>>>>>>> .merge_file_JkriFY
 });
 
 it('executes without throwing error for basic call', function (): void {
@@ -55,17 +61,18 @@ it('executes without throwing error for basic call', function (): void {
     $action = new GetAddressDataFromFullAddressAction();
 
     // The execute method handles failing providers gracefully and returns null
-    $result = $action->execute('Test Address');
-
-    Assert::assertNull($result);
+    Assert::assertNull($action->execute('Test Address'));
     // Every provider failure is collected as an error message
     Assert::assertNotEmpty($action->getErrors());
 })->group('GEO-GEOCODE-INV-2', 'GEO-GEOCODE-INV-3');
 
 /**
+<<<<<<< .merge_file_MKKeQu
  * Contratto: docs/contracts/get-address-data-from-full-address-action.md. I provider si sostituiscono nel container con
  * oggetti che registrano le chiamate: nessuna rete, nessuna chiave.
  *
+=======
+>>>>>>> .merge_file_JkriFY
  * @return object{calls: list<string>}
  */
 function geocodeProviderStub(?AddressData $result, ?string $failure = null): object
@@ -96,7 +103,11 @@ it('asks the provider chosen in geo.driver first and stops at its answer', funct
     app()->instance(GetAddressFromGoogleMapsAction::class, $google);
     config(['geo.driver' => 'photon']);
 
+<<<<<<< .merge_file_MKKeQu
     $result = (new GetAddressDataFromFullAddressAction())->execute('Piazza della Signoria, Firenze');
+=======
+    $result = (new GetAddressDataFromFullAddressAction)->execute('Piazza della Signoria, Firenze');
+>>>>>>> .merge_file_JkriFY
 
     Assert::assertSame('Firenze', $result?->city);
     Assert::assertSame(['Piazza della Signoria, Firenze'], $photon->calls);
@@ -110,7 +121,11 @@ it('moves to the next provider when one throws, and keeps its message', function
     app()->instance(GetAddressFromGoogleMapsAction::class, $google);
     config(['geo.driver' => 'photon']);
 
+<<<<<<< .merge_file_MKKeQu
     $action = new GetAddressDataFromFullAddressAction();
+=======
+    $action = new GetAddressDataFromFullAddressAction;
+>>>>>>> .merge_file_JkriFY
     $result = $action->execute('Via Roma 1, Milano');
 
     Assert::assertSame('Milano', $result?->city);

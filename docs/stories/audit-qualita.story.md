@@ -41,9 +41,17 @@ Gli altri file di `resources/js` restano: sono importati da `bootstrap.js`/compo
 
 ### Codice
 
+<<<<<<< .merge_file_orXH2Q
 - DRY: `Traits/HasCoordinatePicker` delega `searchAddress`, `reverseGeocode`, `extractCoordinates` e la normalizzazione
   delle coordinate a `CoordinatePickerHelpers` (corpo identico copiato); restano gli attributi `#[Exposed]`/`#[Renderless]`.
 - Rimossi doppioni morti: `Filament/Forms/Components/Support/CoordinatePickerHelpers.php` (copia non referenziata),
+=======
+- DRY: `Traits/HasCoordinatePicker` importa `Modules\Geo\Filament\Forms\Components\CoordinatePickerHelpers`
+  (stesso NS di `XotBaseCoordinateField`) e delega Nominatim + normalize/extract; restano solo
+  `#[Exposed]`/`#[Renderless]` su search/reverse. Senza `use` PHPStan risolve Helpers sotto `Traits\` → `class.notFound`.
+- Rimossi doppioni morti: `Support/CoordinatePickerHelpers.php`, `GeographicalScopes` (→ `GeoTrait`),
+  `HasPlaceTrait`, `SushiToJsons` Geo (→ Tenant), `HasAddresses` (→ `HasAddress`),
+>>>>>>> .merge_file_A2Ejgv
   `app/datatransferobjects/LocationDTO.php` (copia in cartella minuscola, stesso namespace di `DataTransferObjects`).
 - Rimossi 10 file `*.disabled*` e 5 backup (`*.bak1`, `,bak`, `.backup-*`, `.bak-*`) in `app/`, `database/`, `resources/`.
 - `mixed` in `app/`: 343 -> 327. I restanti sono quasi tutti confini legittimi (JSON dei provider, prop Blade,
@@ -71,7 +79,11 @@ Gli altri file di `resources/js` restano: sono importati da `bootstrap.js`/compo
   convertirli richiede di toccare le Action che li usano e i test.
 - `DataTransferObjects\LocationDTO` e `Datas\LocationDTO` convivono: va tenuta solo la Data.
 - `docs/` ha ancora alberi estranei al modulo (`docs/gdpr/docs/html2pdf`, `docs/performance/Performance/...`) e
+<<<<<<< .merge_file_orXH2Q
   centinaia di file in radice (vedi `DOCS-MIGRATION-MAP.md`).
+=======
+  centinaia di file in radice (vedi `docs-migration-map.md`).
+>>>>>>> .merge_file_A2Ejgv
 - Link esterni allo scope ancora rivolti agli indici rimossi: `docs/docs_master_index.md`,
   `Modules/Notify/docs/ai-agents/project-docs-index.md`; due link della story `map-controls-i18n-it-en-de-es`
   puntano a story datate di User e Sixteen.

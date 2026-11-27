@@ -19,6 +19,11 @@ use Spatie\QueueableAction\QueueableAction;
 /**
  * Classe per ottenere i dati dell'indirizzo utilizzando diversi servizi di geocoding.
  *
+<<<<<<< .merge_file_GffpgL
+=======
+ * @see docs/contracts/get-address-data-from-full-address-action.md
+ *
+>>>>>>> .merge_file_DLx0z2
  * @contract docs/contracts/get-address-data-from-full-address-action.md
  */
 class GetAddressDataFromFullAddressAction
@@ -38,8 +43,6 @@ class GetAddressDataFromFullAddressAction
      *
      * @param  string  $fullAddress  L'indirizzo da cercare
      * @return AddressData|null I dati dell'indirizzo trovato, null se nessun provider risponde
-     *
-     * @throws \RuntimeException Se la richiesta fallisce o l'indirizzo non viene trovato
      */
     public function execute(string $fullAddress): ?AddressData
     {

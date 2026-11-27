@@ -2,10 +2,13 @@
 
 declare(strict_types=1);
 
+use Modules\Geo\Tests\UnitTestCase;
 use PHPUnit\Framework\Assert;
 
 use function Safe\file_get_contents;
 use function Safe\preg_match_all;
+
+uses(UnitTestCase::class);
 
 /*
  * DCP-146: il centro approssimativo della mappa viene da una tabella fuso orario -> coordinate GENERATA dal database tz di PHP

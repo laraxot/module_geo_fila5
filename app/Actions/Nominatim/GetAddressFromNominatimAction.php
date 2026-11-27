@@ -13,6 +13,10 @@ use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Classe per ottenere i dati dell'indirizzo dal servizio Nominatim.
+ *
+ * @see docs/contracts/get-address-from-nominatim-action.md
+ *
+ * @contract docs/contracts/get-address-from-nominatim-action.md
  */
 class GetAddressFromNominatimAction
 {

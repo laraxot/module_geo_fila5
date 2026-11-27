@@ -16,6 +16,10 @@ use function Safe\json_decode;
 
 /**
  * Action per ottenere le coordinate geografiche da un indirizzo usando Google Maps Geocoding API.
+ *
+ * @see docs/contracts/get-coordinates-action.md
+ *
+ * @contract docs/contracts/get-coordinates-action.md
  */
 class GetCoordinatesAction
 {

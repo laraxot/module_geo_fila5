@@ -54,5 +54,5 @@ rg 'popup--loading.*popup__footer|geo-popup-segnalazione' laravel/Modules/Geo/re
 
 ## Collegamenti
 
-- [geo map popup bem](../concepts/geo-map-popup-bem.md)
-- [geo map lit farmshops parity](../concepts/geo-map-lit-farmshops-parity.md)
+- [geo map popup bem](../../../archive/docs-legacy/wiki/concepts/geo-map-popup-bem.md)
+- [geo map lit farmshops parity](../../../archive/docs-legacy/wiki/concepts/geo-map-lit-farmshops-parity.md)

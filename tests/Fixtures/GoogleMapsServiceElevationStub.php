@@ -8,24 +8,25 @@ use Modules\Geo\Actions\GoogleMapsAction;
 
 /**
  * @internal
+ *
+ * @see Modules/Geo/docs/geo-sync-marker-repair.md
  */
 final class GoogleMapsServiceElevationStub extends GoogleMapsAction
 {
     /**
-     * @param array<string, mixed> $elevationResponse
+     * @param  array<string, mixed>  $elevationResponse
      */
     public function __construct(
         private array $elevationResponse = [],
         private ?\Throwable $exception = null,
-    ) {
-    }
+    ) {}
 
     /**
      * @return array<string, mixed>
      */
     public function getElevation(float $latitude, float $longitude): array
     {
-        if (null !== $this->exception) {
+        if ($this->exception !== null) {
             throw $this->exception;
         }
 

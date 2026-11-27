@@ -31,6 +31,11 @@ use Spatie\QueueableAction\QueueableAction;
  * $action->onQueue('geo')->execute($client);
  * ```
  *
+<<<<<<< .merge_file_Eu9RHS
+=======
+ * @see docs/contracts/update-coordinates-from-address-action.md
+ *
+>>>>>>> .merge_file_vdtYcJ
  * @contract docs/contracts/update-coordinates-from-address-action.md
  */
 class UpdateCoordinatesFromAddressAction

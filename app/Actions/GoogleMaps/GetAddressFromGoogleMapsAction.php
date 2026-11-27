@@ -18,6 +18,10 @@ use Spatie\QueueableAction\QueueableAction;
 
 /**
  * Gestisce le richieste e l'elaborazione delle risposte dell'API di geocodifica di Google Maps.
+ *
+ * @see docs/contracts/get-address-from-google-maps-action.md
+ *
+ * @contract docs/contracts/get-address-from-google-maps-action.md
  */
 final class GetAddressFromGoogleMapsAction
 {

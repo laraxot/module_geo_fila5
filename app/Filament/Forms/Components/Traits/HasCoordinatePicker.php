@@ -7,12 +7,28 @@ namespace Modules\Geo\Filament\Forms\Components\Traits;
 use Filament\Support\Components\Attributes\Exposed;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Renderless;
+<<<<<<< .merge_file_HeyGCW
+=======
+use Modules\Geo\Filament\Forms\Components\Contracts\CoordinatePickerArrayShapes;
+>>>>>>> .merge_file_Lk8E85
 use Modules\Geo\Filament\Forms\Components\CoordinatePickerHelpers;
 
 /**
- * Trait HasCoordinatePicker - Shared logic for geographic components.
- * Rule: No "Default" prefixes for configuration methods.
- * Rule: Unified state {latitude, longitude}.
+ * Shared Filament field behaviour for map/coordinate pickers.
+ *
+ * Business logic and typed array shapes live in {@see CoordinatePickerHelpers}
+ * (concrete class): PHPStan L10 does not reliably keep iterable value types on
+ * large trait method bodies. Consumers implement
+ * {@see CoordinatePickerArrayShapes}
+ * so class-context analysis keeps the shapes. Keep #[Exposed]/#[Renderless] wrappers here.
+ *
+ * Always `use` CoordinatePickerHelpers: an unqualified call resolves under
+ * Traits\ and becomes class.notFound (× every consumer component).
+ *
+ * Rule: no "Default" prefixes for configuration methods.
+ * Rule: unified state `{latitude, longitude}`.
+ *
+ * @see Modules/Geo/docs/geo-sync-marker-repair.md
  */
 trait HasCoordinatePicker
 {
@@ -39,11 +55,14 @@ trait HasCoordinatePicker
     /** Mostra il pannello ricerca indirizzi sul componente Lit (MapPicker / GeopointPicker / …). */
     protected bool $searchVisible = true;
 
+    /**
+     * Hydrates the composite latitude/longitude state from the bound model.
+     *
+     * @see ../../../../../docs/coordinate-picker-purpose.md
+     */
     protected function setUpCoordinatePicker(): void
     {
         $this->default(['latitude' => null, 'longitude' => null]);
-        // Note: Removed $this->dehydrated(false) to allow location data to be saved.
-        // The component now properly persists coordinates to the form state.
 
         $this->afterStateHydrated(static function (self $component, mixed $state): void {
             if (\is_array($state) && isset($state['latitude'], $state['longitude'])) {
@@ -91,13 +110,22 @@ trait HasCoordinatePicker
      * Set the initial map center.
      * Supports both center(lat, lng) and center(['lat' => ..., 'lng' => ...]).
      *
-     * @param  float|array<string, float>  $latitude
+     * @param  float|array{latitude?: float|int|string, lat?: float|int|string, longitude?: float|int|string, lng?: float|int|string}  $latitude
+     *
+     * @see ../../../../../docs/coordinate-picker-purpose.md
      */
     public function center(float|array $latitude, ?float $longitude = null): static
     {
         if (\is_array($latitude)) {
-            $this->centerLatitude = $latitude['latitude'] ?? $latitude['lat'] ?? $this->centerLatitude;
-            $this->centerLongitude = $latitude['longitude'] ?? $latitude['lng'] ?? $this->centerLongitude;
+            $centerLatitude = CoordinatePickerHelpers::normalizeCoordinate($latitude['latitude'] ?? $latitude['lat'] ?? null);
+            if ($centerLatitude !== null) {
+                $this->centerLatitude = $centerLatitude;
+            }
+
+            $centerLongitude = CoordinatePickerHelpers::normalizeCoordinate($latitude['longitude'] ?? $latitude['lng'] ?? null);
+            if ($centerLongitude !== null) {
+                $this->centerLongitude = $centerLongitude;
+            }
 
             return $this;
         }
@@ -173,13 +201,29 @@ trait HasCoordinatePicker
      * Il nome evita `getDefaultView()`, che in Filament e' la vista Blade del componente.
      *
      * @return array{lat: float, lng: float, zoom: int}
+     *
+     * @see ../../../../../docs/coordinate-picker-purpose.md
+     * @see CoordinatePickerArrayShapes::getMapDefaultView()
      */
     public function getMapDefaultView(): array
     {
+<<<<<<< .merge_file_HeyGCW
         $view = config('geo.config.map.default_view');
         $lat = \is_array($view) ? CoordinatePickerHelpers::normalizeCoordinate($view['lat'] ?? null) : null;
         $lng = \is_array($view) ? CoordinatePickerHelpers::normalizeCoordinate($view['lng'] ?? null) : null;
         $rawZoom = \is_array($view) ? ($view['zoom'] ?? null) : null;
+=======
+        $configuredView = config('geo.config.map.default_view');
+        if (! \is_array($configuredView)) {
+            $view = null;
+        } else {
+            /** @var array<string, mixed> $configuredView */
+            $view = CoordinatePickerHelpers::mapDefaultViewInput($configuredView);
+        }
+        $lat = $view === null ? null : CoordinatePickerHelpers::normalizeCoordinate($view['lat']);
+        $lng = $view === null ? null : CoordinatePickerHelpers::normalizeCoordinate($view['lng']);
+        $rawZoom = $view === null ? null : $view['zoom'];
+>>>>>>> .merge_file_Lk8E85
         $zoom = is_numeric($rawZoom) ? (float) $rawZoom : null;
 
         if ($lat === null || $lng === null || $zoom === null
@@ -205,6 +249,11 @@ trait HasCoordinatePicker
         return $this->geolocateWhenEmpty;
     }
 
+    /**
+     * Reads and normalizes the latitude from the composite picker state.
+     *
+     * @see ../../../../../docs/coordinate-picker-purpose.md
+     */
     public function getLatitude(): ?float
     {
         $state = $this->getState();
@@ -212,9 +261,18 @@ trait HasCoordinatePicker
             return null;
         }
 
+<<<<<<< .merge_file_HeyGCW
+=======
+        /** @var array<string, mixed> $state */
+>>>>>>> .merge_file_Lk8E85
         return CoordinatePickerHelpers::normalizeCoordinate($state['latitude'] ?? null);
     }
 
+    /**
+     * Reads and normalizes the longitude from the composite picker state.
+     *
+     * @see ../../../../../docs/coordinate-picker-purpose.md
+     */
     public function getLongitude(): ?float
     {
         $state = $this->getState();
@@ -222,6 +280,10 @@ trait HasCoordinatePicker
             return null;
         }
 
+<<<<<<< .merge_file_HeyGCW
+=======
+        /** @var array<string, mixed> $state */
+>>>>>>> .merge_file_Lk8E85
         return CoordinatePickerHelpers::normalizeCoordinate($state['longitude'] ?? null);
     }
 
@@ -230,6 +292,8 @@ trait HasCoordinatePicker
      * Logica unica in {@see CoordinatePickerHelpers::searchAddress()}, condivisa con XotBaseCoordinateField.
      *
      * @return list<array<string, mixed>>
+     *
+     * @see ../../../../../docs/coordinate-picker-purpose.md
      */
     #[Exposed]
     #[Renderless]
@@ -242,6 +306,8 @@ trait HasCoordinatePicker
      * Geocodifica inversa delle coordinate in un indirizzo strutturato.
      *
      * @return array<string, mixed>|null
+     *
+     * @see ../../../../../docs/coordinate-picker-purpose.md
      */
     #[Exposed]
     #[Renderless]
@@ -253,6 +319,8 @@ trait HasCoordinatePicker
     /**
      * @param  array<string, mixed>  $data
      * @return array<string, mixed>
+     *
+     * @see ../../../../../docs/coordinate-picker-purpose.md
      */
     public static function extractCoordinates(array $data, string $field = 'coordinates', string $latColumn = 'latitude', string $lngColumn = 'longitude'): array
     {

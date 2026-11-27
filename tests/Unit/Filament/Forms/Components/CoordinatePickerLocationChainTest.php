@@ -58,8 +58,17 @@ test('il codice del picker non contiene coordinate fisse, servizi IP esterni, co
         'app/Filament/Forms/Components/Traits/HasCoordinatePicker.php',
         'config/config.php',
         'resources/views/filament/forms/components/coordinate-picker.blade.php',
+<<<<<<< .merge_file_KnFJfh
         // Il modulo Geo e' condiviso: non verifica file di moduli di altri progetti (es. Fixcity, assente qui).
+=======
+>>>>>>> .merge_file_8cuOMi
     ];
+
+    // Il modulo Geo e' condiviso: il picker di Fixcity si verifica solo dove quel modulo esiste (altri progetti non lo hanno).
+    $fixcityPicker = '../Fixcity/resources/views/filament/forms/components/dc-place-autocomplete.blade.php';
+    if (is_file(GEO_PICKER_ROOT.'/'.$fixcityPicker)) {
+        $sources[] = $fixcityPicker;
+    }
 
     foreach ($sources as $source) {
         $code = geoPickerSource($source);
