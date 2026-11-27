@@ -3,20 +3,11 @@ title: "ADR del modulo Geo"
 type: index
 tags: [adr, decisioni, geo]
 created: 2026-11-18
-<<<<<<< .merge_file_e22MI5
-updated: 2026-11-24
-=======
 updated: 2026-11-26
->>>>>>> .merge_file_eibxVy
 ---
 
 # ADR del modulo Geo
 
-<<<<<<< .merge_file_e22MI5
-Il **perché** delle forme di codice di Geo che sembrano strane e che un agente rischia di "semplificare": il proxy
-OpenStreetMap lato server (privacy e policy di OSMF), la mappa dei provider di geocodifica scritta dentro l'Action
-(vincolo di PHPStan), i componenti mappa Lit in Light DOM (stabilità nei wizard Livewire).
-=======
 Il **perche'** delle forme di codice di Geo che sembrano strane e che un agente rischia di "semplificare": il proxy
 OpenStreetMap lato server (privacy e policy di OSMF) e la sua cache delle rotte, la mappa dei provider di geocodifica scritta
 dentro l'Action (vincolo di PHPStan), i componenti mappa Lit in Light DOM (stabilita' nei wizard Livewire), le integrazioni
@@ -33,16 +24,10 @@ una spiegazione retroattiva inventata. Le decisioni si verificano contro codice 
 un nuovo ADR e segna il precedente `superseded` o `deprecated`. Se il codice di oggi contraddice la decisione, l'ADR non si
 riscrive: si aggiunge `## Stato attuale` con la prova (file e riga). Regole: [action-behavioral-contract](../../../Xot/docs/rules/action-behavioral-contract.md)
 e [ADR di Xot](../../../Xot/docs/adr/README.md).
->>>>>>> .merge_file_eibxVy
 
 Leggili prima di: far chiamare al browser un servizio di mappe esterno, spostare la scelta dei provider in config o
 aggiungerne uno, scrivere o copiare un componente mappa JS.
 
-<<<<<<< .merge_file_e22MI5
-Formato (cinque sezioni, `type: decision`, nome file senza date né numeri) e regole:
-[action-behavioral-contract](../../../Xot/docs/rules/action-behavioral-contract.md). Chi cambia una decisione scrive un
-nuovo ADR e segna il vecchio `status: superseded`.
-=======
 Frontmatter: `title`, `type: decision`, `status`, `module`, `decision-makers`, `created`, `updated`. Sezioni in quest'ordine
 ([modello](0000-template.md)):
 
@@ -82,10 +67,9 @@ Frontmatter: `title`, `type: decision`, `status`, `module`, `decision-makers`, `
 - **0004**: `app/Services` contiene ancora 8 file e `tests/Arch/debt.php` li tiene in debito (prove in «Stato attuale»).
   Serve una decisione del lead: cancellarli oppure segnare l'ADR superseded.
 - **0002**: esiste un secondo dispatcher, `GetCoordinatesByAddressAction`, che ignora `geo.driver` (senza chiamanti di produzione).
->>>>>>> .merge_file_eibxVy
 
 ## Indice
 
-- [Tile e geocoding OpenStreetMap passano dal nostro server](osm-proxy-tile-nominatim.md) — il browser parla solo con il nostro dominio; il server rispetta cache, User-Agent e 1 richiesta/s di OSMF.
-- [Geocodifica: provider preferito da configurazione, poi fallback letterale](geocoding-preferred-provider-with-fallback.md) — `geo.driver` sceglie il primo provider; la mappa resta nel metodo per restare tipizzata.
-- [Componenti mappa Lit in Light DOM con pane Leaflet protetto](map-components-lit-light-dom.md) — `createRenderRoot`, `guard([])` e `ResizeObserver` per mappe che sopravvivono a step, tab e Livewire.
+- [Tile e geocoding OpenStreetMap passano dal nostro server](0003-osm-proxy-tile-nominatim.md) — il browser parla solo con il nostro dominio; il server rispetta cache, User-Agent e 1 richiesta/s di OSMF.
+- [Geocodifica: provider preferito da configurazione, poi fallback letterale](0002-geocoding-preferred-provider-with-fallback.md) — `geo.driver` sceglie il primo provider; la mappa resta nel metodo per restare tipizzata.
+- [Componenti mappa Lit in Light DOM con pane Leaflet protetto](0001-map-components-lit-light-dom.md) — `createRenderRoot`, `guard([])` e `ResizeObserver` per mappe che sopravvivono a step, tab e Livewire.

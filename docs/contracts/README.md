@@ -1,24 +1,15 @@
 ---
 title: "Contratti del modulo Geo"
 type: index
-<<<<<<< .merge_file_zpL8c2
-tags: [contracts, actions, geo]
-created: 2026-11-18
-updated: 2026-11-24
-=======
 tags: [contracts, actions, interfaces, geo]
 created: 2026-11-18
 updated: 2026-11-26
->>>>>>> .merge_file_Jew7aW
 ---
 
 # Contratti del modulo Geo
 
 Cosa promettono le Action di Geo che parlano con servizi esterni (OpenStreetMap, Nominatim, provider di geocodifica) o
 scrivono coordinate nel DB, e soprattutto cosa **non** fanno. Le due Action del proxy OSM sono nell'elenco `REQUIRED` di
-<<<<<<< .merge_file_zpL8c2
-`Modules/Xot/tests/Unit/Docs/ActionContractsAreCompleteTest.php`: il loro contratto è obbligatorio.
-=======
 `Modules/Xot/tests/Unit/Docs/ActionContractsAreCompleteTest.php`: il loro contratto e' obbligatorio. Vale lo stesso per le
 interfacce (`app/Contracts`): promettono la superficie pubblica del pacchetto.
 
@@ -28,7 +19,6 @@ Un contratto descrive il comportamento **di oggi**, con i suoi limiti: un compor
 
 Formato (sei sezioni, tabella invarianti con ID, `@contract` nel docblock):
 [action-behavioral-contract](../../../Xot/docs/rules/action-behavioral-contract.md).
->>>>>>> .merge_file_Jew7aW
 
 Leggili prima di chiamare, modificare o imitare una di queste Action; le invarianti con un group Pest si verificano con
 `cd laravel && vendor/bin/pest Modules/Geo/tests --group=<ID>`, quelle con `—` sono debito dichiarato.
@@ -38,12 +28,6 @@ Formato (sei sezioni, tabella invarianti con ID, `@contract` nel docblock):
 
 ## Indice
 
-<<<<<<< .merge_file_zpL8c2
-- [FetchOsmTileAction](fetch-osm-tile-action.md) — tile OSM dal nostro dominio, cache su disco di almeno 7 giorni, richieste condizionali, copia scaduta se OSM è giù.
-- [QueryNominatimAction](query-nominatim-action.md) — ricerca e geocodifica inversa via proxy: 1 richiesta/s per il sito, parametri filtrati, cache, spegnibile da config.
-- [GetAddressDataFromFullAddressAction](get-address-data-from-full-address-action.md) — dispatcher della geocodifica: provider di `geo.driver` per primo, poi fallback; mai eccezioni, errori in `getErrors()`.
-- [UpdateCoordinatesFromAddressAction](update-coordinates-from-address-action.md) — geocodifica l'indirizzo di un modello e scrive solo `latitude`/`longitude`.
-=======
 Il docblock dell'Action rimanda al file con `@see docs/contracts/<file>.md` e `@contract docs/contracts/<file>.md`.
 Chi cambia il comportamento aggiorna il contratto nello stesso commit. Template: [_template.md](_template.md).
 
@@ -128,4 +112,3 @@ Invarianti senza test (21 su 51). Non e' stato scritto nessun test in questa pas
 - `GetAddressDataFromFullAddressAction.php:91-96`: `Notification::make()` senza `send()`, codice morto.
 - `UpdateCoordinatesFromAddressAction.php:68`: `empty($fullAddress)` tratta `"0"` come vuoto.
 - Chiavi di configurazione incoerenti per la stessa credenziale: Google (`services.google.maps_api_key`, `services.google.maps.key`, `geo.api_keys.google_maps`), OpenCage (`key` e `api_key`), Mapbox (`access_token` e `api_key`).
->>>>>>> .merge_file_Jew7aW
